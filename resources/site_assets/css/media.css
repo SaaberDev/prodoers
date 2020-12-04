@@ -1,0 +1,160 @@
+/* Extra small devices (portrait phones, less than 375 px)*/
+@media (min-width: 320px) and (max-width: 474.98px) {
+    .headerNavlinks {
+    justify-content: space-between !important;
+}
+  .fixedTopSm {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+      background: white;
+} 
+    .navMobileLOGO {
+        padding-top: 40px;
+    }
+    .sideNavAdminLarge ul li {
+        list-style: none !important;
+    }
+    .mobile-offcanvas {
+        padding: 0;
+    }
+    .dashboardRightside {
+    padding: 0px;
+    height: auto;
+    overflow-y: auto !important;
+}
+    .offcanvasNavFormobile .svgSpan {
+    padding-left: 0px;
+}
+    .offcanvasNavFormobile .svgSpan svg{
+        width: 15px;
+    }
+    .offcanvasNavFormobile .sideNavAdminLarge .nav-item .nav-link {
+    padding: 10px 10px;
+    font-size: 13px;
+}
+}
+
+
+
+/* Extra small devices (portrait phones, less than 576 px)*/
+@media (min-width: 475px) and (max-width: 575.98px) { 
+.headerNavlinks {
+    justify-content: space-between !important;
+}
+      .fixedTopSm {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+      background: white;
+} 
+     .navMobileLOGO {
+        padding-top: 40px;
+    }
+     .sideNavAdminLarge ul li {
+        list-style: none !important;
+    }
+    .mobile-offcanvas {
+        padding: 0;
+    }
+    .dashboardRightside {
+    padding: 0px;
+    height: auto;
+    overflow-y: auto !important;
+}
+    .offcanvasNavFormobile .svgSpan {
+    padding-left: 0px;
+}
+    .offcanvasNavFormobile .svgSpan svg{
+        width: 15px;
+    }
+    .offcanvasNavFormobile .sideNavAdminLarge .nav-item .nav-link {
+    padding: 10px 10px;
+    font-size: 13px;
+}
+}
+
+/* Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) and (max-width: 767.98px) { 
+ .headerNavlinks {
+    justify-content: space-between !important;
+}
+     .fixedTopSm {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+      background: white;
+} 
+     .navMobileLOGO {
+        padding-top: 40px;
+    }
+     .sideNavAdminLarge ul li {
+        list-style: none !important;
+    }
+    .mobile-offcanvas {
+        padding: 0;
+    }
+    .dashboardRightside {
+    padding: 30px;
+    height: auto;
+    overflow-y: auto !important;
+}
+    .offcanvasNavFormobile .svgSpan {
+    padding-left: 0px;
+}
+    .offcanvasNavFormobile .svgSpan svg{
+        width: 15px;
+    }
+    .offcanvasNavFormobile .sideNavAdminLarge .nav-item .nav-link {
+    padding: 10px 10px;
+    font-size: 13px;
+}
+}
+
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .headerNavlinks li a {
+        padding: 0px 13px;
+    }
+    .headerNavlinks {
+    justify-content: space-between;
+}
+     .sideNavAdminLarge ul li {
+        list-style: none !important;
+    }
+    .mobile-offcanvas {
+        padding: 0;
+    }
+    .offcanvasNavFormobile .svgSpan {
+    padding-left: 0px;
+}
+    .offcanvasNavFormobile .svgSpan svg{
+        width: 15px;
+    }
+    .offcanvasNavFormobile .sideNavAdminLarge .nav-item .nav-link {
+    padding: 10px 10px;
+    font-size: 13px;
+}
+    
+}
+
+/* Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+   
+}
+
+/* Extra large devices (large desktops, 1600px and up)*/
+@media (min-width: 1366px) and (max-width:  1599.98px) { 
+  
+}
+
+/* Extra large devices (large desktops, 1600px and up)*/
+@media (min-width: 1600px) { 
+
+ }
