@@ -4,6 +4,6 @@
             <button class="btn btn-close float-right"> &times </button>
             <h5 class="py-2 colorOne pl-3 mb-0">Designwala</h5>
         </div>
-        @include('admin.includes.navbar.left-navbar')
+        @include('admin.includes.navbar.left_navbar')
     </nav>
 </div>

@@ -1,6 +1,6 @@
-<link rel="icon" href="img/D.png" type="image/png" sizes="16x16">
+
 <!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+{{--<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">--}}
 <!-- Bootstrap CSS -->
 
 <link rel="stylesheet" href="css/bootstrap4/css/bootstrap.min.css">
