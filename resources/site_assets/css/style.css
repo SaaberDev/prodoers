@@ -361,7 +361,7 @@ a[aria-expanded="true"] {
 
 .sideNavAdminLarge ul.nav li a.active {
     /*    background-color: #dee2e6;*/
-    background-color: #038D08;
+    background-color: #038D08 !important;
 }
 
 .sideNavAdminLarge ul.nav li a.active .AdminNavText {
@@ -1321,3 +1321,32 @@ label h5 {
     color: black;
     
 }
+.designwalaChatTabs {
+    height: 67vh;
+    overflow-y: auto;
+}
+.previewimg img {
+    height: 127px;
+    width: 175px;
+}
+.previewimg2 img {
+    
+    width: 100%;
+}
+.dashHomeActiveimg img {
+        height: 32px;
+    width: 32px;
+    border-radius: 50px;
+}
+.blockquote img {
+    border-radius: 100px;
+}
+.bradious {
+    border-radius: 100px;
+}
+/*
+.leftsideOverflow  .nav-link.active .nav-arrow {
+    transform: rotate(90deg) !important;
+    transition: .2s ease-in !important;
+    
+}*/

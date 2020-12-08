@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('admin_panel.layouts.app')
 @section('title', 'page_name')
 
 @push('styles')
