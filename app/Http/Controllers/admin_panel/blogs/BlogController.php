@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admin_panel\chat;
+namespace App\Http\Controllers\admin_panel\blogs;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Foundation\Application;
@@ -9,7 +9,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class DesignwalaChatController extends Controller
+class BlogController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,17 +18,17 @@ class DesignwalaChatController extends Controller
      */
     public function index()
     {
-        return view('admin_panel.pages.chats.designwala.designwala_chat');
+        return view('admin_panel.pages.blogs.blog.index');
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return Application|Factory|View|Response
      */
     public function create()
     {
-        //
+        return view('admin_panel.pages.blogs.blog.create');
     }
 
     /**
@@ -46,22 +46,22 @@ class DesignwalaChatController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return Response
+     * @return Application|Factory|View|Response
      */
-    public function show($id)
+    public function show(/*$id*/)
     {
-        //
+        return \view('admin_panel.pages.blogs.blog.show');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return Response
+     * @return Application|Factory|View|Response
      */
-    public function edit($id)
+    public function edit(/*$id*/)
     {
-        //
+        return view('admin_panel.pages.blogs.blog.edit');
     }
 
     /**

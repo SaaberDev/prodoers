@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admin_panel\order;
+namespace App\Http\Controllers\admin_panel\offers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Foundation\Application;
@@ -9,7 +9,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class OrderController extends Controller
+class CouponController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,17 +18,17 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return view('admin_panel.pages.orders.order.index');
+        return view('admin_panel.pages.offers.coupon.index');
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return Application|Factory|View|Response
      */
     public function create()
     {
-        //
+        return \view('admin_panel.pages.offers.coupon.create');
     }
 
     /**
@@ -46,22 +46,22 @@ class OrderController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return Application|Factory|View|Response
+     * @return Response
      */
-    public function show(/*$id*/)
+    public function show($id)
     {
-        return \view('admin_panel.pages.orders.order.show');
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return Response
+     * @return Application|Factory|View|Response
      */
-    public function edit($id)
+    public function edit(/*$id*/)
     {
-        //
+        return \view('admin_panel.pages.offers.coupon.edit');
     }
 
     /**

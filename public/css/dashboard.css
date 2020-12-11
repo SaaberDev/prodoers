@@ -938,7 +938,7 @@ a:hover {
 
 .sideNavAdminLarge {
     /*
-    
+
     overflow: scroll;
     height: 100vh;
 */
@@ -1850,21 +1850,21 @@ label h5 {
 
 
 .tagify {
-    
-    --tag-bg: #e8efe87a !important; 
+
+    --tag-bg: #e8efe87a !important;
 }
 
 /*
 .tagify {
-    
-    --tag-bg: #e8efe87a !important; 
+
+    --tag-bg: #e8efe87a !important;
 }
 */
 
 .filepond--panel-root {
- 
+
     background-color: #e8efe87a !important;
-  
+
 }
 .toggle-on.btn {
     padding-right: 24px;
@@ -1876,13 +1876,13 @@ label h5 {
     color: #212529e0;
 }
 .designwalaChatTabs .list-group-item+.list-group-item.active {
-   
+
     border: 1px solid #038D08 !important;
 }
 .designwalaChatTabs .list-group-item {
-   
+
     padding: 5px 5px;
-   
+
 }
 .chattabContent .card .card-body {
     overflow-y: scroll;
@@ -1890,18 +1890,18 @@ label h5 {
 }
 
 .card-header {
-  
+
     background-color: #e8efe87a;
-  
+
 }
  a.bg-light:hover{
     background-color: #e8efe87a !important;
 }
 .adminPageDetailsSearch .input-group button {
-   
-   
+
+
     background-color: #e8efe87a;
-  
+
 }
 .table-hover tbody tr:hover {
    background-color: #e8efe87a;
@@ -1914,35 +1914,35 @@ label h5 {
 
 
 .form-control {
- 
+
     background-color: #e8efe87a;
-    
+
 }
 
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
     background-color: #e8efe87a;
-   
+
 }
 .cardAddressDetails {
-    
-    
+
+
 }
 .cardAddressDetails p:first-child svg{
     height: 15px;
-    
+
 }
 .cardAddressDetails p:last-child svg{
     height: 18px;
-    
+
 }
 .cardAddressDetails p:nth-child(2) svg{
     height: 18px;
-    
+
 }
 .cardAddressDetails p{
    font-size: 16px;
     color: black;
-    
+
 }
 .designwalaChatTabs {
     height: 67vh;
@@ -1953,7 +1953,7 @@ label h5 {
     width: 175px;
 }
 .previewimg2 img {
-    
+
     width: 100%;
 }
 .dashHomeActiveimg img {
@@ -1971,8 +1971,24 @@ label h5 {
 .leftsideOverflow  .nav-link.active .nav-arrow {
     transform: rotate(90deg) !important;
     transition: .2s ease-in !important;
-    
+
 }*/
+
+.servicereviewsList  ul {
+    list-style: none;
+}
+.servicereviewsList  ul li{
+    float: left;
+}
+.servicereviewsList svg {
+    /*    font-size: 25px !important;*/
+}
+.servicereviewsList .svg1 svg {
+    color: #FFC506;
+}
+.servicereviewsList .svg2 svg {
+    color: #D9D7D7;
+}
 
 /* Extra small devices (portrait phones, less than 375 px)*/
 @media (min-width: 320px) and (max-width: 474.98px) {

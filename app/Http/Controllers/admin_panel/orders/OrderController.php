@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admin_panel\services;
+namespace App\Http\Controllers\admin_panel\orders;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Foundation\Application;
@@ -9,7 +9,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class ServicesCategoryController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,17 +18,17 @@ class ServicesCategoryController extends Controller
      */
     public function index()
     {
-        return view('admin_panel.pages.services.category.index');
+        return view('admin_panel.pages.orders.order.index');
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return Application|Factory|View|Response
+     * @return Response
      */
     public function create()
     {
-        return view('admin_panel.pages.services.category.create');
+        //
     }
 
     /**
@@ -46,22 +46,22 @@ class ServicesCategoryController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return Response
+     * @return Application|Factory|View|Response
      */
-    public function show($id)
+    public function show(/*$id*/)
     {
-        //
+        return \view('admin_panel.pages.orders.order.show');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return Application|Factory|View|Response
+     * @return Response
      */
-    public function edit(/*$id*/)
+    public function edit($id)
     {
-        return \view('admin_panel.pages.services.category.edit');
+        //
     }
 
     /**

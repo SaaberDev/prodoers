@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admin_panel\chat;
+namespace App\Http\Controllers\admin_panel\orders;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Foundation\Application;
@@ -9,7 +9,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class OrderChatController extends Controller
+class PaymentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +18,7 @@ class OrderChatController extends Controller
      */
     public function index()
     {
-        return view('admin_panel.pages.chats.order.order_chat');
+        return view('admin_panel.pages.orders.payment.index');
     }
 
     /**
@@ -46,11 +46,11 @@ class OrderChatController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return Response
+     * @return Application|Factory|View|Response
      */
-    public function show($id)
+    public function show(/*$id*/)
     {
-        //
+        return view('admin_panel.pages.orders.payment.show');
     }
 
     /**

@@ -1,5 +1,5 @@
 @extends('admin_panel.layouts.app')
-@section('title', 'Services')
+@section('title', 'Blogs')
 
 @push('styles')
     {{-- Internal Styles --}}
@@ -7,29 +7,34 @@
 
 @section('content')
     <div class="col-xl-10 col-lg-9 col-md-12 dashboardRightside scrollbar scroll-style">
-
         <div class="">
             <div class="row justify-content-center pb-3 m-0">
                 <div class="col-md-8 col-sm-8  v-center">
-                    @include('admin_panel.includes.breadcrumb')
+                    <div class="">
+                        <!-- breadcrumb  -->
+                        @include('admin_panel.includes.breadcrumb')
+                    </div>
                 </div>
                 <div class="col-md-4 col-sm-4  v-center">
                     <div class="text-right">
-                        <a href="{{ route('services.service.create') }}" class="btn shadow bg-white rounded"> <span>
-<svg xmlns="http://www.w3.org/2000/svg" width="12.672" height="12.672" viewBox="0 0 12.672 12.672"><path
-        d="M20.848,14.512H16.09V9.754a.789.789,0,0,0-1.578,0v4.758H9.754a.789.789,0,0,0,0,1.578h4.758v4.758a.789.789,0,0,0,1.578,0V16.09h4.758a.789.789,0,0,0,0-1.578Z"
-        transform="translate(-8.965 -8.965)" fill="#000"></path></svg></span> Add new </a>
+                        <a href="{{ route('blogs.blog.create') }}" class="btn shadow bg-white rounded"> <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12.672" height="12.672"
+                                     viewBox="0 0 12.672 12.672">
+                                    <path
+                                        d="M20.848,14.512H16.09V9.754a.789.789,0,0,0-1.578,0v4.758H9.754a.789.789,0,0,0,0,1.578h4.758v4.758a.789.789,0,0,0,1.578,0V16.09h4.758a.789.789,0,0,0,0-1.578Z"
+                                        transform="translate(-8.965 -8.965)" fill="#000"></path>
+                                </svg></span> Add new </a>
                     </div>
                 </div>
             </div>
         </div>
         <div class="boxshadow rounded">
             <div class="row justify-content-center m-0 py-1 boxshadow rounded">
-                <div class="col-md-9 v-center">
+                <div class="col-xl-9 col-lg-8 col-md-8 v-center">
                     <div class="">
-                        <h2 class="  m-0">Service</h2></div>
+                        <h2 class="  m-0">All Blogs</h2></div>
                 </div>
-                <div class="col-md-3 v-center">
+                <div class="col-xl-3 col-lg-4 col-md-4 v-center">
                     <div class="text-right">
                         <div class="adminPageDetailsSearch">
                             <div class="input-group ">
@@ -49,68 +54,61 @@
                 </div>
             </div>
         </div>
-        <div class="">
+        <div class="selectsOptions">
             <div class="row m-0 py-3">
                 <div class="col-md-6">
                     <div class="row">
-                        <div class="col-md-3 ">
-                            show <select class="custom-select custom-select-sm ">
+                        <div class="col-md-3 "> show
+                            <select class="custom-select custom-select-sm ">
                                 <option selected="">15</option>
                                 <option value="1">25</option>
                                 <option value="2">50</option>
                                 <option value="3">100</option>
                             </select>
                         </div>
-                        <div class="col-md-5">
-                            work status
+                        <div class="col-md-5"> work status
                             <select class="custom-select custom-select-sm ">
                                 <option selected="">All</option>
                                 <option value="1">Published</option>
                                 <option value="2">Not Published</option>
-
                             </select>
                         </div>
                     </div>
                 </div>
                 <div class="col"></div>
                 <div class="col-md-4">
+                    <!-- pagination -->
                     @include('admin_panel.includes.pagination')
                 </div>
             </div>
         </div>
         <div class="SectionDataTable ">
-
-            <div class="row m-0 py-3 bg-white ">
+            <div class="row m-0 py-3 bg-white rounded">
                 <div class="col-md-12">
                     <div class="designwalsDataTables text-center">
                         <table class="table table-hover">
                             <thead>
                             <tr>
-                                <th scope="col">Title</th>
-                                <th scope="col">THUMBNAIL</th>
-                                <th scope="col">category</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">status</th>
                                 <th scope="col">Date</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Blog Status</th>
                                 <th scope="col">Action</th>
-
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
-                                <td>#GD-0001</td>
-                                <td><img src="{{ asset('img/designwalalogo.png') }}" alt="" class="img-fluid"
-                                         style="height: 25px;"></td>
+                                <td>09.09.20</td>
+                                <td>Blog title</td>
                                 <td>Logo Design</td>
-                                <td> Logo Design</td>
                                 <td>
-                                    <div class="tableDataLastButtonLiketab  tabletabRED"><span
-                                            class=""> Published</span></div>
+                                    <div class="tableDataLastButtonLiketab  tabletabRED"><span class=""> Inactive</span>
+                                    </div>
                                 </td>
-                                <td> 09.09.20</td>
                                 <td>
-                                    <div class=""><a href="{{ route('services.service.edit') }}" class="btn p-0 m-0"
-                                                     data-toggle="tooltip" title="" data-original-title="view or edit">
+                                    <div class="">
+                                        <a href="{{ route('blogs.blog.edit') }}" class="btn p-0 m-0"
+                                           data-toggle="tooltip" title="" data-original-title="view or edit">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="14.322" height="14.322"
                                                  viewBox="0 0 14.322 14.322">
                                                 <g transform="translate(-2.5 -2.203)">
@@ -126,7 +124,8 @@
                                                         stroke-width="1"></path>
                                                 </g>
                                             </svg>
-                                        </a> <a class="btn m-0 p-0" data-toggle="modal" data-target="#deletemodal">
+                                        </a>
+                                        <a class="btn m-0 p-0" data-toggle="modal" data-target="#deletemodal">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="11.91" height="16.027"
                                                  viewBox="0 0 11.91 16.027">
                                                 <path
@@ -134,23 +133,39 @@
                                                     transform="translate(-7 -3)" fill="none" stroke="#000"
                                                     stroke-width="1"></path>
                                             </svg>
-                                        </a></div>
+                                        </a>
+                                        <a href="{{ route('blogs.blog.show') }}" class="btn m-0 p-0">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16.661" height="12.39"
+                                                 viewBox="0 0 16.661 12.39">
+                                                <g transform="translate(-1 -5.5)">
+                                                    <path
+                                                        d="M1.5,11.695S4.347,6,9.33,6s7.83,5.695,7.83,5.695S14.313,17.39,9.33,17.39,1.5,11.695,1.5,11.695Z"
+                                                        transform="translate(0)" fill="none" stroke="#000"
+                                                        stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="1"></path>
+                                                    <path
+                                                        d="M17.771,15.636A2.136,2.136,0,1,1,15.636,13.5,2.136,2.136,0,0,1,17.771,15.636Z"
+                                                        transform="translate(-6.305 -3.941)" fill="none" stroke="#000"
+                                                        stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="1"></path>
+                                                </g>
+                                            </svg>
+                                        </a>
+                                    </div>
                                 </td>
                             </tr>
                             <tr>
-                                <td>#GD-0001</td>
-                                <td><img src="{{ asset('img/designwalalogo.png') }}" alt="" class="img-fluid"
-                                         style="height: 25px;"></td>
+                                <td>09.09.20</td>
+                                <td>Blog title</td>
                                 <td>Logo Design</td>
-                                <td> Logo Design</td>
                                 <td>
-                                    <div class="tableDataLastButtonLiketab  tabletabGREEN"><span
-                                            class=""> Not Published</span></div>
+                                    <div class="tableDataLastButtonLiketab  tabletabGREEN"><span class=""> Active</span>
+                                    </div>
                                 </td>
-                                <td> 09.09.20</td>
                                 <td>
-                                    <div class=""><a href="{{ route('services.service.edit') }}" class="btn p-0 m-0"
-                                                     data-toggle="tooltip" title="" data-original-title="view or edit">
+                                    <div class="">
+                                        <a href="{{ route('blogs.blog.edit') }}" class="btn p-0 m-0"
+                                           data-toggle="tooltip" title="" data-original-title="view or edit">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="14.322" height="14.322"
                                                  viewBox="0 0 14.322 14.322">
                                                 <g transform="translate(-2.5 -2.203)">
@@ -166,7 +181,8 @@
                                                         stroke-width="1"></path>
                                                 </g>
                                             </svg>
-                                        </a> <a class="btn m-0 p-0" data-toggle="modal" data-target="#deletemodal">
+                                        </a>
+                                        <a class="btn m-0 p-0" data-toggle="modal" data-target="#deletemodal">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="11.91" height="16.027"
                                                  viewBox="0 0 11.91 16.027">
                                                 <path
@@ -174,7 +190,25 @@
                                                     transform="translate(-7 -3)" fill="none" stroke="#000"
                                                     stroke-width="1"></path>
                                             </svg>
-                                        </a></div>
+                                        </a>
+                                        <a href="{{ route('blogs.blog.show') }}" class="btn m-0 p-0">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16.661" height="12.39"
+                                                 viewBox="0 0 16.661 12.39">
+                                                <g transform="translate(-1 -5.5)">
+                                                    <path
+                                                        d="M1.5,11.695S4.347,6,9.33,6s7.83,5.695,7.83,5.695S14.313,17.39,9.33,17.39,1.5,11.695,1.5,11.695Z"
+                                                        transform="translate(0)" fill="none" stroke="#000"
+                                                        stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="1"></path>
+                                                    <path
+                                                        d="M17.771,15.636A2.136,2.136,0,1,1,15.636,13.5,2.136,2.136,0,0,1,17.771,15.636Z"
+                                                        transform="translate(-6.305 -3.941)" fill="none" stroke="#000"
+                                                        stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="1"></path>
+                                                </g>
+                                            </svg>
+                                        </a>
+                                    </div>
                                 </td>
                             </tr>
                             </tbody>

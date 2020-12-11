@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admin_panel\order;
+namespace App\Http\Controllers\admin_panel\clients;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Foundation\Application;
@@ -9,7 +9,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class PaymentController extends Controller
+class ClientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +18,7 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        return view('admin_panel.pages.orders.payment.index');
+        return view('admin_panel.pages.clients.client.index');
     }
 
     /**
@@ -50,7 +50,7 @@ class PaymentController extends Controller
      */
     public function show(/*$id*/)
     {
-        return view('admin_panel.pages.orders.payment.show');
+        return \view('admin_panel.pages.clients.client.show');
     }
 
     /**

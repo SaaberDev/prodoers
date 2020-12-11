@@ -8,9 +8,8 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Route;
 
-class ServicesController extends Controller
+class ServiceCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +18,7 @@ class ServicesController extends Controller
      */
     public function index()
     {
-        return view('admin_panel.pages.services.service.index');
+        return view('admin_panel.pages.services.category.index');
     }
 
     /**
@@ -29,7 +28,7 @@ class ServicesController extends Controller
      */
     public function create()
     {
-        return view('admin_panel.pages.services.service.create');
+        return view('admin_panel.pages.services.category.create');
     }
 
     /**
@@ -62,7 +61,7 @@ class ServicesController extends Controller
      */
     public function edit(/*$id*/)
     {
-        return view('admin_panel.pages.services.service.edit');
+        return \view('admin_panel.pages.services.category.edit');
     }
 
     /**

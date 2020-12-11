@@ -91,7 +91,7 @@
                                 <td> Bkash </td>
                                 <td>00.00.0000</td>
                                 <td>
-                                    <a href="{{ route('order.payment.show') }}" class="btn m-0 p-0">
+                                    <a href="{{ route('orders.payment.show') }}" class="btn m-0 p-0">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16.661" height="12.39" viewBox="0 0 16.661 12.39">
                                             <g transform="translate(-1 -5.5)">
                                                 <path d="M1.5,11.695S4.347,6,9.33,6s7.83,5.695,7.83,5.695S14.313,17.39,9.33,17.39,1.5,11.695,1.5,11.695Z" transform="translate(0)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
@@ -109,7 +109,7 @@
                                 <td> Bkash </td>
                                 <td>00.00.0000</td>
                                 <td>
-                                    <a href="{{ route('order.payment.show') }}" class="btn m-0 p-0">
+                                    <a href="{{ route('orders.payment.show') }}" class="btn m-0 p-0">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16.661" height="12.39" viewBox="0 0 16.661 12.39">
                                             <g transform="translate(-1 -5.5)">
                                                 <path d="M1.5,11.695S4.347,6,9.33,6s7.83,5.695,7.83,5.695S14.313,17.39,9.33,17.39,1.5,11.695,1.5,11.695Z" transform="translate(0)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
@@ -127,7 +127,7 @@
                                 <td> Bkash </td>
                                 <td>00.00.0000</td>
                                 <td>
-                                    <a href="{{ route('order.payment.show') }}" class="btn m-0 p-0">
+                                    <a href="{{ route('orders.payment.show') }}" class="btn m-0 p-0">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16.661" height="12.39" viewBox="0 0 16.661 12.39">
                                             <g transform="translate(-1 -5.5)">
                                                 <path d="M1.5,11.695S4.347,6,9.33,6s7.83,5.695,7.83,5.695S14.313,17.39,9.33,17.39,1.5,11.695,1.5,11.695Z" transform="translate(0)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
@@ -145,7 +145,7 @@
                                 <td> Bkash </td>
                                 <td>00.00.0000</td>
                                 <td>
-                                    <a href="{{ route('order.payment.show') }}" class="btn m-0 p-0">
+                                    <a href="{{ route('orders.payment.show') }}" class="btn m-0 p-0">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16.661" height="12.39" viewBox="0 0 16.661 12.39">
                                             <g transform="translate(-1 -5.5)">
                                                 <path d="M1.5,11.695S4.347,6,9.33,6s7.83,5.695,7.83,5.695S14.313,17.39,9.33,17.39,1.5,11.695,1.5,11.695Z" transform="translate(0)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
@@ -163,7 +163,7 @@
                                 <td> Bkash </td>
                                 <td>00.00.0000</td>
                                 <td>
-                                    <a href="{{ route('order.payment.show') }}" class="btn m-0 p-0">
+                                    <a href="{{ route('orders.payment.show') }}" class="btn m-0 p-0">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16.661" height="12.39" viewBox="0 0 16.661 12.39">
                                             <g transform="translate(-1 -5.5)">
                                                 <path d="M1.5,11.695S4.347,6,9.33,6s7.83,5.695,7.83,5.695S14.313,17.39,9.33,17.39,1.5,11.695,1.5,11.695Z" transform="translate(0)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
@@ -181,7 +181,7 @@
                                 <td> Bkash </td>
                                 <td>00.00.0000</td>
                                 <td>
-                                    <a href="{{ route('order.payment.show') }}" class="btn m-0 p-0">
+                                    <a href="{{ route('orders.payment.show') }}" class="btn m-0 p-0">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16.661" height="12.39" viewBox="0 0 16.661 12.39">
                                             <g transform="translate(-1 -5.5)">
                                                 <path d="M1.5,11.695S4.347,6,9.33,6s7.83,5.695,7.83,5.695S14.313,17.39,9.33,17.39,1.5,11.695,1.5,11.695Z" transform="translate(0)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
@@ -199,7 +199,7 @@
                                 <td> Bkash </td>
                                 <td>00.00.0000</td>
                                 <td>
-                                    <a href="{{ route('order.payment.show') }}" class="btn m-0 p-0">
+                                    <a href="{{ route('orders.payment.show') }}" class="btn m-0 p-0">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16.661" height="12.39" viewBox="0 0 16.661 12.39">
                                             <g transform="translate(-1 -5.5)">
                                                 <path d="M1.5,11.695S4.347,6,9.33,6s7.83,5.695,7.83,5.695S14.313,17.39,9.33,17.39,1.5,11.695,1.5,11.695Z" transform="translate(0)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
@@ -217,7 +217,7 @@
                                 <td> Bkash </td>
                                 <td>00.00.0000</td>
                                 <td>
-                                    <a href="{{ route('order.payment.show') }}" class="btn m-0 p-0">
+                                    <a href="{{ route('orders.payment.show') }}" class="btn m-0 p-0">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16.661" height="12.39" viewBox="0 0 16.661 12.39">
                                             <g transform="translate(-1 -5.5)">
                                                 <path d="M1.5,11.695S4.347,6,9.33,6s7.83,5.695,7.83,5.695S14.313,17.39,9.33,17.39,1.5,11.695,1.5,11.695Z" transform="translate(0)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
@@ -235,7 +235,7 @@
                                 <td> Bkash </td>
                                 <td>00.00.0000</td>
                                 <td>
-                                    <a href="{{ route('order.payment.show') }}" class="btn m-0 p-0">
+                                    <a href="{{ route('orders.payment.show') }}" class="btn m-0 p-0">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16.661" height="12.39" viewBox="0 0 16.661 12.39">
                                             <g transform="translate(-1 -5.5)">
                                                 <path d="M1.5,11.695S4.347,6,9.33,6s7.83,5.695,7.83,5.695S14.313,17.39,9.33,17.39,1.5,11.695,1.5,11.695Z" transform="translate(0)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
@@ -253,7 +253,7 @@
                                 <td> Bkash </td>
                                 <td>00.00.0000</td>
                                 <td>
-                                    <a href="{{ route('order.payment.show') }}" class="btn m-0 p-0">
+                                    <a href="{{ route('orders.payment.show') }}" class="btn m-0 p-0">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16.661" height="12.39" viewBox="0 0 16.661 12.39">
                                             <g transform="translate(-1 -5.5)">
                                                 <path d="M1.5,11.695S4.347,6,9.33,6s7.83,5.695,7.83,5.695S14.313,17.39,9.33,17.39,1.5,11.695,1.5,11.695Z" transform="translate(0)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
@@ -271,7 +271,7 @@
                                 <td> Bkash </td>
                                 <td>00.00.0000</td>
                                 <td>
-                                    <a href="{{ route('order.payment.show') }}" class="btn m-0 p-0">
+                                    <a href="{{ route('orders.payment.show') }}" class="btn m-0 p-0">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16.661" height="12.39" viewBox="0 0 16.661 12.39">
                                             <g transform="translate(-1 -5.5)">
                                                 <path d="M1.5,11.695S4.347,6,9.33,6s7.83,5.695,7.83,5.695S14.313,17.39,9.33,17.39,1.5,11.695,1.5,11.695Z" transform="translate(0)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
