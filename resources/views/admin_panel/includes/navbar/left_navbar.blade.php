@@ -60,7 +60,7 @@
                     <ul class="list-unstyled font-weight-normal pb-1 small">
                         <li class="nav-item sub-item">
                             <a href="{{ route('services.service.index') }}"
-                               class="nav-link d-inline-flex align-items-center sub-menu-link">
+                               class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('services.service.*') ? 'sub-active' : '' }}">
                                 <span class="pl-4">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 12 12">
                                         <circle id="Ellipse_224" data-name="Ellipse 224" cx="6" cy="6" r="6"
@@ -72,7 +72,7 @@
                         </li>
                         <li class="nav-item sub-item">
                             <a href="{{ route('services.category.index') }}"
-                               class="nav-link d-inline-flex align-items-center sub-menu-link">
+                               class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('services.category.*') ? 'sub-active' : '' }}">
                                 <span class="pl-4">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 12 12">
                                         <circle id="Ellipse_224" data-name="Ellipse 224" cx="6" cy="6" r="6"
@@ -133,7 +133,7 @@
                     <ul class="list-unstyled font-weight-normal pb-1 small">
                         <li class="nav-item sub-item">
                             <a href="{{ route('chats.designwala_chat.index') }}"
-                               class="nav-link d-inline-flex align-items-center sub-menu-link">
+                               class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('chats.designwala_chat.*') ? 'sub-active' : '' }}">
                                 <span class="pl-4">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 12 12">
                                         <circle id="Ellipse_224" data-name="Ellipse 224" cx="6" cy="6" r="6"
@@ -145,7 +145,7 @@
                         </li>
                         <li class="nav-item sub-item">
                             <a href="{{ route('chats.order_chat.index') }}"
-                               class="nav-link d-inline-flex align-items-center sub-menu-link">
+                               class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('chats.order_chat.*') ? 'sub-active' : '' }}">
                                 <span class="pl-4">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 12 12">
                                         <circle id="Ellipse_224" data-name="Ellipse 224" cx="6" cy="6" r="6"
@@ -185,7 +185,7 @@
                     <ul class="list-unstyled font-weight-normal pb-1 small">
                         <li class="nav-item sub-item">
                             <a href="{{ route('orders.order.index') }}"
-                               class="nav-link d-inline-flex align-items-center sub-menu-link">
+                               class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('orders.order.*') ? 'sub-active' : '' }}">
                                 <span class="pl-4">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 12 12">
                                         <circle id="Ellipse_224" data-name="Ellipse 224" cx="6" cy="6" r="6"
@@ -197,7 +197,7 @@
                         </li>
                         <li class="nav-item sub-item">
                             <a href="{{ route('orders.payment.index') }}"
-                               class="nav-link d-inline-flex align-items-center sub-menu-link">
+                               class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('orders.payment.*') ? 'sub-active' : '' }}">
                                 <span class="pl-4">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 12 12">
                                         <circle id="Ellipse_224" data-name="Ellipse 224" cx="6" cy="6" r="6"
@@ -275,7 +275,7 @@
                     <ul class="list-unstyled font-weight-normal pb-1 small">
                         <li class="nav-item sub-item">
                             <a href="{{ route('blogs.blog.index') }}"
-                               class="nav-link d-inline-flex align-items-center sub-menu-link">
+                               class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('blogs.blog.*') ? 'sub-active' : '' }}">
                                 <span class="pl-4">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 12 12">
                                         <circle id="Ellipse_224" data-name="Ellipse 224" cx="6" cy="6" r="6"
@@ -287,7 +287,7 @@
                         </li>
                         <li class="nav-item sub-item">
                             <a href="{{ route('blogs.category.index') }}"
-                               class="nav-link d-inline-flex align-items-center sub-menu-link">
+                               class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('blogs.category.*') ? 'sub-active' : '' }}">
                                 <span class="pl-4">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 12 12">
                                         <circle id="Ellipse_224" data-name="Ellipse 224" cx="6" cy="6" r="6"
@@ -338,7 +338,7 @@
                     <ul class="list-unstyled font-weight-normal pb-1 small">
                         <li class="nav-item sub-item">
                             <a href="{{ route('clients.client.index') }}"
-                               class="nav-link d-inline-flex align-items-center sub-menu-link">
+                               class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('clients.client.*') ? 'sub-active' : '' }}">
                                 <span class="pl-4"> <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9"
                                                          viewBox="0 0 12 12">
                                         <circle id="Ellipse_224" data-name="Ellipse 224" cx="6" cy="6" r="6"
@@ -350,7 +350,7 @@
                         </li>
                         <li class="nav-item sub-item">
                             <a href="{{ route('clients.subscribers.index') }}"
-                               class="nav-link d-inline-flex align-items-center sub-menu-link">
+                               class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('clients.subscribers.*') ? 'sub-active' : '' }}">
                                 <span class="pl-4">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 12 12">
                                         <circle id="Ellipse_224" data-name="Ellipse 224" cx="6" cy="6" r="6"
@@ -465,7 +465,7 @@
                     <ul class="list-unstyled font-weight-normal pb-1 small">
                         <li class="nav-item sub-item">
                             <a href="{{ route('offers.coupon.index') }}"
-                               class="nav-link d-inline-flex align-items-center sub-menu-link">
+                               class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('offers.coupon.*') ? 'sub-active' : '' }}">
                                 <span class="pl-4">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 12 12">
                                         <circle id="Ellipse_224" data-name="Ellipse 224" cx="6" cy="6" r="6"
@@ -477,7 +477,7 @@
                         </li>
                         <li class="nav-item sub-item">
                             <a href="{{ route('offers.affiliate.index') }}"
-                               class="nav-link d-inline-flex align-items-center sub-menu-link">
+                               class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('offers.affiliate.*') ? 'sub-active' : '' }}">
                                 <span class="pl-4"> <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9"
                                                          viewBox="0 0 12 12">
                                         <circle id="Ellipse_224" data-name="Ellipse 224" cx="6" cy="6" r="6"
@@ -533,7 +533,8 @@
                     <ul class="list-unstyled font-weight-normal pb-1 small">
                         <li class="nav-item sub-item">
                             <a href="#promotionsNav" class="nav-link d-inline-flex align-items-center sub-menu-link"
-                               data-toggle="collapse" role="button" aria-expanded="{{ Route::is('promotions.email_marketing.*') ? 'true' : '' }}">
+                               data-toggle="collapse" role="button"
+                               aria-expanded="{{ Route::is('promotions.email_marketing.*') ? 'true' : '' }}">
                                 <span class="pl-4">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 12 12">
                                         <circle id="Ellipse_224" data-name="Ellipse 224" cx="6" cy="6" r="6"
@@ -551,11 +552,13 @@
                                 </span>
                             </a>
                             {{-- nested sub insider --}}
-                            <div class="collapse nestedSubmenu {{ Route::is('promotions.email_marketing.*') ? 'show' : '' }}" id="promotionsNav">
+                            <div
+                                class="collapse nestedSubmenu {{ Route::is('promotions.email_marketing.*') ? 'show' : '' }}"
+                                id="promotionsNav">
                                 <ul class="list-unstyled font-weight-normal pb-1 small">
                                     <li class="nav-item sub-item">
-                                        <a href="{{ route('promotions.email_marketing.index') }}"
-                                           class="nav-link d-inline-flex align-items-center sub-menu-link">
+                                        <a href="{{ route('promotions.email_marketing.all_mail.index') }}"
+                                           class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('promotions.email_marketing.all_mail.*') ? 'sub-active' : '' }}">
                                             <span class="pl-4">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9"
                                                      viewBox="0 0 9 9">
@@ -569,23 +572,8 @@
                                         </a>
                                     </li>
                                     <li class="nav-item sub-item">
-                                        <a href="{{ route('promotions.email_marketing.create') }}"
-                                           class="nav-link d-inline-flex align-items-center sub-menu-link">
-                                            <span class="pl-4">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9"
-                                                     viewBox="0 0 9 9">
-                                                    <g fill="none" stroke="#2d2d2d" stroke-width="1">
-                                                        <circle cx="4.5" cy="4.5" r="4.5" stroke="none"/>
-                                                        <circle cx="4.5" cy="4.5" r="4" fill="none"/>
-                                                    </g>
-                                                </svg>
-                                            </span>
-                                            <span class="pl-3"> Compose Mail</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item sub-item">
-                                        <a href="{{ route('promotions.email_marketing.drafts') }}"
-                                           class="nav-link d-inline-flex align-items-center sub-menu-link">
+                                        <a href="{{ route('promotions.email_marketing.draft.index') }}"
+                                           class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('promotions.email_marketing.draft.*') ? 'sub-active' : '' }}">
                                             <span class="pl-4">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9"
                                                      viewBox="0 0 9 9">
@@ -620,7 +608,8 @@
             {{-- Promotions end --}}
             {{-- Designwalas --}}
             <li class="nav-item">
-                <a href="{{ route('designwalas.designwala.index') }}" class="nav-link collapsed {{ Route::is('designwalas.*') ? 'active' : '' }}">
+                <a href="{{ route('designwalas.designwala.index') }}"
+                   class="nav-link collapsed {{ Route::is('designwalas.*') ? 'active' : '' }}">
                     <span class="svgSpan">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22.479" viewBox="0 0 24 22.479">
                             <g id="_11_designwalas" data-name="11_designwalas" transform="translate(0 -16.225)">
@@ -644,8 +633,59 @@
             {{-- divider --}}
             {{-- roles and permissions --}}
             <li class="nav-item">
-                <a class="nav-link collapsed " data-toggle="collapse" href="#navRolesnPermission" role="button"
-                   aria-expanded="false">
+                <a href="{{ route('roles_permissions.role.index') }}"
+                   class="nav-link collapsed {{ Route::is('roles_permissions.*') ? 'active' : '' }}">
+                    <span class="svgSpan">
+                        <svg id="_12_permission" data-name="12_permission" xmlns="http://www.w3.org/2000/svg"
+                             width="24" height="27.549" viewBox="0 0 24 27.549">
+                            <path id="Path_2253" data-name="Path 2253"
+                                  d="M22.642,6.887H19.019V1.377A1.344,1.344,0,0,0,17.66,0H1.358A1.344,1.344,0,0,0,0,1.377V26.171a1.344,1.344,0,0,0,1.358,1.377H15.124L19.019,23.6V20.661h-.906v2.3H15.849a1.344,1.344,0,0,0-1.358,1.377v2.3H1.358a.431.431,0,0,1-.453-.459V1.377A.431.431,0,0,1,1.358.918h16.3a.431.431,0,0,1,.453.459v5.51H14.491a1.344,1.344,0,0,0-1.358,1.377v8.264a1.344,1.344,0,0,0,1.358,1.377h2.536l1.54,1.561,1.54-1.561h2.536A1.344,1.344,0,0,0,24,16.529V8.264a1.344,1.344,0,0,0-1.358-1.377ZM15.849,23.875h1.63L15.4,25.987V24.334A.431.431,0,0,1,15.849,23.875Zm7.245-7.346a.431.431,0,0,1-.453.459h-2.9l-1.177,1.194-1.177-1.194h-2.9a.431.431,0,0,1-.453-.459V8.264a.431.431,0,0,1,.453-.459h8.151a.431.431,0,0,1,.453.459Zm0,0"
+                                  fill="#2d2d2d"/>
+                            <path id="Path_2254" data-name="Path 2254" d="M120,40h5.51v.918H120Zm0,0"
+                                  transform="translate(-113.235 -37.704)" fill="#2d2d2d"/>
+                            <path id="Path_2255" data-name="Path 2255" d="M40,80h1.377v.918H40Zm0,0"
+                                  transform="translate(-37.704 -75.409)" fill="#2d2d2d"/>
+                            <path id="Path_2256" data-name="Path 2256" d="M80,80H92.4v.918H80Zm0,0"
+                                  transform="translate(-75.537 -75.409)" fill="#2d2d2d"/>
+                            <path id="Path_2257" data-name="Path 2257" d="M40,128h1.377v.918H40Zm0,0"
+                                  transform="translate(-37.704 -120.654)" fill="#2d2d2d"/>
+                            <path id="Path_2258" data-name="Path 2258" d="M80,128h7.346v.918H80Zm0,0"
+                                  transform="translate(-75.499 -120.654)" fill="#2d2d2d"/>
+                            <path id="Path_2259" data-name="Path 2259" d="M40,176h1.377v.918H40Zm0,0"
+                                  transform="translate(-37.704 -165.899)" fill="#2d2d2d"/>
+                            <path id="Path_2260" data-name="Path 2260" d="M80,176h7.346v.918H80Zm0,0"
+                                  transform="translate(-75.499 -165.899)" fill="#2d2d2d"/>
+                            <path id="Path_2261" data-name="Path 2261" d="M40,224h1.377v.918H40Zm0,0"
+                                  transform="translate(-37.704 -211.144)" fill="#2d2d2d"/>
+                            <path id="Path_2262" data-name="Path 2262" d="M80,224h7.346v.918H80Zm0,0"
+                                  transform="translate(-75.499 -211.144)" fill="#2d2d2d"/>
+                            <path id="Path_2263" data-name="Path 2263" d="M40,272h1.377v.918H40Zm0,0"
+                                  transform="translate(-37.704 -256.389)" fill="#2d2d2d"/>
+                            <path id="Path_2264" data-name="Path 2264" d="M80,272h7.346v.918H80Zm0,0"
+                                  transform="translate(-75.499 -256.389)" fill="#2d2d2d"/>
+                            <path id="Path_2265" data-name="Path 2265" d="M40,320h1.377v.918H40Zm0,0"
+                                  transform="translate(-37.704 -301.635)" fill="#2d2d2d"/>
+                            <path id="Path_2266" data-name="Path 2266" d="M80,320h7.346v.918H80Zm0,0"
+                                  transform="translate(-75.499 -301.635)" fill="#2d2d2d"/>
+                            <path id="Path_2267" data-name="Path 2267" d="M40,368h1.377v.918H40Zm0,0"
+                                  transform="translate(-37.704 -346.88)" fill="#2d2d2d"/>
+                            <path id="Path_2268" data-name="Path 2268" d="M80,368H92.4v.918H80Zm0,0"
+                                  transform="translate(-75.537 -346.88)" fill="#2d2d2d"/>
+                            <path id="Path_2269" data-name="Path 2269" d="M40,416h1.377v.918H40Zm0,0"
+                                  transform="translate(-37.704 -392.125)" fill="#2d2d2d"/>
+                            <path id="Path_2270" data-name="Path 2270" d="M80,416h8.724v.918H80Zm0,0"
+                                  transform="translate(-75.507 -392.125)" fill="#2d2d2d"/>
+                            <path id="Path_2271" data-name="Path 2271"
+                                  d="M284.591,154.847v-1.01a1.837,1.837,0,1,0-3.673,0h.918a.918.918,0,1,1,1.837,0v.918h-2.3A1.353,1.353,0,0,0,280,156.133v1.837a1.353,1.353,0,0,0,1.377,1.377h2.755a1.353,1.353,0,0,0,1.377-1.377v-1.837A1.337,1.337,0,0,0,284.591,154.847Zm0,3.122a.434.434,0,0,1-.459.459h-2.755a.434.434,0,0,1-.459-.459v-1.837a.434.434,0,0,1,.459-.459h2.755a.434.434,0,0,1,.459.459Zm0,0"
+                                  transform="translate(-264.264 -143.277)" fill="#2d2d2d"/>
+                        </svg>
+                    </span>
+                    <span class="ml-3 AdminNavText">Manage Roles</span>
+                </a>
+                {{-- service sub menu --}}
+            </li>
+            {{--<li class="nav-item">
+                <a class="nav-link collapsed {{ Route::is('roles_permissions.*') ? 'active' : '' }}" data-toggle="collapse" href="#navRolesnPermission" role="button" aria-expanded="{{ Route::is('roles_permissions.*') ? 'true' : '' }}">
                     <span class="svgSpan">
                         <svg id="_12_permission" data-name="12_permission" xmlns="http://www.w3.org/2000/svg"
                              width="24" height="27.549" viewBox="0 0 24 27.549">
@@ -701,12 +741,12 @@
                         </svg>
                     </span>
                 </a>
-                {{-- service sub menu --}}
-                <div class="collapse" id="navRolesnPermission">
+                --}}{{-- service sub menu --}}{{--
+                <div class="collapse {{ Route::is('roles_permissions.*') ? 'show' : '' }}" id="navRolesnPermission">
                     <ul class="list-unstyled font-weight-normal pb-1 small">
                         <li class="nav-item sub-item">
-                            <a href="page30thirty_Roles.php"
-                               class="nav-link d-inline-flex align-items-center sub-menu-link">
+                            <a href="{{ route('roles_permissions.role.index') }}"
+                               class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('roles_permissions.role.*') ? 'sub-active' : '' }}">
                                 <span class="pl-4">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 12 12">
                                         <circle id="Ellipse_224" data-name="Ellipse 224" cx="6" cy="6" r="6"
@@ -717,8 +757,8 @@
                             </a>
                         </li>
                         <li class="nav-item sub-item">
-                            <a href="page31thirtyOne_Permissions.php"
-                               class="nav-link d-inline-flex align-items-center sub-menu-link">
+                            <a href="{{ route('roles_permissions.permission.index') }}"
+                               class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('roles_permissions.permission.*') ? 'sub-active' : '' }}">
                                 <span class="pl-4">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 12 12">
                                         <circle id="Ellipse_224" data-name="Ellipse 224" cx="6" cy="6" r="6"
@@ -730,12 +770,13 @@
                         </li>
                     </ul>
                 </div>
-            </li>
+            </li>--}}
             {{-- roles and permissions end --}}
             {{-- settings --}}
             <li class="nav-item">
-                <a class="nav-link collapsed " data-toggle="collapse" href="#navSettings" role="button"
-                   aria-expanded="false">
+                <a class="nav-link collapsed {{ Route::is('settings.*') ? 'active' : '' }}" data-toggle="collapse"
+                   href="#navSettings" role="button"
+                   aria-expanded="{{ Route::is('settings.*') ? 'true' : '' }}">
                     <span class="svgSpan">
                         <svg id="_13_settings" data-name="13_settings" xmlns="http://www.w3.org/2000/svg" width="24"
                              height="24" viewBox="0 0 24 24">
@@ -779,11 +820,12 @@
                     </span>
                 </a>
                 {{-- service sub menu --}}
-                <div class="collapse" id="navSettings">
+                <div class="collapse {{ Route::is('settings.*') ? 'show' : '' }}" id="navSettings">
                     <ul class="list-unstyled font-weight-normal pb-1 small">
                         <li class="nav-item sub-item">
                             <a href="#settingNavSeo" class="nav-link d-inline-flex align-items-center sub-menu-link"
-                               data-toggle="collapse" role="button" aria-expanded="false">
+                               data-toggle="collapse" role="button"
+                               aria-expanded="{{ Route::is('settings.seo_tools.*') ? 'true' : '' }}">
                                 <span class="pl-4">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 12 12">
                                         <circle id="Ellipse_224" data-name="Ellipse 224" cx="6" cy="6" r="6"
@@ -801,11 +843,12 @@
                                 </span>
                             </a>
                             {{-- nested sub insider --}}
-                            <div class="collapse nestedSubmenu" id="settingNavSeo">
+                            <div class="collapse nestedSubmenu {{ Route::is('settings.seo_tools.*') ? 'show' : '' }}"
+                                 id="settingNavSeo">
                                 <ul class="list-unstyled font-weight-normal pb-1 small">
                                     <li class="nav-item sub-item">
-                                        <a href="page33thirtyThree_Google_Analytics.php"
-                                           class="nav-link d-inline-flex align-items-center sub-menu-link ">
+                                        <a href="{{ route('settings.seo_tools.google_analytics.index_google_analytics') }}"
+                                           class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('settings.seo_tools.google_analytics.*') ? 'sub-active' : '' }}">
                                             <span class="pl-4">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9"
                                                      viewBox="0 0 9 9">
@@ -820,8 +863,8 @@
                                         {{-- nested sub insider --}}
                                     </li>
                                     <li class="nav-item sub-item">
-                                        <a href="page34thirtyFour_Open_Graph_Meta.php"
-                                           class="nav-link d-inline-flex align-items-center sub-menu-link">
+                                        <a href="{{ route('settings.seo_tools.open_graph.index_open_graph') }}"
+                                           class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('settings.seo_tools.open_graph.*') ? 'sub-active' : '' }}">
                                             <span class="pl-4">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9"
                                                      viewBox="0 0 9 9">
@@ -839,21 +882,21 @@
                             {{-- nested sub insider --}}
                         </li>
                         <li class="nav-item sub-item">
-                            <a href="page35_Content_And_Media.php"
-                               class="nav-link d-inline-flex align-items-center sub-menu-link">
+                            <a href="{{ route('settings.site_cms.index') }}"
+                               class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('settings.site_cms.*') ? 'sub-active' : '' }}">
                                 <span class="pl-4">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 12 12">
                                         <circle id="Ellipse_224" data-name="Ellipse 224" cx="6" cy="6" r="6"
                                                 fill="#000000"/>
                                     </svg>
                                 </span>
-                                <span class="pl-3">Content and Media</span>
+                                <span class="pl-3">Site CMS</span>
                             </a>
                             {{-- nested sub insider --}}
                         </li>
                         <li class="nav-item sub-item">
-                            <a href="page37_Policies.php"
-                               class="nav-link d-inline-flex align-items-center sub-menu-link">
+                            <a href="{{ route('settings.policy.index') }}"
+                               class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('settings.policy.*') ? 'sub-active' : '' }}">
                                 <span class="pl-4">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 12 12">
                                         <circle id="Ellipse_224" data-name="Ellipse 224" cx="6" cy="6" r="6"
@@ -866,14 +909,15 @@
                         </li>
                         <li class="nav-item sub-item">
                             <a href="#settingNavFooter" class="nav-link d-inline-flex align-items-center sub-menu-link"
-                               data-toggle="collapse" role="button" aria-expanded="false">
+                               data-toggle="collapse" role="button"
+                               aria-expanded="{{ Route::is('settings.footer_section.*') ? 'true' : '' }}">
                                 <span class="pl-4">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 12 12">
                                         <circle id="Ellipse_224" data-name="Ellipse 224" cx="6" cy="6" r="6"
                                                 fill="#000000"/>
                                     </svg>
                                 </span>
-                                <span class="pl-3">Footer</span>
+                                <span class="pl-3">Footer Section</span>
                                 <span class="nav-arrow subnav-arrow">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="11" height="28" viewBox="0 0 11 28">
                                         <text id="_" data-name="&gt;" transform="translate(0 21)" fill="#141414"
@@ -884,11 +928,13 @@
                                 </span>
                             </a>
                             {{-- nested sub insider --}}
-                            <div class="collapse nestedSubmenu" id="settingNavFooter">
+                            <div
+                                class="collapse nestedSubmenu {{ Route::is('settings.footer_section.*') ? 'show' : '' }}"
+                                id="settingNavFooter">
                                 <ul class="list-unstyled font-weight-normal pb-1 small">
                                     <li class="nav-item sub-item">
-                                        <a href="page38_Footer.php"
-                                           class="nav-link d-inline-flex align-items-center sub-menu-link ">
+                                        <a href="{{ route('settings.footer_section.footer.index') }}"
+                                           class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('settings.footer_section.footer.*') ? 'sub-active' : '' }}">
                                             <span class="pl-4">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9"
                                                      viewBox="0 0 9 9">
@@ -903,15 +949,12 @@
                                         {{-- nested sub insider --}}
                                     </li>
                                     <li class="nav-item sub-item">
-                                        <a href="page39_Social_Media_Links.php"
-                                           class="nav-link d-inline-flex align-items-center sub-menu-link">
+                                        <a href="{{ route('settings.footer_section.social_link.index') }}"
+                                           class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('settings.footer_section.social_link.*') ? 'sub-active' : '' }}">
                                             <span class="pl-4">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9"
                                                      viewBox="0 0 9 9"><g fill="none" stroke="#2d2d2d" stroke-width="1"><circle
-                                                            cx="4.5" cy="4.5" r="4.5" stroke="none"/><circle cx="4.5"
-                                                                                                             cy="4.5"
-                                                                                                             r="4"
-                                                                                                             fill="none"/></g></svg>
+                                                            cx="4.5" cy="4.5" r="4.5" stroke="none"/><circle cx="4.5" cy="4.5" r="4" fill="none"/></g></svg>
                                             </span>
                                             <span class="pl-3">Social Links</span>
                                         </a>
@@ -921,8 +964,8 @@
                             {{-- nested sub insider --}}
                         </li>
                         <li class="nav-item sub-item">
-                            <a href="page40_Maintainance_Mode.php"
-                               class="nav-link d-inline-flex align-items-center sub-menu-link">
+                            <a href="{{ route('settings.maintenance.index') }}"
+                               class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('settings.maintenance.*') ? 'sub-active' : '' }}">
                                 <span class="pl-4">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 12 12">
                                         <circle id="Ellipse_224" data-name="Ellipse 224" cx="6" cy="6" r="6"

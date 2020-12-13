@@ -1,5 +1,5 @@
 @extends('admin_panel.layouts.app')
-@section('title', 'page_name')
+@section('title', 'Edit Draft')
 
 @push('styles')
     {{-- Internal Styles --}}
@@ -20,7 +20,7 @@
             <div class="row justify-content-center m-0 py-3 boxshadow rounded">
                 <div class="col-xl-12 col-lg-12 col-md-12 v-center">
                     <div class="">
-                        <h2 class="m-0">Compose Email</h2></div>
+                        <h2 class="m-0">Edit Draft Mail</h2></div>
                 </div>
             </div>
         </div>
@@ -57,7 +57,7 @@
                     </div>
                     <div class="col-md-12 py-4 ">
                         <div class="text-right">
-                            <button type="submit" class="btn shadow bgOne rounded text-white px-4"> Send Email
+                            <button type="submit" class="btn shadow bgOne rounded text-white px-4"> Send
                             </button>
                         </div>
                     </div>

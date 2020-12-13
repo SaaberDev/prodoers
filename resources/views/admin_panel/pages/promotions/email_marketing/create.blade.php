@@ -57,6 +57,8 @@
                     </div>
                     <div class="col-md-12 py-4 ">
                         <div class="text-right">
+                            <button type="submit" class="btn shadow bg-white rounded"> Save Draft
+                            </button>
                             <button type="submit" class="btn shadow bgOne rounded text-white px-4"> Send Email
                             </button>
                         </div>

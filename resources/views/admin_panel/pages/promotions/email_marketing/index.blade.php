@@ -9,12 +9,15 @@
     <div class="col-xl-10 col-lg-9 col-md-12 dashboardRightside scrollbar scroll-style">
         <div class="">
             <div class="row justify-content-center pb-3 m-0">
-                <div class="col-md-8 col-sm-8  v-center">
+                <div class="col-md-5 col-sm-5  v-center">
                     <!-- breadcrumb  -->
                     @include('admin_panel.includes.breadcrumb')
                 </div>
-                <div class="col-md-4 col-sm-4  v-center">
+                <div class="col-md-7 col-sm-7  v-center">
                     <div class="text-right">
+                        <a href="{{ route('promotions.email_marketing.all_mail.create') }}" class="btn shadow bgOne text-white rounded mr-2"> <span>
+                                </span> Compose Mail </a>
+
                         <a href="#" class="btn shadow bg-white rounded" data-toggle="modal"
                            data-target="#add_email"> <span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="12.672" height="12.672"
@@ -108,7 +111,7 @@
                                     </div>
                                 </td>
                                 <td> 09.09.20</td>
-                                <td><a href="{{ route('promotions.email_marketing.create') }}"
+                                <td><a href="{{ route('promotions.email_marketing.all_mail.create') }}"
                                        class="btn   tabletabGREEN border-0 p-0 m-0 text-white px-3"> Compose</a></td>
                             </tr>
                             <tr>
@@ -120,7 +123,7 @@
                                     </div>
                                 </td>
                                 <td> 09.09.20</td>
-                                <td><a href="{{ route('promotions.email_marketing.create') }}"
+                                <td><a href="{{ route('promotions.email_marketing.all_mail.create') }}"
                                        class="btn   tabletabGREEN border-0 p-0 m-0 text-white px-3"> Compose</a></td>
                             </tr>
                             <tr>
@@ -132,7 +135,7 @@
                                     </div>
                                 </td>
                                 <td> 09.09.20</td>
-                                <td><a href="{{ route('promotions.email_marketing.create') }}"
+                                <td><a href="{{ route('promotions.email_marketing.all_mail.create') }}"
                                        class="btn   tabletabGREEN border-0 p-0 m-0 text-white px-3"> Compose</a></td>
                             </tr>
                             <tr>
@@ -144,7 +147,7 @@
                                     </div>
                                 </td>
                                 <td> 09.09.20</td>
-                                <td><a href="{{ route('promotions.email_marketing.create') }}"
+                                <td><a href="{{ route('promotions.email_marketing.all_mail.create') }}"
                                        class="btn   tabletabGREEN border-0 p-0 m-0 text-white px-3"> Compose</a></td>
                             </tr>
                             <tr>
@@ -156,7 +159,7 @@
                                     </div>
                                 </td>
                                 <td> 09.09.20</td>
-                                <td><a href="{{ route('promotions.email_marketing.create') }}"
+                                <td><a href="{{ route('promotions.email_marketing.all_mail.create') }}"
                                        class="btn   tabletabGREEN border-0 p-0 m-0 text-white px-3"> Compose</a></td>
                             </tr>
                             </tbody>

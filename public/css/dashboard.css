@@ -1990,6 +1990,26 @@ label h5 {
     color: #D9D7D7;
 }
 
+.sideNavAdminLarge .nav-item .sub-item  a.sub-active {
+    background-color: #e8efe87a !important;
+}
+
+.socialmediaDelete {
+    position: relative !important;
+    height: 38px;
+    width: 38px;
+    margin: 0 auto;
+    border: 1px solid lightgray;
+}
+.socialmediaDelete a{
+    position: absolute;
+    top: -12px;
+    right: -15px;
+}
+.socialmediaDelete img{
+    padding: 4px 4px;
+}
+
 /* Extra small devices (portrait phones, less than 375 px)*/
 @media (min-width: 320px) and (max-width: 474.98px) {
     .headerNavlinks {

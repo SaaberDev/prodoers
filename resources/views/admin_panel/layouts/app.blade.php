@@ -33,9 +33,9 @@
         </div>
     </div>
 </div>
-{{-- footer --}}
+{{-- footer_section --}}
 @include('admin_panel.includes.footer')
-{{-- footer --}}
+{{-- footer_section --}}
 <script src="{{ mix('js/dashboard.js') }}"></script>
 <script src="{{ mix('js/app.js') }}"></script>
 @stack('scripts')
