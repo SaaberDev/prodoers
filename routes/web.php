@@ -26,6 +26,12 @@
     use App\Http\Controllers\admin_panel\settings\SEOToolsController;
     use App\Http\Controllers\admin_panel\settings\SiteCMSController;
     use App\Http\Controllers\admin_panel\settings\SitePolicyController;
+    use App\Http\Controllers\user_panel\blog\UserBlogController;
+    use App\Http\Controllers\user_panel\HomeController;
+    use App\Http\Controllers\user_panel\order\UserOrderDetailController;
+    use App\Http\Controllers\user_panel\service\category\UserServiceCategoryController;
+    use App\Http\Controllers\user_panel\service\UserServiceController;
+    use App\Http\Controllers\user_panel\service\UserServiceSearchController;
     use Illuminate\Support\Facades\Route;
 
 /*
@@ -227,3 +233,23 @@
 | User Panel Routes
 |--------------------------------------------------------------------------
 */
+// Home Route Section
+    Route::prefix('/')->name('user.')->group(function () {
+        // Home
+        Route::get('/', [HomeController::class, 'index'])->name('home.index');
+        // Search Page
+        Route::get('/search-service', [UserServiceSearchController::class, 'index'])->name('search.index');
+        // Single Service Page
+        Route::get('/single-service', [UserServiceController::class, 'index'])->name('single_service.index');
+        // Single Category Page
+        Route::get('/single-category', [UserServiceCategoryController::class, 'index'])->name('single_category.index');
+        // Order Details
+        Route::get('/order-details', [UserOrderDetailController::class, 'index'])->name('order_detail.index');
+        // Blog
+        Route::get('/blog', [UserBlogController::class, 'index'])->name('blog.index');
+        Route::get('/single-blog', [UserBlogController::class, 'index'])->name('blog.show');
+    });
+
+//    Route::get('/{category_name}', [UserServiceCategoryController::class, 'show'])->name('show');
+//    Route::get('/{category_name}/{service_name}', [UserServiceCategoryController::class, 'show'])->name('show');
+//    Route::get('/search?=logo', [UserServiceSearchController::class, 'index'])->name('index');

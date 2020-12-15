@@ -11,7 +11,7 @@
     @include('admin_panel.includes.seo_meta')
 
     {{-- Styles --}}
-    <link href="{{ mix('css/dashboard.css') }}" rel="stylesheet">
+    <link href="{{ mix('_admin_panel/css/dashboard.css') }}" rel="stylesheet">
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     @stack('styles')
 </head>
@@ -25,7 +25,7 @@
 
 <div class="section sidebarNavBody">
     <div class="container-fluid ">
-        <div class="row ">
+        <div class="row">
             {{-- Left Navbar --}}
             @include('admin_panel.includes.navbar.left_navbar')
             {{-- Body Content--}}
@@ -36,7 +36,7 @@
 {{-- footer_section --}}
 @include('admin_panel.includes.footer')
 {{-- footer_section --}}
-<script src="{{ mix('js/dashboard.js') }}"></script>
+<script src="{{ mix('_admin_panel/js/dashboard.js') }}"></script>
 <script src="{{ mix('js/app.js') }}"></script>
 @stack('scripts')
 </body>

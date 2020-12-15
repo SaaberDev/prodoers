@@ -1,0 +1,1195 @@
+/* Extra small devices (portrait phones, less than 375 px)*/
+@media (min-width: 320px) and (max-width: 474.98px) {
+    .cardShareIcon .float-sm a span svg {
+        position: relative;
+        top: 3px;
+        margin-right: 10px;
+        width: 50px !important;
+        fill: white;
+    }
+    .textsmCenter {
+        text-align: center;
+    }
+    .paymentdetailsCheck {
+        font-size: 16px;
+        line-height: 1.9;
+    }
+    .paymentdetailsCheck span button {
+        font-size: 16px;
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+    }
+    .orderRequirementsTxt {
+        font-size: 22px;
+        text-align: center;
+    }
+    .paymentdetailsOrdersummrytext h4 {
+        padding-left: 0px;
+        font-size: 21px;
+        text-align: center;
+        padding-bottom: 15px;
+    }
+    .starIconsLeftIcon {
+        float: left;
+    }
+    .starIconsRightIcon {
+        float: right;
+    }
+    .selectablescustom .form-check:first-child label {
+        margin-left: 10px !important;
+    }
+    .selectablescustom :checked + label:before {
+        transform: scale(.7);
+    }
+    .footerlinksOne {
+        padding-top: 20px;
+    }
+    .productDetails .card-body {
+        text-align: center;
+    }
+    .comfirmationCheckCardButton button {
+        width: 112px;
+        font-size: 12px;
+        /* margin: 4px 8px; */
+        display: block;
+        margin: 7px auto;
+    }
+    .comfirmationCheckCardButton button:first-child {
+        margin-left: auto;
+    }
+    .confirmed .card-body {
+        padding-right: 15px !important;
+        text-align: center;
+    }
+    .confirmed .confirmedCheckIMg img {
+        width: 25%;
+        padding: 0%;
+        padding-top: 40px;
+    }
+    div.selectablescustom .form-check {
+        width: 49.1%;
+    }
+    .detailsContent {
+        padding-right: 0px;
+    }
+    .detailsContent h4 {
+        font-size: 16px !important;
+    }
+    button.owl-prev {
+        transform: translate(50%, 35%);
+    }
+    button.owl-next {
+        transform: translate(-50%, 35%);
+    }
+    .socialMediaBannerTxtpadding h3 {
+        font-size: 20px;
+    }
+    .owl-item .owlCustom {
+        height: 260px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        background-position: center center;
+    }
+    .singleCategoryItemSectionOne .leftside {
+        height: 100%;
+    }
+    .socialMediaBannerTxtpadding {
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+    }
+    .pricepadding {
+        padding: 20px 0px !important;
+    }
+    .singleCategoryItemSectionOne .rightSide {
+        height: 100%;
+        width: 100%;
+        margin-left: 0%;
+    }
+    .starIcons {
+        display: inline-block;
+        padding: 2px;
+    }
+    .cardShareIcon .fl-fl {
+        width: 100%;
+        right: 0px;
+    }
+    h1 {
+        font-size: 22px
+    }
+    h2 {
+        font-size: 20px
+    }
+    h3 {
+        font-size: 20px
+    }
+    h4 {
+        font-size: 18px;
+    }
+    h5 {}
+    h6 {}
+    p {
+        font-size: 16px;
+    }
+    .sectionServiceBannerContent {
+        width: 100% !important;
+    }
+    #sectionNavTwo li a {
+        font-size: 14px;
+        font-weight: 500;
+        padding: 5px 8px;
+    }
+    .whydesignWala .whyDesignwalaPosition {
+        position: relative;
+        bottom: 0px;
+    }
+    .ptSm50 {
+        padding-top: 50px !important;
+    }
+    .pbSm50 {
+        padding-bottom: 50px !important;
+    }
+    .popularCetegoriesSmallpadding {
+        padding: 20px 15px !important;
+    }
+    .howDesignwalaImg {
+        text-align: center;
+    }
+    .howDesignwalaImg img {
+        width: auto;
+    }
+    .PointNo {
+        top: -16px;
+        left: 50%;
+        transform: translate(-50%, -11px);
+    }
+    .wSm100 {
+        width: 100% !important;
+    }
+    .textsm-center {
+        text-align: center !important;
+    }
+    .sectionServicePopularCategoriesSingleCategories {
+        width: 100% !important;
+    }
+    .footerText {
+        width: 100% !important;
+    }
+    .footerText p {
+        font-size: 16px !important;
+    }
+    .footerIcon {
+        text-align: center;
+    }
+    footer a {
+        font-size: 14px;
+    }
+    .searchPageResultSingle .card-body .card-title {
+        font-size: 15px;
+    }
+    .card-body .starIcons span svg {
+        height: 20px;
+    }
+    .detailsContent p {
+        font-size: 14px;
+    }
+    .liketodiscussIMG img {
+        padding-top: 50px;
+    }
+    .widthsm20 {
+        width: 20% !important;
+    }
+    .ui-selectable .ui-selectee .ui-widget-content {
+        width: 20%;
+    }
+    .iconShareDIv {
+        /* position: unset; */
+        width: 100%;
+        top: 0;
+        /* background-color: white; */
+        text-align: center;
+    }
+    .iconShareDIv .px0forsm {
+        padding: 2px 0px;
+    }
+    .tabSection {
+        padding: 20px;
+    }
+    .singlecategoryDescriptionReviewFaq .nav-tabs .nav-link {
+        padding: 0px 15px 0px 0px;
+        font-size: 14px;
+    }
+    .forgotPass {
+        text-align: left;
+    }
+    .populartext {
+        padding: 0px 0px;
+    }
+    .checkBox img {
+        width: 90px;
+    }
+    .wsm-100 {
+        width: 100%;
+    }
+    .paddingsmzero {
+        padding: 0;
+    }
+    .adminContent {
+        padding: 50px 0px;
+    }
+    .paymentDetailsPreview .w25imgdiv {
+        width: 100%;
+        float: left;
+    }
+    .paymentDetailsPreview .w75cartdiv {
+        width: 100%;
+        float: right;
+        text-align: center;
+        padding-top: 30px;
+    }
+    .accordianFaq {
+        font-size: 14px;
+    }
+    .collapse .card-body {
+        font-size: 14px;
+    }
+    .tab-content p {
+        font-size: 14px;
+    }
+    .reviewstabContent .reviewstabSingle .boxOne {
+        width: 30%;
+    }
+    .reviewstabContent .reviewstabSingle .boxTwo {
+        width: 70%;
+    }
+    .reviewstabContent .reviewstabSingle .boxThree {
+        width: 100%;
+        padding-top: 20px;
+    }
+    .tab-content p {
+        font-size: 14px;
+    }
+    .reviewstabContent .reviewstabSingle .boxOne img {
+        height: 65px;
+        width: 65px;
+        border-radius: 100px;
+    }
+    .boxThree svg {
+        width: 20px;
+    }
+    .padding25 {
+        padding: 10px;
+    }
+}
+/* Extra small devices (portrait phones, less than 576 px)*/
+@media (min-width: 475px) and (max-width: 575.98px) {
+    .paymentdetailsOrdersummrytext h4 {
+        padding-left: 4px;
+        font-size: 22px;
+    }
+    .footerlinksOne {
+        padding-top: 20px;
+    }
+    .confirmed .card-body {
+        padding-right: 20px !important;
+    }
+    .comfirmationCheckCardButton button {
+        width: 107px;
+        font-size: 11px;
+        margin: 0px 9px;
+    }
+    .confirmed .confirmedCheckIMg img {
+        width: 25%;
+        padding: 0%;
+        padding-top: 40px;
+    }
+    div.selectablescustom .form-check {
+        width: 24%;
+    }
+    button.owl-prev {
+        transform: translate(50%, 65%);
+    }
+    button.owl-next {
+        transform: translate(-50%, 65%);
+    }
+    .owl-item .owlCustom {
+        height: 350px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        background-position: center center;
+    }
+    .singleCategoryItemSectionOne .leftside {
+        height: 100%;
+    }
+    .socialMediaBannerTxtpadding {
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+    }
+    .pricepadding {
+        padding: 20px 0px !important;
+    }
+    .singleCategoryItemSectionOne .rightSide {
+        height: 100%;
+        width: 100%;
+        margin-left: 0%;
+    }
+    .xsWidth50 {
+        width: 50% !important;
+    }
+    .xsWidth60 {
+        width: 60% !important;
+    }
+    .xsWidth40 {
+        width: 40% !important;
+    }
+    .sectionServiceBannerContent {
+        width: 100% !important;
+    }
+    .adminContent {
+        padding: 50px 0px;
+    }
+    .sectionNavTwo li a {
+        font-size: 14px;
+        font-weight: 500 !important;
+        padding: 5px 10px !important;
+    }
+    .paddingsmzero {
+        padding: 0;
+    }
+    h1 {
+        font-size: 22px
+    }
+    h2 {
+        font-size: 20px
+    }
+    h3 {
+        font-size: 20px
+    }
+    h4 {
+        font-size: 18px;
+    }
+    h5 {}
+    h6 {}
+    p {
+        font-size: 16px;
+    }
+    .populartext {
+        padding: 0px 0px;
+    }
+    .whydesignWala .whyDesignwalaPosition {
+        position: relative;
+        bottom: 0px;
+    }
+    .ptSm50 {
+        padding-top: 50px !important;
+    }
+    .pbSm50 {
+        padding-bottom: 50px !important;
+    }
+    .popularCetegoriesSmallpadding {
+        padding: 20px 15px !important;
+    }
+    .howDesignwalaImg {
+        text-align: center;
+    }
+    .howDesignwalaImg img {
+        width: auto;
+    }
+    .PointNo {
+        top: -16px;
+        left: 50%;
+        transform: translate(-50%, -11px);
+    }
+    .wSm100 {
+        width: 100% !important;
+    }
+    .textsm-center {
+        text-align: center !important;
+    }
+    .sectionServicePopularCategoriesSingleCategories {
+        width: 100% !important;
+    }
+    .footerText {
+        width: 100% !important;
+    }
+    .footerIcon {
+        text-align: center;
+    }
+    footer a {
+        font-size: 14px;
+    }
+    .footerText p {
+        font-size: 16px !important;
+    }
+    .searchPageResultSingle .card-body .card-title {
+        font-size: 15px;
+    }
+    .card-body .starIcons span svg {
+        height: 20px;
+    }
+    .detailsContent p {
+        font-size: 14px;
+    }
+    .liketodiscussIMG img {
+        padding-top: 50px;
+    }
+    .iconShareDIv {
+        /* position: unset; */
+        width: 100%;
+        top: 0;
+        /* background-color: white; */
+        text-align: center;
+    }
+    .singlecategoryDescriptionReviewFaq .nav-tabs .nav-link {
+        padding: 0px 15px 0px 0px;
+        font-size: 18px;
+    }
+    .forgotPass {
+        text-align: left;
+    }
+    .checkBox img {
+        width: 108px;
+    }
+    .reviewstabContent .reviewstabSingle .boxOne {
+        width: 21%;
+    }
+    .reviewstabContent .reviewstabSingle .boxTwo {
+        width: 79%;
+    }
+    .reviewstabContent .reviewstabSingle .boxThree {
+        width: 100%;
+        padding-top: 20px;
+    }
+    .tab-content p {
+        font-size: 14px;
+    }
+    .reviewstabContent .reviewstabSingle .boxOne img {
+        height: 65px;
+        width: 65px;
+        border-radius: 100px;
+    }
+    .boxThree svg {
+        width: 20px;
+    }
+}
+/* Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .footerlinksOne {
+        padding-top: 20px;
+    }
+    .comfirmationCheckCardButton button {
+        width: 120px;
+        font-size: 13px;
+        margin: 0px 17px;
+    }
+    .confirmationCheck .confirmed .card-body {
+        padding: 25px 15px;
+    }
+    .confirmed .card-body {
+        padding-right: 30px !important;
+    }
+    .confirmed .confirmedCheckIMg img {
+        width: 25%;
+        padding: 0%;
+        padding-top: 40px;
+    }
+    .paymentdetailsOrdersummrytext h4 {
+        padding-left: 7px;
+        font-size: 25px;
+    }
+    div.selectablescustom .form-check {
+        width: 24%;
+    }
+    button.owl-prev {
+        transform: translate(50%, 80%);
+    }
+    button.owl-next {
+        transform: translate(-50%, 80%);
+    }
+    .owl-item .owlCustom {
+        height: 400px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        background-position: center center;
+    }
+    .singleCategoryItemSectionOne .leftside {
+        height: 100%;
+    }
+    .socialMediaBannerTxtpadding {
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+    }
+    .pricepadding {
+        padding: 20px 0px !important;
+    }
+    .singleCategoryItemSectionOne .rightSide {
+        height: 100%;
+        width: 100%;
+        margin-left: 0%;
+    }
+    .smWidth50 {
+        width: 50% !important;
+    }
+    .sectionServiceBannerImage {
+        text-align: center;
+    }
+    .sectionServiceBannerContent {
+        width: 100% !important;
+    }
+    .adminContent {
+        padding: 50px 0px;
+    }
+    #sectionNavTwo li a {
+        font-size: 14px;
+        font-weight: 500;
+        padding: 5px 10px;
+    }
+    h1 {
+        font-size: 26px
+    }
+    h2 {
+        font-size: 24px
+    }
+    h3 {
+        font-size: 22px
+    }
+    h4 {
+        font-size: 20px;
+    }
+    h5 {}
+    h6 {}
+    p {
+        font-size: 16px;
+    }
+    .whydesignWala .whyDesignwalaPosition {
+        position: relative;
+        bottom: 0px;
+    }
+    .ptSm50 {
+        padding-top: 50px !important;
+    }
+    .pbSm50 {
+        padding-bottom: 50px !important;
+    }
+    .popularCetegoriesSmallpadding {
+        padding: 20px 15px !important;
+    }
+    .howDesignwalaImg {
+        text-align: center;
+    }
+    .howDesignwalaImg img {
+        width: auto;
+    }
+    .PointNo {
+        top: -16px;
+        left: 50%;
+        transform: translate(-50%, -11px);
+    }
+    .wSm100 {
+        width: 100% !important;
+    }
+    .textsm-center {
+        text-align: center !important;
+    }
+    .sectionServicePopularCategoriesSingleCategories {
+        width: 100% !important;
+    }
+    .footerText {
+        width: 100% !important;
+    }
+    .footerIcon {
+        text-align: center;
+    }
+    footer a {
+        font-size: 14px;
+    }
+    .footerText p {
+        font-size: 16px !important;
+    }
+    .searchPageResultSingle .card-body .card-title {
+        font-size: 15px;
+    }
+    .card-body .starIcons span svg {
+        height: 20px;
+    }
+    .detailsContent p {
+        font-size: 14px;
+    }
+    .liketodiscussIMG img {
+        padding-top: 50px;
+    }
+    .iconShareDIv {
+        /* position: unset; */
+        width: 100%;
+        top: 0;
+        /* background-color: white; */
+        text-align: center;
+    }
+    .singlecategoryDescriptionReviewFaq .nav-tabs .nav-link {
+        padding: 0px 15px 0px 0px;
+        font-size: 18px;
+    }
+    .forgotPass {
+        text-align: left;
+    }
+    .populartext {
+        padding: 0px 0px;
+    }
+    .checkBox img {
+        width: 102px;
+    }
+    .reviewstabContent .reviewstabSingle .boxOne {
+        width: 21%;
+    }
+    .reviewstabContent .reviewstabSingle .boxTwo {
+        width: 79%;
+    }
+    .reviewstabContent .reviewstabSingle .boxThree {
+        width: 100%;
+        padding-top: 20px;
+    }
+    .tab-content p {
+        font-size: 14px;
+    }
+    .reviewstabContent .reviewstabSingle .boxOne img {
+        height: 65px;
+        width: 65px;
+        border-radius: 100px;
+    }
+    .boxThree svg {
+        width: 20px;
+    }
+}
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .comfirmationCheckCardButton button {
+        width: 120px;
+        font-size: 13px;
+        margin: 0px 15px;
+    }
+    .confirmed .confirmedCheckIMg img {
+        width: 100%;
+        padding: 10%;
+    }
+    footer .wouldLiketoDiscuss {
+        padding-top: 20px;
+    }
+    .paymentdetailsOrdersummrytext h4 {
+        padding-left: 19px;
+        font-size: 25px;
+    }
+    div.selectablescustom .form-check {
+        width: 24%;
+    }
+    button.owl-prev {
+        transform: translate(50%, 120%);
+    }
+    button.owl-next {
+        transform: translate(-50%, 120%);
+    }
+    .owl-item .owlCustom {
+        height: 510px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        background-position: center center;
+    }
+    .singleCategoryItemSectionOne .leftside {
+        height: 100%;
+    }
+    .socialMediaBannerTxtpadding {
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+    }
+    .pricepadding {
+        padding: 20px 0px !important;
+    }
+    .singleCategoryItemSectionOne .rightSide {
+        height: 100%;
+        width: 100%;
+        margin-left: 0%;
+    }
+    .padding25 {
+        padding: 20px;
+    }
+    .footerDiscuss {
+        padding-top: 20px;
+    }
+    .sectionServiceBannerImage {
+        text-align: center;
+    }
+    .sectionServiceBannerContent {
+        width: 100% !important;
+    }
+    .adminContent {
+        padding: 80px 0px;
+    }
+    #sectionNavTwo li a {
+        font-size: 14px;
+        font-weight: 500;
+        padding: 5px 10px;
+    }
+    h1 {
+        font-size: 26px
+    }
+    h2 {
+        font-size: 24px
+    }
+    h3 {
+        font-size: 22px;
+    }
+    h4 {
+        font-size: 20px;
+    }
+    h5 {}
+    h6 {}
+    p {
+        font-size: 16px;
+    }
+    .whydesignWala .whyDesignwalaPosition {
+        position: relative;
+        bottom: 0px;
+    }
+    .ptSm50 {
+        padding-top: 50px !important;
+    }
+    .pbSm50 {
+        padding-bottom: 50px !important;
+    }
+    .popularCetegoriesSmallpadding {
+        padding: 20px 15px !important;
+    }
+    .howDesignwalaImg {
+        text-align: center;
+    }
+    .howDesignwalaImg img {
+        width: auto;
+    }
+    .PointNo {
+        top: -16px;
+        left: 50%;
+        transform: translate(-50%, -11px);
+    }
+    .wSm100 {
+        width: 100% !important;
+    }
+    .sectionServicePopularCategoriesSingleCategories {
+        width: 100% !important;
+    }
+    .footerText {
+        width: 100% !important;
+    }
+    .footerIcon {
+        text-align: center;
+    }
+    footer a {
+        font-size: 14px;
+    }
+    .footerText p {
+        font-size: 14px;
+    }
+    .searchPageResultSingle .card-body .card-title {
+        font-size: 15px;
+    }
+    .card-body .starIcons span svg {
+        height: 20px;
+    }
+    .searchPageResultSingle .card-body {
+        font-size: 16px;
+    }
+    .card-body .starIcons span svg {
+        height: 20px;
+    }
+    .detailsContent p {
+        font-size: 16px;
+    }
+    .checkBox img {
+        width: 135px;
+    }
+    .reviewstabContent .reviewstabSingle .boxOne {
+        width: 13%;
+    }
+    .reviewstabContent .reviewstabSingle .boxTwo {
+        width: 70%;
+    }
+    .reviewstabContent .reviewstabSingle .boxThree {
+        width: 100%;
+    }
+    .tab-content p {
+        font-size: 14px;
+    }
+    .reviewstabContent .reviewstabSingle .boxOne img {
+        height: 65px;
+        width: 65px;
+        border-radius: 100px;
+    }
+}
+/* Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .comfirmationCheckCardButton button {
+        width: 121px;
+        font-size: 12px;
+        margin: 0px 9px;
+    }
+    .confirmed .card-body {
+        padding-right: 15px !important;
+    }
+    footer .wouldLiketoDiscuss {
+        padding-top: 20px;
+    }
+    .paymentdetailsOrdersummrytext h4 {
+        padding-left: 25px;
+        font-size: 25px;
+    }
+    div.selectablescustom .form-check {
+        width: 24%;
+    }
+    button.owl-prev {
+        transform: translate(50%, 100%);
+    }
+    button.owl-next {
+        transform: translate(-50%, 100%);
+    }
+    .owl-item .owlCustom {
+        height: 462px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        background-position: center center;
+    }
+    .singleCategoryItemSectionOne .leftside {
+        height: 100%;
+    }
+    .socialMediaBannerTxtpadding {
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+    }
+    .pricepadding {
+        padding: 20px 0px !important;
+    }
+    .singleCategoryItemSectionOne .rightSide {
+        height: 100%;
+        width: 100%;
+        margin-left: 0%;
+    }
+    .pbSm50 {
+        padding-bottom: 50px !important;
+    }
+    .ptSm50 {
+        padding-top: 50px !important;
+    }
+    .padding25 {
+        padding: 15px;
+    }
+    .footerDiscuss {
+        padding-top: 20px;
+    }
+    h1 {
+        font-size: 30px;
+    }
+    .adminContent {
+        padding: 80px 0px;
+    }
+    h2 {
+        font-size: 24px
+    }
+    h3 {
+        font-size: 22px;
+    }
+    h4 {
+        font-size: 20px;
+    }
+    h5 {}
+    h6 {}
+    p {
+        font-size: 16px;
+    }
+    .populartext {
+        padding: 0px 0px;
+    }
+    .whydesignWala .whydesignwalaSingleService p {
+        font-size: 11px;
+    }
+    .sectionNavTwo li a {
+        font-size: 14px;
+        padding: 5px 7px;
+    }
+    .whydesignWala .whydesignwalaSingleService img {
+        height: 75px;
+        width: auto;
+    }
+    .sectionServicePopularCategoriesSingleCategories {
+        width: 90%;
+    }
+    .popularCetegoriesSmallpadding {
+        padding: 15px 0px !important;
+    }
+    .reviewstabContent .reviewstabSingle .boxOne {
+        width: 14%;
+    }
+    .reviewstabContent .reviewstabSingle .boxTwo {
+        width: 18%;
+    }
+    .reviewstabContent .reviewstabSingle .boxThree {
+        width: 68%;
+    }
+}
+/* Extra large devices (large desktops, 1366px and up)*/
+@media (min-width: 1200px) and (max-width: 1365.98px) {
+    .comfirmationCheckCardButton button {
+        width: 130px;
+        font-size: 14px;
+        margin: 0px 15px;
+    }
+    .paymentdetailsOrdersummrytext h4 {
+        padding-left: 17px;
+        font-size: 25px;
+    }
+    div.selectablescustom .form-check {
+        width: 24%;
+    }
+    .singlecaregoryBannerImg img {
+        /*        width: 25%;*/
+    }
+    .singlecaregoryBannerCustom {
+        padding: 10px 0px !important;
+    }
+    .owl-item .owlCustom {
+        height: 486px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        background-position: center center;
+    }
+    button.owl-prev {
+        transform: translate(50%, 110%);
+    }
+    button.owl-next {
+        transform: translate(-50%, 110%);
+    }
+    .singleCategoryItemSectionOne .leftside {
+        height: 100%;
+    }
+    .socialMediaBannerTxtpadding {
+        padding-top: 0px !important;
+    }
+    .pricepadding {
+        padding: 20px 0px !important;
+    }
+    .singleCategoryItemSectionOne .rightSide {
+        height: 100%;
+        width: 95%;
+        margin-left: 5%;
+    }
+    .padding25 {
+        padding: 20px;
+    }
+    h1 {
+        font-size: 30px;
+    }
+    h2 {
+        font-size: 26px;
+    }
+    h3 {
+        font-size: 24px;
+    }
+    h4 {
+        font-size: 22px;
+    }
+    h5 {
+        font-size: 20px;
+    }
+    .sectionNavTwo li a {
+        font-size: 14px;
+        padding: 5px 7px;
+    }
+    .adminContent {
+        padding: 100px 0px;
+    }
+    .whydesignWala .whydesignwalaSingleService p {
+        font-size: 13px;
+    }
+    .whydesignWala .whydesignwalaSingleService img {
+        height: 80px;
+        width: auto;
+    }
+    .populartext {
+        padding: 15px 0px;
+    }
+    .popularCetegoriesSmallpadding {
+        padding: 20px 0px !important;
+    }
+    .checkBox img {
+        width: 133px;
+    }
+    .reviewstabContent .reviewstabSingle .boxOne {
+        width: 12%;
+    }
+    .reviewstabContent .reviewstabSingle .boxTwo {
+        width: 15%;
+    }
+    .reviewstabContent .reviewstabSingle .boxThree {
+        width: 73%;
+    }
+}
+/* Extra large devices (large desktops, 1600px and up)*/
+@media (min-width: 1366px) and (max-width: 1439.98px) {
+    .comfirmationCheckCardButton button {
+        width: 130px;
+        font-size: 14px;
+        margin: 0px 15px;
+    }
+    .paymentdetailsOrdersummrytext h4 {
+        padding-left: 17px;
+        font-size: 25px;
+    }
+    div.selectablescustom .form-check {
+        width: 24%;
+    }
+    h1 {
+        font-size: 34px;
+    }
+    .adminContent {
+        padding: 100px 0px;
+    }
+    .sectionServicePopularCategoriesSingleCategories {
+        width: 85% !important;
+    }
+    .sectionServicePopularCategoriesSingleContent h3 {
+        font-size: 22px !important;
+    }
+    .sectionServicePopularCategoriesSingleContent h4 {
+        font-size: 18px !important;
+    }
+    .sectionServicePopularCategoriesSingleContent p {
+        font-size: 14px !important;
+    }
+    #sectionNavTwo li a {
+        padding: 5px 8px;
+    }
+    .whydesignwalaSingleService p {
+        font-size: 13px !important;
+    }
+    .whydesignWala .whydesignwalaSingleService img {
+        height: 100px !important;
+    }
+    .sectionServiceDesignwalaLatestNews .card .card-body .card-title {
+        font-size: 24px;
+    }
+    .sectionServiceDesignwalaLatestNews .card .card-body h5 {
+        font-size: 18px;
+    }
+    .sectionServiceDesignwalaLatestNews .card .card-body p {
+        font-size: 16px;
+    }
+    .sectionServiceDesignwalaNewsletter h2 {
+        font-size: 28px;
+    }
+    .padding25 {
+        padding: 15px;
+    }
+    .popularCetegoriesSmallpadding {
+        padding: 15px 0px !important;
+    }
+    .reviewstabContent .reviewstabSingle .boxOne {
+        width: 12%;
+    }
+    .reviewstabContent .reviewstabSingle .boxTwo {
+        width: 15%;
+    }
+    .reviewstabContent .reviewstabSingle .boxThree {
+        width: 73%;
+    }
+}
+@media (min-width: 1440px) and (max-width: 1599.98px) {
+    .paymentdetailsOrdersummrytext h4 {
+        padding-left: 27px;
+        font-size: 25px;
+    }
+    div.selectablescustom .form-check {
+        width: 24%;
+    }
+    h1 {
+        font-size: 34px;
+    }
+    .adminContent {
+        padding: 100px 0px;
+    }
+    .sectionServicePopularCategoriesSingleCategories {
+        width: 85% !important;
+    }
+    .sectionServicePopularCategoriesSingleContent h3 {
+        font-size: 22px !important;
+    }
+    .sectionServicePopularCategoriesSingleContent h4 {
+        font-size: 18px !important;
+    }
+    .sectionServicePopularCategoriesSingleContent p {
+        font-size: 14px !important;
+    }
+    #sectionNavTwo li a {
+        padding: 5px 8px;
+    }
+    .whydesignwalaSingleService p {
+        font-size: 13px !important;
+    }
+    .whydesignWala .whydesignwalaSingleService img {
+        height: 100px !important;
+    }
+    .sectionServiceDesignwalaLatestNews .card .card-body .card-title {
+        font-size: 24px;
+    }
+    .sectionServiceDesignwalaLatestNews .card .card-body h5 {
+        font-size: 18px;
+    }
+    .sectionServiceDesignwalaLatestNews .card .card-body p {
+        font-size: 16px;
+    }
+    .sectionServiceDesignwalaNewsletter h2 {
+        font-size: 28px;
+    }
+    .padding25 {
+        padding: 15px;
+    }
+    .popularCetegoriesSmallpadding {
+        padding: 15px 0px !important;
+    }
+    .reviewstabContent .reviewstabSingle .boxOne {
+        width: 12%;
+    }
+    .reviewstabContent .reviewstabSingle .boxTwo {
+        width: 15%;
+    }
+    .reviewstabContent .reviewstabSingle .boxThree {
+        width: 73%;
+    }
+}
+/* Extra large devices (large desktops, 1600px and up)*/
+@media (min-width: 1600px) {
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl {
+        max-width: 1470px !important;
+    }
+    .w-80 {
+        width: 80%;
+    }
+    .w-20 {
+        width: 20%;
+    }
+    .sectionServiceBannerContent {
+        width: 80%;
+    }
+    .paddingLR2 {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    .designwalaAdminpage .vh100 {
+        height: 100vh;
+    }
+}

@@ -1,0 +1,6 @@
+@include('user_panel.includes.navbar.mobile_top_navbar')
+@include('user_panel.includes.navbar.top_navbar')
+@include('user_panel.includes.navbar.top_sub_navbar')
+@include('user_panel.includes.modal.signin')
+@include('user_panel.includes.modal.terms_and_conditions')
+@include('user_panel.includes.modal.privacy_policy')
