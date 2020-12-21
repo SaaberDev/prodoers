@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\admin_panel\services;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Services\ServiceCategoryRequest;
+use App\Models\ServiceCategory;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 
 class ServiceCategoryController extends Controller
@@ -18,6 +21,7 @@ class ServiceCategoryController extends Controller
      */
     public function index()
     {
+//        $service_categories = ServiceCategory::orderById();
         return view('admin_panel.pages.services.category.index');
     }
 
@@ -34,12 +38,24 @@ class ServiceCategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return Response
+     * @param ServiceCategoryRequest $request
+     *
+     * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(ServiceCategoryRequest $request): RedirectResponse
     {
-        //
+        ServiceCategory::query()->firstOrCreate([
+            'title' => $request->input('service_category_title'),
+            'popular_status' => $request->input('category_popular', 0),
+            'published_status' => $request->input('category_status', 0),
+            'meta_desc' => $request->input('meta_description'),
+            'slug' => SlugService::createSlug(ServiceCategory::class, 'slug', $request->input('service_category_title')),
+            'category_banner' => SingleImageUploadHandler($request, 'banner_image', 'service_category_title', 'banner', '.png', 'admin_panel/services_categories/banner/'),
+            'category_thumbnail' => SingleImageUploadHandler($request, 'thumbnail_image', 'service_category_title', 'thumbnail', '.png', 'admin_panel/services_categories/thumbnail/'),
+            'desc' => $request->input('service_description'),
+        ]);
+
+        return redirect()->back();
     }
 
     /**

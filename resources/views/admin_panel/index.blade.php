@@ -144,7 +144,7 @@
                                     <div class="w-100 ">
                                         <div class="w-25 float-left">
 
-                                            <div class="dashHomeActiveimg active" style=""><img src="{{ asset('img/dashboardlistmanlogo.png') }}" alt="">
+                                            <div class="dashHomeActiveimg active" style=""><img src="{{ asset('_admin_panel/img/dashboardlistmanlogo.png') }}" alt="">
                                                 <div class="dashHomeActiveSVG">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
                                                         <g fill="#038d08" stroke="#fff" stroke-width="1">
@@ -175,7 +175,7 @@
                                 <div class="w-75 float-left">
                                     <div class="w-100 ">
                                         <div class="w-25 float-left">
-                                            <div class="dashHomeActiveimg active" style=""><img src="{{ asset('img/dashboardlistmanlogo.png') }}" alt="">
+                                            <div class="dashHomeActiveimg active" style=""><img src="{{ asset('_admin_panel/img/dashboardlistmanlogo.png') }}" alt="">
                                                 <div class="dashHomeActiveSVG">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
                                                         <g fill="#038d08" stroke="#fff" stroke-width="1">
@@ -206,7 +206,7 @@
                                 <div class="w-75 float-left">
                                     <div class="w-100 ">
                                         <div class="w-25 float-left">
-                                            <div class="dashHomeActiveimg active" style=""><img src="{{ asset('img/dashboardlistmanlogo.png') }}" alt="">
+                                            <div class="dashHomeActiveimg active" style=""><img src="{{ asset('_admin_panel/img/dashboardlistmanlogo.png') }}" alt="">
                                                 <div class="dashHomeActiveSVG">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
                                                         <g fill="#038d08" stroke="#fff" stroke-width="1">
@@ -237,7 +237,7 @@
                                 <div class="w-75 float-left">
                                     <div class="w-100 ">
                                         <div class="w-25 float-left">
-                                            <div class="dashHomeActiveimg active" style=""><img src="{{ asset('img/dashboardlistmanlogo.png') }}" alt="">
+                                            <div class="dashHomeActiveimg active" style=""><img src="{{ asset('_admin_panel/img/dashboardlistmanlogo.png') }}" alt="">
                                                 <div class="dashHomeActiveSVG">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
                                                         <g fill="#038d08" stroke="#fff" stroke-width="1">
@@ -268,7 +268,7 @@
                                 <div class="w-75 float-left">
                                     <div class="w-100 ">
                                         <div class="w-25 float-left">
-                                            <div class="dashHomeActiveimg active" style=""><img src="{{ asset('img/dashboardlistmanlogo.png') }}" alt="">
+                                            <div class="dashHomeActiveimg active" style=""><img src="{{ asset('_admin_panel/img/dashboardlistmanlogo.png') }}" alt="">
                                                 <div class="dashHomeActiveSVG">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
                                                         <g fill="#038d08" stroke="#fff" stroke-width="1">
@@ -324,7 +324,7 @@
                                 <div class="w-75 float-left">
                                     <div class="w-100 ">
                                         <div class="w-25 float-left">
-                                            <div class="dashHomeActiveimg active" style=""><img src="{{ asset('img/dashboardlistmanlogo.png') }}" alt="">
+                                            <div class="dashHomeActiveimg active" style=""><img src="{{ asset('_admin_panel/img/dashboardlistmanlogo.png') }}" alt="">
                                                 <div class="dashHomeActiveSVG">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
                                                         <g fill="#038d08" stroke="#fff" stroke-width="1">
@@ -355,7 +355,7 @@
                                 <div class="w-75 float-left">
                                     <div class="w-100 ">
                                         <div class="w-25 float-left">
-                                            <div class="dashHomeActiveimg active" style=""><img src="{{ asset('img/dashboardlistmanlogo.png') }}" alt="">
+                                            <div class="dashHomeActiveimg active" style=""><img src="{{ asset('_admin_panel/img/dashboardlistmanlogo.png') }}" alt="">
                                                 <div class="dashHomeActiveSVG">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
                                                         <g fill="#038d08" stroke="#fff" stroke-width="1">
@@ -386,7 +386,7 @@
                                 <div class="w-75 float-left">
                                     <div class="w-100 ">
                                         <div class="w-25 float-left">
-                                            <div class="dashHomeActiveimg active" style=""><img src="{{ asset('img/dashboardlistmanlogo.png') }}" alt="">
+                                            <div class="dashHomeActiveimg active" style=""><img src="{{ asset('_admin_panel/img/dashboardlistmanlogo.png') }}" alt="">
                                                 <div class="dashHomeActiveSVG">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
                                                         <g fill="#038d08" stroke="#fff" stroke-width="1">
@@ -417,7 +417,7 @@
                                 <div class="w-75 float-left">
                                     <div class="w-100 ">
                                         <div class="w-25 float-left">
-                                            <div class="dashHomeActiveimg active" style=""><img src="{{ asset('img/dashboardlistmanlogo.png') }}" alt="">
+                                            <div class="dashHomeActiveimg active" style=""><img src="{{ asset('_admin_panel/img/dashboardlistmanlogo.png') }}" alt="">
                                                 <div class="dashHomeActiveSVG">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
                                                         <g fill="#038d08" stroke="#fff" stroke-width="1">
@@ -448,7 +448,7 @@
                                 <div class="w-75 float-left">
                                     <div class="w-100 ">
                                         <div class="w-25 float-left">
-                                            <div class="dashHomeActiveimg active" style=""><img src="{{ asset('img/dashboardlistmanlogo.png') }}" alt="">
+                                            <div class="dashHomeActiveimg active" style=""><img src="{{ asset('_admin_panel/img/dashboardlistmanlogo.png') }}" alt="">
                                                 <div class="dashHomeActiveSVG">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
                                                         <g fill="#038d08" stroke="#fff" stroke-width="1">
@@ -504,7 +504,7 @@
                                 <div class="w-75 float-left">
                                     <div class="w-100 ">
                                         <div class="w-25 float-left">
-                                            <div class="dashHomeActiveimg active" style=""><img src="{{ asset('img/dashboardlistmanlogo.png') }}" alt="">
+                                            <div class="dashHomeActiveimg active" style=""><img src="{{ asset('_admin_panel/img/dashboardlistmanlogo.png') }}" alt="">
                                                 <div class="dashHomeActiveSVG">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
                                                         <g fill="#038d08" stroke="#fff" stroke-width="1">
@@ -535,7 +535,7 @@
                                 <div class="w-75 float-left">
                                     <div class="w-100 ">
                                         <div class="w-25 float-left">
-                                            <div class="dashHomeActiveimg active" style=""><img src="{{ asset('img/dashboardlistmanlogo.png') }}" alt="">
+                                            <div class="dashHomeActiveimg active" style=""><img src="{{ asset('_admin_panel/img/dashboardlistmanlogo.png') }}" alt="">
                                                 <div class="dashHomeActiveSVG">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
                                                         <g fill="#038d08" stroke="#fff" stroke-width="1">
@@ -566,7 +566,7 @@
                                 <div class="w-75 float-left">
                                     <div class="w-100 ">
                                         <div class="w-25 float-left">
-                                            <div class="dashHomeActiveimg active" style=""><img src="{{ asset('img/dashboardlistmanlogo.png') }}" alt="">
+                                            <div class="dashHomeActiveimg active" style=""><img src="{{ asset('_admin_panel/img/dashboardlistmanlogo.png') }}" alt="">
                                                 <div class="dashHomeActiveSVG">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
                                                         <g fill="#038d08" stroke="#fff" stroke-width="1">
@@ -597,7 +597,7 @@
                                 <div class="w-75 float-left">
                                     <div class="w-100 ">
                                         <div class="w-25 float-left">
-                                            <div class="dashHomeActiveimg active" style=""><img src="{{ asset('img/dashboardlistmanlogo.png') }}" alt="">
+                                            <div class="dashHomeActiveimg active" style=""><img src="{{ asset('_admin_panel/img/dashboardlistmanlogo.png') }}" alt="">
                                                 <div class="dashHomeActiveSVG">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
                                                         <g fill="#038d08" stroke="#fff" stroke-width="1">
@@ -628,7 +628,7 @@
                                 <div class="w-75 float-left">
                                     <div class="w-100 ">
                                         <div class="w-25 float-left">
-                                            <div class="dashHomeActiveimg active" style=""><img src="{{ asset('img/dashboardlistmanlogo.png') }}" alt="">
+                                            <div class="dashHomeActiveimg active" style=""><img src="{{ asset('_admin_panel/img/dashboardlistmanlogo.png') }}" alt="">
                                                 <div class="dashHomeActiveSVG">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
                                                         <g fill="#038d08" stroke="#fff" stroke-width="1">
@@ -684,7 +684,7 @@
                                 <div class="w-75 float-left">
                                     <div class="w-100 ">
                                         <div class="w-25 float-left">
-                                            <div class="dashHomeActiveimg active" style=""><img src="{{ asset('img/dashboardlistmanlogo.png') }}" alt="">
+                                            <div class="dashHomeActiveimg active" style=""><img src="{{ asset('_admin_panel/img/dashboardlistmanlogo.png') }}" alt="">
                                                 <div class="dashHomeActiveSVG">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
                                                         <g fill="#038d08" stroke="#fff" stroke-width="1">
@@ -715,7 +715,7 @@
                                 <div class="w-75 float-left">
                                     <div class="w-100 ">
                                         <div class="w-25 float-left">
-                                            <div class="dashHomeActiveimg active" style=""><img src="{{ asset('img/dashboardlistmanlogo.png') }}" alt="">
+                                            <div class="dashHomeActiveimg active" style=""><img src="{{ asset('_admin_panel/img/dashboardlistmanlogo.png') }}" alt="">
                                                 <div class="dashHomeActiveSVG">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
                                                         <g fill="#038d08" stroke="#fff" stroke-width="1">
@@ -746,7 +746,7 @@
                                 <div class="w-75 float-left">
                                     <div class="w-100 ">
                                         <div class="w-25 float-left">
-                                            <div class="dashHomeActiveimg active" style=""><img src="{{ asset('img/dashboardlistmanlogo.png') }}" alt="">
+                                            <div class="dashHomeActiveimg active" style=""><img src="{{ asset('_admin_panel/img/dashboardlistmanlogo.png') }}" alt="">
                                                 <div class="dashHomeActiveSVG">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
                                                         <g fill="#038d08" stroke="#fff" stroke-width="1">
@@ -777,7 +777,7 @@
                                 <div class="w-75 float-left">
                                     <div class="w-100 ">
                                         <div class="w-25 float-left">
-                                            <div class="dashHomeActiveimg active" style=""><img src="{{ asset('img/dashboardlistmanlogo.png') }}" alt="">
+                                            <div class="dashHomeActiveimg active" style=""><img src="{{ asset('_admin_panel/img/dashboardlistmanlogo.png') }}" alt="">
                                                 <div class="dashHomeActiveSVG">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
                                                         <g fill="#038d08" stroke="#fff" stroke-width="1">
@@ -808,7 +808,7 @@
                                 <div class="w-75 float-left">
                                     <div class="w-100 ">
                                         <div class="w-25 float-left">
-                                            <div class="dashHomeActiveimg active" style=""><img src="{{ asset('img/dashboardlistmanlogo.png') }}" alt="">
+                                            <div class="dashHomeActiveimg active" style=""><img src="{{ asset('_admin_panel/img/dashboardlistmanlogo.png') }}" alt="">
                                                 <div class="dashHomeActiveSVG">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
                                                         <g fill="#038d08" stroke="#fff" stroke-width="1">

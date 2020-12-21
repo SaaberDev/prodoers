@@ -13,6 +13,7 @@
     {{-- Styles --}}
     <link href="{{ mix('_admin_panel/css/dashboard.css') }}" rel="stylesheet">
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    @livewireStyles
     @stack('styles')
 </head>
 <body class="classPage1dashboard">
@@ -38,6 +39,7 @@
 {{-- footer_section --}}
 <script src="{{ mix('_admin_panel/js/dashboard.js') }}"></script>
 <script src="{{ mix('js/app.js') }}"></script>
+@livewireScripts
 @stack('scripts')
 </body>
 </html>

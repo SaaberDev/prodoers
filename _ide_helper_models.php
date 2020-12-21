@@ -12,11 +12,180 @@
 
 namespace App\Models{
 /**
+ * App\Models\Coupon
+ *
+ * @mixin IdeHelperCoupon
+ * @property int $id
+ * @property string $code
+ * @property string $start_date
+ * @property string $end_date
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereEndDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereStartDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereUpdatedAt($value)
+ */
+	class IdeHelperCoupon extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Service
+ *
+ * @mixin IdeHelperService
+ * @property int $id
+ * @property int $service_category_id
+ * @property string $title
+ * @property string $meta_desc
+ * @property int|null $published_status
+ * @property string|null $slug
+ * @property string $price
+ * @property string $thumbnail
+ * @property string $service_desc
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\ServiceCategory $service_categories
+ * @method static \Illuminate\Database\Eloquent\Builder|Service newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Service newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Service query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereMetaDesc($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service wherePrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service wherePublishedStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereServiceCategoryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereServiceDesc($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereThumbnail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereUpdatedAt($value)
+ */
+	class IdeHelperService extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\ServiceCategory
+ *
+ * @mixin IdeHelperServiceCategory
+ * @property int $id
+ * @property string $title
+ * @property string $meta_desc
+ * @property string $category_banner
+ * @property string $category_thumbnail
+ * @property string $slug
+ * @property string $desc
+ * @property int|null $published_status
+ * @property int|null $popular_status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Service[] $services
+ * @property-read int|null $services_count
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory categoriesTitleById()
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory filterByStatus($filterByStatus)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory findSimilarSlugs(string $attribute, array $config, string $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory orderByIdDesc()
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory query()
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory searchByTitle($search)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereCategoryBanner($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereCategoryThumbnail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereDesc($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereMetaDesc($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory wherePopularStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory wherePublishedStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereUpdatedAt($value)
+ */
+	class IdeHelperServiceCategory extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\ServiceFaq
+ *
+ * @mixin IdeHelperServiceFaq
+ * @property int $id
+ * @property int $service_id
+ * @property string $question
+ * @property string $answer
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceFaq newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceFaq newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceFaq query()
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceFaq whereAnswer($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceFaq whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceFaq whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceFaq whereQuestion($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceFaq whereServiceId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceFaq whereUpdatedAt($value)
+ */
+	class IdeHelperServiceFaq extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\ServiceFeature
+ *
+ * @mixin IdeHelperServiceFeature
+ * @property int $id
+ * @property int $service_id
+ * @property string $feature_desc
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceFeature newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceFeature newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceFeature query()
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceFeature whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceFeature whereFeatureDesc($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceFeature whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceFeature whereServiceId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceFeature whereUpdatedAt($value)
+ */
+	class IdeHelperServiceFeature extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\ServiceImage
+ *
+ * @mixin IdeHelperServiceImage
+ * @property int $id
+ * @property int $service_id
+ * @property string $filename
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceImage newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceImage newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceImage query()
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceImage whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceImage whereFilename($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceImage whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceImage whereServiceId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceImage whereUpdatedAt($value)
+ */
+	class IdeHelperServiceImage extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\User
  *
  * @mixin IdeHelperUser
  * @property int $id
  * @property string $name
+ * @property string $username
  * @property string $email
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property string $password
@@ -36,6 +205,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereUsername($value)
  */
 	class IdeHelperUser extends \Eloquent {}
 }

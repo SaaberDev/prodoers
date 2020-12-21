@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xl-2 col-lg-3 col-md-3 v-center text-center">
-                <div class="text-center"> <img src="{{ asset('img/designwalalogo.svg') }}" class="img-fluid w-75" alt=""> </div>
+                <div class="text-center"> <img src="{{ asset('_admin_panel/img/designwalalogo.svg') }}" class="img-fluid w-75" alt=""> </div>
             </div>
             <div class="col-xl-5 col-lg-3 col d-none d-lg-block"> &nbsp;</div>
             <div class="col-xl-2 col-lg-3 col-md-4  v-center">
@@ -28,7 +28,7 @@
                             </a>
                         </li>
                         <li class="nav-item dropdown v-center position-relative">
-                            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img src="{{ asset('img/bellicon.svg') }}" class="img-fluid" alt=""> <span class="notify">
+                            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img src="{{ asset('_admin_panel/img/bellicon.svg') }}" class="img-fluid" alt=""> <span class="notify">
                                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 14 14">
                                             <defs>
                                                 <radialGradient id="radial-gradient" cx="0.5" cy="0.5" r="1.477" gradientTransform="translate(0 0.02) scale(1 0.959)" gradientUnits="objectBoundingBox">
@@ -46,8 +46,8 @@
                                 <div class="dropdown-divider"></div> <a class="dropdown-item" href="#">Another action</a> <a class="dropdown-item" href="#">Something else here</a> </div>
                         </li>
                         <li class="nav-item dropdown v-center">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img src="{{ asset('img/headermanlogo.png') }}" alt="" class="img-fluid"> </a>
-                            <div class="dropdown-menu profile_dropdown" aria-labelledby="navbarDropdown"> <a class="dropdown-item" href="#">Your Name <span><img src="{{ asset('img/headermanlogo.png') }}" alt="" height="30" width="30"></span></a>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img src="{{ asset('_admin_panel/img/headermanlogo.png') }}" alt="" class="img-fluid"> </a>
+                            <div class="dropdown-menu profile_dropdown" aria-labelledby="navbarDropdown"> <a class="dropdown-item" href="#">Your Name <span><img src="{{ asset('_admin_panel/img/headermanlogo.png') }}" alt="" height="30" width="30"></span></a>
                                 <div class="dropdown-divider"></div> <a class="dropdown-item" href="#">Another action</a> <a class="dropdown-item" href="#">Something else here</a> </div>
                         </li>
                         <li class="nav-item dropdown v-center">
@@ -79,7 +79,7 @@
                             </a>
                         </li>
                         <li class="nav-item dropdown v-center position-relative">
-                            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img src="{{ asset('img/bellicon.svg') }}" class="img-fluid" alt=""> <span class="notify">
+                            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img src="{{ asset('_admin_panel/img/bellicon.svg') }}" class="img-fluid" alt=""> <span class="notify">
                                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14" viewBox="0 0 14 14">
                                             <defs>
                                                 <radialGradient id="radial-gradient" cx="0.5" cy="0.5" r="1.477" gradientTransform="translate(0 0.02) scale(1 0.959)" gradientUnits="objectBoundingBox">
@@ -97,8 +97,8 @@
                                 <div class="dropdown-divider"></div> <a class="dropdown-item" href="#">Another action</a> <a class="dropdown-item" href="#">Something else here</a> </div>
                         </li>
                         <li class="nav-item dropdown v-center">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img src="{{ asset('img/headermanlogo.png') }}" alt="" class="img-fluid"> </a>
-                            <div class="dropdown-menu profile_dropdown" aria-labelledby="navbarDropdown"> <a class="dropdown-item" href="#">Your Name <span><img src="{{ asset('img/headermanlogo.png') }}" alt="" height="30" width="30"></span></a>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img src="{{ asset('_admin_panel/img/headermanlogo.png') }}" alt="" class="img-fluid"> </a>
+                            <div class="dropdown-menu profile_dropdown" aria-labelledby="navbarDropdown"> <a class="dropdown-item" href="#">Your Name <span><img src="{{ asset('_admin_panel/img/headermanlogo.png') }}" alt="" height="30" width="30"></span></a>
                                 <div class="dropdown-divider"></div> <a class="dropdown-item" href="#">Another action</a> <a class="dropdown-item" href="#">Something else here</a> </div>
                         </li>
                         <li class="nav-item dropdown v-center">
@@ -112,7 +112,7 @@
                 </div>
             </div>
             <div class="col-xl-2 col-lg-3 col-md-4 v-center text-center navMobileLOGO">
-                <div class="text-center"> <img src="{{ asset('img/designwalalogo.svg') }}" class="img-fluid w-75" alt=""> </div>
+                <div class="text-center"> <img src="{{ asset('_admin_panel/img/designwalalogo.svg') }}" class="img-fluid w-75" alt=""> </div>
             </div>
             <div class="col-xl-2 col-lg-3 col-md-4  v-center">
                 <div class="adminNavHeaderSearch">

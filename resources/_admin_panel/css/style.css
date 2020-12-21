@@ -623,6 +623,7 @@ table.dataTable.display tbody tr:hover {
     font-size: 18px;
     background: transparent;
     padding: 5px 13px;
+    cursor: pointer;
 }
 
 .page-item.active .page-link {

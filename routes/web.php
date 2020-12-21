@@ -32,6 +32,7 @@
     use App\Http\Controllers\user_panel\service\category\UserServiceCategoryController;
     use App\Http\Controllers\user_panel\service\UserServiceController;
     use App\Http\Controllers\user_panel\service\UserServiceSearchController;
+    use App\Models\ServiceCategory;
     use Illuminate\Support\Facades\Route;
 
 /*
@@ -52,12 +53,14 @@
             Route::get('/', [ServiceController::class, 'index'])->name('index');
             Route::get('/add-service', [ServiceController::class, 'create'])->name('create');
             Route::get('/edit-service', [ServiceController::class, 'edit'])->name('edit');
+            Route::post('/store-service', [ServiceController::class, 'store'])->name('store');
         });
         // Service Categories
         Route::prefix('/service-category')->name('category.')->group(function () {
             Route::get('/', [ServiceCategoryController::class, 'index'])->name('index');
             Route::get('/add-category', [ServiceCategoryController::class, 'create'])->name('create');
             Route::get('/edit-category', [ServiceCategoryController::class, 'edit'])->name('edit');
+            Route::post('/store-category', [ServiceCategoryController::class, 'store'])->name('store');
         });
     });
 
@@ -253,3 +256,15 @@
 //    Route::get('/{category_name}', [UserServiceCategoryController::class, 'show'])->name('show');
 //    Route::get('/{category_name}/{service_name}', [UserServiceCategoryController::class, 'show'])->name('show');
 //    Route::get('/search?=logo', [UserServiceSearchController::class, 'index'])->name('index');
+
+//    Route::get('/image', function (){
+//        $service_categories = ServiceCategory::orderByIdDesc();
+////        cache()->flush();
+//        $imgCache = \Image::cache(function($image) use ($service_categories) {
+////            $image->make('storage/admin_panel/services_categories/banner/' . $service_categories->category_banner);
+//            $image->make('storage/admin_panel/services_categories/banner/CVXVCX-38DB64CB714B15DB87589972F992D245-BANNER.png');
+//            $image->encode('webp', 75);
+//        }, 10, true);
+//
+//        return Image::make($imgCache)->response();
+//    });

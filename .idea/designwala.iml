@@ -124,8 +124,14 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/vlucas/phpdotenv" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/voku/portable-ascii" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/webmozart/assert" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/telescope" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/tabuna/breadcrumbs" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/artesaos/seotools" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/intervention/image" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/livewire/livewire" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/telescope" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/cocur/slugify" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/cviebrock/eloquent-sluggable" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/intervention/imagecache" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
