@@ -32,6 +32,8 @@
     use App\Http\Controllers\user_panel\service\category\UserServiceCategoryController;
     use App\Http\Controllers\user_panel\service\UserServiceController;
     use App\Http\Controllers\user_panel\service\UserServiceSearchController;
+    use App\Http\Livewire\Services\Service\CreateComponent;
+    use App\Models\Service;
     use App\Models\ServiceCategory;
     use Illuminate\Support\Facades\Route;
 
@@ -251,6 +253,28 @@
         // Blog
         Route::get('/blog', [UserBlogController::class, 'index'])->name('blog.index');
         Route::get('/single-blog', [UserBlogController::class, 'index'])->name('blog.show');
+    });
+
+    Route::get('/test', function (){
+//        $inputs = (new CreateComponent());
+//        dd($inputs);
+
+//        $services = Service::orderByIdDesc()->with('servicesImages')->get();
+//        foreach ($services as $service){
+//            dd(json_decode($service->servicesImages));
+//        }
+
+//        $m = \App\Models\ServiceImage::get();
+//        foreach ($m as  $k)
+//        $d = json_decode($k->filename);
+//        foreach ($d as $r){
+//            dd($r);
+//        }
+//        print $d[0];
+
+
+//            ->paginate();
+
     });
 
 //    Route::get('/{category_name}', [UserServiceCategoryController::class, 'show'])->name('show');

@@ -40,31 +40,37 @@ namespace App\Models{
  *
  * @mixin IdeHelperService
  * @property int $id
- * @property int $service_category_id
- * @property string $title
- * @property string $meta_desc
+ * @property int|null $service_category_id
+ * @property string|null $title
+ * @property string|null $meta_desc
  * @property int|null $published_status
  * @property string|null $slug
- * @property string $price
- * @property string $thumbnail
- * @property string $service_desc
+ * @property string|null $price
+ * @property string|null $thumbnail
+ * @property string|null $service_desc
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\ServiceCategory $service_categories
- * @method static \Illuminate\Database\Eloquent\Builder|Service newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Service newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Service query()
- * @method static \Illuminate\Database\Eloquent\Builder|Service whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Service whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Service whereMetaDesc($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Service wherePrice($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Service wherePublishedStatus($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Service whereServiceCategoryId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Service whereServiceDesc($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Service whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Service whereThumbnail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Service whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Service whereUpdatedAt($value)
+ * @property-read \App\Models\ServiceCategory|null $serviceCategories
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ServiceImage[] $servicesImages
+ * @property-read int|null $services_images_count
+ * @method static Builder|Service filterByStatus($filterByStatus)
+ * @method static Builder|Service findSimilarSlugs(string $attribute, array $config, string $slug)
+ * @method static Builder|Service newModelQuery()
+ * @method static Builder|Service newQuery()
+ * @method static Builder|Service orderByIdDesc()
+ * @method static Builder|Service query()
+ * @method static Builder|Service searchByTitle($search)
+ * @method static Builder|Service whereCreatedAt($value)
+ * @method static Builder|Service whereId($value)
+ * @method static Builder|Service whereMetaDesc($value)
+ * @method static Builder|Service wherePrice($value)
+ * @method static Builder|Service wherePublishedStatus($value)
+ * @method static Builder|Service whereServiceCategoryId($value)
+ * @method static Builder|Service whereServiceDesc($value)
+ * @method static Builder|Service whereSlug($value)
+ * @method static Builder|Service whereThumbnail($value)
+ * @method static Builder|Service whereTitle($value)
+ * @method static Builder|Service whereUpdatedAt($value)
  */
 	class IdeHelperService extends \Eloquent {}
 }
@@ -166,6 +172,7 @@ namespace App\Models{
  * @property string $filename
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Service $services
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceImage newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceImage newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceImage query()

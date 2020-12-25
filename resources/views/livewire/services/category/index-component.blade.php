@@ -24,7 +24,10 @@
                 </div>
             </div>
             <div class="col"></div>
-            @include('livewire.includes.paginate_link')
+            @if($service_categories->total() > 15)
+                {{ $service_categories->links('vendor.livewire.designwala-pagination') }}
+            @else
+            @endif
         </div>
     </div>
 
@@ -47,8 +50,12 @@
                         @forelse($service_categories as $service_category)
                             <tr>
                                 <td>{{ $service_category->title }}</td>
-                                <td><img src="{{ asset('storage/admin_panel/services_categories/thumbnail/' . $service_category->category_thumbnail) }}" alt="" class="img-fluid" style="height: 25px;"> </td>
-                                <td><img src="{{ asset('storage/admin_panel/services_categories/thumbnail/' . $service_category->category_thumbnail) }}" alt="" class="img-fluid" style="height: 25px;"> </td>
+{{--                                <td><img src="{{ asset('storage/admin_panel/services_categories/thumbnail/' . $service_category->category_thumbnail) }}" alt="" class="img-fluid" style="height: 25px;"> </td>--}}
+{{--                                <td><img src="{{ asset('storage/admin_panel/services_categories/thumbnail/' . $service_category->category_thumbnail) }}" alt="" class="img-fluid" style="height: 25px;"> </td>--}}
+
+                                {{-- Demo --}}
+                                <td><img src="{{ $service_category->category_banner }}" alt="" class="img-fluid" style="height: 25px;"> </td>
+                                <td><img src="{{ $service_category->category_thumbnail }}" alt="" class="img-fluid" style="height: 25px;"> </td>
                                 <td>
                                     @if($service_category->popular_status == 1)
                                         <div class="tableDataLastButtonLiketab  tabletabGREEN"><span class="">Active</span></div>

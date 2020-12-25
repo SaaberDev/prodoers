@@ -23,30 +23,11 @@ class CreateServicesTable extends Migration
                 ->references('id')->on('service_categories')
                 ->onDelete('cascade')->onUpdate('cascade');
 
-//            // Foreign Key Constraint [Service Images Table]
-//            $table->unsignedBigInteger('category_id');
-//            $table->foreign('category_id')
-//                ->references('id')->on('service_categories')
-//                ->onDelete('cascade')->onUpdate('cascade');
-//
-//            // Foreign Key Constraint [Service Features Table]
-//            $table->unsignedBigInteger('category_id');
-//            $table->foreign('category_id')
-//                ->references('id')->on('service_categories')
-//                ->onDelete('cascade')->onUpdate('cascade');
-//
-//            // Foreign Key Constraint [Service FAQ's Table]
-//            $table->unsignedBigInteger('category_id');
-//            $table->foreign('category_id')
-//                ->references('id')->on('service_categories')
-//                ->onDelete('cascade')->onUpdate('cascade');
-
-
             // Primary Attributes
             $table->string('title');
             $table->longText('meta_desc');
-            $table->tinyInteger('published_status')->nullable();
-            $table->string('slug')->nullable();
+            $table->tinyInteger('published_status')->default(0)->nullable();
+            $table->string('slug');
             $table->decimal('price');
             $table->string('thumbnail');
             $table->longText('service_desc');

@@ -26,9 +26,9 @@ class ServiceCategory extends Model
         ];
     }
 
-    public function services(): HasMany
+    public function services(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->hasMany(Service::class);
+        return $this->belongsToMany(Service::class);
     }
 
     public function scopeOrderByIdDesc($query)
@@ -50,10 +50,10 @@ class ServiceCategory extends Model
             });
     }
 
-    public function getImage($query, $id)
-    {
-        return $query->where('category_banner',  $id)->first();
-    }
+//    public function getImage($query, $id)
+//    {
+//        return $query->where('category_banner',  $id)->first();
+//    }
     // storage/admin_panel/services_categories/banner/
 
     public function scopeCategoriesTitleById($query)

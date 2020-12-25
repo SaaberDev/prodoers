@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Livewire\Services;
+namespace App\Http\Livewire\Services\Category;
 
 use App\Models\ServiceCategory;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class ServiceCategoryIndexComponent extends Component
+class IndexComponent extends Component
 {
     use WithPagination;
 
@@ -44,8 +44,6 @@ class ServiceCategoryIndexComponent extends Component
             ->SearchByTitle($search)
             ->paginate($this->recordPerPage);
 
-        $img = ServiceCategory::orderByIdDesc();
-
-        return view('livewire.services.service-category-index-component', compact('service_categories', 'img'));
+        return view('livewire.services.category.index-component', compact('service_categories'));
     }
 }

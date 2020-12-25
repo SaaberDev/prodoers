@@ -21,24 +21,25 @@ class ServiceRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'service_title' => 'required',
-            'meta_description' => 'required',
             'published_status' => 'nullable',
+            'meta_description' => 'required',
             'allCategories' => 'required',
             'service_price' => 'required',
-            'service_image' => 'required|image|mimes:jpg,bmp,png',
-            'service_thumbnail' => 'required|image|mimes:jpg,bmp,png',
-            'service_features.1' => 'required',
             'service_description' => 'required',
-            'service_faq.1' => 'required',
+//            'service_image' => 'required|image|mimes:jpg,bmp,png',
+//            'service_thumbnail' => 'required|image|mimes:jpg,bmp,png',
+//            'features' => 'required',
+//            'faq.question' => 'required',
+//            'faq.answer' => 'required',
         ];
     }
 
-    public function messages()
-    {
-        //
-    }
+//    public function messages()
+//    {
+//        //
+//    }
 }

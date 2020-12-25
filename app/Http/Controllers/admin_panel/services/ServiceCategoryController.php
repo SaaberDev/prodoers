@@ -50,8 +50,8 @@ class ServiceCategoryController extends Controller
             'published_status' => $request->input('category_status', 0),
             'meta_desc' => $request->input('meta_description'),
             'slug' => SlugService::createSlug(ServiceCategory::class, 'slug', $request->input('service_category_title')),
-            'category_banner' => SingleImageUploadHandler($request, 'banner_image', 'service_category_title', 'banner', '.png', 'admin_panel/services_categories/banner/'),
-            'category_thumbnail' => SingleImageUploadHandler($request, 'thumbnail_image', 'service_category_title', 'thumbnail', '.png', 'admin_panel/services_categories/thumbnail/'),
+            'category_banner' => SingleImageUploadHandler($request, 'banner_image', 'service_category_title', 'banner', 'admin_panel/services_categories/banner/'),
+            'category_thumbnail' => SingleImageUploadHandler($request, 'thumbnail_image', 'service_category_title', 'thumbnail','admin_panel/services_categories/thumbnail/'),
             'desc' => $request->input('service_description'),
         ]);
 

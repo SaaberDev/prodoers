@@ -23,7 +23,7 @@
                 </div>
             </div>
         </div>
-        @livewire('services.service-category-index-component')
+        @livewire('services.category.index-component')
     </div>
 @endsection
 

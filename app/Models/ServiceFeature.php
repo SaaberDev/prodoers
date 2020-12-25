@@ -11,4 +11,11 @@ use Illuminate\Database\Eloquent\Model;
 class ServiceFeature extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
+
+    public function services()
+    {
+        return $this->belongsTo(Service::class);
+    }
 }

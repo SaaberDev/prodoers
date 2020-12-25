@@ -3,13 +3,18 @@
 namespace App\Http\Controllers\admin_panel\services;
 
 use App\Http\Controllers\Controller;
+use App\Http\Livewire\Services\Service\CreateComponent;
 use App\Http\Requests\Services\ServiceRequest;
 use App\Models\Service;
 use App\Models\ServiceCategory;
+use App\Models\ServiceFaq;
+use App\Models\ServiceFeature;
+use App\Models\ServiceImage;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -40,22 +45,49 @@ class ServiceController extends Controller
      * Store a newly created resource in storage.
      *
      * @param ServiceRequest $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     public function store(ServiceRequest $request)
     {
-        Service::query()->firstOrCreate([
-            'title' => $request->input('service_category_title'),
-            'popular_status' => $request->input('category_popular', 0),
-            'published_status' => $request->input('category_status', 0),
+        $services = Service::query()->firstOrCreate([
+            'title' => $request->input('service_title'),
+            'published_status' => $request->input('published_status'),
             'meta_desc' => $request->input('meta_description'),
-            'slug' => SlugService::createSlug(Service::class, 'slug', $request->input('service_category_title')),
-            'category_banner' => SingleImageUploadHandler($request, 'banner_image', 'service_category_title', 'banner', '.png', 'admin_panel/services_categories/banner/'),
-            'category_thumbnail' => SingleImageUploadHandler($request, 'thumbnail_image', 'service_category_title', 'thumbnail', '.png', 'admin_panel/services_categories/thumbnail/'),
-            'desc' => $request->input('service_description'),
+            'service_category_id' => $request->input('allCategories'),
+            'price' => $request->input('service_price'),
+            'slug' => SlugService::createSlug(Service::class, 'slug', $request->input('service_title')),
+            'thumbnail' => SingleImageUploadHandler($request, 'service_thumbnail', 'service_title', 'thumbnail',
+                'admin_panel/services/thumbnail/'),
+            'service_desc' => $request->input('service_description'),
         ]);
 
-        return redirect()->back();
+        ServiceImage::query()->firstOrCreate([
+            'service_id' => $services->id,
+            'filename' => MultiImageUploadHandler($request, 'service_image', 'service_title', 'service-image',
+                'admin_panel/services/service_image/')
+        ]);
+
+        $countFeatures = count($request->input('features'));
+
+        for ($i = 0; $i < $countFeatures; $i++) {
+            ServiceFeature::query()->firstOrCreate([
+                'service_id' => $services->id,
+                'feature_desc' => $request->input('features')[$i],
+            ]);
+        }
+
+        $countQuestion = count($request->input('question'));
+        $countAnswer = count($request->input('answer'));
+
+        for ($i = 0; $i < $countQuestion && $countAnswer; $i++) {
+            ServiceFaq::query()->firstOrCreate([
+                'service_id' => $services->id,
+                'question' => $request->input('question')[$i],
+                'answer' => $request->input('answer')[$i],
+            ]);
+        }
+
+//        return redirect()->back();
     }
 
     /**
