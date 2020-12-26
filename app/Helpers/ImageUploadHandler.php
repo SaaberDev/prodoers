@@ -44,16 +44,9 @@
     }
 
     if (!function_exists('MultiImageUploadHandler')){
-        /**
-         * @param $request
-         * @param string $uploadedFile
-         * @param string $fileNameInput
-         * @param string $uniqueKey
-         * @param string $path
-         * @return false|string
-         */
         function MultiImageUploadHandler($request, $uploadedFile = '', $fileNameInput = '', $uniqueKey = '', $path = ''){
             $files = $request->file($uploadedFile);
+//            dd($files);
             $stores = [];
             if ($request->hasFile($uploadedFile)) {
                 $i = 1;
@@ -74,7 +67,8 @@
                     $i++;
                 }
             }
-            return json_encode($stores);
+//            dd($stores);
+            return $stores;
         }
     }
 
