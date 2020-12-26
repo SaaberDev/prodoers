@@ -17,6 +17,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Validator;
 
 class ServiceController extends Controller
 {
@@ -49,45 +50,45 @@ class ServiceController extends Controller
      */
     public function store(ServiceRequest $request)
     {
-        $services = Service::query()->firstOrCreate([
-            'title' => $request->input('service_title'),
-            'published_status' => $request->input('published_status'),
-            'meta_desc' => $request->input('meta_description'),
-            'service_category_id' => $request->input('allCategories'),
-            'price' => $request->input('service_price'),
-            'slug' => SlugService::createSlug(Service::class, 'slug', $request->input('service_title')),
-            'thumbnail' => SingleImageUploadHandler($request, 'service_thumbnail', 'service_title', 'thumbnail',
-                'admin_panel/services/thumbnail/'),
-            'service_desc' => $request->input('service_description'),
-        ]);
+//        $services = Service::query()->firstOrCreate([
+//            'title' => $request->input('service_title'),
+//            'published_status' => $request->input('published_status'),
+//            'meta_desc' => $request->input('meta_description'),
+//            'service_category_id' => $request->input('allCategories'),
+//            'price' => $request->input('service_price'),
+//            'slug' => SlugService::createSlug(Service::class, 'slug', $request->input('service_title')),
+//            'thumbnail' => SingleImageUploadHandler($request, 'service_thumbnail', 'service_title', 'thumbnail',
+//                'admin_panel/services/thumbnail/'),
+//            'service_desc' => $request->input('service_description'),
+//        ]);
+//
+//        foreach ($request->input('features') as $input){
+//            ServiceFeature::query()->firstOrCreate([
+//                'service_id' => $services->id,
+//                'feature_desc' => $input
+//            ]);
+//        }
+//
+//        ServiceImage::query()->firstOrCreate([
+//            'service_id' => $services->id,
+//            'filename' => MultiImageUploadHandler($request, 'service_image', 'service_title', 'service-image',
+//                'admin_panel/services/service_image/')
+//        ]);
 
-        ServiceImage::query()->firstOrCreate([
-            'service_id' => $services->id,
-            'filename' => MultiImageUploadHandler($request, 'service_image', 'service_title', 'service-image',
-                'admin_panel/services/service_image/')
-        ]);
+//        collect($request->input('faqs.question'))->each(function ($faq){
+//            var_dump($faq);
+//            die();
+//        });
 
-        $countFeatures = count($request->input('features'));
+//        foreach ($request->input('faqs') as $input){
+//            ServiceFaq::query()->firstOrCreate([
+////                'service_id' => $services->id,
+//                'question' => $input,
+//                'answer' => $input
+//            ]);
+//        }
 
-        for ($i = 0; $i < $countFeatures; $i++) {
-            ServiceFeature::query()->firstOrCreate([
-                'service_id' => $services->id,
-                'feature_desc' => $request->input('features')[$i],
-            ]);
-        }
-
-        $countQuestion = count($request->input('question'));
-        $countAnswer = count($request->input('answer'));
-
-        for ($i = 0; $i < $countQuestion && $countAnswer; $i++) {
-            ServiceFaq::query()->firstOrCreate([
-                'service_id' => $services->id,
-                'question' => $request->input('question')[$i],
-                'answer' => $request->input('answer')[$i],
-            ]);
-        }
-
-//        return redirect()->back();
+        return redirect()->back();
     }
 
     /**

@@ -56,6 +56,7 @@
             Route::get('/add-service', [ServiceController::class, 'create'])->name('create');
             Route::get('/edit-service', [ServiceController::class, 'edit'])->name('edit');
             Route::post('/store-service', [ServiceController::class, 'store'])->name('store');
+            Route::post('/ajax-store', [ServiceController::class, 'ajaxStore'])->name('ajaxStore');
         });
         // Service Categories
         Route::prefix('/service-category')->name('category.')->group(function () {

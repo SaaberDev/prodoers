@@ -16,11 +16,11 @@ class CreateServiceFeaturesTable extends Migration
         Schema::create('service_features', function (Blueprint $table) {
             $table->id();
             // Foreign Key Constraint
-            $table->unsignedBigInteger('service_id');
+            $table->unsignedBigInteger('service_id')->nullable();
             $table->foreign('service_id')
                 ->references('id')->on('services')
                 ->onDelete('cascade')->onUpdate('cascade');
-            $table->string('feature_desc');
+            $table->string('feature_desc')->nullable();
             $table->timestamps();
         });
     }

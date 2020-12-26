@@ -24,17 +24,17 @@ class ServiceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'service_title' => 'required',
-            'published_status' => 'nullable',
-            'meta_description' => 'required',
-            'allCategories' => 'required',
-            'service_price' => 'required',
-            'service_description' => 'required',
+//            'service_title' => 'required',
+//            'published_status' => 'nullable',
+//            'meta_description' => 'required',
+//            'allCategories' => 'required',
+//            'service_price' => 'required',
+//            'service_description' => 'required',
 //            'service_image' => 'required|image|mimes:jpg,bmp,png',
 //            'service_thumbnail' => 'required|image|mimes:jpg,bmp,png',
-//            'features' => 'required',
-//            'faq.question' => 'required',
-//            'faq.answer' => 'required',
+//            'features.*'  => 'required',
+            'faqs.question.*' => 'required',
+            'faqs.answer.*' => 'required',
         ];
     }
 
