@@ -36,6 +36,7 @@ class IndexComponent extends Component
         $this->gotoPage(1);
     }
 
+
     public function render()
     {
         $search = $this->search;

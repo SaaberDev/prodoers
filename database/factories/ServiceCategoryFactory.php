@@ -26,7 +26,7 @@ class ServiceCategoryFactory extends Factory
             'popular_status' => $this->faker->numberBetween(0, 1),
             'published_status' => $this->faker->numberBetween(0, 1),
             'meta_desc' => $this->faker->text,
-            'slug' => $this->faker->text,
+            'slug' => $this->faker->slug,
             'category_banner' => $this->faker->imageUrl($width = 640, $height = 480),
             'category_thumbnail' => $this->faker->imageUrl($width = 640, $height = 480),
             'desc' => $this->faker->text,

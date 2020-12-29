@@ -23,13 +23,40 @@ class ServiceCategoryRequest extends FormRequest
      */
     public function rules(): array
     {
+        /*switch ($this->method()){
+            case 'GET':
+            case 'DELETE':
+                return [];
+            case 'POST':
+                return [
+                    'service_category_title' => 'required',
+                    'category_popular' => 'nullable',
+                    'category_status' => 'nullable',
+                    'meta_description' => 'required',
+                    'banner_image' => 'required|image|mimes:jpg,bmp,png',
+                    'thumbnail_image' => 'required|image|mimes:jpg,bmp,png',
+                    'service_description' => 'required',
+                ];
+            case 'PUT':
+            case 'PATCH':
+                return [
+                    'service_category_title' => 'required',
+                    'category_popular' => 'nullable',
+                    'category_status' => 'nullable',
+                    'meta_description' => 'required',
+                    'banner_image' => 'nullable|image|mimes:jpg,bmp,png',
+                    'thumbnail_image' => 'nullable|image|mimes:jpg,bmp,png',
+                    'service_description' => 'required',
+                ];
+            default: break;
+        }*/
         return [
             'service_category_title' => 'required',
             'category_popular' => 'nullable',
             'category_status' => 'nullable',
             'meta_description' => 'required',
-            'banner_image' => 'required|image|mimes:jpg,bmp,png',
-            'thumbnail_image' => 'required|image|mimes:jpg,bmp,png',
+            'banner_image' => 'nullable|image|mimes:jpg,bmp,png',
+            'thumbnail_image' => 'nullable|image|mimes:jpg,bmp,png',
             'service_description' => 'required',
         ];
     }

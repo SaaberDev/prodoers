@@ -56,16 +56,19 @@
             Route::get('/add-service', [ServiceController::class, 'create'])->name('create');
             Route::get('/edit-service', [ServiceController::class, 'edit'])->name('edit');
             Route::post('/store-service', [ServiceController::class, 'store'])->name('store');
-            Route::post('/ajax-store', [ServiceController::class, 'ajaxStore'])->name('ajaxStore');
         });
         // Service Categories
         Route::prefix('/service-category')->name('category.')->group(function () {
             Route::get('/', [ServiceCategoryController::class, 'index'])->name('index');
             Route::get('/add-category', [ServiceCategoryController::class, 'create'])->name('create');
-            Route::get('/edit-category', [ServiceCategoryController::class, 'edit'])->name('edit');
+            Route::get('/edit-category/{id}', [ServiceCategoryController::class, 'edit'])->name('edit');
             Route::post('/store-category', [ServiceCategoryController::class, 'store'])->name('store');
+            Route::patch('/update-category/{id}', [ServiceCategoryController::class, 'update'])->name('update');
         });
     });
+
+//    Route::delete('/edit-category/destroy-banner-image/{id}', [ServiceCategoryController::class, 'destroyBannerImage'])->name('destroyBannerImage');
+//    Route::post('/edit-category/destroy-thumbnail-image/{id}', [ServiceCategoryController::class, 'destroyBannerImage'])->name('destroyThumbnailImage');
 
 // Chat Route Section
     Route::name('chats.')->group(function () {
@@ -293,3 +296,4 @@
 //
 //        return Image::make($imgCache)->response();
 //    });
+

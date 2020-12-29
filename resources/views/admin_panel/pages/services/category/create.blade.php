@@ -80,6 +80,7 @@
                             </label>
                             <div class="input-group">
                                 <input type='text'
+                                       name="banner_image"
                                        value="{{ old('banner_image') }}"
                                        class="form-control {{ $errors->has('banner_image') ? ' is-invalid' : '' }}"
                                        onchange="preview(this);"
@@ -91,7 +92,6 @@
                                         <span class="upl" id="upload">Choose</span>
                                         <input type='file'
                                                name="banner_image"
-                                               value="{{ old('banner_image') }}"
                                                class="upload up"
                                         />
                                     </span>
@@ -112,6 +112,8 @@
                             </label>
                             <div class="input-group">
                                 <input type='text'
+                                       name="thumbnail_image"
+                                       value="{{ old('thumbnail_image') }}"
                                        class="form-control {{ $errors->has('thumbnail_image') ? ' is-invalid' : '' }}"
                                        onchange="preview(this);"
                                        readonly
@@ -122,7 +124,6 @@
                                         <span class="upl" id="upload">Choose</span>
                                         <input type='file'
                                                name="thumbnail_image"
-                                               value="{{ old('thumbnail_image') }}"
                                                class="upload up"
                                         />
                                     </span>

@@ -25,16 +25,13 @@ class ServiceRequest extends FormRequest
     {
         return [
             'service_title' => 'required',
-//            'published_status' => 'nullable',
-//            'meta_description' => 'required',
-//            'allCategories' => 'required',
-//            'service_price' => 'required',
-//            'service_description' => 'required',
-//            'service_image' => 'required|image|mimes:jpg,bmp,png',
-//            'service_thumbnail' => 'required|image|mimes:jpg,bmp,png',
-//            'features.*'  => 'required',
-            'faqs.question.*' => 'required',
-            'faqs.answer.*' => 'required',
+            'published_status' => 'nullable',
+            'meta_description' => 'required',
+            'allCategories' => 'required',
+            'service_price' => 'required',
+            'service_images.*' => 'required|image|mimes:jpg,bmp,png',
+            'service_thumbnail' => 'required|image|mimes:jpg,bmp,png',
+            'service_description' => 'required',
         ];
     }
 

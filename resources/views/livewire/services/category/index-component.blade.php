@@ -24,10 +24,10 @@
                 </div>
             </div>
             <div class="col"></div>
-            @if($service_categories->total() > 15)
-                {{ $service_categories->links('vendor.livewire.designwala-pagination') }}
-            @else
-            @endif
+{{--            @if($service_categories->total() > 15)--}}
+{{--                {{ $service_categories->links('vendor.livewire.designwala-pagination') }}--}}
+{{--            @else--}}
+{{--            @endif--}}
         </div>
     </div>
 
@@ -72,7 +72,7 @@
                                 </td>
                                 <td>
                                     <div class="">
-                                        <a href="{{ route('services.category.edit') }}" class="btn p-0 m-0" data-toggle="tooltip" title="" data-original-title="view or edit">
+                                        <a href="{{ route('services.category.edit', $service_category->id) }}" class="btn p-0 m-0" data-toggle="tooltip" title="" data-original-title="view or edit">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="14.322" height="14.322" viewBox="0 0 14.322 14.322">
                                                 <g transform="translate(-2.5 -2.203)">
                                                     <path d="M8.907,6H4.313A1.313,1.313,0,0,0,3,7.313V16.5a1.313,1.313,0,0,0,1.313,1.313H13.5A1.313,1.313,0,0,0,14.815,16.5V11.907" transform="translate(0 -1.79)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>

@@ -51,8 +51,10 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\ServiceCategory|null $serviceCategories
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ServiceImage[] $servicesImages
- * @property-read int|null $services_images_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ServiceFeature[] $serviceFeatures
+ * @property-read int|null $service_features_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ServiceImage[] $serviceImages
+ * @property-read int|null $service_images_count
  * @method static Builder|Service filterByStatus($filterByStatus)
  * @method static Builder|Service findSimilarSlugs(string $attribute, array $config, string $slug)
  * @method static Builder|Service newModelQuery()
@@ -96,6 +98,8 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory categoriesTitleById()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory filterByStatus($filterByStatus)
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory findSimilarSlugs(string $attribute, array $config, string $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory getAllCategories()
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory getSlug($slug)
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory orderByIdDesc()
@@ -146,10 +150,11 @@ namespace App\Models{
  *
  * @mixin IdeHelperServiceFeature
  * @property int $id
- * @property int $service_id
- * @property string $feature_desc
+ * @property int|null $service_id
+ * @property string|null $feature_desc
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Service $services
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceFeature newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceFeature newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceFeature query()

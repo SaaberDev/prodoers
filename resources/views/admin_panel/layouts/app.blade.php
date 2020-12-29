@@ -41,5 +41,6 @@
 <script src="{{ mix('js/app.js') }}"></script>
 @livewireScripts
 @stack('scripts')
+@include('alerts.admin_panel.toast_alert')
 </body>
 </html>

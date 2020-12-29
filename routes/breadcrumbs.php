@@ -49,10 +49,11 @@
         ->parent('services.category.index')
         ->push('Add Service Category', route('services.category.create'))
     );
+
     // Dashboard > Service Categories > Edit Category
     Breadcrumbs::for('services.category.edit', fn(Trail $trail) => $trail
         ->parent('services.category.index')
-        ->push('Edit Category', route('services.category.edit'))
+        ->push('Edit Category', route('services.category.edit', ['id']))
     );
 
     /*

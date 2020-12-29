@@ -6,6 +6,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Query\Builder;
 
 /**
  * @mixin IdeHelperServiceCategory
@@ -15,7 +16,6 @@ class ServiceCategory extends Model
     use HasFactory, Sluggable;
 
     protected $guarded = [];
-//    public $published = 1;
 
     public function sluggable(): array
     {
@@ -29,6 +29,15 @@ class ServiceCategory extends Model
     public function services(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(Service::class);
+    }
+
+    public function scopeGetAllCategories($query)
+    {
+        return $query->all();
+    }
+
+    public function scopeGetSlug($query, $slug){
+        return $query->where('slug', $slug);
     }
 
     public function scopeOrderByIdDesc($query)
