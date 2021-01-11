@@ -127,7 +127,7 @@
                         <div class="sectionServicePopularCategoriesSingleCategories  m-auto">
                             <div class="sectionServicePopularCategoriesSingleImage">
 
-                                <img src="{{ asset('_user_panel/img/servicepage/popularcategories/logo_branding.svg') }}" alt="categories image one" class="img-fluid">
+                                <img src="{{ asset(config('designwala_paths.admin.images.show.categories.thumbnails') . $popular_category->category_thumbnail) }}" alt="categories image one" class="img-fluid">
                             </div>
                             <div class="sectionServicePopularCategoriesSingleContent">
                                 <h3 class="pt-3"><a href="" class="text-dark">{{ $popular_category->title }}</a></h3>

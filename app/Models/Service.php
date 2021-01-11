@@ -68,7 +68,7 @@ class Service extends Model
 
     public function scopeOrderByIdDesc(Builder $query)
     {
-        return $query->orderBy('id', 'desc')/*->with('serviceCategories')*/;
+        return $query->orderBy('id', 'desc')->with('serviceCategories');
     }
 
     public function scopeFilterByStatus($query, $filterByStatus)

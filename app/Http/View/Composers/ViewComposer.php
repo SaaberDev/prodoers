@@ -14,17 +14,14 @@
         {
             $view->with(
                 'service_categories',
-                    ServiceCategory::whereHas('services')->with('services', function ($query){
-                        $query->getAllPublished()->getAllPopular();
-                    })->getAllPublished()->orderByIdDesc()->get()
+                    ServiceCategory::whereHas('services')->with(['services' => function ($query){
+                        $query->getAllPublished();
+                    }])->getAllPublished()->orderByIdDesc()->get()
             );
 
             $view->with(
                 'services',
-                    Service::getAllPublished()->getAllPopular()->orderByIdDesc()->get(),
+                    Service::getAllPublished()->orderByIdDesc()->get(),
             );
-
-
-
         }
     }
