@@ -68,6 +68,7 @@ namespace App\Models{
  * @method static Builder|Service getAllPopular()
  * @method static Builder|Service getAllPublished()
  * @method static Builder|Service getSlug($slug)
+ * @method static Builder|Service hideCurrent($arg)
  * @method static Builder|Service newModelQuery()
  * @method static Builder|Service newQuery()
  * @method static Builder|Service orderByIdDesc()
@@ -109,13 +110,13 @@ namespace App\Models{
  * @property-read int|null $service_category_faqs_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Service[] $services
  * @property-read int|null $services_count
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory categoriesTitleById()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory filterByStatus($filterByStatus)
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory findSimilarSlugs(string $attribute, array $config, string $slug)
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory getAllCategories()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory getAllPopular()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory getAllPublished()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory getSlug($slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory getTitle()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory orderByIdDesc()
@@ -250,12 +251,12 @@ namespace App\Models{
  *
  * @mixin IdeHelperTag
  * @property int $id
- * @property string $tags
+ * @property string $title
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Service[] $services
  * @property-read int|null $services_count
- * @method static \Illuminate\Database\Eloquent\Builder|Tag filterByStatus($filterByStatus)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag getTitle()
  * @method static \Illuminate\Database\Eloquent\Builder|Tag newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Tag newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Tag orderByIdDesc()
@@ -263,7 +264,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Tag searchByTitle($search)
  * @method static \Illuminate\Database\Eloquent\Builder|Tag whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Tag whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Tag whereTags($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Tag whereUpdatedAt($value)
  */
 	class IdeHelperTag extends \Eloquent {}

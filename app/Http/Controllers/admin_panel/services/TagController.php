@@ -48,9 +48,9 @@ class TagController extends Controller
             $tagInputs = collect(explode(',', $request->input('tags')));
 //            dd($tagInputs);
             $tagInputs->each(function ($value) {
-//                dd($value);
+//                dd();
                 Tag::firstOrCreate([
-                    'title' => $value,
+                    'title' => str_replace(' ', '', $value),
                 ]);
             });
         });
@@ -93,9 +93,11 @@ class TagController extends Controller
 //        $notify = [
 //
 //        ];
-        \DB::transaction(function () use ($request, $tags){
+        $input = str_replace(' ','', $request->input('tags'));
+//        dd($input);
+        \DB::transaction(function () use ($request, $tags, $input){
             $tags->update([
-                'title' => $request->input('tags'),
+                'title' => $input,
             ]);
 
         });
@@ -106,10 +108,18 @@ class TagController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        //
+        $notify = [
+            'alert-type' => 'success_toast',
+            'message' => 'Tag Deleted !',
+        ];
+        $tags = Tag::findOrFail($id);
+        \DB::transaction(function () use ($tags){
+            $tags->delete();
+        });
+        return redirect()->back()->with($notify);
     }
 }

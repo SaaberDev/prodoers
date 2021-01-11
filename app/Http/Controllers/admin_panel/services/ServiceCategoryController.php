@@ -13,7 +13,6 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
-use Spatie\Tags\Tag;
 
 class ServiceCategoryController extends Controller
 {

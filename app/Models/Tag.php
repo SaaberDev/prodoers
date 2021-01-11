@@ -19,6 +19,11 @@ class Tag extends Model
         return $this->belongsToMany(Service::class, 'service_tag', 'tag_id', 'service_id');
     }
 
+    public function scopeGetTitle($query)
+    {
+        return $query->orderByIdDesc()->get(['title', 'id']);
+    }
+
     public function scopeOrderByIdDesc($query)
     {
         return $query->orderBy('id', 'desc')/*->with('serviceCategories')*/;

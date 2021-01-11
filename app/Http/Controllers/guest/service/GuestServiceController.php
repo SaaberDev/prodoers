@@ -21,32 +21,10 @@ class GuestServiceController extends Controller
     public function index($service_slug)
     {
         $services = Service::getSlug($service_slug)->first();
-        $current_service_tags = $services->tags->pluck('tags');
-//        dd($current_service_tags);
-//        $related_services = Service::with('tags')->where('published_status', '=', 1)->get();
-//        foreach ($related_services as $related_service)
-//        $related_services->each(function ($related_service) use ($services){
-//            $related_service->tags->pluck('tags');
-//        });
-//        $related = $related_services->tags->pluck('tags');
-//        dd($related_services);
-        $querys = Tag::where('tags','like', '%' . $current_service_tags . '%')->get();
-//        foreach ($querys as $query)
-        dump($querys);
-        dd();
-
-        if ($current_service_tags === $related_services){
-            echo "hello";
-        } else {
-            echo "Nooooo";
-        }
-
-//        dd($services->tags);
-        $related_services = Tag::where('tags', 'like', '%' . $services->tags . '%')->get();
-        foreach ($related_services as $related_service)
-        dump($related_service);
-        dd();
-        return view('user_panel.pages.service_show', compact('services'));
+        $related_services = Service::hideCurrent($services)->getAllPublished()->whereHas('tags', function($query) use ($services) {
+            $query->whereIn('tags.id', $services->tags);
+        })->get();
+        return view('user_panel.pages.service_show', compact('services', 'related_services'));
     }
 
     /**

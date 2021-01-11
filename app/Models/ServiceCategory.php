@@ -67,7 +67,7 @@ class ServiceCategory extends Model
             });
     }
 
-    public function scopeCategoriesTitleById($query)
+    public function scopeGetTitle($query)
     {
         return $query->orderByIdDesc()->get(['title', 'id']);
     }

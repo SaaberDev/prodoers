@@ -73,16 +73,17 @@
                 Route::patch('/update-category/{id}', [ServiceCategoryController::class, 'update'])->name('update');
                 Route::get('/destroy-category/{id}', [ServiceCategoryController::class, 'destroy'])->name('destroy');
             });
-
+            // Tags
             Route::prefix('/tags')->name('tag.')->group(function () {
                 Route::get('/', [TagController::class, 'index'])->name('index');
                 Route::get('/edit-tag/{id}', [TagController::class, 'edit'])->name('edit');
+                Route::get('/destroy-tag/{id}', [TagController::class, 'destroy'])->name('destroy');
                 Route::post('/store-tag', [TagController::class, 'store'])->name('store');
                 Route::patch('/update-tag/{id}', [TagController::class, 'update'])->name('update');
             });
         });
 
-// Chat Route Section
+        // Chat Route Section
         Route::name('chats.')->group(function () {
             Route::prefix('/designwala-chat')->name('designwala_chat.')->group(function () {
                 Route::get('/', [DesignwalaChatController::class, 'index'])->name('index');
@@ -92,7 +93,7 @@
             });
         });
 
-// Order Route Section
+        // Order Route Section
         Route::name('orders.')->group(function () {
             // Orders
             Route::prefix('/orders')->name('order.')->group(function () {
@@ -106,7 +107,7 @@
             });
         });
 
-// Blog Route Section
+        // Blog Route Section
         Route::name('blogs.')->group(function () {
             // Blogs
             Route::prefix('/blogs')->name('blog.')->group(function () {
@@ -122,7 +123,7 @@
             });
         });
 
-// Client Route Section
+        // Client Route Section
         Route::name('clients.')->group(function () {
             // Clients
             Route::prefix('/clients')->name('client.')->group(function () {
@@ -135,13 +136,13 @@
             });
         });
 
-// Reviews Route Section
+        // Reviews Route Section
         Route::prefix('/reviews')->name('reviews.')->group(function () {
             // Reviews
             Route::get('/', [ReviewController::class, 'index'])->name('index');
         });
 
-// FAQ's Route Section
+        // FAQ's Route Section
         Route::prefix('/faqs')->name('faqs.')->group(function () {
             // FAQ's
             Route::get('/', [FaqController::class, 'index'])->name('index');
@@ -149,7 +150,7 @@
             Route::get('/edit-faq', [FaqController::class, 'edit'])->name('edit');
         });
 
-// Offers Route Section
+        // Offers Route Section
         Route::name('offers.')->group(function () {
             // Coupons
             Route::prefix('/coupons')->name('coupon.')->group(function () {

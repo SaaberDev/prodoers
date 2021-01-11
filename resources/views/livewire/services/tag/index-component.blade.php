@@ -50,7 +50,7 @@
                             <form action="{{ route('services.tag.store') }}" method="POST">
                                 @csrf @method('POST')
                                 <div class="form-group">
-                                    <input type="text" name="tags" value="{{ old('tags') }}" class="{{ $errors->has('tags') ? 'is-invalid border-danger' : '' }}" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    <input type="text" name="tags" value="{{ old('tags') }}" class="tags {{ $errors->has('tags') ? 'is-invalid border-danger' : '' }}">
                                     @if($errors->has('tags'))
                                         <span class="invalid-feedback">
                                         <strong>{{ $errors->first('tags') }}</strong>
@@ -104,7 +104,7 @@
                                             </g>
                                         </svg>
                                     </a>
-                                    <a class="btn m-0 p-0" data-toggle="modal" data-target="#deletemodal">
+                                    <a data-action="{{ route('services.tag.destroy', $tag->id) }}" class="sweet_delete btn m-0 p-0">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="11.91" height="16.027"
                                              viewBox="0 0 11.91 16.027">
                                             <path
@@ -126,5 +126,4 @@
         </div>
     </div>
 </div>
-
 

@@ -98,4 +98,9 @@ class Service extends Model
     public function scopeGetSlug($query, $slug){
         return $query->where('slug', $slug);
     }
+
+    public function scopeHideCurrent($query, $arg)
+    {
+        $query->where('id', '!=', $arg->id);
+    }
 }

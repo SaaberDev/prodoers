@@ -14,7 +14,7 @@ class IndexComponent extends Component
     public $recordPerPage = 15;
     public $page = 1;
 
-    protected $listeners = ['refreshComponent' => '$refresh'];
+
     // Shows search query in URL
     protected $queryString = [
         'search' => ['except' => ''],
@@ -24,6 +24,11 @@ class IndexComponent extends Component
     public function mount()
     {
         $this->fill(request()->only('search', 'page'));
+    }
+
+    public function hydrate()
+    {
+        $this->emit('postAdded');
     }
 
     public function resetSearch()

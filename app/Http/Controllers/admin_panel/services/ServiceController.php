@@ -37,8 +37,9 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        $service_categories = ServiceCategory::CategoriesTitleById();
-        return view('admin_panel.pages.services.service.create', compact('service_categories'));
+        $service_categories = ServiceCategory::getTitle();
+        $tags = Tag::getTitle();
+        return view('admin_panel.pages.services.service.create', compact('service_categories', 'tags'));
     }
 
     /**
@@ -63,13 +64,13 @@ class ServiceController extends Controller
             ]);
 
             $tagInputs = collect(explode(',', $request->input('service_tags')));
+//            $services->tags()->attach($tagInputs);
+//            dd(json_decode($tagInputs));
+//            $services->tags()->attach($tagInputs);
 //            dd($tagInputs);
-            $tagInputs->each(function ($value) use ($services){
-//                dd($value);
-                $tags = Tag::firstOrCreate([
-                    'tags' => $value,
-                ]);
-                $services->tags()->attach($tags);
+            $tagInputs->each(function ($tag) use ($services){
+//                dd($tag);
+                $services->tags()->attach($tag);
             });
 
             $images = collect(MultiImageUploadHandler($request, $slug,'service_images', 'service-image', config('designwala_paths.admin.images.store.services.service_image')));
@@ -133,7 +134,7 @@ class ServiceController extends Controller
     public function edit($id)
     {
         $services = Service::findOrFail($id);
-        $service_categories = ServiceCategory::CategoriesTitleById();
+        $service_categories = ServiceCategory::getTitle();
         return view('admin_panel.pages.services.service.edit', compact('services', 'id', 'service_categories'));
     }
 
@@ -204,6 +205,16 @@ class ServiceController extends Controller
                 'thumbnail' => SingleImageUpdateHandler($request, $slug, $services->thumbnail, 'service_thumbnail', 'thumbnail','admin_panel/services/thumbnail/'),
                 'service_desc' => $request->input('service_description'),
             ]);
+
+            $tagInputs = collect(explode(',', $request->input('service_tags')));
+//            $services->tags()->attach($tagInputs);
+//            dd(json_decode($tagInputs));
+//            $services->tags()->attach($tagInputs);
+//            dd($tagInputs);
+            $tagInputs->each(function ($tag) use ($services){
+//                dd($tag);
+                $services->tags()->sync($tag);
+            });
 
 
             $images = MultiImageUpdateHandler($request, $slug,'service_images', 'service-image', 'admin_panel/services/service_image/');
