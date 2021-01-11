@@ -23,7 +23,7 @@ class ServiceCategoryRequest extends FormRequest
      */
     public function rules(): array
     {
-        /*switch ($this->method()){
+        switch ($this->method()){
             case 'GET':
             case 'DELETE':
                 return [];
@@ -49,16 +49,7 @@ class ServiceCategoryRequest extends FormRequest
                     'service_description' => 'required',
                 ];
             default: break;
-        }*/
-        return [
-            'service_category_title' => 'required',
-            'category_popular' => 'nullable',
-            'category_status' => 'nullable',
-            'meta_description' => 'required',
-            'banner_image' => 'nullable|image|mimes:jpg,bmp,png',
-            'thumbnail_image' => 'nullable|image|mimes:jpg,bmp,png',
-            'service_description' => 'required',
-        ];
+        }
     }
 
     public function messages(): array

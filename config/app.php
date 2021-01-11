@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Designwala'),
 
     /*
     |--------------------------------------------------------------------------
@@ -177,12 +177,12 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        App\Providers\TelescopeServiceProvider::class,
 
         /**
          * Custom Service Providers
          */
         App\Providers\BreadcrumbsServiceProvider::class,
+        App\Providers\ViewServiceProvider::class,
 //        App\Providers\RepositoriesServiceProvider::class,
 
     ],

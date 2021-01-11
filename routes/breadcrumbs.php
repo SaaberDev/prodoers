@@ -33,7 +33,7 @@
     // Dashboard > Services > Edit Service
     Breadcrumbs::for('services.service.edit', fn(Trail $trail) => $trail
         ->parent('services.service.index')
-        ->push('Edit Service', route('services.service.edit'))
+        ->push('Edit Service', route('services.service.edit', ['id']))
     );
 
     /*

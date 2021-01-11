@@ -1,15 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\user_panel\service\category;
+namespace App\Http\Controllers\admin_panel\services;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Services\TagRequest;
+use App\Models\Tag;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class UserServiceCategoryController extends Controller
+class TagController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +20,7 @@ class UserServiceCategoryController extends Controller
      */
     public function index()
     {
-        return view('user_panel.pages.category_show');
+        return view('admin_panel.pages.services.tag.index');
     }
 
     /**
@@ -35,11 +37,24 @@ class UserServiceCategoryController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(TagRequest $request)
     {
-        //
+//        $notify = [
+//
+//        ];
+        \DB::transaction(function () use ($request){
+            $tagInputs = collect(explode(',', $request->input('tags')));
+//            dd($tagInputs);
+            $tagInputs->each(function ($value) {
+//                dd($value);
+                Tag::firstOrCreate([
+                    'title' => $value,
+                ]);
+            });
+        });
+        return redirect()->back();
     }
 
     /**
@@ -57,11 +72,12 @@ class UserServiceCategoryController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return Response
+     * @return Application|Factory|View|Response
      */
     public function edit($id)
     {
-        //
+        $tags = Tag::findOrFail($id);
+        return \view('admin_panel.pages.services.tag.edit', compact('tags'));
     }
 
     /**
@@ -71,9 +87,19 @@ class UserServiceCategoryController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(TagRequest $request, $id)
     {
-        //
+        $tags = Tag::findOrFail($id);
+//        $notify = [
+//
+//        ];
+        \DB::transaction(function () use ($request, $tags){
+            $tags->update([
+                'title' => $request->input('tags'),
+            ]);
+
+        });
+        return redirect()->route('services.tag.index');
     }
 
     /**

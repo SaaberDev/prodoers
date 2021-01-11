@@ -67,6 +67,7 @@ mix.styles([
     'resources/_user_panel/css/loader2.css',
     'resources/_user_panel/css/style.css',
     'resources/_user_panel/css/media.css',
+    'node_modules/node-snackbar/dist/snackbar.css'
 ], 'public/_user_panel/css/user_panel.css')
     .scripts([
         'resources/_user_panel/js/bootstrap5/jquery.min.js',
@@ -76,6 +77,7 @@ mix.styles([
         'resources/_user_panel/js/owl.carousel.min.js',
         'resources/_user_panel/js/offcanvas.js',
         'resources/_user_panel/js/loader.js',
+        'node_modules/node-snackbar/dist/snackbar.js',
 
         // Filepond
         'resources/_user_panel/filepond/js/filepond-plugin-file-encode.min.js',

@@ -5,8 +5,6 @@ namespace App\Models;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Query\Builder;
 
 /**
  * @mixin IdeHelperServiceCategory
@@ -26,10 +24,20 @@ class ServiceCategory extends Model
         ];
     }
 
-    public function services(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function services()
     {
-        return $this->belongsToMany(Service::class);
+        return $this->hasMany(Service::class);
     }
+
+    public function serviceCategoryFaqs()
+    {
+        return $this->hasMany(ServiceCategoryFaq::class, 'service_category_id');
+    }
+
+//    public function categoryFaqs()
+//    {
+//        return $this->hasMany(ServiceCategoryFaq::class, 'service_category_id');
+//    }
 
     public function scopeGetAllCategories($query)
     {
@@ -59,14 +67,32 @@ class ServiceCategory extends Model
             });
     }
 
-//    public function getImage($query, $id)
-//    {
-//        return $query->where('category_banner',  $id)->first();
-//    }
-    // storage/admin_panel/services_categories/banner/
-
     public function scopeCategoriesTitleById($query)
     {
         return $query->orderByIdDesc()->get(['title', 'id']);
     }
+
+    public function scopeGetAllPublished($query)
+    {
+        return $query->where('published_status', '=', 1);
+//            ->whereHas('services');
+    }
+
+    public function scopeGetAllPopular($query)
+    {
+        return $query->where('popular_status', '=', 1)
+            ->getAllPublished()
+            ->orderBy('title')
+            ->whereHas('services')->with('services', function($query){
+                $query->getAllPublished();
+            });
+    }
+
+//    public function scopeGetMinPrice($query)
+//    {
+//        return $query->whereHas('services')->with('services', function($query){
+//            $query->getAllPublished();
+//        });
+//    }
+
 }

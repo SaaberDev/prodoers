@@ -81,9 +81,9 @@
                             <div class="input-group">
                                 <input type='text'
                                        name="old_banner_image"
-                                       value="{{ old('banner_image') ? old('banner_image') : $service_categories->category_banner }}"
                                        class="form-control {{ $errors->has('banner_image') ? ' is-invalid' : '' }}"
                                        onchange="preview(this);"
+                                       placeholder="No File Chosen"
                                        readonly
                                 />
 
@@ -107,7 +107,7 @@
                             <ul class="row list-unstyled previewimg">
                                 <li class="col-md-4 py-4 text-center position-relative m-auto">
                                     <div class="previewImg">
-                                        <img id="previewImg" class="img-thumbnail" src="{{ asset('storage/admin_panel/services_categories/banner/' . $service_categories->category_banner) }}" alt="{{ $service_categories->title }}">
+                                        <img id="previewImg" class="img-fluid" src="{{ asset('storage/admin_panel/services_categories/banner/' . $service_categories->category_banner) }}" alt="{{ $service_categories->title }}">
                                     </div>
                                 </li>
                             </ul>
@@ -122,9 +122,9 @@
                             <div class="input-group">
                                 <input type='text'
                                        name="old_thumbnail_image"
-                                       value="{{ old('thumbnail_image') ? old('thumbnail_image') : $service_categories->category_thumbnail }}"
                                        class="form-control {{ $errors->has('thumbnail_image') ? ' is-invalid' : '' }}"
                                        onchange="preview(this);"
+                                       placeholder="No File Chosen"
                                        readonly
                                 />
 
@@ -148,7 +148,7 @@
                             <ul class="row list-unstyled previewimg">
                                 <li class="col-md-4 py-4 text-center position-relative m-auto">
                                     <div class="previewImg">
-                                        <img id="previewImg" class="img-thumbnail" src="{{ asset('storage/admin_panel/services_categories/thumbnail/' . $service_categories->category_thumbnail) }}" alt="">
+                                        <img id="previewImg" class="img-fluid" src="{{ asset('storage/admin_panel/services_categories/thumbnail/' . $service_categories->category_thumbnail) }}" alt="">
                                     </div>
                                 </li>
                             </ul>
@@ -168,6 +168,44 @@
                             </div>
                         </div>
                     </div>
+
+                    {{-- Faqs --}}
+                        <div class="col-md-12 py-3">
+                            <!-- COMPONENT START -->
+                            <h5>FAQ's</h5>
+                            @foreach($service_categories->serviceCategoryFaqs as $faq)
+                                <div id="dynamic-field-faq-1" class="row dynamic-field-faq">
+                                    <div class="col-md-12">
+                                        <div  class="input-group  mb-0">
+                                            <input type="text" id="faqs-question-1" value="{{ $faq->question }}" class="form-control validation-faqs" name="question[]" placeholder="">
+
+                                            <div class="input-group-append">
+                                                <a type="button" data-id="{{ $faq->id }}" data-action="{{ route('services.category.destroyServiceCategoryFaq', $faq->id) }}" {{--href="{{ route('services.category.destroyServiceCategoryFaq', $faq->id) }}"--}} class="btn sweet_delete p-0 m-0">
+                                                    <svg style="width: 16px; height: auto; margin: 8px 5px 0 15px;" xmlns="http://www.w3.org/2000/svg" width="11.91" height="16.027" viewBox="0 0 11.91 16.027"><path d="M8.279,16.969a1.563,1.563,0,0,0,1.559,1.559h6.234a1.563,1.563,0,0,0,1.559-1.559V7.617H8.279ZM18.41,4.279H15.683L14.9,3.5h-3.9l-.779.779H7.5V5.838H18.41Z" transform="translate(-7 -3)" fill="none" stroke="#000" stroke-width="1"></path></svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mt-4">
+                                        <div class="form-group">
+                                            <textarea type="text" id="faqs-answer-1" class="form-control validation-faqs" name="answer[]" rows="5">{{ $faq->answer }}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                        <div class="col-md-12 mt-4">
+                            <div class="text-right">
+                                <button type="button" id="remove-button-faq" class="btn shadow bg-danger text-white rounded" data-toggle="tooltip" data-placement="left" data-original-title="Remove last FAQ" disabled="disabled"> <span>
+                                    </span>Remove</button>
+                                <button type="button" id="add-button-faq" class="btn shadow bg-white rounded"> <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12.672" height="12.672" viewBox="0 0 12.672 12.672">
+                                        <path d="M20.848,14.512H16.09V9.754a.789.789,0,0,0-1.578,0v4.758H9.754a.789.789,0,0,0,0,1.578h4.758v4.758a.789.789,0,0,0,1.578,0V16.09h4.758a.789.789,0,0,0,0-1.578Z" transform="translate(-8.965 -8.965)" fill="#000"></path>
+                                    </svg></span> Add new field</button>
+                            </div>
+                        </div>
+                    {{-- Faqs --}}
+
                     <div class="col-md-12 py-4 ">
                         <div class="text-right">
                             <button type="submit" class="btn shadow bgOne rounded text-white px-4"> Update</button>
@@ -181,6 +219,106 @@
 
 @push('scripts')
     {{-- Status Toggle --}}
+    {{-- Form Clone Dynamic Input for Faqs Start --}}
+    <script>
+        $(document).ready(function() {
+            var buttonAdd = $("#add-button-faq");
+            var buttonRemove = $("#remove-button-faq");
+            var className = ".dynamic-field-faq";
+            var count = 0;
+            var field = "";
+            var maxFields = 5;
+
+            function totalFields() {
+                return $(className).length;
+            }
+
+            function addNewField() {
+                count = totalFields() + 1;
+                field = $("#dynamic-field-faq-1").clone();
+                field.attr("id", "dynamic-field-faq-" + count);
+                field.children("label").text("Feature #" + count);
+                field.find("input").attr("id", "faq-question-" + count);
+                field.find("textarea").attr("id", "faq-answer-" + count);
+                // field.find("input").attr("name", "faq.question." + count);
+                // field.find("textarea").attr("name", "faq.answer." + count);
+                field.find("input").val("");
+                field.find("textarea").val("");
+                $(className + ":last").after($(field));
+            }
+
+            function removeLastField() {
+                if (totalFields() > 1) {
+                    $(className + ":last").remove();
+                }
+            }
+
+            function enableButtonRemove() {
+                if (totalFields() > 1) {
+                    buttonRemove.removeAttr("disabled");
+                    buttonRemove.addClass("shadow-sm");
+                }
+            }
+
+            function disableButtonRemove() {
+                if (totalFields() === 1) {
+                    buttonRemove.attr("disabled", "disabled");
+                    buttonRemove.removeClass("shadow-sm");
+                }
+            }
+
+            function disableButtonAdd() {
+                if (totalFields() === maxFields) {
+                    buttonAdd.attr("disabled", "disabled");
+                    buttonAdd.removeClass("shadow-sm");
+                }
+            }
+
+            function enableButtonAdd() {
+                if (totalFields() === (maxFields - 1)) {
+                    buttonAdd.removeAttr("disabled");
+                    buttonAdd.addClass("shadow-sm");
+                }
+            }
+
+            buttonAdd.click(function() {
+                addNewField();
+                enableButtonRemove();
+                disableButtonAdd();
+            });
+
+            buttonRemove.click(function() {
+                removeLastField();
+                disableButtonRemove();
+                enableButtonAdd();
+            });
+        });
+
+        $("form").submit(function (e) {
+            e.preventDefault();
+            $(".validation-faqs").each(function() {
+                var data = $(this).val();
+                var id  =  $(this).attr('id');
+
+                if(Trim(data) === ''){
+                    $(".validation-faqs").each(function(e) {
+                        $("#" + id).addClass('is-invalid').focus();
+                        e.preventDefault();
+                        return false;
+                    });
+                }else{
+                    $("#"+id).removeClass('is-invalid');
+                }
+            });
+            $(this).unbind('submit').submit();
+            function Trim(value) {
+                return value.replace(/^\s+|\s+$/g, '');
+            }
+        });
+
+    </script>
+    {{-- Form Clone Dynamic Input for Faqs End --}}
+
     <script>
         $('#category_popular').change(function () {
             let isChecked = $(this).prop('checked') === true ? 1 : 0;
@@ -206,5 +344,5 @@
             }
         }
     </script>
-{{--    @include('alerts.admin_panel.delete_confirmation_modal')--}}
+    @include('alerts.admin_panel.delete_confirmation_modal')
 @endpush

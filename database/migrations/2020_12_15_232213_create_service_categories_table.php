@@ -21,8 +21,8 @@ class CreateServiceCategoriesTable extends Migration
             $table->string('category_thumbnail');
             $table->string('slug');
             $table->longText('desc');
-            $table->tinyInteger('published_status')->nullable();
-            $table->tinyInteger('popular_status')->nullable();
+            $table->tinyInteger('published_status')->nullable()->default(0);
+            $table->tinyInteger('popular_status')->nullable()->default(0);
             $table->timestamps();
         });
     }

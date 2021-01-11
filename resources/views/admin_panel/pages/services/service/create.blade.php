@@ -35,7 +35,7 @@
             {{-- New Service Form --}}
             <form action="{{ route('services.service.store') }}" method="POST" enctype="multipart/form-data" id="form">
                 @csrf @method('POST')
-                <div class="row m-0 justify-content-between ">
+                <div class="row m-0 justify-content-between">
                     <div class="col-md-6">
                         {{-- Service Title --}}
                         <div class="form-group mb-0">
@@ -46,6 +46,21 @@
                                 @if($errors->has('service_title'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('service_title') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    {{-- Service Tags --}}
+                    <div class="col-md-4">
+                        <div class="form-group mb-0">
+                            <label for="">
+                                <h5>Tags</h5></label>
+                            <div class="input-group">
+                                <input name="service_tags" value="{{ old('service_tags') }}" class="{{ $errors->has('service_tags') ? ' is-invalid' : '' }}" type="text" placeholder="">
+                                @if($errors->has('service_tags'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('service_tags') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -121,9 +136,9 @@
                             <div class="input-group">
                                 <input type='text'
                                        name="service_images[]"
-                                       value="{{ old('service_images') }}"
                                        class="form-control {{ $errors->has('service_images.*') ? ' is-invalid' : '' }}"
                                        onchange="preview(this);"
+                                       placeholder="No File Chosen"
                                        readonly
                                 />
 
@@ -155,19 +170,19 @@
                                 <input type='text'
                                        name="service_thumbnail"
                                        class="form-control {{ $errors->has('service_thumbnail') ? ' is-invalid' : '' }}"
-                                       value="{{ old('service_thumbnail') }}"
                                        onchange="preview(this);"
+                                       placeholder="No File Chosen"
                                        readonly
                                 />
 
                                 <div class="input-group-btn">
-                        <span class="fileUpload btn btnOne">
-                            <span class="upl" id="upload">Choose</span>
-                            <input type='file'
-                                   name="service_thumbnail"
-                                   class="upload up"
-                            />
-                        </span>
+                                    <span class="fileUpload btn btnOne">
+                                        <span class="upl" id="upload">Choose</span>
+                                        <input type='file'
+                                               name="service_thumbnail"
+                                               class="upload up"
+                                        />
+                                    </span>
                                 </div>
                                 @if($errors->has('service_thumbnail'))
                                     <span class="invalid-feedback">
@@ -185,11 +200,10 @@
                             <div class="col-md-12">
                                 <label for="">
                                     <h5>features </h5> </label>
-
-                                    <div id="dynamic-field-1" class="input-group dynamic-field mb-3">
-                                        {{--<label class="mr-3 mt-2" for="field-1">Feature #1</label>--}}
-                                        <input type="text" id="field-1" value="" class="form-control validation" name="features[]" aria-describedby="button-addon2">
-                                    </div>
+                                <div id="dynamic-field-1" class="input-group dynamic-field mb-3">
+                                    {{--<label class="mr-3 mt-2" for="field-1">Feature #1</label>--}}
+                                    <input type="text" id="field-1" name="features[]" value="{{ old('features.*') }}" class="form-control validation" aria-describedby="button-addon2">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -276,7 +290,7 @@
             var className = ".dynamic-field";
             var count = 0;
             var field = "";
-            var maxFields = 5;
+            var maxFields = 50;
 
             function totalFields() {
                 return $(className).length;
@@ -288,7 +302,7 @@
                 field.attr("id", "dynamic-field-" + count);
                 field.children("label").text("Feature #" + count);
                 field.children("input").attr("id", "field-" + count);
-                // field.children("input").attr("name", "feature." + count);
+                // field.children("input").attr("name", "features." + count);
                 field.find("input").val("");
                 $(className + ":last").after($(field));
             }
@@ -373,7 +387,7 @@
             var className = ".dynamic-field-faq";
             var count = 0;
             var field = "";
-            var maxFields = 5;
+            var maxFields = 50;
 
             function totalFields() {
                 return $(className).length;
@@ -468,6 +482,7 @@
 
     <script>
         // $('.select2').select2()
+
         $("#allCategories").select2();
 
         $('#published_status').change(function () {
@@ -487,5 +502,13 @@
                 });
             }
         }
+
+        /*
+        *  Tagify for Service Tags
+        * */
+        const input = document.querySelector('input[name=service_tags]');
+        const tagify = new Tagify(input, {
+            originalInputValueFormat: valuesArr => valuesArr.map(item => item.value).join(',')
+        });
     </script>
 @endpush

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\user_panel\blog;
+namespace App\Http\Controllers\guest\blog;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class UserBlogController extends Controller
+class GuestBlogController extends Controller
 {
     /**
      * Display a listing of the resource.

@@ -2,19 +2,18 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
+use App\Traits\Shareable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @mixin IdeHelperService
  */
 class Service extends Model
 {
-    use HasFactory, Sluggable;
+    use HasFactory, Sluggable, Shareable;
 
     protected $guarded = [];
 
@@ -30,9 +29,23 @@ class Service extends Model
         ];
     }
 
-    /**
-     * @return BelongsTo
-     */
+    protected $shareOptions = [
+        'columns' => [
+            'title' => 'title'
+        ],
+        'url' => null
+    ];
+
+    public function getUrlAttribute()
+    {
+        return route('guest.service.index', $this->slug);
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'service_tag', 'service_id', 'tag_id');
+    }
+
     public function serviceCategories()
     {
         return $this->belongsTo(ServiceCategory::class, 'service_category_id');
@@ -45,12 +58,17 @@ class Service extends Model
 
     public function serviceImages()
     {
-        return $this->hasMany(ServiceImage::class);
+        return $this->hasMany(ServiceImage::class, 'service_id');
+    }
+
+    public function serviceFaqs()
+    {
+        return $this->hasMany(ServiceFaq::class, 'service_id');
     }
 
     public function scopeOrderByIdDesc(Builder $query)
     {
-        return $query->orderBy('id', 'desc')->with('serviceCategories');
+        return $query->orderBy('id', 'desc')/*->with('serviceCategories')*/;
     }
 
     public function scopeFilterByStatus($query, $filterByStatus)
@@ -65,5 +83,19 @@ class Service extends Model
         return $query->where(function ($query) use ($search) {
             $query->orWhere('title', 'like', '%' . $search . '%');
         });
+    }
+
+    public function scopeGetAllPublished($query)
+    {
+        return $query->where('published_status', '=', 1);
+    }
+
+    public function scopeGetAllPopular($query)
+    {
+        return $query->where('popular_status', '=', 1);
+    }
+
+    public function scopeGetSlug($query, $slug){
+        return $query->where('slug', $slug);
     }
 }

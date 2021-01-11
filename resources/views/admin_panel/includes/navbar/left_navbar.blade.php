@@ -83,6 +83,20 @@
                             </a>
                             {{--                             nested sub insider--}}
                         </li>
+
+                        <li class="nav-item sub-item">
+                            <a href="{{ route('services.tag.index') }}"
+                               class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('services.tag.*') ? 'sub-active' : '' }}">
+                                <span class="pl-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 12 12">
+                                        <circle id="Ellipse_224" data-name="Ellipse 224" cx="6" cy="6" r="6"
+                                                fill="#000000"/>
+                                    </svg>
+                                </span>
+                                <span class="pl-3">Tags</span>
+                            </a>
+                            {{--                             nested sub insider--}}
+                        </li>
                     </ul>
                 </div>
             </li>

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\ServiceCategory;
 use Illuminate\Routing\UrlGenerator;
 use Illuminate\Support\ServiceProvider;
 

@@ -18,19 +18,20 @@ class CreateServicesTable extends Migration
             $table->id();
 
             // Foreign Key Constraint [Service Categories Table]
-            $table->unsignedBigInteger('service_category_id')->nullable();
+            $table->unsignedBigInteger('service_category_id');
             $table->foreign('service_category_id')
                 ->references('id')->on('service_categories')
                 ->onDelete('cascade')->onUpdate('cascade');
 
             // Primary Attributes
-            $table->string('title')->nullable();
-            $table->longText('meta_desc')->nullable();
-            $table->tinyInteger('published_status')->default(0)->nullable();
-            $table->string('slug')->nullable();
-            $table->decimal('price')->nullable();
-            $table->string('thumbnail')->nullable();
-            $table->longText('service_desc')->nullable();
+            $table->string('title');
+            $table->longText('meta_desc');
+            $table->tinyInteger('popular_status')->nullable()->default(0);
+            $table->tinyInteger('published_status')->nullable()->default(0);
+            $table->string('slug');
+            $table->decimal('price');
+            $table->string('thumbnail');
+            $table->longText('service_desc');
             $table->timestamps();
         });
     }

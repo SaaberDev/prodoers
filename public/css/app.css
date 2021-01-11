@@ -2,3 +2,9 @@
     font-size: 20px!important;
     padding: 100px!important;
 }
+
+.table td, .table th {
+    font-size: 13px;
+    padding: 10px 5px!important;
+    vertical-align: middle;
+}

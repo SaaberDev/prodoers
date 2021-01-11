@@ -3,6 +3,53 @@
 
 @push('styles')
     {{-- Internal Styles --}}
+    {{--<style>
+        /* The snackbar - position it at the bottom and in the middle of the screen */
+        #snackbar {
+            visibility: hidden; /* Hidden by default. Visible on click */
+            min-width: 250px; /* Set a default minimum width */
+            margin-left: -125px; /* Divide value of min-width by 2 */
+            background-color: #333; /* Black background color */
+            color: #fff; /* White text color */
+            text-align: center; /* Centered text */
+            border-radius: 2px; /* Rounded borders */
+            padding: 16px; /* Padding */
+            position: fixed; /* Sit on top of the screen */
+            z-index: 100000; /* Add a z-index if needed */
+            left: 50%; /* Center the snackbar */
+            bottom: 30px; /* 30px from the bottom */
+        }
+
+        /* Show the snackbar when clicking on a button (class added with JavaScript) */
+        #snackbar.show {
+            visibility: visible; /* Show the snackbar */
+            /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+            However, delay the fade out process for 2.5 seconds */
+            -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        /* Animations to fade the snackbar in and out */
+        @-webkit-keyframes fadein {
+            from {bottom: 0; opacity: 0;}
+            to {bottom: 30px; opacity: 1;}
+        }
+
+        @keyframes fadein {
+            from {bottom: 0; opacity: 0;}
+            to {bottom: 30px; opacity: 1;}
+        }
+
+        @-webkit-keyframes fadeout {
+            from {bottom: 30px; opacity: 1;}
+            to {bottom: 0; opacity: 0;}
+        }
+
+        @keyframes fadeout {
+            from {bottom: 30px; opacity: 1;}
+            to {bottom: 0; opacity: 0;}
+        }
+    </style>--}}
 @endpush
 
 @section('content')
@@ -59,16 +106,18 @@
                                  style="position: relative;overflow: hidden;padding-top: 25px;padding-bottom: 25px;">
                                 <div class="cardShareIcon">
                                     <div class="float-sm">
-                                        <a class="fl-fl float-fb"> <span class="firstIconOnShareIcon"
-                                                                         style="cursor: pointer"> <svg
-                                                    data-brackets-id="2683" xmlns="http://www.w3.org/2000/svg"
-                                                    width="25" height="20" viewBox="0 0 25 29">
+                                        <a class="fl-fl float-fb">
+                                            <span class="firstIconOnShareIcon copy-clipboard" style="cursor: pointer">
+                                                <svg data-brackets-id="2683" xmlns="http://www.w3.org/2000/svg" width="25" height="20" viewBox="0 0 25 29">
                                                     <path data-brackets-id="2684" id="Icon_awesome-share-alt"
                                                           data-name="Icon awesome-share-alt"
                                                           d="M19.643,18.125a5.285,5.285,0,0,0-3.336,1.184L10.587,15.68a5.549,5.549,0,0,0,0-2.361l5.719-3.628a5.285,5.285,0,0,0,3.336,1.184A5.4,5.4,0,0,0,25,5.438a5.358,5.358,0,1,0-10.714,0,5.533,5.533,0,0,0,.127,1.18L8.694,10.246A5.285,5.285,0,0,0,5.357,9.063a5.438,5.438,0,0,0,0,10.875,5.285,5.285,0,0,0,3.336-1.184l5.719,3.628a5.533,5.533,0,0,0-.127,1.18,5.358,5.358,0,1,0,5.357-5.437Z"
-                                                          fill="#038d08"></path>
-                                                </svg></span> <span style="cursor: pointer"
-                                                                    onclick="window.open('', '_blank')">
+                                                          fill="#038d08">
+                                                    </path>
+                                                </svg>
+                                            </span>
+{{--                                            open('/', 'test', params);--}}
+                                            <span style="cursor: pointer" onclick="window.open('{{ $services->getShareUrl('facebook') }}', 'services', params)">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="15.406" height="20"
                                                      viewBox="0 0 15.406 28.764">
                                                     <path id="Icon_awesome-facebook-f"
@@ -76,7 +125,8 @@
                                                           d="M16.005,16.18l.8-5.206H11.809V7.6a2.6,2.6,0,0,1,2.935-2.812h2.271V.352A27.692,27.692,0,0,0,12.984,0c-4.113,0-6.8,2.493-6.8,7.007v3.967H1.609V16.18H6.182V28.764h5.628V16.18Z"
                                                           transform="translate(-1.609)" fill="#3b5999"></path>
                                                 </svg>
-                                            </span> <span style="cursor: pointer" onclick="window.open('', '_blank')">
+                                            </span>
+                                            <span style="cursor: pointer" onclick="window.open('', '_blank')">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="28.764" height="20"
                                                      viewBox="0 0 28.764 23.362">
                                                     <path id="Icon_awesome-twitter" data-name="Icon awesome-twitter"
@@ -99,89 +149,39 @@
                         <!--                        carousel -->
                         <div class="">
                             <div class="owl-carousel">
+                                @foreach($services->serviceImages as $service)
                                 <div class="owlCustom" style="">
-                                    <!--                                       <img src="https://via.placeholder.com/829x630?text=Designwala" alt=""></div>-->
-                                    <img src="_user_panel/img/demo.png" alt="" class="img-fluid">
+                                    <img src="{{ asset(config('designwala_paths.admin.images.show.services.service_image') . $service->filename) }}" alt="" class="img-fluid">
                                 </div>
-                                <div class="owlCustom" style="">
-                                    <!--   <img src="https://via.placeholder.com/829x553?text=Designwala" alt="">-->
-                                    <img src="_user_panel/img/demotwo.png" alt="" class="img-fluid">
-                                </div>
+                                @endforeach
                             </div>
                         </div>
-                        <!--
-                        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active"> <img src="_user_panel/img/placeholder.png" class="d-block w-100 h-100" alt="..."> </div>
-                                <div class="carousel-item"> <img src="_user_panel/img/placeholder.png" class="d-block w-100 h-100" alt="..."> </div>
-                                <div class="carousel-item"> <img src="_user_panel/img/placeholder.png" class="d-block w-100 h-100" alt="..."> </div>
-                            </div>
-                            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="visually-hidden">&nbsp;</span> </a>
-                            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="visually-hidden">&nbsp;</span> </a>
-                        </div>
--->
                     </div>
                 </div>
                 <div class="col-lg-5  col-md-12">
                     <div class="bg-white p-4 rightSide shadow-sm" style="">
                         <div class="pt-3 pb-4 socialMediaBannerTxtpadding">
-                            <h3 style="">Social media Banner</h3>
+                            <h3 style="">{{ $services->title }}</h3>
                         </div>
                         <div class=" " style="height: 308px;">
                             <h4 class="pb-2">Features:</h4>
+                            @forelse($services->serviceFeatures->take(7) as $service)
                             <p><span><svg xmlns="http://www.w3.org/2000/svg" width="12.711" height="9.479"
                                           viewBox="0 0 12.711 9.479">
                                         <path id="Icon_awesome-check" data-name="Icon awesome-check"
                                               d="M4.317,13.87.186,9.739a.636.636,0,0,1,0-.9l.9-.9a.636.636,0,0,1,.9,0l2.783,2.783,5.961-5.961a.636.636,0,0,1,.9,0l.9.9a.636.636,0,0,1,0,.9L5.216,13.87A.636.636,0,0,1,4.317,13.87Z"
                                               transform="translate(0 -4.577)" fill="#038d08"/>
                                     </svg>
-                                </span> <span>RGB Format Color</span></p>
-                            <p><span><svg xmlns="http://www.w3.org/2000/svg" width="12.711" height="9.479"
-                                          viewBox="0 0 12.711 9.479">
-                                        <path id="Icon_awesome-check" data-name="Icon awesome-check"
-                                              d="M4.317,13.87.186,9.739a.636.636,0,0,1,0-.9l.9-.9a.636.636,0,0,1,.9,0l2.783,2.783,5.961-5.961a.636.636,0,0,1,.9,0l.9.9a.636.636,0,0,1,0,.9L5.216,13.87A.636.636,0,0,1,4.317,13.87Z"
-                                              transform="translate(0 -4.577)" fill="#038d08"/>
-                                    </svg>
-                                </span> <span>RGB Format Color</span></p>
-                            <p><span><svg xmlns="http://www.w3.org/2000/svg" width="12.711" height="9.479"
-                                          viewBox="0 0 12.711 9.479">
-                                        <path id="Icon_awesome-check" data-name="Icon awesome-check"
-                                              d="M4.317,13.87.186,9.739a.636.636,0,0,1,0-.9l.9-.9a.636.636,0,0,1,.9,0l2.783,2.783,5.961-5.961a.636.636,0,0,1,.9,0l.9.9a.636.636,0,0,1,0,.9L5.216,13.87A.636.636,0,0,1,4.317,13.87Z"
-                                              transform="translate(0 -4.577)" fill="#038d08"/>
-                                    </svg>
-                                </span> <span>RGB Format Color</span></p>
-                            <p><span><svg xmlns="http://www.w3.org/2000/svg" width="12.711" height="9.479"
-                                          viewBox="0 0 12.711 9.479">
-                                        <path id="Icon_awesome-check" data-name="Icon awesome-check"
-                                              d="M4.317,13.87.186,9.739a.636.636,0,0,1,0-.9l.9-.9a.636.636,0,0,1,.9,0l2.783,2.783,5.961-5.961a.636.636,0,0,1,.9,0l.9.9a.636.636,0,0,1,0,.9L5.216,13.87A.636.636,0,0,1,4.317,13.87Z"
-                                              transform="translate(0 -4.577)" fill="#038d08"/>
-                                    </svg>
-                                </span> <span>RGB Format Color</span></p>
-                            <p><span><svg xmlns="http://www.w3.org/2000/svg" width="12.711" height="9.479"
-                                          viewBox="0 0 12.711 9.479">
-                                        <path id="Icon_awesome-check" data-name="Icon awesome-check"
-                                              d="M4.317,13.87.186,9.739a.636.636,0,0,1,0-.9l.9-.9a.636.636,0,0,1,.9,0l2.783,2.783,5.961-5.961a.636.636,0,0,1,.9,0l.9.9a.636.636,0,0,1,0,.9L5.216,13.87A.636.636,0,0,1,4.317,13.87Z"
-                                              transform="translate(0 -4.577)" fill="#038d08"/>
-                                    </svg>
-                                </span> <span>RGB Format Color</span></p>
-                            <p><span><svg xmlns="http://www.w3.org/2000/svg" width="12.711" height="9.479"
-                                          viewBox="0 0 12.711 9.479">
-                                        <path id="Icon_awesome-check" data-name="Icon awesome-check"
-                                              d="M4.317,13.87.186,9.739a.636.636,0,0,1,0-.9l.9-.9a.636.636,0,0,1,.9,0l2.783,2.783,5.961-5.961a.636.636,0,0,1,.9,0l.9.9a.636.636,0,0,1,0,.9L5.216,13.87A.636.636,0,0,1,4.317,13.87Z"
-                                              transform="translate(0 -4.577)" fill="#038d08"/>
-                                    </svg>
-                                </span> <span>RGB Format Color</span></p>
-                            <p><span><svg xmlns="http://www.w3.org/2000/svg" width="12.711" height="9.479"
-                                          viewBox="0 0 12.711 9.479">
-                                        <path id="Icon_awesome-check" data-name="Icon awesome-check"
-                                              d="M4.317,13.87.186,9.739a.636.636,0,0,1,0-.9l.9-.9a.636.636,0,0,1,.9,0l2.783,2.783,5.961-5.961a.636.636,0,0,1,.9,0l.9.9a.636.636,0,0,1,0,.9L5.216,13.87A.636.636,0,0,1,4.317,13.87Z"
-                                              transform="translate(0 -4.577)" fill="#038d08"/>
-                                    </svg>
-                                </span> <span>RGB Format Color</span></p>
+                                </span> <span>{{ $service->feature_desc }}</span></p>
+                            @empty
+                                No Features
+                            @endforelse
+
+
                         </div>
                         <div class="row py-5 pricepadding">
                             <div class="col-md-12">
-                                <h2 class="colorOne mb-0" style="font-size: 25px;">$50.00</h2>
+                                <h2 class="colorOne mb-0" style="font-size: 25px;">$ {{ $services->price }}</h2>
                             </div>
                             <!--
                             <div class="col-md-8">
@@ -223,30 +223,9 @@
                         <div class="tab-content pt-4" id="myTabContent">
                             <div class="tab-pane fade show active " id="description" role="tabpanel"
                                  aria-labelledby="home-tab">
-                                <p> I Have a Web Banner Template that has a modern and attractive design. This Template
-                                    suitable for introducing and advertising your products, business, campaign, and
-                                    services. You can use this banner for Google AdWords & social media too. (Including
-                                    Facebook & Instagram ad sizes). You can edit and customize this template in Adobe
-                                    Photoshop.</p>
-                                <p>Banner Sizes:</p>
-                                <p>- Skyscraper 120×600</p>
-                                <p>- Wide Skyscraper 160×600 </p>
-                                <p>- Half Page Banner 300×600 </p>
-                                <p>- Vertical Rectangle 240×400</p>
-                                <p>- Billboard 970×250</p>
-                                <p>- Large Leaderboard 970×9 0</p>
-                                <p>- Leaderboard 728×90</p>
-                                <p>- Square 250×250</p>
-                                <p>- Small Square 200×200</p>
-                                <p>- Large Rectangle 336×280</p>
-                                <p>- Medium Rectangle 300×250</p>
-                                <p>- Banner 468×60</p>
-                                <p>- Mobile 320×100</p>
-                                <p>- Social Media Post 1080×1080</p>
-                                <p>- Instagram Stories 1080×1920</p>
-                                <p>- Facebook AD 1200×628</p>
-                                <p>- Facebook Cover 1350×500</p>
-                                <p>- Website Slider Banner 1500×500</p>
+                                <p>
+                                    {{ $services->service_desc }}
+                                </p>
                             </div>
                             <div class="tab-pane fade" id="faq" role="tabpanel" aria-labelledby="profile-tab">
                                 <div class="">
@@ -341,7 +320,7 @@
                                         <div class="col-md-12">
                                             <div class="reviewstabSingle clearfix">
                                                 <div class="boxOne">
-                                                    <div class=""><img src="https://via.placeholder.com/100x100.png"
+                                                    <div class=""><img src="#"
                                                                        alt="" class="img-fluid border"></div>
                                                 </div>
                                                 <div class="boxTwo">
@@ -412,7 +391,7 @@
                                         <div class="col-md-12">
                                             <div class="reviewstabSingle clearfix">
                                                 <div class="boxOne">
-                                                    <div class=""><img src="https://via.placeholder.com/100x100.png"
+                                                    <div class=""><img src="#"
                                                                        alt="" class="img-fluid border"></div>
                                                 </div>
                                                 <div class="boxTwo">
@@ -483,7 +462,7 @@
                                         <div class="col-md-12">
                                             <div class="reviewstabSingle clearfix">
                                                 <div class="boxOne">
-                                                    <div class=""><img src="https://via.placeholder.com/100x100.png"
+                                                    <div class=""><img src="#"
                                                                        alt="" class="img-fluid border"></div>
                                                 </div>
                                                 <div class="boxTwo">
@@ -554,7 +533,7 @@
                                         <div class="col-md-12">
                                             <div class="reviewstabSingle clearfix">
                                                 <div class="boxOne">
-                                                    <div class=""><img src="https://via.placeholder.com/100x100.png"
+                                                    <div class=""><img src="#"
                                                                        alt="" class="img-fluid border"></div>
                                                 </div>
                                                 <div class="boxTwo">
@@ -636,7 +615,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="text-center">
-                        <h1>related Services</h1>
+                        <h1>Related Services</h1>
                     </div>
                 </div>
             </div>
@@ -821,64 +800,18 @@
     <div class="singleCategoryItemDetailContent py-5 bgcustomLightgray" id="singleCategoryItemDetailContent">
         <div class="container">
             <div class="row">
+                @forelse($services->serviceFaqs as $faq)
                 <div class="col-md-6">
                     <div class="py-3">
                         <div class="detailsContent">
-                            <h4>Logo and Branding : Types of logo</h4>
-                            <p class="mb-0">Monogram logos or lettermarks are logos that consist of letters, usually
-                                brand initials. IBM, CNN, HP, HBO… Noticing a pattern, yes? They’re the initialisms of a
-                                few famous businesses with rather lengthy names. With 2 or 3 words to remember, they’ve
-                                each turned to using their initials for brand-identification purposes.</p>
-                        </div>
-                    </div>
-                    <div class="py-3">
-                        <div class="detailsContent">
-                            <h4>Logo and Branding : Types of logo</h4>
-                            <p class="mb-0">Monogram logos or lettermarks are logos that consist of letters, usually
-                                brand initials. IBM, CNN, HP, HBO… Noticing a pattern, yes? They’re the initialisms of a
-                                few famous businesses with rather lengthy names. With 2 or 3 words to remember, they’ve
-                                each turned to using their initials for brand-identification purposes.</p>
-                        </div>
-                    </div>
-                    <div class="py-3">
-                        <div class="detailsContent">
-                            <h4>Logo and Branding : Types of logo</h4>
-                            <p class="mb-0">Monogram logos or lettermarks are logos that consist of letters, usually
-                                brand initials. IBM, CNN, HP, HBO… Noticing a pattern, yes? They’re the initialisms of a
-                                few famous businesses with rather lengthy names. With 2 or 3 words to remember, they’ve
-                                each turned to using their initials for brand-identification purposes.</p>
+                            <h4>{{ $faq->question }}</h4>
+                            <p class="mb-0">{{ $faq->answer }}</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="py-3">
-                        <div class="detailsContent">
-                            <h4>Logo and Branding : Types of logo</h4>
-                            <p class="mb-0">Monogram logos or lettermarks are logos that consist of letters, usually
-                                brand initials. IBM, CNN, HP, HBO… Noticing a pattern, yes? They’re the initialisms of a
-                                few famous businesses with rather lengthy names. With 2 or 3 words to remember, they’ve
-                                each turned to using their initials for brand-identification purposes.</p>
-                        </div>
-                    </div>
-                    <div class="py-3">
-                        <div class="detailsContent">
-                            <h4>Logo and Branding : Types of logo</h4>
-                            <p class="mb-0">Monogram logos or lettermarks are logos that consist of letters, usually
-                                brand initials. IBM, CNN, HP, HBO… Noticing a pattern, yes? They’re the initialisms of a
-                                few famous businesses with rather lengthy names. With 2 or 3 words to remember, they’ve
-                                each turned to using their initials for brand-identification purposes.</p>
-                        </div>
-                    </div>
-                    <div class="py-3">
-                        <div class="detailsContent">
-                            <h4>Logo and Branding : Types of logo</h4>
-                            <p class="mb-0">Monogram logos or lettermarks are logos that consist of letters, usually
-                                brand initials. IBM, CNN, HP, HBO… Noticing a pattern, yes? They’re the initialisms of a
-                                few famous businesses with rather lengthy names. With 2 or 3 words to remember, they’ve
-                                each turned to using their initials for brand-identification purposes.</p>
-                        </div>
-                    </div>
-                </div>
+                @empty
+                    No FAQ
+                @endforelse
             </div>
         </div>
     </div>
@@ -927,4 +860,19 @@
             owl.trigger('stop.owl.autoplay')
         })
     </script>--}}
+
+    <script>
+        let params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,width=0,height=0,left=-1000,top=-1000`;
+    </script>
+
+    <script>
+        $('.copy-clipboard').click(function() {
+            Snackbar.show({
+                text: 'Copied to Clipboard',
+                pos: 'bottom-center',
+                actionTextColor: '#038c08',
+                duration: 1500
+            });
+        });
+    </script>
 @endpush

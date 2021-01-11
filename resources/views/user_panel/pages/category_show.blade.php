@@ -12,14 +12,13 @@
             <div class="row   justify-content-center singlecaregoryBannerCustom">
                 <div class=" col-lg-6 col-md-6 v-center">
                     <div class="pl-md-4">
-                        <h2 class="">Logo Design</h2>
-                        <p class="">Reference site about Lorem Ipsum, giving information
-                            on its origins, as well as a random Lipsum generator.</p>
+                        <h2 class="">{{ $services_by_category->title }}</h2>
+                        <p class="">{{ $services_by_category->desc }}</p>
                     </div>
                 </div>
                 <div class=" col-lg-6 col-md-6 singlecaregoryBannerImg">
                     <div class="text-right pr-md-4">
-                        <img src="{{ asset('_user_panel/img/singlecategorypage/singlecategorydetails.svg') }}" alt="" class="img-fluid">
+                        <img src="{{ asset(config('designwala_paths.admin.images.show.categories.banner') . $services_by_category->category_banner) }}" alt="" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -31,17 +30,14 @@
     <div class="singleCategorySingleCategories pt-4" id="singleCategorySingleCategories">
         <div class="container">
             <div class="row">
-                <!--               ******************-->
-                <!--               ******************-->
-                <!--      Single Card -->
-                <!--               ******************-->
-                <!--               ******************-->
+
+                @forelse($services_by_category->services as $services)
                 <div class="col-lg-4 col-md-6 padding25">
                     <div class="searchPageResultSingle position-relative">
-                        <div class="card "> <img src="{{ asset('_user_panel/img/searchpage/search.png') }}" class="card-img-top" alt="...">
+                        <div class="card "> <img src="{{ asset(config('designwala_paths.admin.images.show.services.thumbnails') . $services->thumbnail) }}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title ">
-                                    <span class="w-75 float-left font-medium"><a href="" class="text-dark">Card Title</a></span> <span class="w-25 float-right text-right font-medium">$20</span>
+                                    <span class="w-75 float-left font-medium"><a href="{{ route('guest.service.index', $services->slug) }}" class="text-dark">{{ $services->title }}</a></span> <span class="w-25 float-right text-right font-medium">${{ $services->price }}</span>
                                 </h5>
                                 <div class="starIcons "> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
                                             <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
@@ -66,288 +62,11 @@
                         </div>
                     </div>
                 </div>
-                <!--               ******************-->
-                <!--               ******************-->
-                <!--      Single Card -->
-                <!--               ******************-->
-                <!--               ******************-->
-                <div class="col-lg-4 col-md-6 padding25">
-                    <div class="searchPageResultSingle position-relative">
-                        <div class="card "> <img src="{{ asset('_user_panel/img/searchpage/search.png') }}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title ">
-                                    <span class="w-75 float-left font-medium"><a href="" class="text-dark">Card Title</a></span> <span class="w-25 float-right text-right font-medium">$20</span>
-                                </h5>
-                                <div class="starIcons "> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span> &#40;200&#41; </span> </div>
-                            </div>
-                        </div>
-                        <div class="">
-                            <div class="card-text  mb-0 cardSalesTitle"><small class=" bgOne text-white px-3 py-2 position-absolute">1k sales</small> </div>
-                        </div>
-                    </div>
-                </div>
-                <!--               ******************-->
-                <!--               ******************-->
-                <!--      Single Card -->
-                <!--               ******************-->
-                <!--               ******************-->
-                <div class="col-lg-4 col-md-6 padding25">
-                    <div class="searchPageResultSingle position-relative">
-                        <div class="card "> <img src="{{ asset('_user_panel/img/searchpage/search.png') }}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title ">
-                                    <span class="w-75 float-left font-medium"><a href="" class="text-dark">Card Title</a></span> <span class="w-25 float-right text-right font-medium">$20</span>
-                                </h5>
-                                <div class="starIcons "> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span> &#40;200&#41; </span> </div>
-                            </div>
-                        </div>
-                        <div class="">
-                            <div class="card-text  mb-0 cardSalesTitle"><small class=" bgOne text-white px-3 py-2 position-absolute">1k sales</small> </div>
-                        </div>
-                    </div>
-                </div>
-                <!--               ******************-->
-                <!--               ******************-->
-                <!--      Single Card -->
-                <!--               ******************-->
-                <!--               ******************-->
-                <div class="col-lg-4 col-md-6 padding25">
-                    <div class="searchPageResultSingle position-relative">
-                        <div class="card "> <img src="{{ asset('_user_panel/img/searchpage/search.png') }}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title ">
-                                    <span class="w-75 float-left font-medium"><a href="" class="text-dark">Card Title</a></span> <span class="w-25 float-right text-right font-medium">$20</span>
-                                </h5>
-                                <div class="starIcons "> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span> &#40;200&#41; </span> </div>
-                            </div>
-                        </div>
-                        <div class="">
-                            <div class="card-text  mb-0 cardSalesTitle"><small class=" bgOne text-white px-3 py-2 position-absolute">1k sales</small> </div>
-                        </div>
-                    </div>
-                </div>
-                <!--               ******************-->
-                <!--               ******************-->
-                <!--      Single Card -->
-                <!--               ******************-->
-                <!--               ******************-->
-                <div class="col-lg-4 col-md-6 padding25">
-                    <div class="searchPageResultSingle position-relative">
-                        <div class="card "> <img src="{{ asset('_user_panel/img/searchpage/search.png') }}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title ">
-                                    <span class="w-75 float-left font-medium"><a href="" class="text-dark">Card Title</a></span> <span class="w-25 float-right text-right font-medium">$20</span>
-                                </h5>
-                                <div class="starIcons "> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span> &#40;200&#41; </span> </div>
-                            </div>
-                        </div>
-                        <div class="">
-                            <div class="card-text  mb-0 cardSalesTitle"><small class=" bgOne text-white px-3 py-2 position-absolute">1k sales</small> </div>
-                        </div>
-                    </div>
-                </div>
-                <!--               ******************-->
-                <!--               ******************-->
-                <!--      Single Card -->
-                <!--               ******************-->
-                <!--               ******************-->
-                <div class="col-lg-4 col-md-6 padding25">
-                    <div class="searchPageResultSingle position-relative">
-                        <div class="card "> <img src="{{ asset('_user_panel/img/searchpage/search.png') }}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title ">
-                                    <span class="w-75 float-left font-medium"><a href="" class="text-dark">Card Title</a></span> <span class="w-25 float-right text-right font-medium">$20</span>
-                                </h5>
-                                <div class="starIcons "> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span> &#40;200&#41; </span> </div>
-                            </div>
-                        </div>
-                        <div class="">
-                            <div class="card-text  mb-0 cardSalesTitle"><small class=" bgOne text-white px-3 py-2 position-absolute">1k sales</small> </div>
-                        </div>
-                    </div>
-                </div>
-                <!--               ******************-->
-                <!--               ******************-->
-                <!--      Single Card -->
-                <!--               ******************-->
-                <!--               ******************-->
-                <div class="col-lg-4 col-md-6 padding25">
-                    <div class="searchPageResultSingle position-relative">
-                        <div class="card "> <img src="{{ asset('_user_panel/img/searchpage/search.png') }}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title ">
-                                    <span class="w-75 float-left font-medium"><a href="" class="text-dark">Card Title</a></span> <span class="w-25 float-right text-right font-medium">$20</span>
-                                </h5>
-                                <div class="starIcons "> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span> &#40;200&#41; </span> </div>
-                            </div>
-                        </div>
-                        <div class="">
-                            <div class="card-text  mb-0 cardSalesTitle"><small class=" bgOne text-white px-3 py-2 position-absolute">1k sales</small> </div>
-                        </div>
-                    </div>
-                </div>
-                <!--               ******************-->
-                <!--               ******************-->
-                <!--      Single Card -->
-                <!--               ******************-->
-                <!--               ******************-->
-                <div class="col-lg-4 col-md-6 padding25">
-                    <div class="searchPageResultSingle position-relative">
-                        <div class="card "> <img src="{{ asset('_user_panel/img/searchpage/search.png') }}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title ">
-                                    <span class="w-75 float-left font-medium"><a href="" class="text-dark">Card Title</a></span> <span class="w-25 float-right text-right font-medium">$20</span>
-                                </h5>
-                                <div class="starIcons "> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span> &#40;200&#41; </span> </div>
-                            </div>
-                        </div>
-                        <div class="">
-                            <div class="card-text  mb-0 cardSalesTitle"><small class=" bgOne text-white px-3 py-2 position-absolute">1k sales</small> </div>
-                        </div>
-                    </div>
-                </div>
-                <!--               ******************-->
-                <!--               ******************-->
-                <!--      Single Card -->
-                <!--               ******************-->
-                <!--               ******************-->
-                <div class="col-lg-4 col-md-6 padding25">
-                    <div class="searchPageResultSingle position-relative">
-                        <div class="card "> <img src="{{ asset('_user_panel/img/searchpage/search.png') }}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title ">
-                                    <span class="w-75 float-left font-medium"><a href="" class="text-dark">Card Title</a></span> <span class="w-25 float-right text-right font-medium">$20</span>
-                                </h5>
-                                <div class="starIcons "> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span> &#40;200&#41; </span> </div>
-                            </div>
-                        </div>
-                        <div class="">
-                            <div class="card-text  mb-0 cardSalesTitle"><small class=" bgOne text-white px-3 py-2 position-absolute">1k sales</small> </div>
-                        </div>
-                    </div>
-                </div>
-                <!--           row end -->
+                @empty
+                    No Services
+                @endforelse
             </div>
+
             <div class="row">
                 <div class="col-md-12 text-center">
                     <nav aria-label="Page navigation example" class=" d-none d-lg-block">
@@ -385,27 +104,18 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="text-center pb-3">
-                        <h1>Similar Services</h1>
+                        <h1>Popular Services</h1>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <!--               ******************-->
-                <!--               ******************-->
-                <!--      Single Card -->
-                <!--               ******************-->
-                <!--               ******************-->
-                <!--               ******************-->
-                <!--               ******************-->
-                <!--      Single Card -->
-                <!--               ******************-->
-                <!--               ******************-->
+                @forelse($popular_services as $popular_service)
                 <div class="col-lg-4 col-md-6 padding25">
                     <div class="searchPageResultSingle position-relative">
-                        <div class="card "> <img src="{{ asset('_user_panel/img/searchpage/search.png') }}" class="card-img-top" alt="...">
+                        <div class="card "> <img src="{{ asset(config('designwala_paths.admin.images.show.services.thumbnails') . $popular_service->thumbnail) }}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title ">
-                                    <span class="w-75 float-left font-medium"><a href="" class="text-dark">Card Title</a></span> <span class="w-25 float-right text-right font-medium">$20</span>
+                                    <span class="w-75 float-left font-medium"><a href="{{ route('guest.service.index', $popular_service->slug) }}" class="text-dark">{{ $popular_service->title }}</a></span> <span class="w-25 float-right text-right font-medium">{{ $popular_service->price }}</span>
                                 </h5>
                                 <div class="starIcons "> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
                                             <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
@@ -430,135 +140,33 @@
                         </div>
                     </div>
                 </div>
-                <!--               ******************-->
-                <!--               ******************-->
-                <!--      Single Card -->
-                <!--               ******************-->
-                <!--               ******************-->
-                <!--               ******************-->
-                <!--               ******************-->
-                <!--      Single Card -->
-                <!--               ******************-->
-                <!--               ******************-->
-                <div class="col-lg-4 col-md-6 padding25">
-                    <div class="searchPageResultSingle position-relative">
-                        <div class="card "> <img src="{{ asset('_user_panel/img/searchpage/search.png') }}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title ">
-                                    <span class="w-75 float-left font-medium"><a href="" class="text-dark">Card Title</a></span> <span class="w-25 float-right text-right font-medium">$20</span>
-                                </h5>
-                                <div class="starIcons "> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span> &#40;200&#41; </span> </div>
-                            </div>
-                        </div>
-                        <div class="">
-                            <div class="card-text  mb-0 cardSalesTitle"><small class=" bgOne text-white px-3 py-2 position-absolute">1k sales</small> </div>
-                        </div>
-                    </div>
-                </div>
-                <!--               ******************-->
-                <!--               ******************-->
-                <!--      Single Card -->
-                <!--               ******************-->
-                <!--               ******************-->
-                <!--               ******************-->
-                <!--               ******************-->
-                <!--      Single Card -->
-                <!--               ******************-->
-                <!--               ******************-->
-                <div class="col-lg-4 col-md-6 padding25">
-                    <div class="searchPageResultSingle position-relative">
-                        <div class="card "> <img src="{{ asset('_user_panel/img/searchpage/search.png') }}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title ">
-                                    <span class="w-75 float-left font-medium"><a href="" class="text-dark">Card Title</a></span> <span class="w-25 float-right text-right font-medium">$20</span>
-                                </h5>
-                                <div class="starIcons "> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
-                                        </svg>
-                                    </span> <span> &#40;200&#41; </span> </div>
-                            </div>
-                        </div>
-                        <div class="">
-                            <div class="card-text  mb-0 cardSalesTitle"><small class=" bgOne text-white px-3 py-2 position-absolute">1k sales</small> </div>
-                        </div>
-                    </div>
-                </div>
+                @empty
+                    No Services
+                @endforelse
+
             </div>
         </div>
     </div>
     {{-- Similar Services End --}}
 
     {{-- FAQ Start --}}
+
     <div class="singleCategoryDetailContent py-5" id="singleCategoryDetailContent">
         <div class="container">
             <div class="row">
+                @forelse($services_by_category->serviceCategoryFaqs->take(6) as $faq)
                 <div class="col-md-6">
                     <div class="py-3">
                         <div class="detailsContent">
-                            <h4>Logo and Branding : Types of logo</h4>
-                            <p class="mb-0">Monogram logos or lettermarks are logos that consist of letters, usually brand initials. IBM, CNN, HP, HBO… Noticing a pattern, yes? They’re the initialisms of a few famous businesses with rather lengthy names. With 2 or 3 words to remember, they’ve each turned to using their initials for brand-identification purposes.</p>
+                            <h4>{{ $faq->question }}</h4>
+                            <p class="mb-0">{{ $faq->answer }}</p>
                         </div>
                     </div>
-                    <div class="py-3">
-                        <div class="detailsContent">
-                            <h4>Logo and Branding : Types of logo</h4>
-                            <p class="mb-0">Monogram logos or lettermarks are logos that consist of letters, usually brand initials. IBM, CNN, HP, HBO… Noticing a pattern, yes? They’re the initialisms of a few famous businesses with rather lengthy names. With 2 or 3 words to remember, they’ve each turned to using their initials for brand-identification purposes.</p>
-                        </div>
-                    </div>
-                    <div class="py-3">
-                        <div class="detailsContent">
-                            <h4>Logo and Branding : Types of logo</h4>
-                            <p class="mb-0">Monogram logos or lettermarks are logos that consist of letters, usually brand initials. IBM, CNN, HP, HBO… Noticing a pattern, yes? They’re the initialisms of a few famous businesses with rather lengthy names. With 2 or 3 words to remember, they’ve each turned to using their initials for brand-identification purposes.</p>
-                        </div>
-                    </div>
+
                 </div>
-                <div class="col-md-6">
-                    <div class="py-3">
-                        <div class="detailsContent">
-                            <h4>Logo and Branding : Types of logo</h4>
-                            <p class="mb-0">Monogram logos or lettermarks are logos that consist of letters, usually brand initials. IBM, CNN, HP, HBO… Noticing a pattern, yes? They’re the initialisms of a few famous businesses with rather lengthy names. With 2 or 3 words to remember, they’ve each turned to using their initials for brand-identification purposes.</p>
-                        </div>
-                    </div>
-                    <div class="py-3">
-                        <div class="detailsContent">
-                            <h4>Logo and Branding : Types of logo</h4>
-                            <p class="mb-0">Monogram logos or lettermarks are logos that consist of letters, usually brand initials. IBM, CNN, HP, HBO… Noticing a pattern, yes? They’re the initialisms of a few famous businesses with rather lengthy names. With 2 or 3 words to remember, they’ve each turned to using their initials for brand-identification purposes.</p>
-                        </div>
-                    </div>
-                    <div class="py-3">
-                        <div class="detailsContent">
-                            <h4>Logo and Branding : Types of logo</h4>
-                            <p class="mb-0">Monogram logos or lettermarks are logos that consist of letters, usually brand initials. IBM, CNN, HP, HBO… Noticing a pattern, yes? They’re the initialisms of a few famous businesses with rather lengthy names. With 2 or 3 words to remember, they’ve each turned to using their initials for brand-identification purposes.</p>
-                        </div>
-                    </div>
-                </div>
+                @empty
+                    No FAQ
+                @endforelse
             </div>
         </div>
     </div>
@@ -571,9 +179,7 @@
                 <div class="col-md-12 v-center text-center">
                     <h2 class="textsm-center">Would like to discuss
                         your new project?</h2>
-                    <div class="textsm-center pt-3">
-                        <button type="button" class="btn bgOne rounded-0 px-5 text-white py-2">Let's Talk</button>
-                    </div>
+                    @include('user_panel.includes.lets_talk_button')
                 </div>
             </div>
         </div>

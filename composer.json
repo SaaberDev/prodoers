@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.4.13|^8.0",
+        "ext-json": "*",
         "artesaos/seotools": "^0.19.1",
         "cviebrock/eloquent-sluggable": "^8.0",
         "fideloper/proxy": "^4.4",
@@ -17,13 +18,12 @@
         "intervention/image": "^2.5",
         "intervention/imagecache": "^2.5",
         "laravel/framework": "^8.12",
-        "laravel/telescope": "^4.4",
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.3",
-        "tabuna/breadcrumbs": "^2.3",
-      "ext-json": "*"
+        "tabuna/breadcrumbs": "^2.3"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.5",
         "barryvdh/laravel-ide-helper": "^2.8",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
@@ -64,7 +64,6 @@
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi",
-            "@php artisan telescope:publish --ansi",
             "@php artisan vendor:publish --force --tag=livewire:assets --ansi",
             "@php artisan ide-helper:generate",
             "@php artisan ide-helper:meta",

@@ -46,9 +46,7 @@
                     <h2>Would like to
                         discuss your new
                         project?</h2>
-                    <div class="py-4">
-                        <button class="btn bgOne rounded-0 px-5 text-white py-2">Lets talk</button>
-                    </div>
+                    @include('user_panel.includes.lets_talk_button')
                 </div>
             </div>
         </div>

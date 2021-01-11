@@ -1,5 +1,5 @@
 @extends('user_panel.layouts.app')
-@section('title', 'Designwala')
+{{--@section('title', 'Designwala')--}}
 
 @push('styles')
 @endpush
@@ -120,125 +120,23 @@
                 </div>
             </div>
             <!--               popular categories items single-->
+
             <div class="row">
-                <!--               col 1 -->
-                <div class="col-lg-4 col-md-6 text-center py-5 popularCetegoriesSmallpadding">
-                    <div class="sectionServicePopularCategoriesSingleCategories  m-auto">
-                        <div class="sectionServicePopularCategoriesSingleImage">
+                @foreach($popular_categories->take(9) as $popular_category)
+                    <div class="col-lg-4 col-md-6 text-center py-5 popularCetegoriesSmallpadding">
+                        <div class="sectionServicePopularCategoriesSingleCategories  m-auto">
+                            <div class="sectionServicePopularCategoriesSingleImage">
 
-                            <img src="{{ asset('_user_panel/img/servicepage/popularcategories/logo_branding.svg') }}" alt="categories image one" class="img-fluid">
-                        </div>
-                        <div class="sectionServicePopularCategoriesSingleContent">
-                            <h3 class="pt-3"><a href="" class="text-dark">Logo and Branding</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed is diam nonumy</p>
-                            <h4 class="  ">Starts at $10</h4>
-                        </div>
-                    </div>
-                </div>
-                <!--                        col-2-->
-                <div class="col-lg-4 col-md-6 text-center py-5 popularCetegoriesSmallpadding">
-                    <div class="sectionServicePopularCategoriesSingleCategories  m-auto">
-                        <div class="sectionServicePopularCategoriesSingleImage">
-
-                            <img src="{{ asset('_user_panel/img/servicepage/popularcategories/print_media.svg') }}" alt="categories image one" class="img-fluid">
-                        </div>
-                        <div class="sectionServicePopularCategoriesSingleContent">
-                            <h3 class="pt-3"><a href="" class="text-dark">Print Design</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed is diam nonumy</p>
-                            <h4 class="  ">Starts at $10</h4>
+                                <img src="{{ asset('_user_panel/img/servicepage/popularcategories/logo_branding.svg') }}" alt="categories image one" class="img-fluid">
+                            </div>
+                            <div class="sectionServicePopularCategoriesSingleContent">
+                                <h3 class="pt-3"><a href="" class="text-dark">{{ $popular_category->title }}</a></h3>
+                                <p>{{ Str::limit($popular_category->desc, $limit = 20, $end = ' ...') }}</p>
+                                <h4 class="">Starts at ${{ $popular_category->services->min('price') }}</h4>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!--                        col-3 -->
-                <div class="col-lg-4 col-md-6 text-center py-5 popularCetegoriesSmallpadding">
-                    <div class="sectionServicePopularCategoriesSingleCategories  m-auto">
-                        <div class="sectionServicePopularCategoriesSingleImage">
-                            <img src="{{ asset('_user_panel/img/servicepage/popularcategories/social_media.svg') }}" alt="categories image one" class="img-fluid">
-                        </div>
-                        <div class="sectionServicePopularCategoriesSingleContent">
-                            <h3 class="pt-3"><a href="" class="text-dark">Social Media Design</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed is diam nonumy</p>
-                            <h4 class="  ">Starts at $10</h4>
-                        </div>
-                    </div>
-                </div>
-                <!--                        col-4 -->
-                <div class="col-lg-4 col-md-6 text-center py-5 popularCetegoriesSmallpadding">
-                    <div class="sectionServicePopularCategoriesSingleCategories  m-auto">
-                        <div class="sectionServicePopularCategoriesSingleImage">
-                            <img src="{{ asset('_user_panel/img/servicepage/popularcategories/photo_editing.svg') }}" alt="categories image one" class="img-fluid">
-                        </div>
-                        <div class="sectionServicePopularCategoriesSingleContent">
-                            <h3 class="pt-3"><a href="" class="text-dark">Product Photo Editing</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed is diam nonumy</p>
-                            <h4 class="  ">Starts at $10</h4>
-                        </div>
-                    </div>
-                </div>
-                <!--                        col-5 -->
-                <div class="col-lg-4 col-md-6 text-center py-5 popularCetegoriesSmallpadding">
-                    <div class="sectionServicePopularCategoriesSingleCategories  m-auto">
-                        <div class="sectionServicePopularCategoriesSingleImage">
-                            <img src="{{ asset('_user_panel/img/servicepage/popularcategories/web_design.svg') }}" alt="categories image one" class="img-fluid">
-                        </div>
-                        <div class="sectionServicePopularCategoriesSingleContent">
-                            <h3 class="pt-3"><a href="" class="text-dark">Web Design</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed is diam nonumy</p>
-                            <h4 class="  ">Starts at $10</h4>
-                        </div>
-                    </div>
-                </div>
-                <!--                        col-6 -->
-                <div class="col-lg-4 col-md-6 text-center py-5 popularCetegoriesSmallpadding">
-                    <div class="sectionServicePopularCategoriesSingleCategories  m-auto">
-                        <div class="sectionServicePopularCategoriesSingleImage">
-                            <img src="{{ asset('_user_panel/img/servicepage/popularcategories/web_development.svg') }}" alt="categories image one" class="img-fluid"> </div>
-                        <div class="sectionServicePopularCategoriesSingleContent">
-                            <h3 class="pt-3"><a href="" class="text-dark">Web Development</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed is diam nonumy</p>
-                            <h4 class="  ">Starts at $10</h4>
-                        </div>
-                    </div>
-                </div>
-                <!--                        col-7 -->
-                <div class="col-lg-4 col-md-6 text-center py-5 popularCetegoriesSmallpadding">
-                    <div class="sectionServicePopularCategoriesSingleCategories  m-auto">
-                        <div class="sectionServicePopularCategoriesSingleImage">
-                            <img src="{{ asset('_user_panel/img/servicepage/popularcategories/wordpress.svg') }}" alt="categories image one" class="img-fluid">
-                        </div>
-                        <div class="sectionServicePopularCategoriesSingleContent">
-                            <h3 class="pt-3"><a href="" class="text-dark">Wordpress</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed is diam nonumy</p>
-                            <h4 class="  ">Starts at $10</h4>
-                        </div>
-                    </div>
-                </div>
-                <!--                        col-8 -->
-                <div class="col-lg-4 col-md-6 text-center py-5 popularCetegoriesSmallpadding">
-                    <div class="sectionServicePopularCategoriesSingleCategories  m-auto">
-                        <div class="sectionServicePopularCategoriesSingleImage">
-                           <img src="{{ asset('_user_panel/img/servicepage/popularcategories/digital_marketing.svg') }}" alt="categories image one" class="img-fluid">
-                        </div>
-                        <div class="sectionServicePopularCategoriesSingleContent">
-                            <h3 class="pt-3"><a href="" class="text-dark">Digital Marketing</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed is diam nonumy</p>
-                            <h4 class="  ">Starts at $10</h4>
-                        </div>
-                    </div>
-                </div>
-                <!--                        col-8 -->
-                <div class="col-lg-4 col-md-12 text-center py-5 popularCetegoriesSmallpadding">
-                    <div class="sectionServicePopularCategoriesSingleCategories  m-auto">
-                        <div class="sectionServicePopularCategoriesSingleImage">
-                            <img src="{{ asset('_user_panel/img/servicepage/popularcategories/seo.svg') }}" alt="categories image one" class="img-fluid">
-                        </div>
-                        <div class="sectionServicePopularCategoriesSingleContent">
-                            <h3 class="pt-3"><a href="" class="text-dark">SEO</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed is diam nonumy</p>
-                            <h4 class="  ">Starts at $10</h4>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

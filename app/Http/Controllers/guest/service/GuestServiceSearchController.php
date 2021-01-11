@@ -1,17 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\user_panel;
+namespace App\Http\Controllers\guest\service;
 
 use App\Http\Controllers\Controller;
-use Artesaos\SEOTools\Facades\OpenGraph;
-use Artesaos\SEOTools\Facades\SEOMeta;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class HomeController extends Controller
+class GuestServiceSearchController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,11 +18,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        OpenGraph::setTitle('Designwala')
-            ->setDescription('Stop wasting time on hassling, let professionals do your job.')
-            ->setUrl('https://designwala.net');
-
-        return view('user_panel.index');
+        return view('user_panel.pages.service_search');
     }
 
     /**

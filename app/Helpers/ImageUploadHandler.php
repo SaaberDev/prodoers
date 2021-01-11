@@ -1,6 +1,7 @@
 <?php
     use Illuminate\Support\Facades\Storage;
     use Intervention\Image\Facades\Image;
+    use Intervention\Image\ImageManagerStatic;
 
 
     if (!function_exists('SingleImageUploadHandler')){
@@ -43,7 +44,7 @@
                     $img = Image::make($file);
                     $img->encode('', 75);
                     $fileExt = $file->getClientOriginalExtension();
-                    $fileFormat = strtoupper($filename . '-' . $uniqueKey . $i) . '.' . $fileExt;
+                    $fileFormat = strtoupper($filename . md5(time()) . '-' . $uniqueKey . $i) . '.' . $fileExt;
                     $fileNameToStore = str_replace(' ', '-', $fileFormat);
                     $location = 'public/' . $path;
 
@@ -60,10 +61,10 @@
 
 
     if (!function_exists('SingleImageUpdateHandler')){
-        function SingleImageUpdateHandler($request, $dbFilename, $filename, $uploadedFile = '', $uniqueKey = '', $path = '')
+        function SingleImageUpdateHandler($request, $filename, $dbFilename, $uploadedFile = '', $uniqueKey = '', $path = '')
         {
+            $fileNameToStore = $dbFilename;
             if ($request->hasFile($uploadedFile)) {
-
                 $location = 'public/' . $path;
                 // delete old image first
                 if (Storage::exists($location . $dbFilename)) {
@@ -81,14 +82,56 @@
                 // Store in Storage Filesystem
                 Storage::put($location . $fileNameToStore, $img);
             }
-            else {
-                $location = 'public/' . $path;
-                $url = config('app.url') . '/' . $dbFilename;
-                $extension = pathinfo($url, PATHINFO_EXTENSION);
-                $fileFormat = strtoupper($filename . '-' . $uniqueKey) . '.' . $extension;
-                $fileNameToStore = str_replace(' ', '-', $fileFormat);
-                Storage::move($location . $dbFilename, $location . $fileNameToStore);
-            }
             return $fileNameToStore;
         }
     }
+
+
+    if (!function_exists('MultiImageUpdateHandler')){
+        function MultiImageUpdateHandler($request, $filename, $uploadedFile = '', $uniqueKey = '', $path = '')
+        {
+            $files = $request->file($uploadedFile);
+            $stores = [];
+            if ($request->hasFile($uploadedFile)) {
+                $i = 1;
+                foreach ($files as $file){
+                    //Get file from client side
+                    $img = Image::make($file);
+                    $img->encode('', 75);
+                    $fileExt = $file->getClientOriginalExtension();
+                    $fileFormat = strtoupper($filename . md5(time()) . '-' . $uniqueKey . $i) . '.' . $fileExt;
+                    $fileNameToStore = str_replace(' ', '-', $fileFormat);
+                    $location = 'public/' . $path;
+
+                    // Store in Storage Filesystem
+                    Storage::put($location . $fileNameToStore, $img);
+                    $stores[] = $fileNameToStore;
+                    $i++;
+                }
+            } else {
+                return $stores;
+            }
+            return $stores;
+        }
+    }
+
+    if (!function_exists('deleteFileBefore')){
+        function deleteFileBefore($path, $dbFilename){
+            $location = 'public/' . $path;
+            // delete old image first
+            if (Storage::exists($location . $dbFilename)) {
+                Storage::delete($location . $dbFilename);
+            }
+        }
+    }
+
+//    if (!function_exists('cacheImage')){
+//        function cacheImage($src){
+//            $imgCache = ImageManagerStatic::cache(function($image) use ($src) {
+//                $image->make($src);
+//                $image->encode('jpg', 100);
+//            }, 10);
+//
+//            return ImageManagerStatic::make($imgCache)->response();
+//        }
+//    }

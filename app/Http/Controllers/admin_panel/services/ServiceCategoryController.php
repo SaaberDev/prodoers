@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin_panel\services;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Services\ServiceCategoryRequest;
 use App\Models\ServiceCategory;
+use App\Models\ServiceCategoryFaq;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -12,6 +13,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
+use Spatie\Tags\Tag;
 
 class ServiceCategoryController extends Controller
 {
@@ -42,19 +44,44 @@ class ServiceCategoryController extends Controller
      *
      * @return RedirectResponse
      */
-    public function store(ServiceCategoryRequest $request): RedirectResponse
+    public function store(ServiceCategoryRequest $request)
     {
-        $slug = SlugService::createSlug(ServiceCategory::class, 'slug', $request->input('service_category_title'));
-        ServiceCategory::query()->firstOrCreate([
-            'title' => $request->input('service_category_title'),
-            'popular_status' => $request->input('category_popular', 0),
-            'published_status' => $request->input('category_status', 0),
-            'meta_desc' => $request->input('meta_description'),
-            'slug' => $slug,
-            'category_banner' => SingleImageUploadHandler($request, $slug, 'banner_image', 'banner', 'admin_panel/services_categories/banner/'),
-            'category_thumbnail' => SingleImageUploadHandler($request, $slug, 'thumbnail_image', 'thumbnail','admin_panel/services_categories/thumbnail/'),
-            'desc' => $request->input('service_description'),
-        ]);
+        DB::transaction(function () use ($request) {
+            $slug = SlugService::createSlug(ServiceCategory::class, 'slug', $request->input('service_category_title'));
+            $service_categories = ServiceCategory::firstOrCreate([
+                'title' => $request->input('service_category_title'),
+                'popular_status' => $request->input('category_popular'),
+                'published_status' => $request->input('category_status'),
+                'meta_desc' => $request->input('meta_description'),
+                'slug' => $slug,
+                'category_banner' => SingleImageUploadHandler($request, $slug, 'banner_image', 'banner',
+                    config('designwala_paths.admin.images.store.categories.banner')),
+                'category_thumbnail' => SingleImageUploadHandler($request, $slug, 'thumbnail_image', 'thumbnail',
+                    config('designwala_paths.admin.images.store.categories.thumbnails')),
+                'desc' => $request->input('service_description'),
+            ]);
+
+            $faqs = [];
+            $question = $request->input('question');
+            $answer = $request->input('answer');
+            for($count = 0; $count < count($question); $count++)
+            {
+                $data = array(
+                    'question' => $question[$count],
+                    'answer'  => $answer[$count]
+                );
+                $faqs[] = $data;
+            }
+            foreach ($faqs as $faq){
+//                dd($faq);
+                $service_categories->serviceCategoryFaqs()->firstOrCreate([
+                    'service_category_id' => $service_categories->id,
+                    'question' => $faq['question'],
+                    'answer' => $faq['answer']
+                ]);
+            }
+
+        });
 
         return redirect()->back();
     }
@@ -82,31 +109,20 @@ class ServiceCategoryController extends Controller
         return \view('admin_panel.pages.services.category.edit', compact('id', 'service_categories'));
     }
 
-//    public function destroyBannerImage($id)
-//    {
-//        $notify = [
-//            'alert-type' => 'success_toast',
-//            'message' => 'Banner Image Deleted !',
-//        ];
-//        $service_categories = ServiceCategory::findOrFail($id);
-//        $service_categories->category_banner->delete();
-//        if (\File::exists(storage_path() . '/app/public/admin_panel/services_categories/banner/' . $service_categories->category_banner)){
-//            \File::delete(storage_path() . '/app/public/admin_panel/services_categories/banner/' . $service_categories->category_banner);
-//        }
-//        return response()->json($notify);
-//    }
-//
-//    public function destroyThumbnailImage($id)
-//    {
-//        $service_categories = ServiceCategory::findOrFail($id);
-//        $service_categories->delete();
-//        if (\File::exists(storage_path() . '/admin_panel/services_categories/banner/' . $service_categories->category_thumbnail)){
-//            \File::delete(storage_path() . '/admin_panel/services_categories/banner/' . $service_categories->category_thumbnail);
-//        }
-//        return response()->json([
-//            'message' => 'Image deleted successfully!'
-//        ]);
-//    }
+    public function destroyServiceCategoryFaq($id)
+    {
+        $notify = [
+            'alert-type' => 'success_toast',
+            'message' => 'FAQ Deleted !',
+        ];
+        $service_category_faqs = ServiceCategoryFaq::findOrFail($id);
+        DB::transaction(function () use ($service_category_faqs){
+            $service_category_faqs->delete();
+        });
+
+//        return \response()->json($notify);
+        return redirect()->back()->with($notify);
+    }
 
     /**
      * Update the specified resource in storage.
@@ -118,17 +134,42 @@ class ServiceCategoryController extends Controller
     public function update(ServiceCategoryRequest $request, $id)
     {
         $service_categories = ServiceCategory::findOrFail($id);
+        DB::transaction(function () use ($request, $service_categories) {
+            $slug = SlugService::createSlug(ServiceCategory::class, 'slug', $request->input('service_category_title'));
+            $service_categories->update([
+                'title' => $request->input('service_category_title'),
+                'popular_status' => $request->input('category_popular'),
+                'published_status' => $request->input('category_status'),
+                'meta_desc' => $request->input('meta_description'),
+                'slug' => $slug,
+                'category_banner' => SingleImageUpdateHandler($request, $slug, $service_categories->category_banner,
+                    'banner_image', 'banner', 'admin_panel/services_categories/banner/'),
+                'category_thumbnail' => SingleImageUpdateHandler($request, $slug,
+                    $service_categories->category_thumbnail, 'thumbnail_image', 'thumbnail',
+                    'admin_panel/services_categories/thumbnail/'),
+                'desc' => $request->input('service_description')
+            ]);
 
-        $service_categories->update([
-            'title' => $request->input('service_category_title'),
-            'popular_status' => $request->input('category_popular', 0),
-            'published_status' => $request->input('category_status', 0),
-            'meta_desc' => $request->input('meta_description'),
-            'slug' => SlugService::createSlug(ServiceCategory::class, 'slug', $request->input('service_category_title')),
-            'category_banner' => SingleImageUpdateHandler($request, $service_categories->category_banner, $service_categories->slug, 'banner_image', 'banner', 'admin_panel/services_categories/banner/'),
-            'category_thumbnail' => SingleImageUpdateHandler($request, $service_categories->category_thumbnail, $service_categories->slug,'thumbnail_image', 'thumbnail','admin_panel/services_categories/thumbnail/'),
-            'desc' => $request->input('service_description')
-        ]);
+            $faqs = [];
+            $question = $request->input('question');
+            $answer = $request->input('answer');
+            for($count = 0; $count < count($question); $count++)
+            {
+                $data = array(
+                    'question' => $question[$count],
+                    'answer'  => $answer[$count]
+                );
+                $faqs[] = $data;
+            }
+            $service_categories->serviceCategoryFaqs()->delete();
+            foreach ($faqs as $faq){
+                $service_categories->serviceCategoryFaqs()->firstOrCreate([
+                    'service_category_id' => $service_categories->id,
+                    'question' => $faq['question'],
+                    'answer' => $faq['answer']
+                ]);
+            }
+        });
 
         return redirect()->route('services.category.index');
     }
@@ -137,10 +178,18 @@ class ServiceCategoryController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return Response
+     * @return RedirectResponse
      */
     public function destroy($id)
     {
-        //
+        $notify = [
+            'alert-type' => 'success_toast',
+            'message' => 'Service Category Deleted !',
+        ];
+        $service_categories = ServiceCategory::findOrFail($id);
+        deleteFileBefore('admin_panel/services_categories/banner/', $service_categories->category_banner);
+        deleteFileBefore('admin_panel/services_categories/thumbnail/', $service_categories->category_thumbnail);
+        $service_categories->delete();
+        return redirect()->back()->with($notify);
     }
 }

@@ -1,9 +1,8 @@
+{{-- Deleting Service Images --}}
 <script>
-    $('#delete_banner').on('click', function (event) {
+    $('.sweet_delete').on('click', function (event) {
         event.preventDefault();
-        const url = $(this).attr('href');
-        var id = $(this).data("id");
-        var token = $("meta[name='csrf-token']").attr("content");
+        const action = $(this).data('action');
 
         Swal.fire({
             title: "Are you sure ?",
@@ -16,39 +15,9 @@
         })
             .then((result) => {
                 if (result.isConfirmed) {
-                    $.ajax({
-                        url: "{{ route('services.category.destroyBannerImage', $service_categories->id) }}",
-                        type: 'DELETE',
-                        data: {
-                            _token: token,
-                            id: id
-                        },
-                        success: function (data) {
-                            // alert(data);
-                            window.location.href = url;
-                        }
-                    })
+                    window.location.href = action;
                 }
                 return false;
             })
-    });
-
-    $('#delete_thumbnail').on('click', function (event) {
-        event.preventDefault();
-        const url = $(this).attr('href');
-
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "This record and it's details will be permanently deleted!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-            if (result.value) {
-                window.location.href = url;
-            }
-        })
     });
 </script>

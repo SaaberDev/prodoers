@@ -24,10 +24,10 @@
                 </div>
             </div>
             <div class="col"></div>
-{{--            @if($service_categories->total() > 15)--}}
-{{--                {{ $service_categories->links('vendor.livewire.designwala-pagination') }}--}}
-{{--            @else--}}
-{{--            @endif--}}
+            @if($service_categories->total() > 5)
+                {{ $service_categories->links('vendor.livewire.designwala-pagination') }}
+            @else
+            @endif
         </div>
     </div>
 
@@ -50,12 +50,8 @@
                         @forelse($service_categories as $service_category)
                             <tr>
                                 <td>{{ $service_category->title }}</td>
-{{--                                <td><img src="{{ asset('storage/admin_panel/services_categories/thumbnail/' . $service_category->category_thumbnail) }}" alt="" class="img-fluid" style="height: 25px;"> </td>--}}
-{{--                                <td><img src="{{ asset('storage/admin_panel/services_categories/thumbnail/' . $service_category->category_thumbnail) }}" alt="" class="img-fluid" style="height: 25px;"> </td>--}}
-
-                                {{-- Demo --}}
-                                <td><img src="{{ $service_category->category_banner }}" alt="" class="img-fluid" style="height: 25px;"> </td>
-                                <td><img src="{{ $service_category->category_thumbnail }}" alt="" class="img-fluid" style="height: 25px;"> </td>
+                                <td><img src="{{ asset('storage/admin_panel/services_categories/banner/' . $service_category->category_banner) }}" alt="" class="img-fluid" style="height: 25px;"> </td>
+                                <td><img src="{{ asset('storage/admin_panel/services_categories/thumbnail/' . $service_category->category_thumbnail) }}" alt="" class="img-fluid" style="height: 25px;"> </td>
                                 <td>
                                     @if($service_category->popular_status == 1)
                                         <div class="tableDataLastButtonLiketab  tabletabGREEN"><span class="">Active</span></div>
@@ -65,9 +61,9 @@
                                 </td>
                                 <td>
                                     @if($service_category->published_status == 1)
-                                        <div class="tableDataLastButtonLiketab  tabletabGREEN"><span class="">Published</span></div>
+                                        <div class="tableDataLastButtonLiketab tabletabGREEN"><span class="">Published</span></div>
                                     @else
-                                        <div class="tableDataLastButtonLiketab  tabletabRED"><span class=""> Not Published</span></div>
+                                        <div class="tableDataLastButtonLiketab tabletabRED"><span class=""> Not Published</span></div>
                                     @endif
                                 </td>
                                 <td>
@@ -80,7 +76,7 @@
                                                 </g>
                                             </svg>
                                         </a>
-                                        <a class="btn m-0 p-0" data-toggle="modal" data-target="#deletemodal">
+                                        <a data-action="{{ route('services.category.destroy', $service_category->id) }}" class="sweet_delete btn m-0 p-0">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="11.91" height="16.027" viewBox="0 0 11.91 16.027">
                                                 <path d="M8.279,16.969a1.563,1.563,0,0,0,1.559,1.559h6.234a1.563,1.563,0,0,0,1.559-1.559V7.617H8.279ZM18.41,4.279H15.683L14.9,3.5h-3.9l-.779.779H7.5V5.838H18.41Z" transform="translate(-7 -3)" fill="none" stroke="#000" stroke-width="1"></path>
                                             </svg>
