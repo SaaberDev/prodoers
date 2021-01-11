@@ -36,7 +36,7 @@
             <form action="{{ route('services.service.store') }}" method="POST" enctype="multipart/form-data" id="form">
                 @csrf @method('POST')
                 <div class="row m-0 justify-content-between">
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         {{-- Service Title --}}
                         <div class="form-group mb-0">
                             <label for="">
@@ -52,7 +52,7 @@
                         </div>
                     </div>
                     {{-- Service Tags --}}
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group mb-0">
                             <label for="">
                                 <h5>Tags</h5></label>
@@ -71,13 +71,25 @@
                             </div>
                         </div>
                     </div>
+
+                    {{-- Popular Status --}}
+                    <div class="col-md-3 text-right">
+                        <div class=" ">
+                            <label for="">
+                                <h5>Popular Status </h5></label>
+                            <div class="">
+                                <input id="popular_status" name="popular_status" value="{{ old('popular_status') ?? 0 }}" {{ old('popular_status') == 1 ? 'checked='.'"'.'checked'.'"' : '' }} type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
+                            </div>
+                        </div>
+                    </div>
+
                     {{-- Status --}}
-                    <div class="col-md-2 text-right v-center">
+                    <div class="col-md-3 text-right">
                         <div class=" ">
                             <label for="">
                                 <h5>status </h5></label>
                             <div class="">
-                                <input id="published_status" name="published_status" value="{{ old('published_status') }}" {{ old('published_status') == 1 ? 'checked='.'"'.'checked'.'"' : '' }} type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
+                                <input id="published_status" name="published_status" value="{{ old('published_status') ?? 0 }}" {{ old('published_status') == 1 ? 'checked='.'"'.'checked'.'"' : '' }} type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
                             </div>
                         </div>
                     </div>
@@ -489,6 +501,11 @@
         // $('.select2').select2()
 
         $("#allCategories").select2();
+
+        $('#popular_status').change(function () {
+            let isChecked = $(this).prop('checked') === true ? 1 : 0;
+            $(this).val(isChecked);
+        });
 
         $('#published_status').change(function () {
             let isChecked = $(this).prop('checked') === true ? 1 : 0;

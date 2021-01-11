@@ -5,7 +5,7 @@
     switch(type){
         case 'success':
             Swal.fire({
-                title:'Successfully Added!',
+                // title:'Successfully Added!',
                 text:"{{ Session::get('message') }}",
                 icon: "success",
                 timer:3000,
@@ -13,7 +13,7 @@
             break
         case 'warning':
             Swal.fire({
-                title:'Access Denied',
+                // title:'Access Denied',
                 text:"{{ Session::get('message') }}",
                 icon: "warning",
             })

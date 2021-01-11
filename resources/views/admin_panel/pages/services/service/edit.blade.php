@@ -6,8 +6,6 @@
 @endpush
 
 @section('content')
-
-
     <div class="col-xl-10 col-lg-9 col-md-12 dashboardRightside scrollbar scroll-style">
         <div class="">
             <div class="row justify-content-center pb-3 m-0">
@@ -33,7 +31,7 @@
                 @csrf @method('PATCH')
                 <div class="row m-0 justify-content-between ">
                     {{-- Service Title --}}
-                    <div class="col-md-6">
+                    <div class="col-md-3">
                         <div class="form-group mb-0">
                             <label for="">
                                 <h5>Title </h5></label>
@@ -49,17 +47,18 @@
                     </div>
 
                     {{-- Service Tags --}}
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group mb-0">
                             <label for="">
                                 <h5>Tags</h5></label>
                             <div class="input-group">
 
                                 <input name="service_tags"
-                                       value="@foreach ($services->tags as $tags) {{ old('service_tags') ? old('service_tags') : $tags->tags }} {{ $loop->last ? '' : ', ' }} @endforeach"
+                                       value="@foreach($services->tags as $tag) {{ old('service_tags') ?? $tag->id }}, @endforeach"
                                        class="{{ $errors->has('service_tags') ? ' is-invalid' : '' }}"
                                        type="text"
-                                       placeholder="">
+                                       placeholder=""
+                                >
 
                                 @if($errors->has('service_tags'))
                                     <span class="invalid-feedback">
@@ -70,8 +69,19 @@
                         </div>
                     </div>
 
+                    {{-- Popular Status --}}
+                    <div class="col-md-3 text-right">
+                        <div class=" ">
+                            <label for="">
+                                <h5>Popular Status </h5></label>
+                            <div class="">
+                                <input id="popular_status" name="popular_status" value="{{ old('popular_status') ? old('popular_status') : $services->popular_status }}" {{ (old('popular_status') ? old('popular_status') : $services->popular_status) == 1 ? 'checked='.'"'.'checked'.'"' : '' }} type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
+                            </div>
+                        </div>
+                    </div>
+
                     {{-- Status --}}
-                    <div class="col-md-2 text-right v-center">
+                    <div class="col-md-3 text-right">
                         <div class=" ">
                             <label for="">
                                 <h5>status </h5></label>
@@ -541,6 +551,11 @@
         // $('.select2').select2()
         $("#allCategories").select2();
 
+        $('#popular_status').change(function () {
+            let isChecked = $(this).prop('checked') === true ? 1 : 0;
+            $(this).val(isChecked);
+        });
+
         $('#published_status').change(function () {
             let isChecked = $(this).prop('checked') === true ? 1 : 0;
             $(this).val(isChecked);
@@ -562,10 +577,96 @@
         /*
         *  Tagify for Service Tags
         * */
-        const input = document.querySelector('input[name=service_tags]');
-        const tagify = new Tagify(input, {
-            originalInputValueFormat: valuesArr => valuesArr.map(item => item.value).join(',')
-        });
+        var inputElm = document.querySelector('input[name=service_tags]');
+
+        var usersList = [
+                @foreach($tags as $tag)
+            {
+                "value": {{ $tag->id }},
+                "name": "{{ $tag->title }}",
+            },
+            @endforeach
+        ]
+
+        function tagTemplate(tagData){
+            return `
+        <tag title="${(tagData.title || tagData.email)}"
+                contenteditable='false'
+                spellcheck='false'
+                tabIndex="-1"
+                class="${this.settings.classNames.tag} ${tagData.class ? tagData.class : ""}"
+                ${this.getAttributes(tagData)}>
+            <x title='' class='tagify__tag__removeBtn' role='button' aria-label='remove tag'></x>
+            <div>
+                <span class='tagify__tag-text'>${tagData.name}</span>
+            </div>
+        </tag>
+    `
+        }
+
+        function suggestionItemTemplate(tagData){
+            return `
+        <div ${this.getAttributes(tagData)}
+            class='tagify__dropdown__item ${tagData.class ? tagData.class : ""}'
+            tabindex="0"
+            role="option">
+            <strong>${tagData.name}</strong>
+        </div>
+    `
+        }
+
+        // initialize Tagify on the above input node reference
+        var tagify = new Tagify(inputElm, {
+            tagTextProp: 'name', // very important since a custom template is used with this property as text. allows typing a "value" or a "name" to match input with whitelist
+            enforceWhitelist: true,
+            skipInvalid: true, // do not remporarily add invalid tags
+            originalInputValueFormat: valuesArr => valuesArr.map(item => item.value).join(','),
+            dropdown: {
+                closeOnSelect: false,
+                enabled: 0,
+                classname: 'users-list',
+                searchKeys: ['value', 'name']  // very important to set by which keys to search for suggesttions when typing
+            },
+            templates: {
+                tag: tagTemplate,
+                dropdownItem: suggestionItemTemplate
+            },
+            whitelist: usersList
+        })
+
+        tagify.on('dropdown:show dropdown:updated', onDropdownShow)
+        tagify.on('dropdown:select', onSelectSuggestion)
+
+        var addAllSuggestionsElm;
+
+        function onDropdownShow(e){
+            var dropdownContentElm = e.detail.tagify.DOM.dropdown.content;
+
+            if( tagify.suggestedListItems.length > 1 ){
+                addAllSuggestionsElm = getAddAllSuggestionsElm();
+
+                // insert "addAllSuggestionsElm" as the first element in the suggestions list
+                dropdownContentElm.insertBefore(addAllSuggestionsElm, dropdownContentElm.firstChild)
+            }
+        }
+
+        function onSelectSuggestion(e){
+            if( e.detail.elm == addAllSuggestionsElm )
+                tagify.dropdown.selectAll.call(tagify);
+        }
+
+        // create a "add all" custom suggestion element every time the dropdown changes
+        function getAddAllSuggestionsElm(){
+            // suggestions items should be based on "dropdownItem" template
+            return tagify.parseTemplate('dropdownItem', [{
+                    class: "addAll",
+                    name: "Add all",
+                    email: tagify.settings.whitelist.reduce(function(remainingSuggestions, item){
+                        return tagify.isTagDuplicate(item.value) ? remainingSuggestions : remainingSuggestions + 1
+                    }, 0) + " Members"
+                }]
+            )
+        }
     </script>
     @include('alerts.admin_panel.delete_confirmation_modal')
 @endpush

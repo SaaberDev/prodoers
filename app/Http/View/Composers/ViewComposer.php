@@ -21,7 +21,7 @@
 
             $view->with(
                 'services',
-                    Service::getAllPublished()->orderByIdDesc()->get(),
+                    Service::getAllPublished()->orderByIdDesc()->get()
             );
         }
     }

@@ -7,9 +7,6 @@
     {!! SEO::generate() !!}
     <link rel="icon" href="{{ asset('_user_panel/img/D.png') }}" type="image/png" sizes="16x16">
 
-    {{-- SEO Meta Tags --}}
-    @include('user_panel.includes.seo_meta')
-
     {{-- Styles --}}
     <link href="{{ mix('_user_panel/css/user_panel.css') }}" rel="stylesheet">
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
@@ -22,8 +19,22 @@
 @include('user_panel.includes.footer')
 {{-- footer_section --}}
 <script src="{{ mix('_user_panel/js/user_panel.js') }}"></script>
-@include('user_panel.includes.tawk_to.tawk_to')
 <script src="{{ mix('js/app.js') }}"></script>
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/5fd806f7a8a254155ab36231/1ephtmdub';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+    })();
+</script>
+<!--End of Tawk.to Script-->
+
 @stack('scripts')
 </body>
 </html>

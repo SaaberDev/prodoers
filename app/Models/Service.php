@@ -68,7 +68,7 @@ class Service extends Model
 
     public function scopeOrderByIdDesc(Builder $query)
     {
-        return $query->orderBy('id', 'desc')->with('serviceCategories');
+        return $query->orderBy('id', 'desc');
     }
 
     public function scopeFilterByStatus($query, $filterByStatus)
@@ -101,6 +101,6 @@ class Service extends Model
 
     public function scopeHideCurrent($query, $arg)
     {
-        $query->where('id', '!=', $arg->id);
+        return $query->where('id', '!=', $arg->id);
     }
 }

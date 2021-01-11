@@ -626,7 +626,7 @@
                         <div class="card "><img src="{{ asset(config('designwala_paths.admin.images.show.services.thumbnails') . $related_service->thumbnail) }}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title ">
-                                    <span class="w-75 float-left font-medium"><a href=""
+                                    <span class="w-75 float-left font-medium"><a href="{{ route('guest.service.index', $related_service->slug) }}"
                                                                                  class="text-dark">{{ $related_service->title }}</a></span>
                                     <span class="w-25 float-right text-right font-medium">$ {{ $related_service->price }}</span>
                                 </h5>

@@ -124,13 +124,12 @@
             <div class="row">
                 @foreach($popular_categories->take(9) as $popular_category)
                     <div class="col-lg-4 col-md-6 text-center py-5 popularCetegoriesSmallpadding">
-                        <div class="sectionServicePopularCategoriesSingleCategories  m-auto">
+                        <div class="sectionServicePopularCategoriesSingleCategories m-auto">
                             <div class="sectionServicePopularCategoriesSingleImage">
-
                                 <img src="{{ asset(config('designwala_paths.admin.images.show.categories.thumbnails') . $popular_category->category_thumbnail) }}" alt="categories image one" class="img-fluid">
                             </div>
                             <div class="sectionServicePopularCategoriesSingleContent">
-                                <h3 class="pt-3"><a href="" class="text-dark">{{ $popular_category->title }}</a></h3>
+                                <h3 class="pt-3"><a href="{{ route('guest.service_category.index', $popular_category->slug) }}" class="text-dark">{{ $popular_category->title }}</a></h3>
                                 <p>{{ Str::limit($popular_category->desc, $limit = 20, $end = ' ...') }}</p>
                                 <h4 class="">Starts at ${{ $popular_category->services->min('price') }}</h4>
                             </div>

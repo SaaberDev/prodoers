@@ -44,18 +44,6 @@
                             @foreach($services->take(10) as $service)
                             <li class="nav-item sub-item"><a href="./index.html" class="nav-link d-inline-flex align-items-center sub-menu-link pl-4 active">{{ $service->title }}</a></li>
                             @endforeach
-{{--                            <li class="nav-item sub-item"><a href="./login.html" class="nav-link d-inline-flex align-items-center sub-menu-link pl-4">Login </a></li>--}}
-{{--                            <li class="nav-item sub-item"><a href="./notfound.html" class="nav-link d-inline-flex align-items-center sub-menu-link pl-4">Not Found </a></li>--}}
-{{--                            <li class="nav-item sub-item"><a href="./paymentdetails.html" class="nav-link d-inline-flex align-items-center sub-menu-link pl-4">Payment Details </a></li>--}}
-{{--                            <li class="nav-item sub-item"><a href="./searchPage.html"--}}
-{{--                                                             class="nav-link d-inline-flex align-items-center sub-menu-link pl-4">--}}
-{{--                                    Search </a></li>--}}
-{{--                            <li class="nav-item sub-item"><a href="./singleCategory.html"--}}
-{{--                                                             class="nav-link d-inline-flex align-items-center sub-menu-link pl-4">--}}
-{{--                                    Single Category </a></li>--}}
-{{--                            <li class="nav-item sub-item"><a href="./singleCategoryItem.html"--}}
-{{--                                                             class="nav-link d-inline-flex align-items-center sub-menu-link pl-4">--}}
-{{--                                    Category Item </a></li>--}}
                         </ul>
                     </div>
                 </li>

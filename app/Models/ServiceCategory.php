@@ -34,16 +34,6 @@ class ServiceCategory extends Model
         return $this->hasMany(ServiceCategoryFaq::class, 'service_category_id');
     }
 
-//    public function categoryFaqs()
-//    {
-//        return $this->hasMany(ServiceCategoryFaq::class, 'service_category_id');
-//    }
-
-    public function scopeGetAllCategories($query)
-    {
-        return $query->all();
-    }
-
     public function scopeGetSlug($query, $slug){
         return $query->where('slug', $slug);
     }
@@ -87,12 +77,5 @@ class ServiceCategory extends Model
                 $query->getAllPublished();
             });
     }
-
-//    public function scopeGetMinPrice($query)
-//    {
-//        return $query->whereHas('services')->with('services', function($query){
-//            $query->getAllPublished();
-//        });
-//    }
 
 }

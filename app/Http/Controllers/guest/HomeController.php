@@ -25,10 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        SEOMeta::setTitle(env('APP_NAME'));
-        SEOMeta::setDescription('Stop wasting time on hassling, let professionals do your job.');
-        OpenGraph::setTitle(env('APP_NAME'));
-        OpenGraph::setDescription('Stop wasting time on hassling, let professionals do your job.');
+//        SEOMeta::setTitle(env('APP_NAME'));
+//        SEOMeta::setDescription('Stop wasting time on hassling, let professionals do your job.');
+//        OpenGraph::setTitle(env('APP_NAME'));
+//        OpenGraph::setDescription('Stop wasting time on hassling, let professionals do your job.');
 
         $popular_categories = ServiceCategory::getAllPopular()->get();
         return view('user_panel.index', compact('popular_categories'));

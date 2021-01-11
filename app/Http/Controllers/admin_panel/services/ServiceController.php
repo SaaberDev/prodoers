@@ -50,10 +50,15 @@ class ServiceController extends Controller
      */
     public function store(ServiceRequest $request)
     {
+        $notify = [
+            'alert-type' => 'success',
+            'message' => 'New Service Added Successfully !',
+        ];
         DB::transaction(function () use ($request){
             $slug = SlugService::createSlug(Service::class, 'slug', $request->input('service_title'));
             $services = Service::firstOrCreate([
                 'title' => $request->input('service_title'),
+                'popular_status' => $request->input('popular_status'),
                 'published_status' => $request->input('published_status'),
                 'meta_desc' => $request->input('meta_description'),
                 'service_category_id' => $request->input('allCategories'),
@@ -64,9 +69,6 @@ class ServiceController extends Controller
             ]);
 
             $tagInputs = collect(explode(',', $request->input('service_tags')));
-//            $services->tags()->attach($tagInputs);
-//            dd(json_decode($tagInputs));
-//            $services->tags()->attach($tagInputs);
 //            dd($tagInputs);
             $tagInputs->each(function ($tag) use ($services){
 //                dd($tag);
@@ -111,7 +113,7 @@ class ServiceController extends Controller
             }
         });
 
-        return redirect()->back();
+        return redirect()->back()->with($notify);
     }
 
     /**
@@ -135,7 +137,8 @@ class ServiceController extends Controller
     {
         $services = Service::findOrFail($id);
         $service_categories = ServiceCategory::getTitle();
-        return view('admin_panel.pages.services.service.edit', compact('services', 'id', 'service_categories'));
+        $tags = Tag::getTitle();
+        return view('admin_panel.pages.services.service.edit', compact('services', 'id', 'service_categories', 'tags'));
     }
 
 
@@ -192,11 +195,16 @@ class ServiceController extends Controller
      */
     public function update(ServiceRequest $request, $id)
     {
+        $notify = [
+            'alert-type' => 'success',
+            'message' => 'Service Updated Successfully!',
+        ];
         $services = Service::findOrFail($id);
         DB::transaction(function () use ($request, $services){
             $slug = SlugService::createSlug(Service::class, 'slug', $request->input('service_title'));
             $services->update([
                 'title' => $request->input('service_title'),
+                'popular_status' => $request->input('popular_status'),
                 'published_status' => $request->input('published_status'),
                 'meta_desc' => $request->input('meta_description'),
                 'service_category_id' => $request->input('allCategories'),
@@ -207,14 +215,7 @@ class ServiceController extends Controller
             ]);
 
             $tagInputs = collect(explode(',', $request->input('service_tags')));
-//            $services->tags()->attach($tagInputs);
-//            dd(json_decode($tagInputs));
-//            $services->tags()->attach($tagInputs);
-//            dd($tagInputs);
-            $tagInputs->each(function ($tag) use ($services){
-//                dd($tag);
-                $services->tags()->sync($tag);
-            });
+            $services->tags()->sync($tagInputs);
 
 
             $images = MultiImageUpdateHandler($request, $slug,'service_images', 'service-image', 'admin_panel/services/service_image/');
@@ -245,9 +246,9 @@ class ServiceController extends Controller
                 );
                 $faqs[] = $data;
             }
-            $services->servicesFaqs()->delete();
+            $services->serviceFaqs()->delete();
             foreach ($faqs as $faq){
-                $services->servicesFaqs()->create([
+                $services->serviceFaqs()->create([
                     'service_id' => $services->id,
                     'question' => $faq['question'],
                     'answer' => $faq['answer']
@@ -255,7 +256,7 @@ class ServiceController extends Controller
             }
         });
 
-        return redirect()->route('services.service.index');
+        return redirect()->route('services.service.index')->with($notify);
     }
 
     /**
@@ -268,7 +269,7 @@ class ServiceController extends Controller
     {
         $notify = [
             'alert-type' => 'success_toast',
-            'message' => 'Service Deleted !',
+            'message' => 'Service has been Deleted !',
         ];
         $services = Service::findOrFail($id);
         DB::transaction(function () use ($services){
