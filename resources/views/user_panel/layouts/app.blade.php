@@ -10,6 +10,7 @@
     {{-- Styles --}}
     <link href="{{ mix('_user_panel/css/user_panel.css') }}" rel="stylesheet">
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    @livewireStyles
     @stack('styles')
 </head>
 <body>
@@ -20,19 +21,20 @@
 {{-- footer_section --}}
 <script src="{{ mix('_user_panel/js/user_panel.js') }}"></script>
 <script src="{{ mix('js/app.js') }}"></script>
+@livewireScripts
 
 <!--Start of Tawk.to Script-->
-<script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true;
-        s1.src='https://embed.tawk.to/5fd806f7a8a254155ab36231/1ephtmdub';
-        s1.charset='UTF-8';
-        s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1,s0);
-    })();
-</script>
+{{--<script type="text/javascript">--}}
+{{--    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();--}}
+{{--    (function(){--}}
+{{--        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];--}}
+{{--        s1.async=true;--}}
+{{--        s1.src='https://embed.tawk.to/5fd806f7a8a254155ab36231/1ephtmdub';--}}
+{{--        s1.charset='UTF-8';--}}
+{{--        s1.setAttribute('crossorigin','*');--}}
+{{--        s0.parentNode.insertBefore(s1,s0);--}}
+{{--    })();--}}
+{{--</script>--}}
 <!--End of Tawk.to Script-->
 
 @stack('scripts')

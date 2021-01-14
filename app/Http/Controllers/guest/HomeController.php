@@ -3,18 +3,11 @@
 namespace App\Http\Controllers\guest;
 
 use App\Http\Controllers\Controller;
-use App\Models\Service;
 use App\Models\ServiceCategory;
-use Artesaos\SEOTools\Facades\OpenGraph;
-use Artesaos\SEOTools\Facades\SEOMeta;
-use DebugBar\DebugBar;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Database\Query\Builder;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Spatie\Tags\Tag;
 
 class HomeController extends Controller
 {

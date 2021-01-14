@@ -1896,7 +1896,7 @@ a[aria-expanded="true"] .nav-arrow {
        outline: none !important;
 }
 .modal.show {
-    
+
     padding-right: 0px !important;
 }
 
@@ -1912,6 +1912,26 @@ a[aria-expanded="true"] .nav-arrow {
     border: none;
     border-bottom: 2px solid #038D08;
     color: #038D08;
+}
+
+.pageOnebanner {
+    z-index: 1;
+    overflow-y: auto;
+    height: 370px;
+}
+.pageOnebanner .list-group-item.active {
+
+    z-index: 2;
+    color: #fff;
+    background-color: #038D08;
+    border-color: #038D08;
+
+}
+.sectionServiceBanner input.decreazeInputheight {
+    min-height: calc(25px + 10px + 15px) !important;
+}
+.sectionServiceBanner input.decreazeInputButtonHeight {
+    min-height: calc(25px + 10px + 15px) !important;
 }
 
 

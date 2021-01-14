@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         User::factory(100)->create();
         ServiceCategory::factory(100)->create();
 //        ServiceCategoryFaq::factory(20)->create();
-//        Service::factory(100)->create();
+        Service::factory(100)->create();
 //        ServiceImage::factory(100)->create();
 //        ServiceFeature::factory(20)->create();
 //        ServiceFaq::factory(20)->create();
