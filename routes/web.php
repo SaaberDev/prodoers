@@ -259,7 +259,7 @@
         // Home
         Route::get('/', [HomeController::class, 'index'])->name('home.index');
 //        Route::get('/search/{category_slug}', [GuestSearchController::class, 'index'])->name('search.index');
-        Route::get('/search/{key}', [GuestSearchController::class, 'index'])->name('search.index');
+        Route::get('/search/services/', [GuestSearchController::class, 'index'])->name('search.index');
 
         // Single Category Page
         Route::prefix('/categories')->name('service_category.')->group(function (){

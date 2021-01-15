@@ -11,13 +11,18 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-6 col-md-12">
-                    <form action="" class="">
+                    <form action="{{ route('guest.search.index', str_replace(' ', '-', $search)) }}" method="GET">
                         <div class="input-group ">
-                            <input wire:model="search" type="text" class="form-control rounded-0" placeholder="e.g. logo design"
-                                   aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <input name="q"
+                                   value="{{ $search }}"
+                                   type="text"
+                                   class="form-control rounded-0"
+                                   placeholder="e.g. logo design"
+                                   aria-label="Recipient's username"
+                                   aria-describedby="button-addon2">
                             <div class="input-group-append">
                                 <!--                                   button with svg -->
-                                <button class="btn btn-outline-secondary text-white rounded-0" type="button" id="">
+                                <button class="btn btn-outline-secondary text-white rounded-0" type="submit" id="">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="27.606" height="27.726"
                                          viewBox="0 0 27.606 27.726">
                                         <path id="Icon_awesome-search" data-name="Icon awesome-search"

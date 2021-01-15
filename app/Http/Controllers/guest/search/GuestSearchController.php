@@ -15,11 +15,14 @@ class GuestSearchController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Application|Factory|View|Response
+     * @return Application|Factory|View|\Illuminate\Http\RedirectResponse
      */
     public function index()
     {
-        return view('user_panel.pages.service_search');
+        $search = request()->input('q');
+        $services = Service::getAllPublished()->SearchByTitle($search)->get();
+//        return redirect()->route('guest.search.index', str_replace(' ', '-', $search), compact('services'));
+        return view('user_panel.pages.service_search', compact('services', 'search'));
     }
 
     /**

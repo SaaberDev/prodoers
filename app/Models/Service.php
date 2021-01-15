@@ -81,7 +81,7 @@ class Service extends Model
     public function scopeSearchByTitle($query, $search)
     {
         return $query->where(function ($query) use ($search) {
-            $query->orWhere('title', 'like', '%' . $search . '%');
+            $query->orWhere('title', 'like', "{$search}%");
         });
     }
 
