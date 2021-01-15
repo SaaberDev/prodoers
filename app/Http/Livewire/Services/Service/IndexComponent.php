@@ -42,6 +42,7 @@ class IndexComponent extends Component
         $services = Service::orderByIdDesc()
             ->filterByStatus($this->filterByStatus)
             ->SearchByTitle($search)
+            ->with('serviceCategories')
             ->paginate($this->recordPerPage);
 
         return view('livewire.services.service.index-component', compact('services'));

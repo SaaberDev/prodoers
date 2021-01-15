@@ -23,16 +23,7 @@ class HomeController extends Controller
 //        SEOMeta::setDescription('Stop wasting time on hassling, let professionals do your job.');
 //        OpenGraph::setTitle(env('APP_NAME'));
 //        OpenGraph::setDescription('Stop wasting time on hassling, let professionals do your job.');
-        $search = request()->input('search');
         $popular_categories = ServiceCategory::getAllPopular()->get();
-        return view('user_panel.index', compact('popular_categories', 'search'));
-    }
-
-    public function search()
-    {
-        $search = request()->input('q');
-        $services = Service::getAllPublished()->SearchByTitle($search)->get();
-
-        return redirect()->route('guest.search.index', compact('services', 'search'));
+        return view('user_panel.index', compact('popular_categories'));
     }
 }

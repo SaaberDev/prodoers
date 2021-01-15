@@ -67,7 +67,7 @@ mix.styles([
     'resources/_user_panel/css/loader2.css',
     'resources/_user_panel/css/style.css',
     'resources/_user_panel/css/media.css',
-    'node_modules/node-snackbar/dist/snackbar.css'
+    'node_modules/node-snackbar/dist/snackbar.css',
 ], 'public/_user_panel/css/user_panel.css')
     .scripts([
         'resources/_user_panel/js/bootstrap5/jquery.min.js',

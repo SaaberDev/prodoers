@@ -19,10 +19,7 @@ class GuestSearchController extends Controller
      */
     public function index()
     {
-        $search = request()->input('q');
-        $services = Service::getAllPublished()->SearchByTitle($search)->get();
-//        return redirect()->route('guest.search.index', str_replace(' ', '-', $search), compact('services'));
-        return view('user_panel.pages.service_search', compact('services', 'search'));
+        return view('user_panel.pages.service_search');
     }
 
     /**

@@ -3,52 +3,34 @@
 namespace App\Http\Livewire\Guest\Search;
 
 use App\Models\Service;
-use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 
 class SearchResultPageComponent extends Component
 {
-    public $search = '';
+    public $query;
     public $services;
-//    public $service_categories;
-//    public $highlightIndex;
 
     // Shows search query in URL
     protected $queryString = [
-        'search' => ['except' => '']
+        'query' => ['except' => '']
     ];
 
     public function mount()
     {
-//        $this->search = '';
-//        dd(Session::get('search'));
-//        $this->search = session('search');
-        $this->services = Service::getAllPublished()->SearchByTitle($this->search)->orderBy('title', 'desc')->get();
+        $this->query = request()->input('query');
 //        $this->fill(request()->only('search'));
     }
 
     public function resetSearch()
     {
-        $this->reset('search');
+        $this->reset('query');
     }
 
-//    public function searchResults()
-//    {
-//        $search = $this->search;
-//        $services = Service::getAllPublished()->SearchByTitle($search)->orderBy('title', 'desc')->get();
-//        return redirect()->route('guest.search.index', 'q='. str_replace(' ', '-', $search), compact('services'));
-//    }
-
-//    public function updatedSearch()
-//    {
-//        $search = $this->search;
-//        $this->services = Service::getAllPublished()->SearchByTitle($search)->orderBy('title', 'desc')->get();
-//    }
+    public function updatingQuery(){}
 
     public function render()
     {
-//        $search = $this->search;
-//        $services = Service::getAllPublished()->SearchByTitle($search)->orderBy('title', 'desc')->get();
+        $this->services = Service::getAllPublished()->SearchByTitle($this->query)->get();
         return view('livewire.guest.search.search-result-page-component');
     }
 }

@@ -27,38 +27,7 @@
                         <p class="d-none d-lg-block">Stop wasting time on hassling, let professionals do your job.</p>
 {{--                        <p class="d-lg-none d-md-block text-center">Search your desire services</p>--}}
                         <p class="d-lg-none d-md-block text-center">Stop wasting time on hassling,<br> let professionals do your job.</p>
-                        <form action="{{ route('guest.search.index', str_replace(' ', '-', $search)) }}" method="GET" class="pt-3 position-relative">
-{{--                            @csrf @method('GET')--}}
-                            <div class="input-group mb-1">
-                                <input name="q"
-                                       type="text"
-                                       class="form-control rounded-0 decreazeInputheight"
-                                       placeholder="e.g. logo design"
-                                       aria-label="search"
-                                       aria-describedby="button-addon2"
-                                       autocomplete="off"
-                                >
-                                <div class="input-group-append decreazeInputButtonHeight">
-                                    <button {{--href=""--}} class="btn text-white rounded-0" type="submit" id=""><img
-                                            src="{{ asset('_user_panel/img/servicepage/icon_search.svg') }}" class="img-fluid" alt="search">
-                                    </button>
-                                </div>
-                            </div>
-                            {{--@if(!empty($search))
-                                @if(!empty($services))
-                                    <div class="rounded-0 pageOnebanner position-absolute w-100">
-                                        <ul class="list-group rounded-0">
-                                            --}}{{--                <a href="#" class="list-group-item list-group-item-action active" aria-current="true">Cras justo odio</a>--}}{{--
-                                            @forelse($services as $service)
-                                                <a href="{{ route('guest.search.index', 'q='. str_replace(' ', '-', $service->title)) }}" class="list-group-item list-group-item-action">{{ $service->title }}</a>
-                                            @empty
-                                                <a class="list-group-item list-group-item-action">No Results Found</a>
-                                            @endforelse
-                                        </ul>
-                                    </div>
-                                @endif
-                            @endif--}}
-                        </form>
+                        @livewire('guest.search.guest-search-component')
                     </div>
                 </div>
                 <div class="col-lg-5 col-md-12 v-center">
