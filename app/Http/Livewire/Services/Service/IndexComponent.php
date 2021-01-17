@@ -11,8 +11,8 @@ class IndexComponent extends Component
     use WithPagination;
 
     public $search = '';
-    public $recordPerPage = 15;
     public $filterByStatus = null;
+    public $recordPerPage = 15;
     public $page = 1;
 
     // Shows search query in URL

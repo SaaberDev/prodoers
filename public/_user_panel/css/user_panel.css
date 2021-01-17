@@ -1407,6 +1407,7 @@ button.close {
     color: #038D08;
     background-color: transparent;
     border-color: transparent;
+    cursor: pointer;
 }
 
 .accordion {

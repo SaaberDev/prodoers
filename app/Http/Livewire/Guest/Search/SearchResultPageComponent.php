@@ -4,21 +4,27 @@ namespace App\Http\Livewire\Guest\Search;
 
 use App\Models\Service;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class SearchResultPageComponent extends Component
 {
+    use WithPagination;
+
     public $query;
-    public $services;
+//    public array $services = [];
+    public $recordPerPage = 9;
+    public $page = 1;
 
     // Shows search query in URL
     protected $queryString = [
-        'query' => ['except' => '']
+        'query' => ['except' => ''],
+        'page' => ['except' => 1],
     ];
 
     public function mount()
     {
-        $this->query = request()->input('query');
-//        $this->fill(request()->only('search'));
+//        $this->query = request()->input('query');
+        $this->fill(request()->only('query', 'page'));
     }
 
     public function resetSearch()
@@ -26,11 +32,14 @@ class SearchResultPageComponent extends Component
         $this->reset('query');
     }
 
-    public function updatingQuery(){}
+    public function updatingQuery()
+    {
+        $this->gotoPage(1);
+    }
 
     public function render()
     {
-        $this->services = Service::getAllPublished()->SearchByTitle($this->query)->get();
-        return view('livewire.guest.search.search-result-page-component');
+        $services = Service::getAllPublished()->SearchByTitle($this->query)->paginate($this->recordPerPage);
+        return view('livewire.guest.search.search-result-page-component', compact('services'));
     }
 }

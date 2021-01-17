@@ -12,8 +12,8 @@
                    autocomplete="off"
             >
             <div class="input-group-append decreazeInputButtonHeight">
-                <button {{--href=""--}} class="btn text-white rounded-0" type="submit" id=""><img
-                        src="{{ asset('_user_panel/img/servicepage/icon_search.svg') }}" class="img-fluid" alt="search">
+                <button {{--href=""--}} class="btn text-white rounded-0" type="submit" id="">
+                    <img src="{{ asset('_user_panel/img/servicepage/icon_search.svg') }}" class="img-fluid" alt="search">
                 </button>
             </div>
         </div>
