@@ -115,16 +115,24 @@
 
             {{-- Search Pagination Start --}}
             <div class="row">
-            @if($services->total() > 5)
-                {{ $services->links('vendor.livewire.designwala-pagination-frontend') }}
-            @else
-            @endif
-            <!--               button-->
-                <div class="d-lg-none d-sm-block pt-3 pb-4">
-                    <button class="btn bgOne text-light rounded-0">See More</button>
-                </div>
+                @if($services->total() > 5)
+                    {{ $services->links('vendor.livewire.designwala-pagination-frontend') }}
+                @else
+                @endif
             </div>
             {{-- Search Pagination End --}}
         </div>
     </div>
 </div>
+
+@push('scripts')
+    <script>
+        $('.page-item').click(function(){
+            scroll({
+                top: 0,
+                left: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+@endpush

@@ -85,7 +85,6 @@
     </div>
 @endif
 
-
 {{--<nav aria-label="Page navigation example" class=" d-none d-lg-block">
     <ul class="pagination justify-content-center mb-0 ">
         <li class="page-item ">
