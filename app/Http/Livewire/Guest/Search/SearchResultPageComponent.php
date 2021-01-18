@@ -11,7 +11,6 @@ class SearchResultPageComponent extends Component
     use WithPagination;
 
     public $query;
-//    public array $services = [];
     public $recordPerPage = 9;
     public $page = 1;
 
@@ -21,9 +20,12 @@ class SearchResultPageComponent extends Component
         'page' => ['except' => 1],
     ];
 
+//    protected $listeners = [
+//        'load-more' => 'loadMore'
+//    ];
+
     public function mount()
     {
-//        $this->query = request()->input('query');
         $this->fill(request()->only('query', 'page'));
     }
 
@@ -37,9 +39,14 @@ class SearchResultPageComponent extends Component
         $this->gotoPage(1);
     }
 
+    public function loadMore()
+    {
+        $this->recordPerPage = $this->recordPerPage + 9;
+    }
+
     public function render()
     {
-        $services = Service::getAllPublished()->SearchByTitle($this->query)->paginate($this->recordPerPage);
+        $services = Service::getAllPublished()->SearchByTitle($this->query)->with('serviceImages')->paginate($this->recordPerPage);
         return view('livewire.guest.search.search-result-page-component', compact('services'));
     }
 }

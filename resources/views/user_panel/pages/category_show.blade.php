@@ -115,7 +115,7 @@
                         <div class="card "> <img src="{{ asset(config('designwala_paths.admin.images.show.services.thumbnails') . $popular_service->thumbnail) }}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title ">
-                                    <span class="w-75 float-left font-medium"><a href="{{ route('guest.service.index', $popular_service->slug) }}" class="text-dark">{{ $popular_service->title }}</a></span> <span class="w-25 float-right text-right font-medium">{{ $popular_service->price }}</span>
+                                    <span class="w-75 float-left font-medium"><a href="{{ route('guest.service.index', $popular_service->slug) }}" class="text-dark">{{ $popular_service->title }}</a></span> <span class="w-25 float-right text-right font-medium">$ {{ $popular_service->price }}</span>
                                 </h5>
                                 <div class="starIcons "> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
                                             <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />

@@ -40,12 +40,12 @@
                 @forelse($services as $service)
                     <div class="col-lg-4 col-md-6 padding25">
                         <div class="searchPageResultSingle position-relative">
-                            <div class="card "><img src="{{ asset('_user_panel/img/searchpage/search.png') }}" class="card-img-top" alt="...">
+                            <div class="card ">
+                                <img src="{{ asset(config('designwala_paths.admin.images.show.services.thumbnails') . $service->thumbnail) }}" class="card-img-top" alt="">
                                 <div class="card-body">
                                     <h5 class="card-title ">
-                                    <span class="w-75 float-left font-medium"><a href=""
-                                                                                 class="text-dark">{{ $service->title }}</a></span>
-                                        <span class="w-25 float-right text-right font-medium">$20</span>
+                                    <span class="w-75 float-left font-medium"><a href="{{ route('guest.service.index', $service->slug) }}" class="text-dark">{{ $service->title }}</a></span>
+                                        <span class="w-25 float-right text-right font-medium">$ {{ $service->price }}</span>
                                     </h5>
                                     <div class="starIcons "> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906"
                                                                         height="27.667" viewBox="0 0 28.906 27.667">
@@ -115,7 +115,7 @@
 
             {{-- Search Pagination Start --}}
             <div class="row">
-                @if($services->total() > 5)
+            @if($services->total() > 5)
                     {{ $services->links('vendor.livewire.designwala-pagination-frontend') }}
                 @else
                 @endif
@@ -129,7 +129,7 @@
     <script>
         $('.page-item').click(function(){
             scroll({
-                top: 0,
+                top: 250,
                 left: 0,
                 behavior: 'smooth'
             });

@@ -23,7 +23,7 @@ class ServiceImageFactory extends Factory
     {
         return [
             'service_id' => $this->faker->numberBetween(1, 100),
-            'filename' => 'default.png',
+            'filename' => $this->faker->image('public/storage/admin_panel/services/service_image/',640,480, null, false),
         ];
     }
 }

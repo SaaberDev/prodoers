@@ -1,6 +1,6 @@
 <div>
     <form action="{{ route('guest.search.index', $query) }}" method="GET" class="pt-3 position-relative">
-        {{--                            @csrf @method('GET')--}}
+        @csrf @method('GET')
         <div class="input-group mb-1">
             <input wire:model="query"
                    name="query"
@@ -12,7 +12,7 @@
                    autocomplete="off"
             >
             <div class="input-group-append decreazeInputButtonHeight">
-                <button {{--href=""--}} class="btn text-white rounded-0" type="submit" id="">
+                <button {{--wire:click="searchResults({{ $query }})"--}} class="btn text-white rounded-0" type="submit" id="">
                     <img src="{{ asset('_user_panel/img/servicepage/icon_search.svg') }}" class="img-fluid" alt="search">
                 </button>
             </div>

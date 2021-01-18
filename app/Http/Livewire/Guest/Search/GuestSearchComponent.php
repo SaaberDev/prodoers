@@ -28,12 +28,11 @@ class GuestSearchComponent extends Component
         $this->reset('query');
     }
 
-    public function searchResults()
-    {
-        $services = Service::getAllPublished()->SearchByTitle($this->query)->get();
-//        session()->flash('search', $this->search);
-        return redirect()->route('guest.search.index', str_replace(' ', '-', $this->query), compact('services'));
-    }
+//    public function searchResults($query)
+//    {
+//        $services = Service::getAllPublished()->SearchByTitle($query)->get();
+//        return redirect()->route('guest.search.index', $query, compact('services'));
+//    }
 
     public function updatingQuery(){}
 

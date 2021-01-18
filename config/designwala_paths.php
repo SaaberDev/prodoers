@@ -16,7 +16,7 @@
                 'show' => [
                     'services' => [
                         'service_image' => 'storage/admin_panel/services/service_image/',
-                        'thumbnails' => 'storage/admin_panel/services/thumbnail/'
+                        'thumbnails' => 'storage/admin_panel/services/thumbnail/',
                     ],
                     'categories' => [
                         'banner' => 'storage/admin_panel/services_categories/banner/',
