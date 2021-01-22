@@ -14,7 +14,7 @@
         {
             $view->with(
                 'service_categories',
-                    ServiceCategory::getAllPublished()->orderByIdDesc()
+                    ServiceCategory::getAllPublished()->navbarActive()->orderByIdDesc()
                     ->whereHas('services')
                     ->with(['services' => function ($query){
                         $query->getAllPublished();

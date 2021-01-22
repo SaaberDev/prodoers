@@ -41,6 +41,18 @@
                             </div>
                         </div>
                     </div>
+
+                    {{-- Navbar Status --}}
+                    <div class="col-md-2">
+                        <div class=" ">
+                            <label for="">
+                                <h5>Navbar Status</h5></label>
+                            <div class="">
+                                <input id="navbar_status" name="navbar_status" value="{{ old('navbar_status') ?? 0 }}" {{ old('navbar_status') == 1 ? 'checked='.'"'.'checked'.'"' : '' }} type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="col-md-2 text-right v-center">
                         <div class=" ">
                             <label for="">
@@ -298,6 +310,11 @@
 
     {{-- Status Toggle --}}
     <script>
+        $('#navbar_status').change(function () {
+            let isChecked = $(this).prop('checked') === true ? 1 : 0;
+            $(this).val(isChecked);
+        });
+
         $('#category_popular').change(function () {
             let isChecked = $(this).prop('checked') === true ? 1 : 0;
             $(this).val(isChecked);

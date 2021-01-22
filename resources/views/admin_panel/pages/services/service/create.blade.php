@@ -73,7 +73,7 @@
                     </div>
 
                     {{-- Popular Status --}}
-                    <div class="col-md-3 text-right">
+                    <div class="col-md-2">
                         <div class=" ">
                             <label for="">
                                 <h5>Popular Status </h5></label>
@@ -84,7 +84,7 @@
                     </div>
 
                     {{-- Status --}}
-                    <div class="col-md-3 text-right">
+                    <div class="col-md-2">
                         <div class=" ">
                             <label for="">
                                 <h5>status </h5></label>

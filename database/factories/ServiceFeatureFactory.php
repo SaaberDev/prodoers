@@ -22,7 +22,7 @@ class ServiceFeatureFactory extends Factory
     public function definition()
     {
         return [
-            'service_id' => $this->faker->numberBetween(1, 20),
+            'service_id' => $this->faker->numberBetween(1, 100),
             'feature_desc' => $this->faker->company,
         ];
     }

@@ -16840,28 +16840,6 @@
      
 }
 
-    namespace Illuminate\Routing { 
-            /**
-     * 
-     *
-     */ 
-        class Route {
-                    /**
-         * 
-         *
-         * @see \Tabuna\Breadcrumbs\BreadcrumbsServiceProvider::register()
-         * @param callable $closure
-         * @static 
-         */ 
-        public static function breadcrumbs($closure)
-        {
-                        return \Illuminate\Routing\Route::breadcrumbs($closure);
-        }
-         
-    }
-     
-}
-
     namespace Illuminate\Testing { 
             /**
      * 
@@ -16890,6 +16868,28 @@
         public static function assertDontSeeLivewire($component)
         {
                         return \Illuminate\Testing\TestResponse::assertDontSeeLivewire($component);
+        }
+         
+    }
+     
+}
+
+    namespace Illuminate\Routing { 
+            /**
+     * 
+     *
+     */ 
+        class Route {
+                    /**
+         * 
+         *
+         * @see \Tabuna\Breadcrumbs\BreadcrumbsServiceProvider::register()
+         * @param callable $closure
+         * @static 
+         */ 
+        public static function breadcrumbs($closure)
+        {
+                        return \Illuminate\Routing\Route::breadcrumbs($closure);
         }
          
     }

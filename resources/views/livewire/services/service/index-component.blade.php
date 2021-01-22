@@ -39,10 +39,11 @@
                         <thead>
                         <tr>
                             <th scope="col">Title</th>
-                            <th scope="col">THUMBNAIL</th>
+{{--                            <th scope="col">THUMBNAIL</th>--}}
                             <th scope="col">category</th>
                             <th scope="col">Price</th>
-                            <th scope="col">status</th>
+                            <th scope="col">Popular status</th>
+                            <th scope="col">Published status</th>
                             <th scope="col">Date</th>
                             <th scope="col">Action</th>
 
@@ -52,10 +53,10 @@
                         @forelse($services as $service)
                             <tr>
                                 <td>{{ $service->title }}</td>
-                                <td>
+                                {{--<td>
                                     <img src="{{ asset('storage/admin_panel/services/thumbnail/' . $service->thumbnail) }}" alt="" class="img-fluid"
                                          style="height: 25px;">
-                                </td>
+                                </td>--}}
                                 @if(empty($service->serviceCategories))
                                     <td>No Category</td>
                                 @else
@@ -63,6 +64,16 @@
                                 @endif
 
                                 <td>{{ $service->price }}</td>
+
+
+                                <td>
+                                    @if($service->popular_status == 1)
+                                        <div class="tableDataLastButtonLiketab  tabletabGREEN"><span class="">Popular</span></div>
+                                    @else
+                                        <div class="tableDataLastButtonLiketab  tabletabRED"><span class="">Not Popular</span></div>
+                                    @endif
+                                </td>
+
                                 <td>
                                     @if($service->published_status == 1)
                                         <div class="tableDataLastButtonLiketab  tabletabGREEN"><span class="">Published</span></div>

@@ -41,8 +41,9 @@
                             <th scope="col">category Title </th>
                             <th scope="col">Banner image </th>
                             <th scope="col">category image </th>
-                            <th scope="col">Popular Category</th>
-                            <th scope="col">status</th>
+                            <th scope="col">Navbar Status</th>
+                            <th scope="col">Popular status</th>
+                            <th scope="col">Published status</th>
                             <th scope="col">Action</th>
                         </tr>
                         </thead>
@@ -52,6 +53,13 @@
                                 <td>{{ $service_category->title }}</td>
                                 <td><img src="{{ asset('storage/admin_panel/services_categories/banner/' . $service_category->category_banner) }}" alt="" class="img-fluid" style="height: 25px;"> </td>
                                 <td><img src="{{ asset('storage/admin_panel/services_categories/thumbnail/' . $service_category->category_thumbnail) }}" alt="" class="img-fluid" style="height: 25px;"> </td>
+                                <td>
+                                    @if($service_category->navbar_status == 1)
+                                        <div class="tableDataLastButtonLiketab  tabletabGREEN"><span class="">Active</span></div>
+                                    @else
+                                        <div class="tableDataLastButtonLiketab  tabletabRED"><span class="">Not Active</span></div>
+                                    @endif
+                                </td>
                                 <td>
                                     @if($service_category->popular_status == 1)
                                         <div class="tableDataLastButtonLiketab  tabletabGREEN"><span class="">Active</span></div>

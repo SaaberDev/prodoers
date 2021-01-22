@@ -69,6 +69,11 @@ class ServiceCategory extends Model
 //            ->whereHas('services');
     }
 
+    public function scopeNavbarActive($query)
+    {
+        return $query->where('navbar_status', '=', 1);
+    }
+
     public function scopeGetAllPopular($query)
     {
         return $query->where('popular_status', '=', 1)

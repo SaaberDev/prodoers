@@ -30,7 +30,7 @@ class ServiceFactory extends Factory
             'popular_status' => '1',
             'meta_desc' => $this->faker->text,
             'price' => $this->faker->numberBetween(45.00, 100.00),
-            'thumbnail' => $this->faker->image('public/storage/admin_panel/services/thumbnail/',640,480, null, false),
+            'thumbnail' => $this->faker->image('public/storage/admin_panel/services/thumbnail/', 337, 265,'cats', false),
             'service_desc' => $this->faker->text,
         ];
     }

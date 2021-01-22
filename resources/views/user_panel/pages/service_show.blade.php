@@ -107,6 +107,7 @@
                                 <div class="cardShareIcon">
                                     <div class="float-sm">
                                         <a class="fl-fl float-fb">
+                                            <input id="copyToClipboard" value="{{ url()->current() }}" hidden>
                                             <span class="firstIconOnShareIcon copy-clipboard" style="cursor: pointer">
                                                 <svg data-brackets-id="2683" xmlns="http://www.w3.org/2000/svg" width="25" height="20" viewBox="0 0 25 29">
                                                     <path data-brackets-id="2684" id="Icon_awesome-share-alt"
@@ -230,85 +231,28 @@
                             <div class="tab-pane fade" id="faq" role="tabpanel" aria-labelledby="profile-tab">
                                 <div class="">
                                     <div class="accordion" id="accordionExample275">
+                                        @forelse($services->serviceFaqs->take(6) as $faq)
                                         <div class="card z-depth-0 bordered">
                                             <div class="card-header" id="headingOne2">
                                                 <h5 class="mb-0">
                                                     <button class="btn btn-link btn-block text-left accordianFaq"
                                                             type="button" data-toggle="collapse"
-                                                            data-target="#collapseOne2" aria-expanded="true"
+                                                            data-target="#collapseOne" aria-expanded=""
                                                             aria-controls="collapseOne2">
-                                                        Collapsible Group Item #1
+                                                        {{ $faq->question }}
                                                     </button>
                                                 </h5>
                                             </div>
-                                            <div id="collapseOne2" class="collapse show" aria-labelledby="headingOne2"
+                                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne2"
                                                  data-parent="#accordionExample275">
-                                                <div class="card-body"> Anim pariatur cliche reprehenderit, enim eiusmod
-                                                    high life accusamus terry richardson ad squid. 3 wolf moon officia
-                                                    aute, non cupidatat skateboard dolor brunch. Food truck quinoa
-                                                    nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put
-                                                    a bird on it squid single-origin coffee nulla assumenda shoreditch
-                                                    et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson
-                                                    cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
-                                                    lomo. Leggings occaecat craft beer farm-to-table, raw denim
-                                                    aesthetic synth nesciunt you probably haven't heard of them
-                                                    accusamus labore sustainable.
+                                                <div class="card-body">
+                                                    {{ $faq->answer }}
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card z-depth-0 bordered">
-                                            <div class="card-header" id="headingTwo2">
-                                                <h5 class="mb-0">
-                                                    <button
-                                                        class="btn btn-link btn-block text-left collapsed accordianFaq"
-                                                        type="button" data-toggle="collapse" data-target="#collapseTwo2"
-                                                        aria-expanded="false" aria-controls="collapseTwo2">
-                                                        Collapsible Group Item #2
-                                                    </button>
-                                                </h5>
-                                            </div>
-                                            <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo2"
-                                                 data-parent="#accordionExample275">
-                                                <div class="card-body"> Anim pariatur cliche reprehenderit, enim eiusmod
-                                                    high life accusamus terry richardson ad squid. 3 wolf moon officia
-                                                    aute, non cupidatat skateboard dolor brunch. Food truck quinoa
-                                                    nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put
-                                                    a bird on it squid single-origin coffee nulla assumenda shoreditch
-                                                    et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson
-                                                    cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
-                                                    lomo. Leggings occaecat craft beer farm-to-table, raw denim
-                                                    aesthetic synth nesciunt you probably haven't heard of them
-                                                    accusamus labore sustainable.
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card z-depth-0 bordered">
-                                            <div class="card-header" id="headingThree2">
-                                                <h5 class="mb-0">
-                                                    <button
-                                                        class="btn btn-link btn-block text-left collapsed accordianFaq"
-                                                        type="button" data-toggle="collapse"
-                                                        data-target="#collapseThree2" aria-expanded="false"
-                                                        aria-controls="collapseThree2">
-                                                        Collapsible Group Item #3
-                                                    </button>
-                                                </h5>
-                                            </div>
-                                            <div id="collapseThree2" class="collapse" aria-labelledby="headingThree2"
-                                                 data-parent="#accordionExample275">
-                                                <div class="card-body"> Anim pariatur cliche reprehenderit, enim eiusmod
-                                                    high life accusamus terry richardson ad squid. 3 wolf moon officia
-                                                    aute, non cupidatat skateboard dolor brunch. Food truck quinoa
-                                                    nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put
-                                                    a bird on it squid single-origin coffee nulla assumenda shoreditch
-                                                    et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson
-                                                    cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
-                                                    lomo. Leggings occaecat craft beer farm-to-table, raw denim
-                                                    aesthetic synth nesciunt you probably haven't heard of them
-                                                    accusamus labore sustainable.
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @empty
+                                            No FAQ
+                                        @endforelse
                                     </div>
                                 </div>
                             </div>
@@ -670,7 +614,7 @@
                     </div>
                 </div>
                 @empty
-                    No Data
+                    No Services
                 @endforelse
             </div>
         </div>
@@ -681,7 +625,7 @@
     <div class="singleCategoryItemDetailContent py-5 bgcustomLightgray" id="singleCategoryItemDetailContent">
         <div class="container">
             <div class="row">
-                @forelse($services->serviceFaqs as $faq)
+                @forelse($services->serviceCategories->serviceCategoryFaqs as $faq)
                 <div class="col-md-6">
                     <div class="py-3">
                         <div class="detailsContent">
@@ -747,13 +691,35 @@
     </script>
 
     <script>
-        $('.copy-clipboard').click(function() {
+        $('.copy-clipboard').click(myFunction, function() {
             Snackbar.show({
                 text: 'Copied to Clipboard',
                 pos: 'bottom-center',
                 actionTextColor: '#038c08',
                 duration: 1500
             });
+        });
+
+        function myFunction() {
+            /* Get the text field */
+            var copyText = document.getElementById("copyToClipboard");
+
+            /* Select the text field */
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+            /* Copy the text inside the text field */
+            document.execCommand("copy");
+
+            /* Alert the copied text */
+            alert("Copied the text: " + copyText.value);
+        }
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $(".faqAccordion").hide();
+            $(".faqAccordion:first").show();
         });
     </script>
 @endpush

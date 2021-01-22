@@ -9,7 +9,7 @@
     @livewire('guest.search.search-result-page-component')
 
     {{-- Like to discuss Start --}}
-    <div class="section py100 bgcustomLightgray ptSm50 pbSm50" id="searchPageWouldLiketoDiscussYourNewProject">
+    {{--<div class="section py100 bgcustomLightgray ptSm50 pbSm50" id="searchPageWouldLiketoDiscussYourNewProject">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">
@@ -26,7 +26,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>--}}
     {{-- Like to discuss End --}}
 
 @endsection

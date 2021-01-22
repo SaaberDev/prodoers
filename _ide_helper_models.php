@@ -102,6 +102,7 @@ namespace App\Models{
  * @property string $category_thumbnail
  * @property string $slug
  * @property string $desc
+ * @property int|null $navbar_status
  * @property int|null $published_status
  * @property int|null $popular_status
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -116,6 +117,7 @@ namespace App\Models{
  * @method static Builder|ServiceCategory getAllPublished()
  * @method static Builder|ServiceCategory getSlug($slug)
  * @method static Builder|ServiceCategory getTitle()
+ * @method static Builder|ServiceCategory navbarActive()
  * @method static Builder|ServiceCategory newModelQuery()
  * @method static Builder|ServiceCategory newQuery()
  * @method static Builder|ServiceCategory orderByIdDesc()
@@ -127,12 +129,12 @@ namespace App\Models{
  * @method static Builder|ServiceCategory whereDesc($value)
  * @method static Builder|ServiceCategory whereId($value)
  * @method static Builder|ServiceCategory whereMetaDesc($value)
+ * @method static Builder|ServiceCategory whereNavbarStatus($value)
  * @method static Builder|ServiceCategory wherePopularStatus($value)
  * @method static Builder|ServiceCategory wherePublishedStatus($value)
  * @method static Builder|ServiceCategory whereSlug($value)
  * @method static Builder|ServiceCategory whereTitle($value)
  * @method static Builder|ServiceCategory whereUpdatedAt($value)
- * @method static Builder|ServiceCategory withAndWhereHas($relation, $constraint)
  */
 	class IdeHelperServiceCategory extends \Eloquent {}
 }
