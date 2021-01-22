@@ -34,6 +34,45 @@
     use App\Http\Controllers\guest\service\GuestServiceController;
     use Illuminate\Support\Facades\Route;
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | User Panel Routes
+    |--------------------------------------------------------------------------
+    */
+    // Home Route Section
+    Route::prefix('/')->name('guest.')->group(function () {
+        // Home
+        Route::get('/', [HomeController::class, 'index'])->name('home.index');
+//        Route::get('/search/{category_slug}', [GuestSearchController::class, 'index'])->name('search.index');
+        Route::get('/search/services/', [GuestSearchController::class, 'index'])->name('search.index');
+
+        // Single Category Page
+        Route::prefix('/categories')->name('service_category.')->group(function (){
+            Route::get('/{category_slug}', [GuestServiceCategoryController::class, 'index'])->name('index');
+        });
+
+        // Single Service Page
+        Route::prefix('/services')->name('service.')->group(function (){
+            Route::get('/{service_slug}', [GuestServiceController::class, 'index'])->name('index');
+        });
+
+
+//        Route::get('services/{service_slug}', [HomeController::class, 'single_service'])->name('single_service.show');
+
+        // Single Service Page
+//        Route::get('/{slug}', [UserServiceController::class, 'index'])->name('single_service.index');
+
+        // Order Details
+//        Route::get('/order-details', [UserOrderDetailController::class, 'index'])->name('order_detail.index');
+        // Blog
+        Route::get('/blog', [GuestBlogController::class, 'index'])->name('blog.index');
+        Route::get('/single-blog', [GuestBlogController::class, 'index'])->name('blog.show');
+    });
+
+
+
+
     /*
     |--------------------------------------------------------------------------
     | Admin Panel Routes
@@ -248,40 +287,6 @@
                 Route::get('/', [MaintenanceModeController::class, 'index'])->name('index');
             });
         });
-    });
-    /*
-|--------------------------------------------------------------------------
-| User Panel Routes
-|--------------------------------------------------------------------------
-*/
-// Home Route Section
-    Route::prefix('/')->name('guest.')->group(function () {
-        // Home
-        Route::get('/', [HomeController::class, 'index'])->name('home.index');
-//        Route::get('/search/{category_slug}', [GuestSearchController::class, 'index'])->name('search.index');
-        Route::get('/search/services/', [GuestSearchController::class, 'index'])->name('search.index');
-
-        // Single Category Page
-        Route::prefix('/categories')->name('service_category.')->group(function (){
-            Route::get('/{category_slug}', [GuestServiceCategoryController::class, 'index'])->name('index');
-        });
-
-        // Single Service Page
-        Route::prefix('/services')->name('service.')->group(function (){
-            Route::get('/{service_slug}', [GuestServiceController::class, 'index'])->name('index');
-        });
-
-
-//        Route::get('services/{service_slug}', [HomeController::class, 'single_service'])->name('single_service.show');
-
-        // Single Service Page
-//        Route::get('/{slug}', [UserServiceController::class, 'index'])->name('single_service.index');
-
-        // Order Details
-//        Route::get('/order-details', [UserOrderDetailController::class, 'index'])->name('order_detail.index');
-        // Blog
-        Route::get('/blog', [GuestBlogController::class, 'index'])->name('blog.index');
-        Route::get('/single-blog', [GuestBlogController::class, 'index'])->name('blog.show');
     });
 
     Route::get('/test', function (){

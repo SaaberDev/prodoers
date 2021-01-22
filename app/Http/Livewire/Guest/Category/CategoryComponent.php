@@ -20,20 +20,15 @@ class CategoryComponent extends Component
         'page' => ['except' => 1],
     ];
 
-//    protected $listeners = [
-//        'load-more' => 'loadMore'
-//    ];
-
     public function mount()
     {
-//        dd($services_by_category->services);
         $this->fill(request()->only('page'));
     }
 
-    public function updatingServices_by_category()
-    {
-        $this->gotoPage(1);
-    }
+//    public function updatingServices_by_category()
+//    {
+//        $this->gotoPage(1);
+//    }
 
     public function loadMore()
     {
