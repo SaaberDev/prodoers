@@ -41,19 +41,31 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2 text-right v-center">
+
+                    {{-- Navbar Status --}}
+                    <div class="col-md-2">
                         <div class=" ">
                             <label for="">
-                                <h5>Popular Category</h5></label>
+                                <h5>Navbar</h5></label>
+                            <div class="">
+                                <input id="navbar_status" name="navbar_status" value="{{ old('navbar_status') ? old('navbar_status') : $service_categories->navbar_status }}" {{ (old('navbar_status') ? old('navbar_status') : $service_categories->navbar_status) == 1 ? 'checked='.'"'.'checked'.'"' : '' }} type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class=" ">
+                            <label for="">
+                                <h5>Popular</h5></label>
                             <div class="">
                                 <input name="category_popular" value="{{ old('category_popular') ? old('category_popular') : $service_categories->popular_status }}" {{ (old('category_popular') ? old('category_popular') : $service_categories->popular_status) == 1 ? 'checked='.'"'.'checked'.'"' : '' }}  id="category_popular" type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2 text-right v-center">
+                    <div class="col-md-2">
                         <div class=" ">
                             <label for="">
-                                <h5>Status</h5></label>
+                                <h5>Publish</h5></label>
                             <div class="">
                                 <input name="category_status" value="{{ old('category_status') ? old('category_status') : $service_categories->published_status }}" {{ (old('category_status') ? old('category_status') : $service_categories->published_status) == 1 ? 'checked='.'"'.'checked'.'"' : '' }} id="category_status" type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
                             </div>
@@ -320,6 +332,11 @@
     {{-- Form Clone Dynamic Input for Faqs End --}}
 
     <script>
+        $('#navbar_status').change(function () {
+            let isChecked = $(this).prop('checked') === true ? 1 : 0;
+            $(this).val(isChecked);
+        });
+
         $('#category_popular').change(function () {
             let isChecked = $(this).prop('checked') === true ? 1 : 0;
             $(this).val(isChecked);

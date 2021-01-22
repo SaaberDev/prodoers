@@ -70,10 +70,10 @@
                     </div>
 
                     {{-- Popular Status --}}
-                    <div class="col-md-3 text-right">
+                    <div class="col-md-3">
                         <div class=" ">
                             <label for="">
-                                <h5>Popular Status </h5></label>
+                                <h5>Popular</h5></label>
                             <div class="">
                                 <input id="popular_status" name="popular_status" value="{{ old('popular_status') ? old('popular_status') : $services->popular_status }}" {{ (old('popular_status') ? old('popular_status') : $services->popular_status) == 1 ? 'checked='.'"'.'checked'.'"' : '' }} type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
                             </div>
@@ -81,10 +81,10 @@
                     </div>
 
                     {{-- Status --}}
-                    <div class="col-md-3 text-right">
+                    <div class="col-md-3">
                         <div class=" ">
                             <label for="">
-                                <h5>status </h5></label>
+                                <h5>Publish</h5></label>
                             <div class="">
                                 <input id="published_status" name="published_status" value="{{ old('published_status') ? old('published_status') : $services->published_status }}" {{ (old('published_status') ? old('published_status') : $services->published_status) == 1 ? 'checked='.'"'.'checked'.'"' : '' }} type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
                             </div>

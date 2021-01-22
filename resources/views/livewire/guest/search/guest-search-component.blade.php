@@ -1,6 +1,6 @@
 <div>
     <form action="{{ route('guest.search.index', $query) }}" method="GET" class="pt-3 position-relative">
-        @csrf @method('GET')
+{{--        @csrf @method('GET')--}}
         <div class="input-group mb-1">
             <input wire:model="query"
                    name="query"

@@ -46,26 +46,27 @@
                     <div class="col-md-2">
                         <div class=" ">
                             <label for="">
-                                <h5>Navbar Status</h5></label>
+                                <h5>Navbar</h5></label>
                             <div class="">
                                 <input id="navbar_status" name="navbar_status" value="{{ old('navbar_status') ?? 0 }}" {{ old('navbar_status') == 1 ? 'checked='.'"'.'checked'.'"' : '' }} type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-2 text-right v-center">
+                    <div class="col-md-2">
                         <div class=" ">
                             <label for="">
-                                <h5>Popular Category</h5></label>
+                                <h5>Popular</h5></label>
                             <div class="">
                                 <input name="category_popular" value="{{ old('category_popular') }}" {{ old('category_popular') == 1 ? 'checked='.'"'.'checked'.'"' : '' }}  id="category_popular" type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2 text-right v-center">
+
+                    <div class="col-md-2">
                         <div class=" ">
                             <label for="">
-                                <h5>Status</h5></label>
+                                <h5>Publish</h5></label>
                             <div class="">
                                 <input name="category_status" value="{{ old('category_status') }}" {{ old('category_status') == 1 ? 'checked='.'"'.'checked'.'"' : '' }} id="category_status" type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
                             </div>

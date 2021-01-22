@@ -74,6 +74,7 @@ namespace App\Models{
  * @method static Builder|Service orderByIdDesc()
  * @method static Builder|Service query()
  * @method static Builder|Service searchByTitle($search)
+ * @method static Builder|Service whereCategories($arg)
  * @method static Builder|Service whereCreatedAt($value)
  * @method static Builder|Service whereId($value)
  * @method static Builder|Service whereMetaDesc($value)

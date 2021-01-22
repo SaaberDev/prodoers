@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        // progress bar start, no default max provided
+//        $this->command->getOutput()->progressStart();
         \Artisan::call('directory:delete');
         \Artisan::call('directory:make');
         /**
@@ -39,5 +41,10 @@ class DatabaseSeeder extends Seeder
         ServiceImage::factory(100)->create();
         ServiceFeature::factory(500)->create();
         ServiceFaq::factory(600)->create();
+
+//        // progress bar advance per user created
+//        $this->command->getOutput()->progressAdvance();
+//        // End progress bar
+//        $this->command->getOutput()->progressFinish();
     }
 }

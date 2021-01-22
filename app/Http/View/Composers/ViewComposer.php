@@ -12,6 +12,7 @@
     {
         public function compose(View $view)
         {
+//            \DB::enableQueryLog();
             $view->with(
                 'service_categories',
                     ServiceCategory::getAllPublished()->navbarActive()->orderByIdDesc()
@@ -20,6 +21,8 @@
                         $query->getAllPublished();
                     }])->get()
             );
+//            var_dump(\DB::getQueryLog());
+//        dd();
 
 //            $view->with(
 //                'services',

@@ -20,10 +20,6 @@ class SearchResultPageComponent extends Component
         'page' => ['except' => 1],
     ];
 
-//    protected $listeners = [
-//        'load-more' => 'loadMore'
-//    ];
-
     public function mount()
     {
         $this->fill(request()->only('query', 'page'));
@@ -46,7 +42,10 @@ class SearchResultPageComponent extends Component
 
     public function render()
     {
-        $services = Service::getAllPublished()->SearchByTitle($this->query)->with('serviceImages')->paginate($this->recordPerPage);
+//        \DB::enableQueryLog();
+        $services = Service::getAllPublished()->SearchByTitle($this->query)->paginate($this->recordPerPage);
+//        var_dump(\DB::getQueryLog());
+//        dd();
         return view('livewire.guest.search.search-result-page-component', compact('services'));
     }
 }

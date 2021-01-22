@@ -103,4 +103,9 @@ class Service extends Model
     {
         return $query->where('id', '!=', $arg->id);
     }
+
+    public function scopeWhereCategories($query, $arg)
+    {
+        return $query->where('service_category_id', '=', $arg);
+    }
 }
