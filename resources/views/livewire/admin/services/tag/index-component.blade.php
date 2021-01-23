@@ -16,7 +16,7 @@
             <div class="col-xl-3 col-lg-4 col-md-4 v-center">
                 <div class="text-right">
                     <div class="adminPageDetailsSearch">
-                        @include('livewire.includes.search-component')
+                        @include('livewire.admin.includes.search-component')
                     </div>
                 </div>
             </div>
@@ -26,7 +26,7 @@
         <div class="row m-0 py-3">
             <div class="col-md-6">
                 <div class="row">
-                    @include('livewire.includes.per_page_show')
+                    @include('livewire.admin.includes.per_page_show')
                 </div>
             </div>
             <div class="col"></div>

@@ -38,6 +38,18 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Footer
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Footer newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Footer newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Footer query()
+ * @mixin \Eloquent
+ */
+	class IdeHelperFooter extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Service
  *
  * @mixin IdeHelperService

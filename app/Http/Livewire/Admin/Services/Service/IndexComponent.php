@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Livewire\Services\Tag;
+namespace App\Http\Livewire\Admin\Services\Service;
 
-use App\Models\Tag;
+use App\Models\Service;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -11,9 +11,9 @@ class IndexComponent extends Component
     use WithPagination;
 
     public $search = '';
+    public $filterByStatus = null;
     public $recordPerPage = 15;
     public $page = 1;
-
 
     // Shows search query in URL
     protected $queryString = [
@@ -26,11 +26,6 @@ class IndexComponent extends Component
         $this->fill(request()->only('search', 'page'));
     }
 
-    public function hydrate()
-    {
-        $this->emit('postAdded');
-    }
-
     public function resetSearch()
     {
         $this->reset('search');
@@ -41,14 +36,15 @@ class IndexComponent extends Component
         $this->gotoPage(1);
     }
 
-
     public function render()
     {
         $search = $this->search;
-        $tags = Tag::orderByIdDesc()
+        $services = Service::orderByIdDesc()
+            ->filterByStatus($this->filterByStatus)
             ->SearchByTitle($search)
+            ->with('serviceCategories')
             ->paginate($this->recordPerPage);
 
-        return view('livewire.services.tag.index-component', compact('tags'));
+        return view('livewire.admin.services.service.index-component', compact('services'));
     }
 }
