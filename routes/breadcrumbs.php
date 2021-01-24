@@ -362,11 +362,6 @@
         ->parent('dashboard.index')
         ->push("Footer", route('settings.footer_section.footer.index'))
     );
-    // Dashboard > Footer > Edit Footer
-    Breadcrumbs::for('settings.footer_section.footer.edit', fn(Trail $trail) => $trail
-        ->parent('settings.footer_section.footer.index')
-        ->push("Edit Footer", route('settings.footer_section.footer.edit'))
-    );
 
     /*
     | ----------------------> Social Links <----------------------

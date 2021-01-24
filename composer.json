@@ -20,7 +20,8 @@
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.3",
-        "tabuna/breadcrumbs": "^2.3"
+        "tabuna/breadcrumbs": "^2.3",
+        "ext-imagick": "*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",

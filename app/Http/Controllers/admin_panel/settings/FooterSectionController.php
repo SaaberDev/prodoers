@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\admin_panel\settings;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Footer\FooterRequest;
+use App\Models\Footer;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Http\UploadedFile;
 
 class FooterSectionController extends Controller
 {
@@ -19,6 +22,26 @@ class FooterSectionController extends Controller
     public function index_footer()
     {
         return view('admin_panel.pages.settings.footer_section.footer.index');
+    }
+
+    public function update_footer(FooterRequest $request)
+    {
+        \DB::transaction(function () use ($request){
+            Footer::whereFooterKey('footer_logo')
+                ->firstOrFail()->update([
+                    'value' => updateSVG($request, 'logo', getFooterKey('footer_logo'), 'footer_logo', 'footer', config('designwala_paths.admin.images.store.footer.logo')),
+                ]);
+            Footer::whereFooterKey('copyright')
+                ->firstOrFail()->update([
+                    'value' => $request->input('copyright'),
+                ]);
+            Footer::whereFooterKey('footer_desc')
+                ->firstOrFail()->update([
+                    'value' => $request->input('footer_desc'),
+                ]);
+        });
+//        dd($request);
+        return redirect()->back();
     }
 
     /**

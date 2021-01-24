@@ -2,17 +2,13 @@
     <div class="container">
         <div class="row">
             <div class="">
-                <img src="{{ asset('_user_panel/img/DESIGNWALA.png') }}" class="img-fluid" alt="">
+                <img src="{{ asset(config('designwala_paths.admin.images.show.footer.logo') . getFooterKey('footer_logo')) }}" class="img-fluid" alt="{{ getFooterKey('footer_logo') }}">
             </div>
         </div>
         <div class="row">
             <div class="col-xl-4 col-lg-6 col-md-6">
                 <div class="footerText pt-4">
-                    <p class=""> Lorem ipsum dolor sit amet,
-                        consetetur sadipscing elitr, sed
-                        diam nonumy eirmod tempor
-                        invidunt ut labore et dolore magna
-                        aliquyam erat, sed diam</p>
+                    <p class="">{{ getFooterKey('footer_desc') }}</p>
                 </div>
                 <div class="">
                     <p class="text-white">Payment Method</p>
@@ -60,7 +56,7 @@
                 <a href=""><img src="{{ asset('_user_panel/img/footer/Icon%20awesome-twitter.svg') }}" alt=""></a>
                 <a href=""><img src="{{ asset('_user_panel/img/footer/Icon%20awesome-youtube.svg') }}" alt=""></a>
             </div>
-            <p class="text-center">Copyright @ 2020 DESIGNWALA</p>
+            <p class="text-center">{{ getFooterKey('copyright') }}</p>
         </div>
     </div>
 </footer>

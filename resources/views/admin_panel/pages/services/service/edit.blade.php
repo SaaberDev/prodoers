@@ -561,6 +561,7 @@
             $(this).val(isChecked);
         });
 
+        // Image input
         window.preview = function (input) {
             if (input.files && input.files[0]) {
                 $(input.files).each(function () {

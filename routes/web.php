@@ -275,7 +275,7 @@
             Route::name('footer_section.')->group(function () {
                 Route::prefix('/footer')->name('footer.')->group(function () {
                     Route::get('/', [FooterSectionController::class, 'index_footer'])->name('index');
-                    Route::get('/edit-footer', [FooterSectionController::class, 'edit_footer'])->name('edit');
+                    Route::patch('/update-footer', [FooterSectionController::class, 'update_footer'])->name('update');
                 });
                 Route::prefix('/social-links')->name('social_link.')->group(function () {
                     Route::get('/', [FooterSectionController::class, 'index_social_links'])->name('index');

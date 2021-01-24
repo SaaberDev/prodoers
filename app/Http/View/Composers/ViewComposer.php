@@ -4,6 +4,7 @@
     namespace App\Http\View\Composers;
 
 
+    use App\Models\Footer;
     use App\Models\Service;
     use App\Models\ServiceCategory;
     use Illuminate\View\View;
@@ -19,7 +20,7 @@
                     ->whereHas('services')
                     ->with(['services' => function ($query){
                         $query->getAllPublished();
-                    }])->get()
+                    }])->get(),
             );
 //            var_dump(\DB::getQueryLog());
 //        dd();

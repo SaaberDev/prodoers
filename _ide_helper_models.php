@@ -40,10 +40,21 @@ namespace App\Models{
 /**
  * App\Models\Footer
  *
+ * @mixin IdeHelperFooter
+ * @property int $id
+ * @property string $key
+ * @property string $value
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|Footer newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Footer newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Footer query()
- * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|Footer whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Footer whereFooterKey($argument)
+ * @method static \Illuminate\Database\Eloquent\Builder|Footer whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Footer whereKey($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Footer whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Footer whereValue($value)
  */
 	class IdeHelperFooter extends \Eloquent {}
 }
@@ -99,6 +110,7 @@ namespace App\Models{
  * @method static Builder|Service whereThumbnail($value)
  * @method static Builder|Service whereTitle($value)
  * @method static Builder|Service whereUpdatedAt($value)
+ * @method static Builder|Service withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
  */
 	class IdeHelperService extends \Eloquent {}
 }
@@ -148,6 +160,7 @@ namespace App\Models{
  * @method static Builder|ServiceCategory whereSlug($value)
  * @method static Builder|ServiceCategory whereTitle($value)
  * @method static Builder|ServiceCategory whereUpdatedAt($value)
+ * @method static Builder|ServiceCategory withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
  */
 	class IdeHelperServiceCategory extends \Eloquent {}
 }

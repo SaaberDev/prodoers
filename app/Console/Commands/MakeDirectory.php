@@ -37,14 +37,21 @@ class MakeDirectory extends Command
      */
     public function handle()
     {
-        if (
-        !(\Storage::exists('public/admin_panel/services/service_image/') && \Storage::exists('public/admin_panel/services/thumbnail/') &&
-        \Storage::exists('public/admin_panel/services_categories/banner/') && \Storage::exists('public/admin_panel/services_categories/thumbnail/'))
-        ){
+        if (!(
+            \Storage::exists('public/admin_panel/services/service_image/') &&
+            \Storage::exists('public/admin_panel/services/thumbnail/') &&
+            \Storage::exists('public/admin_panel/services_categories/banner/') &&
+            \Storage::exists('public/admin_panel/services_categories/thumbnail/') &&
+            \Storage::exists('public/admin_panel/footer/logo/') &&
+            \Storage::exists('public/admin_panel/footer/payment_method/')
+        ))
+        {
             \Storage::makeDirectory('public/admin_panel/services/service_image/');
             \Storage::makeDirectory('public/admin_panel/services/thumbnail/');
             \Storage::makeDirectory('public/admin_panel/services_categories/banner/');
             \Storage::makeDirectory('public/admin_panel/services_categories/thumbnail/');
+            \Storage::makeDirectory('public/admin_panel/footer/logo/');
+            \Storage::makeDirectory('public/admin_panel/footer/payment_method/');
             $this->info('Directories Created Successfully');
         } else {
             $this->error('Directories Already Exists');

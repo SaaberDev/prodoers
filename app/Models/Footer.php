@@ -11,4 +11,11 @@ use Illuminate\Database\Eloquent\Model;
 class Footer extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
+
+    public function scopeWhereFooterKey($query, $argument)
+    {
+        return $query->where('key', '=', $argument);
+    }
 }

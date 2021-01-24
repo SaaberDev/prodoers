@@ -1,5 +1,6 @@
 <?php
 
+    use App\Models\Footer;
     use Carbon\Carbon;
 
     /**
@@ -36,4 +37,13 @@
     function humanFormat($argument): string
     {
         return Carbon::parse($argument)->diffForHumans();
+    }
+
+    function getFooterKey($argument)
+    {
+        $footer = Footer::where('key', '=', $argument)->firstOrFail();
+        if (!$footer){
+            return null;
+        }
+        return $footer->value;
     }
