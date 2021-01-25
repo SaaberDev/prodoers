@@ -39,9 +39,9 @@
         return Carbon::parse($argument)->diffForHumans();
     }
 
-    function getFooterKey($argument)
+    function getFooterKey($key)
     {
-        $footer = Footer::where('key', '=', $argument)->firstOrFail();
+        $footer = Footer::where('key', '=', $key)->firstOrFail();
         if (!$footer){
             return null;
         }

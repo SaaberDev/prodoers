@@ -17,13 +17,19 @@ class FooterSeeder extends Seeder
     {
         $data = [
             [
+                'key' => 'footer_payment_method',
+                'value' => 'default.png',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
                 'key' => 'footer_logo',
                 'value' => 'default.png',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'key' => 'copyright',
+                'key' => 'footer_copyright',
                 'value' => 'Copyright ©2021 Designwala',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),

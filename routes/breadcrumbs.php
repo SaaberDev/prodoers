@@ -366,12 +366,17 @@
     /*
     | ----------------------> Social Links <----------------------
     */
-    // Dashboard > Footer
+    // Dashboard > Social Links
     Breadcrumbs::for('settings.footer_section.social_link.index', fn(Trail $trail) => $trail
         ->parent('dashboard.index')
         ->push("Social Links", route('settings.footer_section.social_link.index'))
     );
-    // Dashboard > Footer > Edit Footer
+    // Dashboard > Social Links > Add Social Links
+    Breadcrumbs::for('settings.footer_section.social_link.create', fn(Trail $trail) => $trail
+        ->parent('settings.footer_section.social_link.index')
+        ->push("Add Social Links", route('settings.footer_section.social_link.create'))
+    );
+    // Dashboard > Social Links > Edit Social Links
     Breadcrumbs::for('settings.footer_section.social_link.edit', fn(Trail $trail) => $trail
         ->parent('settings.footer_section.social_link.index')
         ->push("Edit Social Links", route('settings.footer_section.social_link.edit'))

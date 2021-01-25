@@ -8,9 +8,10 @@ use App\Models\Footer;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Http\UploadedFile;
+use Throwable;
 
 class FooterSectionController extends Controller
 {
@@ -27,14 +28,22 @@ class FooterSectionController extends Controller
     public function update_footer(FooterRequest $request)
     {
         \DB::transaction(function () use ($request){
+            // Footer Logo
             Footer::whereFooterKey('footer_logo')
                 ->firstOrFail()->update([
                     'value' => updateSVG($request, 'logo', getFooterKey('footer_logo'), 'footer_logo', 'footer', config('designwala_paths.admin.images.store.footer.logo')),
                 ]);
-            Footer::whereFooterKey('copyright')
+            // Payment Method
+            Footer::whereFooterKey('footer_payment_method')
                 ->firstOrFail()->update([
-                    'value' => $request->input('copyright'),
+                    'value' => updateSVG($request, 'payment-method', getFooterKey('footer_payment_method'), 'footer_payment_method', 'footer', config('designwala_paths.admin.images.store.footer.payment_method')),
                 ]);
+            // Copyright Text
+            Footer::whereFooterKey('footer_copyright')
+                ->firstOrFail()->update([
+                    'value' => $request->input('footer_copyright'),
+                ]);
+            // Company Short Description
             Footer::whereFooterKey('footer_desc')
                 ->firstOrFail()->update([
                     'value' => $request->input('footer_desc'),
@@ -54,59 +63,15 @@ class FooterSectionController extends Controller
         return view('admin_panel.pages.settings.footer_section.social_links.index');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return Response
-     */
-    public function store(Request $request)
+    public function create_social_links()
     {
-        //
+        return \view('admin_panel.pages.settings.footer_section.social_links.create');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Application|Factory|View|Response
-     */
-    public function edit_footer(/*$id*/)
+    public function update_social_links()
     {
-        return \view('admin_panel.pages.settings.footer_section.footer.edit');
+
+        return redirect()->back();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Application|Factory|View|Response
-     */
-    public function edit_social_links(/*$id*/)
-    {
-        return \view('admin_panel.pages.settings.footer_section.social_links.edit');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

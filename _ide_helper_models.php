@@ -42,15 +42,15 @@ namespace App\Models{
  *
  * @mixin IdeHelperFooter
  * @property int $id
- * @property string $key
- * @property string $value
+ * @property string|null $key
+ * @property string|null $value
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|Footer newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Footer newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Footer query()
  * @method static \Illuminate\Database\Eloquent\Builder|Footer whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Footer whereFooterKey($argument)
+ * @method static \Illuminate\Database\Eloquent\Builder|Footer whereFooterKey($key)
  * @method static \Illuminate\Database\Eloquent\Builder|Footer whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Footer whereKey($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Footer whereUpdatedAt($value)
@@ -271,6 +271,18 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceTag query()
  */
 	class IdeHelperServiceTag extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\SocialLinks
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks query()
+ * @mixin \Eloquent
+ */
+	class IdeHelperSocialLinks extends \Eloquent {}
 }
 
 namespace App\Models{

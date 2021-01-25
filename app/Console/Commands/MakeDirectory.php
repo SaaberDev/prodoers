@@ -38,6 +38,7 @@ class MakeDirectory extends Command
     public function handle()
     {
         if (!(
+//            \Storage::exists('public/temp') &&
             \Storage::exists('public/admin_panel/services/service_image/') &&
             \Storage::exists('public/admin_panel/services/thumbnail/') &&
             \Storage::exists('public/admin_panel/services_categories/banner/') &&
@@ -46,6 +47,7 @@ class MakeDirectory extends Command
             \Storage::exists('public/admin_panel/footer/payment_method/')
         ))
         {
+//            \Storage::makeDirectory('public/temp') &&
             \Storage::makeDirectory('public/admin_panel/services/service_image/');
             \Storage::makeDirectory('public/admin_panel/services/thumbnail/');
             \Storage::makeDirectory('public/admin_panel/services_categories/banner/');

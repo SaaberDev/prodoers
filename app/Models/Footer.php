@@ -14,8 +14,8 @@ class Footer extends Model
 
     protected $guarded = [];
 
-    public function scopeWhereFooterKey($query, $argument)
+    public function scopeWhereFooterKey($query, $key)
     {
-        return $query->where('key', '=', $argument);
+        return $query->where('key', '=', $key);
     }
 }

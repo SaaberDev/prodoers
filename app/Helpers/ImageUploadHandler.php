@@ -6,6 +6,7 @@
     if (!function_exists('SingleImageUploadHandler')){
         function SingleImageUploadHandler($request, $filename, $uploadedFile = '', $uniqueKey = '', $path = '')
         {
+//            dd($request->all());
             if ($request->hasFile($uploadedFile)) {
                 //Get file from client side
                 $file = $request->file($uploadedFile);
@@ -142,18 +143,23 @@
 
             //Get file from client side
             $file = $request->file($inputName);
+//            dd($file);
 
             $extension = $file->getClientOriginalExtension();
             $fileFormat = strtoupper($filename . '-' . $uniqueKey) . '.' . $extension;
             $fileNameToStore = str_replace(' ', '-', $fileFormat);
 
-            $img = new Imagick();
+//            $img = new Imagick();
             $svg = file_get_contents($file);
             $svg = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' . $svg;
-            $img->readImageBlob($svg);
+//            $preg_match = preg_replace('/\r\n/', '', $svg) && preg_replace('/\t/', '', $svg);
+//            $img->readImageBlob($svg);
+//            $img->setCompressionQuality(100);
+//            echo $svg;
+//            dd($svg);
 
             // Store in Storage Filesystem
-            Storage::put($location . $fileNameToStore, $img);
+            Storage::put($location . $fileNameToStore, $svg);
         }
         return $fileNameToStore;
     }
