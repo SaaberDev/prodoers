@@ -30,4 +30,5 @@
 
 @push('scripts')
     {{-- Internal Scripts --}}
+    @include('alerts.admin_panel.delete_confirmation_modal')
 @endpush

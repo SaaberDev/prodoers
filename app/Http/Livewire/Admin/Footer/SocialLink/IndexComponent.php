@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin\Footer\SocialLink;
 
+use App\Models\SocialLinks;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -11,7 +12,6 @@ class IndexComponent extends Component
 
     public $search = '';
     public $recordPerPage = 15;
-    public $filterByStatus = null;
     public $page = 1;
 
     // Shows search query in URL
@@ -37,6 +37,10 @@ class IndexComponent extends Component
 
     public function render()
     {
-        return view('livewire.admin.footer.social-link.index-component');
+        $search = $this->search;
+        $social_links = SocialLinks::orderByIdDesc()
+            ->searchBy('social_title', $search)
+            ->paginate($this->recordPerPage);
+        return view('livewire.admin.footer.social-link.index-component', compact('social_links'));
     }
 }

@@ -280,9 +280,10 @@
                 Route::prefix('/social-links')->name('social_link.')->group(function () {
                     Route::get('/', [FooterSectionController::class, 'index_social_links'])->name('index');
                     Route::get('/create-social-links', [FooterSectionController::class, 'create_social_links'])->name('create');
+                    Route::get('/edit-social-links/{id}', [FooterSectionController::class, 'edit_social_links'])->name('edit');
                     Route::post('/store-social-links', [FooterSectionController::class, 'store_social_links'])->name('store');
-                    Route::get('/edit-social-links', [FooterSectionController::class, 'edit_social_links'])->name('edit');
-                    Route::get('/update-social-links', [FooterSectionController::class, 'update_social_links'])->name('update');
+                    Route::patch('/update-social-links/{id}', [FooterSectionController::class, 'update_social_links'])->name('update');
+                    Route::get('/destroy-social-links/{id}', [FooterSectionController::class, 'destroy_social_links'])->name('destroy');
                 });
             });
             // Maintenance Mode

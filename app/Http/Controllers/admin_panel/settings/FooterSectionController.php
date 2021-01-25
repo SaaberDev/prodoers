@@ -4,14 +4,14 @@ namespace App\Http\Controllers\admin_panel\settings;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Footer\FooterRequest;
+use App\Http\Requests\Admin\Footer\SocialLinkRequest;
 use App\Models\Footer;
+use App\Models\SocialLinks;
+use DB;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Throwable;
 
 class FooterSectionController extends Controller
 {
@@ -27,7 +27,7 @@ class FooterSectionController extends Controller
 
     public function update_footer(FooterRequest $request)
     {
-        \DB::transaction(function () use ($request){
+        DB::transaction(function () use ($request){
             // Footer Logo
             Footer::whereFooterKey('footer_logo')
                 ->firstOrFail()->update([
@@ -68,9 +68,46 @@ class FooterSectionController extends Controller
         return \view('admin_panel.pages.settings.footer_section.social_links.create');
     }
 
-    public function update_social_links()
+    public function store_social_links(SocialLinkRequest $request)
     {
+        DB::transaction(function () use ($request){
+            $title = $request->input('social_title');
+            SocialLinks::create([
+                'social_icon' => uploadSVG($request, $title, 'social_icon', 'footer-social-icon', config('designwala_paths.admin.images.store.footer.social_links')),
+                'social_title' => $title,
+                'social_url' => $request->input('social_url'),
+            ]);
+        });
+        return redirect()->back();
+    }
 
+    public function edit_social_links($id)
+    {
+        $social_links = SocialLinks::findOrFail($id);
+        return \view('admin_panel.pages.settings.footer_section.social_links.edit', compact('social_links'));
+    }
+
+    public function update_social_links(SocialLinkRequest $request, $id)
+    {
+        $social_links = SocialLinks::findOrFail($id);
+        DB::transaction(function () use ($request, $social_links){
+            $title = $request->input('social_title');
+            $social_links->update([
+                'social_icon' => updateSVG($request, $title, $social_links->social_icon, 'social_icon', 'footer-social-icon', config('designwala_paths.admin.images.store.footer.social_links')),
+                'social_title' => $title,
+                'social_url' => $request->input('social_url'),
+            ]);
+        });
+        return redirect()->route('settings.footer_section.social_link.index');
+    }
+
+    public function destroy_social_links($id)
+    {
+        $social_links = SocialLinks::findOrFail($id);
+        DB::transaction(function () use ($social_links){
+            deleteFileBefore(config('designwala_paths.admin.images.store.footer.social_links'), $social_links->social_icon);
+            $social_links->delete();
+        });
         return redirect()->back();
     }
 

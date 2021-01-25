@@ -9,7 +9,7 @@
      */
     function formatDMY($argument): string
     {
-        return Carbon::parse($argument)->format('d/m/y');
+        return Carbon::parse($argument)->format('d/m/Y');
     }
 
     /**
@@ -18,7 +18,7 @@
      */
     function formatYMD($argument): string
     {
-        return Carbon::parse($argument)->format('d/m/y');
+        return Carbon::parse($argument)->format('y/m/d');
     }
 
     /**
@@ -27,7 +27,7 @@
      */
     function formatYDM($argument): string
     {
-        return Carbon::parse($argument)->format('d/m/y');
+        return Carbon::parse($argument)->format('y/d/m');
     }
 
     /**

@@ -379,7 +379,7 @@
     // Dashboard > Social Links > Edit Social Links
     Breadcrumbs::for('settings.footer_section.social_link.edit', fn(Trail $trail) => $trail
         ->parent('settings.footer_section.social_link.index')
-        ->push("Edit Social Links", route('settings.footer_section.social_link.edit'))
+        ->push("Edit Social Links", route('settings.footer_section.social_link.edit', ['id']))
     );
 
     /*

@@ -277,10 +277,24 @@ namespace App\Models{
 /**
  * App\Models\SocialLinks
  *
+ * @mixin IdeHelperSocialLinks
+ * @property int $id
+ * @property string $social_icon
+ * @property string $social_title
+ * @property string $social_url
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks orderByIdDesc()
  * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks query()
- * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks searchBy($entity, $search)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks whereSocialIcon($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks whereSocialTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks whereSocialUrl($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks whereUpdatedAt($value)
  */
 	class IdeHelperSocialLinks extends \Eloquent {}
 }

@@ -14,7 +14,7 @@
                     'footer' => [
                         'logo' => 'admin_panel/footer/logo/',
                         'payment_method' => 'admin_panel/footer/payment_method/',
-                        'social_links' => 'admin_panel/footer/payment_method/',
+                        'social_links' => 'admin_panel/footer/social_links/',
                     ]
                 ],
 
@@ -30,7 +30,7 @@
                     'footer' => [
                         'logo' => 'storage/admin_panel/footer/logo/',
                         'payment_method' => 'storage/admin_panel/footer/payment_method/',
-                        'social_links' => 'storage/admin_panel/footer/payment_method/',
+                        'social_links' => 'storage/admin_panel/footer/social_links/',
                     ]
                 ],
 
