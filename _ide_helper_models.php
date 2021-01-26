@@ -38,6 +38,29 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Footer
+ *
+ * @mixin IdeHelperFooter
+ * @property int $id
+ * @property string|null $key
+ * @property string|null $value
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Footer newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Footer newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Footer query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Footer whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Footer whereFooterKey($key)
+ * @method static \Illuminate\Database\Eloquent\Builder|Footer whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Footer whereKey($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Footer whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Footer whereValue($value)
+ */
+	class IdeHelperFooter extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Service
  *
  * @mixin IdeHelperService
@@ -74,6 +97,7 @@ namespace App\Models{
  * @method static Builder|Service orderByIdDesc()
  * @method static Builder|Service query()
  * @method static Builder|Service searchByTitle($search)
+ * @method static Builder|Service whereCategories($arg)
  * @method static Builder|Service whereCreatedAt($value)
  * @method static Builder|Service whereId($value)
  * @method static Builder|Service whereMetaDesc($value)
@@ -86,6 +110,7 @@ namespace App\Models{
  * @method static Builder|Service whereThumbnail($value)
  * @method static Builder|Service whereTitle($value)
  * @method static Builder|Service whereUpdatedAt($value)
+ * @method static Builder|Service withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
  */
 	class IdeHelperService extends \Eloquent {}
 }
@@ -102,6 +127,7 @@ namespace App\Models{
  * @property string $category_thumbnail
  * @property string $slug
  * @property string $desc
+ * @property int|null $navbar_status
  * @property int|null $published_status
  * @property int|null $popular_status
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -110,29 +136,31 @@ namespace App\Models{
  * @property-read int|null $service_category_faqs_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Service[] $services
  * @property-read int|null $services_count
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory filterByStatus($filterByStatus)
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory findSimilarSlugs(string $attribute, array $config, string $slug)
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory getAllCategories()
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory getAllPopular()
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory getAllPublished()
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory getSlug($slug)
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory getTitle()
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory orderByIdDesc()
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory query()
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory searchByTitle($search)
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereCategoryBanner($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereCategoryThumbnail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereDesc($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereMetaDesc($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory wherePopularStatus($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory wherePublishedStatus($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereUpdatedAt($value)
+ * @method static Builder|ServiceCategory filterByStatus($filterByStatus)
+ * @method static Builder|ServiceCategory findSimilarSlugs(string $attribute, array $config, string $slug)
+ * @method static Builder|ServiceCategory getAllPopular()
+ * @method static Builder|ServiceCategory getAllPublished()
+ * @method static Builder|ServiceCategory getSlug($slug)
+ * @method static Builder|ServiceCategory getTitle()
+ * @method static Builder|ServiceCategory navbarActive()
+ * @method static Builder|ServiceCategory newModelQuery()
+ * @method static Builder|ServiceCategory newQuery()
+ * @method static Builder|ServiceCategory orderByIdDesc()
+ * @method static Builder|ServiceCategory query()
+ * @method static Builder|ServiceCategory searchByTitle($search)
+ * @method static Builder|ServiceCategory whereCategoryBanner($value)
+ * @method static Builder|ServiceCategory whereCategoryThumbnail($value)
+ * @method static Builder|ServiceCategory whereCreatedAt($value)
+ * @method static Builder|ServiceCategory whereDesc($value)
+ * @method static Builder|ServiceCategory whereId($value)
+ * @method static Builder|ServiceCategory whereMetaDesc($value)
+ * @method static Builder|ServiceCategory whereNavbarStatus($value)
+ * @method static Builder|ServiceCategory wherePopularStatus($value)
+ * @method static Builder|ServiceCategory wherePublishedStatus($value)
+ * @method static Builder|ServiceCategory whereSlug($value)
+ * @method static Builder|ServiceCategory whereTitle($value)
+ * @method static Builder|ServiceCategory whereUpdatedAt($value)
+ * @method static Builder|ServiceCategory withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
  */
 	class IdeHelperServiceCategory extends \Eloquent {}
 }
@@ -243,6 +271,32 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceTag query()
  */
 	class IdeHelperServiceTag extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\SocialLinks
+ *
+ * @mixin IdeHelperSocialLinks
+ * @property int $id
+ * @property string $social_icon
+ * @property string $social_title
+ * @property string $social_url
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks orderByIdDesc()
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks query()
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks searchBy($entity, $search)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks whereSocialIcon($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks whereSocialTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks whereSocialUrl($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks whereUpdatedAt($value)
+ */
+	class IdeHelperSocialLinks extends \Eloquent {}
 }
 
 namespace App\Models{

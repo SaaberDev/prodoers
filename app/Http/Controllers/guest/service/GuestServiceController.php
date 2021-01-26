@@ -21,6 +21,9 @@ class GuestServiceController extends Controller
     public function index($service_slug)
     {
         $services = Service::getSlug($service_slug)->first();
+//        $services = Service::getSlug($service_slug)->with(['serviceCategories' => function($q){
+//            $q->with('serviceCategoryFaqs');
+//        }])->first();
         $related_services = Service::hideCurrent($services)->getAllPublished()->whereHas('tags', function($query) use ($services) {
             $query->whereIn('tags.id', $services->tags);
         })->get();

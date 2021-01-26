@@ -1387,3 +1387,14 @@ label h5 {
 .socialmediaDelete img{
     padding: 4px 4px;
 }
+
+.null_table{
+    font-size: 20px!important;
+    padding: 100px!important;
+}
+
+.table td, .table th {
+    font-size: 13px;
+    padding: 10px 5px!important;
+    vertical-align: middle;
+}

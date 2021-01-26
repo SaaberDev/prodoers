@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\admin_panel\services;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Services\ServiceCategoryRequest;
+use App\Http\Requests\Admin\Services\ServiceCategoryRequest;
 use App\Models\ServiceCategory;
 use App\Models\ServiceCategoryFaq;
 use Cviebrock\EloquentSluggable\Services\SlugService;
@@ -49,6 +49,7 @@ class ServiceCategoryController extends Controller
             $slug = SlugService::createSlug(ServiceCategory::class, 'slug', $request->input('service_category_title'));
             $service_categories = ServiceCategory::firstOrCreate([
                 'title' => $request->input('service_category_title'),
+                'navbar_status' => $request->input('navbar_status'),
                 'popular_status' => $request->input('category_popular'),
                 'published_status' => $request->input('category_status'),
                 'meta_desc' => $request->input('meta_description'),
@@ -137,6 +138,7 @@ class ServiceCategoryController extends Controller
             $slug = SlugService::createSlug(ServiceCategory::class, 'slug', $request->input('service_category_title'));
             $service_categories->update([
                 'title' => $request->input('service_category_title'),
+                'navbar_status' => $request->input('navbar_status'),
                 'popular_status' => $request->input('category_popular'),
                 'published_status' => $request->input('category_status'),
                 'meta_desc' => $request->input('meta_description'),

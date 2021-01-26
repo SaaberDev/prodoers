@@ -1,4 +1,3 @@
-@include('user_panel.includes.navbar.mobile_top_navbar')
 @include('user_panel.includes.navbar.top_navbar')
 @include('user_panel.includes.navbar.top_sub_navbar')
 @include('user_panel.includes.modal.signin')

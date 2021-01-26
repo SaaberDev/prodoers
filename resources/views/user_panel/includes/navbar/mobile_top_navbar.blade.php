@@ -41,8 +41,8 @@
                     <!--      service sub menu -->
                     <div class="collapse" id="services" style="">
                         <ul class="list-unstyled font-weight-normal pb-1 ">
-                            @foreach($services->take(10) as $service)
-                            <li class="nav-item sub-item"><a href="./index.html" class="nav-link d-inline-flex align-items-center sub-menu-link pl-4 active">{{ $service->title }}</a></li>
+                            @foreach($service_categories->take(10) as $service_category)
+                                <li class="nav-item sub-item"><a href="{{ route('guest.service_category.index', $service_category->slug) }}" class="nav-link d-inline-flex align-items-center sub-menu-link pl-4 active">{{ $service_category->title }}</a></li>
                             @endforeach
                         </ul>
                     </div>

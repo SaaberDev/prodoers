@@ -8,7 +8,6 @@ use App\Models\ServiceCategoryFaq;
 use App\Models\ServiceFaq;
 use App\Models\ServiceFeature;
 use App\Models\ServiceImage;
-use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,12 +19,36 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory(100)->create();
-        ServiceCategory::factory(100)->create();
-//        ServiceCategoryFaq::factory(20)->create();
+        // progress bar start, no default max provided
+//        $this->command->getOutput()->progressStart();
+        \Artisan::call('directory:delete');
+        \Artisan::call('directory:make');
+        /**
+         * User
+         */
+//        User::factory(100)->create();
+
+        /**
+         * Service Categories
+         */
+//        ServiceCategory::factory(100)->create();
+//        ServiceCategoryFaq::factory(600)->create();
+
+        /**
+         * Service
+         */
 //        Service::factory(100)->create();
 //        ServiceImage::factory(100)->create();
-//        ServiceFeature::factory(20)->create();
-//        ServiceFaq::factory(20)->create();
+//        ServiceFeature::factory(500)->create();
+//        ServiceFaq::factory(600)->create();
+
+//        // progress bar advance per user created
+//        $this->command->getOutput()->progressAdvance();
+//        // End progress bar
+//        $this->command->getOutput()->progressFinish();
+
+        $this->call([
+            FooterSeeder::class
+        ]);
     }
 }

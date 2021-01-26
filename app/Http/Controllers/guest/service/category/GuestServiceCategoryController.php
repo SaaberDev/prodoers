@@ -20,13 +20,9 @@ class GuestServiceCategoryController extends Controller
      */
     public function index($category_slug)
     {
-        $services_by_category = ServiceCategory::getSlug($category_slug)->with('services', function ($query){
-            $query->getAllPublished()->orderByIdDesc();
-        })->first();
-
-        $popular_services = Service::where('popular_status', '=', 1)->inRandomOrder()->limit(3)->get();
-
-        return view('user_panel.pages.category_show', compact('services_by_category', 'popular_services'));
+        $category = ServiceCategory::getSlug($category_slug)->firstOrFail();
+        $popular_services = Service::getAllPopular()->getAllPublished()->inRandomOrder()->limit(3)->get();
+        return view('user_panel.pages.category_show', compact('category', 'popular_services'));
     }
 
     /**

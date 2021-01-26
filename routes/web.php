@@ -29,10 +29,49 @@
     use App\Http\Controllers\admin_panel\settings\SitePolicyController;
     use App\Http\Controllers\guest\blog\GuestBlogController;
     use App\Http\Controllers\guest\HomeController;
+    use App\Http\Controllers\guest\search\GuestSearchController;
     use App\Http\Controllers\guest\service\category\GuestServiceCategoryController;
     use App\Http\Controllers\guest\service\GuestServiceController;
-    use App\Http\Controllers\guest\service\GuestServiceSearchController;
     use Illuminate\Support\Facades\Route;
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | User Panel Routes
+    |--------------------------------------------------------------------------
+    */
+    // Home Route Section
+    Route::prefix('/')->name('guest.')->group(function () {
+        // Home
+        Route::get('/', [HomeController::class, 'index'])->name('home.index');
+//        Route::get('/search/{category_slug}', [GuestSearchController::class, 'index'])->name('search.index');
+        Route::get('/search/services/', [GuestSearchController::class, 'index'])->name('search.index');
+
+        // Single Category Page
+        Route::prefix('/categories')->name('service_category.')->group(function (){
+            Route::get('/{category_slug}', [GuestServiceCategoryController::class, 'index'])->name('index');
+        });
+
+        // Single Service Page
+        Route::prefix('/services')->name('service.')->group(function (){
+            Route::get('/{service_slug}', [GuestServiceController::class, 'index'])->name('index');
+        });
+
+
+//        Route::get('services/{service_slug}', [HomeController::class, 'single_service'])->name('single_service.show');
+
+        // Single Service Page
+//        Route::get('/{slug}', [UserServiceController::class, 'index'])->name('single_service.index');
+
+        // Order Details
+//        Route::get('/order-details', [UserOrderDetailController::class, 'index'])->name('order_detail.index');
+        // Blog
+        Route::get('/blog', [GuestBlogController::class, 'index'])->name('blog.index');
+        Route::get('/single-blog', [GuestBlogController::class, 'index'])->name('blog.show');
+    });
+
+
+
 
     /*
     |--------------------------------------------------------------------------
@@ -43,7 +82,6 @@
     Route::prefix('/dashboard')->group(function () {
         // Dashboard
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
-
 
 // Services Route Section
         Route::name('services.')->group(function () {
@@ -237,11 +275,15 @@
             Route::name('footer_section.')->group(function () {
                 Route::prefix('/footer')->name('footer.')->group(function () {
                     Route::get('/', [FooterSectionController::class, 'index_footer'])->name('index');
-                    Route::get('/edit-footer', [FooterSectionController::class, 'edit_footer'])->name('edit');
+                    Route::patch('/update-footer', [FooterSectionController::class, 'update_footer'])->name('update');
                 });
                 Route::prefix('/social-links')->name('social_link.')->group(function () {
                     Route::get('/', [FooterSectionController::class, 'index_social_links'])->name('index');
-                    Route::get('/edit-social-links', [FooterSectionController::class, 'edit_social_links'])->name('edit');
+                    Route::get('/create-social-links', [FooterSectionController::class, 'create_social_links'])->name('create');
+                    Route::get('/edit-social-links/{id}', [FooterSectionController::class, 'edit_social_links'])->name('edit');
+                    Route::post('/store-social-links', [FooterSectionController::class, 'store_social_links'])->name('store');
+                    Route::patch('/update-social-links/{id}', [FooterSectionController::class, 'update_social_links'])->name('update');
+                    Route::get('/destroy-social-links/{id}', [FooterSectionController::class, 'destroy_social_links'])->name('destroy');
                 });
             });
             // Maintenance Mode
@@ -249,39 +291,6 @@
                 Route::get('/', [MaintenanceModeController::class, 'index'])->name('index');
             });
         });
-    });
-    /*
-|--------------------------------------------------------------------------
-| User Panel Routes
-|--------------------------------------------------------------------------
-*/
-// Home Route Section
-    Route::prefix('/')->name('guest.')->group(function () {
-        // Home
-        Route::get('/', [HomeController::class, 'index'])->name('home.index');
-
-        Route::prefix('/categories')->name('service_category.')->group(function (){
-            // Single Category Page
-            Route::get('/{category_slug}', [GuestServiceCategoryController::class, 'index'])->name('index');
-        });
-
-        Route::prefix('/services')->name('service.')->group(function (){
-            // Single Service Page
-            Route::get('/{service_slug}', [GuestServiceController::class, 'index'])->name('index');
-        });
-
-
-//        Route::get('services/{service_slug}', [HomeController::class, 'single_service'])->name('single_service.show');
-        // Search Page
-        Route::get('/search-service', [GuestServiceSearchController::class, 'index'])->name('search.index');
-        // Single Service Page
-//        Route::get('/{slug}', [UserServiceController::class, 'index'])->name('single_service.index');
-
-        // Order Details
-//        Route::get('/order-details', [UserOrderDetailController::class, 'index'])->name('order_detail.index');
-        // Blog
-        Route::get('/blog', [GuestBlogController::class, 'index'])->name('blog.index');
-        Route::get('/single-blog', [GuestBlogController::class, 'index'])->name('blog.show');
     });
 
     Route::get('/test', function (){
