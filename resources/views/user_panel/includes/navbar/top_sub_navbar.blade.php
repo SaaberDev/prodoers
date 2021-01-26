@@ -1,9 +1,11 @@
 <div class="section  bgcustomLightgray sectionNavTwo d-none d-lg-block" id="sectionNavTwo">
     <div class=" container-xl container-fluid">
         <ul class="nav justify-content-center">
-            @foreach($service_categories->take(6) as $service_category)
+            @forelse($service_categories->take(6)->where('navbar_status', 1) as $service_category)
                 <li class="col-lg-2 nav-item"> <a class="nav-link active text-center" aria-current="page" href="{{ route('guest.service_category.index', $service_category->slug) }}">{{ $service_category->title }}</a> </li>
-            @endforeach
+            @empty
+                No Categories
+            @endforelse
         </ul>
     </div>
 </div>

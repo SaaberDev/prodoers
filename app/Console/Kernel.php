@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // This task will delete telescope_entries table that is older than 1 hour
-        $schedule->command('telescope:prune')->hourly();
+//        $schedule->command('telescope:prune')->hourly();
     }
 
     /**

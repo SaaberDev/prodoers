@@ -1,5 +1,6 @@
 <?php
 
+    use App\Models\Footer;
     use Carbon\Carbon;
 
     /**
@@ -8,7 +9,7 @@
      */
     function formatDMY($argument): string
     {
-        return Carbon::parse($argument)->format('d/m/y');
+        return Carbon::parse($argument)->format('d/m/Y');
     }
 
     /**
@@ -17,7 +18,7 @@
      */
     function formatYMD($argument): string
     {
-        return Carbon::parse($argument)->format('d/m/y');
+        return Carbon::parse($argument)->format('y/m/d');
     }
 
     /**
@@ -26,7 +27,7 @@
      */
     function formatYDM($argument): string
     {
-        return Carbon::parse($argument)->format('d/m/y');
+        return Carbon::parse($argument)->format('y/d/m');
     }
 
     /**
@@ -36,4 +37,13 @@
     function humanFormat($argument): string
     {
         return Carbon::parse($argument)->diffForHumans();
+    }
+
+    function getFooterKey($key)
+    {
+        $footer = Footer::where('key', '=', $key)->firstOrFail();
+        if (!$footer){
+            return null;
+        }
+        return $footer->value;
     }

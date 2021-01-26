@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\admin_panel\services;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Services\TagRequest;
+use App\Http\Requests\Admin\Services\TagRequest;
 use App\Models\Tag;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class TagController extends Controller
@@ -85,7 +84,7 @@ class TagController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(TagRequest $request, $id)
     {

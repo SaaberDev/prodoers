@@ -81,7 +81,7 @@ class Service extends Model
     public function scopeSearchByTitle($query, $search)
     {
         return $query->where(function ($query) use ($search) {
-            $query->orWhere('title', 'like', '%' . $search . '%');
+            $query->orWhere('title', 'like', $search . '%');
         });
     }
 
@@ -102,5 +102,10 @@ class Service extends Model
     public function scopeHideCurrent($query, $arg)
     {
         return $query->where('id', '!=', $arg->id);
+    }
+
+    public function scopeWhereCategories($query, $arg)
+    {
+        return $query->where('service_category_id', '=', $arg);
     }
 }

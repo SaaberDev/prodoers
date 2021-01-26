@@ -2,21 +2,19 @@
     <div class="container">
         <div class="row">
             <div class="">
-                <img src="{{ asset('_user_panel/img/DESIGNWALA.png') }}" class="img-fluid" alt="">
+                <img src="{{ asset(config('designwala_paths.admin.images.show.footer.logo') . getFooterKey('footer_logo')) }}" class="img-fluid" alt="Designwala Logo">
             </div>
         </div>
         <div class="row">
             <div class="col-xl-4 col-lg-6 col-md-6">
                 <div class="footerText pt-4">
-                    <p class=""> Lorem ipsum dolor sit amet,
-                        consetetur sadipscing elitr, sed
-                        diam nonumy eirmod tempor
-                        invidunt ut labore et dolore magna
-                        aliquyam erat, sed diam</p>
+                    <p class="">{{ getFooterKey('footer_desc') }}</p>
                 </div>
                 <div class="">
                     <p class="text-white">Payment Method</p>
-                    <div class=""> <img src="{{ asset('_user_panel/img/Payment_Methods.svg') }}" alt="" class="img-fluid w-75"> </div>
+                    <div class="">
+                        <img src="{{ asset(config('designwala_paths.admin.images.show.footer.payment_method') . getFooterKey('footer_payment_method')) }}" alt="Payment Methods" class="img-fluid w-75">
+                    </div>
                 </div>
             </div>
             <div class="col-xl-2 col-lg-3 col-md-3">
@@ -55,12 +53,13 @@
         </div>
         <div class="row ">
             <div class="footerIcon text-center py-4">
-                <a href=""><img src="{{ asset('_user_panel/img/footer/Icon%20awesome-facebook-f.svg') }}" alt=""></a>
-                <a href=""><img src="{{ asset('_user_panel/img/footer/Icon%20awesome-linkedin-in.svg') }}" alt=""></a>
-                <a href=""><img src="{{ asset('_user_panel/img/footer/Icon%20awesome-twitter.svg') }}" alt=""></a>
-                <a href=""><img src="{{ asset('_user_panel/img/footer/Icon%20awesome-youtube.svg') }}" alt=""></a>
+                @forelse($social_links as $social_link)
+                <a href="{{ $social_link->social_url }}" target="_blank"><img src="{{ asset(config('designwala_paths.admin.images.show.footer.social_links') . $social_link->social_icon) }}" alt="{{ $social_link->social_title }}"></a>
+                @empty
+                    No Icons
+                @endforelse
             </div>
-            <p class="text-center">Copyright @ 2020 DESIGNWALA</p>
+            <p class="text-center">{{ getFooterKey('footer_copyright') }}</p>
         </div>
     </div>
 </footer>

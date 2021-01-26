@@ -23,11 +23,12 @@ class ServiceCategoryFactory extends Factory
     {
         return [
             'title' => $this->faker->name,
+            'navbar_status' => '0',
             'popular_status' => '1',
             'published_status' => '1',
             'meta_desc' => $this->faker->text,
-            'category_banner' => 'default.png',
-            'category_thumbnail' => 'default.png',
+            'category_banner' => $this->faker->image('public/storage/admin_panel/services_categories/banner/', 296, 248,'abstract', false),
+            'category_thumbnail' => $this->faker->image('public/storage/admin_panel/services_categories/thumbnail/', 272, 168,'abstract', false),
             'desc' => $this->faker->text,
         ];
     }

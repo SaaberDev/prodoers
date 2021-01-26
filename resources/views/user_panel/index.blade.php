@@ -2,28 +2,32 @@
 {{--@section('title', 'Designwala')--}}
 
 @push('styles')
+    <style>
+        .list-group-item-action:focus, .list-group-item-action:hover {
+            z-index: 1;
+            color: #495057;
+            text-decoration: none;
+            background-color: #038d0814;
+        }
+    </style>
 @endpush
 
 @section('content')
     {{-- Banner Section Start --}}
-    <div class="section    sectionServiceBanner ptSm50 pbSm50 animate-bottom" id="sectionServiceBanner" >
+    <div class="section sectionServiceBanner ptSm50 pbSm50 animate-bottom" id="sectionServiceBanner" >
         <div class="container-xl container-fluid-lg">
             <div class="row">
-                <div class="col-lg-7 col-md-12 v-center">
+                <div class="col-lg-7 col-md-12 mt-3">
                     <div class="sectionServiceBannerContent textsm-center">
-                        <h1 class="font-medium d-none d-lg-block">Stop wasting time on hassling, let professionals do your job.</h1>
-                        <h1 class="font-medium d-lg-none d-md-block text-center">Stop wasting time on hassling,<br> let professionals do your job.</h1>
-                        <p class="d-none d-lg-block">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat </p>
-                        <p class="d-lg-none d-md-block text-center">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat </p>
-                        <form action="" class="pt-3">
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control rounded-0" placeholder="e.g. logo design " aria-label="Recipient's username" aria-describedby="button-addon2">
-                                <div class="input-group-append">
-                                    <!--   button with svg -->
-                                    <button class="btn text-white rounded-0" type="button" id=""> <img src="{{ asset('_user_panel/img/servicepage/icon_search.svg') }}" class="img-fluid" alt=""> </button>
-                                </div>
-                            </div>
-                        </form>
+{{--                        <h1 class="font-medium d-none d-lg-block">Stop wasting time on hassling, let professionals do your job.</h1>--}}
+                        <h1 class="font-medium d-none d-lg-block">Search Your Desired Services</h1>
+{{--                        <h1 class="font-medium d-lg-none d-md-block text-center">Stop wasting time on hassling,<br> let professionals do your job.</h1>--}}
+                        <h1 class="font-medium d-lg-none d-md-block text-center">Search Your Desired Services</h1>
+{{--                        <p class="d-none d-lg-block">Search your desired services</p>--}}
+                        <p class="d-none d-lg-block">Stop wasting time on hassling, let professionals do your job.</p>
+{{--                        <p class="d-lg-none d-md-block text-center">Search your desire services</p>--}}
+                        <p class="d-lg-none d-md-block text-center">Stop wasting time on hassling,<br> let professionals do your job.</p>
+                        @livewire('guest.search.guest-search-component')
                     </div>
                 </div>
                 <div class="col-lg-5 col-md-12 v-center">

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\admin_panel\services;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Services\ServiceRequest;
+use App\Http\Requests\Admin\Services\ServiceRequest;
 use App\Models\Service;
 use App\Models\ServiceCategory;
 use App\Models\ServiceFaq;
@@ -39,6 +39,7 @@ class ServiceController extends Controller
     {
         $service_categories = ServiceCategory::getTitle();
         $tags = Tag::getTitle();
+
         return view('admin_panel.pages.services.service.create', compact('service_categories', 'tags'));
     }
 
@@ -50,10 +51,10 @@ class ServiceController extends Controller
      */
     public function store(ServiceRequest $request)
     {
-        $notify = [
-            'alert-type' => 'success',
-            'message' => 'New Service Added Successfully !',
-        ];
+//        $notify = [
+//            'alert-type' => 'success',
+//            'message' => 'New Service Added Successfully !',
+//        ];
         DB::transaction(function () use ($request){
             $slug = SlugService::createSlug(Service::class, 'slug', $request->input('service_title'));
             $services = Service::firstOrCreate([
@@ -113,7 +114,7 @@ class ServiceController extends Controller
             }
         });
 
-        return redirect()->back()->with($notify);
+        return redirect()->back();
     }
 
     /**
@@ -144,45 +145,45 @@ class ServiceController extends Controller
 
     public function destroyServiceImage($id)
     {
-        $notify = [
-            'alert-type' => 'success_toast',
-            'message' => 'Banner Image Deleted !',
-        ];
+//        $notify = [
+//            'alert-type' => 'success_toast',
+//            'message' => 'Banner Image Deleted !',
+//        ];
         $service_image = ServiceImage::findOrFail($id);
         DB::transaction(function () use ($service_image){
             deleteFileBefore('admin_panel/services/service_image/', $service_image->filename);
             $service_image->delete();
         });
 
-        return redirect()->back()->with($notify);
+        return redirect()->back();
     }
 
     public function destroyServiceFeature($id)
     {
-        $notify = [
-            'alert-type' => 'success_toast',
-            'message' => 'Feature Deleted !',
-        ];
+//        $notify = [
+//            'alert-type' => 'success_toast',
+//            'message' => 'Feature Deleted !',
+//        ];
         $service_feature = ServiceFeature::findOrFail($id);
         DB::transaction(function () use ($service_feature){
             $service_feature->delete();
         });
 
-        return redirect()->back()->with($notify);
+        return redirect()->back();
     }
 
     public function destroyServiceFaq($id)
     {
-        $notify = [
-            'alert-type' => 'success_toast',
-            'message' => 'FAQ Deleted !',
-        ];
+//        $notify = [
+//            'alert-type' => 'success_toast',
+//            'message' => 'FAQ Deleted !',
+//        ];
         $service_faqs = ServiceFaq::findOrFail($id);
         DB::transaction(function () use ($service_faqs){
             $service_faqs->delete();
         });
 
-        return redirect()->back()->with($notify);
+        return redirect()->back();
     }
 
 
@@ -195,10 +196,10 @@ class ServiceController extends Controller
      */
     public function update(ServiceRequest $request, $id)
     {
-        $notify = [
-            'alert-type' => 'success',
-            'message' => 'Service Updated Successfully!',
-        ];
+//        $notify = [
+//            'alert-type' => 'success',
+//            'message' => 'Service Updated Successfully!',
+//        ];
         $services = Service::findOrFail($id);
         DB::transaction(function () use ($request, $services){
             $slug = SlugService::createSlug(Service::class, 'slug', $request->input('service_title'));
@@ -256,7 +257,7 @@ class ServiceController extends Controller
             }
         });
 
-        return redirect()->route('services.service.index')->with($notify);
+        return redirect()->route('services.service.index');
     }
 
     /**
@@ -267,10 +268,10 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
-        $notify = [
-            'alert-type' => 'success_toast',
-            'message' => 'Service has been Deleted !',
-        ];
+//        $notify = [
+//            'alert-type' => 'success_toast',
+//            'message' => 'Service has been Deleted !',
+//        ];
         $services = Service::findOrFail($id);
         DB::transaction(function () use ($services){
             foreach ($services->serviceImages as $service_image){
@@ -280,6 +281,6 @@ class ServiceController extends Controller
             $services->delete();
         });
 
-        return redirect()->back()->with($notify);
+        return redirect()->back();
     }
 }

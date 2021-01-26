@@ -6,7 +6,7 @@
 @endpush
 
 @section('content')
-    @livewire('services.tag.index-component')
+    @livewire('admin.services.tag.index-component')
 @endsection
 
 @push('scripts')
