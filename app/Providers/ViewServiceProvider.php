@@ -25,7 +25,8 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer('user_panel.includes.header', ViewComposer::class);
-        View::composer('user_panel.includes.footer', ViewComposer::class);
+//        View::composer('user_panel.includes.header', ViewComposer::class);
+//        View::composer('user_panel.includes.footer', ViewComposer::class);
+        View::composer('user_panel.layouts.app', ViewComposer::class);
     }
 }

@@ -19,3 +19,5 @@
         <!-- container //end -->
     </nav>
 </header>
+
+@include('user_panel.includes.navbar.mobile_top_navbar')

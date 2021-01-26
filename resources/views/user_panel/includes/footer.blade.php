@@ -53,10 +53,11 @@
         </div>
         <div class="row ">
             <div class="footerIcon text-center py-4">
-                <a href=""><img src="{{ asset('_user_panel/img/footer/Icon%20awesome-facebook-f.svg') }}" alt=""></a>
-                <a href=""><img src="{{ asset('_user_panel/img/footer/Icon%20awesome-linkedin-in.svg') }}" alt=""></a>
-                <a href=""><img src="{{ asset('_user_panel/img/footer/Icon%20awesome-twitter.svg') }}" alt=""></a>
-                <a href=""><img src="{{ asset('_user_panel/img/footer/Icon%20awesome-youtube.svg') }}" alt=""></a>
+                @forelse($social_links as $social_link)
+                <a href="{{ $social_link->social_url }}" target="_blank"><img src="{{ asset(config('designwala_paths.admin.images.show.footer.social_links') . $social_link->social_icon) }}" alt="{{ $social_link->social_title }}"></a>
+                @empty
+                    No Icons
+                @endforelse
             </div>
             <p class="text-center">{{ getFooterKey('footer_copyright') }}</p>
         </div>
