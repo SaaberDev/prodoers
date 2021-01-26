@@ -61,6 +61,18 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Policy
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Policy newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Policy newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Policy query()
+ * @mixin \Eloquent
+ */
+	class IdeHelperPolicy extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Service
  *
  * @mixin IdeHelperService

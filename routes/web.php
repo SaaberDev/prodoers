@@ -267,10 +267,7 @@
             Route::prefix('/site-cms')->name('site_cms.')->group(function () {
                 Route::get('/', [SiteCMSController::class, 'index'])->name('index');
             });
-            // Policies
-            Route::prefix('/policies')->name('policy.')->group(function () {
-                Route::get('/', [SitePolicyController::class, 'index'])->name('index');
-            });
+
             // Footer Section
             Route::name('footer_section.')->group(function () {
                 Route::prefix('/footer')->name('footer.')->group(function () {
@@ -284,6 +281,10 @@
                     Route::post('/store-social-links', [FooterSectionController::class, 'store_social_links'])->name('store');
                     Route::patch('/update-social-links/{id}', [FooterSectionController::class, 'update_social_links'])->name('update');
                     Route::get('/destroy-social-links/{id}', [FooterSectionController::class, 'destroy_social_links'])->name('destroy');
+                });
+                // Policies
+                Route::prefix('/policies')->name('policy.')->group(function () {
+                    Route::get('/', [SitePolicyController::class, 'index'])->name('index');
                 });
             });
             // Maintenance Mode
