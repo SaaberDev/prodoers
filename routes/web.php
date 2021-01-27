@@ -284,7 +284,8 @@
                 });
                 // Policies
                 Route::prefix('/policies')->name('policy.')->group(function () {
-                    Route::get('/', [SitePolicyController::class, 'index'])->name('index');
+                    Route::get('/', [FooterSectionController::class, 'index_policy'])->name('index');
+                    Route::patch('/update-policies', [FooterSectionController::class, 'update_policy'])->name('update');
                 });
             });
             // Maintenance Mode
@@ -295,25 +296,7 @@
     });
 
     Route::get('/test', function (){
-//        $inputs = (new CreateComponent());
-//        dd($inputs);
-
-//        $services = Service::orderByIdDesc()->with('servicesImages')->get();
-//        foreach ($services as $service){
-//            dd(json_decode($service->servicesImages));
-//        }
-
-//        $m = \App\Models\ServiceImage::get();
-//        foreach ($m as  $k)
-//        $d = json_decode($k->filename);
-//        foreach ($d as $r){
-//            dd($r);
-//        }
-//        print $d[0];
-
-
-//            ->paginate();
-
+//        return Config::get('designwala.policy.site_content');
     });
 
 //    Route::get('/{category_name}', [UserServiceCategoryController::class, 'show'])->name('show');

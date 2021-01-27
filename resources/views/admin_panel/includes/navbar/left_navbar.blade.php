@@ -947,7 +947,7 @@
                                                     </g>
                                                 </svg>
                                             </span>
-                                            <span class="pl-3">Footer</span>
+                                            <span class="pl-3">Footer Content</span>
                                         </a>
                                         {{-- nested sub insider --}}
                                     </li>

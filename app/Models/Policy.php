@@ -14,5 +14,9 @@ class Policy extends Model
 
     protected $guarded = [];
 
+    public function scopeWherePolicyKey($query, $key)
+    {
+        return $query->where('key', '=', $key);
+    }
 
 }
