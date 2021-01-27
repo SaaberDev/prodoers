@@ -59,7 +59,7 @@
                     No Icons
                 @endforelse
             </div>
-            <p class="text-center">{{ getFooterKey('footer_copyright') }}</p>
+            <p class="text-center">{{ config('designwala.policy.site_content.copyright') }}</p>
         </div>
     </div>
 </footer>

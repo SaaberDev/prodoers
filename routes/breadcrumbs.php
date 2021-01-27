@@ -345,14 +345,6 @@
         ->push("Site CMS", route('settings.site_cms.index'))
     );
 
-    /*
-    | ----------------------> Policies <----------------------
-    */
-    // Dashboard > Policies
-    Breadcrumbs::for('settings.policy.index', fn(Trail $trail) => $trail
-        ->parent('dashboard.index')
-        ->push("Policies", route('settings.policy.index'))
-    );
 
     /*
     | ----------------------> Footer Section <----------------------
@@ -380,6 +372,15 @@
     Breadcrumbs::for('settings.footer_section.social_link.edit', fn(Trail $trail) => $trail
         ->parent('settings.footer_section.social_link.index')
         ->push("Edit Social Links", route('settings.footer_section.social_link.edit', ['id']))
+    );
+
+    /*
+    | ----------------------> Policies <----------------------
+    */
+    // Dashboard > Policies
+    Breadcrumbs::for('settings.footer_section.policy.index', fn(Trail $trail) => $trail
+        ->parent('dashboard.index')
+        ->push("Policies", route('settings.footer_section.policy.index'))
     );
 
     /*

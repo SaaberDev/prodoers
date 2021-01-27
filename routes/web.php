@@ -267,10 +267,7 @@
             Route::prefix('/site-cms')->name('site_cms.')->group(function () {
                 Route::get('/', [SiteCMSController::class, 'index'])->name('index');
             });
-            // Policies
-            Route::prefix('/policies')->name('policy.')->group(function () {
-                Route::get('/', [SitePolicyController::class, 'index'])->name('index');
-            });
+
             // Footer Section
             Route::name('footer_section.')->group(function () {
                 Route::prefix('/footer')->name('footer.')->group(function () {
@@ -285,6 +282,11 @@
                     Route::patch('/update-social-links/{id}', [FooterSectionController::class, 'update_social_links'])->name('update');
                     Route::get('/destroy-social-links/{id}', [FooterSectionController::class, 'destroy_social_links'])->name('destroy');
                 });
+                // Policies
+                Route::prefix('/policies')->name('policy.')->group(function () {
+                    Route::get('/', [FooterSectionController::class, 'index_policy'])->name('index');
+                    Route::patch('/update-policies', [FooterSectionController::class, 'update_policy'])->name('update');
+                });
             });
             // Maintenance Mode
             Route::prefix('/maintenance-mode')->name('maintenance.')->group(function () {
@@ -294,25 +296,7 @@
     });
 
     Route::get('/test', function (){
-//        $inputs = (new CreateComponent());
-//        dd($inputs);
-
-//        $services = Service::orderByIdDesc()->with('servicesImages')->get();
-//        foreach ($services as $service){
-//            dd(json_decode($service->servicesImages));
-//        }
-
-//        $m = \App\Models\ServiceImage::get();
-//        foreach ($m as  $k)
-//        $d = json_decode($k->filename);
-//        foreach ($d as $r){
-//            dd($r);
-//        }
-//        print $d[0];
-
-
-//            ->paginate();
-
+//        return Config::get('designwala.policy.site_content');
     });
 
 //    Route::get('/{category_name}', [UserServiceCategoryController::class, 'show'])->name('show');
