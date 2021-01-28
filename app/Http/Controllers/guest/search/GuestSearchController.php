@@ -19,7 +19,7 @@ class GuestSearchController extends Controller
      */
     public function index()
     {
-        return view('user_panel.pages.service_search');
+        return view('guest.pages.service_search');
     }
 
     /**

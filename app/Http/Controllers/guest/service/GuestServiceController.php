@@ -27,7 +27,7 @@ class GuestServiceController extends Controller
         $related_services = Service::hideCurrent($services)->getAllPublished()->whereHas('tags', function($query) use ($services) {
             $query->whereIn('tags.id', $services->tags);
         })->get();
-        return view('user_panel.pages.service_show', compact('services', 'related_services'));
+        return view('guest.pages.service_show', compact('services', 'related_services'));
     }
 
     /**

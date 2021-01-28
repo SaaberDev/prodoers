@@ -1,8 +1,8 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
-    "/_admin_panel/css/dashboard.css": "/_admin_panel/css/dashboard.css",
-    "/_admin_panel/js/dashboard.js": "/_admin_panel/js/dashboard.js",
-    "/_user_panel/css/user_panel.css": "/_user_panel/css/user_panel.css",
-    "/_user_panel/js/user_panel.js": "/_user_panel/js/user_panel.js"
+    "/_assets/_admin_panel/css/dashboard.css": "/_assets/_admin_panel/css/dashboard.css",
+    "/_assets/_admin_panel/js/dashboard.js": "/_assets/_admin_panel/js/dashboard.js",
+    "/_assets/_guest/css/guest.css": "/_assets/_guest/css/guest.css",
+    "/_assets/_guest/js/guest.js": "/_assets/_guest/js/guest.js"
 }

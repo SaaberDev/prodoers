@@ -20,6 +20,6 @@ class HomeController extends Controller
     public function index()
     {
         $popular_categories = ServiceCategory::getAllPopular()->get();
-        return view('user_panel.index', compact('popular_categories'));
+        return view('guest.index', compact('popular_categories'));
     }
 }

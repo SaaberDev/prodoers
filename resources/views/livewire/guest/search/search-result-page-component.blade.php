@@ -93,7 +93,7 @@
                                 <div class="col-md-10 text-center">
                                     <div class="">
                                         <!--                    <img src="img/notfound/Group%20228.png" alt="" class="img-fluid w75Img wsm-100 "> -->
-                                        <img src="{{ asset('_user_panel/img/notfoundpage/notfound.svg') }}" alt="" class="img-fluid  wsm-100 ">
+                                        <img src="{{ asset('_assets/_guest/img/notfoundpage/notfound.svg') }}" alt="" class="img-fluid  wsm-100 ">
                                     </div>
                                 </div>
                             </div>
@@ -101,7 +101,7 @@
                                 <div class="col-lg-12 col-md-12 v-center text-center" style="padding-bottom: 60px;">
                                     <h2 class="textsm-center ">Would like to discuss
                                         your new project?</h2>
-                                    @include('user_panel.includes.lets_talk_button')
+                                    @include('guest.includes.lets_talk_button')
 {{--                                    <div class="textsm-center pt-3">--}}
 {{--                                        <button type="button" class="btn bgOne rounded-0 px-5 text-white py-2">Let's Talk</button>--}}
 {{--                                    </div>--}}

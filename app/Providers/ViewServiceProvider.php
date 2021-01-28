@@ -27,6 +27,6 @@ class ViewServiceProvider extends ServiceProvider
     {
 //        View::composer('user_panel.includes.header', ViewComposer::class);
 //        View::composer('user_panel.includes.footer', ViewComposer::class);
-        View::composer('user_panel.layouts.app', ViewComposer::class);
+        View::composer('guest.layouts.app', ViewComposer::class);
     }
 }

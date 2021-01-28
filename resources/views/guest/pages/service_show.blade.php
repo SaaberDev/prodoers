@@ -1,4 +1,4 @@
-@extends('user_panel.layouts.app')
+@extends('guest.layouts.app')
 @section('title', 'service_name')
 
 @push('styles')
@@ -186,7 +186,7 @@
                             </div>
                             <!--
                             <div class="col-md-8">
-                                <div class=""> <img src="_user_panel/img/singleCategortyItem/Group%20184.png" alt="" class="img-fluid"> </div>
+                                <div class=""> <img src="_assets/_guest/img/singleCategortyItem/Group%20184.png" alt="" class="img-fluid"> </div>
                             </div>
 -->
                         </div>

@@ -1,4 +1,4 @@
-@extends('user_panel.layouts.app')
+@extends('guest.layouts.app')
 @section('title', 'category_name')
 
 @push('styles')
@@ -110,7 +110,7 @@
                 <div class="col-md-12 v-center text-center">
                     <h2 class="textsm-center">Would like to discuss
                         your new project?</h2>
-                    @include('user_panel.includes.lets_talk_button')
+                    @include('guest.includes.lets_talk_button')
                 </div>
             </div>
         </div>

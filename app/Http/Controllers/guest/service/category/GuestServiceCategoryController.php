@@ -22,7 +22,7 @@ class GuestServiceCategoryController extends Controller
     {
         $category = ServiceCategory::getSlug($category_slug)->firstOrFail();
         $popular_services = Service::getAllPopular()->getAllPublished()->inRandomOrder()->limit(3)->get();
-        return view('user_panel.pages.category_show', compact('category', 'popular_services'));
+        return view('guest.pages.category_show', compact('category', 'popular_services'));
     }
 
     /**
