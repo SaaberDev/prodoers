@@ -93,7 +93,7 @@
                                 <div class="col-md-10 text-center">
                                     <div class="">
                                         <!--                    <img src="img/notfound/Group%20228.png" alt="" class="img-fluid w75Img wsm-100 "> -->
-                                        <img src="{{ asset('_user_panel/img/notfoundpage/notfound.svg') }}" alt="" class="img-fluid  wsm-100 ">
+                                        <img src="{{ asset('_assets/_guest/img/notfoundpage/notfound.svg') }}" alt="" class="img-fluid  wsm-100 ">
                                     </div>
                                 </div>
                             </div>

@@ -22,7 +22,7 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-md-10 text-center">
-                    <div class="pt-5"><img src="{{ asset('_user_panel/img/searchpage/liketodiscuss.png') }}" alt="" class="img-fluid w-75"></div>
+                    <div class="pt-5"><img src="{{ asset('_assets/_guest/img/searchpage/liketodiscuss.png') }}" alt="" class="img-fluid w-75"></div>
                 </div>
             </div>
         </div>

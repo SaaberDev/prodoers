@@ -97,19 +97,19 @@
                                     <div class="selectablescustom">
                                         <div class=" form-check form-check-inline">
                                             <input class="form-check-input css-checkbox" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                            <label class="form-check-label css-label" for="inlineRadio1"> <img src="{{ asset('_user_panel/img/paymentdetails/paypal.png') }}" alt="" class=" ui-state-default  img-fluid  "></label>
+                                            <label class="form-check-label css-label" for="inlineRadio1"> <img src="{{ asset('_assets/_guest/img/paymentdetails/paypal.png') }}" alt="" class=" ui-state-default  img-fluid  "></label>
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input css-checkbox" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                            <label class="form-check-label css-label" for="inlineRadio2"><img src="{{ asset('_user_panel/img/paymentdetails/visa.png') }}" alt="" class=" ui-state-default  img-fluid  "></label>
+                                            <label class="form-check-label css-label" for="inlineRadio2"><img src="{{ asset('_assets/_guest/img/paymentdetails/visa.png') }}" alt="" class=" ui-state-default  img-fluid  "></label>
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input css-checkbox" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
-                                            <label class="form-check-label css-label" for="inlineRadio3"><img src="{{ asset('_user_panel/img/paymentdetails/bkash.png') }}" alt="" class=" ui-state-default  img-fluid  "> </label>
+                                            <label class="form-check-label css-label" for="inlineRadio3"><img src="{{ asset('_assets/_guest/img/paymentdetails/bkash.png') }}" alt="" class=" ui-state-default  img-fluid  "> </label>
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input css-checkbox" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4">
-                                            <label class="form-check-label css-label" for="inlineRadio4"><img src="{{ asset('_user_panel/img/paymentdetails/master.png') }}" alt="" class=" ui-state-default  img-fluid  "></label>
+                                            <label class="form-check-label css-label" for="inlineRadio4"><img src="{{ asset('_assets/_guest/img/paymentdetails/master.png') }}" alt="" class=" ui-state-default  img-fluid  "></label>
                                         </div>
                                     </div>
                                 </div>

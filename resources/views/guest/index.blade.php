@@ -32,7 +32,7 @@
                 </div>
                 <div class="col-lg-5 col-md-12 v-center">
                     <div class="sectionServiceBannerImage">
-                        <img src="{{ asset('_user_panel/img/servicepage/main_image.svg') }}" alt="banner image" class="img-fluid">
+                        <img src="{{ asset('_assets/_guest/img/servicepage/main_image.svg') }}" alt="banner image" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -48,7 +48,7 @@
                 <div class="col-lg-2 col-md-6 p-0 ">
                     <div class="whydesignwalaSingleService p-3">
                         <div class="text-center pt-3 pb-2">
-                            <img src="{{ asset('_user_panel/img/servicepage/whydesignwalasection/reliable_and_quick.svg') }}" alt="service image" class="img-fluid ">
+                            <img src="{{ asset('_assets/_guest/img/servicepage/whydesignwalasection/reliable_and_quick.svg') }}" alt="service image" class="img-fluid ">
                         </div>
                         <div class="text-center py-3">
                             <p class="mb-0">Reliable and Quick Communication</p>
@@ -59,7 +59,7 @@
                 <div class="col-lg-2 col-md-6 p-0 ">
                     <div class="whydesignwalaSingleService p-3">
                         <div class="text-center pt-3 pb-2">
-                            <img src="{{ asset('_user_panel/img/servicepage/whydesignwalasection/human.svg') }}" alt="service image" class="img-fluid ">
+                            <img src="{{ asset('_assets/_guest/img/servicepage/whydesignwalasection/human.svg') }}" alt="service image" class="img-fluid ">
                         </div>
                         <div class="text-center py-3">
                             <p class="mb-0">Reliable and Quick Communication</p>
@@ -70,7 +70,7 @@
                 <div class="col-lg-2 col-md-6 p-0 ">
                     <div class="whydesignwalaSingleService p-3">
                         <div class="text-center pt-3 pb-2">
-                            <img src="{{ asset('_user_panel/img/servicepage/whydesignwalasection/satisfactory_services.svg') }}" alt="service image" class="img-fluid ">
+                            <img src="{{ asset('_assets/_guest/img/servicepage/whydesignwalasection/satisfactory_services.svg') }}" alt="service image" class="img-fluid ">
                         </div>
                         <div class="text-center py-3">
                             <p class="mb-0">Satisfactory and Quick Communication</p>
@@ -81,7 +81,7 @@
                 <div class="col-lg-2 col-md-6 p-0 ">
                     <div class="whydesignwalaSingleService p-3">
                         <div class="text-center pt-3 pb-2">
-                            <img src="{{ asset('_user_panel/img/servicepage/whydesignwalasection/modern_designs.svg') }}" alt="service image" class="img-fluid ">
+                            <img src="{{ asset('_assets/_guest/img/servicepage/whydesignwalasection/modern_designs.svg') }}" alt="service image" class="img-fluid ">
                         </div>
                         <div class="text-center py-3">
                             <p class="mb-0">Reliable and Quick Communication</p>
@@ -92,7 +92,7 @@
                 <div class="col-lg-2 col-md-6 p-0 ">
                     <div class="whydesignwalaSingleService p-3">
                         <div class="text-center pt-3 pb-2">
-                            <img src="{{ asset('_user_panel/img/servicepage/whydesignwalasection/on_time_delivery.svg') }}" alt="service image" class="img-fluid ">
+                            <img src="{{ asset('_assets/_guest/img/servicepage/whydesignwalasection/on_time_delivery.svg') }}" alt="service image" class="img-fluid ">
                         </div>
                         <div class="text-center py-3">
                             <p class="mb-0">Reliable and Quick Communication</p>
@@ -103,7 +103,7 @@
                 <div class="col-lg-2 col-md-6 p-0 ">
                     <div class="whydesignwalaSingleService p-3">
                         <div class="text-center pt-3 pb-2">
-                            <img src="{{ asset('_user_panel/img/servicepage/whydesignwalasection/unlimited_revisions.svg') }}" alt="service image" class="img-fluid ">
+                            <img src="{{ asset('_assets/_guest/img/servicepage/whydesignwalasection/unlimited_revisions.svg') }}" alt="service image" class="img-fluid ">
                         </div>
                         <div class="text-center py-3">
                             <p class="mb-0">Reliable and Quick Communication</p>
@@ -166,7 +166,7 @@
                             </div>
                             <div class="col-md-4 v-center">
                                 <div class="howDesignwalaImg">
-                                    <img src="{{ asset('_user_panel/img/servicepage/howdesignwalaworks/place_order.svg') }}" class="card-img img-fluid" alt="howdesignwalaworksCardimg"> </div>
+                                    <img src="{{ asset('_assets/_guest/img/servicepage/howdesignwalaworks/place_order.svg') }}" class="card-img img-fluid" alt="howdesignwalaworksCardimg"> </div>
                             </div>
                         </div>
                     </div>
@@ -185,7 +185,7 @@
                                 </div>
                             </div>
                             <div class="col-md-4 v-center">
-                                <div class="howDesignwalaImg"> <img src="{{ asset('_user_panel/img/servicepage/howdesignwalaworks/send_your_content.svg') }}" class="card-img img-fluid" alt="howdesignwalaworksCardimg"> </div>
+                                <div class="howDesignwalaImg"> <img src="{{ asset('_assets/_guest/img/servicepage/howdesignwalaworks/send_your_content.svg') }}" class="card-img img-fluid" alt="howdesignwalaworksCardimg"> </div>
                             </div>
                         </div>
                     </div>
@@ -204,7 +204,7 @@
                                 </div>
                             </div>
                             <div class="col-md-4 v-center">
-                                <div class="howDesignwalaImg"> <img src="{{ asset('_user_panel/img/servicepage/howdesignwalaworks/get_your_final_delivery.svg') }}" class="card-img img-fluid" alt="howdesignwalaworksCardimg"> </div>
+                                <div class="howDesignwalaImg"> <img src="{{ asset('_assets/_guest/img/servicepage/howdesignwalaworks/get_your_final_delivery.svg') }}" class="card-img img-fluid" alt="howdesignwalaworksCardimg"> </div>
                             </div>
                         </div>
                     </div>
@@ -227,7 +227,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-9 col-md-12 text-center">
                     <div class="video-wrapper  m-auto">
-                        <video src="{{ asset('_user_panel/video/Sticker.mp4') }}" poster="{{ asset('_user_panel/img/servicepage/videobanner.jpg') }}"></video>
+                        <video src="{{ asset('_assets/_guest/video/Sticker.mp4') }}" poster="{{ asset('_assets/_guest/img/servicepage/videobanner.jpg') }}"></video>
                     </div>
 
                 </div>
@@ -291,7 +291,7 @@
                     <div class="text-center">
                         <div class="">
                             <!--                          <img src="img/service/Total%20Customers.png" alt="" class="img-fluid">-->
-                            <img src="{{ asset('_user_panel/img/servicepage/homeservices/customer.svg') }}" alt="" class="img-fluid">
+                            <img src="{{ asset('_assets/_guest/img/servicepage/homeservices/customer.svg') }}" alt="" class="img-fluid">
                         </div>
                         <div class="py-3">
                             <h1 class="font-weight-bold colorFive timer  count-number" data-to="1000" data-speed="1500"></h1>
@@ -303,7 +303,7 @@
                     <div class="text-center">
                         <div class="">
                             <!--                        <img src="img/service/Total%20Services.png" alt="" class="img-fluid">-->
-                            <img src="{{ asset('_user_panel/img/servicepage/homeservices/employee.svg') }}" alt="" class="img-fluid">
+                            <img src="{{ asset('_assets/_guest/img/servicepage/homeservices/employee.svg') }}" alt="" class="img-fluid">
                         </div>
                         <div class="py-3">
                             <h1 class="font-weight-bold colorFive timer  count-number" data-to="1000" data-speed="1500"></h1>
@@ -315,7 +315,7 @@
                     <div class="text-center">
                         <div class="">
                             <!--<img src="img/service/Services%20Sold.png" alt="" class="img-fluid">-->
-                            <img src="{{ asset('_user_panel/img/servicepage/homeservices/order.svg') }}" alt="" class="img-fluid">
+                            <img src="{{ asset('_assets/_guest/img/servicepage/homeservices/order.svg') }}" alt="" class="img-fluid">
                         </div>
                         <div class="py-3">
                             <h1 class="font-weight-bold colorFive timer  count-number" data-to="1000" data-speed="1500"></h1>
@@ -327,7 +327,7 @@
                     <div class="text-center">
                         <div class="">
                             <!--<img src="img/service/Services%20Sold.png" alt="" class="img-fluid">-->
-                            <img src="{{ asset('_user_panel/img/servicepage/homeservices/sales.svg') }}" alt="" class="img-fluid">
+                            <img src="{{ asset('_assets/_guest/img/servicepage/homeservices/sales.svg') }}" alt="" class="img-fluid">
                         </div>
                         <div class="py-3">
                             <h1 class="font-weight-bold colorFive timer  count-number" data-to="1000" data-speed="1500">1000</h1>
