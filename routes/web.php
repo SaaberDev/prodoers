@@ -26,7 +26,6 @@
     use App\Http\Controllers\admin_panel\settings\MaintenanceModeController;
     use App\Http\Controllers\admin_panel\settings\SEOToolsController;
     use App\Http\Controllers\admin_panel\settings\SiteCMSController;
-    use App\Http\Controllers\admin_panel\settings\SitePolicyController;
     use App\Http\Controllers\guest\blog\GuestBlogController;
     use App\Http\Controllers\guest\HomeController;
     use App\Http\Controllers\guest\search\GuestSearchController;

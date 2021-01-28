@@ -13,7 +13,7 @@
             >
             <div class="input-group-append decreazeInputButtonHeight">
                 <button {{--wire:click="searchResults({{ $query }})"--}} class="btn text-white rounded-0" type="submit" id="">
-                    <img src="{{ asset('_user_panel/img/servicepage/icon_search.svg') }}" class="img-fluid" alt="search">
+                    <img src="{{ asset('_assets/_guest/img/servicepage/icon_search.svg') }}" class="img-fluid" alt="search">
                 </button>
             </div>
         </div>

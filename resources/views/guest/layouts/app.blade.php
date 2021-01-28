@@ -5,21 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     {!! SEO::generate() !!}
-    <link rel="icon" href="{{ asset('_user_panel/img/D.png') }}" type="image/png" sizes="16x16">
+    <link rel="icon" href="{{ asset('_assets/_guest/img/D.png') }}" type="image/png" sizes="16x16">
 
     {{-- Styles --}}
-    <link href="{{ mix('_user_panel/css/user_panel.css') }}" rel="stylesheet">
+    <link href="{{ mix('_assets/_guest/css/guest.css') }}" rel="stylesheet">
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     @livewireStyles
     @stack('styles')
 </head>
 <body>
-@include('user_panel.includes.header')
+@include('guest.includes.header')
 @yield('content')
 {{-- footer_section --}}
-@include('user_panel.includes.footer')
+@include('guest.includes.footer')
 {{-- footer_section --}}
-<script src="{{ mix('_user_panel/js/user_panel.js') }}"></script>
+<script src="{{ mix('_assets/_guest/js/guest.js') }}"></script>
 <script src="{{ mix('js/app.js') }}"></script>
 @livewireScripts
 

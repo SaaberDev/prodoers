@@ -44,7 +44,7 @@
                     <h2>Would like to
                         discuss your new
                         project?</h2>
-                    @include('user_panel.includes.lets_talk_button')
+                    @include('guest.includes.lets_talk_button')
                 </div>
             </div>
         </div>
