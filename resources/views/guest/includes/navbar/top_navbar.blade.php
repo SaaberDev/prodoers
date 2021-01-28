@@ -4,7 +4,7 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav99" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
             <div class="collapse navbar-collapse" id="main_nav99">
                 <ul class="navbar-nav ml-auto">
-                    @include('user_panel.includes.navbar.mega_menu')
+                    @include('guest.includes.navbar.mega_menu')
                     <li class="nav-item"> <a class="nav-link text-white" href="#">Blog</a> </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img src="#" alt=""> </a>
@@ -20,4 +20,4 @@
     </nav>
 </header>
 
-@include('user_panel.includes.navbar.mobile_top_navbar')
+@include('guest.includes.navbar.mobile_top_navbar')

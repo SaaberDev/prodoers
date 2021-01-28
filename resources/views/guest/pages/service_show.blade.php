@@ -1,4 +1,4 @@
-@extends('user_panel.layouts.app')
+@extends('guest.layouts.app')
 @section('title', 'service_name')
 
 @push('styles')

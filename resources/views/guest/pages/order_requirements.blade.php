@@ -1,4 +1,4 @@
-@extends('user_panel.layouts.app')
+@extends('guest.layouts.app')
 @section('title', 'Order Requirements')
 
 @push('styles')

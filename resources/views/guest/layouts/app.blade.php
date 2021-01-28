@@ -14,10 +14,10 @@
     @stack('styles')
 </head>
 <body>
-@include('user_panel.includes.header')
+@include('guest.includes.header')
 @yield('content')
 {{-- footer_section --}}
-@include('user_panel.includes.footer')
+@include('guest.includes.footer')
 {{-- footer_section --}}
 <script src="{{ mix('_user_panel/js/user_panel.js') }}"></script>
 <script src="{{ mix('js/app.js') }}"></script>
