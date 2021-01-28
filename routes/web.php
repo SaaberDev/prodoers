@@ -43,7 +43,6 @@
     Route::prefix('/')->name('guest.')->group(function () {
         // Home
         Route::get('/', [HomeController::class, 'index'])->name('home.index');
-//        Route::get('/search/{category_slug}', [GuestSearchController::class, 'index'])->name('search.index');
         Route::get('/search/services/', [GuestSearchController::class, 'index'])->name('search.index');
 
         // Single Category Page
@@ -56,11 +55,25 @@
             Route::get('/{service_slug}', [GuestServiceController::class, 'index'])->name('index');
         });
 
+        // Policies
+        Route::name('policy.')->group(function (){
+            Route::get('/privacy-policy', function (){
+                return view('guest.pages.policies.privacy_policy');
+            })->name('privacy');
 
-//        Route::get('services/{service_slug}', [HomeController::class, 'single_service'])->name('single_service.show');
+            Route::get('/cookie-policy', function (){
+                return view('guest.pages.policies.cookie_policy');
+            })->name('cookie');
 
-        // Single Service Page
-//        Route::get('/{slug}', [UserServiceController::class, 'index'])->name('single_service.index');
+            Route::get('/payment-policy', function (){
+                return view('guest.pages.policies.payment_policy');
+            })->name('payment');
+
+            Route::get('/terms-and-conditions', function (){
+                return view('guest.pages.policies.terms_and_conditions');
+            })->name('terms_and_conditions');
+        });
+
 
         // Order Details
 //        Route::get('/order-details', [UserOrderDetailController::class, 'index'])->name('order_detail.index');

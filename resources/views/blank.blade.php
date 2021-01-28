@@ -12,4 +12,3 @@
 @push('scripts')
 {{-- Internal Scripts --}}
 @endpush
-

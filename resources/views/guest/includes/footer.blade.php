@@ -19,26 +19,44 @@
             </div>
             <div class="col-xl-2 col-lg-3 col-md-3">
                 <div class="footerlinksOne">
-                    <p class=""><a href="">Work With Us</a></p>
-                    <p class=""><a href="">Privacy Policy
-                        </a></p>
-                    <p class=""><a href="">Terms &amp; Conditions
-                        </a></p>
-                    <p class=""><a href="">Press Enquiries</a></p>
+{{--                    <h6>Policies</h6>--}}
+                    <p class="">
+                        <a href="{{ route('guest.policy.privacy') }}">Privacy Policy</a>
+                    </p>
+                    <p class="">
+                        <a href="{{ route('guest.policy.cookie') }}">Cookie Policy</a>
+                    </p>
+                    <p class="">
+                        <a href="{{ route('guest.policy.payment') }}">Payment Policy</a>
+                    </p>
+                    <p class="">
+                        <a href="{{ route('guest.policy.terms_and_conditions') }}">Terms &amp; Conditions</a>
+                    </p>
                 </div>
             </div>
+
             <div class="col-xl-2 col-lg-3 col-md-3">
                 <div class="">
-                    <p class=""><a href="">Customer Support
-                        </a></p>
-                    <p class=""><a href="">Customer Stories
-                        </a></p>
-                    <p class=""><a href="">Business Resources
-                        </a></p>
-                    <p class=""><a href="">Paypal Service</a></p>
-                    <p class=""><a href="">Designwala Service</a></p>
+{{--                    <h6>Career</h6>--}}
+                    <p class="{{--mt-4--}}">
+                        <a href="">Work With Us</a>
+                    </p>
+                    <p class="">
+                        <a href="">Customer Support</a>
+                    </p>
+                    <p class="">
+                        <a href="">Customer Stories</a>
+                    </p>
+                    <p class="">
+                        <a href="">Business Resources
+                        </a>
+                    </p>
+                    <p class="">
+                        <a href="">Designwala Service</a>
+                    </p>
                 </div>
             </div>
+
             <div class="col-xl-4 col-lg-12 col-md-12">
                 <div class="textsm-center text-xl-left text-center wouldLiketoDiscuss">
                     <h2>Would like to
