@@ -4,22 +4,18 @@ namespace App\Http\Controllers\admin_panel\settings;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Footer\FooterRequest;
+use App\Http\Requests\Admin\Footer\PolicyRequest;
 use App\Http\Requests\Admin\Footer\SocialLinkRequest;
 use App\Models\Footer;
+use App\Models\Policy;
 use App\Models\SocialLinks;
 use DB;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
-use Illuminate\Http\Response;
 
 class FooterSectionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Application|Factory|View|Response
-     */
+    /*
+     * Footer Content
+     * */
     public function index_footer()
     {
         return view('admin_panel.pages.settings.footer_section.footer.index');
@@ -53,11 +49,10 @@ class FooterSectionController extends Controller
         return redirect()->back();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Application|Factory|View|Response
-     */
+
+    /*
+     * Social Links
+     * */
     public function index_social_links()
     {
         return view('admin_panel.pages.settings.footer_section.social_links.index');
@@ -107,6 +102,41 @@ class FooterSectionController extends Controller
         DB::transaction(function () use ($social_links){
             deleteFileBefore(config('designwala_paths.admin.images.store.footer.social_links'), $social_links->social_icon);
             $social_links->delete();
+        });
+        return redirect()->back();
+    }
+
+    /*
+     * Policies
+     * */
+    public function index_policy()
+    {
+        return view('admin_panel.pages.settings.policies.index');
+    }
+
+    public function update_policy(PolicyRequest $request)
+    {
+        DB::transaction(function () use ($request){
+            // Footer Logo
+            Policy::wherePolicyKey('policy_privacy')
+                ->firstOrFail()->update([
+                    'value' => $request->input('privacy_policy'),
+                ]);
+            // Payment Method
+            Policy::wherePolicyKey('policy_cookie')
+                ->firstOrFail()->update([
+                    'value' => $request->input('cookie_policy'),
+                ]);
+            // Copyright Text
+            Policy::wherePolicyKey('policy_payment')
+                ->firstOrFail()->update([
+                    'value' => $request->input('payment_policy'),
+                ]);
+            // Company Short Description
+            Policy::wherePolicyKey('policy_terms_and_conditions')
+                ->firstOrFail()->update([
+                    'value' => $request->input('terms_and_condition'),
+                ]);
         });
         return redirect()->back();
     }

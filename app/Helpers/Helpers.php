@@ -1,6 +1,7 @@
 <?php
 
     use App\Models\Footer;
+    use App\Models\Policy;
     use Carbon\Carbon;
 
     /**
@@ -42,6 +43,15 @@
     function getFooterKey($key)
     {
         $footer = Footer::where('key', '=', $key)->firstOrFail();
+        if (!$footer){
+            return null;
+        }
+        return $footer->value;
+    }
+
+    function getPolicyKey($key)
+    {
+        $footer = Policy::where('key', '=', $key)->firstOrFail();
         if (!$footer){
             return null;
         }

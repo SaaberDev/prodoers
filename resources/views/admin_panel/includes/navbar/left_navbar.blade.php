@@ -908,19 +908,8 @@
                             </a>
                             {{-- nested sub insider --}}
                         </li>
-                        <li class="nav-item sub-item">
-                            <a href="{{ route('settings.policy.index') }}"
-                               class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('settings.policy.*') ? 'sub-active' : '' }}">
-                                <span class="pl-4">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 12 12">
-                                        <circle id="Ellipse_224" data-name="Ellipse 224" cx="6" cy="6" r="6"
-                                                fill="#000000"/>
-                                    </svg>
-                                </span>
-                                <span class="pl-3">Policies</span>
-                            </a>
-                            {{-- nested sub insider --}}
-                        </li>
+
+
                         <li class="nav-item sub-item">
                             <a href="#settingNavFooter" class="nav-link d-inline-flex align-items-center sub-menu-link"
                                data-toggle="collapse" role="button"
@@ -958,7 +947,7 @@
                                                     </g>
                                                 </svg>
                                             </span>
-                                            <span class="pl-3">Footer</span>
+                                            <span class="pl-3">Footer Content</span>
                                         </a>
                                         {{-- nested sub insider --}}
                                     </li>
@@ -971,6 +960,17 @@
                                                             cx="4.5" cy="4.5" r="4.5" stroke="none"/><circle cx="4.5" cy="4.5" r="4" fill="none"/></g></svg>
                                             </span>
                                             <span class="pl-3">Social Links</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item sub-item">
+                                        <a href="{{ route('settings.footer_section.policy.index') }}"
+                                           class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('settings.footer_section.policy.*') ? 'sub-active' : '' }}">
+                                            <span class="pl-4">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9"
+                                                     viewBox="0 0 9 9"><g fill="none" stroke="#2d2d2d" stroke-width="1"><circle
+                                                            cx="4.5" cy="4.5" r="4.5" stroke="none"/><circle cx="4.5" cy="4.5" r="4" fill="none"/></g></svg>
+                                            </span>
+                                            <span class="pl-3">Policies</span>
                                         </a>
                                     </li>
                                 </ul>

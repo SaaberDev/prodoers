@@ -61,6 +61,29 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Policy
+ *
+ * @mixin IdeHelperPolicy
+ * @property int $id
+ * @property string $key
+ * @property string $value
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Policy newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Policy newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Policy query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Policy whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Policy whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Policy whereKey($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Policy wherePolicyKey($key)
+ * @method static \Illuminate\Database\Eloquent\Builder|Policy whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Policy whereValue($value)
+ */
+	class IdeHelperPolicy extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Service
  *
  * @mixin IdeHelperService
