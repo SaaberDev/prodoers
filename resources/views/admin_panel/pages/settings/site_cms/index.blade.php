@@ -31,10 +31,12 @@
                             <label for="">Brand Logo</label>
                             <div class="input-group">
                                 <input type="text" class="form-control" readonly>
-                                <div class="input-group-btn"> <span class="fileUpload btn btnOne">
+                                <div class="input-group-btn">
+                                    <span class="fileUpload btn btnOne">
                                         <span class="upl" id="upload">Choose</span>
                                         <input type="file" class="upload up" id="up"
-                                               onchange="readURL(this);" /> </span>
+                                               onchange="readURL(this);" />
+                                    </span>
                                 </div>
                             </div>
                         </div>
