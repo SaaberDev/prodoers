@@ -31,16 +31,16 @@ class DatabaseSeeder extends Seeder
         /**
          * Service Categories
          */
-//        ServiceCategory::factory(100)->create();
-//        ServiceCategoryFaq::factory(600)->create();
+        ServiceCategory::factory(10000)->create();
+//        ServiceCategoryFaq::factory(20000)->create();
 
         /**
          * Service
          */
-//        Service::factory(100)->create();
-//        ServiceImage::factory(100)->create();
-//        ServiceFeature::factory(500)->create();
-//        ServiceFaq::factory(600)->create();
+        Service::factory(50000)->create();
+//        ServiceImage::factory(100000)->create();
+//        ServiceFeature::factory(100000)->create();
+//        ServiceFaq::factory(100000)->create();
 
 //        // progress bar advance per user created
 //        $this->command->getOutput()->progressAdvance();

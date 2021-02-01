@@ -19,7 +19,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $popular_categories = ServiceCategory::getAllPopular()->get();
+//        \DB::enableQueryLog();
+        $popular_categories = ServiceCategory::getAllPopular()
+            ->with([
+                'services' => function($query){
+                    $query->select('service_category_id', 'price')->getAllPublished();
+                }
+            ])->limit(9)->get(['id', 'title', 'slug', 'desc', 'category_thumbnail', 'category_banner']);
+//        dd($popular_categories->toArray());
+//        dd($popular_categories);
+//        var_dump(\DB::getQueryLog());
+//        dd();
         return view('guest.index', compact('popular_categories'));
     }
 }

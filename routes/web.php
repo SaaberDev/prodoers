@@ -28,6 +28,7 @@
     use App\Http\Controllers\Admin\Settings\SiteCMSController;
     use App\Http\Controllers\Guest\Blog\GuestBlogController;
     use App\Http\Controllers\Guest\HomeController;
+    use App\Http\Controllers\Guest\Newsletter\GuestNewsletterController;
     use App\Http\Controllers\Guest\Search\GuestSearchController;
     use App\Http\Controllers\Guest\Service\Category\GuestServiceCategoryController;
     use App\Http\Controllers\Guest\Service\GuestServiceController;
@@ -73,6 +74,11 @@
                 return view('guest.pages.policies.terms_and_conditions');
             })->name('terms_and_conditions');
         });
+
+        // Newsletter
+//        Route::name('newsletter.')->group(function (){
+//            Route::post('/store-newsletter', [GuestNewsletterController::class, 'store'])->name('store');
+//        });
 
 
         // Order Details
@@ -308,7 +314,7 @@
     });
 
     Route::get('/test', function (){
-//        return Config::get('designwala.policy.site_content');
+        return new \App\Mail\NewsletterWelcomeMail();
     });
 
 //    Route::get('/{category_name}', [UserServiceCategoryController::class, 'show'])->name('show');

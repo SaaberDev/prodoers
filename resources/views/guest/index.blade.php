@@ -351,7 +351,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6 col-md-8">
                     <div class="">
-                        @include('guest.includes._form.newsletter')
+                        @livewire('guest.newsletter.newsletter-component')
                     </div>
                 </div>
             </div>

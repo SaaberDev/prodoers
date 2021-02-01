@@ -6,8 +6,6 @@
 @endpush
 
 @section('content')
-
-
     <div class="col-xl-10 col-lg-9 col-md-12 dashboardRightside scrollbar scroll-style">
         <div class="">
             <div class="row justify-content-center pb-3 m-0">

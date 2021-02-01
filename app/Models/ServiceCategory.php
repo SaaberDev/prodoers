@@ -27,7 +27,7 @@ class ServiceCategory extends Model
 
     public function services()
     {
-        return $this->hasMany(Service::class, 'service_category_id');
+        return $this->hasMany(Service::class);
     }
 
     public function serviceCategoryFaqs()
@@ -79,10 +79,7 @@ class ServiceCategory extends Model
         return $query->where('popular_status', '=', 1)
             ->getAllPublished()
             ->orderBy('title')
-            ->whereHas('services')
-            ->with(['services' => function($query){
-                $query->getAllPublished();
-            }]);
+            ->whereHas('services');
     }
 
 }
