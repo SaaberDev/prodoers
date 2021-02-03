@@ -44,17 +44,17 @@ class ServiceCategory extends Model
         return $query->orderBy('id', 'desc');
     }
 
-    public function scopeFilterByStatus($query, $filterByStatus)
+    public function scopeFilterBy($query, $column, $arg)
     {
-        return $query->where(function ($query) use ($filterByStatus) {
-            $filterByStatus == '' ? $query->orderBy('id', 'desc') : $query->orWhere('published_status', '=', $filterByStatus);
+        return $query->where(function ($query) use ($arg, $column) {
+            $arg == '' ? $query->orderBy('id', 'desc') : $query->orWhere($column, '=', $arg);
         });
     }
 
-    public function scopeSearchByTitle($query, $search)
+    public function scopeSearchBy($query, $column, $search)
     {
-        return $query->where(function ($query) use ($search) {
-                $query->where('title', 'like', '%' . $search . '%');
+        return $query->where(function ($query) use ($search, $column) {
+                $query->where($column, 'like', '%' . $search . '%');
             });
     }
 

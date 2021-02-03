@@ -46,7 +46,7 @@ class IndexComponent extends Component
     {
         $search = $this->search;
         $tags = Tag::orderByIdDesc()
-            ->SearchByTitle($search)
+            ->searchBy('title', $search)
             ->paginate($this->recordPerPage);
 
         return view('livewire.admin.services.tag.index-component', compact('tags'));

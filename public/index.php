@@ -4,6 +4,7 @@ use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
 
 //phpinfo();
+//die();
 define('LARAVEL_START', microtime(true));
 
 /*

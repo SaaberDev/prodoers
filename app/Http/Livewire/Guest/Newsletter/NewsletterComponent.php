@@ -2,8 +2,10 @@
 
 namespace App\Http\Livewire\Guest\Newsletter;
 
+use App\Jobs\NewsletterJob;
 use App\Mail\NewsletterWelcomeMail;
 use App\Models\Subscriber;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
@@ -13,8 +15,13 @@ class NewsletterComponent extends Component
     public $newsletter;
     public $subscription_status = 1;
 
+    public function mount()
+    {
+        $this->newsletter = '';
+    }
+
     protected $rules = [
-        'newsletter' => 'required|email|unique:subscribers,email'
+        'newsletter' => 'required|email:rfc,dns|unique:subscribers,email'
     ];
 
     protected $messages = [
@@ -37,8 +44,11 @@ class NewsletterComponent extends Component
                 'subscription_status' => $this->subscription_status
             ]);
         });
-        Mail::to($this->newsletter)->send(new NewsletterWelcomeMail());
-        return redirect()->back();
+        NewsletterJob::dispatch($this->newsletter)->delay(Carbon::now()->addSeconds(5));
+        $this->dispatchBrowserEvent('success_toast', [
+            'title' => 'Thank you for subscribing to our newsletter !',
+        ]);
+        $this->newsletter = '';
     }
 
     public function render()

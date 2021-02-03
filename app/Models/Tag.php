@@ -30,10 +30,10 @@ class Tag extends Model
     }
 
 
-    public function scopeSearchByTitle($query, $search)
+    public function scopeSearchBy($query, $column, $search)
     {
-        return $query->where(function ($query) use ($search) {
-            $query->orWhere('title', 'like', '%' . $search . '%');
+        return $query->where(function ($query) use ($search, $column) {
+            $query->orWhere($column, 'like', '%' . $search . '%');
         });
     }
 }

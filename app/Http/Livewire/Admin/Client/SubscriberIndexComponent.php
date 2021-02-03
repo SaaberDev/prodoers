@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Livewire\Admin\Services\Service;
+namespace App\Http\Livewire\Admin\Client;
 
-use App\Models\Service;
+use App\Models\Subscriber;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class IndexComponent extends Component
+class SubscriberIndexComponent extends Component
 {
     use WithPagination;
 
     public $search = '';
-    public $filterByStatus = null;
     public $recordPerPage = 15;
+    public $filterByStatus = null;
     public $page = 1;
 
     // Shows search query in URL
@@ -39,12 +39,10 @@ class IndexComponent extends Component
     public function render()
     {
         $search = $this->search;
-        $services = Service::orderByDesc('id')
-            ->filterBy('published_status', $this->filterByStatus)
-            ->searchBy('title', $search)
-            ->with('serviceCategories')
+        $subscribers = Subscriber::orderByDesc('id')
+            ->filterBy('subscription_status', $this->filterByStatus)
+            ->searchBy('email', $search)
             ->paginate($this->recordPerPage);
-
-        return view('livewire.admin.services.service.index-component', compact('services'));
+        return view('livewire.admin.client.subscriber-index-component', compact('subscribers'));
     }
 }

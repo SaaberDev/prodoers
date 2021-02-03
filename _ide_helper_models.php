@@ -100,15 +100,6 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read mixed $url
- * @property-read \App\Models\ServiceCategory $serviceCategories
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ServiceFaq[] $serviceFaqs
- * @property-read int|null $service_faqs_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ServiceFeature[] $serviceFeatures
- * @property-read int|null $service_features_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ServiceImage[] $serviceImages
- * @property-read int|null $service_images_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Tag[] $tags
- * @property-read int|null $tags_count
  * @method static Builder|Service filterByStatus($filterByStatus)
  * @method static Builder|Service findSimilarSlugs(string $attribute, array $config, string $slug)
  * @method static Builder|Service getAllPopular()
@@ -155,10 +146,6 @@ namespace App\Models{
  * @property int|null $popular_status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ServiceCategoryFaq[] $serviceCategoryFaqs
- * @property-read int|null $service_category_faqs_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Service[] $services
- * @property-read int|null $services_count
  * @method static Builder|ServiceCategory filterByStatus($filterByStatus)
  * @method static Builder|ServiceCategory findSimilarSlugs(string $attribute, array $config, string $slug)
  * @method static Builder|ServiceCategory getAllPopular()
@@ -199,7 +186,6 @@ namespace App\Models{
  * @property string $answer
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\ServiceCategory $service_categories
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategoryFaq newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategoryFaq newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategoryFaq query()
@@ -224,7 +210,6 @@ namespace App\Models{
  * @property string $answer
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\Service $services
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceFaq newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceFaq newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceFaq query()
@@ -248,7 +233,6 @@ namespace App\Models{
  * @property string $feature_desc
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\Service $services
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceFeature newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceFeature newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceFeature query()
@@ -353,8 +337,6 @@ namespace App\Models{
  * @property string $title
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Service[] $services
- * @property-read int|null $services_count
  * @method static \Illuminate\Database\Eloquent\Builder|Tag getTitle()
  * @method static \Illuminate\Database\Eloquent\Builder|Tag newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Tag newQuery()
