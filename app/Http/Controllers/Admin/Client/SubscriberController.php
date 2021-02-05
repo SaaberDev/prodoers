@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\Subscriber;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -25,10 +26,14 @@ class SubscriberController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        //
+        $subscribers = Subscriber::findOrFail($id);
+        \DB::transaction(function () use ($subscribers){
+            $subscribers->delete();
+        });
+        return redirect()->back();
     }
 }

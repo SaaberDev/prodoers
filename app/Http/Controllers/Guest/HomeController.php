@@ -21,13 +21,12 @@ class HomeController extends Controller
     {
 //        \DB::enableQueryLog();
         $popular_categories = ServiceCategory::getAllPopular()
-            ->with([
-                'services' => function($query){
-                    $query->select('service_category_id', 'price')->getAllPublished();
-                }
-            ])->limit(9)->get(['id', 'title', 'slug', 'desc', 'category_thumbnail', 'category_banner']);
-//        dd($popular_categories->toArray());
-//        dd($popular_categories);
+            ->withAndWhereHas('services', function ($query){
+                $query->select('id', 'service_category_id', 'title', 'slug')->getAllPublished();
+            })
+            ->limit(9)
+            ->orderByDesc('id')
+            ->get(['id', 'title', 'slug', 'desc', 'category_thumbnail', 'category_banner']);
 //        var_dump(\DB::getQueryLog());
 //        dd();
         return view('guest.index', compact('popular_categories'));

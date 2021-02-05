@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Cviebrock\EloquentSluggable\Sluggable;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -27,7 +26,7 @@ class ServiceCategory extends Model
 
     public function services()
     {
-        return $this->hasMany(Service::class);
+        return $this->hasMany(Service::class, 'service_category_id');
     }
 
     public function serviceCategoryFaqs()
@@ -37,11 +36,6 @@ class ServiceCategory extends Model
 
     public function scopeGetSlug($query, $slug){
         return $query->where('slug', $slug);
-    }
-
-    public function scopeOrderByIdDesc($query)
-    {
-        return $query->orderBy('id', 'desc');
     }
 
     public function scopeFilterBy($query, $column, $arg)
@@ -58,15 +52,9 @@ class ServiceCategory extends Model
             });
     }
 
-    public function scopeGetTitle($query)
-    {
-        return $query->orderByIdDesc()->get(['title', 'id']);
-    }
-
     public function scopeGetAllPublished($query)
     {
         return $query->where('published_status', '=', 1);
-//            ->whereHas('services');
     }
 
     public function scopeNavbarActive($query)
@@ -76,10 +64,12 @@ class ServiceCategory extends Model
 
     public function scopeGetAllPopular($query)
     {
-        return $query->where('popular_status', '=', 1)
-            ->getAllPublished()
-            ->orderBy('title')
-            ->whereHas('services');
+        return $query->where('popular_status', '=', 1);
+    }
+
+    public function scopeWithAndWhereHas($query, $relation, $constraint){
+        return $query->whereHas($relation, $constraint)
+            ->with([$relation => $constraint]);
     }
 
 }

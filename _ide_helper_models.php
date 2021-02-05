@@ -100,7 +100,16 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read mixed $url
- * @method static Builder|Service filterByStatus($filterByStatus)
+ * @property-read \App\Models\ServiceCategory $serviceCategories
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ServiceFaq[] $serviceFaqs
+ * @property-read int|null $service_faqs_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ServiceFeature[] $serviceFeatures
+ * @property-read int|null $service_features_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ServiceImage[] $serviceImages
+ * @property-read int|null $service_images_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Tag[] $tags
+ * @property-read int|null $tags_count
+ * @method static Builder|Service filterBy($column, $arg)
  * @method static Builder|Service findSimilarSlugs(string $attribute, array $config, string $slug)
  * @method static Builder|Service getAllPopular()
  * @method static Builder|Service getAllPublished()
@@ -108,9 +117,8 @@ namespace App\Models{
  * @method static Builder|Service hideCurrent($arg)
  * @method static Builder|Service newModelQuery()
  * @method static Builder|Service newQuery()
- * @method static Builder|Service orderByIdDesc()
  * @method static Builder|Service query()
- * @method static Builder|Service searchByTitle($search)
+ * @method static Builder|Service searchBy($column, $search)
  * @method static Builder|Service whereCategories($arg)
  * @method static Builder|Service whereCreatedAt($value)
  * @method static Builder|Service whereId($value)
@@ -146,7 +154,11 @@ namespace App\Models{
  * @property int|null $popular_status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static Builder|ServiceCategory filterByStatus($filterByStatus)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ServiceCategoryFaq[] $serviceCategoryFaqs
+ * @property-read int|null $service_category_faqs_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Service[] $services
+ * @property-read int|null $services_count
+ * @method static Builder|ServiceCategory filterBy($column, $arg)
  * @method static Builder|ServiceCategory findSimilarSlugs(string $attribute, array $config, string $slug)
  * @method static Builder|ServiceCategory getAllPopular()
  * @method static Builder|ServiceCategory getAllPublished()
@@ -157,7 +169,7 @@ namespace App\Models{
  * @method static Builder|ServiceCategory newQuery()
  * @method static Builder|ServiceCategory orderByIdDesc()
  * @method static Builder|ServiceCategory query()
- * @method static Builder|ServiceCategory searchByTitle($search)
+ * @method static Builder|ServiceCategory searchBy($column, $search)
  * @method static Builder|ServiceCategory whereCategoryBanner($value)
  * @method static Builder|ServiceCategory whereCategoryThumbnail($value)
  * @method static Builder|ServiceCategory whereCreatedAt($value)
@@ -170,6 +182,7 @@ namespace App\Models{
  * @method static Builder|ServiceCategory whereSlug($value)
  * @method static Builder|ServiceCategory whereTitle($value)
  * @method static Builder|ServiceCategory whereUpdatedAt($value)
+ * @method static Builder|ServiceCategory withAndWhereHas($relation, $constraint)
  * @method static Builder|ServiceCategory withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
  */
 	class IdeHelperServiceCategory extends \Eloquent {}
@@ -186,6 +199,7 @@ namespace App\Models{
  * @property string $answer
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\ServiceCategory $service_categories
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategoryFaq newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategoryFaq newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategoryFaq query()
@@ -210,6 +224,7 @@ namespace App\Models{
  * @property string $answer
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Service $services
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceFaq newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceFaq newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceFaq query()
@@ -233,6 +248,7 @@ namespace App\Models{
  * @property string $feature_desc
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Service $services
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceFeature newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceFeature newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceFeature query()
@@ -295,7 +311,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks orderByIdDesc()
  * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks query()
- * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks searchBy($entity, $search)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks searchBy($column, $search)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks whereSocialIcon($value)
@@ -313,16 +329,18 @@ namespace App\Models{
  * @mixin IdeHelperSubscriber
  * @property int $id
  * @property string $email
- * @property int $subscription_status
+ * @property int $subscriber_status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Subscriber filterBy($column, $arg)
  * @method static \Illuminate\Database\Eloquent\Builder|Subscriber newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Subscriber newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Subscriber query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Subscriber searchBy($column, $search)
  * @method static \Illuminate\Database\Eloquent\Builder|Subscriber whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Subscriber whereEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Subscriber whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Subscriber whereSubscriptionStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Subscriber whereSubscriberStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Subscriber whereUpdatedAt($value)
  */
 	class IdeHelperSubscriber extends \Eloquent {}
@@ -337,12 +355,14 @@ namespace App\Models{
  * @property string $title
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Service[] $services
+ * @property-read int|null $services_count
  * @method static \Illuminate\Database\Eloquent\Builder|Tag getTitle()
  * @method static \Illuminate\Database\Eloquent\Builder|Tag newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Tag newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Tag orderByIdDesc()
  * @method static \Illuminate\Database\Eloquent\Builder|Tag query()
- * @method static \Illuminate\Database\Eloquent\Builder|Tag searchByTitle($search)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag searchBy($column, $search)
  * @method static \Illuminate\Database\Eloquent\Builder|Tag whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Tag whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Tag whereTitle($value)

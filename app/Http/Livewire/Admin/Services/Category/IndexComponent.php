@@ -10,6 +10,11 @@ class IndexComponent extends Component
 {
     use WithPagination;
 
+    public $status = [
+        'Published',
+        'Not Published'
+    ];
+
     public $search = '';
     public $recordPerPage = 15;
     public $filterByStatus = null;
@@ -40,9 +45,9 @@ class IndexComponent extends Component
     public function render()
     {
         $search = $this->search;
-        $service_categories = ServiceCategory::orderByIdDesc()
-            ->filterBy('published_status', $this->filterByStatus)
+        $service_categories = ServiceCategory::filterBy('published_status', $this->filterByStatus)
             ->searchBy('title', $search)
+            ->orderByDesc('id')
             ->paginate($this->recordPerPage);
 
         return view('livewire.admin.services.category.index-component', compact('service_categories'));

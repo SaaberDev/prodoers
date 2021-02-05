@@ -186,9 +186,10 @@
                 Route::get('/', [ClientController::class, 'index'])->name('index');
                 Route::get('/show', [ClientController::class, 'show'])->name('show');
             });
-            // Payments
+            // Subscribers
             Route::prefix('/subscribers')->name('subscribers.')->group(function () {
                 Route::get('/', [SubscriberController::class, 'index'])->name('index');
+                Route::get('/destroy-subscriber/{id}', [SubscriberController::class, 'destroy'])->name('destroy');
             });
         });
 

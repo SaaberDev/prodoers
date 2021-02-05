@@ -37,7 +37,7 @@ class CategoryComponent extends Component
 
     public function render()
     {
-        $services = Service::whereCategories($this->category->id)->getAllPublished()->orderByIdDesc()->paginate($this->recordPerPage);
+        $services = Service::whereCategories($this->category->id)->getAllPublished()->orderByDesc('id')->paginate($this->recordPerPage);
         return view('livewire.guest.category.category-component', compact('services'));
     }
 }

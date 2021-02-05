@@ -3,8 +3,10 @@
 
     namespace App\Http\View\Composers;
 
+    use App\Models\Service;
     use App\Models\ServiceCategory;
     use App\Models\SocialLinks;
+    use Illuminate\Database\Query\Builder;
     use Illuminate\View\View;
 
     class ViewComposer
@@ -13,12 +15,14 @@
         public $social_links;
         public function __construct()
         {
-            $this->service_categories = ServiceCategory::getAllPublished()->orderByIdDesc()
-                ->whereHas('services')
-                ->with(['services' => function ($query){
+            $this->service_categories = ServiceCategory::getAllPublished()
+                ->withAndWhereHas('services', function ($query){
                     $query->select('id', 'service_category_id', 'title', 'slug')->getAllPublished();
-                }])->limit(5)->get(['id', 'title', 'slug']);
-            $this->social_links = SocialLinks::orderByIdDesc()->get(['id', 'social_icon']);
+                })
+                ->limit(5)
+                ->orderByDesc('id')
+                ->get(['id', 'title', 'slug']);
+            $this->social_links = SocialLinks::orderByDesc('id')->get(['id', 'social_icon']);
 //            dd($this->social_links);
         }
 

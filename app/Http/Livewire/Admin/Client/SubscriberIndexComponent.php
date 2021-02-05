@@ -10,6 +10,8 @@ class SubscriberIndexComponent extends Component
 {
     use WithPagination;
 
+    public $status = 'subscriber_status';
+
     public $search = '';
     public $recordPerPage = 15;
     public $filterByStatus = null;
@@ -39,9 +41,9 @@ class SubscriberIndexComponent extends Component
     public function render()
     {
         $search = $this->search;
-        $subscribers = Subscriber::orderByDesc('id')
-            ->filterBy('subscription_status', $this->filterByStatus)
+        $subscribers = Subscriber::filterBy('subscriber_status', $this->filterByStatus)
             ->searchBy('email', $search)
+            ->orderByDesc('id')
             ->paginate($this->recordPerPage);
         return view('livewire.admin.client.subscriber-index-component', compact('subscribers'));
     }

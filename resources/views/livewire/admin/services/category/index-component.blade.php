@@ -24,10 +24,12 @@
                 </div>
             </div>
             <div class="col"></div>
-            @if($service_categories->total() > 5)
-                {{ $service_categories->links('vendor.livewire.designwala-pagination') }}
-            @else
-            @endif
+            <div class="col-md-4">
+                @if($service_categories->total() > 5)
+                    {{ $service_categories->links('vendor.livewire.designwala-pagination') }}
+                @else
+                @endif
+            </div>
         </div>
     </div>
 

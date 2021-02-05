@@ -43,7 +43,7 @@ class SearchResultPageComponent extends Component
     public function render()
     {
 //        \DB::enableQueryLog();
-        $services = Service::getAllPublished()->SearchByTitle($this->query)->paginate($this->recordPerPage);
+        $services = Service::getAllPublished()->SearchBy('title', $this->query)->paginate($this->recordPerPage);
 //        var_dump(\DB::getQueryLog());
 //        dd();
         return view('livewire.guest.search.search-result-page-component', compact('services'));

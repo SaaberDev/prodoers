@@ -76,7 +76,7 @@ class Service extends Model
     public function scopeSearchBy($query, $column, $search)
     {
         return $query->where(function ($query) use ($search, $column) {
-            $query->orWhere($column, 'like', $search . '%');
+            $query->orWhere($column, 'like', '%' . $search . '%');
         });
     }
 

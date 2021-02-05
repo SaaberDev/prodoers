@@ -40,7 +40,7 @@ class GuestSearchComponent extends Component
     public function render()
     {
 //        \DB::enableQueryLog();
-        $this->services = Service::latest('id')->getAllPublished()->SearchByTitle($this->query)->limit(100)->get(['title', 'slug', 'id']);
+        $this->services = Service::latest('id')->getAllPublished()->SearchBy('title', $this->query)->limit(100)->get(['title', 'slug', 'id']);
 //        var_dump(\DB::getQueryLog());
 //        dd();
         return view('livewire.guest.search.guest-search-component');
