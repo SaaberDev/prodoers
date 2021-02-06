@@ -31,13 +31,13 @@ class DatabaseSeeder extends Seeder
         /**
          * Service Categories
          */
-        ServiceCategory::factory(10000)->create();
+        ServiceCategory::factory(15)->create();
 //        ServiceCategoryFaq::factory(20000)->create();
 
         /**
          * Service
          */
-        Service::factory(50000)->create();
+        Service::factory(200)->create();
 //        ServiceImage::factory(100000)->create();
 //        ServiceFeature::factory(100000)->create();
 //        ServiceFaq::factory(100000)->create();
@@ -48,8 +48,9 @@ class DatabaseSeeder extends Seeder
 //        $this->command->getOutput()->progressFinish();
 
         $this->call([
-            FooterSeeder::class,
-            PolicySeeder::class
+//            FooterSeeder::class,
+//            PolicySeeder::class
+            SiteCMSSeeder::class
         ]);
     }
 }

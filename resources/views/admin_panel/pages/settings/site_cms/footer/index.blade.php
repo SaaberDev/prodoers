@@ -25,7 +25,7 @@
         </div>
 
         <div class="mt-4">
-            <form action="{{ route('settings.footer_section.footer.update') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('settings.site_cms.footer.update') }}" method="POST" enctype="multipart/form-data">
                 @csrf @method('PATCH')
                 <div class="row m-0 justify-content-center py-3 bg-white rounded">
                     <div class="col-md-10">
@@ -67,7 +67,7 @@
                                             <ul class="row list-unstyled previewimg">
                                                 <li class="col-md-4 py-4 text-center position-relative m-auto">
                                                     <div class="previewimg">
-                                                        <img id="previewImg" class="img-fluid" src="{{ asset(config('designwala_paths.admin.images.show.footer.logo') . getFooterKey('footer_logo')) }}" alt="Designwala Logo">
+                                                        <img id="previewImg" class="img-fluid" src="{{ asset(config('designwala_paths.admin.images.show.footer.logo') . getKey('footer_logo')) }}" alt="Designwala Logo">
                                                     </div>
                                                 </li>
                                             </ul>
@@ -109,7 +109,7 @@
                                             <ul class="row list-unstyled previewimg">
                                                 <li class="col-md-4 py-4 text-center position-relative m-auto">
                                                     <div class="previewimg">
-                                                        <img id="previewImg" class="img-fluid" src="{{ asset(config('designwala_paths.admin.images.show.footer.payment_method') . getFooterKey('footer_payment_method')) }}" alt="Payment Method">
+                                                        <img id="previewImg" class="img-fluid" src="{{ asset(config('designwala_paths.admin.images.show.footer.payment_method') . getKey('footer_payment_method')) }}" alt="Payment Method">
                                                     </div>
                                                 </li>
                                             </ul>
@@ -122,7 +122,7 @@
                                     <label for="">
                                         <h5>Copyright Text</h5></label>
                                     <div class="input-group">
-                                        <input class="form-control {{ $errors->has('footer_copyright') ? ' is-invalid' : '' }}" value="{{ getFooterKey('footer_copyright') }}" name="footer_copyright" type="text" placeholder="">
+                                        <input class="form-control {{ $errors->has('footer_copyright') ? ' is-invalid' : '' }}" value="{{ getKey('footer_copyright') }}" name="footer_copyright" type="text" placeholder="">
                                         @if($errors->has('footer_copyright'))
                                             <span class="invalid-feedback">
                                                 <strong>{{ $errors->first('footer_copyright') }}</strong>
@@ -139,7 +139,7 @@
                                     <h5>Company Short Description </h5></label>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <textarea class="form-control {{ $errors->has('footer_desc') ? ' is-invalid' : '' }}" name="footer_desc" rows="8">{{ getFooterKey('footer_desc') }}</textarea>
+                                        <textarea class="form-control {{ $errors->has('footer_desc') ? ' is-invalid' : '' }}" name="footer_desc" rows="8">{{ getKey('footer_desc') }}</textarea>
                                         @if($errors->has('footer_desc'))
                                             <span class="invalid-feedback">
                                                 <strong>{{ $errors->first('footer_desc') }}</strong>

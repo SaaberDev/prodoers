@@ -25,7 +25,7 @@
         </div>
 
         <div class="mt-4">
-            <form action="{{ route('settings.footer_section.social_link.store') }}" method="POST" enctype="multipart/form-data" autocomplete="off">
+            <form action="{{ route('settings.site_cms.social_link.store') }}" method="POST" enctype="multipart/form-data" autocomplete="off">
                 @csrf @method('POST')
                 <div class="row m-0 justify-content-center py-3 bg-white rounded">
                     <div class="col-md-10">

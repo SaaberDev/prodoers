@@ -24,7 +24,7 @@ class ServiceFactory extends Factory
     public function definition()
     {
         return [
-            'service_category_id' => $this->faker->numberBetween(1, 100),
+            'service_category_id' => ServiceCategory::factory(),
             'title' => $this->faker->company,
             'published_status' => '1',
             'popular_status' => '1',

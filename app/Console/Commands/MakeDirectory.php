@@ -43,6 +43,9 @@ class MakeDirectory extends Command
             \Storage::exists('public/admin_panel/services/thumbnail/') &&
             \Storage::exists('public/admin_panel/services_categories/banner/') &&
             \Storage::exists('public/admin_panel/services_categories/thumbnail/') &&
+            \Storage::exists('public/admin_panel/brand_identity/home_page_banner/') &&
+            \Storage::exists('public/admin_panel/brand_identity/brand_logo/') &&
+            \Storage::exists('public/admin_panel/brand_identity/browser_favicon/') &&
             \Storage::exists('public/admin_panel/footer/logo/') &&
             \Storage::exists('public/admin_panel/footer/payment_method/')
         ))
@@ -52,6 +55,9 @@ class MakeDirectory extends Command
             \Storage::makeDirectory('public/admin_panel/services/thumbnail/');
             \Storage::makeDirectory('public/admin_panel/services_categories/banner/');
             \Storage::makeDirectory('public/admin_panel/services_categories/thumbnail/');
+            \Storage::makeDirectory('public/admin_panel/brand_identity/home_page_banner/');
+            \Storage::makeDirectory('public/admin_panel/brand_identity/brand_logo/');
+            \Storage::makeDirectory('public/admin_panel/brand_identity/browser_favicon/');
             \Storage::makeDirectory('public/admin_panel/footer/logo/');
             \Storage::makeDirectory('public/admin_panel/footer/payment_method/');
             $this->info('Directories Created Successfully');

@@ -158,32 +158,30 @@ namespace App\Models{
  * @property-read int|null $service_category_faqs_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Service[] $services
  * @property-read int|null $services_count
- * @method static Builder|ServiceCategory filterBy($column, $arg)
- * @method static Builder|ServiceCategory findSimilarSlugs(string $attribute, array $config, string $slug)
- * @method static Builder|ServiceCategory getAllPopular()
- * @method static Builder|ServiceCategory getAllPublished()
- * @method static Builder|ServiceCategory getSlug($slug)
- * @method static Builder|ServiceCategory getTitle()
- * @method static Builder|ServiceCategory navbarActive()
- * @method static Builder|ServiceCategory newModelQuery()
- * @method static Builder|ServiceCategory newQuery()
- * @method static Builder|ServiceCategory orderByIdDesc()
- * @method static Builder|ServiceCategory query()
- * @method static Builder|ServiceCategory searchBy($column, $search)
- * @method static Builder|ServiceCategory whereCategoryBanner($value)
- * @method static Builder|ServiceCategory whereCategoryThumbnail($value)
- * @method static Builder|ServiceCategory whereCreatedAt($value)
- * @method static Builder|ServiceCategory whereDesc($value)
- * @method static Builder|ServiceCategory whereId($value)
- * @method static Builder|ServiceCategory whereMetaDesc($value)
- * @method static Builder|ServiceCategory whereNavbarStatus($value)
- * @method static Builder|ServiceCategory wherePopularStatus($value)
- * @method static Builder|ServiceCategory wherePublishedStatus($value)
- * @method static Builder|ServiceCategory whereSlug($value)
- * @method static Builder|ServiceCategory whereTitle($value)
- * @method static Builder|ServiceCategory whereUpdatedAt($value)
- * @method static Builder|ServiceCategory withAndWhereHas($relation, $constraint)
- * @method static Builder|ServiceCategory withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory filterBy($column, $arg)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory findSimilarSlugs(string $attribute, array $config, string $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory getAllPopular()
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory getAllPublished()
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory getSlug($slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory navbarActive()
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory query()
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory searchBy($column, $search)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereCategoryBanner($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereCategoryThumbnail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereDesc($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereMetaDesc($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereNavbarStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory wherePopularStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory wherePublishedStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory withAndWhereHas($relation, $constraint)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
  */
 	class IdeHelperServiceCategory extends \Eloquent {}
 }
@@ -298,6 +296,28 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\SiteCMS
+ *
+ * @mixin IdeHelperSiteCMS
+ * @property int $id
+ * @property string $key
+ * @property string|null $value
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|SiteCMS newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SiteCMS newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SiteCMS query()
+ * @method static \Illuminate\Database\Eloquent\Builder|SiteCMS whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SiteCMS whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SiteCMS whereKey($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SiteCMS whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SiteCMS whereValue($value)
+ */
+	class IdeHelperSiteCMS extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\SocialLinks
  *
  * @mixin IdeHelperSocialLinks
@@ -309,7 +329,6 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks orderByIdDesc()
  * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks query()
  * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks searchBy($column, $search)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks whereCreatedAt($value)

@@ -339,48 +339,99 @@
     /*
     | ----------------------> Site CMS <----------------------
     */
-    // Dashboard > Site CMS
-    Breadcrumbs::for('settings.site_cms.index', fn(Trail $trail) => $trail
+    /*
+    | ----------------------> Brand Identity <----------------------
+    */
+    // Dashboard > Brand Identity
+    Breadcrumbs::for('settings.site_cms.brand_identity.index', fn(Trail $trail) => $trail
         ->parent('dashboard.index')
-        ->push("Site CMS", route('settings.site_cms.index'))
+        ->push("Brand Identity", route('settings.site_cms.brand_identity.index'))
+    );
+
+    /*
+    | ----------------------> Service Process Section <----------------------
+    */
+    // Dashboard > Service Process Section
+    Breadcrumbs::for('settings.site_cms.service_process.index', fn(Trail $trail) => $trail
+        ->parent('dashboard.index')
+        ->push("Service Process Section", route('settings.site_cms.service_process.index'))
+    );
+
+    // Dashboard > Service Process Section > Add Service Process
+    Breadcrumbs::for('settings.site_cms.service_process.create', fn(Trail $trail) => $trail
+        ->parent('settings.site_cms.service_process.index')
+        ->push("Add Service Process", route('settings.site_cms.service_process.create'))
+    );
+
+    // Dashboard > Service Process Section > Edit Service Process
+    Breadcrumbs::for('settings.site_cms.service_process.edit', fn(Trail $trail) => $trail
+        ->parent('settings.site_cms.service_process.index')
+        ->push("Edit Service Process", route('settings.site_cms.service_process.edit', ['id']))
     );
 
 
     /*
-    | ----------------------> Footer Section <----------------------
+    | ----------------------> How Designwala Works <----------------------
+    */
+    // Dashboard > How Designwala Works
+    Breadcrumbs::for('settings.site_cms.how_designwala_works.index', fn(Trail $trail) => $trail
+        ->parent('dashboard.index')
+        ->push("How Designwala Works", route('settings.site_cms.how_designwala_works.index'))
+    );
+
+    /*
+    | ----------------------> Blog Section <----------------------
+    */
+    // Dashboard > Blog Section
+    Breadcrumbs::for('settings.site_cms.blog_section.index', fn(Trail $trail) => $trail
+        ->parent('dashboard.index')
+        ->push("Blog Section", route('settings.site_cms.blog_section.index'))
+    );
+
+    /*
+    | ----------------------> Statistics Section <----------------------
+    */
+    // Dashboard > Statistics Section
+    Breadcrumbs::for('settings.site_cms.statistics.index', fn(Trail $trail) => $trail
+        ->parent('dashboard.index')
+        ->push("Statistics Section", route('settings.site_cms.statistics.index'))
+    );
+
+    /*
+    | ----------------------> Footer <----------------------
     */
     // Dashboard > Footer
-    Breadcrumbs::for('settings.footer_section.footer.index', fn(Trail $trail) => $trail
+    Breadcrumbs::for('settings.site_cms.footer.index', fn(Trail $trail) => $trail
         ->parent('dashboard.index')
-        ->push("Footer", route('settings.footer_section.footer.index'))
+        ->push("Footer", route('settings.site_cms.footer.index'))
     );
 
     /*
     | ----------------------> Social Links <----------------------
     */
     // Dashboard > Social Links
-    Breadcrumbs::for('settings.footer_section.social_link.index', fn(Trail $trail) => $trail
+    Breadcrumbs::for('settings.site_cms.social_link.index', fn(Trail $trail) => $trail
         ->parent('dashboard.index')
-        ->push("Social Links", route('settings.footer_section.social_link.index'))
+        ->push("Social Links", route('settings.site_cms.social_link.index'))
     );
     // Dashboard > Social Links > Add Social Links
-    Breadcrumbs::for('settings.footer_section.social_link.create', fn(Trail $trail) => $trail
-        ->parent('settings.footer_section.social_link.index')
-        ->push("Add Social Links", route('settings.footer_section.social_link.create'))
+    Breadcrumbs::for('settings.site_cms.social_link.create', fn(Trail $trail) => $trail
+        ->parent('settings.site_cms.social_link.index')
+        ->push("Add Social Links", route('settings.site_cms.social_link.create'))
     );
     // Dashboard > Social Links > Edit Social Links
-    Breadcrumbs::for('settings.footer_section.social_link.edit', fn(Trail $trail) => $trail
-        ->parent('settings.footer_section.social_link.index')
-        ->push("Edit Social Links", route('settings.footer_section.social_link.edit', ['id']))
+    Breadcrumbs::for('settings.site_cms.social_link.edit', fn(Trail $trail) => $trail
+        ->parent('settings.site_cms.social_link.index')
+        ->push("Edit Social Links", route('settings.site_cms.social_link.edit', ['id']))
     );
 
     /*
     | ----------------------> Policies <----------------------
     */
     // Dashboard > Policies
-    Breadcrumbs::for('settings.footer_section.policy.index', fn(Trail $trail) => $trail
+    Breadcrumbs::for('settings.site_cms.policy.index', fn(Trail $trail) => $trail
         ->parent('dashboard.index')
-        ->push("Policies", route('settings.footer_section.policy.index'))
+        ->push("Policies", route('settings.site_cms.policy.index'))
     );
 
     /*

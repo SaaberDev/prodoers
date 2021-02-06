@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Admin\Footer;
+namespace App\Http\Requests\Admin\Settings\SiteCMS;
 
 use Illuminate\Foundation\Http\FormRequest;
 

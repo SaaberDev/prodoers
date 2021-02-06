@@ -2,6 +2,7 @@
 
     use App\Models\Footer;
     use App\Models\Policy;
+    use App\Models\SiteCMS;
     use Carbon\Carbon;
 
     /**
@@ -40,20 +41,11 @@
         return Carbon::parse($argument)->diffForHumans();
     }
 
-    function getFooterKey($key)
+    function getKey($key)
     {
-        $footer = Footer::where('key', '=', $key)->firstOrFail();
-        if (!$footer){
+        $site_cms = SiteCMS::where('key', '=', $key)->firstOrFail();
+        if (!$site_cms){
             return null;
         }
-        return $footer->value;
-    }
-
-    function getPolicyKey($key)
-    {
-        $footer = Policy::where('key', '=', $key)->firstOrFail();
-        if (!$footer){
-            return null;
-        }
-        return $footer->value;
+        return $site_cms->value;
     }

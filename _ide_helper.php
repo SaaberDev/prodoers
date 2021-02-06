@@ -16777,6 +16777,16 @@
          *
          * @static 
          */ 
+        public static function isLivewireRequest()
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->isLivewireRequest();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
         public static function isDefinitelyLivewireRequest()
         {
                         /** @var \Livewire\LivewireManager $instance */

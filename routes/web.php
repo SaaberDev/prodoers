@@ -282,29 +282,65 @@
                     Route::get('/edit-meta', [SEOToolsController::class, 'edit_open_graph'])->name('edit_open_graph');
                 });
             });
+
             // Site CMS
             Route::prefix('/site-cms')->name('site_cms.')->group(function () {
                 Route::get('/', [SiteCMSController::class, 'index'])->name('index');
+                Route::get('/update-site-cms', [SiteCMSController::class, 'update'])->name('update');
             });
 
-            // Footer Section
-            Route::name('footer_section.')->group(function () {
-                Route::prefix('/footer')->name('footer.')->group(function () {
-                    Route::get('/', [FooterSectionController::class, 'index_footer'])->name('index');
-                    Route::patch('/update-footer', [FooterSectionController::class, 'update_footer'])->name('update');
+            // Site CMS
+            Route::name('site_cms.')->group(function () {
+                // Brand Identity Section
+                Route::prefix('/brand-identity')->name('brand_identity.')->group(function () {
+                    Route::get('/', [SiteCMSController::class, 'index_brand_identity'])->name('index');
+                    Route::patch('/update-brand-identity', [SiteCMSController::class, 'update_brand_identity'])->name('update');
                 });
+                // Service Process Section
+                Route::prefix('/service-process')->name('service_process.')->group(function () {
+                    Route::get('/', [SiteCMSController::class, 'index_service_process'])->name('index');
+                    Route::get('/create-service-process', [SiteCMSController::class, 'create_service_process'])->name('create');
+                    Route::get('/edit-service-process', [SiteCMSController::class, 'edit_service_process'])->name('edit');
+                    Route::post('/store-service-process', [SiteCMSController::class, 'store_service_process'])->name('store');
+                    Route::patch('/update-service-process', [SiteCMSController::class, 'update_service_process'])->name('update');
+                    Route::get('/destroy-service-process', [SiteCMSController::class, 'destroy_service_process'])->name('destroy');
+                });
+                // How Designwala Works ?
+                Route::prefix('/how-designwala-works')->name('how_designwala_works.')->group(function () {
+                    Route::get('/', [SiteCMSController::class, 'index_how_designwala_works'])->name('index');
+                    Route::patch('/update-how-designwala-works', [SiteCMSController::class, 'update_how_designwala_works'])->name('update');
+                });
+                // Blog Section
+                Route::prefix('/blog-section')->name('blog_section.')->group(function () {
+                    Route::get('/', [SiteCMSController::class, 'index_blog_section'])->name('index');
+                    Route::patch('/update-blog-section', [SiteCMSController::class, 'update_blog_section'])->name('update');
+                });
+                // Statistics Section
+                Route::prefix('/statistics')->name('statistics.')->group(function () {
+                    Route::get('/', [SiteCMSController::class, 'index_statistics'])->name('index');
+                    Route::patch('/update-statistics', [SiteCMSController::class, 'update_statistics'])->name('update');
+                });
+
+                /*<===================================================================>*/
+
+                // Footer Content
+                Route::prefix('/footer')->name('footer.')->group(function () {
+                    Route::get('/', [SiteCMSController::class, 'index_footer'])->name('index');
+                    Route::patch('/update-footer', [SiteCMSController::class, 'update_footer'])->name('update');
+                });
+                // Social Links
                 Route::prefix('/social-links')->name('social_link.')->group(function () {
-                    Route::get('/', [FooterSectionController::class, 'index_social_links'])->name('index');
-                    Route::get('/create-social-links', [FooterSectionController::class, 'create_social_links'])->name('create');
-                    Route::get('/edit-social-links/{id}', [FooterSectionController::class, 'edit_social_links'])->name('edit');
-                    Route::post('/store-social-links', [FooterSectionController::class, 'store_social_links'])->name('store');
-                    Route::patch('/update-social-links/{id}', [FooterSectionController::class, 'update_social_links'])->name('update');
-                    Route::get('/destroy-social-links/{id}', [FooterSectionController::class, 'destroy_social_links'])->name('destroy');
+                    Route::get('/', [SiteCMSController::class, 'index_social_links'])->name('index');
+                    Route::get('/create-social-links', [SiteCMSController::class, 'create_social_links'])->name('create');
+                    Route::get('/edit-social-links/{id}', [SiteCMSController::class, 'edit_social_links'])->name('edit');
+                    Route::post('/store-social-links', [SiteCMSController::class, 'store_social_links'])->name('store');
+                    Route::patch('/update-social-links/{id}', [SiteCMSController::class, 'update_social_links'])->name('update');
+                    Route::get('/destroy-social-links/{id}', [SiteCMSController::class, 'destroy_social_links'])->name('destroy');
                 });
                 // Policies
                 Route::prefix('/policies')->name('policy.')->group(function () {
-                    Route::get('/', [FooterSectionController::class, 'index_policy'])->name('index');
-                    Route::patch('/update-policies', [FooterSectionController::class, 'update_policy'])->name('update');
+                    Route::get('/', [SiteCMSController::class, 'index_policy'])->name('index');
+                    Route::patch('/update-policies', [SiteCMSController::class, 'update_policy'])->name('update');
                 });
             });
             // Maintenance Mode

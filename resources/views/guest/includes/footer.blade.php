@@ -2,18 +2,18 @@
     <div class="container">
         <div class="row">
             <div class="">
-                <img src="{{ asset(config('designwala_paths.admin.images.show.footer.logo') . getFooterKey('footer_logo')) }}" class="img-fluid" alt="Designwala Logo">
+                <img src="{{ asset(config('designwala_paths.admin.images.show.footer.logo') . getKey('footer_logo')) }}" class="img-fluid" alt="Designwala Logo">
             </div>
         </div>
         <div class="row">
             <div class="col-xl-4 col-lg-6 col-md-6">
                 <div class="footerText pt-4">
-                    <p class="">{{ getFooterKey('footer_desc') }}</p>
+                    <p class="">{{ getKey('footer_desc') }}</p>
                 </div>
                 <div class="">
                     <p class="text-white">Payment Method</p>
                     <div class="">
-                        <img src="{{ asset(config('designwala_paths.admin.images.show.footer.payment_method') . getFooterKey('footer_payment_method')) }}" alt="Payment Methods" class="img-fluid w-75">
+                        <img src="{{ asset(config('designwala_paths.admin.images.show.footer.payment_method') . getKey('footer_payment_method')) }}" alt="Payment Methods" class="img-fluid w-75">
                     </div>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Admin\Footer;
+namespace App\Http\Requests\Admin\Settings\SiteCMS;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -23,21 +23,12 @@ class FooterRequest extends FormRequest
      */
     public function rules()
     {
-        switch ($this->method()){
-            case 'GET':
-            case 'POST':
-            case 'DELETE':
-                return [];
-            case 'PUT':
-            case 'PATCH':
-                return [
-                    'footer_logo' => 'nullable|image|mimes:svg',
-                    'footer_payment_method' => 'nullable|image|mimes:svg',
-                    'footer_copyright' => 'required',
-                    'footer_desc' => 'required',
-                ];
-            default: break;
-        }
+        return [
+            'footer_logo' => 'nullable|image|mimes:svg',
+            'footer_payment_method' => 'nullable|image|mimes:svg',
+            'footer_copyright' => 'required',
+            'footer_desc' => 'required',
+        ];
     }
 
     public function messages()

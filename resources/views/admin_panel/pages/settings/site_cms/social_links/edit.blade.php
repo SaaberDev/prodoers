@@ -25,7 +25,7 @@
         </div>
 
         <div class="mt-4">
-            <form action="{{ route('settings.footer_section.social_link.update', $social_links->id) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('settings.site_cms.social_link.update', $social_links->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf @method('PATCH')
                 <div class="row m-0 justify-content-center py-3 bg-white rounded">
                     <div class="col-md-10">

@@ -836,6 +836,7 @@
                 {{-- service sub menu --}}
                 <div class="collapse {{ Route::is('settings.*') ? 'show' : '' }}" id="navSettings">
                     <ul class="list-unstyled font-weight-normal pb-1 small">
+                        {{-- SEO Tools --}}
                         <li class="nav-item sub-item">
                             <a href="#settingNavSeo" class="nav-link d-inline-flex align-items-center sub-menu-link"
                                data-toggle="collapse" role="button"
@@ -895,9 +896,12 @@
                             </div>
                             {{-- nested sub insider --}}
                         </li>
+
+                        {{-- Site CMS --}}
                         <li class="nav-item sub-item">
-                            <a href="{{ route('settings.site_cms.index') }}"
-                               class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('settings.site_cms.*') ? 'sub-active' : '' }}">
+                            <a href="#settingNavFooter" class="nav-link d-inline-flex align-items-center sub-menu-link"
+                               data-toggle="collapse" role="button"
+                               aria-expanded="{{ Route::is('settings.site_cms.*') ? 'true' : '' }}">
                                 <span class="pl-4">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 12 12">
                                         <circle id="Ellipse_224" data-name="Ellipse 224" cx="6" cy="6" r="6"
@@ -905,22 +909,6 @@
                                     </svg>
                                 </span>
                                 <span class="pl-3">Site CMS</span>
-                            </a>
-                            {{-- nested sub insider --}}
-                        </li>
-
-
-                        <li class="nav-item sub-item">
-                            <a href="#settingNavFooter" class="nav-link d-inline-flex align-items-center sub-menu-link"
-                               data-toggle="collapse" role="button"
-                               aria-expanded="{{ Route::is('settings.footer_section.*') ? 'true' : '' }}">
-                                <span class="pl-4">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 12 12">
-                                        <circle id="Ellipse_224" data-name="Ellipse 224" cx="6" cy="6" r="6"
-                                                fill="#000000"/>
-                                    </svg>
-                                </span>
-                                <span class="pl-3">Footer Section</span>
                                 <span class="nav-arrow subnav-arrow">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="11" height="28" viewBox="0 0 11 28">
                                         <text id="_" data-name="&gt;" transform="translate(0 21)" fill="#141414"
@@ -931,52 +919,91 @@
                                 </span>
                             </a>
                             {{-- nested sub insider --}}
-                            <div
-                                class="collapse nestedSubmenu {{ Route::is('settings.footer_section.*') ? 'show' : '' }}"
+                            <div class="collapse nestedSubmenu {{ Route::is('settings.site_cms.*') ? 'show' : '' }}"
                                 id="settingNavFooter">
                                 <ul class="list-unstyled font-weight-normal pb-1 small">
+
+
+                                    {{-- Brand Identity --}}
                                     <li class="nav-item sub-item">
-                                        <a href="{{ route('settings.footer_section.footer.index') }}"
-                                           class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('settings.footer_section.footer.*') ? 'sub-active' : '' }}">
-                                            <span class="pl-4">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9"
-                                                     viewBox="0 0 9 9">
-                                                    <g fill="none" stroke="#2d2d2d" stroke-width="1">
-                                                        <circle cx="4.5" cy="4.5" r="4.5" stroke="none"/>
-                                                        <circle cx="4.5" cy="4.5" r="4" fill="none"/>
-                                                    </g>
-                                                </svg>
-                                            </span>
+                                        <a href="{{ route('settings.site_cms.brand_identity.index') }}"
+                                           class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('settings.site_cms.brand_identity.*') ? 'sub-active' : '' }}">
+                                            <span class="pl-4"><svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9"><g fill="none" stroke="#2d2d2d" stroke-width="1"><circle cx="4.5" cy="4.5" r="4.5" stroke="none"/><circle cx="4.5" cy="4.5" r="4" fill="none"/></g></svg></span>
+                                            <span class="pl-3">Brand Identity</span>
+                                        </a>
+                                    </li>
+
+                                    {{-- Service Process --}}
+                                    <li class="nav-item sub-item">
+                                        <a href="{{ route('settings.site_cms.service_process.index') }}"
+                                           class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('settings.site_cms.service_process.*') ? 'sub-active' : '' }}">
+                                            <span class="pl-4"><svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9"><g fill="none" stroke="#2d2d2d" stroke-width="1"><circle cx="4.5" cy="4.5" r="4.5" stroke="none"/><circle cx="4.5" cy="4.5" r="4" fill="none"/></g></svg></span>
+                                            <span class="pl-3">Service Process</span>
+                                        </a>
+                                    </li>
+
+                                    {{-- How Designwala Works ? --}}
+                                    <li class="nav-item sub-item">
+                                        <a href="{{ route('settings.site_cms.how_designwala_works.index') }}"
+                                           class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('settings.site_cms.how_designwala_works.*') ? 'sub-active' : '' }}">
+                                            <span class="pl-4"><svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9"><g fill="none" stroke="#2d2d2d" stroke-width="1"><circle cx="4.5" cy="4.5" r="4.5" stroke="none"/><circle cx="4.5" cy="4.5" r="4" fill="none"/></g></svg></span>
+                                            <span class="pl-3">How Designwala Works</span>
+                                        </a>
+                                    </li>
+
+                                    {{-- Blog Section --}}
+                                    <li class="nav-item sub-item">
+                                        <a href="{{ route('settings.site_cms.blog_section.index') }}"
+                                           class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('settings.site_cms.blog_section.*') ? 'sub-active' : '' }}">
+                                            <span class="pl-4"><svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9"><g fill="none" stroke="#2d2d2d" stroke-width="1"><circle cx="4.5" cy="4.5" r="4.5" stroke="none"/><circle cx="4.5" cy="4.5" r="4" fill="none"/></g></svg></span>
+                                            <span class="pl-3">Blog Section</span>
+                                        </a>
+                                    </li>
+
+                                    {{-- Statistics Section --}}
+                                    <li class="nav-item sub-item">
+                                        <a href="{{ route('settings.site_cms.statistics.index') }}"
+                                           class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('settings.site_cms.statistics.*') ? 'sub-active' : '' }}">
+                                            <span class="pl-4"><svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9"><g fill="none" stroke="#2d2d2d" stroke-width="1"><circle cx="4.5" cy="4.5" r="4.5" stroke="none"/><circle cx="4.5" cy="4.5" r="4" fill="none"/></g></svg></span>
+                                            <span class="pl-3">Statistics Section</span>
+                                        </a>
+                                    </li>
+
+
+
+                                    {{-- Footer Content --}}
+                                    <li class="nav-item sub-item">
+                                        <a href="{{ route('settings.site_cms.footer.index') }}"
+                                           class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('settings.site_cms.footer.*') ? 'sub-active' : '' }}">
+                                            <span class="pl-4"><svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9"><g fill="none" stroke="#2d2d2d" stroke-width="1"><circle cx="4.5" cy="4.5" r="4.5" stroke="none"/><circle cx="4.5" cy="4.5" r="4" fill="none"/></g></svg></span>
                                             <span class="pl-3">Footer Content</span>
                                         </a>
-                                        {{-- nested sub insider --}}
                                     </li>
+
+                                    {{-- Social Links --}}
                                     <li class="nav-item sub-item">
-                                        <a href="{{ route('settings.footer_section.social_link.index') }}"
-                                           class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('settings.footer_section.social_link.*') ? 'sub-active' : '' }}">
-                                            <span class="pl-4">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9"
-                                                     viewBox="0 0 9 9"><g fill="none" stroke="#2d2d2d" stroke-width="1"><circle
-                                                            cx="4.5" cy="4.5" r="4.5" stroke="none"/><circle cx="4.5" cy="4.5" r="4" fill="none"/></g></svg>
-                                            </span>
+                                        <a href="{{ route('settings.site_cms.social_link.index') }}"
+                                           class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('settings.site_cms.social_link.*') ? 'sub-active' : '' }}">
+                                            <span class="pl-4"><svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9"><g fill="none" stroke="#2d2d2d" stroke-width="1"><circle cx="4.5" cy="4.5" r="4.5" stroke="none"/><circle cx="4.5" cy="4.5" r="4" fill="none"/></g></svg></span>
                                             <span class="pl-3">Social Links</span>
                                         </a>
                                     </li>
+
+                                    {{-- Policies --}}
                                     <li class="nav-item sub-item">
-                                        <a href="{{ route('settings.footer_section.policy.index') }}"
-                                           class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('settings.footer_section.policy.*') ? 'sub-active' : '' }}">
-                                            <span class="pl-4">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9"
-                                                     viewBox="0 0 9 9"><g fill="none" stroke="#2d2d2d" stroke-width="1"><circle
-                                                            cx="4.5" cy="4.5" r="4.5" stroke="none"/><circle cx="4.5" cy="4.5" r="4" fill="none"/></g></svg>
-                                            </span>
+                                        <a href="{{ route('settings.site_cms.policy.index') }}"
+                                           class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('settings.site_cms.policy.*') ? 'sub-active' : '' }}">
+                                            <span class="pl-4"><svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9"><g fill="none" stroke="#2d2d2d" stroke-width="1"><circle cx="4.5" cy="4.5" r="4.5" stroke="none"/><circle cx="4.5" cy="4.5" r="4" fill="none"/></g></svg></span>
                                             <span class="pl-3">Policies</span>
                                         </a>
                                     </li>
+
                                 </ul>
                             </div>
                             {{-- nested sub insider --}}
                         </li>
+
+                        {{-- Maintenance Mode --}}
                         <li class="nav-item sub-item">
                             <a href="{{ route('settings.maintenance.index') }}"
                                class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('settings.maintenance.*') ? 'sub-active' : '' }}">

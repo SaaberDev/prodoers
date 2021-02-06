@@ -38,8 +38,8 @@ class IndexComponent extends Component
     public function render()
     {
         $search = $this->search;
-        $social_links = SocialLinks::orderByIdDesc()
-            ->searchBy('social_title', $search)
+        $social_links = SocialLinks::searchBy('social_title', $search)
+            ->orderByDesc('id')
             ->paginate($this->recordPerPage);
         return view('livewire.admin.footer.social-link.index-component', compact('social_links'));
     }
