@@ -150,11 +150,15 @@
                         <!--                        carousel -->
                         <div class="">
                             <div class="owl-carousel">
-                                @foreach($services->serviceImages as $service)
+                                @forelse($services->serviceImages as $service)
                                 <div class="owlCustom" style="">
-                                    <img src="{{ asset(config('designwala_paths.admin.images.show.services.service_image') . $service->filename) }}" alt="" class="img-fluid">
+                                    <img src="{{ asset($service->filename ? config('designwala_paths.show.services.service_image') . $service->filename : config('designwala_paths.default.no_preview')) }}" alt="" class="img-fluid">
                                 </div>
-                                @endforeach
+                                @empty
+                                    <div class="owlCustom" style="">
+                                        <img src="{{ asset(config('designwala_paths.default.no_preview')) }}" alt="" class="img-fluid">
+                                    </div>
+                                @endforelse
                             </div>
                         </div>
                     </div>

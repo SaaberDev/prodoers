@@ -38,52 +38,6 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * App\Models\Footer
- *
- * @mixin IdeHelperFooter
- * @property int $id
- * @property string|null $key
- * @property string|null $value
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|Footer newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Footer newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Footer query()
- * @method static \Illuminate\Database\Eloquent\Builder|Footer whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Footer whereFooterKey($key)
- * @method static \Illuminate\Database\Eloquent\Builder|Footer whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Footer whereKey($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Footer whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Footer whereValue($value)
- */
-	class IdeHelperFooter extends \Eloquent {}
-}
-
-namespace App\Models{
-/**
- * App\Models\Policy
- *
- * @mixin IdeHelperPolicy
- * @property int $id
- * @property string $key
- * @property string $value
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|Policy newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Policy newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Policy query()
- * @method static \Illuminate\Database\Eloquent\Builder|Policy whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Policy whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Policy whereKey($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Policy wherePolicyKey($key)
- * @method static \Illuminate\Database\Eloquent\Builder|Policy whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Policy whereValue($value)
- */
-	class IdeHelperPolicy extends \Eloquent {}
-}
-
-namespace App\Models{
-/**
  * App\Models\Service
  *
  * @mixin IdeHelperService
@@ -163,6 +117,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory getAllPopular()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory getAllPublished()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory getSlug($slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory getTitle()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory navbarActive()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory newQuery()
@@ -284,6 +239,18 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\ServiceProcess
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceProcess newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceProcess newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceProcess query()
+ * @mixin \Eloquent
+ */
+	class IdeHelperServiceProcess extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\ServiceTag
  *
  * @mixin IdeHelperServiceTag
@@ -296,24 +263,26 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * App\Models\SiteCMS
+ * App\Models\SiteCms
  *
- * @mixin IdeHelperSiteCMS
+ * @mixin IdeHelperSiteCms
  * @property int $id
  * @property string $key
  * @property string|null $value
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|SiteCMS newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|SiteCMS newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|SiteCMS query()
- * @method static \Illuminate\Database\Eloquent\Builder|SiteCMS whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|SiteCMS whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|SiteCMS whereKey($value)
- * @method static \Illuminate\Database\Eloquent\Builder|SiteCMS whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|SiteCMS whereValue($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SiteCms newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SiteCms newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SiteCms query()
+ * @method static \Illuminate\Database\Eloquent\Builder|SiteCms searchBy($column, $search)
+ * @method static \Illuminate\Database\Eloquent\Builder|SiteCms whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SiteCms whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SiteCms whereKey($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SiteCms whereSiteKey($key)
+ * @method static \Illuminate\Database\Eloquent\Builder|SiteCms whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SiteCms whereValue($value)
  */
-	class IdeHelperSiteCMS extends \Eloquent {}
+	class IdeHelperSiteCms extends \Eloquent {}
 }
 
 namespace App\Models{

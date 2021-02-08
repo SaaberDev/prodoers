@@ -111,14 +111,14 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        $notify = [
-            'alert-type' => 'success_toast',
-            'message' => 'Tag Deleted !',
-        ];
+//        $notify = [
+//            'alert-type' => 'success_toast',
+//            'message' => 'Tag Deleted !',
+//        ];
         $tags = Tag::findOrFail($id);
         \DB::transaction(function () use ($tags){
             $tags->delete();
         });
-        return redirect()->back()->with($notify);
+        return redirect()->back();
     }
 }

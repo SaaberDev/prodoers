@@ -67,7 +67,7 @@
                                             <ul class="row list-unstyled previewimg">
                                                 <li class="col-md-4 py-4 text-center position-relative m-auto">
                                                     <div class="previewimg">
-                                                        <img id="previewImg" class="img-fluid" src="{{ asset(config('designwala_paths.admin.images.show.footer.logo') . getKey('footer_logo')) }}" alt="Designwala Logo">
+                                                        <img id="previewImg" class="img-fluid" src="{{ asset(getKey('footer_logo') ? config('designwala_paths.show.site_cms.brand_logo') . getKey('footer_logo') : config('designwala_paths.default.brand_logo')) }}" alt="Designwala Logo">
                                                     </div>
                                                 </li>
                                             </ul>
@@ -109,7 +109,7 @@
                                             <ul class="row list-unstyled previewimg">
                                                 <li class="col-md-4 py-4 text-center position-relative m-auto">
                                                     <div class="previewimg">
-                                                        <img id="previewImg" class="img-fluid" src="{{ asset(config('designwala_paths.admin.images.show.footer.payment_method') . getKey('footer_payment_method')) }}" alt="Payment Method">
+                                                        <img id="previewImg" class="img-fluid" src="{{ asset(getKey('footer_payment_method') ? config('designwala_paths.show.site_cms.payment_method') . getKey('footer_payment_method') : config('designwala_paths.default.payment_method')) }}" alt="Payment Method">
                                                     </div>
                                                 </li>
                                             </ul>

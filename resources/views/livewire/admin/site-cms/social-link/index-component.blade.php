@@ -48,7 +48,7 @@
                         <tbody>
                         @forelse($social_links as $social_link)
                             <tr>
-                                <td><img src="{{ asset(config('designwala_paths.admin.images.show.footer.social_links') . $social_link->social_icon) }}" alt="" class="img-fluid" style="height: 25px;"> </td>
+                                <td><img src="{{ asset(config('designwala_paths.show.site_cms.social_icon') . $social_link->social_icon) }}" alt="" class="img-fluid" style="height: 25px;"> </td>
                                 <td>{{ $social_link->social_title }}</td>
                                 <td>{{ $social_link->social_url }}</td>
                                 <td>{{ formatDMY($social_link->updated_at) }}</td>

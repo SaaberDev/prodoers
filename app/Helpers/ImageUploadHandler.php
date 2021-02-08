@@ -4,7 +4,7 @@
 
 
     if (!function_exists('SingleImageUploadHandler')){
-        function SingleImageUploadHandler($request, $filename, $uploadedFile = '', $uniqueKey = '', $path = '')
+        function SingleImageUploadHandler($request, $filename, $uploadedFile = '', $uniqueKey = '', $location = '')
         {
 //            dd($request->all());
             if ($request->hasFile($uploadedFile)) {
@@ -15,7 +15,6 @@
                 $extension = $file->getClientOriginalExtension();
                 $fileFormat = strtoupper($filename . '-' . $uniqueKey) . '.' . $extension;
                 $fileNameToStore = str_replace(' ', '-', $fileFormat);
-                $location = 'public/' . $path;
 
                 // Store in Storage Filesystem
                 Storage::put($location . $fileNameToStore, $img);
@@ -25,7 +24,6 @@
                 $alphaAvatar = GenerateAlphaAvatar($getFirstLetter);
                 $ext = 'png';
                 $fileNameToStore = strtoupper($filename . '-' . 'default') . '.' . $ext;
-                $location = 'public/' . $path;
 
                 Storage::put($location . $fileNameToStore, $alphaAvatar->encode('', 75));
             }
@@ -34,7 +32,7 @@
     }
 
     if (!function_exists('MultiImageUploadHandler')){
-        function MultiImageUploadHandler($request, $filename, $uploadedFile = '', $uniqueKey = '', $path = ''){
+        function MultiImageUploadHandler($request, $filename, $uploadedFile = '', $uniqueKey = '', $location = ''){
             $files = $request->file($uploadedFile);
             $stores = [];
             if ($request->hasFile($uploadedFile)) {
@@ -46,7 +44,6 @@
                     $fileExt = $file->getClientOriginalExtension();
                     $fileFormat = strtoupper($filename . md5(time()) . '-' . $uniqueKey . $i) . '.' . $fileExt;
                     $fileNameToStore = str_replace(' ', '-', $fileFormat);
-                    $location = 'public/' . $path;
 
                     // Store in Storage Filesystem
                     Storage::put($location . $fileNameToStore, $img);
@@ -61,11 +58,10 @@
 
 
     if (!function_exists('SingleImageUpdateHandler')){
-        function SingleImageUpdateHandler($request, $filename, $dbFilename, $uploadedFile = '', $uniqueKey = '', $path = '')
+        function SingleImageUpdateHandler($request, $filename, $dbFilename, $uploadedFile = '', $uniqueKey = '', $location = '')
         {
             $fileNameToStore = $dbFilename;
             if ($request->hasFile($uploadedFile)) {
-                $location = 'public/' . $path;
                 // delete old image first
                 if (Storage::exists($location . $dbFilename)) {
                     Storage::delete($location . $dbFilename);
@@ -88,7 +84,7 @@
 
 
     if (!function_exists('MultiImageUpdateHandler')){
-        function MultiImageUpdateHandler($request, $filename, $uploadedFile = '', $uniqueKey = '', $path = '')
+        function MultiImageUpdateHandler($request, $filename, $uploadedFile = '', $uniqueKey = '', $location = '')
         {
             $files = $request->file($uploadedFile);
             $stores = [];
@@ -101,7 +97,6 @@
                     $fileExt = $file->getClientOriginalExtension();
                     $fileFormat = strtoupper($filename . md5(time()) . '-' . $uniqueKey . $i) . '.' . $fileExt;
                     $fileNameToStore = str_replace(' ', '-', $fileFormat);
-                    $location = 'public/' . $path;
 
                     // Store in Storage Filesystem
                     Storage::put($location . $fileNameToStore, $img);
@@ -116,8 +111,7 @@
     }
 
     if (!function_exists('deleteFileBefore')){
-        function deleteFileBefore($path, $dbFilename){
-            $location = 'public/' . $path;
+        function deleteFileBefore($location, $dbFilename){
             // delete old image first
             if (Storage::exists($location . $dbFilename)) {
                 Storage::delete($location . $dbFilename);
@@ -126,10 +120,9 @@
     }
 
 
-    function uploadSVG($request, $filename, $inputName = '', $uniqueKey = '', $path = '')
+    function uploadSVG($request, $filename, $inputName = '', $uniqueKey = '', $location = '')
     {
         if ($request->hasFile($inputName)) {
-            $location = 'public/' . $path;
 
             //Get file from client side
             $file = $request->file($inputName);
@@ -156,11 +149,10 @@
         return $fileNameToStore;
     }
 
-    function updateSVG($request, $filename, $dbFilename, $inputName = '', $uniqueKey = '', $path = '')
+    function updateSVG($request, $filename, $dbFilename, $inputName = '', $uniqueKey = '', $location = '')
     {
         $fileNameToStore = $dbFilename;
         if ($request->hasFile($inputName)) {
-            $location = 'public/' . $path;
             // delete old image first
             if (Storage::exists($location . $dbFilename)) {
                 Storage::delete($location . $dbFilename);

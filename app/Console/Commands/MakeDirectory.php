@@ -38,28 +38,28 @@ class MakeDirectory extends Command
     public function handle()
     {
         if (!(
-//            \Storage::exists('public/temp') &&
-            \Storage::exists('public/admin_panel/services/service_image/') &&
-            \Storage::exists('public/admin_panel/services/thumbnail/') &&
-            \Storage::exists('public/admin_panel/services_categories/banner/') &&
-            \Storage::exists('public/admin_panel/services_categories/thumbnail/') &&
-            \Storage::exists('public/admin_panel/brand_identity/home_page_banner/') &&
-            \Storage::exists('public/admin_panel/brand_identity/brand_logo/') &&
-            \Storage::exists('public/admin_panel/brand_identity/browser_favicon/') &&
-            \Storage::exists('public/admin_panel/footer/logo/') &&
-            \Storage::exists('public/admin_panel/footer/payment_method/')
+            \Storage::exists(config('designwala_paths.store.services.service_image')) &&
+            \Storage::exists(config('designwala_paths.store.services.thumbnail')) &&
+            \Storage::exists(config('designwala_paths.store.service_categories.banner')) &&
+            \Storage::exists(config('designwala_paths.store.service_categories.thumbnail')) &&
+            \Storage::exists(config('designwala_paths.store.site_cms.banner')) &&
+            \Storage::exists(config('designwala_paths.store.site_cms.brand_icon')) &&
+            \Storage::exists(config('designwala_paths.store.site_cms.brand_logo')) &&
+            \Storage::exists(config('designwala_paths.store.site_cms.service_process')) &&
+            \Storage::exists(config('designwala_paths.store.site_cms.payment_method')) &&
+            \Storage::exists(config('designwala_paths.store.site_cms.social_icon'))
         ))
         {
-//            \Storage::makeDirectory('public/temp') &&
-            \Storage::makeDirectory('public/admin_panel/services/service_image/');
-            \Storage::makeDirectory('public/admin_panel/services/thumbnail/');
-            \Storage::makeDirectory('public/admin_panel/services_categories/banner/');
-            \Storage::makeDirectory('public/admin_panel/services_categories/thumbnail/');
-            \Storage::makeDirectory('public/admin_panel/brand_identity/home_page_banner/');
-            \Storage::makeDirectory('public/admin_panel/brand_identity/brand_logo/');
-            \Storage::makeDirectory('public/admin_panel/brand_identity/browser_favicon/');
-            \Storage::makeDirectory('public/admin_panel/footer/logo/');
-            \Storage::makeDirectory('public/admin_panel/footer/payment_method/');
+            \Storage::makeDirectory(config('designwala_paths.store.services.service_image'));
+            \Storage::makeDirectory(config('designwala_paths.store.services.thumbnail'));
+            \Storage::makeDirectory(config('designwala_paths.store.service_categories.banner'));
+            \Storage::makeDirectory(config('designwala_paths.store.service_categories.thumbnail'));
+            \Storage::makeDirectory(config('designwala_paths.store.site_cms.banner'));
+            \Storage::makeDirectory(config('designwala_paths.store.site_cms.brand_icon'));
+            \Storage::makeDirectory(config('designwala_paths.store.site_cms.brand_logo'));
+            \Storage::makeDirectory(config('designwala_paths.store.site_cms.service_process'));
+            \Storage::makeDirectory(config('designwala_paths.store.site_cms.payment_method'));
+            \Storage::makeDirectory(config('designwala_paths.store.site_cms.social_icon'));
             $this->info('Directories Created Successfully');
         } else {
             $this->error('Directories Already Exists');

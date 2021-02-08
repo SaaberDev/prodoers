@@ -17,6 +17,12 @@ class SiteCMSSeeder extends Seeder
      * brand_logo
      * browser_favicon
      *
+     * ::: Service Process :::
+     * service_process_title_1 | service_process_title_2 | service_process_title_3
+     * service_process_title_4 | service_process_title_5 | service_process_title_6
+     * service_process_image_1 | service_process_image_2 | service_process_image_3
+     * service_process_image_4 | service_process_image_5 | service_process_image_6
+     *
      * ::: How designwala works :::
      * designwala_title_1 | designwala_title_2 | designwala_title_3
      * designwala_desc_1 | designwala_desc_2 | designwala_desc_3
@@ -80,6 +86,87 @@ class SiteCMSSeeder extends Seeder
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
+
+            // Service Process
+            // Service Process 1
+            [
+                'key' => 'service_process_title_1',
+                'value' => 'Search Your Desired Services',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'key' => 'service_process_image_1',
+                'value' => null,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            // Service Process 2
+            [
+                'key' => 'service_process_title_2',
+                'value' => 'Search Your Desired Services',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'key' => 'service_process_image_2',
+                'value' => null,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            // Service Process 3
+            [
+                'key' => 'service_process_title_3',
+                'value' => 'Search Your Desired Services',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'key' => 'service_process_image_3',
+                'value' => null,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            // Service Process 4
+            [
+                'key' => 'service_process_title_4',
+                'value' => 'Search Your Desired Services',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'key' => 'service_process_image_4',
+                'value' => null,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            // Service Process 5
+            [
+                'key' => 'service_process_title_5',
+                'value' => 'Search Your Desired Services',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'key' => 'service_process_image_5',
+                'value' => null,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            // Service Process 6
+            [
+                'key' => 'service_process_title_6',
+                'value' => 'Search Your Desired Services',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'key' => 'service_process_image_6',
+                'value' => null,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+
 
             // How designwala works
             [

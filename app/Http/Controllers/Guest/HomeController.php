@@ -22,7 +22,7 @@ class HomeController extends Controller
 //        \DB::enableQueryLog();
         $popular_categories = ServiceCategory::getAllPopular()
             ->withAndWhereHas('services', function ($query){
-                $query->select('id', 'service_category_id', 'title', 'slug')->getAllPublished();
+                $query->select('id', 'service_category_id', 'title', 'slug', 'price')->getAllPublished();
             })
             ->limit(9)
             ->orderByDesc('id')

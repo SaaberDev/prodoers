@@ -3,17 +3,16 @@
 namespace App\Http\Controllers\Admin\Settings;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Settings\SiteCMS\BrandIdentityRequest;
-use App\Http\Requests\Admin\Settings\SiteCMS\FooterRequest;
-use App\Http\Requests\Admin\Settings\SiteCMS\PolicyRequest;
-use App\Http\Requests\Admin\Settings\SiteCMS\SocialLinkRequest;
-use App\Models\Footer;
-use App\Models\Policy;
-use App\Models\SiteCMS;
+use App\Http\Requests\Admin\Settings\SiteCms\BrandIdentityRequest;
+use App\Http\Requests\Admin\Settings\SiteCms\FooterRequest;
+use App\Http\Requests\Admin\Settings\SiteCms\PolicyRequest;
+use App\Http\Requests\Admin\Settings\SiteCms\ServiceProcessRequest;
+use App\Http\Requests\Admin\Settings\SiteCms\SocialLinkRequest;
+use App\Models\SiteCms;
 use App\Models\SocialLinks;
 use Illuminate\Http\Request;
 
-class SiteCMSController extends Controller
+class SiteCmsController extends Controller
 {
     /**
      * Brand identity Section
@@ -28,29 +27,29 @@ class SiteCMSController extends Controller
 //        dd($request->all());
         \DB::transaction(function () use ($request){
             // Brand Headline
-            SiteCMS::whereKey('brand_headline')
+            SiteCms::whereSiteKey('brand_headline')
                 ->firstOrFail()->update([
                     'value' => $request->input('brand_headline'),
                 ]);
             // Brand Tagline
-            SiteCMS::whereKey('brand_tagline')
+            SiteCms::whereSiteKey('brand_tagline')
                 ->firstOrFail()->update([
                     'value' => $request->input('brand_tagline'),
                 ]);
             // Home Page Banner
-            SiteCMS::whereKey('home_page_banner')
+            SiteCms::whereSiteKey('home_page_banner')
                 ->firstOrFail()->update([
-                    'value' => !$request->hasFile('home_page_banner') ? null : updateSVG($request, 'home-page-banner', getKey('home_page_banner'), 'home_page_banner', 'brand-identity', config('designwala_paths.admin.images.store.brand_identity.home_page_banner')),
+                    'value' => updateSVG($request, 'home-page-banner', getKey('home_page_banner'), 'home_page_banner', 'brand-identity', config('designwala_paths.store.site_cms.banner')),
                 ]);
             // Brand Logo
-            SiteCMS::whereKey('brand_logo')
+            SiteCms::whereSiteKey('brand_logo')
                 ->firstOrFail()->update([
-                    'value' => !$request->hasFile('brand_logo') ? null : updateSVG($request, 'brand-logo', getKey('brand_logo'), 'brand_logo', 'brand-identity', config('designwala_paths.admin.images.store.brand_identity.brand_logo')),
+                    'value' => updateSVG($request, 'brand-logo', getKey('brand_logo'), 'brand_logo', 'brand-identity', config('designwala_paths.store.site_cms.brand_logo')),
                 ]);
             // Browser Favicon
-            SiteCMS::whereKey('browser_favicon')
+            SiteCms::whereSiteKey('browser_favicon')
                 ->firstOrFail()->update([
-                    'value' => !$request->hasFile('browser_favicon') ? null : updateSVG($request, 'browser-favicon', getKey('browser_favicon'), 'browser_favicon', 'brand-identity', config('designwala_paths.admin.images.store.brand_identity.browser_favicon')),
+                    'value' => updateSVG($request, 'browser-favicon', getKey('browser_favicon'), 'browser_favicon', 'brand-identity', config('designwala_paths.store.site_cms.brand_icon')),
                 ]);
         });
         return redirect()->back();
@@ -64,29 +63,11 @@ class SiteCMSController extends Controller
         return view('admin_panel.pages.settings.site_cms.service_process.index');
     }
 
-    public function create_service_process()
+    public function update_service_process(ServiceProcessRequest $request)
     {
-        return view('admin_panel.pages.settings.site_cms.service_process.create');
-    }
-
-    public function store_service_process(Request $request, $id)
-    {
-        //
-    }
-
-    public function edit_service_process($id)
-    {
-        return view('admin_panel.pages.settings.site_cms.service_process.edit');
-    }
-
-    public function update_service_process(Request $request, $id)
-    {
-        //
-    }
-
-    public function destroy_service_process(Request $request, $id)
-    {
-        //
+        \DB::transaction(function () use ($request){
+            // need to work here ...
+        });
     }
 
     /**
@@ -141,22 +122,22 @@ class SiteCMSController extends Controller
     {
         \DB::transaction(function () use ($request){
             // Footer Logo
-            SiteCMS::whereKey('footer_logo')
+            SiteCms::whereSiteKey('footer_logo')
                 ->firstOrFail()->update([
-                    'value' => updateSVG($request, 'logo', getKey('footer_logo'), 'footer_logo', 'footer', config('designwala_paths.admin.images.store.footer.logo')),
+                    'value' => updateSVG($request, 'logo', getKey('footer_logo'), 'footer_logo', 'footer', config('designwala_paths.store.site_cms.brand_logo')),
                 ]);
             // Payment Method
-            SiteCMS::whereKey('footer_payment_method')
+            SiteCms::whereSiteKey('footer_payment_method')
                 ->firstOrFail()->update([
-                    'value' => updateSVG($request, 'payment-method', getKey('footer_payment_method'), 'footer_payment_method', 'footer', config('designwala_paths.admin.images.store.footer.payment_method')),
+                    'value' => updateSVG($request, 'payment-method', getKey('footer_payment_method'), 'footer_payment_method', 'footer', config('designwala_paths.store.site_cms.payment_method')),
                 ]);
             // Copyright Text
-            SiteCMS::whereKey('footer_copyright')
+            SiteCms::whereSiteKey('footer_copyright')
                 ->firstOrFail()->update([
                     'value' => $request->input('footer_copyright'),
                 ]);
             // Company Short Description
-            SiteCMS::whereKey('footer_desc')
+            SiteCms::whereSiteKey('footer_desc')
                 ->firstOrFail()->update([
                     'value' => $request->input('footer_desc'),
                 ]);
@@ -184,7 +165,7 @@ class SiteCMSController extends Controller
         \DB::transaction(function () use ($request){
             $title = $request->input('social_title');
             SocialLinks::create([
-                'social_icon' => uploadSVG($request, $title, 'social_icon', 'footer-social-icon', config('designwala_paths.admin.images.store.footer.social_links')),
+                'social_icon' => uploadSVG($request, $title, 'social_icon', 'footer-social-icon', config('designwala_paths.store.site_cms.social_icon')),
                 'social_title' => $title,
                 'social_url' => $request->input('social_url'),
             ]);
@@ -204,7 +185,7 @@ class SiteCMSController extends Controller
         \DB::transaction(function () use ($request, $social_links){
             $title = $request->input('social_title');
             $social_links->update([
-                'social_icon' => updateSVG($request, $title, $social_links->social_icon, 'social_icon', 'footer-social-icon', config('designwala_paths.admin.images.store.footer.social_links')),
+                'social_icon' => updateSVG($request, $title, $social_links->social_icon, 'social_icon', 'footer-social-icon', config('designwala_paths.store.site_cms.social_icon')),
                 'social_title' => $title,
                 'social_url' => $request->input('social_url'),
             ]);
@@ -216,7 +197,7 @@ class SiteCMSController extends Controller
     {
         $social_links = SocialLinks::findOrFail($id);
         \DB::transaction(function () use ($social_links){
-            deleteFileBefore(config('designwala_paths.admin.images.store.footer.social_links'), $social_links->social_icon);
+            deleteFileBefore(config('designwala_paths.store.site_cms.social_icon'), $social_links->social_icon);
             $social_links->delete();
         });
         return redirect()->back();
@@ -234,22 +215,22 @@ class SiteCMSController extends Controller
     {
         \DB::transaction(function () use ($request){
             // Footer Logo
-            SiteCMS::whereKey('policy_privacy')
+            SiteCms::whereSiteKey('policy_privacy')
                 ->firstOrFail()->update([
                     'value' => $request->input('privacy_policy'),
                 ]);
             // Payment Method
-            SiteCMS::whereKey('policy_cookie')
+            SiteCms::whereSiteKey('policy_cookie')
                 ->firstOrFail()->update([
                     'value' => $request->input('cookie_policy'),
                 ]);
             // Copyright Text
-            SiteCMS::whereKey('policy_payment')
+            SiteCms::whereSiteKey('policy_payment')
                 ->firstOrFail()->update([
                     'value' => $request->input('payment_policy'),
                 ]);
             // Company Short Description
-            SiteCMS::whereKey('policy_terms_and_conditions')
+            SiteCms::whereSiteKey('policy_terms_and_conditions')
                 ->firstOrFail()->update([
                     'value' => $request->input('terms_and_condition'),
                 ]);

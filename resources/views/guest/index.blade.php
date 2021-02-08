@@ -130,7 +130,7 @@
                     <div class="col-lg-4 col-md-6 text-center py-5 popularCetegoriesSmallpadding">
                         <div class="sectionServicePopularCategoriesSingleCategories m-auto">
                             <div class="sectionServicePopularCategoriesSingleImage">
-                                <img src="{{ asset(config('designwala_paths.admin.images.show.categories.thumbnails') . $popular_category->category_thumbnail) }}" alt="categories image one" class="img-fluid">
+                                <img src="{{ asset($popular_category->category_thumbnail ? config('designwala_paths.show.service_categories.thumbnail') . $popular_category->category_thumbnail : config('designwala_paths.default.no_preview')) }}" alt="categories image one" class="img-fluid" loading="lazy">
                             </div>
                             <div class="sectionServicePopularCategoriesSingleContent">
                                 <h3 class="pt-3"><a href="{{ route('guest.service_category.index', $popular_category->slug) }}" class="text-dark">{{ $popular_category->title }}</a></h3>

@@ -24,7 +24,7 @@
 
             </div>
         </div>
-        @livewire('admin.footer.social-link.index-component')
+        @livewire('admin.site-cms.social-link.index-component')
     </div>
 @endsection
 

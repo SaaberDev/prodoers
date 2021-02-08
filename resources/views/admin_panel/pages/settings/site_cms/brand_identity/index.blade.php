@@ -95,9 +95,9 @@
                                 </div>
                                 <div class="mt-4 border">
                                     <ul class="row list-unstyled previewimg">
-                                        <li class="col-md-4 py-4 text-center position-relative m-auto">
+                                        <li class="col-md-7 text-center position-relative m-auto">
                                             <div class="previewimg">
-                                                <img id="previewImg" class="img-fluid" src="{{ asset(getKey('home_page_banner') ? config('designwala_paths.admin.images.show.brand_identity.home_page_banner') . getKey('home_page_banner') : config('designwala_paths.default.home_page_banner')) }}" alt="Home Page Banner">
+                                                <img id="previewImg" class="img-fluid" src="{{ asset(getKey('home_page_banner') ? config('designwala_paths.show.site_cms.banner') . getKey('home_page_banner') : config('designwala_paths.default.home_page_banner')) }}" alt="Home Page Banner">
                                             </div>
                                         </li>
                                     </ul>
@@ -137,9 +137,9 @@
                                 </div>
                                 <div class="mt-4 border">
                                     <ul class="row list-unstyled previewimg">
-                                        <li class="col-md-4 py-4 text-center position-relative m-auto">
+                                        <li class="col-md-7 text-center position-relative m-auto">
                                             <div class="previewimg">
-                                                <img id="previewImg" class="img-fluid" src="{{ asset(getKey('brand_logo') ? config('designwala_paths.admin.images.show.brand_identity.brand_logo') . getKey('brand_logo') : config('designwala_paths.default.brand_logo')) }}" alt="Brand Logo">
+                                                <img id="previewImg" class="img-fluid" src="{{ asset(getKey('brand_logo') ? config('designwala_paths.show.site_cms.brand_logo') . getKey('brand_logo') : config('designwala_paths.default.brand_logo')) }}" alt="Brand Logo">
                                             </div>
                                         </li>
                                     </ul>
@@ -179,9 +179,9 @@
                                 </div>
                                 <div class="mt-4 border">
                                     <ul class="row list-unstyled previewimg">
-                                        <li class="col-md-4 py-4 text-center position-relative m-auto">
+                                        <li class="col-md-7 text-center position-relative m-auto">
                                             <div class="previewimg">
-                                                <img id="previewImg" class="img-fluid" src="{{ asset(getKey('browser_favicon') ? config('designwala_paths.admin.images.show.brand_identity.browser_favicon') . getKey('browser_favicon') : config('designwala_paths.default.browser_favicon')) }}" alt="Browser Favicon">
+                                                <img id="previewImg" class="img-fluid" src="{{ asset(getKey('browser_favicon') ? config('designwala_paths.show.site_cms.brand_icon') . getKey('browser_favicon') : config('designwala_paths.default.browser_favicon')) }}" alt="Browser Favicon">
                                             </div>
                                         </li>
                                     </ul>

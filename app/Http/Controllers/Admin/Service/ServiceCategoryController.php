@@ -55,9 +55,9 @@ class ServiceCategoryController extends Controller
                 'meta_desc' => $request->input('meta_description'),
                 'slug' => $slug,
                 'category_banner' => SingleImageUploadHandler($request, $slug, 'banner_image', 'banner',
-                    config('designwala_paths.admin.images.store.categories.banner')),
+                    config('designwala_paths.store.service_categories.banner')),
                 'category_thumbnail' => SingleImageUploadHandler($request, $slug, 'thumbnail_image', 'thumbnail',
-                    config('designwala_paths.admin.images.store.categories.thumbnails')),
+                    config('designwala_paths.store.service_categories.thumbnail')),
                 'desc' => $request->input('service_description'),
             ]);
 
@@ -144,10 +144,10 @@ class ServiceCategoryController extends Controller
                 'meta_desc' => $request->input('meta_description'),
                 'slug' => $slug,
                 'category_banner' => SingleImageUpdateHandler($request, $slug, $service_categories->category_banner,
-                    'banner_image', 'banner', 'admin_panel/services_categories/banner/'),
+                    'banner_image', 'banner', config('designwala_paths.store.service_categories.banner')),
                 'category_thumbnail' => SingleImageUpdateHandler($request, $slug,
                     $service_categories->category_thumbnail, 'thumbnail_image', 'thumbnail',
-                    'admin_panel/services_categories/thumbnail/'),
+                    config('designwala_paths.store.service_categories.thumbnail')),
                 'desc' => $request->input('service_description')
             ]);
 
@@ -188,8 +188,8 @@ class ServiceCategoryController extends Controller
             'message' => 'Service Category Deleted !',
         ];
         $service_categories = ServiceCategory::findOrFail($id);
-        deleteFileBefore('admin_panel/services_categories/banner/', $service_categories->category_banner);
-        deleteFileBefore('admin_panel/services_categories/thumbnail/', $service_categories->category_thumbnail);
+        deleteFileBefore(config('designwala_paths.store.service_categories.banner'), $service_categories->category_banner);
+        deleteFileBefore(config('designwala_paths.store.service_categories.thumbnail'), $service_categories->category_thumbnail);
         $service_categories->delete();
         return redirect()->back()->with($notify);
     }

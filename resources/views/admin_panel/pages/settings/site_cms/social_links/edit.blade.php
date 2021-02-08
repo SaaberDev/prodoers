@@ -35,7 +35,7 @@
                                 <div class="row">
                                     <div class="col-md-2 align-self-center">
                                         <div class="text-center socialmediaDelete" style="height: 80px; width: 80px;">
-                                            <img id="previewImg" class="img-fluid" height="80" width="80" src="{{ asset(config('designwala_paths.admin.images.show.footer.social_links') . $social_links->social_icon) }}" alt="{{ $social_links->social_title }}">
+                                            <img id="previewImg" class="img-fluid" height="80" width="80" src="{{ asset(config('designwala_paths.show.site_cms.social_icon') . $social_links->social_icon) }}" alt="{{ $social_links->social_title }}">
                                         </div>
                                     </div>
 

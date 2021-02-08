@@ -28,9 +28,9 @@ class ServiceCategoryFactory extends Factory
             'published_status' => '1',
             'meta_desc' => $this->faker->text,
 //            'category_banner' => $this->faker->image('public/storage/admin_panel/services_categories/banner/', 296, 248,'abstract', false),
-            'category_banner' => 'default.jpg',
+            'category_banner' => null,
 //            'category_thumbnail' => $this->faker->image('public/storage/admin_panel/services_categories/thumbnail/', 272, 168,'abstract', false),
-            'category_thumbnail' => 'default.jpg',
+            'category_thumbnail' => null,
             'desc' => $this->faker->text,
         ];
     }

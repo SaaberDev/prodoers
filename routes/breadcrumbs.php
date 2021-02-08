@@ -357,18 +357,6 @@
         ->push("Service Process Section", route('settings.site_cms.service_process.index'))
     );
 
-    // Dashboard > Service Process Section > Add Service Process
-    Breadcrumbs::for('settings.site_cms.service_process.create', fn(Trail $trail) => $trail
-        ->parent('settings.site_cms.service_process.index')
-        ->push("Add Service Process", route('settings.site_cms.service_process.create'))
-    );
-
-    // Dashboard > Service Process Section > Edit Service Process
-    Breadcrumbs::for('settings.site_cms.service_process.edit', fn(Trail $trail) => $trail
-        ->parent('settings.site_cms.service_process.index')
-        ->push("Edit Service Process", route('settings.site_cms.service_process.edit', ['id']))
-    );
-
 
     /*
     | ----------------------> How Designwala Works <----------------------

@@ -21,7 +21,7 @@
                 })
                 ->limit(5)
                 ->orderByDesc('id')
-                ->get(['id', 'title', 'slug']);
+                ->get(['id', 'title', 'slug', 'navbar_status']);
             $this->social_links = SocialLinks::orderByDesc('id')->get(['id', 'social_icon']);
 //            dd($this->social_links);
         }

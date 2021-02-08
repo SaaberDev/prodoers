@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin\Footer\SocialLink;
+namespace App\Http\Livewire\Admin\SiteCms\SocialLink;
 
 use App\Models\SocialLinks;
 use Livewire\Component;
@@ -41,6 +41,6 @@ class IndexComponent extends Component
         $social_links = SocialLinks::searchBy('social_title', $search)
             ->orderByDesc('id')
             ->paginate($this->recordPerPage);
-        return view('livewire.admin.footer.social-link.index-component', compact('social_links'));
+        return view('livewire.admin.site-cms.social-link.index-component', compact('social_links'));
     }
 }

@@ -299,11 +299,7 @@
                 // Service Process Section
                 Route::prefix('/service-process')->name('service_process.')->group(function () {
                     Route::get('/', [SiteCMSController::class, 'index_service_process'])->name('index');
-                    Route::get('/create-service-process', [SiteCMSController::class, 'create_service_process'])->name('create');
-                    Route::get('/edit-service-process', [SiteCMSController::class, 'edit_service_process'])->name('edit');
-                    Route::post('/store-service-process', [SiteCMSController::class, 'store_service_process'])->name('store');
                     Route::patch('/update-service-process', [SiteCMSController::class, 'update_service_process'])->name('update');
-                    Route::get('/destroy-service-process', [SiteCMSController::class, 'destroy_service_process'])->name('destroy');
                 });
                 // How Designwala Works ?
                 Route::prefix('/how-designwala-works')->name('how_designwala_works.')->group(function () {

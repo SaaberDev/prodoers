@@ -158,14 +158,14 @@
                                 />
 
                                 <div class="input-group-btn">
-                        <span class="fileUpload btn btnOne">
-                            <span class="upl" id="upload">Choose</span>
-                            <input type='file'
-                                   name="service_images[]"
-                                   class="upload up"
-                                   multiple
-                            />
-                        </span>
+                                    <span class="fileUpload btn btnOne">
+                                        <span class="upl" id="upload">Choose</span>
+                                        <input type='file'
+                                               name="service_images[]"
+                                               class="upload up"
+                                               multiple
+                                        />
+                                    </span>
                                 </div>
                                 @if($errors->has('service_images.*'))
                                     <span class="invalid-feedback">
@@ -178,22 +178,22 @@
                         <div class="mt-4 border">
                             <ul class="row list-unstyled previewimg">
                                 @foreach ($services->serviceImages as $service)
-                                <li class="col-md-4 py-4 text-center position-relative m-auto">
-                                    <div class="previewimg">
-                                        <img src="{{ asset('storage/admin_panel/services/service_image/' . $service->filename) }}" alt="{{ $services->title }}" class="img-fluid">
-                                        <a class="sweet_delete close closeImgdiv" data-action="{{ route('services.service.destroyServiceImage', $service->id) }}" style="cursor: pointer; position: absolute;top: 10px; right: 27px;">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
-                                                <g transform="translate(-642 -792)">
-                                                    <circle cx="9" cy="9" r="9" transform="translate(642 792)" fill="#ff6767"></circle>
-                                                    <g transform="translate(647.17 797.205)">
-                                                        <g transform="translate(0 0)">
-                                                            <line x2="7.442" y2="7.442" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2"></line>
-                                                            <line x1="7.442" y2="7.442" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2"></line>
+                                    <li class="col-md-4 py-4 text-center position-relative m-auto">
+                                        <div class="previewimg">
+                                            <img src="{{ asset(config('designwala_paths.show.services.service_image') . $service->filename) }}" alt="{{ $services->title }}" class="img-fluid">
+                                            <a class="sweet_delete close closeImgdiv" data-action="{{ route('services.service.destroyServiceImage', $service->id) }}" style="cursor: pointer; position: absolute;top: 10px; right: 27px;">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                                                    <g transform="translate(-642 -792)">
+                                                        <circle cx="9" cy="9" r="9" transform="translate(642 792)" fill="#ff6767"></circle>
+                                                        <g transform="translate(647.17 797.205)">
+                                                            <g transform="translate(0 0)">
+                                                                <line x2="7.442" y2="7.442" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2"></line>
+                                                                <line x1="7.442" y2="7.442" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2"></line>
+                                                            </g>
                                                         </g>
                                                     </g>
-                                                </g>
-                                            </svg>
-                                        </a>
+                                                </svg>
+                                            </a>
                                     </div>
                                 </li>
                                 @endforeach
@@ -237,7 +237,7 @@
                             <ul class="row list-unstyled previewimg">
                                 <li class="col-md-4 py-4 text-center position-relative m-auto">
                                     <div class="previewimg">
-                                        <img id="previewImg" class="img-fluid" src="{{ asset('storage/admin_panel/services/thumbnail/' . $services->thumbnail) }}" alt="{{ $services->title }}">
+                                        <img id="previewImg" class="img-fluid" src="{{ asset(config('designwala_paths.show.services.thumbnail') . $services->thumbnail) }}" alt="{{ $services->title }}">
                                     </div>
                                 </li>
                             </ul>
