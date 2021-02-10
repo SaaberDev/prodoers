@@ -13,7 +13,7 @@ class ServiceProcessRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,17 @@ class ServiceProcessRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'service_process_title_.*' => 'required',
+            'service_process_image_.*' => 'nullable|image|mimes:svg',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'service_process_title_.*.required' => 'Title field is required',
+            'service_process_image_.*.image' => 'File must be an image',
+            'service_process_image_.*.mimes' => 'Only SVG format is supported',
         ];
     }
 }

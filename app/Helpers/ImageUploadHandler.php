@@ -142,7 +142,6 @@
             $alphaAvatar = GenerateAlphaAvatar($getFirstLetter);
             $ext = 'png';
             $fileNameToStore = strtoupper($filename . '-' . 'default') . '.' . $ext;
-            $location = 'public/' . $path;
 
             Storage::put($location . $fileNameToStore, $alphaAvatar->encode('', 75));
         }

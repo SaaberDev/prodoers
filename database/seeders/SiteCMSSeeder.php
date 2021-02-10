@@ -91,7 +91,7 @@ class SiteCMSSeeder extends Seeder
             // Service Process 1
             [
                 'key' => 'service_process_title_1',
-                'value' => 'Search Your Desired Services',
+                'value' => 'Cheap and Reliable',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
@@ -104,7 +104,7 @@ class SiteCMSSeeder extends Seeder
             // Service Process 2
             [
                 'key' => 'service_process_title_2',
-                'value' => 'Search Your Desired Services',
+                'value' => '100% Quality Concerned',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
@@ -117,7 +117,7 @@ class SiteCMSSeeder extends Seeder
             // Service Process 3
             [
                 'key' => 'service_process_title_3',
-                'value' => 'Search Your Desired Services',
+                'value' => 'Excellent Collaboration with Client',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
@@ -130,7 +130,7 @@ class SiteCMSSeeder extends Seeder
             // Service Process 4
             [
                 'key' => 'service_process_title_4',
-                'value' => 'Search Your Desired Services',
+                'value' => 'Ensure 100% Client Satisfaction',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
@@ -143,7 +143,7 @@ class SiteCMSSeeder extends Seeder
             // Service Process 5
             [
                 'key' => 'service_process_title_5',
-                'value' => 'Search Your Desired Services',
+                'value' => '24/7 Live Support',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
@@ -156,7 +156,7 @@ class SiteCMSSeeder extends Seeder
             // Service Process 6
             [
                 'key' => 'service_process_title_6',
-                'value' => 'Search Your Desired Services',
+                'value' => 'Quick Delivery',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],

@@ -66,8 +66,38 @@ class SiteCmsController extends Controller
     public function update_service_process(ServiceProcessRequest $request)
     {
         \DB::transaction(function () use ($request){
-            // need to work here ...
+            // Service Process Title
+            $service_process_title = $request->input('service_process_title_');
+            foreach($service_process_title as $iKey => $title) {
+                SiteCms::whereSiteKey('service_process_title_' . ($iKey + 1))
+                    ->firstOrFail()->update([
+                        'value' => $title,
+                    ]);
+            }
+
+            // Service Process Multiple Image Update
+            $files = $request->file('service_process_image_');
+            if ($request->hasFile('service_process_image_')) {
+                $i = 1;
+                foreach ($files as $iKey => $file){
+                    $extension = $file->getClientOriginalExtension();
+                    $fileFormat = strtoupper('service-process-' . ($iKey + 1)) . '.' . $extension;
+                    $fileNameToStore = str_replace(' ', '-', $fileFormat);
+                    $svg = file_get_contents($file);
+                    $svg = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' . $svg;
+
+                    // Store in Storage Filesystem
+                    \Storage::put(config('designwala_paths.store.site_cms.service_process') . $fileNameToStore, $svg);
+                    $i++;
+
+                    SiteCms::whereSiteKey('service_process_image_'  . ($iKey + 1))
+                        ->firstOrFail()->update([
+                            'value' => $fileNameToStore,
+                        ]);
+                }
+            }
         });
+        return redirect()->back();
     }
 
     /**
