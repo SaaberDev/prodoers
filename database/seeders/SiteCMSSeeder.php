@@ -171,13 +171,13 @@ class SiteCMSSeeder extends Seeder
             // How designwala works
             [
                 'key' => 'designwala_title_1',
-                'value' => 'Place Order',
+                'value' => 'Pick a Service',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
                 'key' => 'designwala_desc_1',
-                'value' => $longText,
+                'value' => 'Choose a service & Prepare your requirements',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
@@ -189,13 +189,13 @@ class SiteCMSSeeder extends Seeder
             ],
             [
                 'key' => 'designwala_title_2',
-                'value' => 'Send your content',
+                'value' => 'Place Order',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
                 'key' => 'designwala_desc_2',
-                'value' => $longText,
+                'value' => 'Make Payment & Place Order',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
@@ -207,13 +207,13 @@ class SiteCMSSeeder extends Seeder
             ],
             [
                 'key' => 'designwala_title_3',
-                'value' => 'Get your final delivery',
+                'value' => 'Get Delivery',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
                 'key' => 'designwala_desc_3',
-                'value' => $longText,
+                'value' => 'Get Delivery Within the 3 Working days',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],

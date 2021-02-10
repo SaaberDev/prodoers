@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
         /**
          * Service
          */
-        Service::factory(200)->create();
+        Service::factory(500)->create();
 //        ServiceImage::factory(100000)->create();
 //        ServiceFeature::factory(100000)->create();
 //        ServiceFaq::factory(100000)->create();
@@ -49,8 +49,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
 //            FooterSeeder::class,
-//            PolicySeeder::class
-            SiteCMSSeeder::class
+//            PolicySeeder::class,
+            SiteCMSSeeder::class,
         ]);
     }
 }
