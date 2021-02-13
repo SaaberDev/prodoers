@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Mail\NewsletterWelcomeMail;
+use App\Models\Subscriber;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -16,10 +17,11 @@ class NewsletterJob implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     protected $newsletter;
+
     /**
      * Create a new job instance.
      *
-     * @return void
+     * @param $newsletter
      */
     public function __construct($newsletter)
     {

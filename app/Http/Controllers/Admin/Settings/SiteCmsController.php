@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Settings;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Settings\SiteCms\BrandIdentityRequest;
 use App\Http\Requests\Admin\Settings\SiteCms\FooterRequest;
+use App\Http\Requests\Admin\Settings\SiteCms\HowDesignwalaWorksRequest;
 use App\Http\Requests\Admin\Settings\SiteCms\PolicyRequest;
 use App\Http\Requests\Admin\Settings\SiteCms\ServiceProcessRequest;
 use App\Http\Requests\Admin\Settings\SiteCms\SocialLinkRequest;
@@ -52,6 +53,7 @@ class SiteCmsController extends Controller
                     'value' => updateSVG($request, 'browser-favicon', getKey('browser_favicon'), 'browser_favicon', 'brand-identity', config('designwala_paths.store.site_cms.brand_icon')),
                 ]);
         });
+        \Cache::flush();
         return redirect()->back();
     }
 
@@ -78,7 +80,6 @@ class SiteCmsController extends Controller
             // Service Process Multiple Image Update
             $files = $request->file('service_process_image_');
             if ($request->hasFile('service_process_image_')) {
-                $i = 1;
                 foreach ($files as $iKey => $file){
                     $extension = $file->getClientOriginalExtension();
                     $fileFormat = strtoupper('service-process-' . ($iKey + 1)) . '.' . $extension;
@@ -88,7 +89,6 @@ class SiteCmsController extends Controller
 
                     // Store in Storage Filesystem
                     \Storage::put(config('designwala_paths.store.site_cms.service_process') . $fileNameToStore, $svg);
-                    $i++;
 
                     SiteCms::whereSiteKey('service_process_image_'  . ($iKey + 1))
                         ->firstOrFail()->update([
@@ -97,6 +97,7 @@ class SiteCmsController extends Controller
                 }
             }
         });
+        \Cache::flush();
         return redirect()->back();
     }
 
@@ -108,9 +109,60 @@ class SiteCmsController extends Controller
         return view('admin_panel.pages.settings.site_cms.how_designwala_works.index');
     }
 
-    public function update_how_designwala_works(Request $request, $id)
+    public function update_how_designwala_works(HowDesignwalaWorksRequest $request)
     {
-        //
+        \DB::transaction(function () use ($request){
+            // Service Process Title
+            $designwala_title = $request->input('designwala_title_');
+            foreach($designwala_title as $iKey => $title) {
+                SiteCms::whereSiteKey('designwala_title_' . ($iKey + 1))
+                    ->firstOrFail()->update([
+                        'value' => $title,
+                    ]);
+            }
+
+            $designwala_desc = $request->input('designwala_desc_');
+            foreach($designwala_desc as $iKey => $desc) {
+                SiteCms::whereSiteKey('designwala_desc_' . ($iKey + 1))
+                    ->firstOrFail()->update([
+                        'value' => $desc,
+                    ]);
+            }
+
+            // Service Process Multiple Image Update
+            $files = $request->file('designwala_image_');
+            if ($request->hasFile('designwala_image_')) {
+                foreach ($files as $iKey => $file){
+                    $extension = $file->getClientOriginalExtension();
+                    $fileFormat = strtoupper('step-' . ($iKey + 1)) . '.' . $extension;
+                    $fileNameToStore = str_replace(' ', '-', $fileFormat);
+                    $svg = file_get_contents($file);
+                    $svg = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' . $svg;
+
+                    // Store in Storage Filesystem
+                    \Storage::put(config('designwala_paths.store.site_cms.how_designwala_works') . $fileNameToStore, $svg);
+
+                    SiteCms::whereSiteKey('designwala_image_'  . ($iKey + 1))
+                        ->firstOrFail()->update([
+                            'value' => $fileNameToStore,
+                        ]);
+                }
+            }
+
+            // Designwala Video --------------------->>> [Need to work here]
+//            SiteCms::whereSiteKey('designwala_video')
+//                ->firstOrFail()->update([
+//                    'value' => updateVideo($request, 'how-designwala-works', getKey('designwala_video'), 'designwala_video', 'video', config('designwala_paths.store.site_cms.how_designwala_works_video')),
+//                ]);
+
+            // Video Thumbnail
+            SiteCms::whereSiteKey('designwala_video_thumbnail')
+                ->firstOrFail()->update([
+                    'value' => updateSVG($request, 'designwala-video', getKey('designwala_video_thumbnail'), 'designwala_video_thumbnail', 'thumbnail', config('designwala_paths.store.site_cms.how_designwala_works_video')),
+                ]);
+        });
+        \Cache::flush();
+        return redirect()->back();
     }
 
     /**

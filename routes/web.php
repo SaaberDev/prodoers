@@ -22,13 +22,12 @@
     use App\Http\Controllers\Admin\Service\ServiceCategoryController;
     use App\Http\Controllers\Admin\Service\ServiceController;
     use App\Http\Controllers\Admin\Service\TagController;
-    use App\Http\Controllers\Admin\Settings\FooterSectionController;
     use App\Http\Controllers\Admin\Settings\MaintenanceModeController;
     use App\Http\Controllers\Admin\Settings\SEOToolsController;
     use App\Http\Controllers\Admin\Settings\SiteCMSController;
     use App\Http\Controllers\Guest\Blog\GuestBlogController;
     use App\Http\Controllers\Guest\HomeController;
-    use App\Http\Controllers\Guest\Newsletter\GuestNewsletterController;
+//    use App\Http\Controllers\Guest\Newsletter\GuestNewsletterController;
     use App\Http\Controllers\Guest\Search\GuestSearchController;
     use App\Http\Controllers\Guest\Service\Category\GuestServiceCategoryController;
     use App\Http\Controllers\Guest\Service\GuestServiceController;
@@ -347,7 +346,7 @@
     });
 
     Route::get('/test', function (){
-        return new \App\Mail\NewsletterWelcomeMail();
+        //
     });
 
 //    Route::get('/{category_name}', [UserServiceCategoryController::class, 'show'])->name('show');

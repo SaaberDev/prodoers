@@ -19,21 +19,21 @@
             <div class="row justify-content-center m-0 py-1 boxshadow rounded">
                 <div class="col-xl-12 col-lg-12 col-md-12 v-center">
                     <div class="">
-                        <h2 class="m-0">Services Process</h2></div>
+                        <h2 class="m-0">How Designwala Works</h2></div>
                 </div>
             </div>
         </div>
 
         <div class="mt-4">
-            <form action="{{ route('settings.site_cms.service_process.update') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('settings.site_cms.how_designwala_works.update') }}" method="POST" enctype="multipart/form-data" autocomplete="off">
                 @csrf @method('PATCH')
                 <div class="row m-0 justify-content-center py-3 bg-white rounded">
                     <div class="col-md-10">
                         <div class="row">
-                            {{-- Service Process 1 --}}
+                            {{-- How designwala works --}}
                             @foreach(range(1, 3) as $item)
                                 <div class="col-md-4 mt-4">
-                                    {{-- Step Title 1 --}}
+                                    {{-- Title --}}
                                     <div class="form-group">
                                         <label for="">
                                             <h5>Step {{ $loop->iteration }}</h5></label>
@@ -47,7 +47,7 @@
                                         </div>
                                     </div>
 
-                                    {{-- Step Description 1 --}}
+                                    {{-- Description --}}
                                     <textarea class="form-control {{ $errors->has('designwala_desc_.' . $loop->index) ? ' is-invalid' : '' }}" name="designwala_desc_[]" rows="3">{{ getKey('designwala_desc_' . $loop->iteration) }}</textarea>
                                     @if($errors->has('designwala_desc_.' . $loop->index))
                                         <span class="invalid-feedback">
@@ -55,31 +55,31 @@
                                         </span>
                                     @endif
 
-                                    {{-- Service Process Image 1 --}}
+                                    {{-- Image --}}
                                     <div class="form-group mt-4 mb-0">
                                         <div class="form-group mt-4">
                                             <div class="input-group">
                                                 <input type='text'
-                                                       name="service_process_image_[]"
-                                                       class="form-control {{ $errors->has('service_process_image_.' . $loop->index) ? ' is-invalid' : '' }}"
+                                                       name="designwala_image_[]"
+                                                       class="form-control {{ $errors->has('designwala_image_.' . $loop->index) ? ' is-invalid' : '' }}"
                                                        onchange="preview(this);"
                                                        placeholder="No File Chosen"
                                                        readonly
                                                 />
 
                                                 <div class="input-group-btn">
-                                            <span class="fileUpload btn btnOne">
-                                                <span class="upl" id="upload">Choose</span>
-                                                <input type="file"
-                                                       name="service_process_image_[]"
-                                                       class="upload up"
-                                                />
-                                            </span>
+                                                    <span class="fileUpload btn btnOne">
+                                                        <span class="upl" id="upload">Choose</span>
+                                                        <input type="file"
+                                                               name="designwala_image_[]"
+                                                               class="upload up"
+                                                        />
+                                                    </span>
                                                 </div>
-                                                @if($errors->has('service_process_image_.' . $loop->index))
+                                                @if($errors->has('designwala_image_.' . $loop->index))
                                                     <span class="invalid-feedback">
-                                                <strong>{{ $errors->first('service_process_image_.' . $loop->index) }}</strong>
-                                            </span>
+                                                        <strong>{{ $errors->first('designwala_image_.' . $loop->index) }}</strong>
+                                                    </span>
                                                 @endif
                                             </div>
                                         </div>
@@ -87,7 +87,7 @@
                                             <ul class="row list-unstyled previewimg">
                                                 <li class="col-md-7 text-center position-relative m-auto">
                                                     <div class="previewimg">
-                                                        <img id="previewImg" class="img-fluid" src="{{ asset(getKey('service_process_image_' . $loop->iteration) ? config('designwala_paths.show.site_cms.service_process') . getKey('service_process_image_' . $loop->iteration) : config('designwala_paths.default.service_process_' . $loop->iteration)) }}" alt="service process image {{ $loop->iteration }}">
+                                                        <img id="previewImg" class="img-fluid" src="{{ asset(getKey('designwala_image_' . $loop->iteration) ? config('designwala_paths.show.site_cms.how_designwala_works') . getKey('designwala_image_' . $loop->iteration) : config('designwala_paths.default.how_designwala_works_' . $loop->iteration)) }}" alt="service process image {{ $loop->iteration }}">
                                                     </div>
                                                 </li>
                                             </ul>
@@ -96,6 +96,91 @@
                                 </div>
                             @endforeach
                         </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mt-4">
+                                <div class="form-group mt-4 mb-0">
+                                    <div class="form-group mt-4">
+                                        <div class="input-group">
+                                            <input type='text'
+                                                   name="designwala_video"
+                                                   class="form-control {{ $errors->has('designwala_video') ? ' is-invalid' : '' }}"
+                                                   onchange="preview(this);"
+                                                   placeholder="No File Chosen"
+                                                   readonly
+                                            />
+
+                                            <div class="input-group-btn">
+                                            <span class="fileUpload btn btnOne">
+                                                <span class="upl" id="upload">Choose</span>
+                                                <input type="file"
+                                                       name="designwala_video"
+                                                       class="upload up"
+                                                />
+                                            </span>
+                                            </div>
+                                            @if($errors->has('designwala_video'))
+                                                <span class="invalid-feedback">
+                                                <strong>{{ $errors->first('designwala_video') }}</strong>
+                                            </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 border">
+                                        <div class="row">
+                                            <div class="col-md-7 v-center text-center position-relative m-auto">
+                                                <div class="previewimg">
+                                                    <video width="300" controls>
+                                                        <source src="{{ asset(config('designwala_paths.default.how_designwala_works_video')) }}" type="video/mp4">
+                                                    </video>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mt-4">
+                                <div class="form-group mt-4 mb-0">
+                                    <div class="form-group mt-4">
+                                        <div class="input-group">
+                                            <input type='text'
+                                                   name="designwala_video_thumbnail"
+                                                   class="form-control {{ $errors->has('designwala_video_thumbnail') ? ' is-invalid' : '' }}"
+                                                   onchange="preview(this);"
+                                                   placeholder="No File Chosen"
+                                                   readonly
+                                            />
+
+                                            <div class="input-group-btn">
+                                            <span class="fileUpload btn btnOne">
+                                                <span class="upl" id="upload">Choose</span>
+                                                <input type="file"
+                                                       name="designwala_video_thumbnail"
+                                                       class="upload up"
+                                                />
+                                            </span>
+                                            </div>
+                                            @if($errors->has('designwala_video_thumbnail'))
+                                                <span class="invalid-feedback">
+                                                    <strong>{{ $errors->first('designwala_video_thumbnail') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 border">
+                                        <ul class="row list-unstyled previewimg">
+                                            <li class="col-md-7 text-center position-relative m-auto">
+                                                <div class="previewimg">
+                                                    <img id="previewImg" class="img-fluid" src="{{ asset(getKey('designwala_video_thumbnail') ? config('designwala_paths.show.site_cms.how_designwala_works_video') . getKey('designwala_video_thumbnail') : config('designwala_paths.default.how_designwala_works_video_thumbnail')) }}" alt="Designwala Video Thumbnail">
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="py-4 text-right">
                             <button type="submit" class="btn bgOne text-white">Update</button>
                         </div>

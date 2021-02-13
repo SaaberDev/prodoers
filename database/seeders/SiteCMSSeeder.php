@@ -229,6 +229,12 @@ class SiteCMSSeeder extends Seeder
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
+            [
+                'key' => 'designwala_video_thumbnail',
+                'value' => null,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
 
             // Blog Section
             [

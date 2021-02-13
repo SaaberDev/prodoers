@@ -46,6 +46,7 @@ class MakeDirectory extends Command
             \Storage::exists(config('designwala_paths.store.site_cms.brand_icon')) &&
             \Storage::exists(config('designwala_paths.store.site_cms.brand_logo')) &&
             \Storage::exists(config('designwala_paths.store.site_cms.service_process')) &&
+            \Storage::exists(config('designwala_paths.store.site_cms.how_designwala_works')) &&
             \Storage::exists(config('designwala_paths.store.site_cms.payment_method')) &&
             \Storage::exists(config('designwala_paths.store.site_cms.social_icon'))
         ))
@@ -58,6 +59,7 @@ class MakeDirectory extends Command
             \Storage::makeDirectory(config('designwala_paths.store.site_cms.brand_icon'));
             \Storage::makeDirectory(config('designwala_paths.store.site_cms.brand_logo'));
             \Storage::makeDirectory(config('designwala_paths.store.site_cms.service_process'));
+            \Storage::makeDirectory(config('designwala_paths.store.site_cms.how_designwala_works'));
             \Storage::makeDirectory(config('designwala_paths.store.site_cms.payment_method'));
             \Storage::makeDirectory(config('designwala_paths.store.site_cms.social_icon'));
             $this->info('Directories Created Successfully');

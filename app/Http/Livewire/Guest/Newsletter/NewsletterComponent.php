@@ -3,17 +3,14 @@
 namespace App\Http\Livewire\Guest\Newsletter;
 
 use App\Jobs\NewsletterJob;
-use App\Mail\NewsletterWelcomeMail;
 use App\Models\Subscriber;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
 class NewsletterComponent extends Component
 {
     public $newsletter;
-    public $subscription_status = 1;
+    public $subscriber_status = 1;
 
     public function mount()
     {
@@ -38,10 +35,10 @@ class NewsletterComponent extends Component
     public function store()
     {
         $this->validate();
-        DB::transaction(function (){
+        \DB::transaction(function (){
             Subscriber::create([
                 'email' => $this->newsletter,
-                'subscription_status' => $this->subscription_status
+                'subscriber_status' => $this->subscriber_status
             ]);
         });
         NewsletterJob::dispatch($this->newsletter)->delay(Carbon::now()->addSeconds(5));

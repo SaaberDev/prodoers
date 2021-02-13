@@ -20,7 +20,7 @@ class NewsletterWelcomeMail extends Mailable
      */
     public function __construct()
     {
-        $this->social_links = SocialLinks::orderByIdDesc()->get();
+        $this->social_links = SocialLinks::orderByDesc('id')->get();
     }
 
     /**

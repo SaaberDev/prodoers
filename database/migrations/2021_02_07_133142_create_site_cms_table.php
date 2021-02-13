@@ -15,7 +15,7 @@ class CreateSiteCmsTable extends Migration
     {
         Schema::create('site_cms', function (Blueprint $table) {
             $table->id();
-            $table->string('key');
+            $table->string('key')->index();
             $table->longText('value')->nullable();
             $table->timestamps();
         });
