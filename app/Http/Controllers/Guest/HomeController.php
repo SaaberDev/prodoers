@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Guest;
 use App\Http\Controllers\Controller;
 use App\Models\Service;
 use App\Models\ServiceCategory;
+use App\Models\SiteCms;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Response;
+use function Sodium\increment;
 
 class HomeController extends Controller
 {
@@ -27,6 +29,7 @@ class HomeController extends Controller
             ->limit(9)
             ->orderByDesc('id')
             ->get(['id', 'title', 'slug', 'desc', 'category_thumbnail', 'category_banner']);
+
 //        var_dump(\DB::getQueryLog());
 //        dd();
         return view('guest.index', compact('popular_categories'));

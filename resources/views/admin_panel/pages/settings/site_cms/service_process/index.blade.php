@@ -31,7 +31,7 @@
                     <div class="col-md-10">
                         <div class="row">
                             {{-- Service Process 1 --}}
-                            @foreach(range(1, 6) as $service_process)
+                            @foreach(range(1, 6) as $column)
                             <div class="col-md-4 mt-4">
                                 {{-- Service Process Title 1 --}}
                                 <div class="form-group">

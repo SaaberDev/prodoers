@@ -55,6 +55,45 @@ class SiteCMSSeeder extends Seeder
     {
         $longText = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).";
         $data = [
+            [
+                // Brand Identity
+                'brand_headline' => 'Search Your Desired Services',
+                'brand_tagline' => 'Stop wasting time on hassling, let professionals do your job.',
+                'home_page_banner' => null,
+                'brand_logo' => null,
+                'browser_favicon' => null,
+
+                // Service Processes
+                // Service Process 1
+                'service_process_title_1' => 'Cheap and Reliable',
+                'service_process_image_1' => null,
+                // Service Process 2
+                'service_process_title_2' => '100% Quality Concerned',
+                'service_process_image_2' => null,
+                // Service Process 3
+                'service_process_title_3' => 'Excellent Collaboration with Client',
+                'service_process_image_3' => null,
+                // Service Process 4
+                'service_process_title_4' => 'Ensure 100% Client Satisfaction',
+                'service_process_image_4' => null,
+                // Service Process 5
+                'service_process_title_5' => '24/7 Live Support',
+                'service_process_image_5' => null,
+                // Service Process 6
+                'service_process_title_6' => 'Quick Delivery',
+                'service_process_image_6' => null,
+
+                // How designwala works
+                // Blog Section
+                // Statistics
+                // Footer
+                // Policies
+
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+
+
             // Brand Identity
             [
                 'key' => 'brand_headline',

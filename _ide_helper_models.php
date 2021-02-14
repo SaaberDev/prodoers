@@ -49,7 +49,7 @@ namespace App\Models{
  * @property int|null $published_status
  * @property string $slug
  * @property string $price
- * @property string $thumbnail
+ * @property string|null $thumbnail
  * @property string $service_desc
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -99,8 +99,8 @@ namespace App\Models{
  * @property int $id
  * @property string $title
  * @property string $meta_desc
- * @property string $category_banner
- * @property string $category_thumbnail
+ * @property string|null $category_banner
+ * @property string|null $category_thumbnail
  * @property string $slug
  * @property string $desc
  * @property int|null $navbar_status
@@ -221,7 +221,7 @@ namespace App\Models{
  * @mixin IdeHelperServiceImage
  * @property int $id
  * @property int $service_id
- * @property string $filename
+ * @property string|null $filename
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Service $services
@@ -235,18 +235,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceImage whereUpdatedAt($value)
  */
 	class IdeHelperServiceImage extends \Eloquent {}
-}
-
-namespace App\Models{
-/**
- * App\Models\ServiceProcess
- *
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceProcess newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceProcess newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceProcess query()
- * @mixin \Eloquent
- */
-	class IdeHelperServiceProcess extends \Eloquent {}
 }
 
 namespace App\Models{

@@ -1,7 +1,5 @@
 <?php
 
-    use App\Models\Footer;
-    use App\Models\Policy;
     use App\Models\SiteCMS;
     use Carbon\Carbon;
 
@@ -43,10 +41,7 @@
 
     function getKey($key)
     {
-        $site_cms = SiteCMS::select('value')
-            ->where('key', '=', $key)
-            ->first();
-//            ->firstOrFail();
+        $site_cms = SiteCMS::where('key', '=', $key)->firstOrFail(['value']);
         if (!$site_cms){
             return null;
         }

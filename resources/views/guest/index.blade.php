@@ -44,19 +44,19 @@
     <div class="section whydesignWala" id="whydesignWala">
         <div class="container">
             <div class="row bg-white whyDesignwalaPosition">
-                <!--               box one -->
+{{--                @foreach($service_processes->where('type', '=', 'image') as $service_process)--}}
                 <div class="col-lg-2 col-md-6 p-0 ">
                     <div class="whydesignwalaSingleService p-3">
                         <div class="text-center pt-3 pb-2">
-                            <img src="{{ asset('_assets/_guest/img/servicepage/whydesignwalasection/reliable_and_quick.svg') }}" alt="service image" class="img-fluid ">
+                            <img src="{{ asset(/*$service_process->value ? config('designwala_paths.show.site_cms.service_process') . $service_process->value : */config('designwala_paths.default.service_process_1')) }}" alt="service image" class="img-fluid ">
                         </div>
                         <div class="text-center py-3">
                             <p class="mb-0">Reliable and Quick Communication</p>
                         </div>
                     </div>
                 </div>
-                <!--                box two -->
-                <div class="col-lg-2 col-md-6 p-0 ">
+{{--                @endforeach--}}
+                {{--<div class="col-lg-2 col-md-6 p-0 ">
                     <div class="whydesignwalaSingleService p-3">
                         <div class="text-center pt-3 pb-2">
                             <img src="{{ asset('_assets/_guest/img/servicepage/whydesignwalasection/human.svg') }}" alt="service image" class="img-fluid ">
@@ -109,7 +109,7 @@
                             <p class="mb-0">Reliable and Quick Communication</p>
                         </div>
                     </div>
-                </div>
+                </div>--}}
             </div>
         </div>
     </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Settings;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Settings\SiteCms\BlogSectionRequest;
 use App\Http\Requests\Admin\Settings\SiteCms\BrandIdentityRequest;
 use App\Http\Requests\Admin\Settings\SiteCms\FooterRequest;
 use App\Http\Requests\Admin\Settings\SiteCms\HowDesignwalaWorksRequest;
@@ -187,9 +188,20 @@ class SiteCmsController extends Controller
         return view('admin_panel.pages.settings.site_cms.blog_section.index');
     }
 
-    public function update_blog_section(Request $request, $id)
+    public function update_blog_section(BlogSectionRequest $request)
     {
-        //
+        \DB::transaction(function () use ($request){
+            SiteCms::whereSiteKey('blog_headline')
+                ->firstOrFail()->update([
+                    'value' => $request->input('blog_headline'),
+                ]);
+
+            SiteCms::whereSiteKey('blog_tagline')
+                ->firstOrFail()->update([
+                    'value' => $request->input('blog_tagline'),
+                ]);
+        });
+        return redirect()->back();
     }
 
     /**
