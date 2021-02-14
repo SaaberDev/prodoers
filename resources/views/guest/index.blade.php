@@ -229,7 +229,6 @@
                     <div class="video-wrapper  m-auto">
                         <video src="{{ asset(config('designwala_paths.default.how_designwala_works_video')) }}" poster="{{ asset(config('designwala_paths.default.how_designwala_works_video_thumbnail')) }}"></video>
                     </div>
-
                 </div>
             </div>
         </div>

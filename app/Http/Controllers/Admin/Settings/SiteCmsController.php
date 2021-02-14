@@ -150,15 +150,29 @@ class SiteCmsController extends Controller
             }
 
             // Designwala Video --------------------->>> [Need to work here]
-//            SiteCms::whereSiteKey('designwala_video')
-//                ->firstOrFail()->update([
-//                    'value' => updateVideo($request, 'how-designwala-works', getKey('designwala_video'), 'designwala_video', 'video', config('designwala_paths.store.site_cms.how_designwala_works_video')),
-//                ]);
+            $file = $request->file('designwala_video');
+            if ($request->hasFile('designwala_video')) {
+                $extension = $file->getClientOriginalExtension();
+                $fileFormat = strtoupper('how-designwala-work') . '.' . $extension;
+                $fileNameToStore = str_replace(' ', '-', $fileFormat);
+                $file_contents = file_get_contents($file);
+
+/*                $svg = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' . $svg;*/
+
+                // Store in Storage Filesystem
+                \Storage::put(config('designwala_paths.store.site_cms.how_designwala_works_video') . $fileNameToStore, $file_contents);
+                SiteCms::whereSiteKey('designwala_video')
+                    ->firstOrFail()->update([
+                        'value' => $fileNameToStore,
+                    ]);
+            }
 
             // Video Thumbnail
             SiteCms::whereSiteKey('designwala_video_thumbnail')
                 ->firstOrFail()->update([
-                    'value' => updateSVG($request, 'designwala-video', getKey('designwala_video_thumbnail'), 'designwala_video_thumbnail', 'thumbnail', config('designwala_paths.store.site_cms.how_designwala_works_video')),
+                    'value' => updateSVG($request, 'designwala-video', getKey('designwala_video_thumbnail'),
+                        'designwala_video_thumbnail', 'thumbnail',
+                        config('designwala_paths.store.site_cms.how_designwala_works')),
                 ]);
         });
         \Cache::flush();

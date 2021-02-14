@@ -131,7 +131,7 @@
                                             <div class="col-md-7 v-center text-center position-relative m-auto">
                                                 <div class="previewimg">
                                                     <video width="300" controls>
-                                                        <source src="{{ asset(config('designwala_paths.default.how_designwala_works_video')) }}" type="video/mp4">
+                                                        <source src="{{ asset(getKey('designwala_video') ? config('designwala_paths.show.site_cms.how_designwala_works_video') . getKey('designwala_video') : config('designwala_paths.default.how_designwala_works_video')) }}" type="video/mp4">
                                                     </video>
                                                 </div>
                                             </div>
@@ -172,7 +172,7 @@
                                         <ul class="row list-unstyled previewimg">
                                             <li class="col-md-7 text-center position-relative m-auto">
                                                 <div class="previewimg">
-                                                    <img id="previewImg" class="img-fluid" src="{{ asset(getKey('designwala_video_thumbnail') ? config('designwala_paths.show.site_cms.how_designwala_works_video') . getKey('designwala_video_thumbnail') : config('designwala_paths.default.how_designwala_works_video_thumbnail')) }}" alt="Designwala Video Thumbnail">
+                                                    <img id="previewImg" class="img-fluid" src="{{ asset(getKey('designwala_video_thumbnail') ? config('designwala_paths.show.site_cms.how_designwala_works') . getKey('designwala_video_thumbnail') : config('designwala_paths.default.how_designwala_works_video_thumbnail')) }}" alt="Designwala Video Thumbnail">
                                                 </div>
                                             </li>
                                         </ul>
