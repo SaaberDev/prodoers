@@ -345,8 +345,9 @@
         });
     });
 
-    Route::get('/test', function (){
-        //
+    Route::prefix('/test')->name('test.')->group(function (){
+        Route::get('/', [\App\Http\Controllers\TestController::class, 'index'])->name('index');
+        Route::patch('/update-test', [\App\Http\Controllers\TestController::class, 'update'])->name('update');
     });
 
 //    Route::get('/{category_name}', [UserServiceCategoryController::class, 'show'])->name('show');

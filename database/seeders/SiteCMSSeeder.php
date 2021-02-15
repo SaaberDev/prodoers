@@ -2,7 +2,14 @@
 
 namespace Database\Seeders;
 
+use App\Models\BlogSection;
+use App\Models\BrandIdentity;
+use App\Models\CompanyPolicy;
+use App\Models\FooterContent;
+use App\Models\HowDesignwalaWork;
+use App\Models\ServiceProcess;
 use App\Models\SiteCMS;
+use App\Models\StatisticsSection;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
@@ -54,46 +61,171 @@ class SiteCMSSeeder extends Seeder
     public function run()
     {
         $longText = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).";
-        $data = [
+        $brand_identities = [
             [
-                // Brand Identity
-                'brand_headline' => 'Search Your Desired Services',
-                'brand_tagline' => 'Stop wasting time on hassling, let professionals do your job.',
-                'home_page_banner' => null,
-                'brand_logo' => null,
-                'browser_favicon' => null,
-
-                // Service Processes
-                // Service Process 1
-                'service_process_title_1' => 'Cheap and Reliable',
-                'service_process_image_1' => null,
-                // Service Process 2
-                'service_process_title_2' => '100% Quality Concerned',
-                'service_process_image_2' => null,
-                // Service Process 3
-                'service_process_title_3' => 'Excellent Collaboration with Client',
-                'service_process_image_3' => null,
-                // Service Process 4
-                'service_process_title_4' => 'Ensure 100% Client Satisfaction',
-                'service_process_image_4' => null,
-                // Service Process 5
-                'service_process_title_5' => '24/7 Live Support',
-                'service_process_image_5' => null,
-                // Service Process 6
-                'service_process_title_6' => 'Quick Delivery',
-                'service_process_image_6' => null,
-
-                // How designwala works
-                // Blog Section
-                // Statistics
-                // Footer
-                // Policies
-
+                'headline' => 'Search Your Desired Services',
+                'tagline' => 'Stop wasting time on hassling, let professionals do your job',
+                'banner' => null,
+                'logo' => null,
+                'favicon' => null,
                 'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ]
+        ];
+        foreach ($brand_identities as $brand_identity) {
+            BrandIdentity::create($brand_identity);
+        }
+
+        $service_processes = [
+            [
+                'title' => 'Cheap and Reliable',
+                'image' => null,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
             ],
+            [
+                'title' => '100% Quality Concerned',
+                'image' => null,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'title' => 'Excellent Collaboration with Client',
+                'image' => null,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'title' => 'Ensure 100% Client Satisfaction',
+                'image' => null,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'title' => '24/7 Live Support',
+                'image' => null,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'title' => 'Quick Delivery',
+                'image' => null,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+        ];
+        foreach ($service_processes as $service_process) {
+            ServiceProcess::create($service_process);
+        }
+
+        $how_designwala_works = [
+            [
+                'title' => 'Pick a Service',
+                'desc' => 'Choose a service & Prepare your requirements',
+                'image' => null,
+                'video' => null,
+                'video_thumbnail' => null,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'title' => 'Place Order',
+                'desc' => 'Make Payment & Place Order',
+                'image' => null,
+                'video' => null,
+                'video_thumbnail' => null,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'title' => 'Get Delivery',
+                'desc' => 'Get Delivery Within the 3 Working days',
+                'image' => null,
+                'video' => null,
+                'video_thumbnail' => null,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'title' => null,
+                'desc' => null,
+                'image' => null,
+                'video' => null,
+                'video_thumbnail' => null,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+        ];
+        foreach ($how_designwala_works as $how_designwala_work) {
+            HowDesignwalaWork::create($how_designwala_work);
+        }
+
+        $blog_contents = [
+            [
+                'headline' => 'Latest News',
+                'tagline' => 'blog_tagline',
+            ]
+        ];
+        foreach ($blog_contents as $blog_content) {
+            BlogSection::create($blog_content);
+        }
+
+        $statistics = [
+            [
+                'title' => 'Total Services',
+                'amount' => 150,
+                'image' => null,
+            ],
+            [
+                'title' => 'Total Orders',
+                'amount' => 2600,
+                'image' => null,
+            ],
+            [
+                'title' => 'Total Designwalas',
+                'amount' => 200,
+                'image' => null,
+            ],
+            [
+                'title' => 'Total Customers',
+                'amount' => 150,
+                'image' => null,
+            ],
+        ];
+        foreach ($statistics as $statistic) {
+            StatisticsSection::create($statistic);
+        }
+
+        $footer_contents = [
+            [
+                'copyright_text' => 'Copyright ©2021 Designwala',
+                'desc' => $longText,
+                'logo' => null,
+                'payment_method' => null,
+            ],
+        ];
+        foreach ($footer_contents as $footer_content) {
+            FooterContent::create($footer_content);
+        }
+
+        $company_policies = [
+            [
+                'privacy' => $longText,
+                'cookie' => $longText,
+                'payment' => $longText,
+                'terms_and_conditions' => $longText,
+            ]
+        ];
+        foreach ($company_policies as $policy) {
+            CompanyPolicy::create($policy);
+        }
 
 
+
+
+
+
+        /*$data = [
             // Brand Identity
             [
                 'key' => 'brand_headline',
@@ -366,10 +498,10 @@ class SiteCMSSeeder extends Seeder
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
-        ];
+        ];*/
 
-        foreach ($data as $site_cms) {
+        /*foreach ($data as $site_cms) {
             SiteCMS::create($site_cms);
-        }
+        }*/
     }
 }

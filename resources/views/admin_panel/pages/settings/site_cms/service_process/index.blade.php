@@ -31,24 +31,25 @@
                     <div class="col-md-10">
                         <div class="row">
                             {{-- Service Process 1 --}}
-                            @foreach(range(1, 6) as $column)
+                            @foreach($service_processes as $key => $service_process)
                             <div class="col-md-4 mt-4">
                                 {{-- Service Process Title 1 --}}
                                 <div class="form-group">
                                     <label for="">
                                         <h5>Service Process {{ $loop->iteration }}</h5></label>
                                     <div class="input-group">
-                                        <input class="form-control {{ $errors->has('service_process_title_.' . $loop->index) ? ' is-invalid' : '' }}" value="{{ getKey('service_process_title_' . $loop->iteration) }}" name="service_process_title_[]" type="text" placeholder="">
-                                        @if($errors->has('service_process_title_.' . $loop->index))
+                                        <input name="service_process_id_[]" value="{{ $service_process->id }}" hidden>
+                                        <input class="form-control {{ $errors->has('service_process_title_' . $loop->iteration) ? ' is-invalid' : '' }}" value="{{ $service_process->title }}" name="service_process_title_{{ $key + 1 }}" type="text" placeholder="">
+                                        @if($errors->has('service_process_title_' . $loop->iteration))
                                             <span class="invalid-feedback">
-                                                <strong>{{ $errors->first('service_process_title_.' . $loop->index) }}</strong>
+                                                <strong>{{ $errors->first('service_process_title_' . $loop->iteration) }}</strong>
                                             </span>
                                         @endif
                                     </div>
                                 </div>
 
                                 {{-- Service Process Image 1 --}}
-                                <div class="form-group mt-4 mb-0">
+                                {{--<div class="form-group mt-4 mb-0">
                                     <div class="form-group mt-4">
                                         <div class="input-group">
                                             <input type='text'
@@ -79,12 +80,12 @@
                                         <ul class="row list-unstyled previewimg">
                                             <li class="col-md-7 text-center position-relative m-auto">
                                                 <div class="previewimg">
-                                                    <img id="previewImg" class="img-fluid" src="{{ asset(getKey('service_process_image_' . $loop->iteration) ? config('designwala_paths.show.site_cms.service_process') . getKey('service_process_image_' . $loop->iteration) : config('designwala_paths.default.service_process_' . $loop->iteration)) }}" alt="service process image {{ $loop->iteration }}">
+                                                    <img id="previewImg" class="img-fluid" src="{{ asset($service_process->image ? config('designwala_paths.show.site_cms.service_process') . $service_process->image : config('designwala_paths.default.service_process_' . $loop->iteration)) }}" alt="{{ $service_process->title }}">
                                                 </div>
                                             </li>
                                         </ul>
                                     </div>
-                                </div>
+                                </div>--}}
                             </div>
                             @endforeach
                         </div>

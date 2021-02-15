@@ -1,5 +1,8 @@
 <?php
     return [
+        'data' => [
+            'value' => 'Hello'
+        ],
         'default' => [
             // Logo
             'brand_logo' => '_default/brand-logo/brand-logo.svg',

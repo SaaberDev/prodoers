@@ -23,18 +23,22 @@ class ServiceProcessRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'service_process_title_.*' => 'required',
-            'service_process_image_.*' => 'nullable|image|mimes:svg',
-        ];
+        foreach (range(1, 6) as $key => $item) {
+            return [
+                'service_process_title_' . ($key + 1) => 'required',
+                'service_process_image_' . ($key + 1) => 'nullable|image|mimes:svg',
+            ];
+        }
     }
 
     public function messages()
     {
-        return [
-            'service_process_title_.*.required' => 'Title field is required',
-            'service_process_image_.*.image' => 'File must be an image',
-            'service_process_image_.*.mimes' => 'Only SVG format is supported',
-        ];
+        foreach (range(1, 6) as $key => $item) {
+            return [
+                'service_process_title_' . ($key + 1) . '.required' => 'Title field is required',
+                'service_process_image_' . ($key + 1) . '.image' => 'File must be an image',
+                'service_process_image_' . ($key + 1) . '.mimes' => 'Only SVG format is supported',
+            ];
+        }
     }
 }

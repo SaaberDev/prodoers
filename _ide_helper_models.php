@@ -12,6 +12,42 @@
 
 namespace App\Models{
 /**
+ * App\Models\BlogSection
+ *
+ * @mixin IdeHelperBlogSection
+ * @method static \Illuminate\Database\Eloquent\Builder|BlogSection newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|BlogSection newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|BlogSection query()
+ */
+	class IdeHelperBlogSection extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\BrandIdentity
+ *
+ * @mixin IdeHelperBrandIdentity
+ * @method static \Illuminate\Database\Eloquent\Builder|BrandIdentity newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|BrandIdentity newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|BrandIdentity query()
+ */
+	class IdeHelperBrandIdentity extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\CompanyPolicy
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPolicy newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPolicy newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPolicy query()
+ * @mixin \Eloquent
+ */
+	class IdeHelperCompanyPolicy extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Coupon
  *
  * @mixin IdeHelperCoupon
@@ -34,6 +70,30 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereUpdatedAt($value)
  */
 	class IdeHelperCoupon extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\FooterContent
+ *
+ * @mixin IdeHelperFooterContent
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterContent newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterContent newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterContent query()
+ */
+	class IdeHelperFooterContent extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\HowDesignwalaWork
+ *
+ * @mixin IdeHelperHowDesignwalaWork
+ * @method static \Illuminate\Database\Eloquent\Builder|HowDesignwalaWork newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|HowDesignwalaWork newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|HowDesignwalaWork query()
+ */
+	class IdeHelperHowDesignwalaWork extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -239,6 +299,18 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\ServiceProcess
+ *
+ * @mixin IdeHelperServiceProcess
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceProcess newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceProcess newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceProcess query()
+ */
+	class IdeHelperServiceProcess extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\ServiceTag
  *
  * @mixin IdeHelperServiceTag
@@ -275,6 +347,30 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\SocialLink
+ *
+ * @property int $id
+ * @property string $social_icon
+ * @property string $social_title
+ * @property string $social_url
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialLink newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialLink newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialLink query()
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialLink whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialLink whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialLink whereSocialIcon($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialLink whereSocialTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialLink whereSocialUrl($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialLink whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
+	class IdeHelperSocialLink extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\SocialLinks
  *
  * @mixin IdeHelperSocialLinks
@@ -296,6 +392,18 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks whereUpdatedAt($value)
  */
 	class IdeHelperSocialLinks extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\StatisticsSection
+ *
+ * @mixin IdeHelperStatisticsSection
+ * @method static \Illuminate\Database\Eloquent\Builder|StatisticsSection newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|StatisticsSection newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|StatisticsSection query()
+ */
+	class IdeHelperStatisticsSection extends \Eloquent {}
 }
 
 namespace App\Models{

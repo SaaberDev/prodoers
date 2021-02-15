@@ -41,7 +41,7 @@
 
     function getKey($key)
     {
-        $site_cms = SiteCMS::where('key', '=', $key)->firstOrFail(['value']);
+        $site_cms = SiteCMS::where('key', '=', $key)->firstOrFail('value');
         if (!$site_cms){
             return null;
         }

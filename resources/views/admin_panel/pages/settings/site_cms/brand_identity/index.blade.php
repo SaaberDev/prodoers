@@ -36,10 +36,10 @@
                                     <label for="">
                                         <h5>Headline</h5></label>
                                     <div class="input-group">
-                                        <input class="form-control {{ $errors->has('brand_headline') ? ' is-invalid' : '' }}" value="{{ getKey('brand_headline') }}" name="brand_headline" type="text" placeholder="">
-                                        @if($errors->has('brand_headline'))
+                                        <input class="form-control {{ $errors->has('headline') ? ' is-invalid' : '' }}" value="{{ $brand_identities->headline }}" name="headline" type="text" placeholder="">
+                                        @if($errors->has('headline'))
                                             <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('brand_headline') }}</strong>
+                                        <strong>{{ $errors->first('headline') }}</strong>
                                     </span>
                                         @endif
                                     </div>
@@ -50,10 +50,10 @@
                                     <label for="">
                                         <h5>Tagline</h5></label>
                                     <div class="input-group">
-                                        <input class="form-control {{ $errors->has('brand_tagline') ? ' is-invalid' : '' }}" value="{{ getKey('brand_tagline') }}" name="brand_tagline" type="text" placeholder="">
-                                        @if($errors->has('brand_tagline'))
+                                        <input class="form-control {{ $errors->has('tagline') ? ' is-invalid' : '' }}" value="{{ $brand_identities->tagline }}" name="tagline" type="text" placeholder="">
+                                        @if($errors->has('tagline'))
                                             <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('brand_tagline') }}</strong>
+                                        <strong>{{ $errors->first('tagline') }}</strong>
                                     </span>
                                         @endif
                                     </div>
@@ -70,8 +70,8 @@
                                     </label>
                                     <div class="input-group">
                                         <input type='text'
-                                               name="home_page_banner"
-                                               class="form-control {{ $errors->has('home_page_banner') ? ' is-invalid' : '' }}"
+                                               name="banner"
+                                               class="form-control {{ $errors->has('banner') ? ' is-invalid' : '' }}"
                                                onchange="preview(this);"
                                                placeholder="No File Chosen"
                                                readonly
@@ -81,14 +81,14 @@
                                                 <span class="fileUpload btn btnOne">
                                                     <span class="upl" id="upload">Choose</span>
                                                     <input type="file"
-                                                           name="home_page_banner"
+                                                           name="banner"
                                                            class="upload up"
                                                     />
                                                 </span>
                                         </div>
-                                        @if($errors->has('home_page_banner'))
+                                        @if($errors->has('banner'))
                                             <span class="invalid-feedback">
-                                                    <strong>{{ $errors->first('home_page_banner') }}</strong>
+                                                    <strong>{{ $errors->first('banner') }}</strong>
                                                 </span>
                                         @endif
                                     </div>
@@ -97,7 +97,7 @@
                                     <ul class="row list-unstyled previewimg">
                                         <li class="col-md-7 text-center position-relative m-auto">
                                             <div class="previewimg">
-                                                <img id="previewImg" class="img-fluid" src="{{ asset(getKey('home_page_banner') ? config('designwala_paths.show.site_cms.banner') . getKey('home_page_banner') : config('designwala_paths.default.home_page_banner')) }}" alt="Home Page Banner">
+                                                <img id="previewImg" class="img-fluid" src="{{ asset($brand_identities->banner ? config('designwala_paths.show.site_cms.banner') . $brand_identities->banner : config('designwala_paths.default.home_page_banner')) }}" alt="Home Page Banner">
                                             </div>
                                         </li>
                                     </ul>
@@ -112,8 +112,8 @@
                                     </label>
                                     <div class="input-group">
                                         <input type='text'
-                                               name="brand_logo"
-                                               class="form-control {{ $errors->has('brand_logo') ? ' is-invalid' : '' }}"
+                                               name="logo"
+                                               class="form-control {{ $errors->has('logo') ? ' is-invalid' : '' }}"
                                                onchange="preview(this);"
                                                placeholder="No File Chosen"
                                                readonly
@@ -123,14 +123,14 @@
                                                 <span class="fileUpload btn btnOne">
                                                     <span class="upl" id="upload">Choose</span>
                                                     <input type="file"
-                                                           name="brand_logo"
+                                                           name="logo"
                                                            class="upload up"
                                                     />
                                                 </span>
                                         </div>
-                                        @if($errors->has('brand_logo'))
+                                        @if($errors->has('logo'))
                                             <span class="invalid-feedback">
-                                                    <strong>{{ $errors->first('brand_logo') }}</strong>
+                                                    <strong>{{ $errors->first('logo') }}</strong>
                                                 </span>
                                         @endif
                                     </div>
@@ -139,7 +139,7 @@
                                     <ul class="row list-unstyled previewimg">
                                         <li class="col-md-7 text-center position-relative m-auto">
                                             <div class="previewimg">
-                                                <img id="previewImg" class="img-fluid" src="{{ asset(getKey('brand_logo') ? config('designwala_paths.show.site_cms.brand_logo') . getKey('brand_logo') : config('designwala_paths.default.brand_logo')) }}" alt="Brand Logo">
+                                                <img id="previewImg" class="img-fluid" src="{{ asset($brand_identities->logo ? config('designwala_paths.show.site_cms.brand_logo') . $brand_identities->logo : config('designwala_paths.default.brand_logo')) }}" alt="Brand Logo">
                                             </div>
                                         </li>
                                     </ul>
@@ -154,8 +154,8 @@
                                     </label>
                                     <div class="input-group">
                                         <input type='text'
-                                               name="browser_favicon"
-                                               class="form-control {{ $errors->has('browser_favicon') ? ' is-invalid' : '' }}"
+                                               name="favicon"
+                                               class="form-control {{ $errors->has('favicon') ? ' is-invalid' : '' }}"
                                                onchange="preview(this);"
                                                placeholder="No File Chosen"
                                                readonly
@@ -165,14 +165,14 @@
                                                 <span class="fileUpload btn btnOne">
                                                     <span class="upl" id="upload">Choose</span>
                                                     <input type="file"
-                                                           name="browser_favicon"
+                                                           name="favicon"
                                                            class="upload up"
                                                     />
                                                 </span>
                                         </div>
-                                        @if($errors->has('browser_favicon'))
+                                        @if($errors->has('favicon'))
                                             <span class="invalid-feedback">
-                                                    <strong>{{ $errors->first('browser_favicon') }}</strong>
+                                                    <strong>{{ $errors->first('favicon') }}</strong>
                                                 </span>
                                         @endif
                                     </div>
@@ -181,7 +181,7 @@
                                     <ul class="row list-unstyled previewimg">
                                         <li class="col-md-7 text-center position-relative m-auto">
                                             <div class="previewimg">
-                                                <img id="previewImg" class="img-fluid" src="{{ asset(getKey('browser_favicon') ? config('designwala_paths.show.site_cms.brand_icon') . getKey('browser_favicon') : config('designwala_paths.default.browser_favicon')) }}" alt="Browser Favicon">
+                                                <img id="previewImg" class="img-fluid" src="{{ asset($brand_identities->favicon ? config('designwala_paths.show.site_cms.brand_icon') . $brand_identities->favicon : config('designwala_paths.default.browser_favicon')) }}" alt="Browser Favicon">
                                             </div>
                                         </li>
                                     </ul>

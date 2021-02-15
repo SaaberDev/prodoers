@@ -10,6 +10,8 @@ use App\Http\Requests\Admin\Settings\SiteCms\HowDesignwalaWorksRequest;
 use App\Http\Requests\Admin\Settings\SiteCms\PolicyRequest;
 use App\Http\Requests\Admin\Settings\SiteCms\ServiceProcessRequest;
 use App\Http\Requests\Admin\Settings\SiteCms\SocialLinkRequest;
+use App\Models\BrandIdentity;
+use App\Models\ServiceProcess;
 use App\Models\SiteCms;
 use App\Models\SocialLinks;
 use Illuminate\Http\Request;
@@ -21,38 +23,22 @@ class SiteCmsController extends Controller
      */
     public function index_brand_identity()
     {
-        return view('admin_panel.pages.settings.site_cms.brand_identity.index');
+        $brand_identities = BrandIdentity::findOrFail(1, ['headline', 'tagline', 'banner', 'logo', 'favicon']);
+        return view('admin_panel.pages.settings.site_cms.brand_identity.index', compact('brand_identities'));
     }
 
     public function update_brand_identity(BrandIdentityRequest $request)
     {
 //        dd($request->all());
-        \DB::transaction(function () use ($request){
-            // Brand Headline
-            SiteCms::whereSiteKey('brand_headline')
-                ->firstOrFail()->update([
-                    'value' => $request->input('brand_headline'),
-                ]);
-            // Brand Tagline
-            SiteCms::whereSiteKey('brand_tagline')
-                ->firstOrFail()->update([
-                    'value' => $request->input('brand_tagline'),
-                ]);
-            // Home Page Banner
-            SiteCms::whereSiteKey('home_page_banner')
-                ->firstOrFail()->update([
-                    'value' => updateSVG($request, 'home-page-banner', getKey('home_page_banner'), 'home_page_banner', 'brand-identity', config('designwala_paths.store.site_cms.banner')),
-                ]);
-            // Brand Logo
-            SiteCms::whereSiteKey('brand_logo')
-                ->firstOrFail()->update([
-                    'value' => updateSVG($request, 'brand-logo', getKey('brand_logo'), 'brand_logo', 'brand-identity', config('designwala_paths.store.site_cms.brand_logo')),
-                ]);
-            // Browser Favicon
-            SiteCms::whereSiteKey('browser_favicon')
-                ->firstOrFail()->update([
-                    'value' => updateSVG($request, 'browser-favicon', getKey('browser_favicon'), 'browser_favicon', 'brand-identity', config('designwala_paths.store.site_cms.brand_icon')),
-                ]);
+        $brand_identities = BrandIdentity::findOrFail(1);
+        \DB::transaction(function () use ($request, $brand_identities){
+            $brand_identities->update([
+                'headline' => $request->input('headline'),
+                'tagline' => $request->input('tagline'),
+                'banner' => updateSVG($request, 'home-page-banner', $brand_identities->banner, 'banner', 'brand-identity', config('designwala_paths.store.site_cms.banner')),
+                'logo' => updateSVG($request, 'brand-logo', $brand_identities->logo, 'logo', 'brand-identity', config('designwala_paths.store.site_cms.brand_logo')),
+                'favicon' => updateSVG($request, 'browser-favicon', $brand_identities->favicon, 'favicon', 'brand-identity', config('designwala_paths.store.site_cms.brand_icon')),
+            ]);
         });
         \Cache::flush();
         return redirect()->back();
@@ -63,40 +49,69 @@ class SiteCmsController extends Controller
      */
     public function index_service_process()
     {
-        return view('admin_panel.pages.settings.site_cms.service_process.index');
+        $service_processes = ServiceProcess::get(['id', 'title', 'image']);
+        return view('admin_panel.pages.settings.site_cms.service_process.index', compact('service_processes'));
     }
 
     public function update_service_process(ServiceProcessRequest $request)
     {
         \DB::transaction(function () use ($request){
+        foreach (range(1, 6) as $key => $service_process) {
+            $title = $request->input('service_process_title_' . ($key + 1));
+//            dd($title);
+            ServiceProcess::where('id', '=', $key + 1)
+                ->update([
+                    'title' => $title,
+                ]);
+        }
+
+//                $files = $request->file('service_process_image_');
+//                if ($request->hasFile('service_process_image_')) {
+//                    foreach ($files as $iKey => $file){
+//                        $extension = $file->getClientOriginalExtension();
+//                        $fileFormat = strtoupper('service-process-' . ($iKey + 1)) . '.' . $extension;
+//                        $fileNameToStore = str_replace(' ', '-', $fileFormat);
+//                        $svg = file_get_contents($file);
+/*                        $svg = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' . $svg;*/
+//
+//                        // Store in Storage Filesystem
+//                        \Storage::put(config('designwala_paths.store.site_cms.service_process') . $fileNameToStore, $svg);
+//
+//                        $service_process->update([
+//                            'image' => $fileNameToStore,
+//                        ]);
+//                    }
+//                }
+
+
             // Service Process Title
-            $service_process_title = $request->input('service_process_title_');
-            foreach($service_process_title as $iKey => $title) {
-                SiteCms::whereSiteKey('service_process_title_' . ($iKey + 1))
-                    ->firstOrFail()->update([
-                        'value' => $title,
-                    ]);
-            }
+//            $service_process_title = $request->input('service_process_title_');
+//            foreach($service_process_title as $iKey => $title) {
+//                ServiceProcess::where('id', '=', $service_processes->id)
+//                    ->firstOrFail()->update([
+//                        'value' => $title,
+//                    ]);
+//            }
 
             // Service Process Multiple Image Update
-            $files = $request->file('service_process_image_');
-            if ($request->hasFile('service_process_image_')) {
-                foreach ($files as $iKey => $file){
-                    $extension = $file->getClientOriginalExtension();
-                    $fileFormat = strtoupper('service-process-' . ($iKey + 1)) . '.' . $extension;
-                    $fileNameToStore = str_replace(' ', '-', $fileFormat);
-                    $svg = file_get_contents($file);
-                    $svg = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' . $svg;
-
-                    // Store in Storage Filesystem
-                    \Storage::put(config('designwala_paths.store.site_cms.service_process') . $fileNameToStore, $svg);
-
-                    SiteCms::whereSiteKey('service_process_image_'  . ($iKey + 1))
-                        ->firstOrFail()->update([
-                            'value' => $fileNameToStore,
-                        ]);
-                }
-            }
+//            $files = $request->file('service_process_image_');
+//            if ($request->hasFile('service_process_image_')) {
+//                foreach ($files as $iKey => $file){
+//                    $extension = $file->getClientOriginalExtension();
+//                    $fileFormat = strtoupper('service-process-' . ($iKey + 1)) . '.' . $extension;
+//                    $fileNameToStore = str_replace(' ', '-', $fileFormat);
+//                    $svg = file_get_contents($file);
+/*                    $svg = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' . $svg;*/
+//
+//                    // Store in Storage Filesystem
+//                    \Storage::put(config('designwala_paths.store.site_cms.service_process') . $fileNameToStore, $svg);
+//
+//                    ServiceProcess::where('id', '=', $service_processes->id)
+//                        ->firstOrFail()->update([
+//                            'value' => $fileNameToStore,
+//                        ]);
+//                }
+//            }
         });
         \Cache::flush();
         return redirect()->back();
