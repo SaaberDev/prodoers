@@ -1,5 +1,5 @@
 @extends('admin_panel.layouts.app')
-@section('title', 'Brand Identity')
+@section('title', 'Services Process')
 
 @push('styles')
     {{-- Internal Styles --}}
@@ -25,31 +25,30 @@
         </div>
 
         <div class="mt-4">
-            <form action="{{ route('settings.site_cms.service_process.update') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('settings.site_cms.service_process.update') }}" method="POST" enctype="multipart/form-data" autocomplete="off">
                 @csrf @method('PATCH')
                 <div class="row m-0 justify-content-center py-3 bg-white rounded">
                     <div class="col-md-10">
                         <div class="row">
                             {{-- Service Process 1 --}}
-                            @foreach($service_processes as $key => $service_process)
+                            @foreach($service_processes as $service_process)
                             <div class="col-md-4 mt-4">
                                 {{-- Service Process Title 1 --}}
                                 <div class="form-group">
                                     <label for="">
                                         <h5>Service Process {{ $loop->iteration }}</h5></label>
                                     <div class="input-group">
-                                        <input name="service_process_id_[]" value="{{ $service_process->id }}" hidden>
-                                        <input class="form-control {{ $errors->has('service_process_title_' . $loop->iteration) ? ' is-invalid' : '' }}" value="{{ $service_process->title }}" name="service_process_title_{{ $key + 1 }}" type="text" placeholder="">
-                                        @if($errors->has('service_process_title_' . $loop->iteration))
+                                        <input name="service_process_title_[]" class="form-control {{ $errors->has('service_process_title_.' . $loop->index) ? ' is-invalid' : '' }}" value="{{ $service_process->title ?? '' }}" type="text" placeholder="">
+                                        @if($errors->has('service_process_title_.' . $loop->index))
                                             <span class="invalid-feedback">
-                                                <strong>{{ $errors->first('service_process_title_' . $loop->iteration) }}</strong>
+                                                <strong>{{ $errors->first('service_process_title_.' . $loop->index) }}</strong>
                                             </span>
                                         @endif
                                     </div>
                                 </div>
 
                                 {{-- Service Process Image 1 --}}
-                                {{--<div class="form-group mt-4 mb-0">
+                                <div class="form-group mt-4 mb-0">
                                     <div class="form-group mt-4">
                                         <div class="input-group">
                                             <input type='text'
@@ -80,12 +79,12 @@
                                         <ul class="row list-unstyled previewimg">
                                             <li class="col-md-7 text-center position-relative m-auto">
                                                 <div class="previewimg">
-                                                    <img id="previewImg" class="img-fluid" src="{{ asset($service_process->image ? config('designwala_paths.show.site_cms.service_process') . $service_process->image : config('designwala_paths.default.service_process_' . $loop->iteration)) }}" alt="{{ $service_process->title }}">
+                                                    <img id="previewImg" class="img-fluid" src="{{ asset($service_process->image ? config('designwala_paths.show.site_cms.service_process') . $service_process->image : config('designwala_paths.default.no_preview')) }}" alt="{{ $service_process->title }}">
                                                 </div>
                                             </li>
                                         </ul>
                                     </div>
-                                </div>--}}
+                                </div>
                             </div>
                             @endforeach
                         </div>

@@ -28,32 +28,33 @@
             <form action="{{ route('settings.site_cms.brand_identity.update') }}" method="POST" enctype="multipart/form-data">
                 @csrf @method('PATCH')
                 <div class="row m-0 justify-content-center py-3 bg-white rounded">
-                    <div class="col-md-10">
+                    <div class="col-md-12">
                         <div class="row">
-                            <div class="col-md-12">
-                                {{-- Brand Headline --}}
+                            <div class="col-md-6">
+                                {{-- Company Name --}}
                                 <div class="form-group">
                                     <label for="">
-                                        <h5>Headline</h5></label>
+                                        <h5>Company Name</h5></label>
                                     <div class="input-group">
-                                        <input class="form-control {{ $errors->has('headline') ? ' is-invalid' : '' }}" value="{{ $brand_identities->headline }}" name="headline" type="text" placeholder="">
-                                        @if($errors->has('headline'))
+                                        <input class="form-control {{ $errors->has('company_name') ? ' is-invalid' : '' }}" value="{{ $brand_identities->company_name }}" name="company_name" type="text" placeholder="">
+                                        @if($errors->has('company_name'))
                                             <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('headline') }}</strong>
-                                    </span>
+                                                <strong>{{ $errors->first('company_name') }}</strong>
+                                            </span>
                                         @endif
                                     </div>
                                 </div>
-
-                                {{-- Brand Tagline --}}
-                                <div class="form-group mt-4 mb-0">
+                            </div>
+                            <div class="col-md-6">
+                                {{-- Slogan --}}
+                                <div class="form-group mb-0">
                                     <label for="">
-                                        <h5>Tagline</h5></label>
+                                        <h5>Slogan</h5></label>
                                     <div class="input-group">
-                                        <input class="form-control {{ $errors->has('tagline') ? ' is-invalid' : '' }}" value="{{ $brand_identities->tagline }}" name="tagline" type="text" placeholder="">
-                                        @if($errors->has('tagline'))
+                                        <input class="form-control {{ $errors->has('slogan') ? ' is-invalid' : '' }}" value="{{ $brand_identities->slogan }}" name="slogan" type="text" placeholder="">
+                                        @if($errors->has('slogan'))
                                             <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('tagline') }}</strong>
+                                        <strong>{{ $errors->first('slogan') }}</strong>
                                     </span>
                                         @endif
                                     </div>
@@ -62,49 +63,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-md-4">
-                                {{-- Home Page Banner --}}
-                                <div class="form-group mt-4">
-                                    <label for="">
-                                        <h5>Home Page Banner</h5>
-                                    </label>
-                                    <div class="input-group">
-                                        <input type='text'
-                                               name="banner"
-                                               class="form-control {{ $errors->has('banner') ? ' is-invalid' : '' }}"
-                                               onchange="preview(this);"
-                                               placeholder="No File Chosen"
-                                               readonly
-                                        />
-
-                                        <div class="input-group-btn">
-                                                <span class="fileUpload btn btnOne">
-                                                    <span class="upl" id="upload">Choose</span>
-                                                    <input type="file"
-                                                           name="banner"
-                                                           class="upload up"
-                                                    />
-                                                </span>
-                                        </div>
-                                        @if($errors->has('banner'))
-                                            <span class="invalid-feedback">
-                                                    <strong>{{ $errors->first('banner') }}</strong>
-                                                </span>
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="mt-4 border">
-                                    <ul class="row list-unstyled previewimg">
-                                        <li class="col-md-7 text-center position-relative m-auto">
-                                            <div class="previewimg">
-                                                <img id="previewImg" class="img-fluid" src="{{ asset($brand_identities->banner ? config('designwala_paths.show.site_cms.banner') . $brand_identities->banner : config('designwala_paths.default.home_page_banner')) }}" alt="Home Page Banner">
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 {{-- Brand Logo --}}
                                 <div class="form-group mt-4">
                                     <label for="">
@@ -139,14 +98,14 @@
                                     <ul class="row list-unstyled previewimg">
                                         <li class="col-md-7 text-center position-relative m-auto">
                                             <div class="previewimg">
-                                                <img id="previewImg" class="img-fluid" src="{{ asset($brand_identities->logo ? config('designwala_paths.show.site_cms.brand_logo') . $brand_identities->logo : config('designwala_paths.default.brand_logo')) }}" alt="Brand Logo">
+                                                <img id="previewImg" class="img-fluid" src="{{ asset($brand_identities->logo ? config('designwala_paths.show.site_cms.brand_logo') . $brand_identities->logo : config('designwala_paths.default.no_preview')) }}" alt="Brand Logo">
                                             </div>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 {{-- Browser Favicon --}}
                                 <div class="form-group mt-4">
                                     <label for="">
@@ -181,7 +140,7 @@
                                     <ul class="row list-unstyled previewimg">
                                         <li class="col-md-7 text-center position-relative m-auto">
                                             <div class="previewimg">
-                                                <img id="previewImg" class="img-fluid" src="{{ asset($brand_identities->favicon ? config('designwala_paths.show.site_cms.brand_icon') . $brand_identities->favicon : config('designwala_paths.default.browser_favicon')) }}" alt="Browser Favicon">
+                                                <img id="previewImg" class="img-fluid" src="{{ asset($brand_identities->favicon ? config('designwala_paths.show.site_cms.brand_icon') . $brand_identities->favicon : config('designwala_paths.default.no_preview')) }}" alt="Browser Favicon">
                                             </div>
                                         </li>
                                     </ul>

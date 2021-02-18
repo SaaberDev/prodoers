@@ -95,12 +95,12 @@
     | Admin Panel Routes
     |--------------------------------------------------------------------------
     */
-// Dashboard Route Section
+    // Dashboard Route Section
     Route::prefix('/dashboard')->group(function () {
         // Dashboard
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
 
-// Services Route Section
+        // Services Route Section
         Route::name('services.')->group(function () {
             // Services
             Route::prefix('/services')->name('service.')->group(function () {
@@ -222,7 +222,7 @@
             });
         });
 
-// Promotions Route Section
+        // Promotions Route Section
         Route::name('promotions.')->group(function () {
             // Email Marketing
             Route::name('email_marketing.')->group(function () {
@@ -245,7 +245,7 @@
             });
         });
 
-// Designwalas Route Section
+        // Designwalas Route Section
         Route::name('designwalas.')->group(function () {
             // Designwalas
             Route::prefix('/designwalas')->name('designwala.')->group(function () {
@@ -254,7 +254,7 @@
             });
         });
 
-// Roles & Permissions Route Section
+        // Roles & Permissions Route Section
         Route::name('roles_permissions.')->group(function () {
             // Roles
             Route::prefix('/roles')->name('role.')->group(function () {
@@ -269,7 +269,7 @@
             });
         });
 
-// Settings Route Section
+        // Settings Route Section
         Route::name('settings.')->group(function () {
             // SEO Tools
             Route::name('seo_tools.')->group(function () {
@@ -295,6 +295,11 @@
                     Route::get('/', [SiteCMSController::class, 'index_brand_identity'])->name('index');
                     Route::patch('/update-brand-identity', [SiteCMSController::class, 'update_brand_identity'])->name('update');
                 });
+                // Banners
+                Route::prefix('/banners')->name('banner.')->group(function () {
+                    Route::get('/', [SiteCMSController::class, 'index_banner'])->name('index');
+                    Route::patch('/update-banners', [SiteCMSController::class, 'update_banner'])->name('update');
+                });
                 // Service Process Section
                 Route::prefix('/service-process')->name('service_process.')->group(function () {
                     Route::get('/', [SiteCMSController::class, 'index_service_process'])->name('index');
@@ -305,19 +310,11 @@
                     Route::get('/', [SiteCMSController::class, 'index_how_designwala_works'])->name('index');
                     Route::patch('/update-how-designwala-works', [SiteCMSController::class, 'update_how_designwala_works'])->name('update');
                 });
-                // Blog Section
-                Route::prefix('/blog-section')->name('blog_section.')->group(function () {
-                    Route::get('/', [SiteCMSController::class, 'index_blog_section'])->name('index');
-                    Route::patch('/update-blog-section', [SiteCMSController::class, 'update_blog_section'])->name('update');
-                });
                 // Statistics Section
                 Route::prefix('/statistics')->name('statistics.')->group(function () {
                     Route::get('/', [SiteCMSController::class, 'index_statistics'])->name('index');
                     Route::patch('/update-statistics', [SiteCMSController::class, 'update_statistics'])->name('update');
                 });
-
-                /*<===================================================================>*/
-
                 // Footer Content
                 Route::prefix('/footer')->name('footer.')->group(function () {
                     Route::get('/', [SiteCMSController::class, 'index_footer'])->name('index');
@@ -336,6 +333,11 @@
                 Route::prefix('/policies')->name('policy.')->group(function () {
                     Route::get('/', [SiteCMSController::class, 'index_policy'])->name('index');
                     Route::patch('/update-policies', [SiteCMSController::class, 'update_policy'])->name('update');
+                });
+                // Other Contents
+                Route::prefix('/other-contents')->name('other_content.')->group(function () {
+                    Route::get('/', [SiteCMSController::class, 'index_other_content'])->name('index');
+                    Route::patch('/update-other-contents', [SiteCMSController::class, 'update_other_content'])->name('update');
                 });
             });
             // Maintenance Mode

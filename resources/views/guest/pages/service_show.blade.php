@@ -107,8 +107,8 @@
                                 <div class="cardShareIcon">
                                     <div class="float-sm">
                                         <a class="fl-fl float-fb">
-                                            <input id="copyToClipboard" value="{{ url()->current() }}" hidden>
-                                            <span class="firstIconOnShareIcon copy-clipboard" style="cursor: pointer">
+                                            <input id="copy-url" value="{{ url()->current() }}" style="display: none">
+                                            <span class="firstIconOnShareIcon" id="copy-clipboard" style="cursor: pointer">
                                                 <svg data-brackets-id="2683" xmlns="http://www.w3.org/2000/svg" width="25" height="20" viewBox="0 0 25 29">
                                                     <path data-brackets-id="2684" id="Icon_awesome-share-alt"
                                                           data-name="Icon awesome-share-alt"
@@ -127,14 +127,14 @@
                                                           transform="translate(-1.609)" fill="#3b5999"></path>
                                                 </svg>
                                             </span>
-                                            <span style="cursor: pointer" onclick="window.open('', '_blank')">
+                                            <span style="cursor: pointer" onclick="window.open('{{ $services->getShareUrl('twitter') }}', 'services', params)">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="28.764" height="20"
                                                      viewBox="0 0 28.764 23.362">
                                                     <path id="Icon_awesome-twitter" data-name="Icon awesome-twitter"
                                                           d="M25.807,9.2c.018.256.018.511.018.767,0,7.793-5.932,16.773-16.773,16.773A16.659,16.659,0,0,1,0,24.1a12.2,12.2,0,0,0,1.424.073A11.806,11.806,0,0,0,8.742,21.65,5.906,5.906,0,0,1,3.23,17.562a7.434,7.434,0,0,0,1.113.091,6.235,6.235,0,0,0,1.551-.2,5.9,5.9,0,0,1-4.727-5.786v-.073a5.937,5.937,0,0,0,2.665.748A5.9,5.9,0,0,1,2.008,4.458a16.757,16.757,0,0,0,12.155,6.169,6.655,6.655,0,0,1-.146-1.351,5.9,5.9,0,0,1,10.2-4.034,11.606,11.606,0,0,0,3.742-1.424,5.879,5.879,0,0,1-2.592,3.249,11.818,11.818,0,0,0,3.395-.913A12.672,12.672,0,0,1,25.807,9.2Z"
                                                           transform="translate(0 -3.381)" fill="#0797f8"></path>
                                                 </svg>
-                                            </span> <span style="cursor: pointer" onclick="window.open('', '_blank')">
+                                            </span> <span style="cursor: pointer" onclick="window.open('{{ $services->getShareUrl('linkedin') }}', 'services', params)">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="25.168" height="20"
                                                      viewBox="0 0 25.168 25.168">
                                                     <path id="Icon_awesome-linkedin-in"
@@ -690,36 +690,67 @@
         })
     </script>--}}
 
+    {{-- Social Sharing Parameters --}}
     <script>
         let params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,width=0,height=0,left=-1000,top=-1000`;
     </script>
 
+    {{-- Copy to Clipboard --}}
     <script>
-        $('.copy-clipboard').click(myFunction, function() {
-            Snackbar.show({
-                text: 'Copied to Clipboard',
-                pos: 'bottom-center',
-                actionTextColor: '#038c08',
-                duration: 1500
-            });
-        });
+        var copyBtn   = $("#copy-clipboard"),
+            input     = $("#copy-url");
 
-        function myFunction() {
-            /* Get the text field */
-            var copyText = document.getElementById("copyToClipboard");
-
-            /* Select the text field */
-            copyText.select();
-            copyText.setSelectionRange(0, 99999); /* For mobile devices */
-
-            /* Copy the text inside the text field */
-            document.execCommand("copy");
-
-            /* Alert the copied text */
-            alert("Copied the text: " + copyText.value);
+        function copyToClipboardFF(text) {
+            window.prompt ("Copy to clipboard: Ctrl C, Enter", text);
         }
+
+        function copyToClipboard() {
+            var success   = true,
+                range     = document.createRange(),
+                selection;
+
+            // For IE.
+            if (window.clipboardData) {
+                window.clipboardData.setData("Text", input.val());
+            } else {
+                // Create a temporary element off screen.
+                var tmpElem = $('<div>');
+                tmpElem.css({
+                    position: "absolute",
+                    left:     "-1000px",
+                    top:      "-1000px",
+                });
+                // Add the input value to the temp element.
+                tmpElem.text(input.val());
+                $("body").append(tmpElem);
+                // Select temp element.
+                range.selectNodeContents(tmpElem.get(0));
+                selection = window.getSelection ();
+                selection.removeAllRanges ();
+                selection.addRange (range);
+                // Lets copy.
+                try {
+                    success = document.execCommand ("copy", false, null);
+                }
+                catch (e) {
+                    copyToClipboardFF(input.val());
+                }
+                if (success) {
+                    Snackbar.show({
+                        text: 'Copied to Clipboard',
+                        pos: 'bottom-center',
+                        actionTextColor: '#038c08',
+                        duration: 1500
+                    });
+                    // remove temp element.
+                    tmpElem.remove();
+                }
+            }
+        }
+        copyBtn.on('click', copyToClipboard);
     </script>
 
+    {{-- Faq Accordian --}}
     <script>
         $(document).ready(function() {
             $(".faqAccordion").hide();

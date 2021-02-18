@@ -12,12 +12,34 @@
 
 namespace App\Models{
 /**
+ * App\Models\BannerSection
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|BannerSection newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|BannerSection newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|BannerSection query()
+ * @mixin \Eloquent
+ */
+	class IdeHelperBannerSection extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\BlogSection
  *
  * @mixin IdeHelperBlogSection
+ * @property int $id
+ * @property string $headline
+ * @property string $tagline
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|BlogSection newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BlogSection newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BlogSection query()
+ * @method static \Illuminate\Database\Eloquent\Builder|BlogSection whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BlogSection whereHeadline($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BlogSection whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BlogSection whereTagline($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BlogSection whereUpdatedAt($value)
  */
 	class IdeHelperBlogSection extends \Eloquent {}
 }
@@ -27,9 +49,25 @@ namespace App\Models{
  * App\Models\BrandIdentity
  *
  * @mixin IdeHelperBrandIdentity
+ * @property int $id
+ * @property string $headline
+ * @property string $tagline
+ * @property string|null $banner
+ * @property string|null $logo
+ * @property string|null $favicon
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|BrandIdentity newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BrandIdentity newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BrandIdentity query()
+ * @method static \Illuminate\Database\Eloquent\Builder|BrandIdentity whereBanner($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BrandIdentity whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BrandIdentity whereFavicon($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BrandIdentity whereHeadline($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BrandIdentity whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BrandIdentity whereLogo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BrandIdentity whereTagline($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BrandIdentity whereUpdatedAt($value)
  */
 	class IdeHelperBrandIdentity extends \Eloquent {}
 }
@@ -38,10 +76,24 @@ namespace App\Models{
 /**
  * App\Models\CompanyPolicy
  *
+ * @mixin IdeHelperCompanyPolicy
+ * @property int $id
+ * @property string $privacy
+ * @property string $cookie
+ * @property string $payment
+ * @property string $terms_and_conditions
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|CompanyPolicy newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|CompanyPolicy newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|CompanyPolicy query()
- * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPolicy whereCookie($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPolicy whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPolicy whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPolicy wherePayment($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPolicy wherePrivacy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPolicy whereTermsAndConditions($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|CompanyPolicy whereUpdatedAt($value)
  */
 	class IdeHelperCompanyPolicy extends \Eloquent {}
 }
@@ -77,9 +129,23 @@ namespace App\Models{
  * App\Models\FooterContent
  *
  * @mixin IdeHelperFooterContent
+ * @property int $id
+ * @property string $copyright_text
+ * @property string $desc
+ * @property string|null $logo
+ * @property string|null $payment_method
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|FooterContent newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|FooterContent newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|FooterContent query()
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterContent whereCopyrightText($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterContent whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterContent whereDesc($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterContent whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterContent whereLogo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterContent wherePaymentMethod($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|FooterContent whereUpdatedAt($value)
  */
 	class IdeHelperFooterContent extends \Eloquent {}
 }
@@ -89,9 +155,28 @@ namespace App\Models{
  * App\Models\HowDesignwalaWork
  *
  * @mixin IdeHelperHowDesignwalaWork
+ * @property int $id
+ * @property string|null $key
+ * @property string|null $title
+ * @property string|null $desc
+ * @property string|null $image
+ * @property string|null $video
+ * @property string|null $video_thumbnail
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|HowDesignwalaWork newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|HowDesignwalaWork newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|HowDesignwalaWork query()
+ * @method static \Illuminate\Database\Eloquent\Builder|HowDesignwalaWork whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HowDesignwalaWork whereDesc($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HowDesignwalaWork whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HowDesignwalaWork whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HowDesignwalaWork whereKey($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HowDesignwalaWork whereSiteKey($key)
+ * @method static \Illuminate\Database\Eloquent\Builder|HowDesignwalaWork whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HowDesignwalaWork whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HowDesignwalaWork whereVideo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|HowDesignwalaWork whereVideoThumbnail($value)
  */
 	class IdeHelperHowDesignwalaWork extends \Eloquent {}
 }
@@ -302,9 +387,22 @@ namespace App\Models{
  * App\Models\ServiceProcess
  *
  * @mixin IdeHelperServiceProcess
+ * @property int $id
+ * @property string|null $key
+ * @property string|null $title
+ * @property string|null $image
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceProcess newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceProcess newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceProcess query()
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceProcess whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceProcess whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceProcess whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceProcess whereKey($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceProcess whereSiteKey($key)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceProcess whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceProcess whereUpdatedAt($value)
  */
 	class IdeHelperServiceProcess extends \Eloquent {}
 }
@@ -347,30 +445,6 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * App\Models\SocialLink
- *
- * @property int $id
- * @property string $social_icon
- * @property string $social_title
- * @property string $social_url
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|SocialLink newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|SocialLink newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|SocialLink query()
- * @method static \Illuminate\Database\Eloquent\Builder|SocialLink whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|SocialLink whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|SocialLink whereSocialIcon($value)
- * @method static \Illuminate\Database\Eloquent\Builder|SocialLink whereSocialTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|SocialLink whereSocialUrl($value)
- * @method static \Illuminate\Database\Eloquent\Builder|SocialLink whereUpdatedAt($value)
- * @mixin \Eloquent
- */
-	class IdeHelperSocialLink extends \Eloquent {}
-}
-
-namespace App\Models{
-/**
  * App\Models\SocialLinks
  *
  * @mixin IdeHelperSocialLinks
@@ -399,9 +473,21 @@ namespace App\Models{
  * App\Models\StatisticsSection
  *
  * @mixin IdeHelperStatisticsSection
+ * @property int $id
+ * @property string $title
+ * @property int $amount
+ * @property string|null $image
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|StatisticsSection newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|StatisticsSection newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|StatisticsSection query()
+ * @method static \Illuminate\Database\Eloquent\Builder|StatisticsSection whereAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|StatisticsSection whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|StatisticsSection whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|StatisticsSection whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|StatisticsSection whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|StatisticsSection whereUpdatedAt($value)
  */
 	class IdeHelperStatisticsSection extends \Eloquent {}
 }

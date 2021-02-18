@@ -15,8 +15,8 @@ class CreateFooterContentsTable extends Migration
     {
         Schema::create('footer_contents', function (Blueprint $table) {
             $table->id();
-            $table->string('copyright_text');
-            $table->mediumText('desc');
+            $table->string('copyright_text')->nullable();
+            $table->mediumText('desc')->nullable();
             $table->string('logo')->nullable();
             $table->string('payment_method')->nullable();
             $table->timestamps();

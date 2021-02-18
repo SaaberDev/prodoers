@@ -13,7 +13,7 @@
                 $img = Image::make($file);
                 $img->encode('', 75);
                 $extension = $file->getClientOriginalExtension();
-                $fileFormat = strtoupper($filename . '-' . $uniqueKey) . '.' . $extension;
+                $fileFormat = strtolower($filename . '-' . $uniqueKey) . '.' . $extension;
                 $fileNameToStore = str_replace(' ', '-', $fileFormat);
 
                 // Store in Storage Filesystem
@@ -23,7 +23,7 @@
                 $getFirstLetter = substr($filename, 0, 1);
                 $alphaAvatar = GenerateAlphaAvatar($getFirstLetter);
                 $ext = 'png';
-                $fileNameToStore = strtoupper($filename . '-' . 'default') . '.' . $ext;
+                $fileNameToStore = strtolower($filename . '-' . 'default') . '.' . $ext;
 
                 Storage::put($location . $fileNameToStore, $alphaAvatar->encode('', 75));
             }
@@ -42,7 +42,7 @@
                     $img = Image::make($file);
                     $img->encode('', 75);
                     $fileExt = $file->getClientOriginalExtension();
-                    $fileFormat = strtoupper($filename . md5(time()) . '-' . $uniqueKey . $i) . '.' . $fileExt;
+                    $fileFormat = strtolower($filename . md5(time()) . '-' . $uniqueKey . $i) . '.' . $fileExt;
                     $fileNameToStore = str_replace(' ', '-', $fileFormat);
 
                     // Store in Storage Filesystem
@@ -72,7 +72,7 @@
                 $img = Image::make($file);
                 $img->encode('', 75);
                 $extension = $file->getClientOriginalExtension();
-                $fileFormat = strtoupper($filename . '-' . $uniqueKey) . '.' . $extension;
+                $fileFormat = strtolower($filename . '-' . $uniqueKey) . '.' . $extension;
                 $fileNameToStore = str_replace(' ', '-', $fileFormat);
 
                 // Store in Storage Filesystem
@@ -95,7 +95,7 @@
                     $img = Image::make($file);
                     $img->encode('', 75);
                     $fileExt = $file->getClientOriginalExtension();
-                    $fileFormat = strtoupper($filename . md5(time()) . '-' . $uniqueKey . $i) . '.' . $fileExt;
+                    $fileFormat = strtolower($filename . md5(time()) . '-' . $uniqueKey . $i) . '.' . $fileExt;
                     $fileNameToStore = str_replace(' ', '-', $fileFormat);
 
                     // Store in Storage Filesystem
@@ -128,7 +128,7 @@
             $file = $request->file($inputName);
 
             $extension = $file->getClientOriginalExtension();
-            $fileFormat = strtoupper($filename . '-' . $uniqueKey) . '.' . $extension;
+            $fileFormat = strtolower($filename . '-' . $uniqueKey) . '.' . $extension;
             $fileNameToStore = str_replace(' ', '-', $fileFormat);
 
             $svg = file_get_contents($file);
@@ -141,7 +141,7 @@
             $getFirstLetter = substr($filename, 0, 1);
             $alphaAvatar = GenerateAlphaAvatar($getFirstLetter);
             $ext = 'png';
-            $fileNameToStore = strtoupper($filename . '-' . 'default') . '.' . $ext;
+            $fileNameToStore = strtolower($filename . '-' . 'default') . '.' . $ext;
 
             Storage::put($location . $fileNameToStore, $alphaAvatar->encode('', 75));
         }
@@ -159,23 +159,66 @@
 
             //Get file from client side
             $file = $request->file($inputName);
-//            dd($file);
 
             $extension = $file->getClientOriginalExtension();
-            $fileFormat = strtoupper($filename . '-' . $uniqueKey) . '.' . $extension;
+            $fileFormat = strtolower($filename . '-' . $uniqueKey) . '.' . $extension;
             $fileNameToStore = str_replace(' ', '-', $fileFormat);
 
-//            $img = new Imagick();
             $svg = file_get_contents($file);
             $svg = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' . $svg;
-//            $preg_match = preg_replace('/\r\n/', '', $svg) && preg_replace('/\t/', '', $svg);
-//            $img->readImageBlob($svg);
-//            $img->setCompressionQuality(100);
-//            echo $svg;
-//            dd($svg);
 
             // Store in Storage Filesystem
             Storage::put($location . $fileNameToStore, $svg);
+            return $fileNameToStore;
+        }
+        return $fileNameToStore;
+    }
+
+    function updateVideo($request, $filename, $dbFilename, $inputName = '', $uniqueKey = '', $location = '')
+    {
+        $fileNameToStore = $dbFilename;
+        if ($request->hasFile($inputName)) {
+            // delete old image first
+            if (Storage::exists($location . $dbFilename)) {
+                Storage::delete($location . $dbFilename);
+            }
+
+            //Get file from client side
+            $file = $request->file($inputName);
+            $extension = $file->getClientOriginalExtension();
+            $fileFormat = strtolower($filename . '-' . $uniqueKey) . '.' . $extension;
+            $fileNameToStore = str_replace(' ', '-', $fileFormat);
+            $file_contents = file_get_contents($file);
+
+            // Store in Storage Filesystem
+            Storage::put($location . $fileNameToStore, $file_contents);
+            return $fileNameToStore;
+        }
+        return $fileNameToStore;
+    }
+
+    function multiUpdateSVG($request, $filename, $dbFilename, $inputName = '', $uniqueKey = '', $location = '')
+    {
+        $fileNameToStore = $dbFilename;
+        if ($request->hasFile($inputName)) {
+            // delete old image first
+            if (Storage::exists($location . $dbFilename)) {
+                Storage::delete($location . $dbFilename);
+            }
+
+            //Get file from client side
+            $files = $request->file($inputName);
+            foreach ($files as $key => $file) {
+                $extension = $file->getClientOriginalExtension();
+                $fileFormat = strtolower($filename . '-' . $uniqueKey) . '.' . $extension;
+                $fileNameToStore = str_replace(' ', '-', $fileFormat);
+                $svg = file_get_contents($file);
+                $svg = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' . $svg;
+
+                // Store in Storage Filesystem
+                Storage::put(config('designwala_paths.store.site_cms.how_designwala_works') . $fileNameToStore, $svg);
+            }
+            return $fileNameToStore;
         }
         return $fileNameToStore;
     }

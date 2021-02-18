@@ -15,8 +15,9 @@ class CreateStatisticsSectionsTable extends Migration
     {
         Schema::create('statistics_sections', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->mediumInteger('amount');
+            $table->string('key')->index();
+            $table->string('title')->nullable();
+            $table->mediumInteger('amount')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
         });

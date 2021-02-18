@@ -24,9 +24,8 @@ class BrandIdentityRequest extends FormRequest
     public function rules()
     {
         return [
-            'headline' => 'required',
-            'tagline' => 'required',
-            'banner' => 'nullable|image|mimes:svg',
+            'company_name' => '',
+            'slogan' => '',
             'logo' => 'nullable|image|mimes:svg',
             'favicon' => 'nullable|image|mimes:svg',
         ];
@@ -35,12 +34,12 @@ class BrandIdentityRequest extends FormRequest
     public function messages()
     {
         return [
-            'headline.required' => 'Brand headline is required',
-            'tagline.required' => 'Brand tagline is required',
-            'banner.image' => 'File must be an image',
-            'banner.mimes' => 'Only SVG format is supported',
+//            'company_name.required' => 'Brand headline is required',
+//            'slogan.required' => 'Brand tagline is required',
+
             'logo.image' => 'File must be an image',
             'logo.mimes' => 'Only SVG format is supported',
+
             'favicon.image' => 'File must be an image',
             'favicon.mimes' => 'Only SVG format is supported',
         ];

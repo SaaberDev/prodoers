@@ -4,26 +4,6 @@
             'value' => 'Hello'
         ],
         'default' => [
-            // Logo
-            'brand_logo' => '_default/brand-logo/brand-logo.svg',
-            'browser_favicon' => '_default/brand-icon/browser-favicon.png',
-            // Banner
-            'home_page_banner' => '_default/banner/home-page-banner.svg',
-            // Service Process
-            'service_process_1' => '_default/service-process/service-process-1.svg',
-            'service_process_2' => '_default/service-process/service-process-2.svg',
-            'service_process_3' => '_default/service-process/service-process-3.svg',
-            'service_process_4' => '_default/service-process/service-process-4.svg',
-            'service_process_5' => '_default/service-process/service-process-5.svg',
-            'service_process_6' => '_default/service-process/service-process-6.svg',
-            // How designwala works
-            'how_designwala_works_1' => '_default/how-designwala-works/step-1.svg',
-            'how_designwala_works_2' => '_default/how-designwala-works/step-2.svg',
-            'how_designwala_works_3' => '_default/how-designwala-works/step-3.svg',
-            'how_designwala_works_video' => '_default/how-designwala-works/video/demo.mp4',
-            'how_designwala_works_video_thumbnail' => '_default/how-designwala-works/video/demo-thumbnail.svg',
-            // Payment Method
-            'payment_method' => '_default/payment-method/payment-method.svg',
             // No Preview
             'no_preview' => '_default/no-preview-available.png'
         ],

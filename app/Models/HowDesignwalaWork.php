@@ -13,4 +13,9 @@ class HowDesignwalaWork extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function scopeWhereSiteKey($query, $key)
+    {
+        return $query->where('key', 'like', '%'. $key . '%');
+    }
 }

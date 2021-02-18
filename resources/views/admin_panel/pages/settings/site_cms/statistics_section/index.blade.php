@@ -25,7 +25,7 @@
         </div>
 
         <div class="mt-4">
-            <form action="{{ route('settings.site_cms.service_process.update') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('settings.site_cms.statistics.update') }}" method="POST" enctype="multipart/form-data" autocomplete="off">
                 @csrf @method('PATCH')
                 <div class="row m-0 justify-content-center py-3 bg-white rounded">
                     <div class="col-md-10">
@@ -38,7 +38,7 @@
                                         <label for="">
                                             <h5>Statistic {{ $loop->iteration }}</h5></label>
                                         <div class="input-group">
-                                            <input class="form-control {{ $errors->has('service_process_title_.' . $loop->index) ? ' is-invalid' : '' }}" value="{{ getKey('service_process_title_' . $loop->iteration) }}" name="service_process_title_[]" type="text" placeholder="">
+                                            <input class="form-control {{ $errors->has('service_process_title_.' . $loop->index) ? ' is-invalid' : '' }}" value="{{--{{ getKey('service_process_title_' . $loop->iteration) }}--}}" name="service_process_title_[]" type="text" placeholder="">
                                             @if($errors->has('service_process_title_.' . $loop->index))
                                                 <span class="invalid-feedback">
                                                 <strong>{{ $errors->first('service_process_title_.' . $loop->index) }}</strong>
@@ -79,7 +79,7 @@
                                             <ul class="row list-unstyled previewimg">
                                                 <li class="col-md-7 text-center position-relative m-auto">
                                                     <div class="previewimg">
-                                                        <img id="previewImg" class="img-fluid" src="{{ asset(getKey('service_process_image_' . $loop->iteration) ? config('designwala_paths.show.site_cms.service_process') . getKey('service_process_image_' . $loop->iteration) : config('designwala_paths.default.service_process_' . $loop->iteration)) }}" alt="service process image {{ $loop->iteration }}">
+                                                        <img id="previewImg" class="img-fluid" src="{{--{{ asset(getKey('service_process_image_' . $loop->iteration) ? config('designwala_paths.show.site_cms.service_process') . getKey('service_process_image_' . $loop->iteration) : config('designwala_paths.default.service_process_' . $loop->iteration)) }}--}}" alt="service process image {{ $loop->iteration }}">
                                                     </div>
                                                 </li>
                                             </ul>

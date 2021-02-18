@@ -2,18 +2,18 @@
     <div class="container">
         <div class="row">
             <div class="">
-                <img src="{{ asset(getKey('footer_logo') ? config('designwala_paths.show.site_cms.brand_logo') . getKey('footer_logo') : config('designwala_paths.default.brand_logo')) }}" class="img-fluid" alt="Designwala Logo">
+                <img src="{{--{{ asset(getKey('footer_logo') ? config('designwala_paths.show.site_cms.brand_logo') . getKey('footer_logo') : config('designwala_paths.default.brand_logo')) }}--}}" class="img-fluid" alt="Designwala Logo">
             </div>
         </div>
         <div class="row">
             <div class="col-xl-4 col-lg-6 col-md-6">
                 <div class="footerText pt-4">
-                    <p class="">{{ getKey('footer_desc') }}</p>
+                    <p class="">{{--{{ getKey('footer_desc') }}--}}</p>
                 </div>
                 <div class="">
                     <p class="text-white">Payment Method</p>
                     <div class="">
-                        <img src="{{ asset(getKey('footer_payment_method') ? config('designwala_paths.admin.images.show.footer.payment_method') . getKey('footer_payment_method') : config('designwala_paths.default.payment_method')) }}" alt="Payment Methods" class="img-fluid w-75">
+                        <img src="{{--{{ asset(getKey('footer_payment_method') ? config('designwala_paths.admin.images.show.footer.payment_method') . getKey('footer_payment_method') : config('designwala_paths.default.payment_method')) }}--}}" alt="Payment Methods" class="img-fluid w-75">
                     </div>
                 </div>
             </div>

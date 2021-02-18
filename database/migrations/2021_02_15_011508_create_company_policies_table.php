@@ -15,10 +15,10 @@ class CreateCompanyPoliciesTable extends Migration
     {
         Schema::create('company_policies', function (Blueprint $table) {
             $table->id();
-            $table->mediumText('privacy');
-            $table->mediumText('cookie');
-            $table->mediumText('payment');
-            $table->mediumText('terms_and_conditions');
+            $table->mediumText('privacy')->nullable();
+            $table->mediumText('cookie')->nullable();
+            $table->mediumText('payment')->nullable();
+            $table->mediumText('terms_and_conditions')->nullable();
             $table->timestamps();
         });
     }

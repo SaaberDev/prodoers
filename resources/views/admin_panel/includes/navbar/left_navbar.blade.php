@@ -922,14 +922,21 @@
                             <div class="collapse nestedSubmenu {{ Route::is('settings.site_cms.*') ? 'show' : '' }}"
                                 id="settingNavFooter">
                                 <ul class="list-unstyled font-weight-normal pb-1 small">
-
-
                                     {{-- Brand Identity --}}
                                     <li class="nav-item sub-item">
                                         <a href="{{ route('settings.site_cms.brand_identity.index') }}"
                                            class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('settings.site_cms.brand_identity.*') ? 'sub-active' : '' }}">
                                             <span class="pl-4"><svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9"><g fill="none" stroke="#2d2d2d" stroke-width="1"><circle cx="4.5" cy="4.5" r="4.5" stroke="none"/><circle cx="4.5" cy="4.5" r="4" fill="none"/></g></svg></span>
                                             <span class="pl-3">Brand Identity</span>
+                                        </a>
+                                    </li>
+
+                                    {{-- Banners --}}
+                                    <li class="nav-item sub-item">
+                                        <a href="{{ route('settings.site_cms.banner.index') }}"
+                                           class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('settings.site_cms.banner.*') ? 'sub-active' : '' }}">
+                                            <span class="pl-4"><svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9"><g fill="none" stroke="#2d2d2d" stroke-width="1"><circle cx="4.5" cy="4.5" r="4.5" stroke="none"/><circle cx="4.5" cy="4.5" r="4" fill="none"/></g></svg></span>
+                                            <span class="pl-3">Banners</span>
                                         </a>
                                     </li>
 
@@ -951,15 +958,6 @@
                                         </a>
                                     </li>
 
-                                    {{-- Blog Section --}}
-                                    <li class="nav-item sub-item">
-                                        <a href="{{ route('settings.site_cms.blog_section.index') }}"
-                                           class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('settings.site_cms.blog_section.*') ? 'sub-active' : '' }}">
-                                            <span class="pl-4"><svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9"><g fill="none" stroke="#2d2d2d" stroke-width="1"><circle cx="4.5" cy="4.5" r="4.5" stroke="none"/><circle cx="4.5" cy="4.5" r="4" fill="none"/></g></svg></span>
-                                            <span class="pl-3">Blog Section</span>
-                                        </a>
-                                    </li>
-
                                     {{-- Statistics Section --}}
                                     <li class="nav-item sub-item">
                                         <a href="{{ route('settings.site_cms.statistics.index') }}"
@@ -968,8 +966,6 @@
                                             <span class="pl-3">Statistics Section</span>
                                         </a>
                                     </li>
-
-
 
                                     {{-- Footer Content --}}
                                     <li class="nav-item sub-item">
@@ -995,6 +991,15 @@
                                            class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('settings.site_cms.policy.*') ? 'sub-active' : '' }}">
                                             <span class="pl-4"><svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9"><g fill="none" stroke="#2d2d2d" stroke-width="1"><circle cx="4.5" cy="4.5" r="4.5" stroke="none"/><circle cx="4.5" cy="4.5" r="4" fill="none"/></g></svg></span>
                                             <span class="pl-3">Policies</span>
+                                        </a>
+                                    </li>
+
+                                    {{-- Other Contents --}}
+                                    <li class="nav-item sub-item">
+                                        <a href="{{ route('settings.site_cms.other_content.index') }}"
+                                           class="nav-link d-inline-flex align-items-center sub-menu-link {{ Route::is('settings.site_cms.other_content.*') ? 'sub-active' : '' }}">
+                                            <span class="pl-4"><svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9"><g fill="none" stroke="#2d2d2d" stroke-width="1"><circle cx="4.5" cy="4.5" r="4.5" stroke="none"/><circle cx="4.5" cy="4.5" r="4" fill="none"/></g></svg></span>
+                                            <span class="pl-3">Other Contents</span>
                                         </a>
                                     </li>
 

@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @mixin IdeHelperServiceProcess
+ * @mixin IdeHelperBannerSection
  */
-class ServiceProcess extends Model
+class BannerSection extends Model
 {
     use HasFactory;
 

@@ -15,6 +15,7 @@ class CreateHowDesignwalaWorksTable extends Migration
     {
         Schema::create('how_designwala_works', function (Blueprint $table) {
             $table->id();
+            $table->string('key')->index();
             $table->string('title')->nullable();
             $table->mediumText('desc')->nullable();
             $table->string('image')->nullable();

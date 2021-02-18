@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\BannerSection;
 use App\Models\BlogSection;
 use App\Models\BrandIdentity;
 use App\Models\CompanyPolicy;
@@ -15,57 +16,13 @@ use Illuminate\Database\Seeder;
 
 class SiteCMSSeeder extends Seeder
 {
-    /******************************
-     * ::::::::::: Keys :::::::::::
-     * :::::: Brand Identity ::::::
-     * brand_headline
-     * brand_tagline
-     * home_page_banner
-     * brand_logo
-     * browser_favicon
-     *
-     * ::: Service Process :::
-     * service_process_title_1 | service_process_title_2 | service_process_title_3
-     * service_process_title_4 | service_process_title_5 | service_process_title_6
-     * service_process_image_1 | service_process_image_2 | service_process_image_3
-     * service_process_image_4 | service_process_image_5 | service_process_image_6
-     *
-     * ::: How designwala works :::
-     * designwala_title_1 | designwala_title_2 | designwala_title_3
-     * designwala_desc_1 | designwala_desc_2 | designwala_desc_3
-     * designwala_image_1 | designwala_image_2 | designwala_image_3
-     * designwala_video
-     *
-     * :::::: Blog Section ::::::::
-     * blog_headline
-     * blog_tagline
-     *
-     * :::::: Statistics ::::::::::
-     * total_services
-     * total_orders
-     * total_designwalas
-     * total_customers
-     *
-     * :::::::::: Footer ::::::::::
-     * footer_payment_method
-     * footer_logo
-     * footer_copyright
-     * footer_desc
-     *
-     * ::::::::: Policies :::::::::
-     * policy_privacy
-     * policy_cookie
-     * policy_payment
-     * policy_terms_and_conditions
-     ******************************/
     public function run()
     {
         $longText = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).";
         $brand_identities = [
             [
-                'headline' => 'Search Your Desired Services',
-                'tagline' => 'Stop wasting time on hassling, let professionals do your job',
-                'banner' => null,
+                'company_name' => 'Search Your Desired Services',
+                'slogan' => 'Stop wasting time on hassling, let professionals do your job',
                 'logo' => null,
                 'favicon' => null,
                 'created_at' => Carbon::now(),
@@ -76,38 +33,74 @@ class SiteCMSSeeder extends Seeder
             BrandIdentity::create($brand_identity);
         }
 
+        $home_banners = [
+            [
+                'key' => 'banner_home_page',
+                'headline' => 'Search Your Desired Services',
+                'tagline' => 'Stop wasting time on hassling, let professionals do your job',
+                'banner' => null,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'key' => 'banner_not_found_page',
+                'headline' => 'Okay',
+                'tagline' => 'Stop wasting time on hassling, let professionals do your job',
+                'banner' => null,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'key' => 'banner_maintenance_page',
+                'headline' => 'Noooo',
+                'tagline' => 'Stop wasting time on hassling, let professionals do your job',
+                'banner' => null,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+        ];
+        foreach ($home_banners as $home_banner) {
+            BannerSection::create($home_banner);
+        }
+
         $service_processes = [
             [
+                'key' => 'service_process_1',
                 'title' => 'Cheap and Reliable',
                 'image' => null,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
+                'key' => 'service_process_2',
                 'title' => '100% Quality Concerned',
                 'image' => null,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
+                'key' => 'service_process_3',
                 'title' => 'Excellent Collaboration with Client',
                 'image' => null,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
+                'key' => 'service_process_4',
                 'title' => 'Ensure 100% Client Satisfaction',
                 'image' => null,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
+                'key' => 'service_process_5',
                 'title' => '24/7 Live Support',
                 'image' => null,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
+                'key' => 'service_process_6',
                 'title' => 'Quick Delivery',
                 'image' => null,
                 'created_at' => Carbon::now(),
@@ -120,36 +113,31 @@ class SiteCMSSeeder extends Seeder
 
         $how_designwala_works = [
             [
+                'key' => 'step_1',
                 'title' => 'Pick a Service',
                 'desc' => 'Choose a service & Prepare your requirements',
                 'image' => null,
-                'video' => null,
-                'video_thumbnail' => null,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
+                'key' => 'step_2',
                 'title' => 'Place Order',
                 'desc' => 'Make Payment & Place Order',
                 'image' => null,
-                'video' => null,
-                'video_thumbnail' => null,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
+                'key' => 'step_3',
                 'title' => 'Get Delivery',
                 'desc' => 'Get Delivery Within the 3 Working days',
                 'image' => null,
-                'video' => null,
-                'video_thumbnail' => null,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ],
             [
-                'title' => null,
-                'desc' => null,
-                'image' => null,
+                'key' => 'dw_video',
                 'video' => null,
                 'video_thumbnail' => null,
                 'created_at' => Carbon::now(),
@@ -160,33 +148,27 @@ class SiteCMSSeeder extends Seeder
             HowDesignwalaWork::create($how_designwala_work);
         }
 
-        $blog_contents = [
-            [
-                'headline' => 'Latest News',
-                'tagline' => 'blog_tagline',
-            ]
-        ];
-        foreach ($blog_contents as $blog_content) {
-            BlogSection::create($blog_content);
-        }
-
         $statistics = [
             [
+                'key' => 'stat_1',
                 'title' => 'Total Services',
                 'amount' => 150,
                 'image' => null,
             ],
             [
+                'key' => 'stat_2',
                 'title' => 'Total Orders',
                 'amount' => 2600,
                 'image' => null,
             ],
             [
+                'key' => 'stat_3',
                 'title' => 'Total Designwalas',
                 'amount' => 200,
                 'image' => null,
             ],
             [
+                'key' => 'stat_4',
                 'title' => 'Total Customers',
                 'amount' => 150,
                 'image' => null,

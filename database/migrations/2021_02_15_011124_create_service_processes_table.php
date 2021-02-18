@@ -15,7 +15,8 @@ class CreateServiceProcessesTable extends Migration
     {
         Schema::create('service_processes', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('key')->index();
+            $table->string('title')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
         });

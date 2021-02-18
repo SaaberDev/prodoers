@@ -15,9 +15,8 @@ class CreateBrandIdentitiesTable extends Migration
     {
         Schema::create('brand_identities', function (Blueprint $table) {
             $table->id();
-            $table->string('headline');
-            $table->string('tagline');
-            $table->string('banner')->nullable();
+            $table->string('company_name')->nullable();
+            $table->string('slogan')->nullable();
             $table->string('logo')->nullable();
             $table->string('favicon')->nullable();
             $table->timestamps();
