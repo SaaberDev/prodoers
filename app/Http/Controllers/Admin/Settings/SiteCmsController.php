@@ -11,6 +11,7 @@ use App\Http\Requests\Admin\Settings\SiteCms\HowDesignwalaWorksRequest;
 use App\Http\Requests\Admin\Settings\SiteCms\PolicyRequest;
 use App\Http\Requests\Admin\Settings\SiteCms\ServiceProcessRequest;
 use App\Http\Requests\Admin\Settings\SiteCms\SocialLinkRequest;
+use App\Http\Requests\Admin\Settings\SiteCms\StatisticRequest;
 use App\Models\BannerSection;
 use App\Models\BlogSection;
 use App\Models\BrandIdentity;
@@ -218,13 +219,52 @@ class SiteCmsController extends Controller
      */
     public function index_statistics()
     {
-//        $statistics = StatisticsSection::
-        return view('admin_panel.pages.settings.site_cms.statistics_section.index');
+        $statistics = StatisticsSection::whereSiteKey('stat_')->get();
+        return view('admin_panel.pages.settings.site_cms.statistics_section.index', compact('statistics'));
     }
 
-    public function update_statistics(Request $request, $id)
+    public function update_statistics(StatisticRequest $request)
     {
-        //
+        \DB::transaction(function() use ($request){
+            // Statistics Headline Update
+            $titleInput = $request->input('title');
+            foreach($titleInput as $key => $title) {
+                StatisticsSection::findOrFail($key+1)->update([
+                    'title' => $title,
+                ]);
+            }
+
+            // Statistics Tagline Update
+            $amountInput = $request->input('amount');
+            foreach ($amountInput as $key => $amount) {
+                StatisticsSection::findOrFail($key+1)->update([
+                    'amount' => $amount,
+                ]);
+            }
+
+            // Statistics Image Update
+            $files = $request->file('icon');
+            if ($request->hasFile('icon')) {
+                foreach ($files as $key => $file){
+                    $query = StatisticsSection::findOrFail($key+1);
+                    $dbname = str_replace('_', '-', $query->key);
+                    $extension = $file->getClientOriginalExtension();
+                    $fileFormat = strtolower($dbname) . '.' . $extension;
+                    $fileNameToStore = str_replace(' ', '-', $fileFormat);
+                    $svg = file_get_contents($file);
+                    $svg = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' . $svg;
+
+                    // Store in Storage Filesystem
+                    \Storage::put(config('designwala_paths.store.site_cms.statistic_icon') . $fileNameToStore, $svg);
+
+                    StatisticsSection::findOrFail($key+1)->update([
+                        'icon' => $fileNameToStore,
+                    ]);
+                }
+            }
+        });
+        \Cache::clear();
+        return redirect()->back();
     }
 
 

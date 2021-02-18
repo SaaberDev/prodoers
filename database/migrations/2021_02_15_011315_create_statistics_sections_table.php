@@ -17,8 +17,8 @@ class CreateStatisticsSectionsTable extends Migration
             $table->id();
             $table->string('key')->index();
             $table->string('title')->nullable();
-            $table->mediumInteger('amount')->nullable();
-            $table->string('image')->nullable();
+            $table->integer('amount')->nullable();
+            $table->string('icon')->nullable();
             $table->timestamps();
         });
     }

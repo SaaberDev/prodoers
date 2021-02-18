@@ -1,5 +1,5 @@
 @extends('admin_panel.layouts.app')
-@section('title', 'Statistics Section')
+@section('title', 'Statistics')
 
 @push('styles')
     {{-- Internal Styles --}}
@@ -19,7 +19,7 @@
             <div class="row justify-content-center m-0 py-1 boxshadow rounded">
                 <div class="col-xl-12 col-lg-12 col-md-12 v-center">
                     <div class="">
-                        <h2 class="m-0">Statistics Section</h2></div>
+                        <h2 class="m-0">Statistics</h2></div>
                 </div>
             </div>
         </div>
@@ -28,66 +28,88 @@
             <form action="{{ route('settings.site_cms.statistics.update') }}" method="POST" enctype="multipart/form-data" autocomplete="off">
                 @csrf @method('PATCH')
                 <div class="row m-0 justify-content-center py-3 bg-white rounded">
-                    <div class="col-md-10">
-                        <div class="row">
-                            {{-- Service Process 1 --}}
-                            @foreach(range(1, 4) as $column)
-                                <div class="col-md-6 mt-4">
-                                    {{-- Service Process Title 1 --}}
-                                    <div class="form-group">
-                                        <label for="">
-                                            <h5>Statistic {{ $loop->iteration }}</h5></label>
-                                        <div class="input-group">
-                                            <input class="form-control {{ $errors->has('service_process_title_.' . $loop->index) ? ' is-invalid' : '' }}" value="{{--{{ getKey('service_process_title_' . $loop->iteration) }}--}}" name="service_process_title_[]" type="text" placeholder="">
-                                            @if($errors->has('service_process_title_.' . $loop->index))
-                                                <span class="invalid-feedback">
-                                                <strong>{{ $errors->first('service_process_title_.' . $loop->index) }}</strong>
-                                            </span>
-                                            @endif
-                                        </div>
-                                    </div>
-
-                                    {{-- Service Process Image 1 --}}
-                                    <div class="form-group mt-4 mb-0">
-                                        <div class="form-group mt-4">
+                    <div class="col-md-12">
+                        {{-- Home Page icon --}}
+                        @foreach($statistics as $statistic)
+                            <div class="col-md-12 {{ $loop->first ? '' : 'mt-4' }}">
+                                <label for="">
+                                    <h6>{{ str_replace(['stat_' . $loop->iteration, '_'], ['', ' '], $statistic->key) }}</h6>
+                                </label>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group mt-2 mb-0">
+                                            <label for="">
+                                                <h6>Title</h6>
+                                            </label>
                                             <div class="input-group">
-                                                <input type='text'
-                                                       name="service_process_image_[]"
-                                                       class="form-control {{ $errors->has('service_process_image_.' . $loop->index) ? ' is-invalid' : '' }}"
-                                                       onchange="preview(this);"
-                                                       placeholder="No File Chosen"
-                                                       readonly
-                                                />
-
-                                                <div class="input-group-btn">
-                                            <span class="fileUpload btn btnOne">
-                                                <span class="upl" id="upload">Choose</span>
-                                                <input type="file"
-                                                       name="service_process_image_[]"
-                                                       class="upload up"
-                                                />
-                                            </span>
-                                                </div>
-                                                @if($errors->has('service_process_image_.' . $loop->index))
+                                                <input class="form-control {{ $errors->has('title.' . $loop->index) ? ' is-invalid' : '' }}" value="{{ $statistic->title }}" name="title[]" type="text" placeholder="">
+                                                @if($errors->has('title.' . $loop->index))
                                                     <span class="invalid-feedback">
-                                                <strong>{{ $errors->first('service_process_image_.' . $loop->index) }}</strong>
-                                            </span>
+                                                    <strong>{{ $errors->first('title.' . $loop->index) }}</strong>
+                                                </span>
                                                 @endif
                                             </div>
                                         </div>
-                                        <div class="mt-4 border">
-                                            <ul class="row list-unstyled previewimg">
-                                                <li class="col-md-7 text-center position-relative m-auto">
-                                                    <div class="previewimg">
-                                                        <img id="previewImg" class="img-fluid" src="{{--{{ asset(getKey('service_process_image_' . $loop->iteration) ? config('designwala_paths.show.site_cms.service_process') . getKey('service_process_image_' . $loop->iteration) : config('designwala_paths.default.service_process_' . $loop->iteration)) }}--}}" alt="service process image {{ $loop->iteration }}">
-                                                    </div>
-                                                </li>
-                                            </ul>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group mt-2 mb-0">
+                                            <label for="">
+                                                <h5>Amount</h5></label>
+                                            <div class="input-group">
+                                                <input class="form-control {{ $errors->has('amount.' . $loop->index) ? ' is-invalid' : '' }}" value="{{ $statistic->amount }}" name="amount[]" type="text" placeholder="">
+                                                @if($errors->has('amount.' . $loop->index))
+                                                    <span class="invalid-feedback">
+                                                    <strong>{{ $errors->first('amount.' . $loop->index) }}</strong>
+                                                </span>
+                                                @endif
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
-                        </div>
+
+                                {{-- Home Page icon --}}
+                                <div class="form-group mt-4">
+                                    <label for="">
+                                        <h5>Icon</h5>
+                                    </label>
+                                    <div class="input-group">
+                                        <input type='text'
+                                               name="icon[]"
+                                               class="form-control {{ $errors->has('icon.' . $loop->index) ? ' is-invalid' : '' }}"
+                                               onchange="preview(this);"
+                                               placeholder="No File Chosen"
+                                               readonly
+                                        />
+
+                                        <div class="input-group-btn">
+                                            <span class="fileUpload btn btnOne">
+                                                <span class="upl" id="upload">Choose</span>
+                                                <input type="file"
+                                                       name="icon[]"
+                                                       class="upload up"
+                                                />
+                                            </span>
+                                        </div>
+                                        @if($errors->has('icon.' . $loop->index))
+                                            <span class="invalid-feedback">
+                                                <strong>{{ $errors->first('icon.' . $loop->index) }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="mt-4 border">
+                                    <ul class="row list-unstyled previewimg">
+                                        <li class="col-md-7 text-center position-relative m-auto">
+                                            <div class="previewimg">
+                                                <img id="previewImg" class="img-fluid" src="{{ asset($statistic->icon ? config('designwala_paths.show.site_cms.statistic_icon') . $statistic->icon : config('designwala_paths.default.no_preview')) }}" alt="{{ $statistic->title }}">
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        @endforeach
 
                         <div class="py-4 text-right">
                             <button type="submit" class="btn bgOne text-white">Update</button>

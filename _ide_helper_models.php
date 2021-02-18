@@ -14,10 +14,25 @@ namespace App\Models{
 /**
  * App\Models\BannerSection
  *
+ * @mixin IdeHelperBannerSection
+ * @property int $id
+ * @property string $key
+ * @property string|null $headline
+ * @property string|null $tagline
+ * @property string|null $banner
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|BannerSection newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BannerSection newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BannerSection query()
- * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|BannerSection whereBanner($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BannerSection whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BannerSection whereHeadline($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BannerSection whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BannerSection whereKey($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BannerSection whereSiteKey($key)
+ * @method static \Illuminate\Database\Eloquent\Builder|BannerSection whereTagline($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BannerSection whereUpdatedAt($value)
  */
 	class IdeHelperBannerSection extends \Eloquent {}
 }
@@ -28,8 +43,8 @@ namespace App\Models{
  *
  * @mixin IdeHelperBlogSection
  * @property int $id
- * @property string $headline
- * @property string $tagline
+ * @property string|null $headline
+ * @property string|null $tagline
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|BlogSection newModelQuery()
@@ -50,9 +65,8 @@ namespace App\Models{
  *
  * @mixin IdeHelperBrandIdentity
  * @property int $id
- * @property string $headline
- * @property string $tagline
- * @property string|null $banner
+ * @property string|null $company_name
+ * @property string|null $slogan
  * @property string|null $logo
  * @property string|null $favicon
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -60,13 +74,12 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|BrandIdentity newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BrandIdentity newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|BrandIdentity query()
- * @method static \Illuminate\Database\Eloquent\Builder|BrandIdentity whereBanner($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BrandIdentity whereCompanyName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BrandIdentity whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BrandIdentity whereFavicon($value)
- * @method static \Illuminate\Database\Eloquent\Builder|BrandIdentity whereHeadline($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BrandIdentity whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BrandIdentity whereLogo($value)
- * @method static \Illuminate\Database\Eloquent\Builder|BrandIdentity whereTagline($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|BrandIdentity whereSlogan($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BrandIdentity whereUpdatedAt($value)
  */
 	class IdeHelperBrandIdentity extends \Eloquent {}
@@ -78,10 +91,10 @@ namespace App\Models{
  *
  * @mixin IdeHelperCompanyPolicy
  * @property int $id
- * @property string $privacy
- * @property string $cookie
- * @property string $payment
- * @property string $terms_and_conditions
+ * @property string|null $privacy
+ * @property string|null $cookie
+ * @property string|null $payment
+ * @property string|null $terms_and_conditions
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|CompanyPolicy newModelQuery()
@@ -130,8 +143,8 @@ namespace App\Models{
  *
  * @mixin IdeHelperFooterContent
  * @property int $id
- * @property string $copyright_text
- * @property string $desc
+ * @property string|null $copyright_text
+ * @property string|null $desc
  * @property string|null $logo
  * @property string|null $payment_method
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -156,7 +169,7 @@ namespace App\Models{
  *
  * @mixin IdeHelperHowDesignwalaWork
  * @property int $id
- * @property string|null $key
+ * @property string $key
  * @property string|null $title
  * @property string|null $desc
  * @property string|null $image
@@ -388,7 +401,7 @@ namespace App\Models{
  *
  * @mixin IdeHelperServiceProcess
  * @property int $id
- * @property string|null $key
+ * @property string $key
  * @property string|null $title
  * @property string|null $image
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -474,8 +487,9 @@ namespace App\Models{
  *
  * @mixin IdeHelperStatisticsSection
  * @property int $id
- * @property string $title
- * @property int $amount
+ * @property string $key
+ * @property string|null $title
+ * @property int|null $amount
  * @property string|null $image
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -486,6 +500,8 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|StatisticsSection whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|StatisticsSection whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|StatisticsSection whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|StatisticsSection whereKey($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|StatisticsSection whereSiteKey($key)
  * @method static \Illuminate\Database\Eloquent\Builder|StatisticsSection whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|StatisticsSection whereUpdatedAt($value)
  */

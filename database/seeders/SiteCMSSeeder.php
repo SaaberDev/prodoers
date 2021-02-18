@@ -150,28 +150,28 @@ class SiteCMSSeeder extends Seeder
 
         $statistics = [
             [
-                'key' => 'stat_1',
+                'key' => 'stat_1_total_services',
                 'title' => 'Total Services',
                 'amount' => 150,
-                'image' => null,
+                'icon' => null,
             ],
             [
-                'key' => 'stat_2',
+                'key' => 'stat_2_total_orders',
                 'title' => 'Total Orders',
-                'amount' => 2600,
-                'image' => null,
+                'amount' => 2600000,
+                'icon' => null,
             ],
             [
-                'key' => 'stat_3',
+                'key' => 'stat_3_total_designwalas',
                 'title' => 'Total Designwalas',
                 'amount' => 200,
-                'image' => null,
+                'icon' => null,
             ],
             [
-                'key' => 'stat_4',
+                'key' => 'stat_4_total_customers',
                 'title' => 'Total Customers',
                 'amount' => 150,
-                'image' => null,
+                'icon' => null,
             ],
         ];
         foreach ($statistics as $statistic) {
