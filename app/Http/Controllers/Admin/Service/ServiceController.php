@@ -9,7 +9,7 @@ use App\Models\ServiceCategory;
 use App\Models\ServiceFaq;
 use App\Models\ServiceFeature;
 use App\Models\ServiceImage;
-use App\Models\Tag;
+use App\Models\ServiceTag;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -37,10 +37,9 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        $service_categories = ServiceCategory::getTitle();
-        $tags = Tag::getTitle();
-
-        return view('admin_panel.pages.services.service.create', compact('service_categories', 'tags'));
+        $service_categories = ServiceCategory::orderByDesc('title')->get(['title', 'id']);
+        $service_tags = ServiceTag::orderByDesc('title')->get(['title', 'id']);
+        return view('admin_panel.pages.services.service.create', compact('service_categories', 'service_tags'));
     }
 
     /**
@@ -69,11 +68,11 @@ class ServiceController extends Controller
                 'service_desc' => $request->input('service_description'),
             ]);
 
-            $tagInputs = collect(explode(',', $request->input('service_tags')));
+            $service_tagInputs = collect(explode(',', $request->input('service_tags')));
 //            dd($tagInputs);
-            $tagInputs->each(function ($tag) use ($services){
+            $service_tagInputs->each(function ($tag) use ($services){
 //                dd($tag);
-                $services->tags()->attach($tag);
+                $services->service_tags()->attach($tag);
             });
 
             $images = collect(MultiImageUploadHandler($request, $slug,'service_images', 'service-image', config('designwala_paths.store.services.service_image')));
@@ -138,8 +137,8 @@ class ServiceController extends Controller
     {
         $services = Service::findOrFail($id);
         $service_categories = ServiceCategory::getTitle();
-        $tags = Tag::getTitle();
-        return view('admin_panel.pages.services.service.edit', compact('services', 'id', 'service_categories', 'tags'));
+        $service_tags = ServiceTag::getTitle();
+        return view('admin_panel.pages.services.service.edit', compact('services', 'id', 'service_categories', 'service_tags'));
     }
 
 
@@ -215,8 +214,8 @@ class ServiceController extends Controller
                 'service_desc' => $request->input('service_description'),
             ]);
 
-            $tagInputs = collect(explode(',', $request->input('service_tags')));
-            $services->tags()->sync($tagInputs);
+            $service_tagInputs = collect(explode(',', $request->input('service_tags')));
+            $services->service_tags()->sync($service_tagInputs);
 
 
             $images = MultiImageUpdateHandler($request, $slug,'service_images', 'service-image', config('designwala_paths.store.services.service_image'));
@@ -268,10 +267,10 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
-//        $notify = [
-//            'alert-type' => 'success_toast',
-//            'message' => 'Service has been Deleted !',
-//        ];
+        $notify = [
+            'alert-type' => 'success_toast',
+            'message' => 'Service has been Deleted !',
+        ];
         $services = Service::findOrFail($id);
         DB::transaction(function () use ($services){
             foreach ($services->serviceImages as $service_image){
@@ -281,6 +280,6 @@ class ServiceController extends Controller
             $services->delete();
         });
 
-        return redirect()->back();
+        return redirect()->back()->with($notify);
     }
 }

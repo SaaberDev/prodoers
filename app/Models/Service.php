@@ -41,9 +41,9 @@ class Service extends Model
         return route('guest.service.index', $this->slug);
     }
 
-    public function tags()
+    public function service_tags()
     {
-        return $this->belongsToMany(Tag::class, 'service_tag', 'service_id', 'tag_id');
+        return $this->belongsToMany(ServiceTag::class, 'service_service_tag', 'service_id', 'service_tag_id');
     }
 
     public function serviceCategories()

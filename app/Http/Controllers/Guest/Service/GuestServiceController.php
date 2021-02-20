@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Guest\Service;
 
 use App\Http\Controllers\Controller;
 use App\Models\Service;
-use App\Models\Tag;
+use App\Models\ServiceTag;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;

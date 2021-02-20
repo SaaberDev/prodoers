@@ -28,7 +28,7 @@
             <form action="{{ route('settings.site_cms.footer.update') }}" method="POST" enctype="multipart/form-data">
                 @csrf @method('PATCH')
                 <div class="row m-0 justify-content-center py-3 bg-white rounded">
-                    <div class="col-md-10">
+                    <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="row">
@@ -40,8 +40,8 @@
                                             </label>
                                             <div class="input-group">
                                                 <input type='text'
-                                                       name="footer_logo"
-                                                       class="form-control {{ $errors->has('footer_logo') ? ' is-invalid' : '' }}"
+                                                       name="logo"
+                                                       class="form-control {{ $errors->has('logo') ? ' is-invalid' : '' }}"
                                                        onchange="preview(this);"
                                                        placeholder="No File Chosen"
                                                        readonly
@@ -51,14 +51,14 @@
                                                     <span class="fileUpload btn btnOne">
                                                         <span class="upl" id="upload">Choose</span>
                                                         <input type="file"
-                                                               name="footer_logo"
+                                                               name="logo"
                                                                class="upload up"
                                                         />
                                                     </span>
                                                 </div>
-                                                @if($errors->has('footer_logo'))
+                                                @if($errors->has('logo'))
                                                     <span class="invalid-feedback">
-                                                        <strong>{{ $errors->first('footer_logo') }}</strong>
+                                                        <strong>{{ $errors->first('logo') }}</strong>
                                                     </span>
                                                 @endif
                                             </div>
@@ -67,7 +67,7 @@
                                             <ul class="row list-unstyled previewimg">
                                                 <li class="col-md-4 py-4 text-center position-relative m-auto">
                                                     <div class="previewimg">
-                                                        <img id="previewImg" class="img-fluid" src="{{ asset(getKey('footer_logo') ? config('designwala_paths.show.site_cms.brand_logo') . getKey('footer_logo') : config('designwala_paths.default.brand_logo')) }}" alt="Designwala Logo">
+                                                        <img id="previewImg" class="img-fluid" src="{{ asset($footer_content->logo ? config('designwala_paths.show.site_cms.brand_logo') . $footer_content->logo : config('designwala_paths.default.no_preview')) }}" alt="Designwala Logo">
                                                     </div>
                                                 </li>
                                             </ul>
@@ -82,8 +82,8 @@
                                             </label>
                                             <div class="input-group">
                                                 <input type='text'
-                                                       name="footer_payment_method"
-                                                       class="form-control {{ $errors->has('footer_payment_method') ? ' is-invalid' : '' }}"
+                                                       name="payment_method"
+                                                       class="form-control {{ $errors->has('payment_method') ? ' is-invalid' : '' }}"
                                                        onchange="preview(this);"
                                                        placeholder="No File Chosen"
                                                        readonly
@@ -93,14 +93,14 @@
                                                     <span class="fileUpload btn btnOne">
                                                         <span class="upl" id="upload">Choose</span>
                                                         <input type="file"
-                                                               name="footer_payment_method"
+                                                               name="payment_method"
                                                                class="upload up"
                                                         />
                                                     </span>
                                                 </div>
-                                                @if($errors->has('footer_payment_method'))
+                                                @if($errors->has('payment_method'))
                                                     <span class="invalid-feedback">
-                                                        <strong>{{ $errors->first('footer_payment_method') }}</strong>
+                                                        <strong>{{ $errors->first('payment_method') }}</strong>
                                                     </span>
                                                 @endif
                                             </div>
@@ -109,7 +109,7 @@
                                             <ul class="row list-unstyled previewimg">
                                                 <li class="col-md-4 py-4 text-center position-relative m-auto">
                                                     <div class="previewimg">
-                                                        <img id="previewImg" class="img-fluid" src="{{ asset(getKey('footer_payment_method') ? config('designwala_paths.show.site_cms.payment_method') . getKey('footer_payment_method') : config('designwala_paths.default.payment_method')) }}" alt="Payment Method">
+                                                        <img id="previewImg" class="img-fluid" src="{{ asset($footer_content->payment_method ? config('designwala_paths.show.site_cms.payment_method') . $footer_content->payment_method : config('designwala_paths.default.no_preview')) }}" alt="Payment Method">
                                                     </div>
                                                 </li>
                                             </ul>
@@ -117,19 +117,6 @@
                                     </div>
                                 </div>
 
-
-                                <div class="form-group mt-4 mb-0">
-                                    <label for="">
-                                        <h5>Copyright Text</h5></label>
-                                    <div class="input-group">
-                                        <input class="form-control {{ $errors->has('footer_copyright') ? ' is-invalid' : '' }}" value="{{ getKey('footer_copyright') }}" name="footer_copyright" type="text" placeholder="">
-                                        @if($errors->has('footer_copyright'))
-                                            <span class="invalid-feedback">
-                                                <strong>{{ $errors->first('footer_copyright') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
                             </div>
                         </div>
 
@@ -139,10 +126,10 @@
                                     <h5>Company Short Description </h5></label>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <textarea class="form-control {{ $errors->has('footer_desc') ? ' is-invalid' : '' }}" name="footer_desc" rows="8">{{ getKey('footer_desc') }}</textarea>
-                                        @if($errors->has('footer_desc'))
+                                        <textarea class="form-control {{ $errors->has('desc') ? ' is-invalid' : '' }}" name="desc" rows="8">{{ $footer_content->desc }}</textarea>
+                                        @if($errors->has('desc'))
                                             <span class="invalid-feedback">
-                                                <strong>{{ $errors->first('footer_desc') }}</strong>
+                                                <strong>{{ $errors->first('desc') }}</strong>
                                             </span>
                                         @endif
                                     </div>

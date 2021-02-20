@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateServiceTagTable extends Migration
+class CreateServiceServiceTagTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class CreateServiceTagTable extends Migration
      */
     public function up()
     {
-        Schema::create('service_tag', function (Blueprint $table) {
+        Schema::create('service_service_tag', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('service_id')->nullable();
             $table->foreign('service_id')
                 ->references('id')->on('services')
                 ->onDelete('cascade')->onUpdate('cascade');
 
-            $table->unsignedBigInteger('tag_id')->nullable();
-            $table->foreign('tag_id')
-                ->references('id')->on('tags')
+            $table->unsignedBigInteger('service_tag_id')->nullable();
+            $table->foreign('service_tag_id')
+                ->references('id')->on('service_tags')
                 ->onDelete('cascade')->onUpdate('cascade');
         });
     }
@@ -34,6 +34,6 @@ class CreateServiceTagTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('service_tag');
+        Schema::dropIfExists('service_service_tag');
     }
 }

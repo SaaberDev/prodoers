@@ -9,8 +9,9 @@
             text: "You won't be able to revert this!",
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
+            confirmButtonColor: 'rgb(0 0 0)',
+            cancelButtonColor: 'rgb(204 75 75)',
+            background: 'rgb(235 246 236)',
             confirmButtonText: 'Yes, delete it!',
         })
             .then((result) => {

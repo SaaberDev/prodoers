@@ -529,10 +529,10 @@
         var inputElm = document.querySelector('input[name=service_tags]');
 
         var usersList = [
-            @foreach($tags as $tag)
+            @foreach($service_tags as $service_tag)
             {
-                "value": {{ $tag->id }},
-                "name": "{{ $tag->title }}",
+                "value": {{ $service_tag->id }},
+                "name": "{{ $service_tag->title }}",
             },
             @endforeach
         ]

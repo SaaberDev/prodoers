@@ -219,7 +219,7 @@ namespace App\Models{
  * @property-read int|null $service_features_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ServiceImage[] $serviceImages
  * @property-read int|null $service_images_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Tag[] $tags
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ServiceTag[] $tags
  * @property-read int|null $tags_count
  * @method static Builder|Service filterBy($column, $arg)
  * @method static Builder|Service findSimilarSlugs(string $attribute, array $config, string $slug)
@@ -425,9 +425,14 @@ namespace App\Models{
  * App\Models\ServiceTag
  *
  * @mixin IdeHelperServiceTag
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Service[] $services
+ * @property-read int|null $services_count
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceTag getTitle()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceTag newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceTag newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceTag orderByIdDesc()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceTag query()
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceTag searchBy($column, $search)
  */
 	class IdeHelperServiceTag extends \Eloquent {}
 }
@@ -490,7 +495,7 @@ namespace App\Models{
  * @property string $key
  * @property string|null $title
  * @property int|null $amount
- * @property string|null $image
+ * @property string|null $icon
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|StatisticsSection newModelQuery()
@@ -498,8 +503,8 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|StatisticsSection query()
  * @method static \Illuminate\Database\Eloquent\Builder|StatisticsSection whereAmount($value)
  * @method static \Illuminate\Database\Eloquent\Builder|StatisticsSection whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|StatisticsSection whereIcon($value)
  * @method static \Illuminate\Database\Eloquent\Builder|StatisticsSection whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|StatisticsSection whereImage($value)
  * @method static \Illuminate\Database\Eloquent\Builder|StatisticsSection whereKey($value)
  * @method static \Illuminate\Database\Eloquent\Builder|StatisticsSection whereSiteKey($key)
  * @method static \Illuminate\Database\Eloquent\Builder|StatisticsSection whereTitle($value)
@@ -530,31 +535,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Subscriber whereUpdatedAt($value)
  */
 	class IdeHelperSubscriber extends \Eloquent {}
-}
-
-namespace App\Models{
-/**
- * App\Models\Tag
- *
- * @mixin IdeHelperTag
- * @property int $id
- * @property string $title
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Service[] $services
- * @property-read int|null $services_count
- * @method static \Illuminate\Database\Eloquent\Builder|Tag getTitle()
- * @method static \Illuminate\Database\Eloquent\Builder|Tag newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Tag newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Tag orderByIdDesc()
- * @method static \Illuminate\Database\Eloquent\Builder|Tag query()
- * @method static \Illuminate\Database\Eloquent\Builder|Tag searchBy($column, $search)
- * @method static \Illuminate\Database\Eloquent\Builder|Tag whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Tag whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Tag whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Tag whereUpdatedAt($value)
- */
-	class IdeHelperTag extends \Eloquent {}
 }
 
 namespace App\Models{

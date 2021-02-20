@@ -14,7 +14,7 @@ use App\Models\StatisticsSection;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
-class SiteCMSSeeder extends Seeder
+class SiteCmsSeeder extends Seeder
 {
     public function run()
     {
@@ -180,10 +180,11 @@ class SiteCMSSeeder extends Seeder
 
         $footer_contents = [
             [
-                'copyright_text' => 'Copyright ©2021 Designwala',
-                'desc' => $longText,
                 'logo' => null,
                 'payment_method' => null,
+                'desc' => $longText,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
             ],
         ];
         foreach ($footer_contents as $footer_content) {

@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Service;
 use App\Models\ServiceCategory;
-use App\Models\Tag;
+use App\Models\ServiceTag;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ServiceFactory extends Factory

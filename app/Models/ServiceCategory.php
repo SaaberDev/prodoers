@@ -52,11 +52,6 @@ class ServiceCategory extends Model
             });
     }
 
-    public function scopeGetTitle($query)
-    {
-        return $query->orderByDesc('id')->get(['title', 'id']);
-    }
-
     public function scopeGetAllPublished($query)
     {
         return $query->where('published_status', '=', 1);

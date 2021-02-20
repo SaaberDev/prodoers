@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin\Settings\SiteCms;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class BrandIdentityRequest extends FormRequest
+class FooterContentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,9 @@ class BrandIdentityRequest extends FormRequest
     public function rules()
     {
         return [
-            'company_name' => '',
-            'slogan' => '',
             'logo' => 'nullable|image|mimes:svg',
-            'favicon' => 'nullable|image|mimes:svg',
+            'payment_method' => 'nullable|image|mimes:svg',
+            'desc' => '',
         ];
     }
 
@@ -37,8 +36,8 @@ class BrandIdentityRequest extends FormRequest
             'logo.image' => 'File must be an image',
             'logo.mimes' => 'Only SVG format is supported',
 
-            'favicon.image' => 'File must be an image',
-            'favicon.mimes' => 'Only SVG format is supported',
+            'payment_method.image' => 'File must be an image',
+            'payment_method.mimes' => 'Only SVG format is supported',
         ];
     }
 }

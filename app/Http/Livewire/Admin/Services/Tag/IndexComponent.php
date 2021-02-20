@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Admin\Services\Tag;
 
-use App\Models\Tag;
+use App\Models\ServiceTag;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -45,8 +45,8 @@ class IndexComponent extends Component
     public function render()
     {
         $search = $this->search;
-        $tags = Tag::orderByIdDesc()
-            ->searchBy('title', $search)
+        $tags = ServiceTag::searchBy('title', $search)
+            ->orderByDesc('id')
             ->paginate($this->recordPerPage);
 
         return view('livewire.admin.services.tag.index-component', compact('tags'));

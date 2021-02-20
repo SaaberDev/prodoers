@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Settings\SiteCms\BannerSectionRequest;
 use App\Http\Requests\Admin\Settings\SiteCms\BlogSectionRequest;
 use App\Http\Requests\Admin\Settings\SiteCms\BrandIdentityRequest;
+use App\Http\Requests\Admin\Settings\SiteCms\FooterContentRequest;
 use App\Http\Requests\Admin\Settings\SiteCms\FooterRequest;
 use App\Http\Requests\Admin\Settings\SiteCms\HowDesignwalaWorksRequest;
 use App\Http\Requests\Admin\Settings\SiteCms\PolicyRequest;
@@ -15,6 +16,7 @@ use App\Http\Requests\Admin\Settings\SiteCms\StatisticRequest;
 use App\Models\BannerSection;
 use App\Models\BlogSection;
 use App\Models\BrandIdentity;
+use App\Models\FooterContent;
 use App\Models\HowDesignwalaWork;
 use App\Models\ServiceProcess;
 use App\Models\SiteCms;
@@ -29,19 +31,18 @@ class SiteCmsController extends Controller
      */
     public function index_brand_identity()
     {
-        $brand_identities = BrandIdentity::findOrFail(1, ['company_name', 'slogan', 'logo', 'favicon']);
+        $brand_identities = BrandIdentity::firstOrFail(['company_name', 'slogan', 'logo', 'favicon']);
         return view('admin_panel.pages.settings.site_cms.brand_identity.index', compact('brand_identities'));
     }
 
     public function update_brand_identity(BrandIdentityRequest $request)
     {
-//        dd($request->all());
-        $brand_identities = BrandIdentity::findOrFail(1);
+        $brand_identities = BrandIdentity::firstOrFail();
         \DB::transaction(function () use ($request, $brand_identities){
             $brand_identities->update([
                 'company_name' => $request->input('company_name'),
                 'slogan' => $request->input('slogan'),
-                'logo' => updateSVG($request, 'brand-logo', $brand_identities->logo, 'logo', 'brand-identity', config('designwala_paths.store.site_cms.brand_logo')),
+                'logo' => updateSVG($request, 'brand-logo', $brand_identities->logo, 'logo', 'header', config('designwala_paths.store.site_cms.brand_logo')),
                 'favicon' => updateSVG($request, 'browser-favicon', $brand_identities->favicon, 'favicon', 'brand-identity', config('designwala_paths.store.site_cms.brand_icon')),
             ]);
         });
@@ -107,7 +108,7 @@ class SiteCmsController extends Controller
      */
     public function index_service_process()
     {
-        $service_processes = ServiceProcess::whereSiteKey('service_process_')->get(['title', 'image']);
+        $service_processes = ServiceProcess::get(['title', 'image']);
         return view('admin_panel.pages.settings.site_cms.service_process.index', compact('service_processes'));
     }
 
@@ -273,34 +274,21 @@ class SiteCmsController extends Controller
      */
     public function index_footer()
     {
-        return view('admin_panel.pages.settings.site_cms.footer.index');
+        $footer_content = FooterContent::firstOrFail(['desc', 'logo', 'payment_method']);
+        return view('admin_panel.pages.settings.site_cms.footer.index', compact('footer_content'));
     }
 
-    public function update_footer(FooterRequest $request)
+    public function update_footer(FooterContentRequest $request)
     {
         \DB::transaction(function () use ($request){
-            // Footer Logo
-            SiteCms::whereSiteKey('footer_logo')
-                ->firstOrFail()->update([
-                    'value' => updateSVG($request, 'logo', getKey('footer_logo'), 'footer_logo', 'footer', config('designwala_paths.store.site_cms.brand_logo')),
-                ]);
-            // Payment Method
-            SiteCms::whereSiteKey('footer_payment_method')
-                ->firstOrFail()->update([
-                    'value' => updateSVG($request, 'payment-method', getKey('footer_payment_method'), 'footer_payment_method', 'footer', config('designwala_paths.store.site_cms.payment_method')),
-                ]);
-            // Copyright Text
-            SiteCms::whereSiteKey('footer_copyright')
-                ->firstOrFail()->update([
-                    'value' => $request->input('footer_copyright'),
-                ]);
-            // Company Short Description
-            SiteCms::whereSiteKey('footer_desc')
-                ->firstOrFail()->update([
-                    'value' => $request->input('footer_desc'),
-                ]);
+            $footer_content = FooterContent::firstOrFail();
+            $footer_content->update([
+                'logo' => updateSVG($request, 'logo', $footer_content->logo, 'logo', 'footer', config('designwala_paths.store.site_cms.brand_logo')),
+                'payment_method' => updateSVG($request, 'payment-method', $footer_content->payment_method, 'payment_method', 'footer', config('designwala_paths.store.site_cms.payment_method')),
+                'desc' => $request->input('desc'),
+            ]);
         });
-//        dd($request);
+        \Cache::clear();
         return redirect()->back();
     }
 

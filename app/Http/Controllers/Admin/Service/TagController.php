@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin\Service;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Services\TagRequest;
-use App\Models\Tag;
+use App\Models\ServiceTag;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -48,7 +48,7 @@ class TagController extends Controller
 //            dd($tagInputs);
             $tagInputs->each(function ($value) {
 //                dd();
-                Tag::firstOrCreate([
+                ServiceTag::firstOrCreate([
                     'title' => str_replace(' ', '', $value),
                 ]);
             });
@@ -75,7 +75,7 @@ class TagController extends Controller
      */
     public function edit($id)
     {
-        $tags = Tag::findOrFail($id);
+        $tags = ServiceTag::findOrFail($id);
         return \view('admin_panel.pages.services.tag.edit', compact('tags'));
     }
 
@@ -88,7 +88,7 @@ class TagController extends Controller
      */
     public function update(TagRequest $request, $id)
     {
-        $tags = Tag::findOrFail($id);
+        $tags = ServiceTag::findOrFail($id);
 //        $notify = [
 //
 //        ];
@@ -113,9 +113,9 @@ class TagController extends Controller
     {
 //        $notify = [
 //            'alert-type' => 'success_toast',
-//            'message' => 'Tag Deleted !',
+//            'message' => 'ServiceTag Deleted !',
 //        ];
-        $tags = Tag::findOrFail($id);
+        $tags = ServiceTag::findOrFail($id);
         \DB::transaction(function () use ($tags){
             $tags->delete();
         });
