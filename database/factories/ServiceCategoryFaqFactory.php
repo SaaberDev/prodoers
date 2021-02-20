@@ -23,7 +23,7 @@ class ServiceCategoryFaqFactory extends Factory
     public function definition()
     {
         return [
-            'service_category_id' => $this->faker->numberBetween(1, 100),
+            'service_category_id' => ServiceCategory::factory(),
             'question' => $this->faker->sentence,
             'answer' => $this->faker->paragraph,
         ];

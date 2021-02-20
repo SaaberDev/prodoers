@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\ServiceFeature;
+use App\Models\ServiceCategoryFaq;
 use Illuminate\Database\Seeder;
 
-class ServiceFeatureSeeder extends Seeder
+class ServiceCategoryFaqSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,6 @@ class ServiceFeatureSeeder extends Seeder
      */
     public function run()
     {
-        ServiceFeature::factory(2500)->create();
+        ServiceCategoryFaq::factory(60)->create();
     }
 }

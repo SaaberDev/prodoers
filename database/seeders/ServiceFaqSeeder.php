@@ -14,6 +14,6 @@ class ServiceFaqSeeder extends Seeder
      */
     public function run()
     {
-        ServiceFaq::factory(100000)->create();
+        ServiceFaq::factory(2500)->create();
     }
 }
