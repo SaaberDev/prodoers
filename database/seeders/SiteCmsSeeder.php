@@ -193,10 +193,10 @@ class SiteCmsSeeder extends Seeder
 
         $company_policies = [
             [
-                'privacy' => $longText,
-                'cookie' => $longText,
-                'payment' => $longText,
-                'terms_and_conditions' => $longText,
+                'privacy' => 'Company Privacy Policy',
+                'cookie' => 'Company Cookie Policy',
+                'payment' => 'Company Payment Policy',
+                'terms_and_conditions' => 'Company Terms and Conditions',
             ]
         ];
         foreach ($company_policies as $policy) {

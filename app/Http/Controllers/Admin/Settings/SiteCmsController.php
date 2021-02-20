@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Settings\SiteCms\BannerSectionRequest;
 use App\Http\Requests\Admin\Settings\SiteCms\BlogSectionRequest;
 use App\Http\Requests\Admin\Settings\SiteCms\BrandIdentityRequest;
+use App\Http\Requests\Admin\Settings\SiteCms\CompanyPolicyRequest;
 use App\Http\Requests\Admin\Settings\SiteCms\FooterContentRequest;
 use App\Http\Requests\Admin\Settings\SiteCms\FooterRequest;
 use App\Http\Requests\Admin\Settings\SiteCms\HowDesignwalaWorksRequest;
@@ -16,6 +17,7 @@ use App\Http\Requests\Admin\Settings\SiteCms\StatisticRequest;
 use App\Models\BannerSection;
 use App\Models\BlogSection;
 use App\Models\BrandIdentity;
+use App\Models\CompanyPolicy;
 use App\Models\FooterContent;
 use App\Models\HowDesignwalaWork;
 use App\Models\ServiceProcess;
@@ -354,32 +356,19 @@ class SiteCmsController extends Controller
      */
     public function index_policy()
     {
-        return view('admin_panel.pages.settings.site_cms.policies.index');
+        $company_policies = CompanyPolicy::firstOrFail();
+        return view('admin_panel.pages.settings.site_cms.policies.index', compact('company_policies'));
     }
 
-    public function update_policy(PolicyRequest $request)
+    public function update_policy(Request $request)
     {
         \DB::transaction(function () use ($request){
-            // Footer Logo
-            SiteCms::whereSiteKey('policy_privacy')
-                ->firstOrFail()->update([
-                    'value' => $request->input('privacy_policy'),
-                ]);
-            // Payment Method
-            SiteCms::whereSiteKey('policy_cookie')
-                ->firstOrFail()->update([
-                    'value' => $request->input('cookie_policy'),
-                ]);
-            // Copyright Text
-            SiteCms::whereSiteKey('policy_payment')
-                ->firstOrFail()->update([
-                    'value' => $request->input('payment_policy'),
-                ]);
-            // Company Short Description
-            SiteCms::whereSiteKey('policy_terms_and_conditions')
-                ->firstOrFail()->update([
-                    'value' => $request->input('terms_and_condition'),
-                ]);
+            CompanyPolicy::firstOrFail()->update([
+                'privacy' => $request->input('privacy'),
+                'cookie' => $request->input('cookie'),
+                'payment' => $request->input('payment'),
+                'terms_and_conditions' => $request->input('terms_and_conditions'),
+            ]);
         });
         return redirect()->back();
     }

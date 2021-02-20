@@ -29,17 +29,17 @@
             </div>
         </div>
         <div class="mt-4">
-            <form action="{{ route('settings.site_cms.policy.update') }}" method="POST">
+            <form action="{{ route('settings.site_cms.policy.update') }}" method="POST" autocomplete="off">
                 @csrf @method('PATCH')
                 <div class="row m-0 py-3 boxshadow rounded">
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">
-                                <h5 class="text-uppercase">PRIVACY POLICIY </h5></label>
-                            <textarea class="form-control {{ $errors->has('privacy_policy') ? ' is-invalid' : '' }} area-height" name="privacy_policy" id="exampleFormControlTextarea1" rows="5">{{ getKey('policy_privacy') }}</textarea>
-                            @if($errors->has('privacy_policy'))
+                                <h5 class="text-uppercase">PRIVACY POLICY </h5></label>
+                            <textarea class="form-control {{ $errors->has('privacy') ? ' is-invalid' : '' }} area-height" name="privacy" id="exampleFormControlTextarea1" rows="5">{{ $company_policies->privacy }}</textarea>
+                            @if($errors->has('privacy'))
                                 <span class="invalid-feedback">
-                                    <strong>{{ $errors->first('privacy_policy') }}</strong>
+                                    <strong>{{ $errors->first('privacy') }}</strong>
                                 </span>
                             @endif
                         </div>
@@ -48,10 +48,10 @@
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">
                                 <h5 class="text-uppercase">Cookie POLICIY </h5></label>
-                            <textarea class="form-control {{ $errors->has('cookie_policy') ? ' is-invalid' : '' }} area-height" name="cookie_policy" id="exampleFormControlTextarea1" rows="5">{{ getKey('policy_cookie') }}</textarea>
-                            @if($errors->has('cookie_policy'))
+                            <textarea class="form-control {{ $errors->has('cookie') ? ' is-invalid' : '' }} area-height" name="cookie" id="exampleFormControlTextarea1" rows="5">{{ $company_policies->cookie }}</textarea>
+                            @if($errors->has('cookie'))
                                 <span class="invalid-feedback">
-                                    <strong>{{ $errors->first('cookie_policy') }}</strong>
+                                    <strong>{{ $errors->first('cookie') }}</strong>
                                 </span>
                             @endif
                         </div>
@@ -60,10 +60,10 @@
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">
                                 <h5 class="text-uppercase">Payment POLICIY </h5></label>
-                            <textarea class="form-control {{ $errors->has('payment_policy') ? ' is-invalid' : '' }} area-height" name="payment_policy" id="exampleFormControlTextarea1" rows="5">{{ getKey('policy_payment') }}</textarea>
-                            @if($errors->has('payment_policy'))
+                            <textarea class="form-control {{ $errors->has('payment') ? ' is-invalid' : '' }} area-height" name="payment" id="exampleFormControlTextarea1" rows="5">{{ $company_policies->payment }}</textarea>
+                            @if($errors->has('payment'))
                                 <span class="invalid-feedback">
-                                    <strong>{{ $errors->first('payment_policy') }}</strong>
+                                    <strong>{{ $errors->first('payment') }}</strong>
                                 </span>
                             @endif
 
@@ -73,10 +73,10 @@
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">
                                 <h5 class="text-uppercase">terms and conditions </h5></label>
-                            <textarea class="form-control {{ $errors->has('terms_and_condition') ? ' is-invalid' : '' }} area-height" name="terms_and_condition" id="exampleFormControlTextarea1" rows="5">{{ getKey('policy_terms_and_conditions') }}</textarea>
-                            @if($errors->has('terms_and_condition'))
+                            <textarea class="form-control {{ $errors->has('terms_and_conditions') ? ' is-invalid' : '' }} area-height" name="terms_and_conditions" id="exampleFormControlTextarea1" rows="5">{{ $company_policies->terms_and_conditions }}</textarea>
+                            @if($errors->has('terms_and_conditions'))
                                 <span class="invalid-feedback">
-                                    <strong>{{ $errors->first('terms_and_condition') }}</strong>
+                                    <strong>{{ $errors->first('terms_and_conditions') }}</strong>
                                 </span>
                             @endif
                         </div>
