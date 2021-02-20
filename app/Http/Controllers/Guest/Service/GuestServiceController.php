@@ -24,8 +24,8 @@ class GuestServiceController extends Controller
 //        $services = Service::getSlug($service_slug)->with(['serviceCategories' => function($q){
 //            $q->with('serviceCategoryFaqs');
 //        }])->first();
-        $related_services = Service::hideCurrent($services)->getAllPublished()->whereHas('tags', function($query) use ($services) {
-            $query->whereIn('tags.id', $services->tags);
+        $related_services = Service::hideCurrent($services)->getAllPublished()->whereHas('service_tags', function($query) use ($services) {
+            $query->whereIn('service_tags.id', $services->service_tags);
         })->get();
         return view('guest.pages.service_show', compact('services', 'related_services'));
     }

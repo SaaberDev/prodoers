@@ -4,24 +4,20 @@ namespace App\Http\Controllers\Admin\Settings;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Settings\SiteCms\BannerSectionRequest;
-use App\Http\Requests\Admin\Settings\SiteCms\BlogSectionRequest;
 use App\Http\Requests\Admin\Settings\SiteCms\BrandIdentityRequest;
-use App\Http\Requests\Admin\Settings\SiteCms\CompanyPolicyRequest;
 use App\Http\Requests\Admin\Settings\SiteCms\FooterContentRequest;
-use App\Http\Requests\Admin\Settings\SiteCms\FooterRequest;
 use App\Http\Requests\Admin\Settings\SiteCms\HowDesignwalaWorksRequest;
-use App\Http\Requests\Admin\Settings\SiteCms\PolicyRequest;
+use App\Http\Requests\Admin\Settings\SiteCms\OtherContentRequest;
 use App\Http\Requests\Admin\Settings\SiteCms\ServiceProcessRequest;
 use App\Http\Requests\Admin\Settings\SiteCms\SocialLinkRequest;
 use App\Http\Requests\Admin\Settings\SiteCms\StatisticRequest;
 use App\Models\BannerSection;
-use App\Models\BlogSection;
 use App\Models\BrandIdentity;
 use App\Models\CompanyPolicy;
 use App\Models\FooterContent;
 use App\Models\HowDesignwalaWork;
+use App\Models\OtherContent;
 use App\Models\ServiceProcess;
-use App\Models\SiteCms;
 use App\Models\SocialLinks;
 use App\Models\StatisticsSection;
 use Illuminate\Http\Request;
@@ -378,11 +374,30 @@ class SiteCmsController extends Controller
      */
     public function index_other_content()
     {
-        return view('admin_panel.pages.settings.site_cms.other_contents.index');
+        $other_contents = OtherContent::get();
+        return view('admin_panel.pages.settings.site_cms.other_contents.index', compact('other_contents'));
     }
 
-    public function update_other_content(Request $request)
+    public function update_other_content(OtherContentRequest $request)
     {
+        \DB::transaction(function () use ($request){
+            foreach ($request->input('headline') as $key => $item) {
+                OtherContent::whereSiteKey('other_content_' . ($key + 1))
+                    ->firstorFail()
+                    ->update([
+                        'headline' => $item
+                    ]);
+            }
+
+            foreach ($request->input('tagline') as $key => $item) {
+                OtherContent::whereSiteKey('other_content_' . ($key + 1))
+                    ->firstorFail()
+                    ->update([
+                        'tagline' => $item
+                    ]);
+            }
+        });
+        \Cache::clear();
         return redirect()->back();
     }
 

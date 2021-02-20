@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 8.26.1.
+ * Generated for Laravel 8.28.1.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -254,6 +254,20 @@
         {
                         /** @var \Illuminate\Foundation\Application $instance */
                         return $instance->resourcePath($path);
+        }
+                    /**
+         * Get the path to the views directory.
+         * 
+         * This method returns the first configured path in the array of view paths.
+         *
+         * @param string $path
+         * @return string 
+         * @static 
+         */ 
+        public static function viewPath($path = '')
+        {
+                        /** @var \Illuminate\Foundation\Application $instance */
+                        return $instance->viewPath($path);
         }
                     /**
          * Get the path to the environment file directory.
@@ -11261,6 +11275,17 @@
                         return $instance->pushMiddlewareToGroup($group, $middleware);
         }
                     /**
+         * Flush the router's middleware groups.
+         *
+         * @return \Illuminate\Routing\Router 
+         * @static 
+         */ 
+        public static function flushMiddlewareGroups()
+        {
+                        /** @var \Illuminate\Routing\Router $instance */
+                        return $instance->flushMiddlewareGroups();
+        }
+                    /**
          * Add a new route parameter binder.
          *
          * @param string $key
@@ -16817,6 +16842,26 @@
          *
          * @static 
          */ 
+        public static function originalPath()
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->originalPath();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function originalMethod()
+        {
+                        /** @var \Livewire\LivewireManager $instance */
+                        return $instance->originalMethod();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
         public static function getRootElementTagName($dom)
         {
                         /** @var \Livewire\LivewireManager $instance */
@@ -18239,6 +18284,20 @@ namespace  {
             {
                                 /** @var \Illuminate\Database\Eloquent\Builder $instance */
                                 return $instance->chunk($count, $callback);
+            }
+             
+                /**
+             * Run a map over each item while chunking.
+             *
+             * @param callable $callback
+             * @param int $count
+             * @return \Illuminate\Support\Collection 
+             * @static 
+             */ 
+            public static function chunkMap($callback, $count = 1000)
+            {
+                                /** @var \Illuminate\Database\Eloquent\Builder $instance */
+                                return $instance->chunkMap($callback, $count);
             }
              
                 /**

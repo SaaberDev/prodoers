@@ -30,8 +30,11 @@
                 <div class="row m-0 justify-content-center py-3 bg-white rounded">
                     <div class="col-md-12">
                         {{-- Popular Categories Section --}}
-                        <div class="col-md-12">
-                            <p>Popular Categories Section</p>
+                        @foreach($other_contents as $other_content)
+                        <div class="col-md-12 {{ $loop->first ? '' : 'mt-4' }}">
+                            <label>
+                                <h6>{{ str_replace(['other_content', $loop->iteration, '_'], ' ', $other_content->key) }}</h6>
+                            </label>
                             <hr>
                             <div class="row">
                                 <div class="col-md-6">
@@ -39,10 +42,10 @@
                                         <label for="">
                                             <h6>Headline</h6></label>
                                         <div class="input-group">
-                                            <input class="form-control {{ $errors->has('blog_headline') ? ' is-invalid' : '' }}" value="" name="blog_headline" type="text" placeholder="">
-                                            @if($errors->has('blog_headline'))
+                                            <input class="form-control {{ $errors->has('headline.' . $loop->index) ? ' is-invalid' : '' }}" value="{{ $other_content->headline }}" name="headline[]" type="text" placeholder="">
+                                            @if($errors->has('headline.' . $loop->index))
                                                 <span class="invalid-feedback">
-                                                    <strong>{{ $errors->first('blog_headline') }}</strong>
+                                                    <strong>{{ $errors->first('headline.' . $loop->index) }}</strong>
                                                 </span>
                                             @endif
                                         </div>
@@ -54,10 +57,10 @@
                                         <label for="">
                                             <h5>Tagline</h5></label>
                                         <div class="input-group">
-                                            <input class="form-control {{ $errors->has('blog_tagline') ? ' is-invalid' : '' }}" value="" name="blog_tagline" type="text" placeholder="">
-                                            @if($errors->has('blog_tagline'))
+                                            <input class="form-control {{ $errors->has('tagline.' . $loop->index) ? ' is-invalid' : '' }}" value="{{ $other_content->tagline }}" name="tagline[]" type="text" placeholder="">
+                                            @if($errors->has('tagline.' . $loop->index))
                                                 <span class="invalid-feedback">
-                                                    <strong>{{ $errors->first('blog_tagline') }}</strong>
+                                                    <strong>{{ $errors->first('tagline.' . $loop->index) }}</strong>
                                                 </span>
                                             @endif
                                         </div>
@@ -65,228 +68,7 @@
                                 </div>
                             </div>
                         </div>
-
-                        {{-- How Designwala Works Section --}}
-                        <div class="col-md-12 mt-4">
-                            <p>How Designwala Works Section</p>
-                            <hr>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group mt-2 mb-0">
-                                        <label for="">
-                                            <h5>Headline</h5></label>
-                                        <div class="input-group">
-                                            <input class="form-control {{ $errors->has('blog_headline') ? ' is-invalid' : '' }}" value="" name="blog_headline" type="text" placeholder="">
-                                            @if($errors->has('blog_headline'))
-                                                <span class="invalid-feedback">
-                                                    <strong>{{ $errors->first('blog_headline') }}</strong>
-                                                </span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group mt-2 mb-0">
-                                        <label for="">
-                                            <h5>Tagline</h5></label>
-                                        <div class="input-group">
-                                            <input class="form-control {{ $errors->has('blog_tagline') ? ' is-invalid' : '' }}" value="" name="blog_tagline" type="text" placeholder="">
-                                            @if($errors->has('blog_tagline'))
-                                                <span class="invalid-feedback">
-                                                    <strong>{{ $errors->first('blog_tagline') }}</strong>
-                                                </span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {{-- Blog Section --}}
-                        <div class="col-md-12 mt-4">
-                            <p>Blog Section</p>
-                            <hr>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group mt-2 mb-0">
-                                        <label for="">
-                                            <h5>Headline</h5></label>
-                                        <div class="input-group">
-                                            <input class="form-control {{ $errors->has('blog_headline') ? ' is-invalid' : '' }}" value="" name="blog_headline" type="text" placeholder="">
-                                            @if($errors->has('blog_headline'))
-                                                <span class="invalid-feedback">
-                                                <strong>{{ $errors->first('blog_headline') }}</strong>
-                                            </span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group mt-2 mb-0">
-                                        <label for="">
-                                            <h5>Tagline</h5></label>
-                                        <div class="input-group">
-                                            <input class="form-control {{ $errors->has('blog_tagline') ? ' is-invalid' : '' }}" value="" name="blog_tagline" type="text" placeholder="">
-                                            @if($errors->has('blog_tagline'))
-                                                <span class="invalid-feedback">
-                                                <strong>{{ $errors->first('blog_tagline') }}</strong>
-                                            </span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {{-- Newsletter Section --}}
-                        <div class="col-md-12 mt-4">
-                            <p>Newsletter Section</p>
-                            <hr>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group mt-2 mb-0">
-                                        <label for="">
-                                            <h5>Headline</h5></label>
-                                        <div class="input-group">
-                                            <input class="form-control {{ $errors->has('blog_headline') ? ' is-invalid' : '' }}" value="" name="blog_headline" type="text" placeholder="">
-                                            @if($errors->has('blog_headline'))
-                                                <span class="invalid-feedback">
-                                                <strong>{{ $errors->first('blog_headline') }}</strong>
-                                            </span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group mt-2 mb-0">
-                                        <label for="">
-                                            <h5>Tagline</h5></label>
-                                        <div class="input-group">
-                                            <input class="form-control {{ $errors->has('blog_tagline') ? ' is-invalid' : '' }}" value="" name="blog_tagline" type="text" placeholder="">
-                                            @if($errors->has('blog_tagline'))
-                                                <span class="invalid-feedback">
-                                                <strong>{{ $errors->first('blog_tagline') }}</strong>
-                                            </span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {{-- Lets's Talk Section --}}
-                        <div class="col-md-12 mt-4">
-                            <p>Lets's Talk Section</p>
-                            <hr>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group mt-2 mb-0">
-                                        <label for="">
-                                            <h5>Headline</h5></label>
-                                        <div class="input-group">
-                                            <input class="form-control {{ $errors->has('blog_headline') ? ' is-invalid' : '' }}" value="" name="blog_headline" type="text" placeholder="">
-                                            @if($errors->has('blog_headline'))
-                                                <span class="invalid-feedback">
-                                                <strong>{{ $errors->first('blog_headline') }}</strong>
-                                            </span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group mt-2 mb-0">
-                                        <label for="">
-                                            <h5>Tagline</h5></label>
-                                        <div class="input-group">
-                                            <input class="form-control {{ $errors->has('blog_tagline') ? ' is-invalid' : '' }}" value="" name="blog_tagline" type="text" placeholder="">
-                                            @if($errors->has('blog_tagline'))
-                                                <span class="invalid-feedback">
-                                                <strong>{{ $errors->first('blog_tagline') }}</strong>
-                                            </span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {{-- Popular Service Section --}}
-                        <div class="col-md-12 mt-4">
-                            <p>Popular Service Section</p>
-                            <hr>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group mt-2 mb-0">
-                                        <label for="">
-                                            <h5>Headline</h5></label>
-                                        <div class="input-group">
-                                            <input class="form-control {{ $errors->has('blog_headline') ? ' is-invalid' : '' }}" value="" name="blog_headline" type="text" placeholder="">
-                                            @if($errors->has('blog_headline'))
-                                                <span class="invalid-feedback">
-                                                <strong>{{ $errors->first('blog_headline') }}</strong>
-                                            </span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group mt-2 mb-0">
-                                        <label for="">
-                                            <h5>Tagline</h5></label>
-                                        <div class="input-group">
-                                            <input class="form-control {{ $errors->has('blog_tagline') ? ' is-invalid' : '' }}" value="" name="blog_tagline" type="text" placeholder="">
-                                            @if($errors->has('blog_tagline'))
-                                                <span class="invalid-feedback">
-                                                <strong>{{ $errors->first('blog_tagline') }}</strong>
-                                            </span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {{-- Related Service Section--}}
-                        <div class="col-md-12 mt-4">
-                            <p>Related Service Section</p>
-                            <hr>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group mt-2 mb-0">
-                                        <label for="">
-                                            <h5>Headline</h5></label>
-                                        <div class="input-group">
-                                            <input class="form-control {{ $errors->has('blog_headline') ? ' is-invalid' : '' }}" value="" name="blog_headline" type="text" placeholder="">
-                                            @if($errors->has('blog_headline'))
-                                                <span class="invalid-feedback">
-                                                <strong>{{ $errors->first('blog_headline') }}</strong>
-                                            </span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group mt-2 mb-0">
-                                        <label for="">
-                                            <h5>Tagline</h5></label>
-                                        <div class="input-group">
-                                            <input class="form-control {{ $errors->has('blog_tagline') ? ' is-invalid' : '' }}" value="" name="blog_tagline" type="text" placeholder="">
-                                            @if($errors->has('blog_tagline'))
-                                                <span class="invalid-feedback">
-                                                <strong>{{ $errors->first('blog_tagline') }}</strong>
-                                            </span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
 
                         <div class="py-4 text-right">
                             <button type="submit" class="btn bgOne text-white">Update</button>

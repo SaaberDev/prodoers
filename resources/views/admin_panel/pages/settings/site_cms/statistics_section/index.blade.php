@@ -33,7 +33,7 @@
                         @foreach($statistics as $statistic)
                             <div class="col-md-12 {{ $loop->first ? '' : 'mt-4' }}">
                                 <label for="">
-                                    <h6>{{ str_replace(['stat_' . $loop->iteration, '_'], ['', ' '], $statistic->key) }}</h6>
+                                    <h6>{{ str_replace(['stat', $loop->iteration, '_'], ' ', $statistic->key) }}</h6>
                                 </label>
                                 <hr>
                                 <div class="row">

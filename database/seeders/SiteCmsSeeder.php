@@ -8,6 +8,7 @@ use App\Models\BrandIdentity;
 use App\Models\CompanyPolicy;
 use App\Models\FooterContent;
 use App\Models\HowDesignwalaWork;
+use App\Models\OtherContent;
 use App\Models\ServiceProcess;
 use App\Models\SiteCMS;
 use App\Models\StatisticsSection;
@@ -197,10 +198,67 @@ class SiteCmsSeeder extends Seeder
                 'cookie' => 'Company Cookie Policy',
                 'payment' => 'Company Payment Policy',
                 'terms_and_conditions' => 'Company Terms and Conditions',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
             ]
         ];
         foreach ($company_policies as $policy) {
             CompanyPolicy::create($policy);
+        }
+
+        $other_contents = [
+            [
+                'key' => 'other_content_1_popular_categories_section',
+                'headline' => 'Popular Categories',
+                'tagline' => 'Here are the most popular categories of all time',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'key' => 'other_content_2_how_designwala_works_section',
+                'headline' => 'How Designwala Works',
+                'tagline' => null,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'key' => 'other_content_3_blog_section',
+                'headline' => 'Latest News',
+                'tagline' => 'Read. Learn. Succeed. Your time is now',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'key' => 'other_content_4_newsletter_section',
+                'headline' => 'Stay Updated With Our Newsletter',
+                'tagline' => null,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'key' => "other_content_5_lets_talk_section",
+                'headline' => 'Would like to discuss your new project ?',
+                'tagline' => null,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'key' => 'other_content_6_popular_service_section',
+                'headline' => 'Popular Services',
+                'tagline' => null,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'key' => 'other_content_7_related_service_section',
+                'headline' => 'Related Services',
+                'tagline' => null,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+        ];
+        foreach ($other_contents as $other_content) {
+            OtherContent::create($other_content);
         }
 
 
