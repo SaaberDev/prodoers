@@ -6,8 +6,6 @@
 @endpush
 
 @section('content')
-
-
     <div class="col-xl-10 col-lg-9 col-md-12 dashboardRightside scrollbar scroll-style">
         <div class="">
             <div class="row justify-content-center pb-3 m-0">
@@ -531,10 +529,10 @@
         var inputElm = document.querySelector('input[name=service_tags]');
 
         var usersList = [
-            @foreach($tags as $tag)
+            @foreach($service_tags as $service_tag)
             {
-                "value": {{ $tag->id }},
-                "name": "{{ $tag->title }}",
+                "value": {{ $service_tag->id }},
+                "name": "{{ $service_tag->title }}",
             },
             @endforeach
         ]

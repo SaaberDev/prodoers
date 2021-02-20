@@ -24,13 +24,13 @@ class CreateServicesTable extends Migration
                 ->onDelete('cascade')->onUpdate('cascade');
 
             // Primary Attributes
-            $table->string('title');
+            $table->string('title')->index();
             $table->longText('meta_desc');
             $table->tinyInteger('popular_status')->nullable()->default(0);
             $table->tinyInteger('published_status')->nullable()->default(0);
             $table->string('slug');
             $table->decimal('price');
-            $table->string('thumbnail');
+            $table->string('thumbnail')->nullable();
             $table->longText('service_desc');
             $table->timestamps();
         });

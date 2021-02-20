@@ -27,8 +27,10 @@ class ServiceCategoryFactory extends Factory
             'popular_status' => '1',
             'published_status' => '1',
             'meta_desc' => $this->faker->text,
-            'category_banner' => $this->faker->image('public/storage/admin_panel/services_categories/banner/', 296, 248,'abstract', false),
-            'category_thumbnail' => $this->faker->image('public/storage/admin_panel/services_categories/thumbnail/', 272, 168,'abstract', false),
+//            'category_banner' => $this->faker->image('public/storage/admin_panel/services_categories/banner/', 296, 248,'abstract', false),
+            'category_banner' => null,
+//            'category_thumbnail' => $this->faker->image('public/storage/admin_panel/services_categories/thumbnail/', 272, 168,'abstract', false),
+            'category_thumbnail' => null,
             'desc' => $this->faker->text,
         ];
     }

@@ -41,9 +41,9 @@ class Service extends Model
         return route('guest.service.index', $this->slug);
     }
 
-    public function tags()
+    public function service_tags()
     {
-        return $this->belongsToMany(Tag::class, 'service_tag', 'service_id', 'tag_id');
+        return $this->belongsToMany(ServiceTag::class, 'service_service_tag', 'service_id', 'service_tag_id');
     }
 
     public function serviceCategories()
@@ -66,22 +66,17 @@ class Service extends Model
         return $this->hasMany(ServiceFaq::class, 'service_id');
     }
 
-    public function scopeOrderByIdDesc(Builder $query)
+    public function scopeFilterBy($query, $column, $arg)
     {
-        return $query->orderBy('id', 'desc');
-    }
-
-    public function scopeFilterByStatus($query, $filterByStatus)
-    {
-        return $query->where(function ($query) use ($filterByStatus) {
-            $filterByStatus == '' ? $query->orderBy('id', 'desc') : $query->orWhere('published_status', '=', $filterByStatus);
+        return $query->where(function ($query) use ($arg, $column) {
+            $arg == '' ? $query->orderBy('id', 'desc') : $query->orWhere($column, '=', $arg);
         });
     }
 
-    public function scopeSearchByTitle($query, $search)
+    public function scopeSearchBy($query, $column, $search)
     {
-        return $query->where(function ($query) use ($search) {
-            $query->orWhere('title', 'like', $search . '%');
+        return $query->where(function ($query) use ($search, $column) {
+            $query->orWhere($column, 'like', '%' . $search . '%');
         });
     }
 

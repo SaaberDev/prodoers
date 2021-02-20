@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Cviebrock\EloquentSluggable\Sluggable;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -39,34 +38,23 @@ class ServiceCategory extends Model
         return $query->where('slug', $slug);
     }
 
-    public function scopeOrderByIdDesc($query)
+    public function scopeFilterBy($query, $column, $arg)
     {
-        return $query->orderBy('id', 'desc');
-    }
-
-    public function scopeFilterByStatus($query, $filterByStatus)
-    {
-        return $query->where(function ($query) use ($filterByStatus) {
-            $filterByStatus == '' ? $query->orderBy('id', 'desc') : $query->orWhere('published_status', '=', $filterByStatus);
+        return $query->where(function ($query) use ($arg, $column) {
+            $arg == '' ? $query->orderBy('id', 'desc') : $query->orWhere($column, '=', $arg);
         });
     }
 
-    public function scopeSearchByTitle($query, $search)
+    public function scopeSearchBy($query, $column, $search)
     {
-        return $query->where(function ($query) use ($search) {
-                $query->where('title', 'like', '%' . $search . '%');
+        return $query->where(function ($query) use ($search, $column) {
+                $query->where($column, 'like', '%' . $search . '%');
             });
-    }
-
-    public function scopeGetTitle($query)
-    {
-        return $query->orderByIdDesc()->get(['title', 'id']);
     }
 
     public function scopeGetAllPublished($query)
     {
         return $query->where('published_status', '=', 1);
-//            ->whereHas('services');
     }
 
     public function scopeNavbarActive($query)
@@ -76,13 +64,12 @@ class ServiceCategory extends Model
 
     public function scopeGetAllPopular($query)
     {
-        return $query->where('popular_status', '=', 1)
-            ->getAllPublished()
-            ->orderBy('title')
-            ->whereHas('services')
-            ->with(['services' => function($query){
-                $query->getAllPublished();
-            }]);
+        return $query->where('popular_status', '=', 1);
+    }
+
+    public function scopeWithAndWhereHas($query, $relation, $constraint){
+        return $query->whereHas($relation, $constraint)
+            ->with([$relation => $constraint]);
     }
 
 }

@@ -54,7 +54,7 @@
                             <div class="input-group">
 
                                 <input name="service_tags"
-                                       value="@foreach($services->tags as $tag) {{ old('service_tags') ?? $tag->id }}, @endforeach"
+                                       value="@foreach($services->service_tags as $tag) {{ old('service_tags') ?? $tag->id }}, @endforeach"
                                        class="{{ $errors->has('service_tags') ? ' is-invalid' : '' }}"
                                        type="text"
                                        placeholder=""
@@ -158,14 +158,14 @@
                                 />
 
                                 <div class="input-group-btn">
-                        <span class="fileUpload btn btnOne">
-                            <span class="upl" id="upload">Choose</span>
-                            <input type='file'
-                                   name="service_images[]"
-                                   class="upload up"
-                                   multiple
-                            />
-                        </span>
+                                    <span class="fileUpload btn btnOne">
+                                        <span class="upl" id="upload">Choose</span>
+                                        <input type='file'
+                                               name="service_images[]"
+                                               class="upload up"
+                                               multiple
+                                        />
+                                    </span>
                                 </div>
                                 @if($errors->has('service_images.*'))
                                     <span class="invalid-feedback">
@@ -178,22 +178,22 @@
                         <div class="mt-4 border">
                             <ul class="row list-unstyled previewimg">
                                 @foreach ($services->serviceImages as $service)
-                                <li class="col-md-4 py-4 text-center position-relative m-auto">
-                                    <div class="previewimg">
-                                        <img src="{{ asset('storage/admin_panel/services/service_image/' . $service->filename) }}" alt="{{ $services->title }}" class="img-fluid">
-                                        <a class="sweet_delete close closeImgdiv" data-action="{{ route('services.service.destroyServiceImage', $service->id) }}" style="cursor: pointer; position: absolute;top: 10px; right: 27px;">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
-                                                <g transform="translate(-642 -792)">
-                                                    <circle cx="9" cy="9" r="9" transform="translate(642 792)" fill="#ff6767"></circle>
-                                                    <g transform="translate(647.17 797.205)">
-                                                        <g transform="translate(0 0)">
-                                                            <line x2="7.442" y2="7.442" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2"></line>
-                                                            <line x1="7.442" y2="7.442" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2"></line>
+                                    <li class="col-md-4 py-4 text-center position-relative m-auto">
+                                        <div class="previewimg">
+                                            <img src="{{ asset(config('designwala_paths.show.services.service_image') . $service->filename) }}" alt="{{ $services->title }}" class="img-fluid">
+                                            <a class="sweet_delete close closeImgdiv" data-action="{{ route('services.service.destroyServiceImage', $service->id) }}" style="cursor: pointer; position: absolute;top: 10px; right: 27px;">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                                                    <g transform="translate(-642 -792)">
+                                                        <circle cx="9" cy="9" r="9" transform="translate(642 792)" fill="#ff6767"></circle>
+                                                        <g transform="translate(647.17 797.205)">
+                                                            <g transform="translate(0 0)">
+                                                                <line x2="7.442" y2="7.442" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2"></line>
+                                                                <line x1="7.442" y2="7.442" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2"></line>
+                                                            </g>
                                                         </g>
                                                     </g>
-                                                </g>
-                                            </svg>
-                                        </a>
+                                                </svg>
+                                            </a>
                                     </div>
                                 </li>
                                 @endforeach
@@ -237,7 +237,7 @@
                             <ul class="row list-unstyled previewimg">
                                 <li class="col-md-4 py-4 text-center position-relative m-auto">
                                     <div class="previewimg">
-                                        <img id="previewImg" class="img-fluid" src="{{ asset('storage/admin_panel/services/thumbnail/' . $services->thumbnail) }}" alt="{{ $services->title }}">
+                                        <img id="previewImg" class="img-fluid" src="{{ asset(config('designwala_paths.show.services.thumbnail') . $services->thumbnail) }}" alt="{{ $services->title }}">
                                     </div>
                                 </li>
                             </ul>
@@ -253,7 +253,7 @@
                             <div class="col-md-12">
                                 <label for="">
                                     <h5>features </h5> </label>
-                                @foreach($services->serviceFeatures as $key => $service)
+                                @forelse($services->serviceFeatures as $key => $service)
                                     <div id="dynamic-field-{{ $key + 1 }}" class="input-group dynamic-field mb-3">
                                         {{--<label class="mr-3 mt-2" for="field-1">Feature #1</label>--}}
                                         <input type="text" id="field-{{ $key + 1 }}" value="{{ $service->feature_desc }}" class="form-control validation" name="features[]" aria-describedby="button-addon2">
@@ -263,7 +263,12 @@
                                             </a>
                                         </div>
                                     </div>
-                                @endforeach
+                                @empty
+                                    <div id="dynamic-field-1" class="input-group dynamic-field mb-3">
+                                        {{--<label class="mr-3 mt-2" for="field-1">Feature #1</label>--}}
+                                        <input type="text" id="field-1" name="features[]" value="{{ old('features.*') }}" class="form-control validation" aria-describedby="button-addon2">
+                                    </div>
+                                @endforelse
                             </div>
                         </div>
                     </div>
@@ -303,7 +308,7 @@
                     <div class="col-md-12 py-3">
                         <!-- COMPONENT START -->
                         <h5>FAQ's</h5>
-                        @foreach($services->serviceFaqs as $key => $faq)
+                        @forelse($services->serviceFaqs as $key => $faq)
                             <div id="dynamic-field-faq-{{ $key + 1 }}" class="row dynamic-field-faq">
                             <div class="col-md-12">
                                 <div  class="input-group  mb-0">
@@ -321,7 +326,20 @@
                                 </div>
                             </div>
                         </div>
-                        @endforeach
+                        @empty
+                            <div id="dynamic-field-faq-1" class="row dynamic-field-faq">
+                                <div class="col-md-12">
+                                    <div  class="form-group  mb-0">
+                                        <input type="text" id="faqs-question-1" class="form-control validation-faqs" name="question[]" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mt-4">
+                                    <div class="form-group">
+                                        <textarea type="text" id="faqs-answer-1" class="form-control validation-faqs" name="answer[]" rows="5"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforelse
                     </div>
                     <div class="col-md-12 mt-4">
                         <div class="text-right">
@@ -581,10 +599,10 @@
         var inputElm = document.querySelector('input[name=service_tags]');
 
         var usersList = [
-                @foreach($tags as $tag)
+            @foreach($service_tags as $service_tag)
             {
-                "value": {{ $tag->id }},
-                "name": "{{ $tag->title }}",
+                "value": {{ $service_tag->id }},
+                "name": "{{ $service_tag->title }}",
             },
             @endforeach
         ]

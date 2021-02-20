@@ -14,16 +14,10 @@ class SocialLinks extends Model
 
     protected $guarded = [];
 
-
-    public function scopeOrderByIdDesc($query)
+    public function scopeSearchBy($query, $column, $search)
     {
-        return $query->orderBy('id', 'desc');
-    }
-
-    public function scopeSearchBy($query, $entity, $search)
-    {
-        return $query->where(function ($query) use ($search, $entity) {
-            $query->where($entity, 'like', $search . '%');
+        return $query->where(function ($query) use ($search, $column) {
+            $query->where($column, 'like', $search . '%');
         });
     }
 }

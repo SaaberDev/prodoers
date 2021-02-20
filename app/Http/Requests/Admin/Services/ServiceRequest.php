@@ -59,7 +59,7 @@ class ServiceRequest extends FormRequest
     {
         return [
             'service_title.required' => 'Title field is required',
-            'service_tags.required' => 'Tag field is required',
+            'service_tags.required' => 'ServiceTag field is required',
             'meta_description.required' => 'Meta Description field is required',
             'allCategories.required' => 'Categories field is required',
             'service_price.required' => 'Price field is required',

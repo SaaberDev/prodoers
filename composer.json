@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.4.13|^8.0",
         "ext-json": "*",
+        "appstract/laravel-opcache": "^4.0",
         "artesaos/seotools": "^0.19.1",
         "cviebrock/eloquent-sluggable": "^8.0",
         "fideloper/proxy": "^4.4",
@@ -65,6 +66,7 @@
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi",
             "@php artisan vendor:publish --force --tag=livewire:assets --ansi",
+            "@php artisan clear-compiled",
             "@php artisan ide-helper:generate",
             "@php artisan ide-helper:meta",
             "@php artisan ide-helper:models -M"

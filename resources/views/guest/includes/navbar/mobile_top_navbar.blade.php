@@ -1,7 +1,9 @@
 <header class="designwalaHeader d-lg-none d-sm-block" id="designwalaHeader">
     <nav class="navbar navbar-expand-lg navbar-dark designwalaNavbarColor">
-        <div class="container"><a class="navbar-brand text-white font-weight-bold"
-                                  href="{{ route('guest.home.index') }}">DESIGNWALA</a>
+        <div class="container">
+            <a class="navbar-brand text-white font-weight-bold large-sm-logo" href="{{ route('guest.home.index') }}">
+                <img src="https://via.placeholder.com/150x40.png{{--{{ asset(config('designwala_paths.default.brand_logo')) }}--}}">
+            </a>
             <button data-trigger="#navbar_main" class="d-lg-none btn bg-white" type="button">
                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-ui-radios-grid" fill="currentColor"
                      xmlns="http://www.w3.org/2000/svg">

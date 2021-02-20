@@ -37,8 +37,8 @@ class DeleteDirectory extends Command
      */
     public function handle()
     {
-        if (\Storage::exists('public/admin_panel')){
-            \Storage::deleteDirectory('public/admin_panel');
+        if (\Storage::exists('public/images')){
+            \Storage::deleteDirectory('public/images');
             $this->info('Directories Deleted Successfully');
         } else {
             $this->error('Directories Does Not Exists');

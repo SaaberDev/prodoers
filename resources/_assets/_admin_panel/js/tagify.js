@@ -1,5 +1,5 @@
 /*
-* Meta Tag Input
+* Meta ServiceTag Input
 * Add Service Page
 * */
 // The DOM element you wish to replace with Tagify

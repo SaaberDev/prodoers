@@ -1,5 +1,5 @@
 @extends('admin_panel.layouts.app')
-@section('title', 'Edit Tag')
+@section('title', 'Edit ServiceTag')
 
 @push('styles')
     {{-- Internal Styles --}}

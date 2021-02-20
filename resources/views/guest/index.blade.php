@@ -44,19 +44,19 @@
     <div class="section whydesignWala" id="whydesignWala">
         <div class="container">
             <div class="row bg-white whyDesignwalaPosition">
-                <!--               box one -->
+{{--                @foreach($service_processes->where('type', '=', 'image') as $service_process)--}}
                 <div class="col-lg-2 col-md-6 p-0 ">
                     <div class="whydesignwalaSingleService p-3">
                         <div class="text-center pt-3 pb-2">
-                            <img src="{{ asset('_assets/_guest/img/servicepage/whydesignwalasection/reliable_and_quick.svg') }}" alt="service image" class="img-fluid ">
+                            <img src="{{ asset(/*$service_process->value ? config('designwala_paths.show.site_cms.service_process') . $service_process->value : */config('designwala_paths.default.service_process_1')) }}" alt="service image" class="img-fluid ">
                         </div>
                         <div class="text-center py-3">
                             <p class="mb-0">Reliable and Quick Communication</p>
                         </div>
                     </div>
                 </div>
-                <!--                box two -->
-                <div class="col-lg-2 col-md-6 p-0 ">
+{{--                @endforeach--}}
+                {{--<div class="col-lg-2 col-md-6 p-0 ">
                     <div class="whydesignwalaSingleService p-3">
                         <div class="text-center pt-3 pb-2">
                             <img src="{{ asset('_assets/_guest/img/servicepage/whydesignwalasection/human.svg') }}" alt="service image" class="img-fluid ">
@@ -109,7 +109,7 @@
                             <p class="mb-0">Reliable and Quick Communication</p>
                         </div>
                     </div>
-                </div>
+                </div>--}}
             </div>
         </div>
     </div>
@@ -130,7 +130,7 @@
                     <div class="col-lg-4 col-md-6 text-center py-5 popularCetegoriesSmallpadding">
                         <div class="sectionServicePopularCategoriesSingleCategories m-auto">
                             <div class="sectionServicePopularCategoriesSingleImage">
-                                <img src="{{ asset(config('designwala_paths.admin.images.show.categories.thumbnails') . $popular_category->category_thumbnail) }}" alt="categories image one" class="img-fluid">
+                                <img src="{{ asset($popular_category->category_thumbnail ? config('designwala_paths.show.service_categories.thumbnail') . $popular_category->category_thumbnail : config('designwala_paths.default.no_preview')) }}" alt="categories image one" class="img-fluid" loading="lazy">
                             </div>
                             <div class="sectionServicePopularCategoriesSingleContent">
                                 <h3 class="pt-3"><a href="{{ route('guest.service_category.index', $popular_category->slug) }}" class="text-dark">{{ $popular_category->title }}</a></h3>
@@ -227,9 +227,8 @@
             <div class="row justify-content-center">
                 <div class="col-lg-9 col-md-12 text-center">
                     <div class="video-wrapper  m-auto">
-                        <video src="{{ asset('_assets/_guest/video/Sticker.mp4') }}" poster="{{ asset('_assets/_guest/img/servicepage/videobanner.jpg') }}"></video>
+                        <video src="{{ asset(config('designwala_paths.default.how_designwala_works_video')) }}" poster="{{ asset(config('designwala_paths.default.how_designwala_works_video_thumbnail')) }}"></video>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -351,14 +350,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6 col-md-8">
                     <div class="">
-                        <form action="" class="pt-3">
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control rounded-0" placeholder="Enter your email" aria-label="Recipient's username" aria-describedby="button-addon2">
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-secondary px-3 text-white rounded-0" type="button" id="">Subscribe</button>
-                                </div>
-                            </div>
-                        </form>
+                        @livewire('guest.newsletter.newsletter-component')
                     </div>
                 </div>
             </div>

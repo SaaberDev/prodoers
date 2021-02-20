@@ -24,10 +24,12 @@
                 </div>
             </div>
             <div class="col"></div>
-            @if($service_categories->total() > 5)
-                {{ $service_categories->links('vendor.livewire.designwala-pagination') }}
-            @else
-            @endif
+            <div class="col-md-4">
+                @if($service_categories->total() > 5)
+                    {{ $service_categories->links('vendor.livewire.designwala-pagination') }}
+                @else
+                @endif
+            </div>
         </div>
     </div>
 
@@ -51,8 +53,8 @@
                         @forelse($service_categories as $service_category)
                             <tr>
                                 <td>{{ $service_category->title }}</td>
-                                <td><img src="{{ asset(config('designwala_paths.admin.images.show.categories.banner') . $service_category->category_banner) }}" alt="" class="img-fluid" style="height: 25px;"> </td>
-                                <td><img src="{{ asset(config('designwala_paths.admin.images.show.categories.thumbnails') . $service_category->category_thumbnail) }}" alt="" class="img-fluid" style="height: 25px;"> </td>
+                                <td><img src="{{ asset(config('designwala_paths.show.service_categories.banner') . $service_category->category_banner) }}" alt="" class="img-fluid" style="height: 25px;"> </td>
+                                <td><img src="{{ asset(config('designwala_paths.show.service_categories.thumbnail') . $service_category->category_thumbnail) }}" alt="" class="img-fluid" style="height: 25px;"> </td>
                                 <td>
                                     @if($service_category->navbar_status == 1)
                                         <div class="tableDataLastButtonLiketab  tabletabGREEN"><span class="">Active</span></div>

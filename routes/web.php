@@ -1,36 +1,36 @@
 <?php
 
-    use App\Http\Controllers\admin_panel\blogs\BlogCategoryController;
-    use App\Http\Controllers\admin_panel\blogs\BlogController;
-    use App\Http\Controllers\admin_panel\chats\DesignwalaChatController;
-    use App\Http\Controllers\admin_panel\chats\OrderChatController;
-    use App\Http\Controllers\admin_panel\clients\ClientController;
-    use App\Http\Controllers\admin_panel\clients\SubscriberController;
-    use App\Http\Controllers\admin_panel\DashboardController;
-    use App\Http\Controllers\admin_panel\designwalas\DesignwalaController;
-    use App\Http\Controllers\admin_panel\faqs\FaqController;
-    use App\Http\Controllers\admin_panel\offers\AffiliateController;
-    use App\Http\Controllers\admin_panel\offers\CouponController;
-    use App\Http\Controllers\admin_panel\orders\OrderController;
-    use App\Http\Controllers\admin_panel\orders\PaymentController;
-    use App\Http\Controllers\admin_panel\promotions\AdvertisementBannerController;
-    use App\Http\Controllers\admin_panel\promotions\DraftMailController;
-    use App\Http\Controllers\admin_panel\promotions\EmailMarketingController;
-    use App\Http\Controllers\admin_panel\reviews\ReviewController;
-    use App\Http\Controllers\admin_panel\roles_and_permissions\PermissionController;
-    use App\Http\Controllers\admin_panel\roles_and_permissions\RoleController;
-    use App\Http\Controllers\admin_panel\services\ServiceCategoryController;
-    use App\Http\Controllers\admin_panel\services\ServiceController;
-    use App\Http\Controllers\admin_panel\services\TagController;
-    use App\Http\Controllers\admin_panel\settings\FooterSectionController;
-    use App\Http\Controllers\admin_panel\settings\MaintenanceModeController;
-    use App\Http\Controllers\admin_panel\settings\SEOToolsController;
-    use App\Http\Controllers\admin_panel\settings\SiteCMSController;
-    use App\Http\Controllers\guest\blog\GuestBlogController;
-    use App\Http\Controllers\guest\HomeController;
-    use App\Http\Controllers\guest\search\GuestSearchController;
-    use App\Http\Controllers\guest\service\category\GuestServiceCategoryController;
-    use App\Http\Controllers\guest\service\GuestServiceController;
+    use App\Http\Controllers\Admin\Blog\BlogCategoryController;
+    use App\Http\Controllers\Admin\Blog\BlogController;
+    use App\Http\Controllers\Admin\Chat\DesignwalaChatController;
+    use App\Http\Controllers\Admin\Chat\OrderChatController;
+    use App\Http\Controllers\Admin\Client\ClientController;
+    use App\Http\Controllers\Admin\Client\SubscriberController;
+    use App\Http\Controllers\Admin\DashboardController;
+    use App\Http\Controllers\Admin\Designwala\DesignwalaController;
+    use App\Http\Controllers\Admin\Faq\FaqController;
+    use App\Http\Controllers\Admin\Offer\AffiliateController;
+    use App\Http\Controllers\Admin\Offer\CouponController;
+    use App\Http\Controllers\Admin\Order\OrderController;
+    use App\Http\Controllers\Admin\Order\PaymentController;
+    use App\Http\Controllers\Admin\Promotion\AdvertisementBannerController;
+    use App\Http\Controllers\Admin\Promotion\DraftMailController;
+    use App\Http\Controllers\Admin\Promotion\EmailMarketingController;
+    use App\Http\Controllers\Admin\Review\ReviewController;
+    use App\Http\Controllers\Admin\Roles_and_permission\PermissionController;
+    use App\Http\Controllers\Admin\Roles_and_permission\RoleController;
+    use App\Http\Controllers\Admin\Service\ServiceCategoryController;
+    use App\Http\Controllers\Admin\Service\ServiceController;
+    use App\Http\Controllers\Admin\Service\TagController;
+    use App\Http\Controllers\Admin\Settings\MaintenanceModeController;
+    use App\Http\Controllers\Admin\Settings\SEOToolsController;
+    use App\Http\Controllers\Admin\Settings\SiteCMSController;
+    use App\Http\Controllers\Guest\Blog\GuestBlogController;
+    use App\Http\Controllers\Guest\HomeController;
+//    use App\Http\Controllers\Guest\Newsletter\GuestNewsletterController;
+    use App\Http\Controllers\Guest\Search\GuestSearchController;
+    use App\Http\Controllers\Guest\Service\Category\GuestServiceCategoryController;
+    use App\Http\Controllers\Guest\Service\GuestServiceController;
     use Illuminate\Support\Facades\Route;
 
 
@@ -43,7 +43,6 @@
     Route::prefix('/')->name('guest.')->group(function () {
         // Home
         Route::get('/', [HomeController::class, 'index'])->name('home.index');
-//        Route::get('/search/{category_slug}', [GuestSearchController::class, 'index'])->name('search.index');
         Route::get('/search/services/', [GuestSearchController::class, 'index'])->name('search.index');
 
         // Single Category Page
@@ -56,11 +55,30 @@
             Route::get('/{service_slug}', [GuestServiceController::class, 'index'])->name('index');
         });
 
+        // Policies
+        Route::name('policy.')->group(function (){
+            Route::get('/privacy-policy', function (){
+                return view('guest.pages.policies.privacy_policy');
+            })->name('privacy');
 
-//        Route::get('services/{service_slug}', [HomeController::class, 'single_service'])->name('single_service.show');
+            Route::get('/cookie-policy', function (){
+                return view('guest.pages.policies.cookie_policy');
+            })->name('cookie');
 
-        // Single Service Page
-//        Route::get('/{slug}', [UserServiceController::class, 'index'])->name('single_service.index');
+            Route::get('/payment-policy', function (){
+                return view('guest.pages.policies.payment_policy');
+            })->name('payment');
+
+            Route::get('/terms-and-conditions', function (){
+                return view('guest.pages.policies.terms_and_conditions');
+            })->name('terms_and_conditions');
+        });
+
+        // Newsletter
+//        Route::name('newsletter.')->group(function (){
+//            Route::post('/store-newsletter', [GuestNewsletterController::class, 'store'])->name('store');
+//        });
+
 
         // Order Details
 //        Route::get('/order-details', [UserOrderDetailController::class, 'index'])->name('order_detail.index');
@@ -77,12 +95,12 @@
     | Admin Panel Routes
     |--------------------------------------------------------------------------
     */
-// Dashboard Route Section
+    // Dashboard Route Section
     Route::prefix('/dashboard')->group(function () {
         // Dashboard
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
 
-// Services Route Section
+        // Services Route Section
         Route::name('services.')->group(function () {
             // Services
             Route::prefix('/services')->name('service.')->group(function () {
@@ -167,9 +185,10 @@
                 Route::get('/', [ClientController::class, 'index'])->name('index');
                 Route::get('/show', [ClientController::class, 'show'])->name('show');
             });
-            // Payments
+            // Subscribers
             Route::prefix('/subscribers')->name('subscribers.')->group(function () {
                 Route::get('/', [SubscriberController::class, 'index'])->name('index');
+                Route::get('/destroy-subscriber/{id}', [SubscriberController::class, 'destroy'])->name('destroy');
             });
         });
 
@@ -203,7 +222,7 @@
             });
         });
 
-// Promotions Route Section
+        // Promotions Route Section
         Route::name('promotions.')->group(function () {
             // Email Marketing
             Route::name('email_marketing.')->group(function () {
@@ -226,7 +245,7 @@
             });
         });
 
-// Designwalas Route Section
+        // Designwalas Route Section
         Route::name('designwalas.')->group(function () {
             // Designwalas
             Route::prefix('/designwalas')->name('designwala.')->group(function () {
@@ -235,7 +254,7 @@
             });
         });
 
-// Roles & Permissions Route Section
+        // Roles & Permissions Route Section
         Route::name('roles_permissions.')->group(function () {
             // Roles
             Route::prefix('/roles')->name('role.')->group(function () {
@@ -250,7 +269,7 @@
             });
         });
 
-// Settings Route Section
+        // Settings Route Section
         Route::name('settings.')->group(function () {
             // SEO Tools
             Route::name('seo_tools.')->group(function () {
@@ -262,29 +281,63 @@
                     Route::get('/edit-meta', [SEOToolsController::class, 'edit_open_graph'])->name('edit_open_graph');
                 });
             });
+
             // Site CMS
             Route::prefix('/site-cms')->name('site_cms.')->group(function () {
                 Route::get('/', [SiteCMSController::class, 'index'])->name('index');
+                Route::get('/update-site-cms', [SiteCMSController::class, 'update'])->name('update');
             });
 
-            // Footer Section
-            Route::name('footer_section.')->group(function () {
-                Route::prefix('/footer')->name('footer.')->group(function () {
-                    Route::get('/', [FooterSectionController::class, 'index_footer'])->name('index');
-                    Route::patch('/update-footer', [FooterSectionController::class, 'update_footer'])->name('update');
+            // Site CMS
+            Route::name('site_cms.')->group(function () {
+                // Brand Identity Section
+                Route::prefix('/brand-identity')->name('brand_identity.')->group(function () {
+                    Route::get('/', [SiteCMSController::class, 'index_brand_identity'])->name('index');
+                    Route::patch('/update-brand-identity', [SiteCMSController::class, 'update_brand_identity'])->name('update');
                 });
+                // Banners
+                Route::prefix('/banners')->name('banner.')->group(function () {
+                    Route::get('/', [SiteCMSController::class, 'index_banner'])->name('index');
+                    Route::patch('/update-banners', [SiteCMSController::class, 'update_banner'])->name('update');
+                });
+                // Service Process Section
+                Route::prefix('/service-process')->name('service_process.')->group(function () {
+                    Route::get('/', [SiteCMSController::class, 'index_service_process'])->name('index');
+                    Route::patch('/update-service-process', [SiteCMSController::class, 'update_service_process'])->name('update');
+                });
+                // How Designwala Works ?
+                Route::prefix('/how-designwala-works')->name('how_designwala_works.')->group(function () {
+                    Route::get('/', [SiteCMSController::class, 'index_how_designwala_works'])->name('index');
+                    Route::patch('/update-how-designwala-works', [SiteCMSController::class, 'update_how_designwala_works'])->name('update');
+                });
+                // Statistics Section
+                Route::prefix('/statistics')->name('statistics.')->group(function () {
+                    Route::get('/', [SiteCMSController::class, 'index_statistics'])->name('index');
+                    Route::patch('/update-statistics', [SiteCMSController::class, 'update_statistics'])->name('update');
+                });
+                // Footer Content
+                Route::prefix('/footer')->name('footer.')->group(function () {
+                    Route::get('/', [SiteCMSController::class, 'index_footer'])->name('index');
+                    Route::patch('/update-footer', [SiteCMSController::class, 'update_footer'])->name('update');
+                });
+                // Social Links
                 Route::prefix('/social-links')->name('social_link.')->group(function () {
-                    Route::get('/', [FooterSectionController::class, 'index_social_links'])->name('index');
-                    Route::get('/create-social-links', [FooterSectionController::class, 'create_social_links'])->name('create');
-                    Route::get('/edit-social-links/{id}', [FooterSectionController::class, 'edit_social_links'])->name('edit');
-                    Route::post('/store-social-links', [FooterSectionController::class, 'store_social_links'])->name('store');
-                    Route::patch('/update-social-links/{id}', [FooterSectionController::class, 'update_social_links'])->name('update');
-                    Route::get('/destroy-social-links/{id}', [FooterSectionController::class, 'destroy_social_links'])->name('destroy');
+                    Route::get('/', [SiteCMSController::class, 'index_social_links'])->name('index');
+                    Route::get('/create-social-links', [SiteCMSController::class, 'create_social_links'])->name('create');
+                    Route::get('/edit-social-links/{id}', [SiteCMSController::class, 'edit_social_links'])->name('edit');
+                    Route::post('/store-social-links', [SiteCMSController::class, 'store_social_links'])->name('store');
+                    Route::patch('/update-social-links/{id}', [SiteCMSController::class, 'update_social_links'])->name('update');
+                    Route::get('/destroy-social-links/{id}', [SiteCMSController::class, 'destroy_social_links'])->name('destroy');
                 });
                 // Policies
                 Route::prefix('/policies')->name('policy.')->group(function () {
-                    Route::get('/', [FooterSectionController::class, 'index_policy'])->name('index');
-                    Route::patch('/update-policies', [FooterSectionController::class, 'update_policy'])->name('update');
+                    Route::get('/', [SiteCMSController::class, 'index_policy'])->name('index');
+                    Route::patch('/update-policies', [SiteCMSController::class, 'update_policy'])->name('update');
+                });
+                // Other Contents
+                Route::prefix('/other-contents')->name('other_content.')->group(function () {
+                    Route::get('/', [SiteCMSController::class, 'index_other_content'])->name('index');
+                    Route::patch('/update-other-contents', [SiteCMSController::class, 'update_other_content'])->name('update');
                 });
             });
             // Maintenance Mode
@@ -294,8 +347,9 @@
         });
     });
 
-    Route::get('/test', function (){
-//        return Config::get('designwala.policy.site_content');
+    Route::prefix('/test')->name('test.')->group(function (){
+        Route::get('/', [\App\Http\Controllers\TestController::class, 'index'])->name('index');
+        Route::patch('/update-test', [\App\Http\Controllers\TestController::class, 'update'])->name('update');
     });
 
 //    Route::get('/{category_name}', [UserServiceCategoryController::class, 'show'])->name('show');

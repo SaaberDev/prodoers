@@ -13,3 +13,10 @@
 {{-- Internal Scripts --}}
 @endpush
 
+
+{{ $errors->has('service_category_title') ? ' is-invalid' : '' }}
+@if($errors->has('service_category_title'))
+    <span class="invalid-feedback">
+        <strong>{{ $errors->first('service_category_title') }}</strong>
+    </span>
+@endif

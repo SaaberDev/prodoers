@@ -119,7 +119,7 @@
                             <ul class="row list-unstyled previewimg">
                                 <li class="col-md-4 py-4 text-center position-relative m-auto">
                                     <div class="previewImg">
-                                        <img id="previewImg" class="img-fluid" src="{{ asset('storage/admin_panel/services_categories/banner/' . $service_categories->category_banner) }}" alt="{{ $service_categories->title }}">
+                                        <img id="previewImg" class="img-fluid" src="{{ asset(config('designwala_paths.show.service_categories.banner') . $service_categories->category_banner) }}" alt="Category Banner Image">
                                     </div>
                                 </li>
                             </ul>
@@ -160,7 +160,7 @@
                             <ul class="row list-unstyled previewimg">
                                 <li class="col-md-4 py-4 text-center position-relative m-auto">
                                     <div class="previewImg">
-                                        <img id="previewImg" class="img-fluid" src="{{ asset('storage/admin_panel/services_categories/thumbnail/' . $service_categories->category_thumbnail) }}" alt="">
+                                        <img id="previewImg" class="img-fluid" src="{{ asset(config('designwala_paths.show.service_categories.thumbnail') . $service_categories->category_thumbnail) }}" alt="Category Thumbnail">
                                     </div>
                                 </li>
                             </ul>
@@ -185,7 +185,7 @@
                         <div class="col-md-12 py-3">
                             <!-- COMPONENT START -->
                             <h5>FAQ's</h5>
-                            @foreach($service_categories->serviceCategoryFaqs as $faq)
+                            @forelse($service_categories->serviceCategoryFaqs as $faq)
                                 <div id="dynamic-field-faq-1" class="row dynamic-field-faq">
                                     <div class="col-md-12">
                                         <div  class="input-group  mb-0">
@@ -204,7 +204,20 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
+                            @empty
+                                <div id="dynamic-field-faq-1" class="row dynamic-field-faq">
+                                    <div class="col-md-12">
+                                        <div  class="form-group  mb-0">
+                                            <input type="text" id="faqs-question-1" class="form-control validation-faqs" name="question[]" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mt-4">
+                                        <div class="form-group">
+                                            <textarea type="text" id="faqs-answer-1" class="form-control validation-faqs" name="answer[]" rows="5"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforelse
                         </div>
                         <div class="col-md-12 mt-4">
                             <div class="text-right">

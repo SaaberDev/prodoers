@@ -20,7 +20,7 @@ class CreateServiceImagesTable extends Migration
             $table->foreign('service_id')
                 ->references('id')->on('services')
                 ->onDelete('cascade')->onUpdate('cascade');
-            $table->string('filename');
+            $table->string('filename')->nullable();
             $table->timestamps();
         });
     }
