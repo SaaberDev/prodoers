@@ -27,7 +27,6 @@
     use App\Http\Controllers\Admin\Settings\SiteCMSController;
     use App\Http\Controllers\Guest\Blog\GuestBlogController;
     use App\Http\Controllers\Guest\HomeController;
-//    use App\Http\Controllers\Guest\Newsletter\GuestNewsletterController;
     use App\Http\Controllers\Guest\Search\GuestSearchController;
     use App\Http\Controllers\Guest\Service\Category\GuestServiceCategoryController;
     use App\Http\Controllers\Guest\Service\GuestServiceController;
