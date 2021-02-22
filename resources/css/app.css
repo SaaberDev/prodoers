@@ -1,7 +1,3 @@
-/*
-** SweetAlert CSS
-*/
-.swal-toast-height {
-    height: 55px;
-}
-
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';

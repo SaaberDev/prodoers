@@ -9,7 +9,7 @@
 
     {{-- Styles --}}
     <link href="{{ mix('_assets/_guest/css/guest.css') }}" rel="stylesheet">
-    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <link href="{{ mix('_assets/_custom/css/app.css') }}" rel="stylesheet">
     @livewireStyles
     @stack('styles')
 </head>
@@ -20,7 +20,7 @@
 @include('guest.includes.footer')
 {{-- footer_section --}}
 <script src="{{ mix('_assets/_guest/js/guest.js') }}"></script>
-<script src="{{ mix('js/app.js') }}"></script>
+<script src="{{ mix('_assets/_custom/js/app.js') }}"></script>
 @livewireScripts
 
 <!--Start of Tawk.to Script-->

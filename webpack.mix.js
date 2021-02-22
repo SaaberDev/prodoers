@@ -11,11 +11,20 @@ const mix = require('laravel-mix');
  |
  */
 
-// Default for both Admin and Guest
+// Laravel Default
 mix.js('resources/js/app.js', 'public/js/app.js')
     .postCss('resources/css/app.css', 'public/css/app.css', [
-        //
+        require('postcss-import'),
+        require('tailwindcss'),
+        require('autoprefixer'),
     ])
+    // Application Default
+    .styles([
+        'resources/_assets/_custom/css/app.css',
+    ], 'public/_assets/_custom/css/app.css')
+    .scripts([
+        'resources/_assets/_custom/js/app.js',
+    ], 'public/_assets/_custom/js/app.js')
     /*
     |--------------------------------------------------------------------------
     | Admin Panel Assets
@@ -52,11 +61,11 @@ mix.js('resources/js/app.js', 'public/js/app.js')
     ], 'public/_assets/_admin_panel/js/dashboard.js')
     .copyDirectory('resources/_assets/_admin_panel/img', 'public/_assets/_admin_panel/img');
 
-    /*
-    |--------------------------------------------------------------------------
-    | Guest Assets
-    |--------------------------------------------------------------------------
-    */
+/*
+|--------------------------------------------------------------------------
+| Guest Assets
+|--------------------------------------------------------------------------
+*/
 mix.styles([
     'resources/_assets/_guest/fonts/fonts.css',
     'resources/_assets/_guest/css/v5/bootstrap.min.css',
