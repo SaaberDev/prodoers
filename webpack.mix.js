@@ -18,13 +18,14 @@ mix.js('resources/js/app.js', 'public/js/app.js')
         require('tailwindcss'),
         require('autoprefixer'),
     ])
-    // Application Default
+    // Application Default Custom
     .styles([
-        'resources/_assets/_custom/css/app.css',
-    ], 'public/_assets/_custom/css/app.css')
+        'resources/_assets/_custom/css/custom_styles.css',
+    ], 'public/_assets/_custom/css/custom_styles.css')
     .scripts([
-        'resources/_assets/_custom/js/app.js',
-    ], 'public/_assets/_custom/js/app.js')
+        'resources/_assets/_custom/js/custom_scripts.js'
+    ],'public/_assets/_custom/js/custom_scripts.js')
+
     /*
     |--------------------------------------------------------------------------
     | Admin Panel Assets

@@ -10,22 +10,24 @@
                             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link active  font-weight-bold" id="pills-home-tab" data-toggle="pill"
-                                       href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Sign
-                                        In</a>
+                                       href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">
+                                        {{ __('Sign In') }}
+                                    </a>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <a class="nav-link font-weight-bold " id="pills-profile-tab" data-toggle="pill"
                                        href="#pills-profile" role="tab" aria-controls="pills-profile"
-                                       aria-selected="false">Sign Up</a>
+                                       aria-selected="false">{{ __('Sign Up') }}</a>
                                 </li>
 
                             </ul>
                             <div class="tab-content" id="pills-tabContent">
+                                {{-- Signin --}}
                                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                                      aria-labelledby="pills-home-tab">
                                     <div class="row">
                                         <div class="col-md-12 text-center">
-                                            <p class="pt-4">Connect with</p>
+                                            <p class="pt-4">{{ __('Connect with') }}</p>
                                             <div class="modalButton">
                                                 <button type="button" class="btn bgFb">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16.885"
@@ -53,50 +55,23 @@
                                                 </button>
                                             </div>
                                             <div class="about_head py-4">
-                                                <p class="linebackground text-uppercase"><span>Or</span></p>
+                                                <p class="linebackground text-uppercase"><span>{{ __('Or') }}</span></p>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
-                                            <form class="row">
-                                                <div class="mb-3 col-md-12">
-                                                    <input type="email" class="form-control" id="exampleInputEmail1"
-                                                           aria-describedby="emailHelp"
-                                                           placeholder="Email Address/Username"></div>
-                                                <div class="mb-3 col-md-12">
-                                                    <input type="password" class="form-control"
-                                                           id="exampleInputPassword1" placeholder="Password"></div>
-                                                <div class="col-md-12">
-                                                    <button type="submit" class="btn btn-block bgOne text-white py-2">
-                                                        Sign In
-                                                    </button>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="row py-4">
-                                                        <div class="col-md-6">
-                                                            <div class=" form-check">
-                                                                <input type="checkbox" class="form-check-input"
-                                                                       id="exampleCheck1">
-                                                                <label class="form-check-label" for="exampleCheck1">Remember
-                                                                    me</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="forgotPass"><a href="#" class="">Forgot
-                                                                    Password?</a></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                </div>
-                                            </form>
+                                            {{-- Login Form --}}
+                                            @livewire('auth.login-component')
                                         </div>
                                     </div>
                                 </div>
+
+
+                                {{-- Signup --}}
                                 <div class="tab-pane fade" id="pills-profile" role="tabpanel"
                                      aria-labelledby="pills-profile-tab">
                                     <div class="row">
                                         <div class="col-md-12 text-center">
-                                            <p class="pt-4"> Connect with</p>
+                                            <p class="pt-4">{{ __('Connect with') }}</p>
                                             <div class="modalButton">
                                                 <button type="button" class="btn bgFb">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16.885"
@@ -124,7 +99,7 @@
                                                 </button>
                                             </div>
                                             <div class="about_head py-4">
-                                                <p class="linebackground text-uppercase"><span>Or</span></p>
+                                                <p class="linebackground text-uppercase"><span>{{ __('Or') }}</span></p>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
@@ -132,18 +107,20 @@
                                                 <div class="mb-3 col-md-12">
                                                     <input type="email" class="form-control" id="exampleInputEmail1"
                                                            aria-describedby="emailHelp"
-                                                           placeholder="Email Address/Username"></div>
+                                                           placeholder="{{ __('Email Address / Username') }}"></div>
                                                 <div class="mb-3 col-md-12">
                                                     <input type="password" class="form-control"
-                                                           id="exampleInputPassword1" placeholder="Password">
+                                                           id="exampleInputPassword1"
+                                                           placeholder="{{ __('Password') }}">
                                                 </div>
                                                 <div class="mb-3 col-md-12">
                                                     <input type="password" class="form-control"
-                                                           id="exampleInputPassword1" placeholder="Confirm Password">
+                                                           id="exampleInputPassword1"
+                                                           placeholder="{{ __('Confirm Password') }}">
                                                 </div>
                                                 <div class="col-md-12">
                                                     <button type="submit" class="btn btn-block bgOne text-white py-2">
-                                                        Sign Up
+                                                        {{ __('Sign Up') }}
                                                     </button>
                                                 </div>
                                                 <div class="col-md-12">
@@ -153,10 +130,9 @@
                                                                 <input type="checkbox" class="form-check-input"
                                                                        id="exampleCheck1">
                                                                 <label class="form-check-label" for="exampleCheck1"
-                                                                       style="font-size: 12px;">Lorem ipsum dolor sit
-                                                                    amet, consetetur sadipscing elitr, sed diam nonumy
-                                                                    eirmod tempor invidunt ut labore et dolore magna
-                                                                    aliquyam erat </label>
+                                                                       style="font-size: 12px;">
+                                                                    {{ __('Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat') }}
+                                                                </label>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -175,3 +151,15 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+    @if($errors->has('email') || $errors->has('password'))
+        <script>
+            $(function () {
+                $('#joinUs').modal({
+                    show: true
+                });
+            });
+        </script>
+    @endif
+@endpush

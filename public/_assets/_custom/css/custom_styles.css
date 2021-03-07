@@ -1,0 +1,10 @@
+body.modal-open {
+    overflow: hidden!important;
+}
+
+/*
+** SweetAlert CSS
+*/
+.swal-toast-height {
+    height: 55px;
+}

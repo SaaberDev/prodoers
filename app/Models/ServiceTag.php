@@ -21,7 +21,7 @@ class ServiceTag extends Model
 
     public function scopeGetTitle($query)
     {
-        return $query->orderByIdDesc()->get(['title', 'id']);
+        return $query->orderBy('title')->get(['title', 'id']);
     }
 
 

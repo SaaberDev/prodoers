@@ -20,14 +20,15 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-//            UserSeeder::class,
+            RolesAndPermissionsSeeder::class,
+            UserSeeder::class,
             ServiceCategorySeeder::class,
-            ServiceCategoryFaqSeeder::class,
-            ServiceTagSeeder::class,
+//            ServiceCategoryFaqSeeder::class,
+//            ServiceTagSeeder::class,
             ServiceSeeder::class,
-            ServiceFeatureSeeder::class,
+//            ServiceFeatureSeeder::class,
 //            ServiceImageSeeder::class,
-            ServiceFaqSeeder::class,
+//            ServiceFaqSeeder::class,
             SiteCmsSeeder::class,
         ]);
     }

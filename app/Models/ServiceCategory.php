@@ -38,6 +38,11 @@ class ServiceCategory extends Model
         return $query->where('slug', $slug);
     }
 
+    public function scopeGetTitle($query)
+    {
+        return $query->orderBy('title')->get(['title', 'id']);
+    }
+
     public function scopeFilterBy($query, $column, $arg)
     {
         return $query->where(function ($query) use ($arg, $column) {

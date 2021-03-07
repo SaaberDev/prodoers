@@ -1,47 +1,52 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+    namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\RegistrationRequest;
-use App\Models\User;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
+    use App\Http\Controllers\Controller;
+    use App\Http\Requests\Auth\RegistrationRequest;
+    use App\Models\User;
+    use App\Providers\RouteServiceProvider;
+    use Illuminate\Auth\Events\Registered;
+    use Illuminate\Contracts\Foundation\Application;
+    use Illuminate\Contracts\View\Factory;
+    use Illuminate\Http\RedirectResponse;
+    use Illuminate\Http\Request;
+    use Illuminate\Support\Facades\Auth;
+    use Illuminate\Support\Facades\Hash;
+    use Illuminate\Validation\ValidationException;
+    use Illuminate\View\View;
 
-class RegisteredUserController extends Controller
-{
-    /**
-     * Display the registration view.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\View\View
-     */
-    public function create()
+    class RegisteredUserController extends Controller
     {
-        return view('auth.register');
+        /**
+         * Display the registration view.
+         *
+         * @return Application|Factory|\Illuminate\Contracts\View\View|View
+         */
+        public function create()
+        {
+            return view('auth.register');
+        }
+
+        /**
+         * Handle an incoming registration request.
+         *
+         * @param RegistrationRequest $request
+         * @return RedirectResponse
+         *
+         */
+        public function store(RegistrationRequest $request)
+        {
+            Auth::login($user = User::create([
+                'name' => $request->input('name'),
+                'username' => last(explode(' ', strtolower($request->input('name')))),
+                'email' => $request->input('email'),
+                'password' => Hash::make($request->input('password')),
+            ]));
+            $user->
+
+            event(new Registered($user));
+
+            return redirect(RouteServiceProvider::HOME);
+        }
     }
-
-    /**
-     * Handle an incoming registration request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
-     *
-     * @throws \Illuminate\Validation\ValidationException
-     */
-    public function store(RegistrationRequest $request)
-    {
-        Auth::login($user = User::create([
-            'name' => $request->input('name'),
-            'username' => last(explode(' ', strtolower($request->input('name')))),
-            'email' => $request->input('email'),
-            'password' => Hash::make($request->input('password')),
-        ]));
-
-        event(new Registered($user));
-
-        return redirect(RouteServiceProvider::HOME);
-    }
-}

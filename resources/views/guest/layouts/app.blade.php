@@ -8,19 +8,22 @@
     <link rel="icon" href="{{ asset('_assets/_guest/img/D.png') }}" type="image/png" sizes="16x16">
 
     {{-- Styles --}}
+{{--    <link href="{{ mix('css/app.css') }}" rel="stylesheet">--}}
     <link href="{{ mix('_assets/_guest/css/guest.css') }}" rel="stylesheet">
-    <link href="{{ mix('_assets/_custom/css/app.css') }}" rel="stylesheet">
+    <link href="{{ mix('_assets/_custom/css/custom_styles.css') }}" rel="stylesheet">
     @livewireStyles
     @stack('styles')
 </head>
+{{--<body onload="init()">--}}
 <body>
 @include('guest.includes.header')
 @yield('content')
 {{-- footer_section --}}
 @include('guest.includes.footer')
 {{-- footer_section --}}
+<script src="{{ mix('js/app.js') }}"></script>
 <script src="{{ mix('_assets/_guest/js/guest.js') }}"></script>
-<script src="{{ mix('_assets/_custom/js/app.js') }}"></script>
+<script src="{{ mix('_assets/_custom/js/custom_scripts.js') }}"></script>
 @livewireScripts
 
 <!--Start of Tawk.to Script-->

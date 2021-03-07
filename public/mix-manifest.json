@@ -1,8 +1,8 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
-    "/_assets/_custom/css/app.css": "/_assets/_custom/css/app.css",
-    "/_assets/_custom/js/app.js": "/_assets/_custom/js/app.js",
+    "/_assets/_custom/css/custom_styles.css": "/_assets/_custom/css/custom_styles.css",
+    "/_assets/_custom/js/custom_scripts.js": "/_assets/_custom/js/custom_scripts.js",
     "/_assets/_admin_panel/css/dashboard.css": "/_assets/_admin_panel/css/dashboard.css",
     "/_assets/_admin_panel/js/dashboard.js": "/_assets/_admin_panel/js/dashboard.js",
     "/_assets/_admin_panel/img/bellicon.svg": "/_assets/_admin_panel/img/bellicon.svg",
