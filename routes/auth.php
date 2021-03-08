@@ -24,6 +24,8 @@
     Route::post('/login', [AuthenticatedSessionController::class, 'store'])
         ->middleware('guest');
 
+//    Route::post('/login-component', [\App\Http\Livewire\Auth\LoginComponent::class, 'store'])->middleware('isAdmin');
+
     Route::get('/forgot-password', [PasswordResetLinkController::class, 'create'])
         ->middleware('guest')
         ->name('password.request');

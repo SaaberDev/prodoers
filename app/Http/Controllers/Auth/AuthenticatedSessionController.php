@@ -35,10 +35,15 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request)
     {
         $request->authenticate();
-
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::DASHBOARD);
+        if (Auth::check() && Auth::user()->hasAnyRole(['super_admin', 'admin'])) {
+            return redirect()->intended(RouteServiceProvider::DASHBOARD);
+        }
+        if (Auth::check() && Auth::user()->hasRole('user')){
+            return redirect()->intended(RouteServiceProvider::HOME);
+        }
+        return redirect()->route('login');
     }
 
 //    public function storeAjax(LoginRequest $request)
@@ -64,6 +69,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/login');
+        return redirect('/');
     }
 }

@@ -56,7 +56,7 @@
     | User Panel Routes
     |--------------------------------------------------------------------------
     */
-    Route::middleware(['guest'])->group(function () {
+//    Route::middleware(['guest'])->group(function () {
         // Home Route Section
         Route::prefix('/')->name('guest.')->group(function () {
             // Home
@@ -104,7 +104,7 @@
             Route::get('/blog', [GuestBlogController::class, 'index'])->name('blog.index');
             Route::get('/single-blog', [GuestBlogController::class, 'index'])->name('blog.show');
         });
-    });
+//    });
 
     /*
     |--------------------------------------------------------------------------
@@ -114,7 +114,7 @@
     // Dashboard Route Section
     Route::middleware([
         'auth',
-        'role:super_admin|admin'
+        'role:super_admin|admin',
     ])->group(function () {
         Route::prefix('/dashboard')->group(function () {
             // Dashboard
