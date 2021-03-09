@@ -114,7 +114,6 @@
     // Dashboard Route Section
     Route::middleware([
         'auth',
-        'guest',
         'role:super_admin|admin',
     ])->group(function () {
         Route::prefix('/dashboard')->group(function () {
