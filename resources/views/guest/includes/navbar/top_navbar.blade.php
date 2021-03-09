@@ -11,19 +11,23 @@
                     <li class="nav-item"> <a class="nav-link text-white" href="#">Blog</a> </li>
                     @auth
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img src="#" alt=""> </a>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src="{{ asset('_default/user.png') }}" alt="">
+                            </a>
                             <div class="dropdown-menu profile_dropdown" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">{{ Auth::user()->username }}
-                                    <span><img src="{{ asset('_default/user.png') }}" alt="user_image"></span>
+                                <a class="dropdown-item">{{ Auth::user()->username }}
+{{--                                    <span><img src="{{ asset('_default/user.png') }}" alt="user_image"></span>--}}
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Dashboard</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
                             </div>
                         </li>
                     @endauth
                 </ul>
-                <button type="button" class="btn text-white " data-toggle="modal" data-target="#joinUs">Sign In</button>
+                @guest
+                    <button type="button" class="btn text-white " data-toggle="modal" data-target="#joinUs">Sign In</button>
+                @endguest
             </div>
             <!-- navbar-collapse.// -->
         </div>

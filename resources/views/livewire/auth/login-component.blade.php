@@ -3,7 +3,7 @@
         {{--    @csrf @method('POST')--}}
         <div class="mb-3 col-md-12">
             <input type="text"
-                   wire:model.lazy="form.email"
+                   wire:model.defer="form.email"
                    class="form-control {{ $errors->has('form.email') ? ' is-invalid' : '' }}"
                    id="exampleInputEmail1"
                    aria-describedby="emailHelp"
@@ -17,7 +17,7 @@
         </div>
         <div class="mb-3 col-md-12">
             <input type="password"
-                   wire:model.lazy="form.password"
+                   wire:model.defer="form.password"
                    class="form-control {{ $errors->has('form.password') ? ' is-invalid' : '' }}"
                    id="exampleInputPassword1"
                    placeholder="{{ __('Password') }}">

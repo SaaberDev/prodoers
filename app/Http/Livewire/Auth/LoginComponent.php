@@ -30,7 +30,7 @@ class LoginComponent extends Component
         'form.password.required' => 'Password field is required.',
     ];
 
-    public function updated()
+    public function update()
     {
         $this->validate();
     }
