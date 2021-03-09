@@ -46,15 +46,6 @@ class AuthenticatedSessionController extends Controller
         return redirect()->route('login');
     }
 
-//    public function storeAjax(LoginRequest $request)
-//    {
-//        $request->authenticate();
-//
-//        $request->session()->regenerate();
-//
-//        return redirect()->intended(RouteServiceProvider::DASHBOARD);
-//    }
-
     /**
      * Destroy an authenticated session.
      *

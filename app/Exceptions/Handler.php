@@ -41,8 +41,8 @@
 
 //        public function render($request, Throwable $exception)
 //        {
-//            if ($exception instanceof UnauthorizedException) {
-//                return response('Hola !!', 403);
+//            if ($exception instanceof \Spatie\Permission\Exceptions\UnauthorizedException) {
+//                abort(401);
 //            }
 //
 //            return parent::render($request, $exception);

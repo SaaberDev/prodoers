@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Auth;
 
+use App\Exceptions\UnauthorizedCustomException;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Support\Facades\Auth;
@@ -39,7 +40,13 @@ class LoginComponent extends Component
         $this->validate();
         $this->authenticate();
         session()->regenerate();
-        return redirect()->intended(RouteServiceProvider::DASHBOARD);
+        if (Auth::check() && Auth::user()->hasAnyRole(['super_admin', 'admin'])) {
+            return redirect()->intended(RouteServiceProvider::DASHBOARD);
+        }
+        if (Auth::check() && Auth::user()->hasRole('user')){
+            return redirect()->intended(RouteServiceProvider::HOME);
+        }
+        return redirect()->route('login');
     }
 
     public function authenticate()
