@@ -11,6 +11,8 @@ class RedirectIfAuthenticated
 {
     /**
      * Handle an incoming request.
+     * User won't be able to see those requests which is under this middleware.
+     * (i.e. User do not need to see 'login page' again if they are authenticated).
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
@@ -22,8 +24,11 @@ class RedirectIfAuthenticated
         $guards = empty($guards) ? [null] : $guards;
 
         foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
+            if (Auth::guard($guard)->check() && Auth::user()->hasRole('user')) {
                 return redirect(RouteServiceProvider::HOME);
+            }
+            if (Auth::guard($guard)->check() && Auth::user()->hasAnyRole(['super_admin', 'admin'])) {
+                return redirect(RouteServiceProvider::DASHBOARD);
             }
         }
 

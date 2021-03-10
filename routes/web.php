@@ -389,8 +389,17 @@
 
 
     Route::prefix('/test')->name('test.')->group(function () {
-        Route::get('/', [TestController::class, 'index'])->name('index');
-        Route::patch('/update-test', [TestController::class, 'update'])->name('update');
+        $roles = [
+            'super_admin',
+            'admin',
+            'project_manager',
+            'designwala',
+            'user'
+        ];
+        $allExceptUser = \Arr::only($roles, [4]);
+//        dd($allExceptUser);
+//        Route::get('/', [TestController::class, 'index'])->name('index');
+//        Route::patch('/update-test', [TestController::class, 'update'])->name('update');
     });
 
     //    Route::get('/{category_name}', [UserServiceCategoryController::class, 'show'])->name('show');

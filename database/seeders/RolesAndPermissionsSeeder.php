@@ -32,8 +32,15 @@
                 'service',
                 'chat',
             ];
-//            dd($permissions);
+
             foreach ($permissions as $permission) {
+                // 'Admin' guard permissions
+//                Permission::create([
+//                    'name' => $permission,
+//                    'guard_name' => 'admin'
+//                ]);
+
+                // 'Web' guard permission
                 Permission::create([
                     'name' => $permission,
                     'guard_name' => 'web'
@@ -44,9 +51,24 @@
             $roles = [
                 'super_admin',
                 'admin',
-                'user',
+                'project_manager',
+                'designwala',
+                'user'
             ];
 
+            // Get array of roles except 'user' role
+//            $rolesExceptUser = \Arr::except($roles, [4]);
+            // Create 'admins' roles
+//            foreach ($rolesExceptUser as $admin) {
+//                Role::create([
+//                    'name' => $admin,
+//                    'guard_name' => 'admin'
+//                ]);
+//            }
+
+            // Get array of roles except 'admin' role
+//            $rolesExceptAdmin = \Arr::only($roles, [4]);
+            // Create 'user' roles
             foreach ($roles as $role) {
                 Role::create([
                     'name' => $role,
@@ -54,8 +76,9 @@
                 ]);
             }
 
-            $permissions = Permission::all();
+            // Assign all permission to super admin
+//            $roles = Role::findByName('super_admin', 'admin');
             $roles = Role::findByName('super_admin');
-            $roles->syncPermissions($permissions);
+            $roles->givePermissionTo($permissions);
         }
     }
