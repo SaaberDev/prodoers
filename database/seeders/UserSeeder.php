@@ -16,6 +16,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        // Super Admin
         $super_admin_role = Role::findByName('super_admin');
         $admin = User::create([
             'name' => 'Mahfuzur Rahman Saber',
@@ -27,6 +28,19 @@ class UserSeeder extends Seeder
         ]);
         $admin->assignRole($super_admin_role);
 
+        // Designwala
+        $designwala_role = Role::findByName('designwala');
+        $admin = User::create([
+            'name' => 'Ekjon Designwala',
+            'username' => 'designwala',
+            'email' => 'designwala@gmail.com',
+            'email_verified_at' => Carbon::now(),
+            'password' => \Hash::make('1234'),
+            'remember_token' => \Str::random(15)
+        ]);
+        $admin->assignRole($designwala_role);
+
+        // User
         $user_role = Role::findByName('user');
         $users = [
             [

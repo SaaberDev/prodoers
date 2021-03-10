@@ -466,19 +466,20 @@
 
                     <div class="w-16 h-1 bg-purple-light my-3 md:my-6"></div>
 
-                    <p class="text-grey-darker text-2xl md:text-3xl font-light mb-8 leading-normal">
+                    <p class="text-grey-darker text-uppercase text-2xl md:text-3xl font-light mb-8 leading-normal" style="text-transform: capitalize">
                         @yield('message')
                     </p>
 
-                    <a href="{{ app('router')->has('home') ? route('home') : url('/') }}">
+{{--                    <a href="{{ app('router')->has('home') ? route('home') : url('/') }}">--}}
+                    <a href="{{ url()->previous() }}">
                         <button class="bg-transparent text-grey-darkest font-bold uppercase tracking-wide py-3 px-6 border-2 border-grey-light hover:border-grey rounded-lg">
-                            {{ __('Go Home') }}
+                            {{ __('Go Back') }}
                         </button>
                     </a>
                 </div>
             </div>
 
-            <div class="relative pb-full md:flex md:pb-0 md:min-h-screen w-full md:w-1/2">
+            <div class="relative pb-full md:flex md:pb-0 md:min-h-screen w-full md:w-1/2" style="align-items: center">
                 @yield('image')
             </div>
         </div>

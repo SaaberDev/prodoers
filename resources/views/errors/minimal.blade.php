@@ -28,8 +28,13 @@
                         @yield('code')
                     </div>
 
-                    <div class="ml-4 text-lg text-gray-500 uppercase tracking-wider">
+                    <div class="px-4 text-lg text-gray-500 border-r uppercase tracking-wider">
                         @yield('message')
+                    </div>
+
+                    <div class="ml-4 text-lg text-gray-500 uppercase tracking-wider">
+{{--                        <a href="{{ app('router')->has('home') ? route('home') : url('/') }}" class="btn btn-info">Go Back</a>--}}
+                        <a href="{{ url()->previous() }}" class="btn btn-info">Go Back</a>
                     </div>
                 </div>
             </div>
