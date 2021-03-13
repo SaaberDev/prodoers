@@ -103,43 +103,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-12">
-                                            <form class="row">
-                                                <div class="mb-3 col-md-12">
-                                                    <input type="email" class="form-control" id="exampleInputEmail1"
-                                                           aria-describedby="emailHelp"
-                                                           placeholder="{{ __('Email Address / Username') }}"></div>
-                                                <div class="mb-3 col-md-12">
-                                                    <input type="password" class="form-control"
-                                                           id="exampleInputPassword1"
-                                                           placeholder="{{ __('Password') }}">
-                                                </div>
-                                                <div class="mb-3 col-md-12">
-                                                    <input type="password" class="form-control"
-                                                           id="exampleInputPassword1"
-                                                           placeholder="{{ __('Confirm Password') }}">
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <button type="submit" class="btn btn-block bgOne text-white py-2">
-                                                        {{ __('Sign Up') }}
-                                                    </button>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="row py-4">
-                                                        <div class="col-md-12">
-                                                            <div class=" form-check">
-                                                                <input type="checkbox" class="form-check-input"
-                                                                       id="exampleCheck1">
-                                                                <label class="form-check-label" for="exampleCheck1"
-                                                                       style="font-size: 12px;">
-                                                                    {{ __('Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat') }}
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                </div>
-                                            </form>
+                                            @livewire('auth.register-component')
                                         </div>
                                     </div>
                                 </div>
@@ -152,14 +116,14 @@
     </div>
 </div>
 
-@push('scripts')
-    @if($errors->has('email') || $errors->has('password'))
-        <script>
-            $(function () {
-                $('#joinUs').modal({
-                    show: true
-                });
-            });
-        </script>
-    @endif
-@endpush
+{{--@push('scripts')--}}
+{{--    @if($errors->has('email') || $errors->has('password'))--}}
+{{--        <script>--}}
+{{--            $(function () {--}}
+{{--                $('#joinUs').modal({--}}
+{{--                    show: true--}}
+{{--                });--}}
+{{--            });--}}
+{{--        </script>--}}
+{{--    @endif--}}
+{{--@endpush--}}

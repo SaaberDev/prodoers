@@ -7,7 +7,7 @@
                    class="form-control {{ $errors->has('form.email') ? ' is-invalid' : '' }}"
                    id="exampleInputEmail1"
                    aria-describedby="emailHelp"
-                   placeholder="{{ __('Email Address / Username') }}"
+                   placeholder="{{ __('Email Address') }}"
             >
             @if($errors->has('form.email'))
                 <span class="invalid-feedback">
@@ -36,10 +36,12 @@
             <div class="row py-4">
                 <div class="col-md-6">
                     <div class=" form-check">
-                        <input type="checkbox" class="form-check-input"
-                               id="exampleCheck1">
+                        <input type="checkbox"
+                               wire:model="remember"
+                               class="form-check-input"
+                               id="remember_me">
                         <label class="form-check-label"
-                               for="exampleCheck1">{{ __('Remember Me') }}</label>
+                               for="remember_me">{{ __('Remember Me') }}</label>
                     </div>
                 </div>
                 <div class="col-md-6">

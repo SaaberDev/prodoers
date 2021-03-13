@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire\Auth;
 
-use App\Exceptions\UnauthorizedCustomException;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Support\Facades\Auth;
@@ -17,6 +16,7 @@ class LoginComponent extends Component
         'email' => '',
         'password' => '',
     ];
+    public $remember;
 
     protected $rules = [
         'form.email' => 'required|string|email:rfc,dns|exists:users,email',
@@ -53,7 +53,7 @@ class LoginComponent extends Component
     {
         $this->ensureIsNotRateLimited();
 
-        if (!Auth::attempt($this->form)) {
+        if (!Auth::attempt($this->form, $this->remember)) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([

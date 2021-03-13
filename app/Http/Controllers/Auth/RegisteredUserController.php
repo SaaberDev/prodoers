@@ -43,7 +43,7 @@
                 'email' => $request->input('email'),
                 'password' => Hash::make($request->input('password')),
             ]));
-            $user->
+            $user->assignRole('user');
 
             event(new Registered($user));
 

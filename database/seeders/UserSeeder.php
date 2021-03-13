@@ -16,6 +16,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        $token_length = 64;
         // Super Admin
         $super_admin_role = Role::findByName('super_admin');
         $admin = User::create([
@@ -24,7 +25,7 @@ class UserSeeder extends Seeder
             'email' => 'saaberdev@gmail.com',
             'email_verified_at' => Carbon::now(),
             'password' => \Hash::make('1234'),
-            'remember_token' => \Str::random(15)
+            'remember_token' => \Str::random($token_length)
         ]);
         $admin->assignRole($super_admin_role);
 
@@ -36,7 +37,7 @@ class UserSeeder extends Seeder
             'email' => 'designwala@gmail.com',
             'email_verified_at' => Carbon::now(),
             'password' => \Hash::make('1234'),
-            'remember_token' => \Str::random(15)
+            'remember_token' => \Str::random($token_length)
         ]);
         $admin->assignRole($designwala_role);
 
@@ -49,7 +50,7 @@ class UserSeeder extends Seeder
                 'email' => 'demo1@designwala.com',
                 'email_verified_at' => Carbon::now(),
                 'password' => \Hash::make('1234'),
-                'remember_token' => \Str::random(15)
+                'remember_token' => \Str::random($token_length)
             ],
             [
                 'name' => 'Designwala User 2',
@@ -57,7 +58,7 @@ class UserSeeder extends Seeder
                 'email' => 'demo2@designwala.com',
                 'email_verified_at' => Carbon::now(),
                 'password' => \Hash::make('1234'),
-                'remember_token' => \Str::random(15)
+                'remember_token' => \Str::random($token_length)
             ]
         ];
         foreach ($users as $user) {

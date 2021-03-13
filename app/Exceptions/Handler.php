@@ -41,7 +41,6 @@
         public function render($request, Throwable $exception)
         {
             if ($exception instanceof \Spatie\Permission\Exceptions\UnauthorizedException) {
-//                return response()->view('errors.403', [], 403);
                 abort(403, 'Unauthorized action');
             }
 
