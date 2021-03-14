@@ -21,8 +21,8 @@ class RegisterComponent extends Component
 //        'form.name' => 'required|string|max:255',
         'form.email' => 'required|string|email|unique:users,email',
         'form.password' => [
-            'required', 'string', 'min:6',
-            'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/'
+            'required', 'string', 'min:4',
+//            'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/'
         ],
         'form.confirm_password' => 'required|same:form.password',
     ];
@@ -56,9 +56,9 @@ class RegisterComponent extends Component
         $user->assignRole('user');
         event(new Registered($user));
         /*
-         * to-do: email verification, welcome mail, reset pass
+         * to-do: email verification, welcome mail, reset pass, confirmation
          * */
-        return redirect()->intended(RouteServiceProvider::DASHBOARD);
+        return redirect()->intended(RouteServiceProvider::HOME);
     }
 
     public function render()

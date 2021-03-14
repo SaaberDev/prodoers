@@ -19,7 +19,7 @@
 {{--                                    <span><img src="{{ asset('_default/user.png') }}" alt="user_image"></span>--}}
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Dashboard</a>
+                                <a class="dropdown-item" href="{{ route('user.dashboard') }}">Dashboard</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
                             </div>
                         </li>

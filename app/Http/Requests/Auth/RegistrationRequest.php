@@ -28,8 +28,8 @@ class RegistrationRequest extends FormRequest
             'username' => 'string',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => [
-                'required', 'string', 'min:6',
-                'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/'
+                'required', 'string', 'min:4',
+//                'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/'
             ],
         ];
     }

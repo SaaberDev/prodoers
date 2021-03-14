@@ -56,55 +56,60 @@
     | User Panel Routes
     |--------------------------------------------------------------------------
     */
-//    Route::middleware(['guest'])->group(function () {
-        // Home Route Section
-        Route::prefix('/')->name('guest.')->group(function () {
-            // Home
-            Route::get('/', [HomeController::class, 'index'])->name('home.index');
-            Route::get('/search/services/', [GuestSearchController::class, 'index'])->name('search.index');
 
-            // Single Category Page
-            Route::prefix('/categories')->name('service_category.')->group(function () {
-                Route::get('/{category_slug}', [GuestServiceCategoryController::class, 'index'])->name('index');
-            });
+    // Home Route Section
+    Route::prefix('/')->name('guest.')->group(function () {
+        // Home
+        Route::get('/', [HomeController::class, 'index'])->name('home.index');
+        Route::get('/search/services/', [GuestSearchController::class, 'index'])->name('search.index');
 
-            // Single Service Page
-            Route::prefix('/services')->name('service.')->group(function () {
-                Route::get('/{service_slug}', [GuestServiceController::class, 'index'])->name('index');
-            });
+        // Single Category Page
+        Route::prefix('/categories')->name('service_category.')->group(function () {
+            Route::get('/{category_slug}', [GuestServiceCategoryController::class, 'index'])->name('index');
+        });
 
-            // Policies
-            Route::name('policy.')->group(function () {
-                Route::get('/privacy-policy', function () {
-                    return view('guest.pages.policies.privacy_policy');
-                })->name('privacy');
+        // Single Service Page
+        Route::prefix('/services')->name('service.')->group(function () {
+            Route::get('/{service_slug}', [GuestServiceController::class, 'index'])->name('index');
+        });
 
-                Route::get('/cookie-policy', function () {
-                    return view('guest.pages.policies.cookie_policy');
-                })->name('cookie');
+        // Policies
+        Route::name('policy.')->group(function () {
+            Route::get('/privacy-policy', function () {
+                return view('guest.pages.policies.privacy_policy');
+            })->name('privacy');
 
-                Route::get('/payment-policy', function () {
-                    return view('guest.pages.policies.payment_policy');
-                })->name('payment');
+            Route::get('/cookie-policy', function () {
+                return view('guest.pages.policies.cookie_policy');
+            })->name('cookie');
 
-                Route::get('/terms-and-conditions', function () {
-                    return view('guest.pages.policies.terms_and_conditions');
-                })->name('terms_and_conditions');
-            });
+            Route::get('/payment-policy', function () {
+                return view('guest.pages.policies.payment_policy');
+            })->name('payment');
 
-            // Newsletter
+            Route::get('/terms-and-conditions', function () {
+                return view('guest.pages.policies.terms_and_conditions');
+            })->name('terms_and_conditions');
+        });
+
+        // Newsletter
 //        Route::name('newsletter.')->group(function (){
 //            Route::post('/store-newsletter', [GuestNewsletterController::class, 'store'])->name('store');
 //        });
 
 
-            // Order Details
+        // Order Details
 //        Route::get('/order-details', [UserOrderDetailController::class, 'index'])->name('order_detail.index');
-            // Blog
-            Route::get('/blog', [GuestBlogController::class, 'index'])->name('blog.index');
-            Route::get('/single-blog', [GuestBlogController::class, 'index'])->name('blog.show');
-        });
-//    });
+        // Blog
+        Route::get('/blog', [GuestBlogController::class, 'index'])->name('blog.index');
+        Route::get('/single-blog', [GuestBlogController::class, 'index'])->name('blog.show');
+    });
+
+    Route::prefix('/user')->name('user.')->middleware(['auth', 'verified'])->group(function () {
+        Route::get('/dashboard', function (){
+            return 'User Dashboard';
+        })->name('dashboard');
+    });
 
     /*
     |--------------------------------------------------------------------------
