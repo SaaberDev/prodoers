@@ -11,6 +11,7 @@
 {{--    <link href="{{ mix('css/app.css') }}" rel="stylesheet">--}}
     <link href="{{ mix('_assets/_guest/css/guest.css') }}" rel="stylesheet">
     <link href="{{ mix('_assets/_custom/css/custom_styles.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/plugins/jquery-modal/css/jquery.modal.css') }}" rel="stylesheet">
     @livewireStyles
     @stack('styles')
 </head>
@@ -24,6 +25,8 @@
 <script src="{{ mix('js/app.js') }}"></script>
 <script src="{{ mix('_assets/_guest/js/guest.js') }}"></script>
 <script src="{{ mix('_assets/_custom/js/custom_scripts.js') }}"></script>
+<script src="{{ asset('vendor/plugins/jquery-modal/js/jquery.modal.js') }}"></script>
+<script src="{{ asset('vendor/plugins/jquery-modal/js/custom.js') }}"></script>
 @livewireScripts
 
 <!--Start of Tawk.to Script-->

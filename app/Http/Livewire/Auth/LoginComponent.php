@@ -38,14 +38,17 @@ class LoginComponent extends Component
     public function store()
     {
         $this->validate();
+
         $this->authenticate();
         session()->regenerate();
+
         if (Auth::check() && Auth::user()->hasAnyRole(['super_admin', 'admin'])) {
             return redirect()->intended(RouteServiceProvider::DASHBOARD);
         }
-        if (Auth::check() && Auth::user()->hasRole('user')){
+        if (Auth::check() && Auth::user()->hasRole('user')) {
             return redirect()->intended(RouteServiceProvider::HOME);
         }
+
         return redirect()->route('login');
     }
 

@@ -46,19 +46,22 @@ class RegisterComponent extends Component
     public function store()
     {
         $this->validate();
-        Auth::login($user = User::create([
+        $user = User::create([
             'name' => head(explode('@', strtolower($this->form['email']))),
             'email' => $this->form['email'],
             'username' => head(explode('@', strtolower($this->form['email']))),
             'password' => Hash::make($this->form['password']),
             'remember_token' => \Str::random(64)
-        ]), false);
+        ]);
         $user->assignRole('user');
         event(new Registered($user));
+
+        session()->flash('message', "We've sent you a verification link to your email address. Please verify within 48 hours.");
+
         /*
-         * to-do: email verification, welcome mail, reset pass, confirmation
+         * to-do: welcome mail, reset pass, confirmation
          * */
-        return redirect()->intended(RouteServiceProvider::HOME);
+//        return redirect()->intended(RouteServiceProvider::HOME);
     }
 
     public function render()

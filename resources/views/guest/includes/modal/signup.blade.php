@@ -1,9 +1,9 @@
-<!-- Modals -->
-<div class="modalCtm" id="sign_in" style="display:none;">
+<div class="modalCtm" id="sign_up" style="display:none;">
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12 text-center">
-                <h4 class="pb-4">Sign In</h4>
+                <h4 class="pb-4">Sign Up</h4>
                 <p>Connect with</p>
                 <div class="modalButton">
                     <button type="button" class="btn bgFb"><svg xmlns="http://www.w3.org/2000/svg" width="16.885" height="31.385" viewBox="0 0 16.885 31.385">
@@ -24,9 +24,8 @@
                 </div>
             </div>
             <div class="col-md-12">
-                @livewire('auth.login-component')
+                @livewire('auth.register-component')
             </div>
         </div>
     </div>
 </div>
-

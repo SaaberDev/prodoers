@@ -1,3 +1,15 @@
+@if (session()->has('message'))
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="alert alert-success">
+                    {{ session('message') }}
+                </div>
+            </div>
+        </div>
+    </div>
+@endif
+
 <form class="row" wire:submit.prevent="store">
     <div class="mb-3 col-md-12">
         <input type="text"
@@ -38,33 +50,32 @@
                 <strong>{{ $errors->first('form.confirm_password') }}</strong>
             </span>
         @endif
-        <label>8 characters or longer. Password must contain at least one uppercase, lowercase letter, a number and a symbol.</label>
+{{--        <label>8 characters or longer. Password must contain at least one uppercase, lowercase letter, a number and a--}}
+{{--            symbol.</label>--}}
     </div>
     <div class="col-md-12">
         <button type="submit" class="btn btn-block bgOne text-white py-2">
             {{ __('Sign Up') }}
         </button>
     </div>
-    <div class="form-group d-lg-none d-md-block">
-        <div class="form-check text-center">
-
-        </div>
-    </div>
-
     <div class="col-md-12">
         <div class="row py-4">
             <div class="col-md-12">
                 <label class="form-check-label paymentdetailsCheck" for="gridCheck" style="display: inline;">
-                    By signing up, I agree to
-                    <span class="">Designwala's</span> <span><button
-                            class="btn btn-link m-0 p-0" type="button" data-toggle="modal"
-                            data-target="#exampleModal-1"> Terms &amp; Condition</button></span> and
-                    <span><button class="btn btn-link m-0 p-0" type="button" data-toggle="modal"
-                                  data-target="#exampleModal-2">Privacy Policy, as well as to receive occasional emails from us.</button></span>
+                    By signing up, I agree to<span class="">Designwala's</span>
+                    <span><button class="btn btn-link m-0 p-0" type="button" data-toggle="modal" data-target="#exampleModal-1"> Terms &amp; Condition</button></span> and
+                    <span><button class="btn btn-link m-0 p-0" type="button" data-toggle="modal" data-target="#exampleModal-2">Privacy Policy</button>, as well as receive occasional emails.</span>
                 </label>
             </div>
         </div>
     </div>
+
     <div class="col-md-12">
+        <div class="text-center">
+            <h6>Already a member?
+                <a class="btn colorOne px-0" href="#sign_in">Sign In</a>
+            </h6>
+        </div>
     </div>
 </form>
+

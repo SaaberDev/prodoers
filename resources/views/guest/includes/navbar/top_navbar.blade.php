@@ -26,7 +26,7 @@
                     @endauth
                 </ul>
                 @guest
-                    <button type="button" class="btn text-white " data-toggle="modal" data-target="#joinUs">Sign In</button>
+                    <a type="button" class="btn text-white" href="#sign_in">Sign In</a>
                 @endguest
             </div>
             <!-- navbar-collapse.// -->
