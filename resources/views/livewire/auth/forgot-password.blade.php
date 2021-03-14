@@ -1,3 +1,15 @@
+@if (session()->has('status'))
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+            </div>
+        </div>
+    </div>
+@endif
+
 <form class="row" wire:submit.prevent="store">
     <div class="col-md-12">
         <input type="text"

@@ -37,12 +37,12 @@
          */
         public function store(RegistrationRequest $request)
         {
-            Auth::login($user = User::create([
+            $user = User::create([
                 'name' => $request->input('name'),
                 'username' => last(explode(' ', strtolower($request->input('name')))),
                 'email' => $request->input('email'),
                 'password' => Hash::make($request->input('password')),
-            ]));
+            ]);
             $user->assignRole('user');
 
             event(new Registered($user));
