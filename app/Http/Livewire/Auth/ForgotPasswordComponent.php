@@ -5,12 +5,13 @@ namespace App\Http\Livewire\Auth;
 use Illuminate\Support\Facades\Password;
 use Livewire\Component;
 
-class ForgotPassword extends Component
+class ForgotPasswordComponent extends Component
 {
     public $form = [
         'email' => '',
     ];
-//    public $email = '';
+
+    protected $listeners = ['$refresh'];
 
     protected $rules = [
         'form.email' => 'required|string|email:rfc,dns|exists:users,email',
@@ -32,10 +33,8 @@ class ForgotPassword extends Component
         $this->validate();
         $status = Password::sendResetLink(
             ['email' => $this->form['email']]
-//            request()->only('email')
-//            (array)$this->form['email']
         );
-
+        $this->reset();
         return $status == Password::RESET_LINK_SENT
             ? back()->with('status', __($status))
             : back()->withInput(['email' => $this->form['email']])
@@ -44,6 +43,6 @@ class ForgotPassword extends Component
 
     public function render()
     {
-        return view('livewire.auth.forgot-password');
+        return view('livewire.auth.forgot-password-component');
     }
 }

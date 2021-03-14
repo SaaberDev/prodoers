@@ -57,6 +57,7 @@ class RegisterComponent extends Component
         event(new Registered($user));
 
         session()->flash('message', "We've sent you a verification link to your email address. Please verify within 48 hours.");
+        $this->reset();
 
         /*
          * to-do: welcome mail, reset pass, confirmation
