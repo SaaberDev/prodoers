@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Guest\Newsletter;
 
-use App\Jobs\NewsletterJob;
+use App\Jobs\SendNewsletterMail;
 use App\Models\Subscriber;
 use Carbon\Carbon;
 use Livewire\Component;
@@ -41,7 +41,7 @@ class NewsletterComponent extends Component
                 'subscriber_status' => $this->subscriber_status
             ]);
         });
-        NewsletterJob::dispatch($this->newsletter)->delay(Carbon::now()->addSeconds(5));
+        SendNewsletterMail::dispatch($this->newsletter)->delay(Carbon::now()->addSeconds(5));
         $this->dispatchBrowserEvent('success_toast', [
             'title' => 'Thank you for subscribing to our newsletter !',
         ]);
