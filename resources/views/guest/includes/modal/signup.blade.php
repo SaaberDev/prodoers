@@ -25,13 +25,6 @@
             </div>
             <div class="col-md-12">
                 @livewire('auth.register-component')
-                <div class="col-md-12">
-                    <div class="text-center">
-                        <h6>Already a member?
-                            <a class="btn colorOne px-0" href="#sign_in">Sign In</a>
-                        </h6>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

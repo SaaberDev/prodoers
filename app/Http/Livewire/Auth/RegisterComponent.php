@@ -3,9 +3,7 @@
 namespace App\Http\Livewire\Auth;
 
 use App\Models\User;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
@@ -15,6 +13,10 @@ class RegisterComponent extends Component
         'email' => '',
         'password' => '',
         'confirm_password' => '',
+    ];
+
+    protected $listeners = [
+        'refreshSignup' => '$refresh',
     ];
 
     protected $rules = [
@@ -32,7 +34,7 @@ class RegisterComponent extends Component
         'form.email.email' => 'Invalid email address.',
         'form.email.unique' => 'This email already exists.',
         'form.password.required' => 'Password field is required.',
-        'form.password.min' => 'Password must be minimum 6 characters.',
+        'form.password.min' => 'Password must be minimum 8 characters.',
         'form.password.regex' => 'Password must contain at least one uppercase, lowercase letter, a number and a symbol.',
         'form.confirm_password.same' => 'Password confirmation does not match.',
         'form.confirm_password.required' => 'Password Confirmation field is required.',
@@ -63,6 +65,12 @@ class RegisterComponent extends Component
          * to-do: welcome mail, reset pass, confirmation
          * */
 //        return redirect()->intended(RouteServiceProvider::HOME);
+    }
+
+    public function refreshSignin()
+    {
+        $this->resetValidation();
+        $this->emitUp('refreshSignin');
     }
 
     public function render()

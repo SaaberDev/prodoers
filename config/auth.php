@@ -113,7 +113,7 @@ return [
             'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 15,
-            'throttle' => 60,
+            'throttle' => 60, // Allows a user to request 1 token per 60 seconds
         ],
 
 //        'admins' => [

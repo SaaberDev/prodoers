@@ -11,7 +11,7 @@ class ForgotPasswordComponent extends Component
         'email' => '',
     ];
 
-    protected $listeners = ['$refresh'];
+    protected $listeners = ['refreshForgotPassword' => '$refresh'];
 
     protected $rules = [
         'form.email' => 'required|string|email:rfc,dns|exists:users,email',
@@ -39,6 +39,12 @@ class ForgotPasswordComponent extends Component
             ? back()->with('status', __($status))
             : back()->withInput(['email' => $this->form['email']])
                 ->withErrors(['email' => __($status)]);
+    }
+
+    public function refreshSignin()
+    {
+        $this->resetValidation();
+        $this->emit('refreshSignin');
     }
 
     public function render()

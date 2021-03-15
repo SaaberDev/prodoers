@@ -3,13 +3,6 @@
         <div id="successMessage" class="alert alert-success">
             {{ session('message') }}
         </div>
-        <script>
-            $(document).ready(function(){
-                setTimeout(function() {
-                    $('#successMessage').fadeOut('slow');
-                }, 3000);
-            });
-        </script>
     @endif
 
     <form class="row" wire:submit.prevent="store">
@@ -64,11 +57,18 @@
             <div class="row py-4">
                 <div class="col-md-12">
                     <label class="form-check-label paymentdetailsCheck" for="gridCheck" style="display: inline;">
-                        By signing up, I agree to<span class="">Designwala's</span>
+                        By signing up, I agree to<span class=""> Designwala's</span>
                         <span><button class="btn btn-link m-0 p-0" type="button" data-toggle="modal" data-target="#exampleModal-1"> Terms &amp; Condition</button></span> and
                         <span><button class="btn btn-link m-0 p-0" type="button" data-toggle="modal" data-target="#exampleModal-2">Privacy Policy</button>, as well as receive occasional emails.</span>
                     </label>
                 </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="text-center">
+                <h6>Already a member?
+                    <a class="btn colorOne px-0" wire:click="refreshSignin" href="#sign_in">Sign In</a>
+                </h6>
             </div>
         </div>
     </form>

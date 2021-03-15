@@ -1,16 +1,12 @@
 <div>
-    @if (session()->has('status'))
-        <div id="successMessage" class="alert alert-success">
-            {{ session('status') }}
-        </div>
-        <script>
-            $(document).ready(function(){
-                setTimeout(function() {
-                    $('#successMessage').fadeOut('slow');
-                }, 3000);
-            });
-        </script>
-    @endif
+    <div>
+        @if (session()->has('status'))
+            <div id="successMessage" class="alert alert-success">
+                {{ session('status') }}
+            </div>
+        @endif
+    </div>
+
 
     <form class="row" wire:submit.prevent="store">
         <div class="col-md-12">
@@ -32,7 +28,13 @@
                 {{ __('Send reset link') }}
             </button>
         </div>
+        <div class="col-md-12">
+            <div class="text-center">
+                <h6>
+                    <a class="btn colorOne px-0" wire:click="refreshSignin" href="#sign_in">Back to Sign In</a>
+                </h6>
+            </div>
+        </div>
     </form>
 </div>
-
 
