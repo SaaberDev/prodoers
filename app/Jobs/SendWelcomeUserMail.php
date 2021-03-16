@@ -2,6 +2,8 @@
 
 namespace App\Jobs;
 
+use App\Mail\NewsletterWelcomeMail;
+use App\Mail\WelcomeUserMail;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
@@ -9,6 +11,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Mail;
 
 class SendWelcomeUserMail implements ShouldQueue
 {
@@ -30,8 +33,9 @@ class SendWelcomeUserMail implements ShouldQueue
      *
      * @return void
      */
-    public function handle()
+    public function handle(Registered $event)
     {
         event(new Registered($this->user));
+//        Mail::to($this->user)->send(new WelcomeUserMail($this->user));
     }
 }

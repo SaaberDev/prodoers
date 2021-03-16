@@ -394,14 +394,7 @@
 
 
     Route::prefix('/test')->name('test.')->group(function () {
-        $roles = [
-            'super_admin',
-            'admin',
-            'project_manager',
-            'designwala',
-            'user'
-        ];
-        $allExceptUser = \Arr::only($roles, [4]);
+//        dd(request()->user());
 //        dd($allExceptUser);
 //        Route::get('/', [TestController::class, 'index'])->name('index');
 //        Route::patch('/update-test', [TestController::class, 'update'])->name('update');

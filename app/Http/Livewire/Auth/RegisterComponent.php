@@ -2,9 +2,8 @@
 
 namespace App\Http\Livewire\Auth;
 
-use App\Jobs\SendWelcomeUserMail;
 use App\Models\User;
-use Carbon\Carbon;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
@@ -49,7 +48,8 @@ class RegisterComponent extends Component
     public function store()
     {
         $this->validate();
-        \DB::transaction(function (){
+        \DB::beginTransaction();
+        try {
             $user = User::create([
                 'name' => head(explode('@', strtolower($this->form['email']))),
                 'email' => $this->form['email'],
@@ -58,10 +58,14 @@ class RegisterComponent extends Component
                 'remember_token' => \Str::random(64)
             ]);
             $user->assignRole('user');
-            SendWelcomeUserMail::dispatch($user)->delay(Carbon::now()->addSeconds(5));
-        });
-
-        session()->flash('message', "We've sent you a verification link to your email address. Please verify within 48 hours.");
+            event(new Registered($user));
+            \DB::commit();
+            session()->flash('message', "We've sent you a verification link to your email address. Please verify within 48 hours.");
+        } catch (\Exception $e) {
+            \DB::rollBack();
+            \Log::info($e->getMessage());
+//            session()->flash('message', $e->getMessage());
+        }
         $this->reset();
 
         /*
