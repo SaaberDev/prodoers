@@ -67,7 +67,7 @@
         <div class="col-md-12">
             <div class="text-center">
                 <h6>Already a member?
-                    <a class="btn colorOne px-0" wire:click="refreshSignin" href="#sign_in">Sign In</a>
+                    <a class="btn colorOne px-0" href="#sign_in">Sign In</a>
                 </h6>
             </div>
         </div>

@@ -1,4 +1,4 @@
-<div wire:poll.15s="refreshErrors">
+<div>
     <form class="row" wire:submit.prevent="store">
         <div class="mb-3 col-md-12">
             <input type="text"
@@ -45,7 +45,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="forgotPass">
-                        <a href="#forgot_pass" wire:click="refreshForgotPassword" class="">Forgot Password ?</a>
+                        <a href="#forgot_pass" class="">Forgot Password ?</a>
                     </div>
                 </div>
             </div>
@@ -53,7 +53,7 @@
         <div class="col-md-12">
             <div class="text-center">
                 <h6>Not a member yet?
-                    <a class="btn colorOne px-0" wire:click.prevent="refreshSignup" href="#sign_up">Signup</a>
+                    <a class="btn colorOne px-0" href="#sign_up">Signup</a>
                 </h6>
             </div>
         </div>

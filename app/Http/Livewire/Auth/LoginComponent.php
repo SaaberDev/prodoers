@@ -18,7 +18,9 @@ class LoginComponent extends Component
     ];
     public $remember;
 
-    protected $listeners = ['refreshSignin' => '$refresh'];
+    protected $listeners = [
+        'refreshErrors'
+    ];
 
     public function refreshErrors()
     {
@@ -95,18 +97,6 @@ class LoginComponent extends Component
     public function throttleKey()
     {
         return Str::lower($this->form['email']) . '|' . \request()->ip();
-    }
-
-    public function refreshSignup()
-    {
-        $this->resetValidation();
-        $this->emit('refreshSignup');
-    }
-
-    public function refreshForgotPassword()
-    {
-        $this->resetValidation();
-        $this->emit('refreshForgotPassword');
     }
 
     public function render()

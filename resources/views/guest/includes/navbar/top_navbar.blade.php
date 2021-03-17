@@ -26,7 +26,8 @@
                     @endauth
                 </ul>
                 @guest
-                    <a type="button" class="btn text-white" href="#sign_in">Sign In</a>
+{{--                    <a type="button" class="btn text-white" href="#sign_in">Sign In</a>--}}
+                    @livewire('auth.signin-button-component')
                 @endguest
             </div>
             <!-- navbar-collapse.// -->

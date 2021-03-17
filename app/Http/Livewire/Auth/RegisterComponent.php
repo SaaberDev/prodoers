@@ -16,7 +16,7 @@ class RegisterComponent extends Component
     ];
 
     protected $listeners = [
-        'refreshSignup' => '$refresh',
+        'refreshErrors'
     ];
 
     protected $rules = [
@@ -63,7 +63,7 @@ class RegisterComponent extends Component
             session()->flash('message', "We've sent you a verification link to your email address. Please verify within 48 hours.");
         } catch (\Exception $e) {
             \DB::rollBack();
-            \Log::info($e->getMessage());
+//            \Log::info($e->getMessage());
 //            session()->flash('message', $e->getMessage());
         }
         $this->reset();
@@ -74,10 +74,9 @@ class RegisterComponent extends Component
 //        return redirect()->intended(RouteServiceProvider::HOME);
     }
 
-    public function refreshSignin()
+    public function refreshErrors()
     {
         $this->resetValidation();
-        $this->emitUp('refreshSignin');
     }
 
     public function render()
