@@ -63,15 +63,8 @@ class RegisterComponent extends Component
             session()->flash('message', "We've sent you a verification link to your email address. Please verify within 48 hours.");
         } catch (\Exception $e) {
             \DB::rollBack();
-//            \Log::info($e->getMessage());
-//            session()->flash('message', $e->getMessage());
         }
         $this->reset();
-
-        /*
-         * to-do: welcome mail, reset pass, confirmation
-         * */
-//        return redirect()->intended(RouteServiceProvider::HOME);
     }
 
     public function refreshErrors()
