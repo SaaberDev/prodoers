@@ -31,6 +31,7 @@
          */
         public function store($provider)
         {
+
             $providerAccount = Socialite::driver($provider)->user();
             $socialUser = SocialiteAuth::where('provider_id', '=', $providerAccount->getId())->first();
             $getUser = User::where('email', '=', $providerAccount->getEmail())->first();
