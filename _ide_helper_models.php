@@ -518,6 +518,18 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\SocialiteAuth
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialiteAuth newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialiteAuth newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialiteAuth query()
+ * @mixin \Eloquent
+ */
+	class IdeHelperSocialiteAuth extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\StatisticsSection
  *
  * @mixin IdeHelperStatisticsSection
