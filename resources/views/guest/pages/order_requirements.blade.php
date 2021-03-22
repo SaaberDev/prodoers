@@ -141,12 +141,8 @@
                         <div class="col-md-12 pt-3">
                             <div class="form-group d-none d-lg-block">
                                 <div class="form-check text-center">
-                                    <input class="form-check-input float-none" type="checkbox" id="gridCheck" style="
-    margin-right: 9px;
-">
-                                    <label class="form-check-label paymentdetailsCheck" for="gridCheck" style="
-    display: inline;
-">
+                                    <input class="form-check-input float-none" type="checkbox" id="gridCheck" style="margin-right: 9px;">
+                                    <label class="form-check-label paymentdetailsCheck" for="gridCheck" style="display: inline;">
                                         I agreed to <span class="">Designwala</span> <span><button
                                                 class="btn btn-link m-0 p-0" type="button" data-toggle="modal"
                                                 data-target="#exampleModal-1"> Terms &amp; Condition</button></span> and

@@ -1,9 +1,25 @@
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
+            <div class="row">
+                <a href="/">
+                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                </a>
+            </div>
+        </x-slot>
+
+        <x-slot name="socialite">
+            <div class="row">
+                <x-button onclick="location.href='{{ route('socialite.index', 'facebook') }}'" class="ml-3">
+                    {{ __('Facebook') }}
+                </x-button>
+                <x-button class="ml-3">
+                    {{ __('Google') }}
+                </x-button>
+                <x-button class="ml-3">
+                    {{ __('Twitter') }}
+                </x-button>
+            </div>
         </x-slot>
 
         <!-- Session Status -->

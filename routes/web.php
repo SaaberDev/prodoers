@@ -27,6 +27,7 @@
     use App\Http\Controllers\Admin\Settings\SiteCMSController;
     use App\Http\Controllers\Guest\Blog\GuestBlogController;
     use App\Http\Controllers\Guest\HomeController;
+    use App\Http\Controllers\Guest\Order\GuestOrderController;
     use App\Http\Controllers\Guest\Search\GuestSearchController;
     use App\Http\Controllers\Guest\Service\Category\GuestServiceCategoryController;
     use App\Http\Controllers\Guest\Service\GuestServiceController;
@@ -73,6 +74,14 @@
             Route::get('/{service_slug}', [GuestServiceController::class, 'index'])->name('index');
         });
 
+        // Order
+        Route::prefix('/services')
+            ->middleware('auth')
+            ->name('order.')->group(function () {
+            Route::get('/{service_slug}/order',
+                [GuestOrderController::class, 'index'])->name('index');
+        });
+
         // Policies
         Route::name('policy.')->group(function () {
             Route::get('/privacy-policy', function () {
@@ -106,7 +115,7 @@
     });
 
     Route::prefix('/user')->name('user.')->middleware(['auth', 'verified'])->group(function () {
-        Route::get('/dashboard', function (){
+        Route::get('/dashboard', function () {
             return 'User Dashboard';
         })->name('dashboard');
     });

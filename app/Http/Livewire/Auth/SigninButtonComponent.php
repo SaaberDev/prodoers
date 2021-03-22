@@ -10,7 +10,7 @@ class SigninButtonComponent extends Component
     {
         return <<<'blade'
             <div>
-                <a type="button" class="btn text-white" href="#sign_in">Sign In</a>
+                <a type="button" id="logged_in" class="btn text-white" href="#sign_in">Sign In</a>
             </div>
         blade;
     }

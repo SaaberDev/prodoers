@@ -23,11 +23,12 @@ class RedirectIfAuthenticated
     {
         $guards = empty($guards) ? [null] : $guards;
 
+        $referer = \request()->server('HTTP_REFERER');
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check() && Auth::user()->hasAnyRole(['super_admin', 'admin'])){
-                return redirect(RouteServiceProvider::DASHBOARD);
+                return redirect()->intended(RouteServiceProvider::DASHBOARD);
             } elseif (Auth::guard($guard)->check() && Auth::user()->hasRole('user')) {
-                return redirect(RouteServiceProvider::HOME);
+                return redirect()->to($referer);
             }
         }
 

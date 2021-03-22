@@ -18,9 +18,7 @@ class LoginComponent extends Component
     ];
     public $remember;
 
-    protected $listeners = [
-        'refreshErrors'
-    ];
+    protected $listeners = ['refreshErrors'];
 
     public function refreshErrors()
     {
@@ -51,12 +49,12 @@ class LoginComponent extends Component
         $this->authenticate();
         session()->regenerate();
 
-        if (Auth::check() && Auth::user()->hasAnyRole(['super_admin', 'admin'])) {
-            return redirect()->intended(RouteServiceProvider::DASHBOARD);
-        }
-        if (Auth::check() && Auth::user()->hasRole('user')) {
-            return redirect()->intended(RouteServiceProvider::HOME);
-        }
+//        if (Auth::check() && Auth::user()->hasAnyRole(['super_admin', 'admin'])) {
+//            return redirect()->intended(RouteServiceProvider::DASHBOARD);
+//        }
+//        if (Auth::check() && Auth::user()->hasRole('user')) {
+//            return redirect()->intended(RouteServiceProvider::HOME);
+//        }
 
         return redirect()->route('login');
     }

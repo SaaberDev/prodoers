@@ -5,7 +5,9 @@
     use App\Http\Controllers\Controller;
     use App\Models\SocialiteAuth;
     use App\Models\User;
+    use App\Providers\RouteServiceProvider;
     use Illuminate\Http\Response;
+    use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\Hash;
     use Laravel\Socialite\Facades\Socialite;
     use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -31,7 +33,6 @@
          */
         public function store($provider)
         {
-
             $providerAccount = Socialite::driver($provider)->user();
             $socialUser = SocialiteAuth::where('provider_id', '=', $providerAccount->getId())->first();
             $getUser = User::where('email', '=', $providerAccount->getEmail())->first();
@@ -41,7 +42,8 @@
                     'provider' => $provider,
                 ]);
                 \Auth::login($getUser, true);
-                return redirect()->route('guest.home.index');
+//                return redirect()->intended(RouteServiceProvider::HOME);
+                return redirect()->intended(RouteServiceProvider::HOME);
             }
             if (!$socialUser){
                 $users = User::create([
@@ -58,11 +60,11 @@
                 ]);
                 $users->assignRole('user');
                 \Auth::login($users, true);
-                return redirect()->route('guest.home.index');
+                return redirect()->intended(RouteServiceProvider::HOME);
 
             } else {
                 \Auth::login($getUser, true);
-                return redirect()->route('guest.home.index');
+                return redirect()->intended(RouteServiceProvider::HOME);
             }
         }
 

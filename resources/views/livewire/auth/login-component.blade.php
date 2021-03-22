@@ -27,7 +27,7 @@
             @endif
         </div>
         <div class="col-md-12">
-            <button type="submit" class="btn btn-block bgOne text-white py-2">
+            <button id="success_login" class="btn btn-block bgOne text-white py-2">
                 {{ __('Sign In') }}
             </button>
         </div>

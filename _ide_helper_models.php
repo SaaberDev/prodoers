@@ -520,10 +520,23 @@ namespace App\Models{
 /**
  * App\Models\SocialiteAuth
  *
+ * @mixin IdeHelperSocialiteAuth
+ * @property int $id
+ * @property int $user_id
+ * @property string $provider_id
+ * @property string $provider
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\User $users
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteAuth newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteAuth newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteAuth query()
- * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialiteAuth whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialiteAuth whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialiteAuth whereProvider($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialiteAuth whereProviderId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialiteAuth whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SocialiteAuth whereUserId($value)
  */
 	class IdeHelperSocialiteAuth extends \Eloquent {}
 }
@@ -599,6 +612,8 @@ namespace App\Models{
  * @property-read int|null $permissions_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Role[] $roles
  * @property-read int|null $roles_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\SocialiteAuth[] $socialProviders
+ * @property-read int|null $social_providers_count
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User permission($permissions)
