@@ -144,6 +144,7 @@
                         </div>
 
                         <div class="">
+{{--                            @livewire('place-order-button-component', ['services' => $services])--}}
                             {{-- onclick="location.href='{{ route('guest.order.index', $services->slug) }}'" --}}
                             <a rel="modal:open" id="place_order" href="{{ route('guest.order.index', $services->slug) }}" class="btn bgOne text-white btn-lg btn-block rounded-0">Place Order</a>
                         </div>
@@ -710,19 +711,18 @@
     @guest
         <script>
             var logged_in = false;
-            var url = '{{ route('guest.order.index', $services->slug) }}'
             $('#place_order').click(function (event){
                 event.preventDefault();
                 if (!logged_in){
+                    // alert(sessionStorage.intended);
                     $('#logged_in').modalCtm({
                         closeExisting: true,
                         fadeDuration: 250
                     });
-                } else {
-                    $('#success_login').click(function (){
-                        window.location.url // Not working
-                    });
                 }
+                $("#close-modalCtm").modalCtm(function (e){
+                    alert('hello');
+                });
             })
         </script>
     @endguest

@@ -2,16 +2,19 @@
 
 namespace App\Http\Livewire\Auth;
 
+use App\Models\Service;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use Livewire\Component;
 
 class LoginComponent extends Component
 {
+    public $currentUrl;
     public $form = [
         'email' => '',
         'password' => '',
@@ -42,19 +45,30 @@ class LoginComponent extends Component
         $this->validate();
     }
 
+    public function mount()
+    {
+        $this->currentUrl = url()->current();
+    }
+
     public function store()
     {
         $this->validate();
 
         $this->authenticate();
-        session()->regenerate();
+        request()->session()->regenerate();
 
-//        if (Auth::check() && Auth::user()->hasAnyRole(['super_admin', 'admin'])) {
-//            return redirect()->intended(RouteServiceProvider::DASHBOARD);
-//        }
-//        if (Auth::check() && Auth::user()->hasRole('user')) {
-//            return redirect()->intended(RouteServiceProvider::HOME);
-//        }
+        if (Auth::check() && Auth::user()->hasAnyRole(['super_admin', 'admin'])) {
+            session()->flash('url.intended');
+            return redirect()->to(RouteServiceProvider::DASHBOARD);
+        }
+        if (Auth::check() && Auth::user()->hasRole('user')) {
+            $intended = request()->session()->get('url.intended');
+            if ($intended){
+                session()->flash('url.intended');
+                return redirect()->to($intended);
+            }
+            return redirect()->to(url()->previous());
+        }
 
         return redirect()->route('login');
     }
