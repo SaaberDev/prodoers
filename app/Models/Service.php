@@ -41,6 +41,11 @@ class Service extends Model
         return route('guest.service.index', $this->slug);
     }
 
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
     public function service_tags()
     {
         return $this->belongsToMany(ServiceTag::class, 'service_service_tag', 'service_id', 'service_tag_id');

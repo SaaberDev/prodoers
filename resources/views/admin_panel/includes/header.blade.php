@@ -75,7 +75,7 @@
                                      class="img-fluid">
                             </a>
                             <div class="dropdown-menu profile_dropdown" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">{{ Auth::user()->name }}</a>
+                                <a class="dropdown-item" href="#">{{ Auth::user()->name ?? '' }}</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Profile</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
@@ -151,7 +151,7 @@
                                     src="{{ asset('_assets/_admin_panel/img/headermanlogo.png') }}" alt=""
                                     class="img-fluid"> </a>
                             <div class="dropdown-menu profile_dropdown" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">{{ Auth::user()->name }}</a>
+                                <a class="dropdown-item" href="#">{{ Auth::user()->name ?? '' }}</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Another action</a> <a class="dropdown-item" href="#">Something
                                     else here</a></div>

@@ -144,8 +144,6 @@
                         </div>
 
                         <div class="">
-{{--                            @livewire('place-order-button-component', ['services' => $services])--}}
-                            {{-- onclick="location.href='{{ route('guest.order.index', $services->slug) }}'" --}}
                             <a rel="modal:open" id="place_order" href="{{ route('guest.order.index', $services->slug) }}" class="btn bgOne text-white btn-lg btn-block rounded-0">Place Order</a>
                         </div>
                     </div>

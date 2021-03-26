@@ -62,7 +62,9 @@ class LoginComponent extends Component
             return redirect()->to(RouteServiceProvider::DASHBOARD);
         }
         if (Auth::check() && Auth::user()->hasRole('user')) {
+            // Get intended url
             $intended = request()->session()->get('url.intended');
+            // Check & flash intended url
             if ($intended){
                 session()->flash('url.intended');
                 return redirect()->to($intended);
@@ -115,5 +117,4 @@ class LoginComponent extends Component
     {
         return view('livewire.auth.login-component');
     }
-
 }

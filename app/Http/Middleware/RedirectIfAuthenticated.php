@@ -25,9 +25,14 @@
             $guards = empty($guards) ? [null] : $guards;
 
             foreach ($guards as $guard) {
+                // Admin dashboard redirect
                 if (Auth::guard($guard)->check() && Auth::user()->hasAnyRole(['super_admin', 'admin'])) {
                     return redirect()->intended(RouteServiceProvider::DASHBOARD);
                 }
+                // Designwala dashboard redirect
+                // ....
+
+                // User redirect
                 if (Auth::guard($guard)->check() && Auth::user()->hasRole('user')) {
                     return redirect()->intended(RouteServiceProvider::HOME);
                 }

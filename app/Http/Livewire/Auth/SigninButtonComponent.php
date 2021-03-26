@@ -6,6 +6,9 @@ use Livewire\Component;
 
 class SigninButtonComponent extends Component
 {
+    /**
+     * If signin button is clicked and url is not same as service page intended order url session will be removed.
+     */
     public $currentUrl;
     public $slice;
     public $implode;

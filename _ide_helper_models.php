@@ -194,6 +194,30 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Order
+ *
+ * @mixin IdeHelperOrder
+ * @method static \Illuminate\Database\Eloquent\Builder|Order newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Order newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Order query()
+ */
+	class IdeHelperOrder extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\OrderService
+ *
+ * @mixin IdeHelperOrderService
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderService newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderService newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|OrderService query()
+ */
+	class IdeHelperOrderService extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\OtherContent
  *
  * @mixin IdeHelperOtherContent

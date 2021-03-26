@@ -3,6 +3,7 @@
     namespace App\Http\Controllers\Guest\Order;
 
     use App\Http\Controllers\Controller;
+    use App\Models\Service;
     use Illuminate\Contracts\Foundation\Application;
     use Illuminate\Contracts\View\Factory;
     use Illuminate\Contracts\View\View;
@@ -20,7 +21,8 @@
          */
         public function index($service_slug)
         {
-            return view('guest.pages.order_requirements');
+            $service = Service::getSlug($service_slug)->first();
+            return view('guest.pages.order_requirements', compact('service'));
         }
 
         /**

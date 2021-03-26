@@ -76,7 +76,7 @@
 
         // Order
         Route::prefix('/services')
-            ->middleware('auth')
+//            ->middleware('auth')
             ->name('order.')->group(function () {
             Route::get('/{service_slug}/order',
                 [GuestOrderController::class, 'index'])->name('index');
@@ -126,10 +126,10 @@
     |--------------------------------------------------------------------------
     */
     // Dashboard Route Section
-    Route::middleware([
-        'auth',
-        'role:super_admin|admin',
-    ])->group(function () {
+//    Route::middleware([
+//        'auth',
+//        'role:super_admin|admin',
+//    ])->group(function () {
         Route::prefix('/dashboard')->group(function () {
             // Dashboard
             Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
@@ -399,7 +399,7 @@
                 });
             });
         });
-    });
+//    });
 
 
     Route::prefix('/test')->name('test.')->group(function () {
