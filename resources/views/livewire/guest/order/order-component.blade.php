@@ -44,40 +44,47 @@
                     <form class="row g-3 needs-validation" novalidate autocomplete="off">
                         <div class="col-md-12">
                             <input type="text"
-                                   wire:model.defer=""
+                                   wire:model.defer="form.title"
                                    class="form-control rounded-0"
                                    id="validationCustom01"
                                    value=""
                                    placeholder="Title*">
                         </div>
 
-                        <div class="col-md-12">
-                            <div class="form-file">
-                                <div class="">
-                                    <input id="filePondinput1" type="file" class="filepond border" name="filepond"
-                                           multiple data-max-file-size="10MB" data-max-files="100">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-file">
-                                <div class="">
-                                    <input id="filePondinput2" type="file" class="filepond border" name="filepond"
-                                           multiple data-max-file-size="10MB" data-max-files="100">
-                                </div>
-                            </div>
-                        </div>
+{{--                        <div class="col-md-12">--}}
+{{--                            <div class="form-file">--}}
+{{--                                <div class="">--}}
+{{--                                    <input id="filePondinput1" type="file" class="filepond border" name="filepond"--}}
+{{--                                           multiple data-max-file-size="10MB" data-max-files="100">--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-md-12">--}}
+{{--                            <div class="form-file">--}}
+{{--                                <div class="">--}}
+{{--                                    <input id="filePondinput2" type="file" class="filepond border" name="filepond"--}}
+{{--                                           multiple data-max-file-size="10MB" data-max-files="100">--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
                         <div class="col-md-12 pt-3">
-                            <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="8"
-                                      placeholder="Addditional Requirements"></textarea>
+                            <textarea class="form-control rounded-0"
+                                      wire:model.defer="form.desc"
+                                      id="exampleFormControlTextarea1"
+                                      rows="8"
+                                      placeholder="Addditional Requirements"
+                            ></textarea>
                         </div>
                         <div class="col-md-12 pt-3">
                             <div class="row">
                                 <div class="col-md-5">
                                     <div class="position-relative" style="">
-                                        <input type="text" class="form-control rounded-0" id="" value=""
-                                               placeholder="Promo Code">
+                                        <input type="text"
+                                               wire:model.defer="form.coupon"
+                                               class="form-control rounded-0"
+                                               placeholder="Promo Code"
+                                        >
                                     </div>
                                 </div>
                                 <div class="col-md-5">
@@ -97,29 +104,37 @@
                                 <div class="col-lg-12 col-md-12">
                                     <div class="selectablescustom">
                                         <div class=" form-check form-check-inline">
-                                            <input class="form-check-input css-checkbox" type="radio"
-                                                   name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                            <input type="radio"
+                                                   wire:model.defer="paymentMethod.paypal"
+                                                   class="form-check-input css-checkbox"
+                                            >
                                             <label class="form-check-label css-label" for="inlineRadio1"> <img
                                                     src="{{ asset('_assets/_guest/img/paymentdetails/paypal.png') }}"
                                                     alt="" class=" ui-state-default  img-fluid  "></label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input css-checkbox" type="radio"
-                                                   name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                            <input type="radio"
+                                                   wire:model.defer="paymentMethod.visa"
+                                                   class="form-check-input css-checkbox"
+                                            >
                                             <label class="form-check-label css-label" for="inlineRadio2"><img
                                                     src="{{ asset('_assets/_guest/img/paymentdetails/visa.png') }}"
                                                     alt="" class=" ui-state-default  img-fluid  "></label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input css-checkbox" type="radio"
-                                                   name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                                            <input type="radio"
+                                                   wire:model.defer="paymentMethod.bkash"
+                                                   class="form-check-input css-checkbox"
+                                            >
                                             <label class="form-check-label css-label" for="inlineRadio3"><img
                                                     src="{{ asset('_assets/_guest/img/paymentdetails/bkash.png') }}"
                                                     alt="" class=" ui-state-default  img-fluid  "> </label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input css-checkbox" type="radio"
-                                                   name="inlineRadioOptions" id="inlineRadio4" value="option4">
+                                            <input type="radio"
+                                                   wire:model.defer="paymentMethod.mastercard"
+                                                   class="form-check-input css-checkbox"
+                                            >
                                             <label class="form-check-label css-label" for="inlineRadio4"><img
                                                     src="{{ asset('_assets/_guest/img/paymentdetails/master.png') }}"
                                                     alt="" class=" ui-state-default  img-fluid  "></label>
