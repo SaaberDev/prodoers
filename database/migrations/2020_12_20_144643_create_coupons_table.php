@@ -16,13 +16,13 @@ class CreateCouponsTable extends Migration
         Schema::create('coupons', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('code');
+            $table->string('code')->unique();
             $table->string('type'); // Fixed or Percentage
             $table->string('published_status');
             $table->date('start_date');
             $table->date('end_date');
-            $table->string('amount');
-            $table->string('percent_off');
+            $table->string('amount')->nullable();
+            $table->string('percent_off')->nullable();
             $table->timestamps();
         });
     }

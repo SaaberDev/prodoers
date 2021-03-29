@@ -21,7 +21,9 @@
          */
         public function index($service_slug)
         {
-            $service = Service::getSlug($service_slug)->first();
+            $service = Service::getSlug($service_slug)
+                ->select(['id', 'title', 'service_desc', 'price'])
+                ->first();
             return view('guest.pages.order_requirements', compact('service'));
         }
 

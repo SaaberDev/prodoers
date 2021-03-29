@@ -47,3 +47,16 @@
         }
         return $site_cms->value;
     }
+
+    /**
+     * @param $price
+     * @return string
+     */
+    function presentPrice($price)
+    {
+        if (Session::has('coupon')){
+            // price - discount
+            return number_format($price - Session::get('coupon.discount'), 2);
+        }
+        return number_format($price, 2);
+    }
