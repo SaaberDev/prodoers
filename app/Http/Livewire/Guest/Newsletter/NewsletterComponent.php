@@ -27,11 +27,6 @@ class NewsletterComponent extends Component
         'newsletter.unique' => 'This email address has already been taken',
     ];
 
-    public function update()
-    {
-        $this->validate();
-    }
-
     public function store()
     {
         $this->validate();

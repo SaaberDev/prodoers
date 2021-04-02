@@ -4,13 +4,14 @@ namespace App\Http\Livewire\Guest\Order;
 
 use App\Models\Coupon;
 use App\Models\Order;
+use App\Models\Service;
+use App\Models\ServiceCategory;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 
 class OrderComponent extends Component
 {
     public $service;
-    public $item;
     public $form = [
         'title' => '',
         'desc' => '',
@@ -23,52 +24,18 @@ class OrderComponent extends Component
         'mastercard',
     ];
 
-    public function rules()
-    {
-        $rules[] = [];
-        $formRules = [
-            'form.title' => 'required',
-            'form.desc' => 'nullable|min:250',
-            'form.coupon' => 'nullable',
-        ];
+    protected $rules = [
+        'form.title' => 'required',
+        'form.desc' => 'nullable|min:250',
+        'form.coupon' => 'nullable',
+        'paymentMethod' => 'in:paypal,visa,bkash,mastercard',
+    ];
 
-        foreach ($this->paymentMethod as $item) {
-            $this->item = $item;
-            $paymentRule = [
-                'paymentMethod.' . $this->item => [
-                    'required',
-                    Rule::in('paypal,visa,bkash,mastercard')
-                ],
-            ];
-        }
-        $rules = array_merge($formRules, $paymentRule);
-//        dd($rules);
-        return $rules;
-    }
-    // TODO ------- [payment message validation]
-    public function messages()
-    {
-        $messages[] = [];
-        $formMessages = [
-            'form.title.required' => 'Title field is required.',
-            'form.desc.min' => 'Description length must be 250 character.',
-        ];
-        foreach ($this->paymentMethod as $item) {
-            $this->item = $item;
-            $paymentMessages = [
-                'paymentMethod.'. $this->item .'.required' => 'Please choose a payment method.',
-                'paymentMethod.'. $this->item .'.in' => 'Please choose a payment method.',
-            ];
-        }
-        $messages = array_merge($formMessages, $paymentMessages);
-//        dd($messages);
-        return $messages;
-    }
-
-    public function update()
-    {
-        $this->validate();
-    }
+    protected $messages = [
+        'form.title.required' => 'Title field is required.',
+        'form.desc.min' => 'Description length must be 250 character.',
+        'paymentMethod.in' => 'Please choose a payment method.',
+    ];
 
     public function store()
     {
@@ -87,24 +54,35 @@ class OrderComponent extends Component
 
     public function checkCoupon()
     {
-        $coupon = Coupon::findByCode($this->form['coupon']);
-        if (empty($this->form['coupon'])){
+        $model = new Coupon();
+        $coupon = $model->findByCode($this->form['coupon'])->first();
+        $expired = $model->expired()->first();
+        $hasCategoryCoupon = $model->applyCouponTo($this->service->service_category_id, $this->service->id)->first();
+
+        // Check if coupon is empty
+        if (empty($this->form['coupon'])) {
             $this->resetErrorBag();
             $this->addError('form.coupon', 'Required');
-        } elseif (!$coupon){
+        } elseif (!$coupon) {
             $this->resetErrorBag();
             $this->addError('form.coupon', 'Invalid Coupon');
+        } elseif (!$expired) {
+            $this->resetErrorBag();
+            $this->addError('form.coupon', 'This Coupon has expired.');
+        } elseif (!$hasCategoryCoupon) {
+            $this->resetErrorBag();
+            $this->addError('form.coupon', 'This coupon is not valid for this service.');
         } else {
-            if ($coupon->type == 'fixed') {
+            if ($coupon->coupon_type == 'fixed') {
                 session()->put('coupon', [
-                    'code' => $coupon->code,
-                    'discount' => $coupon->discount($this->service->price)
+                    'code' => $coupon->coupon_code,
+                    'discount' => $coupon->discount($this->service)
                 ]);
-            } elseif ($coupon->type == 'percent') {
+            } elseif ($coupon->coupon_type == 'percentage') {
                 session()->put('coupon', [
-                    'code' => $coupon->code,
+                    'code' => $coupon->coupon_code,
                     'percent' => $coupon->percent_off,
-                    'discount' => $coupon->discount($this->service->price)
+                    'discount' => $coupon->discount($this->service)
                 ]);
             } else {
                 return 0;
@@ -113,6 +91,7 @@ class OrderComponent extends Component
                 'title' => 'Coupon Applied.',
             ]);
         }
+
         return redirect()->back();
     }
 

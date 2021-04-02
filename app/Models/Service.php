@@ -36,6 +36,28 @@ class Service extends Model
         'url' => null
     ];
 
+    public function coupons()
+    {
+        return $this->morphToMany(Coupon::class, 'couponable');
+    }
+
+//    public function allDiscounts()
+//    {
+//        return $this->coupons
+//            ->merge($this->serviceCategories->coupons)
+//            ->unique();
+//    }
+//
+//    public function getTotalDiscountAttribute()
+//    {
+//        return $this->allDiscounts()
+//            ->reject
+//            ->expired()
+//            ->map
+//            ->apply($this)
+//            ->sum();
+//    }
+
     public function getUrlAttribute()
     {
         return route('guest.service.index', $this->slug);

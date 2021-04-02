@@ -40,11 +40,6 @@ class LoginComponent extends Component
         'form.password.required' => 'Password field is required.',
     ];
 
-    public function update()
-    {
-        $this->validate();
-    }
-
     public function mount()
     {
         $this->currentUrl = url()->current();

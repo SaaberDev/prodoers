@@ -40,11 +40,6 @@ class RegisterComponent extends Component
         'form.confirm_password.required' => 'Password Confirmation field is required.',
     ];
 
-    public function update()
-    {
-        $this->validate();
-    }
-
     public function store()
     {
         $this->validate();

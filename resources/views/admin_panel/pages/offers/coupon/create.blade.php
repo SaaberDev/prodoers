@@ -24,45 +24,56 @@
             </div>
         </div>
         <div class="mt-4">
-            <form action="">
+            <form action="{{ route('offers.coupon.store') }}" method="POST">
+                @csrf @method('POST')
                 <div class="row m-0  py-3 bg-white rounded">
                     <div class="col-md-5 mt-4">
                         <div class="form-group">
-                            <label>Categories</label>
-                            <select id="allCategories" class="js-states form-control" multiple>
-                                <option>Create</option>
-                                <option>Read</option>
-                                <option>Update</option>
-                                <option>Delete</option>
+                            <label>Apply coupon to Categories</label>
+                            <select class="js-states select2 form-control {{ $errors->has('categories') ? ' is-invalid' : '' }}"
+                                    data-placeholder="categories"
+                                    id="categories"
+                                    name="categories[]" style="width: 100%;"
+                                    multiple
+                            >
+                                @foreach($service_categories as $service_category)
+                                    <option value="{{ $service_category->id }}" {{ $service_category->id == old('categories') ? 'selected' : '' }}>{{ $service_category->title }}</option>
+                                @endforeach
                             </select>
-                            <style>
-                                .select2 {
-                                    width: 100% !important;
-                                }
-                            </style>
+                            @if($errors->has('categories'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('categories') }}</strong>
+                                </span>
+                            @endif
                         </div>
                     </div>
+
+
                     <div class="col-md-5 mt-4">
                         <div class="form-group">
-                            <label>Services</label>
-                            <select id="allServices" class="js-states form-control" multiple>
-                                <option>Create</option>
-                                <option>Read</option>
-                                <option>Update</option>
-                                <option>Delete</option>
+                            <label>Apply coupon to Services</label>
+                            <select class="js-states select2 form-control {{ $errors->has('services') ? ' is-invalid' : '' }}"
+                                    data-placeholder="allServices"
+                                    id="allServices"
+                                    name="services[]" style="width: 100%;"
+                                    multiple
+                            >
+                                @foreach($services as $service)
+                                    <option value="{{ $service->id }}" {{ $service->id == old('services') ? 'selected' : '' }}>{{ $service->title }}</option>
+                                @endforeach
                             </select>
-                            <style>
-                                .select2 {
-                                    width: 100% !important;
-                                }
-
-                            </style>
+                            @if($errors->has('services'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('services') }}</strong>
+                                </span>
+                            @endif
                         </div>
                     </div>
+
                     <div class="col-md-2 mt-4">
                         <div class=" text-right">
                             <label for="">
-                                <h5>status</h5></label>
+                                <h5>Publish</h5></label>
                             <div class="">
                                 <input id="published_status" name="published_status" value="{{ old('published_status') }}" {{ old('published_status') == 1 ? 'checked='.'"'.'checked'.'"' : '' }} type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
                             </div>
@@ -74,7 +85,13 @@
                             <label for="">
                                 <h5>Title</h5></label>
                             <div class="input-group">
-                                <input class="form-control" type="text" placeholder="Default input"></div>
+                                <input name="title" class="form-control {{ $errors->has('title') ? ' is-invalid' : '' }}" type="text" placeholder="Default input">
+                                @if($errors->has('title'))
+                                    <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('title') }}</strong>
+                                </span>
+                                @endif
+                            </div>
                         </div>
                     </div>
 
@@ -83,7 +100,13 @@
                             <label for="">
                                 <h5>Code</h5></label>
                             <div class="input-group">
-                                <input class="form-control" type="text" placeholder="Default input"></div>
+                                <input name="coupon_code" class="form-control {{ $errors->has('coupon_code') ? ' is-invalid' : '' }}" type="text" placeholder="Default input">
+                                @if($errors->has('coupon_code'))
+                                    <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('coupon_code') }}</strong>
+                                </span>
+                                @endif
+                            </div>
                         </div>
                     </div>
 
@@ -91,24 +114,45 @@
                         <div class="form-group mb-0">
                             <label for="">
                                 <h5>Start Date</h5></label>
-                            <input type="date" class="form-control" id="" aria-describedby=""></div>
+                            <input type="date" name="start_date" class="form-control {{ $errors->has('start_date') ? ' is-invalid' : '' }}" id="start_date" aria-describedby="start_date">
+                            @if($errors->has('start_date'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('start_date') }}</strong>
+                                </span>
+                            @endif
+                        </div>
                     </div>
                     <div class="col-md-3 mt-4">
                         <div class="form-group mb-0">
                             <label for="">
                                 <h5>End Date</h5></label>
-                            <input type="date" class="form-control" id="" aria-describedby=""></div>
+                            <input type="date" name="end_date" class="form-control {{ $errors->has('end_date') ? ' is-invalid' : '' }}" id="end_date" aria-describedby="end_date">
+                            @if($errors->has('end_date'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('end_date') }}</strong>
+                                </span>
+                            @endif
+                        </div>
                     </div>
 
                     <div class="col-md-3 mt-4">
                         <div class="form-group mb-0">
                             <label for="">
                                 <h5>Type</h5></label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>All</option>
-                                <option>Percentage</option>
-                                <option>Amount</option>
+                            <select class="js-states select2 form-control {{ $errors->has('coupon_type') ? ' is-invalid' : '' }}"
+                                    data-placeholder="coupon_type"
+                                    id="coupon_type"
+                                    name="coupon_type" style="width: 100%;"
+                            >
+                                <option></option>
+                                <option value="fixed" {{ 'fixed' == old('coupon_type') ? 'selected' : '' }}>Fixed</option>
+                                <option value="percentage" {{ 'percentage' == old('coupon_type') ? 'selected' : '' }}>Percentage</option>
                             </select>
+                            @if($errors->has('coupon_type'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('coupon_type') }}</strong>
+                                </span>
+                            @endif
                         </div>
                     </div>
                     <div class="col-md-3 mt-4">
@@ -116,7 +160,13 @@
                             <label for="">
                                 <h5>discount <span><small>(by percentage)</small></span></h5></label>
                             <div class="input-group">
-                                <input class="form-control" type="text" placeholder="Default input"></div>
+                                <input class="form-control {{ $errors->has('percent_off') ? ' is-invalid' : '' }}" name="percent_off" type="text" placeholder="Default input">
+                                @if($errors->has('percent_off'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('percent_off') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-3 mt-4">
@@ -124,7 +174,13 @@
                             <label for="">
                                 <h5>discount <span><small>(by amount)</small></span></h5></label>
                             <div class="input-group">
-                                <input class="form-control" type="text" placeholder="Default input"></div>
+                                <input class="form-control {{ $errors->has('amount') ? ' is-invalid' : '' }}" name="amount" type="text" placeholder="Default input">
+                                @if($errors->has('amount'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('amount') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
                         </div>
                     </div>
 
@@ -148,7 +204,7 @@
             $(this).val(isChecked);
         });
 
-        $("#allCategories").select2({
+        $("#categories").select2({
             placeholder: "Choose Categories"
             , allowClear: true
         });
@@ -156,6 +212,10 @@
         $("#allServices").select2({
             placeholder: "Choose Services"
             , allowClear: true
+        });
+
+        $("#coupon_type").select2({
+            placeholder: "Choose a coupon type",
         });
     </script>
 @endpush

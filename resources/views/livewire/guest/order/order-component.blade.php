@@ -131,54 +131,51 @@
                                 <!--                                selectable payment method -->
                                 <div class="col-lg-12 col-md-12">
                                     <div class="selectablescustom">
-                                        <div class=" form-check form-check-inline">
-                                            <input type="radio"
-                                                   wire:model.defer="paymentMethod.paypal"
-                                                   class="form-check-input css-checkbox"
+                                        <input type="text" value="" class="{{ $errors->has('paymentMethod') ? ' is-invalid' : '' }}" hidden>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input css-checkbox"
+                                                   wire:model.defer="paymentMethod"
+                                                   type="radio"
+                                                   name="inlineRadioOptions"
                                                    id="inlineRadio1"
+                                                   value="paypal"
                                             >
-                                            <label class="form-check-label css-label" for="inlineRadio1"> <img
-                                                    src="{{ asset('_assets/_guest/img/paymentdetails/paypal.png') }}"
-                                                    alt="" class=" ui-state-default  img-fluid  "></label>
+                                            <label class="form-check-label css-label" for="inlineRadio1"> <img src="{{ asset('_assets/_guest/img/paymentdetails/paypal.png') }}" alt="" class=" ui-state-default  img-fluid  "></label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input type="radio"
-                                                   wire:model.defer="paymentMethod.visa"
-                                                   class="form-check-input css-checkbox"
+                                            <input class="form-check-input css-checkbox"
+                                                   wire:model.defer="paymentMethod"
+                                                   type="radio"
+                                                   name="inlineRadioOptions"
                                                    id="inlineRadio2"
-                                            >
-                                            <label class="form-check-label css-label" for="inlineRadio2"><img
-                                                    src="{{ asset('_assets/_guest/img/paymentdetails/visa.png') }}"
-                                                    alt="" class=" ui-state-default  img-fluid  "></label>
+                                                   value="visa">
+                                            <label class="form-check-label css-label" for="inlineRadio2"><img src="{{ asset('_assets/_guest/img/paymentdetails/visa.png') }}" alt="" class=" ui-state-default  img-fluid  "></label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input type="radio"
-                                                   wire:model.defer="paymentMethod.bkash"
-                                                   class="form-check-input css-checkbox"
+                                            <input class="form-check-input css-checkbox"
+                                                   wire:model.defer="paymentMethod"
+                                                   type="radio"
+                                                   name="inlineRadioOptions"
                                                    id="inlineRadio3"
-                                            >
-                                            <label class="form-check-label css-label" for="inlineRadio3"><img
-                                                    src="{{ asset('_assets/_guest/img/paymentdetails/bkash.png') }}"
-                                                    alt="" class=" ui-state-default  img-fluid  "> </label>
+                                                   value="bkash">
+                                            <label class="form-check-label css-label" for="inlineRadio3"><img src="{{ asset('_assets/_guest/img/paymentdetails/bkash.png') }}" alt="" class=" ui-state-default  img-fluid  "> </label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input type="radio"
-                                                   wire:model.defer="paymentMethod.mastercard"
+                                            <input class="form-check-input css-checkbox"
+                                                   wire:model.defer="paymentMethod"
+                                                   type="radio"
+                                                   name="inlineRadioOptions"
                                                    id="inlineRadio4"
-                                                   class="form-check-input css-checkbox"
-                                            >
-                                            <label class="form-check-label css-label" for="inlineRadio4"><img
-                                                    src="{{ asset('_assets/_guest/img/paymentdetails/master.png') }}"
-                                                    alt="" class=" ui-state-default  img-fluid  "></label>
+                                                   value="mastercard">
+                                            <label class="form-check-label css-label" for="inlineRadio4"><img src="{{ asset('_assets/_guest/img/paymentdetails/master.png') }}" alt="" class=" ui-state-default  img-fluid  "></label>
                                         </div>
+                                        @if($errors->has('paymentMethod'))
+                                            <div class="invalid-feedback">
+                                                {{ $errors->first('paymentMethod') }}
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
-
-                                @if($errors->has('paymentMethod.' . $item))
-                                    <div class="invalid-feedback">
-                                        {{ $errors->first('paymentMethod.' . $item) }}
-                                    </div>
-                                @endif
                             </div>
                         </div>
                         <div class="col-md-12 pt-3">

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\Service;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Services\ServiceRequest;
+use App\Http\Requests\Admin\Service\ServiceRequest;
 use App\Models\Service;
 use App\Models\ServiceCategory;
 use App\Models\ServiceFaq;
@@ -69,9 +69,7 @@ class ServiceController extends Controller
             ]);
 
             $service_tagInputs = collect(explode(',', $request->input('service_tags')));
-//            dd($tagInputs);
             $service_tagInputs->each(function ($tag) use ($services){
-//                dd($tag);
                 $services->service_tags()->attach($tag);
             });
 

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\Service;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Services\TagRequest;
+use App\Http\Requests\Admin\Service\TagRequest;
 use App\Models\ServiceTag;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin\Service;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Services\ServiceCategoryRequest;
+use App\Http\Requests\Admin\Service\ServiceCategoryRequest;
 use App\Models\ServiceCategory;
 use App\Models\ServiceCategoryFaq;
 use Cviebrock\EloquentSluggable\Services\SlugService;

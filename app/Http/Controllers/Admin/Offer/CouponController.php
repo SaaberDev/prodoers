@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\Admin\Offer;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Offer\CouponRequest;
+use App\Models\Coupon;
+use App\Models\Service;
+use App\Models\ServiceCategory;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -28,18 +32,48 @@ class CouponController extends Controller
      */
     public function create()
     {
-        return \view('admin_panel.pages.offers.coupon.create');
+        $service_categories = ServiceCategory::orderByDesc('id')->get(['title', 'id']);
+        $services = Service::orderBy('id', 'desc')->get(['title', 'id']);
+        return \view('admin_panel.pages.offers.coupon.create', compact('service_categories', 'services'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return Response
+     * @param CouponRequest $request
+     * @return string
      */
-    public function store(Request $request)
+    public function store(CouponRequest $request)
     {
-        //
+        \DB::beginTransaction();
+        try {
+//            if ($request->isValidated()){
+                $coupon = Coupon::firstOrCreate([
+                    'published_status' => 1/*$request->input('published_status')*/,
+                    'title' => $request->input('title'),
+                    'coupon_code' => $request->input('coupon_code'),
+                    'start_date' => $request->input('start_date'),
+                    'end_date' => $request->input('end_date'),
+                    'coupon_type' => $request->input('coupon_type'),
+                    'percent_off' => $request->input('percent_off'),
+                    'amount' => $request->input('amount'),
+                ]);
+                $categoryInput = collect($request->input('categories'));
+                $categoryInput->each(function ($category) use ($coupon){
+                    $coupon->categories()->attach($category);
+                });
+
+                $serviceInput = collect($request->input('services'));
+                $serviceInput->each(function ($service) use ($coupon){
+                    $coupon->services()->attach($service);
+                });
+                \DB::commit();
+//            }
+        } catch (\Exception $e) {
+            \DB::rollBack();
+            return $e->getMessage();
+        }
+        return redirect()->back();
     }
 
     /**

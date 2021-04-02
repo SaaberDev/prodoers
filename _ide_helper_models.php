@@ -117,21 +117,34 @@ namespace App\Models{
  *
  * @mixin IdeHelperCoupon
  * @property int $id
- * @property string $code
- * @property int $published_status
- * @property string $start_date
- * @property string $end_date
+ * @property string|null $title
+ * @property string $coupon_code
+ * @property string|null $coupon_type
+ * @property string|null $published_status
+ * @property string|null $start_date
+ * @property string|null $end_date
+ * @property string|null $amount
+ * @property string|null $percent_off
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ServiceCategory[] $categories
+ * @property-read int|null $categories_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Service[] $services
+ * @property-read int|null $services_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon applyCouponTo($category, $service)
  * @method static \Illuminate\Database\Eloquent\Builder|Coupon newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Coupon newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Coupon query()
- * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereCouponCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereCouponType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereEndDate($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon wherePercentOff($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Coupon wherePublishedStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereStartDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereUpdatedAt($value)
  */
 	class IdeHelperCoupon extends \Eloquent {}
@@ -197,23 +210,30 @@ namespace App\Models{
  * App\Models\Order
  *
  * @mixin IdeHelperOrder
+ * @property int $id
+ * @property int|null $user_id
+ * @property string $title
+ * @property string|null $desc
+ * @property string $payment_method
+ * @property string $payment_status
+ * @property string $order_status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Service $services
  * @method static \Illuminate\Database\Eloquent\Builder|Order newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Order newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Order query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereDesc($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereOrderStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order wherePaymentMethod($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order wherePaymentStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereUserId($value)
  */
 	class IdeHelperOrder extends \Eloquent {}
-}
-
-namespace App\Models{
-/**
- * App\Models\OrderService
- *
- * @mixin IdeHelperOrderService
- * @method static \Illuminate\Database\Eloquent\Builder|OrderService newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|OrderService newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|OrderService query()
- */
-	class IdeHelperOrderService extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -258,7 +278,11 @@ namespace App\Models{
  * @property string $service_desc
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Coupon[] $coupons
+ * @property-read int|null $coupons_count
  * @property-read mixed $url
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Order[] $orders
+ * @property-read int|null $orders_count
  * @property-read \App\Models\ServiceCategory $serviceCategories
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ServiceFaq[] $serviceFaqs
  * @property-read int|null $service_faqs_count
@@ -313,6 +337,8 @@ namespace App\Models{
  * @property int|null $popular_status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Coupon[] $coupons
+ * @property-read int|null $coupons_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ServiceCategoryFaq[] $serviceCategoryFaqs
  * @property-read int|null $service_category_faqs_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Service[] $services

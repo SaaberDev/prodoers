@@ -122,8 +122,8 @@
                             </select>
                             @if($errors->has('allCategories'))
                                 <span class="invalid-feedback">
-                        <strong>{{ $errors->first('allCategories') }}</strong>
-                    </span>
+                                    <strong>{{ $errors->first('allCategories') }}</strong>
+                                </span>
                             @endif
                         </div>
                         {{-- Price --}}
@@ -600,7 +600,7 @@
         }
 
         function onSelectSuggestion(e){
-            if( e.detail.elm == addAllSuggestionsElm )
+            if( e.detail.elm === addAllSuggestionsElm )
                 tagify.dropdown.selectAll.call(tagify);
         }
 

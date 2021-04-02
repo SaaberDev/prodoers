@@ -23,11 +23,6 @@ class ForgotPasswordComponent extends Component
         'form.email.exists' => 'This email do not match our records.',
     ];
 
-    public function update()
-    {
-        $this->validate();
-    }
-
     public function store()
     {
         $this->validate();

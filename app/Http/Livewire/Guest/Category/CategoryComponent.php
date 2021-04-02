@@ -25,11 +25,6 @@ class CategoryComponent extends Component
         $this->fill(request()->only('page'));
     }
 
-//    public function updatingServices_by_category()
-//    {
-//        $this->gotoPage(1);
-//    }
-
     public function loadMore()
     {
         $this->recordPerPage = $this->recordPerPage + 9;
