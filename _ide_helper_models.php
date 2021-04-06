@@ -121,8 +121,8 @@ namespace App\Models{
  * @property string $coupon_code
  * @property string|null $coupon_type
  * @property string|null $published_status
- * @property string|null $start_date
- * @property string|null $end_date
+ * @property \Illuminate\Support\Carbon|null $start_date
+ * @property \Illuminate\Support\Carbon|null $end_date
  * @property string|null $amount
  * @property string|null $percent_off
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -292,6 +292,7 @@ namespace App\Models{
  * @property-read int|null $service_images_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ServiceTag[] $service_tags
  * @property-read int|null $service_tags_count
+ * @method static \Database\Factories\ServiceFactory factory(...$parameters)
  * @method static Builder|Service filterBy($column, $arg)
  * @method static Builder|Service findSimilarSlugs(string $attribute, array $config, string $slug)
  * @method static Builder|Service getAllPopular()
@@ -343,6 +344,7 @@ namespace App\Models{
  * @property-read int|null $service_category_faqs_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Service[] $services
  * @property-read int|null $services_count
+ * @method static \Database\Factories\ServiceCategoryFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory filterBy($column, $arg)
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory findSimilarSlugs(string $attribute, array $config, string $slug)
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory getAllPopular()
@@ -384,6 +386,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\ServiceCategory $service_categories
+ * @method static \Database\Factories\ServiceCategoryFaqFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategoryFaq newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategoryFaq newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategoryFaq query()
@@ -409,6 +412,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Service $services
+ * @method static \Database\Factories\ServiceFaqFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceFaq newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceFaq newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceFaq query()
@@ -433,6 +437,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Service $services
+ * @method static \Database\Factories\ServiceFeatureFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceFeature newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceFeature newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceFeature query()
@@ -456,6 +461,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Service $services
+ * @method static \Database\Factories\ServiceImageFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceImage newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceImage newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceImage query()
@@ -504,6 +510,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Service[] $services
  * @property-read int|null $services_count
+ * @method static \Database\Factories\ServiceTagFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceTag getTitle()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceTag newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceTag newQuery()
@@ -664,6 +671,7 @@ namespace App\Models{
  * @property-read int|null $roles_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\SocialiteAuth[] $socialProviders
  * @property-read int|null $social_providers_count
+ * @method static \Database\Factories\UserFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User permission($permissions)

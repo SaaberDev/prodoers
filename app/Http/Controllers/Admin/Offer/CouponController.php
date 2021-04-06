@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\Offer\CouponRequest;
 use App\Models\Coupon;
 use App\Models\Service;
 use App\Models\ServiceCategory;
+use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -47,6 +48,7 @@ class CouponController extends Controller
     {
         \DB::beginTransaction();
         try {
+//            dd(Carbon::createFromFormat('d-m-Y G:i:s A', $request->input('end_date'))->format('d-m-Y G:i:s A'));
 //            if ($request->isValidated()){
                 $coupon = Coupon::firstOrCreate([
                     'published_status' => 1/*$request->input('published_status')*/,

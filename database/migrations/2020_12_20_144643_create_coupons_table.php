@@ -19,8 +19,8 @@ class CreateCouponsTable extends Migration
             $table->string('coupon_code')->unique();
             $table->string('coupon_type')->nullable(); // Fixed or Percentage
             $table->string('published_status')->nullable();
-            $table->date('start_date')->nullable();
-            $table->date('end_date')->nullable();
+            $table->dateTime('start_date')->nullable();
+            $table->dateTime('end_date')->nullable();
             $table->string('amount')->nullable();
             $table->string('percent_off')->nullable();
             $table->timestamps();

@@ -6,6 +6,7 @@ use App\Models\Coupon;
 use App\Models\Order;
 use App\Models\Service;
 use App\Models\ServiceCategory;
+use Carbon\Carbon;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 
@@ -55,10 +56,10 @@ class OrderComponent extends Component
     public function checkCoupon()
     {
         $model = new Coupon();
-        $coupon = $model->findByCode($this->form['coupon'])->first();
-        $expired = $model->expired()->first();
+        $coupon = $model->findByCodeIfPublished($this->form['coupon'])->first();
         $hasCategoryCoupon = $model->applyCouponTo($this->service->service_category_id, $this->service->id)->first();
 
+        // TODO - Refactor if else ...
         // Check if coupon is empty
         if (empty($this->form['coupon'])) {
             $this->resetErrorBag();
@@ -66,13 +67,18 @@ class OrderComponent extends Component
         } elseif (!$coupon) {
             $this->resetErrorBag();
             $this->addError('form.coupon', 'Invalid Coupon');
-        } elseif (!$expired) {
+        }
+        elseif ($coupon->checkCouponValidity()) {
             $this->resetErrorBag();
-            $this->addError('form.coupon', 'This Coupon has expired.');
-        } elseif (!$hasCategoryCoupon) {
+            $this->addError('form.coupon', $coupon->checkCouponValidity());
+        }
+
+        elseif (!$hasCategoryCoupon) {
             $this->resetErrorBag();
             $this->addError('form.coupon', 'This coupon is not valid for this service.');
-        } else {
+        }
+
+        else {
             if ($coupon->coupon_type == 'fixed') {
                 session()->put('coupon', [
                     'code' => $coupon->coupon_code,

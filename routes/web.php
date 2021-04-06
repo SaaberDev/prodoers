@@ -388,10 +388,37 @@
 
 
     Route::prefix('/test')->name('test.')->group(function () {
-//        dd(request()->user());
-//        dd($allExceptUser);
-//        Route::get('/', [TestController::class, 'index'])->name('index');
-//        Route::patch('/update-test', [TestController::class, 'update'])->name('update');
+//        $ip = file_get_contents("http://ipecho.net/plain");
+//        $access_key = '01d075bd3a1134ae3109b83a458c2c41';
+//
+//        // Initialize CURL:
+//        $ch = curl_init('http://api.ipstack.com/'.$ip.'?access_key='.$access_key.'');
+//        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+//
+//        // Store the data:
+//        $json = curl_exec($ch);
+//        curl_close($ch);
+//
+//        // Decode JSON response:
+//        $api_result = json_decode($json, true);
+//        dd($api_result);
+//
+//        // Output the "capital" object inside "location"
+//        echo $api_result['location']['capital'];
+
+        //======================================================
+
+//        $date = \App\Models\Coupon::findOrFail(6);
+//        echo $date->end_date;
+//        if (config('cache.default') === 'file'){
+//            config(['cache.default' => 'array']);
+//            $ip = file_get_contents("http://ipecho.net/plain");
+//            $geoLocation = geoip()->getLocation($ip);
+////            $currency = $geoLocation['currency.code'];
+//            dd($geoLocation);
+//        }
+
+//        dd($date->end_date);
     });
 
     //    Route::get('/{category_name}', [UserServiceCategoryController::class, 'show'])->name('show');

@@ -60,3 +60,17 @@
         }
         return number_format($price, 2);
     }
+
+//    function getGeoLocation(string $attribute)
+//    {
+//        $geoLocation = '';
+//        if (config('cache.default') === 'file'){
+//            config(['cache.default' => 'array']);
+//            $ip = file_get_contents("http://ipecho.net/plain");
+//            $getLocation = geoip()->getLocation($ip);
+//            session()->put('geoLocation', [
+//                'time_zone' => $getLocation[$attribute]
+//            ]);
+//        }
+//        return $geoLocation;
+//    }

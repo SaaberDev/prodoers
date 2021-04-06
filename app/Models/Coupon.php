@@ -16,6 +16,16 @@ class Coupon extends Model
     protected $guarded = [];
     protected $dates = ['start_date', 'end_date'];
 
+    public function setStartDateAttribute($value)
+    {
+        return $this->attributes['start_date'] = Carbon::createFromFormat('d-m-Y G:i:s A', $value)->format('Y-m-d G:i:s');
+    }
+
+    public function setEndDateAttribute($value)
+    {
+        return $this->attributes['end_date'] = Carbon::createFromFormat('d-m-Y G:i:s A', $value)->format('Y-m-d G:i:s');
+    }
+
     public function categories()
     {
         return $this->morphedByMany(ServiceCategory::class, 'couponable');
@@ -26,18 +36,18 @@ class Coupon extends Model
         return $this->morphedByMany(Service::class, 'couponable');
     }
 
-    // TODO -- Need to work on expiry date
-    public function expired()
+    public function checkCouponValidity()
     {
-        return self::where('start_date', '>=', Carbon::now())
-            ->where('end_date', '<=', Carbon::now());
+        if (Carbon::now()->greaterThanOrEqualTo($this->end_date)){
+            return 'This Coupon has expired at ' . Carbon::parse($this->end_date)->toDayDateTimeString();
+        } elseif (!Carbon::now()->greaterThan($this->start_date) || !Carbon::now()->isBetween($this->start_date, $this->end_date, true)) {
+            return 'This Coupon is not started yet. Will start at ' . Carbon::parse($this->start_date)->toDayDateTimeString();
+        }
     }
 
-    public static function findByCode($code)
+    public static function findByCodeIfPublished($code)
     {
-        return self::where('coupon_code', $code);
-//            ->where('start_date', '>=', Carbon::now())
-//            ->where('end_date', '<=', Carbon::now());
+        return self::where('coupon_code', $code)->where('published_status', '=', 1);
     }
 
     /**

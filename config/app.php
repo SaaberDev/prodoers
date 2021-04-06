@@ -67,8 +67,8 @@ return [
     |
     */
 
-//    'timezone' => 'UTC',
-    'timezone' => 'Asia/Dhaka',
+    'timezone' => 'UTC',
+//    'timezone' => 'Asia/Dhaka',
 
     /*
     |--------------------------------------------------------------------------
@@ -170,6 +170,7 @@ return [
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
+        Torann\GeoIP\GeoIPServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -242,6 +243,7 @@ return [
          * 3rd Party Aliases
          * */
         'Image' => Intervention\Image\Facades\Image::class,
+        'GeoIP' => Torann\GeoIP\Facades\GeoIP::class,
 
     ],
 

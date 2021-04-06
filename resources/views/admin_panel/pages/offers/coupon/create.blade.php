@@ -3,6 +3,8 @@
 
 @push('styles')
     {{-- Internal Styles --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 @endpush
 
 @section('content')
@@ -114,7 +116,7 @@
                         <div class="form-group mb-0">
                             <label for="">
                                 <h5>Start Date</h5></label>
-                            <input type="date" name="start_date" class="form-control {{ $errors->has('start_date') ? ' is-invalid' : '' }}" id="start_date" aria-describedby="start_date">
+                            <input type="datetime-local" name="start_date" class="form-control {{ $errors->has('start_date') ? ' is-invalid' : '' }}" id="start_date" aria-describedby="start_date" placeholder="Select Date and Time">
                             @if($errors->has('start_date'))
                                 <span class="invalid-feedback">
                                     <strong>{{ $errors->first('start_date') }}</strong>
@@ -126,7 +128,7 @@
                         <div class="form-group mb-0">
                             <label for="">
                                 <h5>End Date</h5></label>
-                            <input type="date" name="end_date" class="form-control {{ $errors->has('end_date') ? ' is-invalid' : '' }}" id="end_date" aria-describedby="end_date">
+                            <input type="datetime-local" name="end_date" class="form-control {{ $errors->has('end_date') ? ' is-invalid' : '' }}" id="end_date" aria-describedby="end_date" placeholder="Select Date and Time">
                             @if($errors->has('end_date'))
                                 <span class="invalid-feedback">
                                     <strong>{{ $errors->first('end_date') }}</strong>
@@ -216,6 +218,21 @@
 
         $("#coupon_type").select2({
             placeholder: "Choose a coupon type",
+        });
+
+        flatpickr("#start_date", {
+            enableTime: true,
+            enableSeconds: true,
+            dateFormat: "d-m-Y G:i:S K",
+            weekNumbers: true,
+            parseDate: true
+        });
+        flatpickr("#end_date", {
+            enableTime: true,
+            enableSeconds: true,
+            dateFormat: "d-m-Y G:i:S K",
+            weekNumbers: true,
+            parseDate: true
         });
     </script>
 @endpush
