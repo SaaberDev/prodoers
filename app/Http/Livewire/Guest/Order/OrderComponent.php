@@ -4,10 +4,6 @@ namespace App\Http\Livewire\Guest\Order;
 
 use App\Models\Coupon;
 use App\Models\Order;
-use App\Models\Service;
-use App\Models\ServiceCategory;
-use Carbon\Carbon;
-use Illuminate\Validation\Rule;
 use Livewire\Component;
 
 class OrderComponent extends Component
@@ -59,30 +55,27 @@ class OrderComponent extends Component
         $coupon = $model->findByCodeIfPublished($this->form['coupon'])->first();
         $hasCategoryCoupon = $model->applyCouponTo($this->service->service_category_id, $this->service->id)->first();
 
-        // TODO - Refactor if else ...
         // Check if coupon is empty
         if (empty($this->form['coupon'])) {
             $this->resetErrorBag();
-            $this->addError('form.coupon', 'Required');
+            $this->addError('form.coupon', 'No coupon to apply.');
         } elseif (!$coupon) {
             $this->resetErrorBag();
             $this->addError('form.coupon', 'Invalid Coupon');
-        }
-        elseif ($coupon->checkCouponValidity()) {
-            $this->resetErrorBag();
-            $this->addError('form.coupon', $coupon->checkCouponValidity());
-        }
-
-        elseif (!$hasCategoryCoupon) {
+        } elseif (!$hasCategoryCoupon) {
             $this->resetErrorBag();
             $this->addError('form.coupon', 'This coupon is not valid for this service.');
-        }
-
-        else {
+        } elseif ($coupon->checkCouponValidity()) {
+            $this->resetErrorBag();
+            $this->addError('form.coupon', $coupon->checkCouponValidity());
+        } else {
             if ($coupon->coupon_type == 'fixed') {
                 session()->put('coupon', [
                     'code' => $coupon->coupon_code,
                     'discount' => $coupon->discount($this->service)
+                ]);
+                $this->dispatchBrowserEvent('success_toast', [
+                    'title' => 'Coupon Applied.',
                 ]);
             } elseif ($coupon->coupon_type == 'percentage') {
                 session()->put('coupon', [
@@ -90,12 +83,13 @@ class OrderComponent extends Component
                     'percent' => $coupon->percent_off,
                     'discount' => $coupon->discount($this->service)
                 ]);
+                $this->dispatchBrowserEvent('success_toast', [
+                    'title' => 'Coupon Applied.',
+                ]);
             } else {
-                return 0;
+                $this->resetErrorBag();
+                $this->addError('form.coupon', 'Opps, something went wrong.');
             }
-            $this->dispatchBrowserEvent('success_toast', [
-                'title' => 'Coupon Applied.',
-            ]);
         }
 
         return redirect()->back();
