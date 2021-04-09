@@ -9,8 +9,8 @@
     use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
     /**
-     * @mixin IdeHelperCoupon
-     */
+ * @mixin IdeHelperCoupon
+ */
     class Coupon extends Model
     {
         use HasFactory;

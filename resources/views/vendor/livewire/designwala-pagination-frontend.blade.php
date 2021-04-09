@@ -4,8 +4,12 @@
             <ul class="pagination justify-content-center mb-0 ">
                 {{-- Previous Page Link --}}
                 @if ($paginator->onFirstPage())
-                    <li class="page-item disabled" aria-disabled="true" aria-label="@lang('pagination.previous')"
-                        hidden>
+                    <li class="page-item disabled"
+                        aria-disabled="true"
+                        aria-label="@lang('pagination.previous')"
+                        hidden
+                        onclick="window.scroll({ top: 220, left: 0, behavior:'smooth' })"
+                    >
                         <span class="page-link" aria-disabled="true">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-left"
                                  fill="currentColor"
@@ -16,7 +20,9 @@
                         </span>
                     </li>
                 @else
-                    <li class="page-item">
+                    <li class="page-item"
+                        onclick="window.scroll({ top: 220, left: 0, behavior:'smooth' })"
+                    >
                         <a dusk="previousPage" class="page-link" wire:click="previousPage" wire:loading.attr="disabled"
                            rel="prev"
                            aria-label="@lang('pagination.previous')">
@@ -34,22 +40,27 @@
                     {{-- "Three Dots" Separator --}}
                     @if (is_string($element))
                         <li class="page-item" aria-disabled="true">
-                            <span
-                                class="page-link">{{ $element }}
-                            </span>
+                            <span class="page-link">{{ $element }}</span>
                         </li>
                     @endif
+
 
                     {{-- Array Of Links --}}
                     @if (is_array($element))
                         @foreach ($element as $page => $url)
-                            @if ($page == $paginator->currentPage())
-                                <li class="page-item active" wire:key="paginator-page-{{ $page }}"
-                                    aria-current="page">
+                            @if ($page === $paginator->currentPage())
+                                <li class="page-item active"
+                                    wire:key="paginator-page-{{ $page }}"
+                                    aria-current="page"
+                                    onclick="window.scroll({ top: 220, left: 0, behavior:'smooth' })"
+                                >
                                     <span class="page-link">{{ $page }}</span>
                                 </li>
                             @else
-                                <li class="page-item" wire:key="paginator-page-{{ $page }}">
+                                <li class="page-item"
+                                    wire:key="paginator-page-{{ $page }}"
+                                    onclick="window.scroll({ top: 220, left: 0, behavior:'smooth' })"
+                                >
                                     <a class="page-link" wire:click="gotoPage({{ $page }})">{{ $page }}</a>
                                 </li>
                             @endif
@@ -59,7 +70,9 @@
 
                 {{-- Next Page Link --}}
                 @if ($paginator->hasMorePages())
-                    <li class="page-item">
+                    <li class="page-item"
+                        onclick="window.scroll({ top: 220, left: 0, behavior:'smooth' })"
+                    >
                         <a dusk="nextPage" class="page-link" wire:click="nextPage" wire:loading.attr="disabled"
                            rel="next" aria-label="@lang('pagination.next')">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right"
@@ -70,7 +83,10 @@
                         </a>
                     </li>
                 @else
-                    <li class="page-item disabled" aria-disabled="true" aria-label="@lang('pagination.next')" hidden>
+                    <li class="page-item disabled" aria-disabled="true" aria-label="@lang('pagination.next')"
+                        hidden
+                        onclick="window.scroll({ top: 220, left: 0, behavior:'smooth' })"
+                    >
                         <span class="page-link">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right"
                                  fill="currentColor" xmlns="http://www.w3.org/2000/svg">

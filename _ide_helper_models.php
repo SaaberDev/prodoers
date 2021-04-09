@@ -131,21 +131,21 @@ namespace App\Models{
  * @property-read int|null $categories_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Service[] $services
  * @property-read int|null $services_count
- * @method static \Illuminate\Database\Eloquent\Builder|Coupon applyCouponTo($category, $service)
- * @method static \Illuminate\Database\Eloquent\Builder|Coupon newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Coupon newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Coupon query()
- * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereAmount($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereCouponCode($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereCouponType($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereEndDate($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Coupon wherePercentOff($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Coupon wherePublishedStatus($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereStartDate($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereUpdatedAt($value)
+ * @method static Builder|Coupon applyCouponTo($category, $service)
+ * @method static Builder|Coupon newModelQuery()
+ * @method static Builder|Coupon newQuery()
+ * @method static Builder|Coupon query()
+ * @method static Builder|Coupon whereAmount($value)
+ * @method static Builder|Coupon whereCouponCode($value)
+ * @method static Builder|Coupon whereCouponType($value)
+ * @method static Builder|Coupon whereCreatedAt($value)
+ * @method static Builder|Coupon whereEndDate($value)
+ * @method static Builder|Coupon whereId($value)
+ * @method static Builder|Coupon wherePercentOff($value)
+ * @method static Builder|Coupon wherePublishedStatus($value)
+ * @method static Builder|Coupon whereStartDate($value)
+ * @method static Builder|Coupon whereTitle($value)
+ * @method static Builder|Coupon whereUpdatedAt($value)
  */
 	class IdeHelperCoupon extends \Eloquent {}
 }
@@ -317,6 +317,7 @@ namespace App\Models{
  * @method static Builder|Service whereTitle($value)
  * @method static Builder|Service whereUpdatedAt($value)
  * @method static Builder|Service withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
+ * @method static Builder|Service wordSearchBy($column, $search)
  */
 	class IdeHelperService extends \Eloquent {}
 }

@@ -1,5 +1,4 @@
 <form class="pt-3">
-    @csrf {{--@method('POST')--}}
     <div class="input-group mb-3">
         <input wire:model.defer="newsletter"
                type="text"

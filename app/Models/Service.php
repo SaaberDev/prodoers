@@ -107,6 +107,13 @@ class Service extends Model
         });
     }
 
+    public function scopeWordSearchBy($query, $column, $search)
+    {
+        return $query->where(function ($query) use ($search, $column) {
+            $query->orWhere($column, 'like', $search . '%');
+        });
+    }
+
     public function scopeGetAllPublished($query)
     {
         return $query->where('published_status', '=', 1);

@@ -38,10 +38,10 @@
             {{-- Search Result Start --}}
             <div class="row">
                 @forelse($services as $service)
-                    <div class="col-lg-4 col-md-6 padding25">
+                    <div class="col-lg-4 col-md-6 padding25" wire:key="{{ $service->id }}">
                         <div class="searchPageResultSingle position-relative">
                             <div class="card ">
-                                <img src="{{ asset(config('designwala_paths.admin.images.show.services.thumbnails') . $service->thumbnail) }}" class="card-img-top" alt="">
+                                <img src="{{ asset($service->thumbnail ? config('designwala_paths.admin.images.show.services.thumbnails') . $service->thumbnail : config('designwala_paths.default.no_preview')) }}" class="card-img-top" alt="">
                                 <div class="card-body">
                                     <h5 class="card-title ">
                                     <span class="w-75 float-left font-medium"><a href="{{ route('guest.service.index', $service->slug) }}" class="text-dark">{{ $service->title }}</a></span>
@@ -115,8 +115,8 @@
 
             {{-- Search Pagination Start --}}
             <div class="row">
-            @if($services->total() > 5)
-                    {{ $services->links('vendor.livewire.designwala-pagination-frontend') }}
+                @if($services->total() > 5)
+                    {{ $services->onEachSide(2)->links('vendor.livewire.designwala-pagination-frontend') }}
                 @else
                 @endif
             </div>
@@ -124,15 +124,3 @@
         </div>
     </div>
 </div>
-
-@push('scripts')
-    <script>
-        $('.page-item').click(function(){
-            scroll({
-                top: 250,
-                left: 0,
-                behavior: 'smooth'
-            });
-        });
-    </script>
-@endpush

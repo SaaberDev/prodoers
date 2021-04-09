@@ -30,6 +30,21 @@ class NewsletterComponent extends Component
     public function store()
     {
         $this->validate();
+//        \DB::beginTransaction();
+//        try {
+//            Subscriber::create([
+//                'email' => $this->newsletter,
+//                'subscriber_status' => $this->subscriber_status
+//            ]);
+//            \DB::commit();
+//            SendNewsletterMail::dispatch($this->newsletter)->delay(Carbon::now()->addSeconds(5));
+//            $this->dispatchBrowserEvent('success_toast', [
+//                'title' => 'Thank you for subscribing to our newsletter !',
+//            ]);
+//            $this->newsletter = '';
+//        } catch (\Exception $exception){
+//
+//        }
         \DB::transaction(function (){
             Subscriber::create([
                 'email' => $this->newsletter,

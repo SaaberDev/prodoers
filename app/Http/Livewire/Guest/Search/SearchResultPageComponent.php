@@ -22,12 +22,9 @@ class SearchResultPageComponent extends Component
 
     public function mount()
     {
+        $this->query = session('query');
+        session()->forget('query');
         $this->fill(request()->only('query', 'page'));
-    }
-
-    public function resetSearch()
-    {
-        $this->reset('query');
     }
 
     public function updatingQuery()
@@ -42,10 +39,10 @@ class SearchResultPageComponent extends Component
 
     public function render()
     {
-//        \DB::enableQueryLog();
-        $services = Service::getAllPublished()->SearchBy('title', $this->query)->paginate($this->recordPerPage);
-//        var_dump(\DB::getQueryLog());
-//        dd();
+        $services = Service::latest('id')
+            ->getAllPublished()
+            ->wordSearchBy('title', $this->query)
+            ->paginate($this->recordPerPage);
         return view('livewire.guest.search.search-result-page-component', compact('services'));
     }
 }

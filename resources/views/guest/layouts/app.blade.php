@@ -22,12 +22,12 @@
 {{-- footer_section --}}
 @include('guest.includes.footer')
 {{-- footer_section --}}
+@livewireScripts
 <script src="{{ mix('js/app.js') }}"></script>
 <script src="{{ mix('_assets/_guest/js/guest.js') }}"></script>
 <script src="{{ mix('_assets/_custom/js/custom_scripts.js') }}"></script>
 <script src="{{ asset('vendor/plugins/jquery-modal/js/jquery.modal.js') }}"></script>
 <script src="{{ asset('vendor/plugins/jquery-modal/js/custom.js') }}"></script>
-@livewireScripts
 
 <!--Start of Tawk.to Script-->
 {{--<script type="text/javascript">--}}
