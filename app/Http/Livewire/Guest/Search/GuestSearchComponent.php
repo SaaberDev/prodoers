@@ -9,8 +9,6 @@ class GuestSearchComponent extends Component
 {
     public $query = '';
     public $services;
-//    public $service_categories;
-//    public $highlightIndex;
 
     // Shows search query in URL
     protected $queryString = [

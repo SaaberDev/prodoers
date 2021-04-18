@@ -198,7 +198,7 @@
                                 </div>
                             </div>
                             <div class="text-center p-3">
-                                <button class="btn  bgOne text-white rounded-0 px-5 py-2">Continue</button>
+                                <button id="pay-now" type="submit" class="btn  bgOne text-white rounded-0 px-5 py-2">Continue</button>
                             </div>
                         </div>
                         <div class="col-md-12"></div>
@@ -208,6 +208,7 @@
         </div>
     </div>
     {{-- Order Requirements Form End --}}
+    <div id="paypal-button-container"></div>
 </div>
 
 @push('scripts')

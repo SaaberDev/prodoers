@@ -17,13 +17,16 @@
         /**
          * Display a listing of the resource.
          *
-         * @return Application|Factory|View|Response
+         * @return Application|Factory|View
          */
         public function index($service_slug)
         {
             $service = Service::getSlug($service_slug)
                 ->select(['id', 'title', 'service_desc', 'price'])
                 ->first();
+            \session()->put('order', [
+                'grand_total' => $service->price
+            ]);
             return view('guest.pages.order_requirements', compact('service'));
         }
 

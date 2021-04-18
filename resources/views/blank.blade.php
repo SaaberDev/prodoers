@@ -1,4 +1,4 @@
-@extends('admin_panel.layouts.app')
+@extends('guest.layouts.app')
 @section('title', 'page_name')
 
 @push('styles')
@@ -7,6 +7,29 @@
 
 @section('content')
 {{-- Body Content --}}
+    <div style="height: 100vh">
+        @if(session()->has('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+        <form action="{{ route('test.placeOrder') }}" method="POST">
+            @csrf @method('POST')
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="payment_method" value="paypal" id="flexRadioDefault1" checked>
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Paypal
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="payment_method" value="bank" id="flexRadioDefault2">
+                <label class="form-check-label" for="flexRadioDefault2">
+                    Card or Bank
+                </label>
+            </div>
+            <button type="submit" class="btn btn-primary">Pay Now</button>
+        </form>
+    </div>
 @endsection
 
 @push('scripts')
@@ -14,12 +37,12 @@
 @endpush
 
 
-{{ $errors->has('service_category_title') ? ' is-invalid' : '' }}
-@if($errors->has('service_category_title'))
-    <span class="invalid-feedback">
-        <strong>{{ $errors->first('service_category_title') }}</strong>
-    </span>
-@endif
+{{--{{ $errors->has('service_category_title') ? ' is-invalid' : '' }}--}}
+{{--@if($errors->has('service_category_title'))--}}
+{{--    <span class="invalid-feedback">--}}
+{{--        <strong>{{ $errors->first('service_category_title') }}</strong>--}}
+{{--    </span>--}}
+{{--@endif--}}
 
 {{-- Radio Button backup --}}
 

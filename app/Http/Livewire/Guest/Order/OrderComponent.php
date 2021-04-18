@@ -38,6 +38,7 @@ class OrderComponent extends Component
     {
         $this->validate();
         \DB::beginTransaction();
+
         try {
             $order = Order::create([
                 // Store in db ===> to-do!
@@ -69,35 +70,43 @@ class OrderComponent extends Component
             $this->resetErrorBag();
             $this->addError('form.coupon', $coupon->checkCouponValidity());
         } else {
-            if ($coupon->coupon_type == 'fixed') {
-                session()->put('coupon', [
-                    'code' => $coupon->coupon_code,
-                    'discount' => $coupon->discount($this->service)
-                ]);
-                $this->dispatchBrowserEvent('success_toast', [
-                    'title' => 'Coupon Applied.',
-                ]);
-            } elseif ($coupon->coupon_type == 'percentage') {
-                session()->put('coupon', [
-                    'code' => $coupon->coupon_code,
-                    'percent' => $coupon->percent_off,
-                    'discount' => $coupon->discount($this->service)
-                ]);
-                $this->dispatchBrowserEvent('success_toast', [
-                    'title' => 'Coupon Applied.',
-                ]);
-            } else {
-                $this->resetErrorBag();
-                $this->addError('form.coupon', 'Opps, something went wrong.');
-            }
+            $this->adjustTotalPrice($coupon);
         }
 
         return redirect()->back();
     }
 
+    function adjustTotalPrice($coupon)
+    {
+        if ($coupon->coupon_type == 'fixed') {
+            session()->put('coupon', [
+                'code' => $coupon->coupon_code,
+                'discount' => $coupon->discount($this->service)
+            ]);
+            $this->dispatchBrowserEvent('success_toast', [
+                'title' => 'Coupon Applied.',
+            ]);
+        } elseif ($coupon->coupon_type == 'percentage'){
+            session()->put('coupon', [
+                'code' => $coupon->coupon_code,
+                'percent' => $coupon->percent_off,
+                'discount' => $coupon->discount($this->service)
+            ]);
+            session()->put('order', [
+                'grand_total' => (($this->service->price) - (session('coupon.discount')))
+            ]);
+        } else {
+            $this->resetErrorBag();
+            $this->addError('form.coupon', 'Opps, something went wrong.');
+        }
+    }
+
     public function removeCoupon()
     {
         session()->forget('coupon');
+        session()->put('order', [
+            'grand_total' => (($this->service->price) + (session('coupon.discount')))
+        ]);
         $this->resetErrorBag();
         $this->form['coupon'] = '';
         $this->dispatchBrowserEvent('success_toast', [

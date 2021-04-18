@@ -21,12 +21,23 @@ class CreateOrdersTable extends Migration
                 ->references('id')->on('users')
                 ->onDelete('set null')->onUpdate('cascade');
 
-            $table->string('title');
-            $table->string('desc')->nullable();
-            $table->string('payment_method');
-            $table->string('payment_status'); // Paid
-            $table->string('order_status'); // Placed, Assigned, Ongoing, Received and Completed
+            // Foreign Key Constraint [Users Table]
+            $table->unsignedBigInteger('service_id')->nullable();
+            $table->foreign('service_id')
+                ->references('id')->on('services')
+                ->onDelete('set null')->onUpdate('cascade');
 
+            $table->string('requirements')->nullable();
+//            $table->string('delivery_time');
+            $table->string('payment_method');
+            $table->enum('payment_status', ['paid', 'cancelled']);
+            $table->enum('order_status', ['pending', 'ongoing', 'delivered', 'in_revision', 'cancelled', 'completed']);
+
+            $table->string('paypal_order_id')->nullable();
+            $table->string('transaction_id')->nullable();
+            $table->string('order_number')->unique();
+            $table->string('paid_amount');
+            $table->string('coupon_code');
             $table->timestamps();
         });
     }

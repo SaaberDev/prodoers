@@ -6,7 +6,6 @@
         'default' => [
             // No Preview
             'no_preview' => '_default/no-preview-available.png',
-            'loading' => '_default/loading.svg'
         ],
 
 

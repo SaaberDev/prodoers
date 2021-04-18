@@ -32,6 +32,7 @@
     use App\Http\Controllers\Guest\Service\Category\GuestServiceCategoryController;
     use App\Http\Controllers\Guest\Service\GuestServiceController;
     use App\Http\Controllers\TestController;
+    use App\Http\Controllers\TestOrderController;
     use Illuminate\Support\Facades\Route;
 
     require __DIR__ . '/auth.php';
@@ -388,6 +389,13 @@
 
 
     Route::prefix('/test')->name('test.')->group(function () {
+        Route::get('/', [TestController::class, 'index'])->name('index');
+        Route::post('/place-test-order', [TestOrderController::class, 'store'])->name('placeOrder');
+        Route::get('/checkout/payment/{order_id}', [TestController::class, 'expressCheckout'])->name('payment');
+        Route::get('/checkout/success/{order_id}', [TestController::class, 'expressCheckoutSuccess'])->name('success');
+        Route::get('/checkout/cancel', [TestController::class, 'cancelPayment'])->name('cancel');
+//        Route::get('/cancel', [TestController::class, 'index']);
+
 //        $ip = file_get_contents("http://ipecho.net/plain");
 //        $access_key = '01d075bd3a1134ae3109b83a458c2c41';
 //
