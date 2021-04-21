@@ -207,35 +207,75 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Invoice
+ *
+ * @mixin IdeHelperInvoice
+ * @property int $id
+ * @property int|null $order_id
+ * @property string|null $invoice_id
+ * @property string|null $transaction_id
+ * @property string|null $paid_amount
+ * @property string|null $discount
+ * @property string|null $billing_name
+ * @property string|null $billing_company_name
+ * @property string|null $billing_address
+ * @property string|null $billing_phone
+ * @property string|null $billing_email
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Order $orders
+ * @method static \Illuminate\Database\Eloquent\Builder|Invoice newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Invoice newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Invoice query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Invoice whereBillingAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Invoice whereBillingCompanyName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Invoice whereBillingEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Invoice whereBillingName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Invoice whereBillingPhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Invoice whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Invoice whereDiscount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Invoice whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Invoice whereInvoiceId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Invoice whereOrderId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Invoice wherePaidAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Invoice whereTransactionId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Invoice whereUpdatedAt($value)
+ */
+	class IdeHelperInvoice extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Order
  *
  * @mixin IdeHelperOrder
  * @property int $id
  * @property int|null $user_id
  * @property int|null $service_id
+ * @property string|null $order_number
  * @property string|null $requirements
- * @property string $payment_method
+ * @property string|null $payment_method
  * @property string $payment_status
  * @property string $order_status
- * @property string $paypal_order_id
- * @property string $order_number
- * @property string $paid_amount
- * @property string $coupon_code
+ * @property float|null $pay_amount
+ * @property float|null $discount
+ * @property string|null $applied_coupon
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Invoice $invoices
  * @property-read \App\Models\Service $services
  * @method static \Illuminate\Database\Eloquent\Builder|Order newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Order newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Order query()
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereCouponCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereAppliedCoupon($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereDiscount($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereOrderNumber($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereOrderStatus($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order wherePaidAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order wherePayAmount($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order wherePaymentMethod($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order wherePaymentStatus($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order wherePaypalOrderId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereRequirements($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereServiceId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereUpdatedAt($value)

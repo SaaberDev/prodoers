@@ -27,17 +27,16 @@ class CreateOrdersTable extends Migration
                 ->references('id')->on('services')
                 ->onDelete('set null')->onUpdate('cascade');
 
+            $table->string('order_number')->unique()->nullable();
             $table->string('requirements')->nullable();
+            $table->string('payment_method')->nullable();
+            $table->enum('payment_status', ['pending', 'paid', 'cancelled']);
 //            $table->string('delivery_time');
-            $table->string('payment_method');
-            $table->enum('payment_status', ['paid', 'cancelled']);
-            $table->enum('order_status', ['pending', 'ongoing', 'delivered', 'in_revision', 'cancelled', 'completed']);
 
-            $table->string('paypal_order_id')->nullable();
-            $table->string('transaction_id')->nullable();
-            $table->string('order_number')->unique();
-            $table->string('paid_amount');
-            $table->string('coupon_code');
+            $table->enum('order_status', ['pending', 'ongoing', 'delivered', 'in_revision', 'cancelled', 'completed']);
+            $table->double('pay_amount')->nullable();
+            $table->double('discount')->nullable();
+            $table->string('applied_coupon')->nullable();
             $table->timestamps();
         });
     }

@@ -22,9 +22,21 @@
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="payment_method" value="bank" id="flexRadioDefault2">
+                <input class="form-check-input" type="radio" name="payment_method" value="visa" id="flexRadioDefault2">
                 <label class="form-check-label" for="flexRadioDefault2">
-                    Card or Bank
+                    Visa
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="payment_method" value="mastercard" id="flexRadioDefault3">
+                <label class="form-check-label" for="flexRadioDefault3">
+                    MasterCard
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="payment_method" value="bkash" id="flexRadioDefault4">
+                <label class="form-check-label" for="flexRadioDefault4">
+                    BKash
                 </label>
             </div>
             <button type="submit" class="btn btn-primary">Pay Now</button>

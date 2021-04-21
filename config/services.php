@@ -1,6 +1,8 @@
 <?php
 
-return [
+    use App\Models\Order;
+
+    return [
 
     /*
     |--------------------------------------------------------------------------
@@ -61,6 +63,10 @@ return [
         'url' => [
             'return' => env('APP_URL') . '/checkout/success/',
             'cancel' => env('APP_URL') . '/checkout/cancel',
+        ],
+        'prefix' => [
+            'order_number' => 'DW2021' . mt_rand(100000000 ,500000000),
+            'invoice_id' => '2021' . mt_rand(100000000 ,500000000),
         ]
     ],
 
