@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Models\Order;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -26,6 +27,9 @@ class Kernel extends ConsoleKernel
     {
         // This task will delete telescope_entries table that is older than 1 hour
 //        $schedule->command('telescope:prune')->hourly();
+//        $schedule->call(function () {
+//            Order::where('payment_status', '=', 'cancelled')->delete();
+//        })->hourly();
     }
 
     /**

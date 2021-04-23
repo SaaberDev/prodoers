@@ -12,6 +12,8 @@ class Order extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function services()
     {
         return $this->belongsTo(Service::class);
@@ -19,6 +21,6 @@ class Order extends Model
 
     public function invoices()
     {
-        return $this->belongsTo(Invoice::class);
+        return $this->belongsTo(Invoice::class, 'order_id');
     }
 }

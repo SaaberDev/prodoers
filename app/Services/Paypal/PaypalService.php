@@ -42,20 +42,37 @@
 
         private function checkoutData($orderId)
         {
-            $order = Order::find($orderId);
+//            $order = Order::find($orderId);
+//            return [
+//                "intent" => "CAPTURE",
+//                "purchase_units" => [[
+//                    "reference_id" => uniqid('designwala_purchase_'),
+////                    "invoice_id" => uniqid('202104'),
+//                    "amount" => [
+//                        "value" => $order->pay_amount,
+//                        "currency_code" => "USD"
+//                    ]
+//                ]],
+//                "application_context" => [
+//                    "cancel_url" => route('test.cancel', $orderId),
+//                    "return_url" => route('test.success', $orderId)
+//                ]
+//            ];
+
+//            $order = Order::find($orderId);
             return [
                 "intent" => "CAPTURE",
                 "purchase_units" => [[
                     "reference_id" => uniqid('designwala_purchase_'),
 //                    "invoice_id" => uniqid('202104'),
                     "amount" => [
-                        "value" => $order->pay_amount,
+                        "value" => session('item.0.pay_amount'),
                         "currency_code" => "USD"
                     ]
                 ]],
                 "application_context" => [
-                    "cancel_url" => route('test.cancel', $orderId),
-                    "return_url" => route('test.success', $orderId)
+                    "cancel_url" => route('test.cancel'),
+                    "return_url" => route('test.success')
                 ]
             ];
         }

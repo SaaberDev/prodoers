@@ -392,8 +392,8 @@
         Route::get('/', [TestController::class, 'index'])->name('index');
         Route::post('/place-test-order', [TestOrderController::class, 'store'])->name('placeOrder');
         Route::get('/checkout/payment/{order_id}', [TestController::class, 'expressCheckout'])->name('payment');
-        Route::get('/checkout/success/{order_id}', [TestController::class, 'expressCheckoutSuccess'])->name('success');
-        Route::get('/checkout/cancel/{order_id}', [TestController::class, 'cancelPayment'])->name('cancel');
+        Route::get('/checkout/success', [TestController::class, 'expressCheckoutSuccess'])->name('success');
+        Route::get('/checkout/cancel', [TestController::class, 'cancelPayment'])->name('cancel');
 //        Route::get('/cancel', [TestController::class, 'index']);
 
 //        $ip = file_get_contents("http://ipecho.net/plain");
