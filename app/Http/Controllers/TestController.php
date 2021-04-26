@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Invoice;
 use App\Models\Order;
+use App\Services\Order\GenerateOrderContract;
 use App\Services\Paypal\PaypalService;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class TestController extends Controller
@@ -21,9 +20,36 @@ class TestController extends Controller
         return view('blank');
     }
 
-    public function expressCheckout($orderId)
+    public function store(Request $request)
     {
-        $response = $this->paypalService->createOrder($orderId);
+        if (session()->has(['item', 'other'])){
+            session()->forget(['item', 'other']);
+        }
+        $order = [
+            'id' => uniqid(Order::count() + 1),
+            'requirements' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi deleniti deserunt neque unde? Aperiam asperiores id ipsa laudantium minima nemo repellendus, similique soluta voluptates!',
+            'pay_amount' => 50000,
+            'applied_coupon' => '1234',
+            'discount' => 10,
+            'payment_method' => 'paypal'
+        ];
+        session()->put('item', $order);
+
+        $orderId = session('item.id');
+        if (request('payment_method') == 'paypal') {
+            return redirect()->route('test.payment', $orderId);
+        }
+        return redirect()->route('test.index');
+    }
+
+
+    public function expressCheckout()
+    {
+        $response = $this->paypalService->createOrder();
+        session()->put('other', [
+            'paypal_order_id' => $response->result->id
+        ]);
+//        dd($response);
         if($response->statusCode !== 201) {
             abort(500);
         }
@@ -38,49 +64,32 @@ class TestController extends Controller
 
     public function cancelPayment(Request $request)
     {
-//        $order = Order::find($orderId);
-//        $order->payment_status = 'cancelled';
-//        $order->save();
         $request->session()->forget('item');
         return redirect()->route('test.index')->with(['payment-cancel' => 'Payment has been cancelled.']);
     }
 
 
-    public function expressCheckoutSuccess(Request $request)
+    public function expressCheckoutSuccess(GenerateOrderContract $generateOrder)
     {
-//        $order = Order::find($orderId);
-        $token = $request->get('token');
-        $response = $this->paypalService->captureOrder($token);
+        $paypal_order_id = session('other.paypal_order_id');
+        $response = $this->paypalService->captureOrder($paypal_order_id);
 //        dd($response);
 
-        $order_number = Order::count() + 1;
+//        $order_number = Order::count() + 1;
+        $order = $generateOrder->storeOrder();
         if ($response->result->status == 'COMPLETED') {
-            $order = Order::create([
-                'requirements' => session('item.0.requirements'),
-                'pay_amount' => session('item.0.pay_amount'),
-                'applied_coupon' => session('item.0.applied_coupon'),
-                'discount' => session('item.0.discount'),
-                'order_number' => config('services.paypal.prefix.order_number') . $order_number,
-                'payment_status' => 'paid',
-            ]);
-//            $order->order_number = config('services.paypal.prefix.order_number') . $order_number;
-//            $order->payment_status = 'paid';
-//            $order->save();
+            $payments = $generateOrder->storePayment($response, $order, 'paid');
 
-            if ($order->payment_status === 'paid') {
-                $order->invoices()->create([
-                    'invoice_id' => config('services.paypal.prefix.invoice_id') . $order_number,
-                    'transaction_id' => $response->result->purchase_units[0]->payments->captures[0]->id,
-                    'paid_amount' => $response->result->purchase_units[0]->payments->captures[0]->id,
-                    'discount' => $response->result->purchase_units[0]->payments->captures[0]->id,
-                ]);
+            if ($payments->payment_status === 'paid') {
+                $invoice = $generateOrder->storeInvoice($response, $order);
             }
-//            session()->forget(['order', 'coupon']);
+            session()->forget(['item', 'other']);
+            // Send invoice to users mail
 //            Mail::to($order->user->email)->send(new OrderPaid($order));
-            return redirect()->route('test.index')->with('success', 'Payment successful!');
+            return redirect()->route('test.index')->with('success', 'Payment successful! Your order has been placed.');
         } else {
-//            $order->delete();
-            $request->session()->forget('item');
+            $payments = $generateOrder->storePayment($response, $order, 'failed');
+            session()->forget(['item', 'other']);
             return redirect()->route('test.index')->with('failed', 'Payment Unsuccessful! Something went wrong!');
         }
     }

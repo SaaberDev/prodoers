@@ -254,12 +254,13 @@ namespace App\Models{
  * @property int|null $service_id
  * @property string|null $order_number
  * @property string|null $requirements
- * @property string|null $payment_method
- * @property string $payment_status
- * @property string $order_status
+ * @property string|null $delivery_time
  * @property float|null $pay_amount
  * @property float|null $discount
  * @property string|null $applied_coupon
+ * @property string|null $payment_method
+ * @property string $payment_status
+ * @property string $order_status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Invoice $invoices
@@ -269,6 +270,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Order query()
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereAppliedCoupon($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereDeliveryTime($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereDiscount($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereOrderNumber($value)
@@ -307,6 +309,18 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|OtherContent whereUpdatedAt($value)
  */
 	class IdeHelperOtherContent extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Payment
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Payment newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Payment newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Payment query()
+ * @mixin \Eloquent
+ */
+	class IdeHelperPayment extends \Eloquent {}
 }
 
 namespace App\Models{

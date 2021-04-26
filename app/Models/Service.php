@@ -65,7 +65,7 @@ class Service extends Model
 
     public function orders()
     {
-        return $this->hasMany(Order::class);
+        return $this->belongsTo(Order::class);
     }
 
     public function service_tags()

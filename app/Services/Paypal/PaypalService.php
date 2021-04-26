@@ -9,7 +9,6 @@
     use PayPalCheckoutSdk\Core\SandboxEnvironment;
     use PayPalCheckoutSdk\Orders\OrdersCaptureRequest;
     use PayPalCheckoutSdk\Orders\OrdersCreateRequest;
-    use PayPalCheckoutSdk\Payments\CapturesGetRequest;
 
     class PaypalService
     {
@@ -24,55 +23,66 @@
             $this->client = new PayPalHttpClient($environment);
         }
 
-        public function createOrder($orderId)
+        public function createOrder()
         {
             $request = new OrdersCreateRequest();
             $request->headers["prefer"] = "return=representation";
-            $request->body = $this->checkoutData($orderId);
+            $request->body = $this->checkoutData();
 
             return $this->client->execute($request);
         }
 
-        public function captureOrder($token)
+        public function captureOrder($paypal_order_id)
         {
-            $request = new OrdersCaptureRequest($token);
+            $request = new OrdersCaptureRequest($paypal_order_id);
             $request->headers["prefer"] = "return=representation";
             return $this->client->execute($request);
         }
 
-        private function checkoutData($orderId)
+        private function checkoutData()
         {
-//            $order = Order::find($orderId);
-//            return [
-//                "intent" => "CAPTURE",
-//                "purchase_units" => [[
-//                    "reference_id" => uniqid('designwala_purchase_'),
-////                    "invoice_id" => uniqid('202104'),
-//                    "amount" => [
-//                        "value" => $order->pay_amount,
-//                        "currency_code" => "USD"
-//                    ]
-//                ]],
-//                "application_context" => [
-//                    "cancel_url" => route('test.cancel', $orderId),
-//                    "return_url" => route('test.success', $orderId)
-//                ]
-//            ];
+            $order_number = Order::count() + 1;
+            $orderItems = [];
+                $orderItems[] = [
+                    'name' => 'Logo Design',
+                    "description" => "Black Camera - Digital SLR",
+                    'quantity' => 1,
+                    'unit_amount' => [
+                        'currency_code' => 'USD',
+                        'value' => session('item.pay_amount')
+                    ],
+                    'category' => 'DIGITAL_GOODS',
+                ];
 
-//            $order = Order::find($orderId);
             return [
                 "intent" => "CAPTURE",
                 "purchase_units" => [[
-                    "reference_id" => uniqid('designwala_purchase_'),
-//                    "invoice_id" => uniqid('202104'),
+                    'items' => $orderItems,
+                    "reference_id" => config('services.paypal.prefix.reference_id') . $order_number,
+                    "description" => "Camera Shop",
+                    "invoice_id" => config('services.paypal.prefix.invoice_id') . $order_number,
+                    "invoice_description" => '#' . config('services.paypal.prefix.invoice_id') . $order_number,
                     "amount" => [
-                        "value" => session('item.0.pay_amount'),
-                        "currency_code" => "USD"
+                        "value" => session('item.pay_amount'),
+                        "currency_code" => "USD",
+                        "breakdown" => [
+                            'item_total' =>
+                                [
+                                    'currency_code' => 'USD',
+                                    'value' => session('item.pay_amount'),
+                                ],
+                        ]
                     ]
                 ]],
+
                 "application_context" => [
                     "cancel_url" => route('test.cancel'),
-                    "return_url" => route('test.success')
+                    "return_url" => route('test.success'),
+                    'brand_name' => 'designwala',
+                    'locale' => 'en-US',
+                    'landing_page' => 'LOGIN',
+                    'shipping_preference' => 'NO_SHIPPING',
+                    'user_action' => 'PAY_NOW',
                 ]
             ];
         }

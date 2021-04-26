@@ -65,8 +65,9 @@
             'cancel' => env('APP_URL') . '/checkout/cancel',
         ],
         'prefix' => [
-            'order_number' => 'DW2021' . mt_rand(100000000 ,500000000),
-            'invoice_id' => '2021' . mt_rand(100000000 ,500000000),
+            'order_number' => 'DW2021' . mt_rand(100000000, 500000000),
+            'reference_id' => 'designwala_purchase_' . mt_rand(100000000, 500000000),
+            'invoice_id' => '2021' . mt_rand(100000000, 500000000),
         ]
     ],
 

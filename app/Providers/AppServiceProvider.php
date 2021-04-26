@@ -2,7 +2,8 @@
 
 namespace App\Providers;
 
-use App\Models\ServiceCategory;
+use App\Services\Order\GenerateOrder;
+use App\Services\Order\GenerateOrderContract;
 use Illuminate\Routing\UrlGenerator;
 use Illuminate\Support\ServiceProvider;
 

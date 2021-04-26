@@ -15,29 +15,24 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            // Foreign Key Constraint [Users Table]
+            // Foreign Key Constraint [Users & Services Table]
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')
-                ->references('id')->on('users')
-                ->onDelete('set null')->onUpdate('cascade');
-
-            // Foreign Key Constraint [Users Table]
             $table->unsignedBigInteger('service_id')->nullable();
-            $table->foreign('service_id')
-                ->references('id')->on('services')
-                ->onDelete('set null')->onUpdate('cascade');
 
             $table->string('order_number')->unique()->nullable();
             $table->string('requirements')->nullable();
-            $table->string('payment_method')->nullable();
-            $table->enum('payment_status', ['pending', 'paid', 'cancelled']);
-//            $table->string('delivery_time');
-
-            $table->enum('order_status', ['pending', 'ongoing', 'delivered', 'in_revision', 'cancelled', 'completed']);
-            $table->double('pay_amount')->nullable();
-            $table->double('discount')->nullable();
+            $table->string('delivery_time')->nullable();
             $table->string('applied_coupon')->nullable();
+            $table->enum('order_status', ['pending', 'ongoing', 'delivered', 'in_revision', 'cancelled', 'completed']);
             $table->timestamps();
+        });
+
+        // Polymorphic Coupon Schema
+        Schema::create('orderables', function (Blueprint $table) {
+            // Foreign Key Constraint [Service Categories Table]
+            $table->unsignedBigInteger('order_id');
+            $table->unsignedBigInteger('orderable_id');
+            $table->string('orderable_type');
         });
     }
 
@@ -49,5 +44,6 @@ class CreateOrdersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('orders');
+        Schema::dropIfExists('orderables');
     }
 }

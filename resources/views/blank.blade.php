@@ -12,6 +12,14 @@
             <div class="alert alert-success">
                 {{ session('success') }}
             </div>
+        @elseif(session()->has('failed'))
+            <div class="alert alert-danger">
+                {{ session('failed') }}
+            </div>
+        @elseif(session()->has('orderSuccess'))
+            <div class="alert alert-success">
+                {{ session('orderSuccess') }}
+            </div>
         @endif
         <form action="{{ route('test.placeOrder') }}" method="POST">
             @csrf @method('POST')

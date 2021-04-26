@@ -19,8 +19,18 @@ class Order extends Model
         return $this->belongsTo(Service::class);
     }
 
+//    public function invoices()
+//    {
+//        return $this->belongsTo(Invoice::class, 'order_id');
+//    }
+
     public function invoices()
     {
-        return $this->belongsTo(Invoice::class, 'order_id');
+        return $this->morphedByMany(Invoice::class, 'orderable');
+    }
+
+    public function payments()
+    {
+        return $this->morphedByMany(Payment::class, 'orderable');
     }
 }

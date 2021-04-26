@@ -186,8 +186,7 @@ return [
          */
         App\Providers\BreadcrumbsServiceProvider::class,
         App\Providers\ViewServiceProvider::class,
-//        App\Providers\RepositoriesServiceProvider::class,
-
+        App\Providers\PaymentServiceProvider::class,
     ],
 
     /*

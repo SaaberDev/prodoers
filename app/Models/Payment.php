@@ -6,18 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @mixin IdeHelperInvoice
+ * @mixin IdeHelperPayment
  */
-class Invoice extends Model
+class Payment extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
-
-//    public function orders()
-//    {
-//        return $this->belongsTo(Order::class);
-//    }
 
     public function orders()
     {

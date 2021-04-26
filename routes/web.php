@@ -390,7 +390,7 @@
 
     Route::prefix('/test')->name('test.')->group(function () {
         Route::get('/', [TestController::class, 'index'])->name('index');
-        Route::post('/place-test-order', [TestOrderController::class, 'store'])->name('placeOrder');
+        Route::post('/place-test-order', [TestController::class, 'store'])->name('placeOrder');
         Route::get('/checkout/payment/{order_id}', [TestController::class, 'expressCheckout'])->name('payment');
         Route::get('/checkout/success', [TestController::class, 'expressCheckoutSuccess'])->name('success');
         Route::get('/checkout/cancel', [TestController::class, 'cancelPayment'])->name('cancel');
