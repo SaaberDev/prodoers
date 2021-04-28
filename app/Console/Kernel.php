@@ -25,8 +25,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // This task will delete telescope_entries table that is older than 1 hour
-//        $schedule->command('telescope:prune')->hourly();
+        // This task will delete telescope_entries table that is older than 48 hours
+        $schedule->command('telescope:prune --hours=48')->daily();
 //        $schedule->call(function () {
 //            Order::where('payment_status', '=', 'cancelled')->delete();
 //        })->hourly();

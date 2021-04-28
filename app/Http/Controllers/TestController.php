@@ -3,16 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
-use App\Services\Order\GenerateOrderContract;
-use App\Services\Paypal\PaypalService;
+use App\Repositories\Billing\PaymentGateway;
+use App\Repositories\Order\GenerateOrderContract;
+use App\Repositories\PaymentGateway\Paypal\Order\PaypalOrderInterface;
 use Illuminate\Http\Request;
+use PayPalHttp\HttpException;
 
 class TestController extends Controller
 {
-    private PaypalService $paypalService;
+    private PaymentGateway $paymentGateway;
 
-    function __construct(PaypalService $paypalService){
-        $this->paypalService = $paypalService;
+    public function __construct(PaymentGateway $paymentGateway)
+    {
+        $this->paymentGateway = $paymentGateway;
     }
 
     public function index()
@@ -28,7 +31,7 @@ class TestController extends Controller
         $order = [
             'id' => uniqid(Order::count() + 1),
             'requirements' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi deleniti deserunt neque unde? Aperiam asperiores id ipsa laudantium minima nemo repellendus, similique soluta voluptates!',
-            'pay_amount' => 50000,
+            'pay_amount' => 300,
             'applied_coupon' => '1234',
             'discount' => 10,
             'payment_method' => 'paypal'
@@ -42,55 +45,40 @@ class TestController extends Controller
         return redirect()->route('test.index');
     }
 
-
-    public function expressCheckout()
+    public function cancelCheckout()
     {
-        $response = $this->paypalService->createOrder();
-        session()->put('other', [
-            'paypal_order_id' => $response->result->id
-        ]);
-//        dd($response);
-        if($response->statusCode !== 201) {
-            abort(500);
-        }
+        $this->paymentGateway->cancelPayment();
+        return redirect()->route('test.index')->with(['failed' => 'Payment has been cancelled.']);
+    }
 
-        foreach ($response->result->links as $link) {
-            if($link->rel == 'approve') {
-                return redirect($link->href);
+    public function checkout()
+    {
+        try {
+            if (session('item.payment_method') == 'paypal') {
+                return $this->paymentGateway->makePaypalPayment();
             }
+        } catch (\Exception $exception){
+            report($exception);
+            session()->forget(['item', 'other']);
+            session()->regenerate();
+            return redirect()->back()->with('failed', 'Something went wrong. Contact Designwala.');
         }
     }
 
-
-    public function cancelPayment(Request $request)
+    public function successCheckout()
     {
-        $request->session()->forget('item');
-        return redirect()->route('test.index')->with(['payment-cancel' => 'Payment has been cancelled.']);
-    }
-
-
-    public function expressCheckoutSuccess(GenerateOrderContract $generateOrder)
-    {
-        $paypal_order_id = session('other.paypal_order_id');
-        $response = $this->paypalService->captureOrder($paypal_order_id);
-//        dd($response);
-
-//        $order_number = Order::count() + 1;
-        $order = $generateOrder->storeOrder();
-        if ($response->result->status == 'COMPLETED') {
-            $payments = $generateOrder->storePayment($response, $order, 'paid');
-
-            if ($payments->payment_status === 'paid') {
-                $invoice = $generateOrder->storeInvoice($response, $order);
+        try {
+            if (session('item.payment_method') == 'paypal') {
+                $this->paymentGateway->successPaypalPayment();
+                session()->forget(['item', 'other']);
+                session()->regenerate();
+                return redirect()->route('test.index')->with('success', 'Payment successful! Your order has been placed.');
             }
+        } catch (\Exception $exception){
+            report($exception);
             session()->forget(['item', 'other']);
-            // Send invoice to users mail
-//            Mail::to($order->user->email)->send(new OrderPaid($order));
-            return redirect()->route('test.index')->with('success', 'Payment successful! Your order has been placed.');
-        } else {
-            $payments = $generateOrder->storePayment($response, $order, 'failed');
-            session()->forget(['item', 'other']);
-            return redirect()->route('test.index')->with('failed', 'Payment Unsuccessful! Something went wrong!');
+            session()->regenerate();
+            return redirect()->route('test.index')->with('failed', 'Something went wrong. Contact Designwala.');
         }
     }
 }

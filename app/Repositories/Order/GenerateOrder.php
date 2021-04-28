@@ -1,7 +1,7 @@
 <?php
 
 
-    namespace App\Services\Order;
+    namespace App\Repositories\Order;
 
 
     use App\Models\Order;
