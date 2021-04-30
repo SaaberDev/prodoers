@@ -2,11 +2,10 @@
 
 namespace App\Providers;
 
+use App\Repositories\Billing\Billing;
+use App\Repositories\Billing\BillingInterface;
 use App\Repositories\Order\GenerateOrder;
-use App\Repositories\Order\GenerateOrderContract;
-use App\Repositories\PaymentGateway\Paypal\Order\PaypalOrder;
-use App\Repositories\PaymentGateway\Paypal\Order\PaypalOrderInterface;
-use App\Repositories\PaymentGateway\Paypal\PaypalClient;
+use App\Repositories\Billing\PaymentGateway\Paypal\PaypalOrder;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
 
@@ -19,11 +18,8 @@ class PaymentServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        App::singleton(PaypalOrderInterface::class, function ($client){
-            return new PaypalOrder($client->make(PaypalClient::class));
-        });
-        App::singleton(GenerateOrderContract::class, function (){
-            return new GenerateOrder();
+        App::singleton(BillingInterface::class, function ($client){
+            return new Billing($client->make(PaypalOrder::class), $client->make(GenerateOrder::class));
         });
     }
 

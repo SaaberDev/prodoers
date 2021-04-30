@@ -6,7 +6,7 @@
 
     use App\Models\Order;
 
-    class GenerateOrder implements GenerateOrderContract
+    class GenerateOrder
     {
         public function storeOrder()
         {
@@ -18,21 +18,21 @@
             ]);
         }
 
-        public function storePayment($response, $order, $paymentStatus)
+        public function storePayment($data, $order, $paymentStatus)
         {
             return $order->payments()->create([
-                    'paid_amount' => $response->result->purchase_units[0]->payments->captures[0]->amount->value,
-                    'discount' => session('item.discount'),
-                    'transaction_id' => $response->result->purchase_units[0]->payments->captures[0]->id,
-                    'payment_status' => $paymentStatus,
-                    'payment_method' => session('item.payment_method'),
-                ]);
+                'paid_amount' => $data['paid_amount'],
+                'discount' => session('item.discount'),
+                'transaction_id' => $data['transaction_id'],
+                'payment_status' => $paymentStatus,
+                'payment_method' => session('item.payment_method'),
+            ]);
         }
 
-        public function storeInvoice($response, $order)
+        public function storeInvoice($data, $order)
         {
             return $order->invoices()->create([
-                'invoice_id' => $response->result->purchase_units[0]->invoice_id,
+                'invoice_id' => $data['invoice_id'],
             ]);
         }
     }

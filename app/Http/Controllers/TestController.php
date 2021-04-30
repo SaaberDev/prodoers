@@ -3,19 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
-use App\Repositories\Billing\PaymentGateway;
-use App\Repositories\Order\GenerateOrderContract;
-use App\Repositories\PaymentGateway\Paypal\Order\PaypalOrderInterface;
+use App\Repositories\Billing\BillingInterface;
 use Illuminate\Http\Request;
-use PayPalHttp\HttpException;
 
 class TestController extends Controller
 {
-    private PaymentGateway $paymentGateway;
+    private BillingInterface $billing;
 
-    public function __construct(PaymentGateway $paymentGateway)
+    public function __construct(BillingInterface $billing)
     {
-        $this->paymentGateway = $paymentGateway;
+        $this->billing = $billing;
     }
 
     public function index()
@@ -31,7 +28,7 @@ class TestController extends Controller
         $order = [
             'id' => uniqid(Order::count() + 1),
             'requirements' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi deleniti deserunt neque unde? Aperiam asperiores id ipsa laudantium minima nemo repellendus, similique soluta voluptates!',
-            'pay_amount' => 300,
+            'pay_amount' => 100,
             'applied_coupon' => '1234',
             'discount' => 10,
             'payment_method' => 'paypal'
@@ -45,40 +42,38 @@ class TestController extends Controller
         return redirect()->route('test.index');
     }
 
-    public function cancelCheckout()
-    {
-        $this->paymentGateway->cancelPayment();
-        return redirect()->route('test.index')->with(['failed' => 'Payment has been cancelled.']);
-    }
-
     public function checkout()
     {
-        try {
-            if (session('item.payment_method') == 'paypal') {
-                return $this->paymentGateway->makePaypalPayment();
+        if (session('item.payment_method') == 'paypal') {
+            try {
+                return $this->billing->makePayment();
+            } catch (\Exception $exception) {
+                report($exception);
+                $this->billing->clearSession();
+                return redirect()->back()->with('failed', 'Something went wrong. Contact Designwala.');
             }
-        } catch (\Exception $exception){
-            report($exception);
-            session()->forget(['item', 'other']);
-            session()->regenerate();
-            return redirect()->back()->with('failed', 'Something went wrong. Contact Designwala.');
         }
     }
 
     public function successCheckout()
     {
-        try {
-            if (session('item.payment_method') == 'paypal') {
-                $this->paymentGateway->successPaypalPayment();
-                session()->forget(['item', 'other']);
-                session()->regenerate();
-                return redirect()->route('test.index')->with('success', 'Payment successful! Your order has been placed.');
+        if (session('item.payment_method') == 'paypal') {
+            try {
+                $this->billing->successPayment();
+                $this->billing->clearSession();
+                return redirect()->route('test.index')->with('success',
+                    'Payment successful! Your order has been placed.');
+            } catch (\Exception $exception) {
+                report($exception);
+                $this->billing->clearSession();
+                return redirect()->route('test.index')->with('failed', 'Something went wrong. Contact Designwala.');
             }
-        } catch (\Exception $exception){
-            report($exception);
-            session()->forget(['item', 'other']);
-            session()->regenerate();
-            return redirect()->route('test.index')->with('failed', 'Something went wrong. Contact Designwala.');
         }
+    }
+
+    public function cancelCheckout()
+    {
+        $this->billing->clearSession();
+        return redirect()->route('test.index')->with(['failed' => 'Payment has been cancelled.']);
     }
 }

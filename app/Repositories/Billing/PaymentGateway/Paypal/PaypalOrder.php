@@ -1,11 +1,11 @@
 <?php
 
 
-    namespace App\Repositories\PaymentGateway\Paypal\Order;
+    namespace App\Repositories\Billing\PaymentGateway\Paypal;
 
 
     use App\Models\Order;
-    use App\Repositories\PaymentGateway\Paypal\PaypalClient;
+    use App\Repositories\Billing\PaymentGateway\Paypal\PaypalClient;
     use Illuminate\Contracts\Foundation\Application;
     use Illuminate\Http\RedirectResponse;
     use Illuminate\Routing\Redirector;
@@ -13,7 +13,7 @@
     use PayPalCheckoutSdk\Orders\OrdersCreateRequest;
     use PayPalHttp\HttpResponse;
 
-    class PaypalOrder implements PaypalOrderInterface
+    class PaypalOrder
     {
         private PaypalClient $client;
 
@@ -49,6 +49,18 @@
                     return redirect($link->href);
                 }
             }
+        }
+
+        /**
+         * @param $paypal_order_id
+         * @return HttpResponse
+         */
+        public function capture($paypal_order_id): HttpResponse
+        {
+            $request = new OrdersCaptureRequest($paypal_order_id);
+            $request->headers["prefer"] = "return=representation";
+
+            return $this->client->client()->execute($request);
         }
 
         /**
@@ -102,16 +114,5 @@
                     'user_action' => 'PAY_NOW',
                 ]
             ];
-        }
-
-        /**
-         * @param $paypal_order_id
-         * @return HttpResponse
-         */
-        public function capture($paypal_order_id): HttpResponse
-        {
-            $request = new OrdersCaptureRequest($paypal_order_id);
-            $request->headers["prefer"] = "return=representation";
-            return $this->client->client()->execute($request);
         }
     }

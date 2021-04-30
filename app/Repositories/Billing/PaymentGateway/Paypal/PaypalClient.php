@@ -1,7 +1,7 @@
 <?php
 
 
-    namespace App\Repositories\PaymentGateway\Paypal;
+    namespace App\Repositories\Billing\PaymentGateway\Paypal;
 
 
     use PayPalCheckoutSdk\Core\PayPalHttpClient;
