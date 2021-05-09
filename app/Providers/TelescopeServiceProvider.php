@@ -20,6 +20,15 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
 
         $this->hideSensitiveRequestDetails();
 
+        Telescope::tag(function (IncomingEntry $entry) {
+            return $entry->type === 'request'
+                ? [
+                    'status:'.$entry->content['response_status'],
+                    'method:'.$entry->content['method'],
+                ]
+                : [];
+        });
+
         Telescope::filter(function (IncomingEntry $entry) {
             if ($this->app->environment('local')) {
                 return true;

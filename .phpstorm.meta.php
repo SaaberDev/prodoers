@@ -11,8 +11,6 @@ namespace PHPSTORM_META {
     */
     override(new \Illuminate\Contracts\Container\Container, map([
         '' => '@',
-            'App\Repositories\Order\GenerateOrderContract' => \App\Repositories\Order\GenerateOrder::class,
-            'App\Repositories\PaymentGateway\Paypal\Order\PaypalOrderInterface' => \App\Repositories\Billing\PaymentGateway\Paypal\PaypalOrder::class,
             'Artesaos\SEOTools\Contracts\JsonLd' => \Artesaos\SEOTools\JsonLd::class,
             'Artesaos\SEOTools\Contracts\JsonLdMulti' => \Artesaos\SEOTools\JsonLdMulti::class,
             'Artesaos\SEOTools\Contracts\MetaTags' => \Artesaos\SEOTools\SEOMeta::class,
@@ -213,8 +211,6 @@ namespace PHPSTORM_META {
         ]));
     override(\Illuminate\Container\Container::makeWith(0), map([
         '' => '@',
-            'App\Repositories\Order\GenerateOrderContract' => \App\Repositories\Order\GenerateOrder::class,
-            'App\Repositories\PaymentGateway\Paypal\Order\PaypalOrderInterface' => \App\Repositories\Billing\PaymentGateway\Paypal\PaypalOrder::class,
             'Artesaos\SEOTools\Contracts\JsonLd' => \Artesaos\SEOTools\JsonLd::class,
             'Artesaos\SEOTools\Contracts\JsonLdMulti' => \Artesaos\SEOTools\JsonLdMulti::class,
             'Artesaos\SEOTools\Contracts\MetaTags' => \Artesaos\SEOTools\SEOMeta::class,
@@ -415,8 +411,6 @@ namespace PHPSTORM_META {
         ]));
     override(\Illuminate\Contracts\Container\Container::get(0), map([
         '' => '@',
-            'App\Repositories\Order\GenerateOrderContract' => \App\Repositories\Order\GenerateOrder::class,
-            'App\Repositories\PaymentGateway\Paypal\Order\PaypalOrderInterface' => \App\Repositories\Billing\PaymentGateway\Paypal\PaypalOrder::class,
             'Artesaos\SEOTools\Contracts\JsonLd' => \Artesaos\SEOTools\JsonLd::class,
             'Artesaos\SEOTools\Contracts\JsonLdMulti' => \Artesaos\SEOTools\JsonLdMulti::class,
             'Artesaos\SEOTools\Contracts\MetaTags' => \Artesaos\SEOTools\SEOMeta::class,
@@ -617,8 +611,6 @@ namespace PHPSTORM_META {
         ]));
     override(\Illuminate\Contracts\Container\Container::make(0), map([
         '' => '@',
-            'App\Repositories\Order\GenerateOrderContract' => \App\Repositories\Order\GenerateOrder::class,
-            'App\Repositories\PaymentGateway\Paypal\Order\PaypalOrderInterface' => \App\Repositories\Billing\PaymentGateway\Paypal\PaypalOrder::class,
             'Artesaos\SEOTools\Contracts\JsonLd' => \Artesaos\SEOTools\JsonLd::class,
             'Artesaos\SEOTools\Contracts\JsonLdMulti' => \Artesaos\SEOTools\JsonLdMulti::class,
             'Artesaos\SEOTools\Contracts\MetaTags' => \Artesaos\SEOTools\SEOMeta::class,
@@ -819,8 +811,6 @@ namespace PHPSTORM_META {
         ]));
     override(\Illuminate\Contracts\Container\Container::makeWith(0), map([
         '' => '@',
-            'App\Repositories\Order\GenerateOrderContract' => \App\Repositories\Order\GenerateOrder::class,
-            'App\Repositories\PaymentGateway\Paypal\Order\PaypalOrderInterface' => \App\Repositories\Billing\PaymentGateway\Paypal\PaypalOrder::class,
             'Artesaos\SEOTools\Contracts\JsonLd' => \Artesaos\SEOTools\JsonLd::class,
             'Artesaos\SEOTools\Contracts\JsonLdMulti' => \Artesaos\SEOTools\JsonLdMulti::class,
             'Artesaos\SEOTools\Contracts\MetaTags' => \Artesaos\SEOTools\SEOMeta::class,
@@ -1021,8 +1011,6 @@ namespace PHPSTORM_META {
         ]));
     override(\App::get(0), map([
         '' => '@',
-            'App\Repositories\Order\GenerateOrderContract' => \App\Repositories\Order\GenerateOrder::class,
-            'App\Repositories\PaymentGateway\Paypal\Order\PaypalOrderInterface' => \App\Repositories\Billing\PaymentGateway\Paypal\PaypalOrder::class,
             'Artesaos\SEOTools\Contracts\JsonLd' => \Artesaos\SEOTools\JsonLd::class,
             'Artesaos\SEOTools\Contracts\JsonLdMulti' => \Artesaos\SEOTools\JsonLdMulti::class,
             'Artesaos\SEOTools\Contracts\MetaTags' => \Artesaos\SEOTools\SEOMeta::class,
@@ -1223,8 +1211,6 @@ namespace PHPSTORM_META {
         ]));
     override(\App::make(0), map([
         '' => '@',
-            'App\Repositories\Order\GenerateOrderContract' => \App\Repositories\Order\GenerateOrder::class,
-            'App\Repositories\PaymentGateway\Paypal\Order\PaypalOrderInterface' => \App\Repositories\Billing\PaymentGateway\Paypal\PaypalOrder::class,
             'Artesaos\SEOTools\Contracts\JsonLd' => \Artesaos\SEOTools\JsonLd::class,
             'Artesaos\SEOTools\Contracts\JsonLdMulti' => \Artesaos\SEOTools\JsonLdMulti::class,
             'Artesaos\SEOTools\Contracts\MetaTags' => \Artesaos\SEOTools\SEOMeta::class,
@@ -1425,8 +1411,6 @@ namespace PHPSTORM_META {
         ]));
     override(\App::makeWith(0), map([
         '' => '@',
-            'App\Repositories\Order\GenerateOrderContract' => \App\Repositories\Order\GenerateOrder::class,
-            'App\Repositories\PaymentGateway\Paypal\Order\PaypalOrderInterface' => \App\Repositories\Billing\PaymentGateway\Paypal\PaypalOrder::class,
             'Artesaos\SEOTools\Contracts\JsonLd' => \Artesaos\SEOTools\JsonLd::class,
             'Artesaos\SEOTools\Contracts\JsonLdMulti' => \Artesaos\SEOTools\JsonLdMulti::class,
             'Artesaos\SEOTools\Contracts\MetaTags' => \Artesaos\SEOTools\SEOMeta::class,
@@ -1627,8 +1611,6 @@ namespace PHPSTORM_META {
         ]));
     override(\app(0), map([
         '' => '@',
-            'App\Repositories\Order\GenerateOrderContract' => \App\Repositories\Order\GenerateOrder::class,
-            'App\Repositories\PaymentGateway\Paypal\Order\PaypalOrderInterface' => \App\Repositories\Billing\PaymentGateway\Paypal\PaypalOrder::class,
             'Artesaos\SEOTools\Contracts\JsonLd' => \Artesaos\SEOTools\JsonLd::class,
             'Artesaos\SEOTools\Contracts\JsonLdMulti' => \Artesaos\SEOTools\JsonLdMulti::class,
             'Artesaos\SEOTools\Contracts\MetaTags' => \Artesaos\SEOTools\SEOMeta::class,
@@ -1829,8 +1811,6 @@ namespace PHPSTORM_META {
         ]));
     override(\resolve(0), map([
         '' => '@',
-            'App\Repositories\Order\GenerateOrderContract' => \App\Repositories\Order\GenerateOrder::class,
-            'App\Repositories\PaymentGateway\Paypal\Order\PaypalOrderInterface' => \App\Repositories\Billing\PaymentGateway\Paypal\PaypalOrder::class,
             'Artesaos\SEOTools\Contracts\JsonLd' => \Artesaos\SEOTools\JsonLd::class,
             'Artesaos\SEOTools\Contracts\JsonLdMulti' => \Artesaos\SEOTools\JsonLdMulti::class,
             'Artesaos\SEOTools\Contracts\MetaTags' => \Artesaos\SEOTools\SEOMeta::class,
@@ -2031,8 +2011,6 @@ namespace PHPSTORM_META {
         ]));
     override(\Psr\Container\ContainerInterface::get(0), map([
         '' => '@',
-            'App\Repositories\Order\GenerateOrderContract' => \App\Repositories\Order\GenerateOrder::class,
-            'App\Repositories\PaymentGateway\Paypal\Order\PaypalOrderInterface' => \App\Repositories\Billing\PaymentGateway\Paypal\PaypalOrder::class,
             'Artesaos\SEOTools\Contracts\JsonLd' => \Artesaos\SEOTools\JsonLd::class,
             'Artesaos\SEOTools\Contracts\JsonLdMulti' => \Artesaos\SEOTools\JsonLdMulti::class,
             'Artesaos\SEOTools\Contracts\MetaTags' => \Artesaos\SEOTools\SEOMeta::class,

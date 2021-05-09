@@ -25,14 +25,15 @@
          */
         public static function environment()
         {
-            $mode = config('services.paypal.mode');
-            $sandboxClientId = config('services.paypal.sandbox.client_id');
-            $sandboxClientSecret = config('services.paypal.sandbox.client_secret');
-            $liveClientId = config('services.paypal.live.client_id');
-            $liveClientSecret = config('services.paypal.live.client_secret');
+            $mode = config('payment_gateway.mode');
+            $sandboxClientId = config('payment_gateway.paypal.sandbox.client_id');
+            $sandboxClientSecret = config('payment_gateway.paypal.sandbox.client_secret');
+            $liveClientId = config('payment_gateway.paypal.live.client_id');
+            $liveClientSecret = config('payment_gateway.paypal.live.client_secret');
             if ($mode == 'sandbox'){
                 return new SandboxEnvironment($sandboxClientId, $sandboxClientSecret);
+            } elseif ($mode == 'live'){
+                return new ProductionEnvironment($liveClientId, $liveClientSecret);
             }
-            return new ProductionEnvironment($liveClientId, $liveClientSecret);
         }
     }

@@ -49,26 +49,4 @@
         'client_secret' => env('TWITTER_SECRET'),
         'redirect' => env('TWITTER_REDIRECT_URL'),
     ],
-
-    'paypal' => [
-        'mode' => env('PAYPAL_MODE'),
-        'sandbox' => [
-            'client_id' => env('PAYPAL_SANDBOX_CLIENT_ID'),
-            'client_secret' => env('PAYPAL_SANDBOX_CLIENT_SECRET'),
-        ],
-        'live' => [
-            'client_id' => env('PAYPAL_LIVE_CLIENT_ID'),
-            'client_secret' => env('PAYPAL_LIVE_CLIENT_SECRET'),
-        ],
-        'url' => [
-            'return' => env('APP_URL') . '/checkout/success/',
-            'cancel' => env('APP_URL') . '/checkout/cancel',
-        ],
-        'prefix' => [
-            'order_number' => 'DW2021' . mt_rand(100000000, 500000000),
-            'reference_id' => 'designwala_purchase_' . mt_rand(100000000, 500000000),
-            'invoice_id' => '2021' . mt_rand(100000000, 500000000),
-        ]
-    ],
-
 ];

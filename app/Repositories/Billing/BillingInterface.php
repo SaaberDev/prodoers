@@ -4,9 +4,9 @@
 
     interface BillingInterface
     {
-        public function clearSession();
-
         public function makePayment();
 
-        public function successPayment();
+        public function cancelPayment();
+
+        public function successPayment($order_id);
     }

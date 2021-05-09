@@ -21,10 +21,12 @@
                 {{ session('orderSuccess') }}
             </div>
         @endif
-        <form action="{{ route('test.placeOrder') }}" method="POST">
-            @csrf @method('POST')
+        <form action="{{ route('test.placeOrder') }}" method="GET">
+            @error('payment_method')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="payment_method" value="paypal" id="flexRadioDefault1" checked>
+                <input class="form-check-input" type="radio" name="payment_method" value="paypal" id="flexRadioDefault1">
                 <label class="form-check-label" for="flexRadioDefault1">
                     Paypal
                 </label>
