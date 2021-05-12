@@ -395,8 +395,10 @@
         Route::get('/place-test-order', [TestController::class, 'store'])->name('placeOrder');
         Route::get('/checkout/pay', [TestPaypalController::class, 'checkout'])->name('payment');
         Route::any('/checkout/success', [TestPaypalController::class, 'successCheckout'])->name('success');
-        Route::get('/checkout/cancel', [TestPaypalController::class, 'cancelCheckout'])->name('cancel');
-//        Route::get('/cancel', [TestController::class, 'index']);
+        Route::any('/checkout/cancel', [TestPaypalController::class, 'cancelCheckout'])->name('cancel');
+
+
+        //        Route::get('/cancel', [TestController::class, 'index']);
 
 //        $ip = file_get_contents("http://ipecho.net/plain");
 //        $access_key = '01d075bd3a1134ae3109b83a458c2c41';
@@ -444,16 +446,3 @@
     //
     //        return ImageManagerStatic::make($imgCache)->response();
     //    });
-
-
-    Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
-    Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
-
-    Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
-    Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
-
-    Route::post('/success', [SslCommerzPaymentController::class, 'success']);
-    Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
-    Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
-
-    Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);

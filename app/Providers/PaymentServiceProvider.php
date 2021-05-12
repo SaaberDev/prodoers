@@ -26,8 +26,6 @@ class PaymentServiceProvider extends ServiceProvider
         } elseif ($type === 'visa') {
             App::singleton(BillingInterface::class, SslCommerz::class);
         }
-
-//        return App::make(BillingInterface::class);
     }
 
     /**

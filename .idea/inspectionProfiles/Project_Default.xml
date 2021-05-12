@@ -13,6 +13,13 @@
       </option>
       <option name="myCustomValuesEnabled" value="true" />
     </inspection_tool>
+    <inspection_tool class="IncorrectHttpHeaderInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="customHeaders">
+        <set>
+          <option value="tran_id=5a16c68b23783&amp;val_id=1711231900331kHP17lnrr9T8Gt&amp;amount=100&amp;card_type=VISA-Dutch Bangla&amp;store_amount=97&amp;card_no=425272XXXXXX3456&amp;bank_tran_id=1711231900331S0R8atkhAZksmM&amp;status=VALID&amp;tran_date=2017-11-23 18" />
+        </set>
+      </option>
+    </inspection_tool>
     <inspection_tool class="PhpUnhandledExceptionInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
   </profile>
 </component>

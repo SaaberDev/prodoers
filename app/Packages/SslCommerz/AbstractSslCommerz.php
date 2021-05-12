@@ -37,6 +37,16 @@
             return $this->apiUrl;
         }
 
+        protected function setDomainApiUrl($url)
+        {
+            $this->apiUrl = $url;
+        }
+
+        protected function getDomainApiUrl()
+        {
+            return $this->apiUrl;
+        }
+
         /**
          * @param $data
          * @param array $header

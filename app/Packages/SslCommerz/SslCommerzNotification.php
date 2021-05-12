@@ -5,6 +5,8 @@
     {
         protected $data = [];
         protected $config = [];
+        protected $apiDomain;
+        protected $returnUrl = [];
 
         private $successUrl;
         private $cancelUrl;
@@ -16,10 +18,20 @@
          */
         public function __construct()
         {
-            $this->config = config('sslcommerz');
+            $this->config = config('payment_gateway.sslcommerz');
+            $mode = config('payment_gateway.mode');
 
-            $this->setStoreId($this->config['apiCredentials']['store_id']);
-            $this->setStorePassword($this->config['apiCredentials']['store_password']);
+            $this->returnUrl = config('payment_gateway.return_url');
+
+            if ($mode === 'sandbox'){
+                $this->setStoreId($this->config['apiCredentials']['store_id']);
+                $this->setStorePassword($this->config['apiCredentials']['store_password']);
+                $this->setDomainApiUrl($this->config['apiDomain']);
+            } elseif ($mode === 'live') {
+                $this->setStoreId($this->config['apiCredentials']['store_live_id']);
+                $this->setStorePassword($this->config['apiCredentials']['store_live_password']);
+                $this->setDomainApiUrl($this->config['apiLiveDomain']);
+            }
         }
 
         public function orderValidate($post_data, $trx_id = '', $amount = 0, $currency = "BDT")
@@ -54,7 +66,8 @@
                     $val_id = urlencode($post_data['val_id']);
                     $store_id = urlencode($this->getStoreId());
                     $store_passwd = urlencode($this->getStorePassword());
-                    $requested_url = ($this->config['apiDomain'] . $this->config['apiUrl']['order_validate'] . "?val_id=" . $val_id . "&store_id=" . $store_id . "&store_passwd=" . $store_passwd . "&v=1&format=json");
+//                    $requested_url = ($this->config['apiDomain'] . $this->config['apiUrl']['order_validate'] . "?val_id=" . $val_id . "&store_id=" . $store_id . "&store_passwd=" . $store_passwd . "&v=1&format=json");
+                    $requested_url = ($this->getDomainApiUrl() . $this->config['apiUrl']['order_validate'] . "?val_id=" . $val_id . "&store_id=" . $store_id . "&store_passwd=" . $store_passwd . "&v=1&format=json");
 
                     $handle = curl_init();
                     curl_setopt($handle, CURLOPT_URL, $requested_url);
@@ -204,7 +217,7 @@
 
             $header = [];
 
-            $this->setApiUrl($this->config['apiDomain'] . $this->config['apiUrl']['make_payment']);
+            $this->setApiUrl($this->getDomainApiUrl() . $this->config['apiUrl']['make_payment']);
 
             // Set the required/additional params
             $this->setParams($requestData);
@@ -233,7 +246,8 @@
 
         protected function setSuccessUrl()
         {
-            $this->successUrl = url('/') . $this->config['success_url'];
+            $param = request()->input('payment_method');
+            $this->successUrl = $this->returnUrl['success_url'] . $param;
         }
 
         protected function getSuccessUrl()
@@ -243,7 +257,8 @@
 
         protected function setFailedUrl()
         {
-            $this->failedUrl = url('/') . $this->config['failed_url'];
+            $param = request()->input('payment_method');
+            $this->failedUrl = $this->returnUrl['failed_url'] . $param;
         }
 
         protected function getFailedUrl()
@@ -253,7 +268,8 @@
 
         protected function setCancelUrl()
         {
-            $this->cancelUrl = url('/') . $this->config['cancel_url'];
+            $param = request()->input('payment_method');
+            $this->cancelUrl = $this->returnUrl['cancel_url'] . $param;
         }
 
         protected function getCancelUrl()

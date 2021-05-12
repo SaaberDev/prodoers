@@ -6,7 +6,7 @@
 
     use App\Models\Order;
 
-    class GenerateOrder
+    abstract class GenerateOrder
     {
         public function storeOrder()
         {

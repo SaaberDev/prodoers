@@ -4,13 +4,21 @@
     namespace App\Repositories\Order;
 
 
-    class ProcessOrder
-    {
-        private GenerateOrder $generateOrder;
+    use DB;
+    use Exception;
 
-        public function __construct(GenerateOrder $generateOrder)
+    class ProcessOrder extends GenerateOrder
+    {
+//        private GenerateOrder $generateOrder;
+
+//        public function __construct(GenerateOrder $generateOrder)
+//        {
+//            $this = $generateOrder;
+//        }
+
+        public function send()
         {
-            $this->generateOrder = $generateOrder;
+            // Send payment param to make payment
         }
 
         public function get($response)
@@ -22,28 +30,28 @@
                     'invoice_id' => $response->result->purchase_units[0]->invoice_id,
                 ];
 
-                \DB::beginTransaction();
+                DB::beginTransaction();
                 try {
-                    $order = $this->generateOrder->storeOrder();
+                    $order = $this->storeOrder();
                     if ($response->result->status == 'COMPLETED') {
-                        $this->generateOrder->storePayment($data, $order, 'paid');
+                        $this->storePayment($data, $order, 'paid');
                         // Generate Invoice
-                        $this->generateOrder->storeInvoice($data, $order);
+                        $this->storeInvoice($data, $order);
                         // Send Invoice to user
                         // TODO - Send Invoice
                     } else {
-                        $this->generateOrder->storePayment($data, $order, 'failed');
+                        $this->storePayment($data, $order, 'failed');
                     }
-                    \DB::commit();
+                    DB::commit();
 //                $this->clearSession();
-                } catch (\Exception $exception) {
+                } catch (Exception $exception) {
                     report($exception);
 //                $this->clearSession();
-                    \DB::rollBack();
+                    DB::rollBack();
 //                return redirect()->route('test.index')->with('failed', 'Something went wrong. Contact Designwala.');
                 }
             } elseif (request()->input('payment_method') === 'visa') {
-                if ($response == TRUE) {
+                if ($response == true) {
                     /*
                     That means IPN did not work or IPN URL was not set in your merchant panel. Here you need to update order status
                     in order table as Processing or Complete.

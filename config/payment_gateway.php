@@ -7,6 +7,12 @@
             'reference_id' => 'designwala_purchase_' . mt_rand(100000000, 500000000),
             'invoice_id' => '2021' . mt_rand(100000000, 500000000),
         ],
+        'return_url' => [
+            'success_url' => env('APP_URL') . '/test/checkout/success?payment_method=',
+            'cancel_url' => env('APP_URL') . '/test/checkout/cancel?payment_method=',
+            'failed_url' => env('APP_URL') .  '/test/checkout/fail?payment_method=',
+            'ipn_url' => env('APP_URL') .  '/test/checkout/notify',
+        ],
 
         // Paypal Configuration
         'paypal' => [
@@ -42,17 +48,5 @@
                 'refund_status' => "/validator/api/merchantTransIDvalidationAPI.php",
             ],
             'connect_from_localhost' => env("IS_LOCALHOST"),
-            'success_url' => '/success',
-            'failed_url' => '/fail',
-            'cancel_url' => '/cancel',
-            'ipn_url' => '/ipn',
-        ],
-
-        // Return urls
-        'return_url' => [
-            'success_url' => env('APP_URL') . '/test/checkout/success',
-            'cancel_url' => env('APP_URL') . '/test/checkout/cancel',
-            'failed_url' => '/test/checkout/fail',
-            'ipn_url' => '/test/checkout/ipn',
         ],
     ];
