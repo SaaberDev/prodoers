@@ -4,7 +4,7 @@
 
     interface BillingInterface
     {
-        public function makePayment();
+        public function makePayment($data);
 
         public function cancelPayment();
 

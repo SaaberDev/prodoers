@@ -32,7 +32,8 @@
         public function checkout()
         {
             try {
-                return $this->billing->makePayment();
+                $data = session('item');
+                return $this->billing->makePayment($data);
             } catch (Exception $exception) {
                 report($exception);
                 $this->clearSession();
@@ -58,8 +59,11 @@
             try {
                 $paypal_order_id = session('other.paypal_order_id');
                 $response = $this->billing->successPayment($paypal_order_id);
-                $this->processOrder->get($response);
-                $this->clearSession();
+
+                $response
+                    ? $this->processOrder->getData($response) && $this->clearSession()
+                    : $this->clearSession()
+                ;
                 return redirect()->route('test.index')->with('success', 'Nice it worked!');
             } catch (Exception $exception) {
                 report($exception);

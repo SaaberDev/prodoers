@@ -31,6 +31,9 @@ class CreateOrdersTable extends Migration
         Schema::create('orderables', function (Blueprint $table) {
             // Foreign Key Constraint [Service Categories Table]
             $table->unsignedBigInteger('order_id');
+            $table->foreign('order_id')
+                ->references('id')->on('orders')
+                ->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger('orderable_id');
             $table->string('orderable_type');
         });

@@ -3,8 +3,6 @@
 
     namespace App\Repositories\Billing\PaymentGateway\Paypal;
 
-
-    use App\Models\Order;
     use App\Repositories\Billing\BillingInterface;
     use Illuminate\Contracts\Foundation\Application;
     use Illuminate\Http\RedirectResponse;
@@ -25,11 +23,12 @@
         /**
          * @return Application|Redirector|RedirectResponse
          */
-        public function makePayment()
+        public function makePayment($data)
         {
+            $pay_type = request()->input('payment_method');
             $request = new OrdersCreateRequest();
             $request->headers["prefer"] = "return=representation";
-            $request->body = self::buildRequestBody();
+            $request->body = self::buildRequestBody($pay_type, $data);
 
             $response = $this->client->client()->execute($request);
 
@@ -71,19 +70,20 @@
         }
 
         /**
+         * @param $pay_type
+         * @param $data
          * @return array
          */
-        private static function buildRequestBody(): array
+        private static function buildRequestBody($pay_type, $data): array
         {
-            $order_number = Order::count() + 1;
             $orderItems = [];
             $orderItems[] = [
-                'name' => 'Logo Design',
-                "description" => "Black Camera - Digital SLR",
+                'name' => $data['product_name'],
+                "description" => $data['product_desc'],
                 'quantity' => 1,
                 'unit_amount' => [
                     'currency_code' => 'USD',
-                    'value' => session('item.pay_amount')
+                    'value' => $data['pay_amount']
                 ],
                 'category' => 'DIGITAL_GOODS',
             ];
@@ -93,17 +93,17 @@
                 "purchase_units" => [
                     [
                         'items' => $orderItems,
-                        "reference_id" => config('payment_gateway.prefix.reference_id') . $order_number,
-                        "description" => "Camera Shop",
-                        "invoice_id" => config('payment_gateway.prefix.invoice_id') . $order_number,
+                        "reference_id" => $data['reference_id'],
+                        "description" => $data['product_desc'],
+                        "invoice_id" => $data['invoice_id'],
                         "amount" => [
-                            "value" => session('item.pay_amount'),
+                            "value" => $data['pay_amount'],
                             "currency_code" => "USD",
                             "breakdown" => [
                                 'item_total' =>
                                     [
                                         'currency_code' => 'USD',
-                                        'value' => session('item.pay_amount'),
+                                        'value' => $data['pay_amount'],
                                     ],
                             ]
                         ]
@@ -111,8 +111,8 @@
                 ],
 
                 "application_context" => [
-                    "cancel_url" => config('payment_gateway.return_url.cancel_url'),
-                    "return_url" => config('payment_gateway.return_url.success_url'),
+                    "cancel_url" => config('payment_gateway.return_url.cancel_url') . $pay_type,
+                    "return_url" => config('payment_gateway.return_url.success_url') . $pay_type,
                     'brand_name' => 'designwala',
                     'locale' => 'en-US',
                     'landing_page' => 'LOGIN',

@@ -209,8 +209,9 @@
          * @param string $pattern
          * @return false|mixed|string
          */
-        public function makePayment(array $requestData, $type = 'checkout', $pattern = 'json')
+        public function initiatePayment(array $requestData, $type = 'checkout', $pattern = 'json')
         {
+//            dd($requestData);
             if (empty($requestData)) {
                 return "Please provide a valid information list about transaction with transaction id, amount, success url, fail url, cancel url, store id and pass at least";
             }
@@ -229,7 +230,7 @@
             $response = $this->callToApi($this->data, $header, $this->config['connect_from_localhost']);
 
             $formattedResponse = $this->formatResponse($response, $type, $pattern); // Here we will define the response pattern
-
+//            dd($formattedResponse);
             if ($type == 'hosted') {
                 if (isset($formattedResponse['GatewayPageURL']) && $formattedResponse['GatewayPageURL'] != '') {
                     $this->redirect($formattedResponse['GatewayPageURL']);
@@ -246,8 +247,8 @@
 
         protected function setSuccessUrl()
         {
-            $param = request()->input('payment_method');
-            $this->successUrl = $this->returnUrl['success_url'] . $param;
+            $pay_type = request()->input('payment_method');
+            $this->successUrl = $this->returnUrl['success_url'] . $pay_type;
         }
 
         protected function getSuccessUrl()
@@ -257,8 +258,8 @@
 
         protected function setFailedUrl()
         {
-            $param = request()->input('payment_method');
-            $this->failedUrl = $this->returnUrl['failed_url'] . $param;
+            $pay_type = request()->input('payment_method');
+            $this->failedUrl = $this->returnUrl['failed_url'] . $pay_type;
         }
 
         protected function getFailedUrl()
@@ -268,8 +269,8 @@
 
         protected function setCancelUrl()
         {
-            $param = request()->input('payment_method');
-            $this->cancelUrl = $this->returnUrl['cancel_url'] . $param;
+            $pay_type = request()->input('payment_method');
+            $this->cancelUrl = $this->returnUrl['cancel_url'] . $pay_type;
         }
 
         protected function getCancelUrl()
@@ -305,7 +306,7 @@
 
         public function setRequiredInfo(array $info)
         {
-            $this->data['total_amount'] = $info['total_amount']; // decimal (10,2)	Mandatory - The amount which will process by SSLCommerz. It shall be decimal value (10,2). Example : 55.40. The transaction amount must be from 10.00 BDT to 500000.00 BDT
+            $this->data['total_amount'] = $info['pay_amount']; // decimal (10,2)	Mandatory - The amount which will process by SSLCommerz. It shall be decimal value (10,2). Example : 55.40. The transaction amount must be from 10.00 BDT to 500000.00 BDT
             $this->data['currency'] = $info['currency']; // string (3)	Mandatory - The currency type must be mentioned. It shall be three characters. Example : BDT, USD, EUR, SGD, INR, MYR, etc. If the transaction currency is not BDT, then it will be converted to BDT based on the current convert rate. Example : 1 USD = 82.22 BDT.
             $this->data['tran_id'] = $info['tran_id']; // string (30)	Mandatory - Unique transaction ID to identify your order in both your end and SSLCommerz
             $this->data['product_category'] = $info['product_category']; // string (50)	Mandatory - Mention the product category. It is a open field. Example - clothing,shoes,watches,gift,healthcare, jewellery,top up,toys,baby care,pants,laptop,donation,etc
@@ -462,7 +463,7 @@
 
         public function setAdditionalInfo(array $info)
         {
-            $this->data['value_a'] = (isset($info['value_a'])) ? $info['value_a'] : null; // value_a [ string (255)	- Extra parameter to pass your meta data if it is needed. Not mandatory]
+            $this->data['value_a'] = (isset($info['invoice_id'])) ? $info['invoice_id'] : null; // value_a [ string (255)	- Extra parameter to pass your meta data if it is needed. Not mandatory]
             $this->data['value_b'] = (isset($info['value_b'])) ? $info['value_b'] : null; // value_b [ string (255)	- Extra parameter to pass your meta data if it is needed. Not mandatory]
             $this->data['value_c'] = (isset($info['value_c'])) ? $info['value_c'] : null; // value_c [ string (255)	- Extra parameter to pass your meta data if it is needed. Not mandatory]
             $this->data['value_d'] = (isset($info['value_d'])) ? $info['value_d'] : null; // value_d [ string (255)	- Extra parameter to pass your meta data if it is needed. Not mandatory]

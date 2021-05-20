@@ -8,13 +8,12 @@
 
     abstract class GenerateOrder
     {
-        public function storeOrder()
+        public function storeOrder($data)
         {
-            $order_number = Order::count() + 1;
             return Order::create([
-                'requirements' => session('item.requirements'),
-                'applied_coupon' => session('item.applied_coupon'),
-                'order_number' => config('services.paypal.prefix.order_number') . $order_number,
+                'requirements' => $data['requirements'],
+                'applied_coupon' => $data['applied_coupon'],
+                'order_number' => $data['order_number'],
             ]);
         }
 
@@ -22,10 +21,10 @@
         {
             return $order->payments()->create([
                 'paid_amount' => $data['paid_amount'],
-                'discount' => session('item.discount'),
+                'discount' => $data['discount'],
                 'transaction_id' => $data['transaction_id'],
                 'payment_status' => $paymentStatus,
-                'payment_method' => session('item.payment_method'),
+                'payment_method' => $data['payment_method']
             ]);
         }
 

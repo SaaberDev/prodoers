@@ -3,15 +3,15 @@
     return [
         'mode' => env('PAYMENT_GATEWAY_MODE'),
         'prefix' => [
-            'order_number' => 'DW2021' . mt_rand(100000000, 500000000),
-            'reference_id' => 'designwala_purchase_' . mt_rand(100000000, 500000000),
-            'invoice_id' => '2021' . mt_rand(100000000, 500000000),
+            'order_number' => 'DW2021' . uniqid(mt_rand(100000000, 500000000)),
+            'reference_id' => 'designwala_purchase_' . uniqid(mt_rand(100000000, 500000000)),
+            'invoice_id' => '2021' . uniqid(mt_rand(100000000, 500000000)),
         ],
         'return_url' => [
             'success_url' => env('APP_URL') . '/test/checkout/success?payment_method=',
             'cancel_url' => env('APP_URL') . '/test/checkout/cancel?payment_method=',
             'failed_url' => env('APP_URL') .  '/test/checkout/fail?payment_method=',
-            'ipn_url' => env('APP_URL') .  '/test/checkout/notify',
+            'ipn_url' => env('APP_URL') .  '/test/checkout/notify?payment_method=',
         ],
 
         // Paypal Configuration
