@@ -31,9 +31,7 @@
     use App\Http\Controllers\Guest\Search\GuestSearchController;
     use App\Http\Controllers\Guest\Service\Category\GuestServiceCategoryController;
     use App\Http\Controllers\Guest\Service\GuestServiceController;
-    use App\Http\Controllers\SslCommerzPaymentController;
     use App\Http\Controllers\TestController;
-    use App\Http\Controllers\TestOrderController;
     use App\Http\Controllers\TestPaypalController;
     use Illuminate\Support\Facades\Route;
 

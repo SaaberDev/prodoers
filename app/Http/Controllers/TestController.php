@@ -17,8 +17,6 @@ class TestController extends Controller
 
     public function index()
     {
-//        dump(resolve(BillingInterface::class));
-//        dd(resolve(BillingInterface::class));
         return view('blank');
     }
 

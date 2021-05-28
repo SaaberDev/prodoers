@@ -216,7 +216,9 @@
                 return "Please provide a valid information list about transaction with transaction id, amount, success url, fail url, cancel url, store id and pass at least";
             }
 
-            $header = [];
+            $header = [
+                'SameSite' => 'none'
+            ];
 
             $this->setApiUrl($this->getDomainApiUrl() . $this->config['apiUrl']['make_payment']);
 
@@ -229,6 +231,7 @@
             // Now, call the Gateway API
             $response = $this->callToApi($this->data, $header, $this->config['connect_from_localhost']);
 
+//            dd($response);
             $formattedResponse = $this->formatResponse($response, $type, $pattern); // Here we will define the response pattern
 //            dd($formattedResponse);
             if ($type == 'hosted') {
@@ -379,6 +382,7 @@
             $this->data['emi_selected_inst'] = (isset($info['emi_selected_inst'])) ? $info['emi_selected_inst'] : null; // integer (2)	Customer has selected from your Site, So no instalment option will be displayed at gateway page
             $this->data['emi_allow_only'] = (isset($info['emi_allow_only'])) ? $info['emi_allow_only'] : 0;
 
+//            dd($this->data);
             return $this->data;
         }
 
