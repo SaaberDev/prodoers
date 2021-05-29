@@ -52,7 +52,7 @@ class IndexComponent extends Component
         $search = $this->search;
         $orders = Order::filterBy('order_status', $this->filterByStatus)
             ->searchBy('order_number', $search)
-            ->with('payments')
+            ->with('payments:id,paid_amount')
             ->orderByDesc('id')
             ->paginate($this->recordPerPage);
 //        dd($orders);

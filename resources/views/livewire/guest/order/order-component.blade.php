@@ -3,6 +3,20 @@
     <div class="paymentDetailsPreview py-5" id="paymentDetailsPreview">
         <div class="container">
             <div class="row justify-content-center">
+                @if(session()->has('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @elseif(session()->has('failed'))
+                    <div class="alert alert-danger">
+                        {{ session('failed') }}
+                    </div>
+                @elseif(session()->has('orderSuccess'))
+                    <div class="alert alert-success">
+                        {{ session('orderSuccess') }}
+                    </div>
+                @endif
+
                 <div class="col-xl-6  col-lg-8 col-md-10 col-sm-11 border py-4 border">
                     <div class="w-100 paymentdetailsOrdersummrytext">
                         <h4 class="">Order Summery </h4>
@@ -51,7 +65,7 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12">
-                    <form wire:submit.prevent="store" class="row g-3 needs-validation" novalidate autocomplete="off">
+                    <form action="{{ route('test.placeOrder') }}" class="row g-3 needs-validation" novalidate autocomplete="off">
                         <div class="col-md-12">
                             <input type="text"
                                    wire:model.defer="form.title"
@@ -136,7 +150,7 @@
                                             <input class="form-check-input css-checkbox"
                                                    wire:model.defer="paymentMethod"
                                                    type="radio"
-                                                   name="inlineRadioOptions"
+                                                   name="payment_method"
                                                    id="inlineRadio1"
                                                    value="paypal"
                                             >
@@ -146,7 +160,7 @@
                                             <input class="form-check-input css-checkbox"
                                                    wire:model.defer="paymentMethod"
                                                    type="radio"
-                                                   name="inlineRadioOptions"
+                                                   name="payment_method"
                                                    id="inlineRadio2"
                                                    value="visa">
                                             <label class="form-check-label css-label" for="inlineRadio2"><img src="{{ asset('_assets/_guest/img/paymentdetails/visa.png') }}" alt="" class=" ui-state-default  img-fluid  "></label>
@@ -155,7 +169,7 @@
                                             <input class="form-check-input css-checkbox"
                                                    wire:model.defer="paymentMethod"
                                                    type="radio"
-                                                   name="inlineRadioOptions"
+                                                   name="payment_method"
                                                    id="inlineRadio3"
                                                    value="bkash">
                                             <label class="form-check-label css-label" for="inlineRadio3"><img src="{{ asset('_assets/_guest/img/paymentdetails/bkash.png') }}" alt="" class=" ui-state-default  img-fluid  "> </label>
@@ -164,7 +178,7 @@
                                             <input class="form-check-input css-checkbox"
                                                    wire:model.defer="paymentMethod"
                                                    type="radio"
-                                                   name="inlineRadioOptions"
+                                                   name="payment_method"
                                                    id="inlineRadio4"
                                                    value="mastercard">
                                             <label class="form-check-label css-label" for="inlineRadio4"><img src="{{ asset('_assets/_guest/img/paymentdetails/master.png') }}" alt="" class=" ui-state-default  img-fluid  "></label>
@@ -198,7 +212,7 @@
                                 </div>
                             </div>
                             <div class="text-center p-3">
-                                <button id="pay-now" type="submit" class="btn  bgOne text-white rounded-0 px-5 py-2">Continue</button>
+                                <button id="pay-now" wire:click="store" class="btn  bgOne text-white rounded-0 px-5 py-2">Continue</button>
                             </div>
                         </div>
                         <div class="col-md-12"></div>
