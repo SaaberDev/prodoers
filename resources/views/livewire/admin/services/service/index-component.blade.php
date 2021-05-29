@@ -25,7 +25,7 @@
             </div>
             <div class="col"></div>
             <div class="col-md-4">
-                @if($services->total() > 15)
+                @if($services->total() > 4)
                     {{ $services->links('vendor.livewire.designwala-pagination') }}
                 @else
                 @endif

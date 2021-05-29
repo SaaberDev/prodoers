@@ -257,9 +257,11 @@ namespace App\Models{
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Payment[] $payments
  * @property-read int|null $payments_count
  * @property-read \App\Models\Service $services
+ * @method static \Illuminate\Database\Eloquent\Builder|Order filterBy($column, $arg)
  * @method static \Illuminate\Database\Eloquent\Builder|Order newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Order newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Order query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Order searchBy($column, $search)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereAppliedCoupon($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereDeliveryTime($value)
