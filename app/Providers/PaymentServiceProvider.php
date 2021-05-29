@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\Http\Controllers\TestPaypalController;
 use App\Repositories\Billing\BillingInterface;
 use App\Repositories\Billing\PaymentGateway\Paypal\PaypalOrder;
 use App\Repositories\Billing\PaymentGateway\SslCommerz\SslCommerz;

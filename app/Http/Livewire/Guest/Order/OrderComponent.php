@@ -4,6 +4,8 @@ namespace App\Http\Livewire\Guest\Order;
 
 use App\Models\Coupon;
 use App\Models\Order;
+use App\Repositories\Order\ProcessOrder;
+use Illuminate\Http\Request;
 use Livewire\Component;
 
 class OrderComponent extends Component
@@ -34,20 +36,28 @@ class OrderComponent extends Component
         'paymentMethod.in' => 'Please choose a payment method.',
     ];
 
-    public function store()
+    public function store(ProcessOrder $processOrder)
     {
         $this->validate();
-        \DB::beginTransaction();
 
-        try {
-            $order = Order::create([
-                // Store in db ===> to-do!
-            ]);
-//            $order->services()->associate();
-            \DB::commit();
-        } catch (\Exception $e) {
-            \DB::rollBack();
-        }
+//        $processOrder->setData(\request());
+////        $this->processOrder->setData($request);
+////        $payment_method = \request()->only('payment_method');
+//        $payment_method = $this->paymentMethod;
+////        dd($payment_method);
+//        return redirect()->route('test.payment', $payment_method);
+
+//        \DB::beginTransaction();
+//
+//        try {
+//            $order = Order::create([
+//                // TODO -- Store in db
+//            ]);
+////            $order->services()->associate();
+//            \DB::commit();
+//        } catch (\Exception $e) {
+//            \DB::rollBack();
+//        }
     }
 
     public function checkCoupon()
