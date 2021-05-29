@@ -19,11 +19,6 @@ class Order extends Model
         return $this->belongsTo(Service::class);
     }
 
-//    public function invoices()
-//    {
-//        return $this->belongsTo(Invoice::class, 'order_id');
-//    }
-
     public function invoices()
     {
         return $this->morphedByMany(Invoice::class, 'orderable');
@@ -32,5 +27,19 @@ class Order extends Model
     public function payments()
     {
         return $this->morphedByMany(Payment::class, 'orderable');
+    }
+
+    public function scopeFilterBy($query, $column, $arg)
+    {
+        return $query->where(function ($query) use ($arg, $column) {
+            $arg == '' ? $query->orderBy('id', 'desc') : $query->orWhere($column, '=', $arg);
+        });
+    }
+
+    public function scopeSearchBy($query, $column, $search)
+    {
+        return $query->where(function ($query) use ($search, $column) {
+            $query->orWhere($column, 'like', '%' . $search . '%');
+        });
     }
 }
