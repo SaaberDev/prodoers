@@ -82,7 +82,7 @@
          * @return mixed
          * This will query check if given coupon has applied to categories or services
          */
-        public function scopeApplyCouponTo($query, $category, $service)
+        public function scopeApplyCouponTo(Builder $query, $category, $service)
         {
             return $query->whereHas('categories', function ($query) use ($category) {
                 $query->where('couponable_id', '=', $category);

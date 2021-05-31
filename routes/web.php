@@ -60,11 +60,11 @@
         });
 
         // Order
-        Route::prefix('/services')
+        Route::prefix('/services')->name('order.')
 //            ->middleware('auth')
-            ->name('order.')->group(function () {
-            Route::get('/{service_slug}/order',
-                [GuestOrderController::class, 'index'])->name('index');
+            ->group(function () {
+            Route::get('/{service_slug}/order', [GuestOrderController::class, 'index'])->name('index');
+            Route::get('/{service_slug}/order/pay', [GuestOrderController::class, 'store'])->name('store');
         });
 
         // Policies

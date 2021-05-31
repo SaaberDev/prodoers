@@ -47,6 +47,7 @@ mix.js('resources/js/app.js', 'public/js/app.js')
         'resources/_assets/_admin_panel/css/style.css',
         'resources/_assets/_admin_panel/css/media.css',
     ], 'public/_assets/_admin_panel/css/dashboard.css')
+
     /*****
      * Site JS
      */
@@ -60,7 +61,24 @@ mix.js('resources/js/app.js', 'public/js/app.js')
         'resources/_assets/_admin_panel/js/fontawesome/all.js',
         'resources/_assets/_admin_panel/js/select2/select2.min.js',
     ], 'public/_assets/_admin_panel/js/dashboard.js')
-    .copyDirectory('resources/_assets/_admin_panel/img', 'public/_assets/_admin_panel/img');
+    .copyDirectory('resources/_assets/_admin_panel/img', 'public/_assets/_admin_panel/img')
+
+    /*
+    * Plugins CSS
+    * */
+    // .styles([
+    //     'resources/_assets/_admin_panel/css/tagify/tagify.css',
+    //     'resources/_assets/_admin_panel/css/select2/select2.min.css',
+    // ], 'public/_assets/_plugins/css/plugins.css')
+
+    /*
+    * Plugins JS
+    * */
+    // .scripts([
+    //     'resources/_assets/_admin_panel/js/bootstrap4/jquery.min.js',
+    //     'resources/_assets/_admin_panel/js/tagify/tagify.min.js',
+    //     'resources/_assets/_admin_panel/js/select2/select2.min.js',
+    // ], 'public/_assets/_plugins/js/plugins.js');
 
 /*
 |--------------------------------------------------------------------------

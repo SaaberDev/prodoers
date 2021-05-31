@@ -19,7 +19,6 @@
          */
         public ProcessOrder $processOrder;
 
-
         public function __construct(BillingInterface $billing, ProcessOrder $processOrder)
         {
             $this->billing = $billing;

@@ -9,7 +9,7 @@ use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
 
-class PaymentServiceProvider extends ServiceProvider implements DeferrableProvider
+class PaymentServiceProvider extends ServiceProvider
 {
     /**
      * Register services.

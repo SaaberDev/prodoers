@@ -4,6 +4,7 @@
 
     use App\Http\Controllers\Controller;
     use App\Models\Service;
+    use App\Repositories\Order\ProcessOrder;
     use Illuminate\Contracts\Foundation\Application;
     use Illuminate\Contracts\View\Factory;
     use Illuminate\Contracts\View\View;
@@ -14,6 +15,13 @@
 
     class GuestOrderController extends Controller
     {
+        private ProcessOrder $processOrder;
+
+        public function __construct(ProcessOrder $processOrder)
+        {
+            $this->processOrder = $processOrder;
+        }
+
         /**
          * Display a listing of the resource.
          *
@@ -22,7 +30,7 @@
         public function index($service_slug)
         {
             $service = Service::getSlug($service_slug)
-                ->select(['id', 'title', 'service_desc', 'price'])
+                ->select(['id', 'title', 'service_desc', 'price', 'slug'])
                 ->first();
             \session()->put('order', [
                 'grand_total' => $service->price
@@ -31,24 +39,17 @@
         }
 
         /**
-         * Show the form for creating a new resource.
-         *
-         * @return Response
-         */
-        public function create()
-        {
-            //
-        }
-
-        /**
          * Store a newly created resource in storage.
          *
          * @param Request $request
-         * @return Response
+         * @return \Illuminate\Http\RedirectResponse
          */
         public function store(Request $request)
         {
-            //
+            $this->processOrder->setData($request);
+
+            $payment_method = $request->only('payment_method');
+            return redirect()->route('test.payment', $payment_method);
         }
 
         /**

@@ -3,61 +3,42 @@
 namespace App\Http\Livewire\Guest\Order;
 
 use App\Models\Coupon;
-use App\Models\Order;
 use App\Repositories\Order\ProcessOrder;
-use Illuminate\Http\Request;
 use Livewire\Component;
 
 class OrderComponent extends Component
 {
     public $service;
     public $form = [
-        'title' => '',
-        'desc' => '',
+        'requirements' => '',
         'coupon' => '',
-    ];
-    public $paymentMethod = [
-        'paypal',
-        'visa',
-        'bkash',
-        'mastercard',
+        'paymentMethod' => [
+            'paypal',
+            'visa',
+            'bkash',
+            'mastercard',
+        ],
     ];
 
     protected $rules = [
-        'form.title' => 'required',
-        'form.desc' => 'nullable|min:250',
+        'form.requirements' => 'required|min:250',
         'form.coupon' => 'nullable',
-        'paymentMethod' => 'in:paypal,visa,bkash,mastercard',
+        'form.paymentMethod' => 'in:paypal,visa,bkash,mastercard',
     ];
 
     protected $messages = [
-        'form.title.required' => 'Title field is required.',
-        'form.desc.min' => 'Description length must be 250 character.',
-        'paymentMethod.in' => 'Please choose a payment method.',
+        'form.requirements.required' => 'Requirements field is required.',
+        'form.requirements.min' => 'Requirements length must be 250 character.',
+        'form.paymentMethod.in' => 'Please choose a payment method.',
     ];
 
     public function store(ProcessOrder $processOrder)
     {
         $this->validate();
+        $processOrder->setData($this->form, $this->service);
 
-//        $processOrder->setData(\request());
-////        $this->processOrder->setData($request);
-////        $payment_method = \request()->only('payment_method');
-//        $payment_method = $this->paymentMethod;
-////        dd($payment_method);
-//        return redirect()->route('test.payment', $payment_method);
-
-//        \DB::beginTransaction();
-//
-//        try {
-//            $order = Order::create([
-//                // TODO -- Store in db
-//            ]);
-////            $order->services()->associate();
-//            \DB::commit();
-//        } catch (\Exception $e) {
-//            \DB::rollBack();
-//        }
+        $payment_method = 'payment_method=' .$this->form['paymentMethod'];
+        return redirect()->route('test.payment', $payment_method);
     }
 
     public function checkCoupon()
