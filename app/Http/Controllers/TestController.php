@@ -21,10 +21,10 @@ class TestController extends Controller
 
     public function store(Request $request)
     {
-        $rules = [
-            'payment_method' => 'required'
-        ];
-        $request->validate($rules);
+//        $rules = [
+//            'payment_method' => 'required'
+//        ];
+//        $request->validate($rules);
 
         $this->processOrder->setData($request);
 

@@ -29,48 +29,7 @@
             <form action="{{ route('offers.coupon.store') }}" method="POST">
                 @csrf @method('POST')
                 <div class="row m-0  py-3 bg-white rounded">
-                    <div class="col-md-5 mt-4">
-                        <div class="form-group">
-                            <label>Apply coupon to Categories</label>
-                            <select class="js-states select2 form-control {{ $errors->has('categories') ? ' is-invalid' : '' }}"
-                                    data-placeholder="categories"
-                                    id="categories"
-                                    name="categories[]" style="width: 100%;"
-                                    multiple
-                            >
-                                @foreach($service_categories as $service_category)
-                                    <option value="{{ $service_category->id }}" {{ $service_category->id == old('categories') ? 'selected' : '' }}>{{ $service_category->title }}</option>
-                                @endforeach
-                            </select>
-                            @if($errors->has('categories'))
-                                <span class="invalid-feedback">
-                                    <strong>{{ $errors->first('categories') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                    </div>
-
-
-                    <div class="col-md-5 mt-4">
-                        <div class="form-group">
-                            <label>Apply coupon to Services</label>
-                            <select class="js-states select2 form-control {{ $errors->has('services') ? ' is-invalid' : '' }}"
-                                    data-placeholder="allServices"
-                                    id="allServices"
-                                    name="services[]" style="width: 100%;"
-                                    multiple
-                            >
-                                @foreach($services as $service)
-                                    <option value="{{ $service->id }}" {{ $service->id == old('services') ? 'selected' : '' }}>{{ $service->title }}</option>
-                                @endforeach
-                            </select>
-                            @if($errors->has('services'))
-                                <span class="invalid-feedback">
-                                    <strong>{{ $errors->first('services') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                    </div>
+                    @livewire('admin.offers.create-component')
 
                     <div class="col-md-2 mt-4">
                         <div class=" text-right">
@@ -90,8 +49,8 @@
                                 <input name="title" class="form-control {{ $errors->has('title') ? ' is-invalid' : '' }}" type="text" placeholder="Default input">
                                 @if($errors->has('title'))
                                     <span class="invalid-feedback">
-                                    <strong>{{ $errors->first('title') }}</strong>
-                                </span>
+                                        <strong>{{ $errors->first('title') }}</strong>
+                                    </span>
                                 @endif
                             </div>
                         </div>
@@ -105,8 +64,8 @@
                                 <input name="coupon_code" class="form-control {{ $errors->has('coupon_code') ? ' is-invalid' : '' }}" type="text" placeholder="Default input">
                                 @if($errors->has('coupon_code'))
                                     <span class="invalid-feedback">
-                                    <strong>{{ $errors->first('coupon_code') }}</strong>
-                                </span>
+                                        <strong>{{ $errors->first('coupon_code') }}</strong>
+                                    </span>
                                 @endif
                             </div>
                         </div>
@@ -206,15 +165,15 @@
             $(this).val(isChecked);
         });
 
-        $("#categories").select2({
-            placeholder: "Choose Categories"
-            , allowClear: true
-        });
-
-        $("#allServices").select2({
-            placeholder: "Choose Services"
-            , allowClear: true
-        });
+        // $("#categories").select2({
+        //     placeholder: "Choose Categories"
+        //     , allowClear: true
+        // });
+        //
+        // $("#allServices").select2({
+        //     placeholder: "Choose Services"
+        //     , allowClear: true
+        // });
 
         $("#coupon_type").select2({
             placeholder: "Choose a coupon type",

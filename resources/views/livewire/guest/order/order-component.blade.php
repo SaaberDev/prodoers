@@ -65,22 +65,7 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12">
-                    <form action="{{ route('test.placeOrder') }}" class="row g-3 needs-validation" novalidate autocomplete="off">
-                        <div class="col-md-12">
-                            <input type="text"
-                                   wire:model.defer="form.title"
-                                   class="form-control rounded-0 {{ ($errors->has('form.title') ? ' is-invalid' : '') }}"
-                                   id="validationCustom01"
-                                   value=""
-                                   placeholder="Title*"
-                            >
-                            @if($errors->has('form.title'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('form.title') }}
-                                </div>
-                            @endif
-                        </div>
-
+                    <form class="row g-3 needs-validation" novalidate autocomplete="off">
 {{--                        <div class="col-md-12">--}}
 {{--                            <div class="form-file">--}}
 {{--                                <div class="">--}}
@@ -99,15 +84,15 @@
 {{--                        </div>--}}
 
                         <div class="col-md-12 pt-3">
-                            <textarea class="form-control rounded-0 {{ ($errors->has('form.desc') ? ' is-invalid' : '') }}"
-                                      wire:model.defer="form.desc"
+                            <textarea class="form-control rounded-0 {{ ($errors->has('form.requirements') ? ' is-invalid' : '') }}"
+                                      wire:model.defer="form.requirements"
                                       id="exampleFormControlTextarea1"
                                       rows="8"
                                       placeholder="Addditional Requirements"
                             ></textarea>
-                            @if($errors->has('form.desc'))
+                            @if($errors->has('form.requirements'))
                                 <div class="invalid-feedback">
-                                    {{ $errors->first('form.desc') }}
+                                    {{ $errors->first('form.requirements') }}
                                 </div>
                             @endif
                         </div>
@@ -145,10 +130,10 @@
                                 <!--                                selectable payment method -->
                                 <div class="col-lg-12 col-md-12">
                                     <div class="selectablescustom">
-                                        <input type="text" value="" class="{{ $errors->has('paymentMethod') ? ' is-invalid' : '' }}" hidden>
+                                        <input type="text" value="" class="{{ $errors->has('form.paymentMethod') ? ' is-invalid' : '' }}" hidden>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input css-checkbox"
-                                                   wire:model.defer="paymentMethod"
+                                                   wire:model.defer="form.paymentMethod"
                                                    type="radio"
                                                    name="payment_method"
                                                    id="inlineRadio1"
@@ -158,7 +143,7 @@
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input css-checkbox"
-                                                   wire:model.defer="paymentMethod"
+                                                   wire:model.defer="form.paymentMethod"
                                                    type="radio"
                                                    name="payment_method"
                                                    id="inlineRadio2"
@@ -167,7 +152,7 @@
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input css-checkbox"
-                                                   wire:model.defer="paymentMethod"
+                                                   wire:model.defer="form.paymentMethod"
                                                    type="radio"
                                                    name="payment_method"
                                                    id="inlineRadio3"
@@ -176,16 +161,16 @@
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input css-checkbox"
-                                                   wire:model.defer="paymentMethod"
+                                                   wire:model.defer="form.paymentMethod"
                                                    type="radio"
                                                    name="payment_method"
                                                    id="inlineRadio4"
                                                    value="mastercard">
                                             <label class="form-check-label css-label" for="inlineRadio4"><img src="{{ asset('_assets/_guest/img/paymentdetails/master.png') }}" alt="" class=" ui-state-default  img-fluid  "></label>
                                         </div>
-                                        @if($errors->has('paymentMethod'))
+                                        @if($errors->has('form.paymentMethod'))
                                             <div class="invalid-feedback">
-                                                {{ $errors->first('paymentMethod') }}
+                                                {{ $errors->first('form.paymentMethod') }}
                                             </div>
                                         @endif
                                     </div>
@@ -212,7 +197,7 @@
                                 </div>
                             </div>
                             <div class="text-center p-3">
-                                <button id="pay-now" wire:click="store" class="btn  bgOne text-white rounded-0 px-5 py-2">Continue</button>
+                                <button id="pay-now" wire:click.prevent="store" class="btn bgOne text-white rounded-0 px-5 py-2">Continue</button>
                             </div>
                         </div>
                         <div class="col-md-12"></div>
