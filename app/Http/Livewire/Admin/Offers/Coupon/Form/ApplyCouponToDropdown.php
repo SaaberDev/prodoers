@@ -17,26 +17,21 @@ class ApplyCouponToDropdown extends Component
     public $applyTo = '';
     public $selected = [];
 
-//    protected $rules = [
-//        'applyTo' => 'required',
-////        'dropdown.service_categories' => 'required',
-////        'dropdown.services' => 'required',
-////        'dropdown' => 'array',
-////        'dropdown.*' => 'required|integer',
-//    ];
-
     public function mount()
     {
+        // Get old session data if validation fails
         if (old('apply_to')) {
             $this->applyTo = old('apply_to');
         }
 
+        // Get old session data based on apply_to if validation fails
         if (old('apply_to') == 'services') {
             $this->dropdown['services'] = Service::orderByDesc('id')->get(['title', 'id']);
         } elseif (old('apply_to') == 'categories') {
             $this->dropdown['service_categories'] = ServiceCategory::orderByDesc('id')->get(['title', 'id']);
         }
 
+        // Get old session data based on apply_to if validation fails
         if (old('services')) {
             $this->selected = old('services');
         } elseif (old('categories')) {
