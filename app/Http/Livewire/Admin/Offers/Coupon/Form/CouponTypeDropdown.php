@@ -16,7 +16,7 @@ class CouponTypeDropdown extends Component
             $this->couponType = old('coupon_type');
         }
 
-        // Get old session data based on coupon type if validation fails
+        // Get old session data based on coupon_type if validation fails
         if (old('fixed')) {
             $this->discountData = old('fixed');
         } elseif (old('percent_off')) {
