@@ -3,6 +3,8 @@
 namespace App\Http\Requests\Admin\Offer;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class CouponRequest extends FormRequest
 {
@@ -24,14 +26,26 @@ class CouponRequest extends FormRequest
     public function rules()
     {
         return [
-//            'categories' => 'required',
-//            'services' => 'required',
+//            'categories' => [
+//                Rule::requiredIf($this->input('apply_to') == 'categories')
+//            ],
+//            'services' => [
+//                Rule::requiredIf($this->input('apply_to') == 'services')
+//            ],
+//            'apply_to' => 'required',
 //            'published_status' => 'nullable',
-//            'title' => 'required',
+            'title' => 'required',
 //            'coupon_code' => 'required',
 //            'start_date' => 'required',
 //            'end_date' => 'required',
-//            'coupon_type' => 'required',
+
+            'fixed' => [
+                Rule::requiredIf($this->input('coupon_type') == 'fixed')
+            ],
+            'percent_off' => [
+                Rule::requiredIf($this->input('coupon_type') == 'percent_off')
+            ],
+            'coupon_type' => 'required',
 //            'percent_off' => 'nullable',
 //            'amount' => 'nullable',
         ];
@@ -42,19 +56,14 @@ class CouponRequest extends FormRequest
         return [
 //            'categories.required' => 'required',
 //            'services.required' => 'required',
-//            'published_status.required' => 'required',
-            'title.required' => 'required',
-            'code.required' => 'required',
-            'start_date.required' => 'required',
-            'end_date.required' => 'required',
-            'coupon_type.required' => 'required',
-            'percentage.required' => 'required',
-            'fixed.required' => 'required',
+//            'apply_to.required' => 'required',
+//            'title.required' => 'required',
+//            'coupon_code.required' => 'required',
+//            'start_date.required' => 'required',
+//            'end_date.required' => 'required',
+//            'coupon_type.required' => 'required',
+//            'percentage.required' => 'required',
+//            'fixed.required' => 'required',
         ];
-    }
-
-    public function isValidated()
-    {
-        return $this->validate($this->rules(), $this->messages());
     }
 }

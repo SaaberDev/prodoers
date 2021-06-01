@@ -35,9 +35,9 @@
          */
         public function create()
         {
-            $service_categories = ServiceCategory::orderByDesc('id')->get(['title', 'id']);
-            $services = Service::orderBy('id', 'desc')->get(['title', 'id']);
-            return \view('admin_panel.pages.offers.coupon.create', compact('service_categories', 'services'));
+//            $service_categories = ServiceCategory::orderByDesc('id')->get(['title', 'id']);
+//            $services = Service::orderBy('id', 'desc')->get(['title', 'id']);
+            return \view('admin_panel.pages.offers.coupon.create'/*, compact('service_categories', 'services')*/);
         }
 
         /**
@@ -48,31 +48,39 @@
          */
         public function store(CouponRequest $request)
         {
+            dd($request->all());
             DB::beginTransaction();
             try {
-//            dd(Carbon::createFromFormat('d-m-Y G:i:s A', $request->input('end_date'))->format('d-m-Y G:i:s A'));
-//            if ($request->isValidated()){
                 $coupon = Coupon::firstOrCreate([
-                    'published_status' => 1/*$request->input('published_status')*/,
+                    'published_status' => $request->input('published_status'),
                     'title' => $request->input('title'),
                     'coupon_code' => $request->input('coupon_code'),
                     'start_date' => $request->input('start_date'),
                     'end_date' => $request->input('end_date'),
                     'coupon_type' => $request->input('coupon_type'),
                     'percent_off' => $request->input('percent_off'),
-                    'amount' => $request->input('amount'),
+                    'amount' => $request->input('fixed'),
                 ]);
-                $categoryInput = collect($request->input('categories'));
-                $categoryInput->each(function ($category) use ($coupon) {
-                    $coupon->categories()->attach($category);
-                });
 
-                $serviceInput = collect($request->input('services'));
-                $serviceInput->each(function ($service) use ($coupon) {
-                    $coupon->services()->attach($service);
-                });
+                $apply_to = $request->input('apply_to');
+
+                if ($apply_to == 'categories') {
+                    $categoryInput = collect($request->input('categories'));
+                    $categoryInput->each(function ($category) use ($coupon) {
+                        $coupon->categories()->attach($category);
+                    });
+                } elseif ($apply_to == 'services') {
+                    $serviceInput = collect($request->input('services'));
+                    $serviceInput->each(function ($service) use ($coupon) {
+                        $coupon->services()->attach($service);
+                    });
+                } elseif ($apply_to == 'all') {
+                    $all = ServiceCategory::get(['id']);
+                    $all->each(function ($all) use ($coupon) {
+                        $coupon->categories()->attach($all);
+                    });
+                }
                 DB::commit();
-//            }
             } catch (Exception $exception) {
                 report($exception);
                 DB::rollBack();
