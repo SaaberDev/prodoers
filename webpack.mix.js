@@ -14,10 +14,11 @@ const mix = require('laravel-mix');
 // Laravel Default
 mix.js('resources/js/app.js', 'public/js/app.js')
     .postCss('resources/css/app.css', 'public/css/app.css', [
-        require('postcss-import'),
-        require('tailwindcss'),
-        require('autoprefixer'),
+        // require('postcss-import'),
+        // require('tailwindcss'),
+        // require('autoprefixer'),
     ])
+    .stylus('node_modules/flatpickr/src/style/flatpickr.styl', 'public/css/app.css')
     // Application Default Custom
     .styles([
         'resources/_assets/_custom/css/custom_styles.css',

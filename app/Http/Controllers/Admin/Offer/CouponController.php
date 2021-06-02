@@ -48,7 +48,7 @@
          */
         public function store(CouponRequest $request)
         {
-            dd($request->all());
+//            dd($request->all());
             DB::beginTransaction();
             try {
                 $coupon = Coupon::firstOrCreate([

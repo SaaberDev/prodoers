@@ -3,8 +3,6 @@
 
 @push('styles')
     {{-- Internal Styles --}}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 @endpush
 
 @section('content')
@@ -61,7 +59,7 @@
                             <label for="">
                                 <h5>Code</h5></label>
                             <div class="input-group">
-                                <input name="coupon_code" class="form-control {{ $errors->has('coupon_code') ? ' is-invalid' : '' }}" type="text">
+                                <input name="coupon_code" value="{{ old('coupon_code') }}" class="form-control {{ $errors->has('coupon_code') ? ' is-invalid' : '' }}" type="text">
                                 @if($errors->has('coupon_code'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('coupon_code') }}</strong>
@@ -75,7 +73,7 @@
                         <div class="form-group mb-0">
                             <label for="">
                                 <h5>Start Date</h5></label>
-                            <input type="datetime-local" name="start_date" class="form-control {{ $errors->has('start_date') ? ' is-invalid' : '' }}" id="start_date" aria-describedby="start_date">
+                            <input type="datetime-local" value="{{ old('start_date') }}" name="start_date" class="form-control {{ $errors->has('start_date') ? ' is-invalid' : '' }}" id="start_date" aria-describedby="start_date" placeholder="{{ old('start_date') }}">
                             @if($errors->has('start_date'))
                                 <span class="invalid-feedback">
                                     <strong>{{ $errors->first('start_date') }}</strong>
@@ -87,7 +85,7 @@
                         <div class="form-group mb-0">
                             <label for="">
                                 <h5>End Date</h5></label>
-                            <input type="datetime-local" name="end_date" class="form-control {{ $errors->has('end_date') ? ' is-invalid' : '' }}" id="end_date" aria-describedby="end_date">
+                            <input type="datetime-local" value="{{ old('end_date') }}" name="end_date" class="form-control {{ $errors->has('end_date') ? ' is-invalid' : '' }}" id="end_date" aria-describedby="end_date" placeholder="{{ old('end_date') }}">
                             @if($errors->has('end_date'))
                                 <span class="invalid-feedback">
                                     <strong>{{ $errors->first('end_date') }}</strong>
@@ -116,33 +114,40 @@
             $(this).val(isChecked);
         });
 
-        // $("#categories").select2({
-        //     placeholder: "Choose Categories"
-        //     , allowClear: true
+        const myInput = [
+            document.querySelector("#start_date"),
+            document.querySelector("#end_date"),
+        ];
+        const fp = flatpickr(myInput, {
+            enableTime: true,
+            enableSeconds: true,
+            dateFormat: "d-m-Y G:i:S K",
+            // dateFormat: "d-m-Y H:i",
+            weekNumbers: true,
+            // parseDate: true,
+            parseDate: (datestr, format) => {
+                return moment(datestr, format, true).toDate();
+            },
+            // time_24hr: true
+        });
+
+
+        // flatpickr("#start_date", {
+        //     enableTime: true,
+        //     enableSeconds: true,
+        //     dateFormat: "d-m-Y G:i:SS K",
+        //     weekNumbers: true,
+        //     parseDate: true,
+        //     time_24hr: true
         // });
         //
-        // $("#allServices").select2({
-        //     placeholder: "Choose Services"
-        //     , allowClear: true
+        // flatpickr("#end_date", {
+        //     enableTime: true,
+        //     enableSeconds: true,
+        //     dateFormat: "d-m-Y G:i:SS K",
+        //     weekNumbers: true,
+        //     parseDate: true,
+        //     time_24hr: true
         // });
-
-        // $("#coupon_type").select2({
-        //     placeholder: "Choose a coupon type",
-        // });
-
-        flatpickr("#start_date", {
-            enableTime: true,
-            enableSeconds: true,
-            dateFormat: "d-m-Y G:i:S K",
-            weekNumbers: true,
-            parseDate: true
-        });
-        flatpickr("#end_date", {
-            enableTime: true,
-            enableSeconds: true,
-            dateFormat: "d-m-Y G:i:S K",
-            weekNumbers: true,
-            parseDate: true
-        });
     </script>
 @endpush
