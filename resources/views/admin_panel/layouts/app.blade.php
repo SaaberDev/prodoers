@@ -9,9 +9,9 @@
 
     {{-- SEO Meta Tags --}}
     @include('admin_panel.includes.seo_meta')
-    <script src="{{ mix('js/app.js') }}" defer></script>
+
     {{-- Styles --}}
-{{--    <link href="{{ mix('css/app.css') }}" rel="stylesheet">--}}
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <link href="{{ mix('_assets/_admin_panel/css/dashboard.css') }}" rel="stylesheet">
     <link href="{{ mix('_assets/_custom/css/custom_styles.css') }}" rel="stylesheet">
     @livewireStyles
@@ -38,9 +38,10 @@
 {{-- footer_section --}}
 @include('admin_panel.includes.footer')
 {{-- footer_section --}}
+@livewireScripts
+<script src="{{ mix('js/app.js') }}"></script>
 <script src="{{ mix('_assets/_admin_panel/js/dashboard.js') }}"></script>
 <script src="{{ mix('_assets/_custom/js/custom_scripts.js') }}"></script>
-@livewireScripts
 @stack('scripts')
 @include('alerts.admin_panel._alert')
 </body>

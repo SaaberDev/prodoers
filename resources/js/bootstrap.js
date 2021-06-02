@@ -16,6 +16,12 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 import swal from 'sweetalert2';
 window.Swal = swal;
 
+/**
+ * flatpickr v4
+ */
+const flatpickr = require("flatpickr").default;
+window.flatpickr = flatpickr;
+
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
