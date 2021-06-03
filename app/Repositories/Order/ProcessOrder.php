@@ -15,7 +15,7 @@
             if (session()->has(['item', 'other'])){
                 session()->forget(['item', 'other']);
             }
-//dfgdfg
+
             $order_number = Order::count() + 1;
             // Send payment param to make payment
             $order = [
