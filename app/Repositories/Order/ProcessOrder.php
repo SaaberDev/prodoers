@@ -24,7 +24,7 @@
                 'product_category' => 'Digital Service',
                 'product_profile' => 'non-physical-goods',
 
-                'requirements' => $form['desc'],
+                'requirements' => $form['requirements'],
                 'pay_amount' => 50,
                 'applied_coupon' => '1234',
                 'discount' => 10,
