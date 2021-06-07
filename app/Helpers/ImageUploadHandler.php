@@ -17,7 +17,7 @@
                 $fileNameToStore = str_replace(' ', '-', $fileFormat);
 
                 // Store in Storage Filesystem
-                Storage::put($location . $fileNameToStore, $img);
+                Storage::disk('public')->put($location . $fileNameToStore, $img);
             } else {
                 //Default Image
                 $getFirstLetter = substr($filename, 0, 1);
@@ -25,7 +25,7 @@
                 $ext = 'png';
                 $fileNameToStore = strtolower($filename . '-' . 'default') . '.' . $ext;
 
-                Storage::put($location . $fileNameToStore, $alphaAvatar->encode('', 75));
+                Storage::disk('public')->put($location . $fileNameToStore, $alphaAvatar->encode('', 75));
             }
             return $fileNameToStore;
         }
@@ -46,7 +46,7 @@
                     $fileNameToStore = str_replace(' ', '-', $fileFormat);
 
                     // Store in Storage Filesystem
-                    Storage::put($location . $fileNameToStore, $img);
+                    Storage::disk('public')->put($location . $fileNameToStore, $img);
                     $stores[] = $fileNameToStore;
                     $i++;
                 }
@@ -63,8 +63,8 @@
             $fileNameToStore = $dbFilename;
             if ($request->hasFile($uploadedFile)) {
                 // delete old image first
-                if (Storage::exists($location . $dbFilename)) {
-                    Storage::delete($location . $dbFilename);
+                if (Storage::disk('public')->exists($location . $dbFilename)) {
+                    Storage::disk('public')->delete($location . $dbFilename);
                 }
 
                 //Get file from client side
@@ -76,7 +76,7 @@
                 $fileNameToStore = str_replace(' ', '-', $fileFormat);
 
                 // Store in Storage Filesystem
-                Storage::put($location . $fileNameToStore, $img);
+                Storage::disk('public')->put($location . $fileNameToStore, $img);
             }
             return $fileNameToStore;
         }
@@ -99,7 +99,7 @@
                     $fileNameToStore = str_replace(' ', '-', $fileFormat);
 
                     // Store in Storage Filesystem
-                    Storage::put($location . $fileNameToStore, $img);
+                    Storage::disk('public')->put($location . $fileNameToStore, $img);
                     $stores[] = $fileNameToStore;
                     $i++;
                 }
@@ -113,8 +113,8 @@
     if (!function_exists('deleteFileBefore')){
         function deleteFileBefore($location, $dbFilename){
             // delete old image first
-            if (Storage::exists($location . $dbFilename)) {
-                Storage::delete($location . $dbFilename);
+            if (Storage::disk('public')->exists($location . $dbFilename)) {
+                Storage::disk('public')->delete($location . $dbFilename);
             }
         }
     }
@@ -135,7 +135,7 @@
             $svg = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' . $svg;
 
             // Store in Storage Filesystem
-            Storage::put($location . $fileNameToStore, $svg);
+            Storage::disk('public')->put($location . $fileNameToStore, $svg);
         } else {
             //Default Image
             $getFirstLetter = substr($filename, 0, 1);
@@ -143,7 +143,7 @@
             $ext = 'png';
             $fileNameToStore = strtolower($filename . '-' . 'default') . '.' . $ext;
 
-            Storage::put($location . $fileNameToStore, $alphaAvatar->encode('', 75));
+            Storage::disk('public')->put($location . $fileNameToStore, $alphaAvatar->encode('', 75));
         }
         return $fileNameToStore;
     }
@@ -153,8 +153,8 @@
         $fileNameToStore = $dbFilename;
         if ($request->hasFile($inputName)) {
             // delete old image first
-            if (Storage::exists($location . $dbFilename)) {
-                Storage::delete($location . $dbFilename);
+            if (Storage::disk('public')->exists($location . $dbFilename)) {
+                Storage::disk('public')->delete($location . $dbFilename);
             }
 
             //Get file from client side
@@ -168,7 +168,7 @@
             $svg = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' . $svg;
 
             // Store in Storage Filesystem
-            Storage::put($location . $fileNameToStore, $svg);
+            Storage::disk('public')->put($location . $fileNameToStore, $svg);
             return $fileNameToStore;
         }
         return $fileNameToStore;
@@ -179,8 +179,8 @@
         $fileNameToStore = $dbFilename;
         if ($request->hasFile($inputName)) {
             // delete old image first
-            if (Storage::exists($location . $dbFilename)) {
-                Storage::delete($location . $dbFilename);
+            if (Storage::disk('public')->exists($location . $dbFilename)) {
+                Storage::disk('public')->delete($location . $dbFilename);
             }
 
             //Get file from client side
@@ -191,7 +191,7 @@
             $file_contents = file_get_contents($file);
 
             // Store in Storage Filesystem
-            Storage::put($location . $fileNameToStore, $file_contents);
+            Storage::disk('public')->put($location . $fileNameToStore, $file_contents);
             return $fileNameToStore;
         }
         return $fileNameToStore;
@@ -202,8 +202,8 @@
         $fileNameToStore = $dbFilename;
         if ($request->hasFile($inputName)) {
             // delete old image first
-            if (Storage::exists($location . $dbFilename)) {
-                Storage::delete($location . $dbFilename);
+            if (Storage::disk('public')->exists($location . $dbFilename)) {
+                Storage::disk('public')->delete($location . $dbFilename);
             }
 
             //Get file from client side
@@ -216,7 +216,7 @@
                 $svg = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' . $svg;
 
                 // Store in Storage Filesystem
-                Storage::put(config('designwala_paths.store.site_cms.how_designwala_works') . $fileNameToStore, $svg);
+                Storage::disk('public')->put(config('designwala_paths.store.site_cms.how_designwala_works') . $fileNameToStore, $svg);
             }
             return $fileNameToStore;
         }

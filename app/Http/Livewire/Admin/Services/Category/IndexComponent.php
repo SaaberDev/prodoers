@@ -15,6 +15,8 @@ class IndexComponent extends Component
         'Not Published'
     ];
 
+    public $banner;
+    public $thumbnail;
     public $search = '';
     public $recordPerPage = 15;
     public $filterByStatus = null;

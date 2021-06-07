@@ -24,6 +24,7 @@
             </div>
         </div>
 
+        @if(!$statistics->count() == 0)
         <div class="mt-4">
             <form action="{{ route('settings.site_cms.statistics.update') }}" method="POST" enctype="multipart/form-data" autocomplete="off">
                 @csrf @method('PATCH')
@@ -118,6 +119,15 @@
                 </div>
             </form>
         </div>
+        @else
+            <div class="mt-4">
+                <div style="font-size: 30px;text-align: center;height: 60vh;display: flex;align-items: center;">
+                    <p>This site has static data. Please run seeders to make changes or contact your
+                        <strong><a href="https://facebook.com/saaberdev" target="_blank">Developer</a></strong>.
+                    </p>
+                </div>
+            </div>
+        @endif
     </div>
 @endsection
 

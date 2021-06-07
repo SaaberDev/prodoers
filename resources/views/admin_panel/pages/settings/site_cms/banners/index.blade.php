@@ -30,7 +30,7 @@
                 <div class="row m-0 justify-content-center py-3 bg-white rounded">
                     <div class="col-md-12">
                         {{-- Home Page Banner --}}
-                        @foreach($banners as $banner)
+                        @forelse($banners as $banner)
                         <div class="col-md-12 {{ $loop->first ? '' : 'mt-4' }}">
                             <label for="">
                                 <h6>{{ str_replace('_', ' ', $banner->key) }}</h6>
@@ -109,11 +109,22 @@
                                 </ul>
                             </div>
                         </div>
-                        @endforeach
+                        @empty
+                            <div class="mt-4">
+                                <div style="font-size: 30px;text-align: center;height: 60vh;display: flex;align-items: center;">
+                                    <p>This site has static data. Please run seeders to make changes or contact your
+                                        <strong><a href="https://facebook.com/saaberdev" target="_blank">Developer</a></strong>.
+                                    </p>
+                                </div>
+                            </div>
+                        @endforelse
 
+                        @if(!$banners->count() == 0)
                         <div class="py-4 text-right">
                             <button type="submit" class="btn bgOne text-white">Update</button>
                         </div>
+                        @else
+                        @endif
                     </div>
                 </div>
             </form>

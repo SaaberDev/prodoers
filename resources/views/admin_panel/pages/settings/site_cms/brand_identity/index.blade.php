@@ -24,6 +24,7 @@
             </div>
         </div>
 
+        @if($brand_identities)
         <div class="mt-4">
             <form action="{{ route('settings.site_cms.brand_identity.update') }}" method="POST" enctype="multipart/form-data">
                 @csrf @method('PATCH')
@@ -98,7 +99,7 @@
                                     <ul class="row list-unstyled previewimg">
                                         <li class="col-md-7 text-center position-relative m-auto">
                                             <div class="previewimg">
-                                                <img id="previewImg" class="img-fluid" src="{{ asset($brand_identities->logo ? config('designwala_paths.show.site_cms.brand_logo') . $brand_identities->logo : config('designwala_paths.default.no_preview')) }}" alt="Brand Logo">
+                                                <img id="previewImg" class="img-fluid" src="{{ asset($brand_identities->logo ? $brand_logo . $brand_identities->logo : config('designwala_paths.default.no_preview')) }}" alt="Brand Logo">
                                             </div>
                                         </li>
                                     </ul>
@@ -140,7 +141,7 @@
                                     <ul class="row list-unstyled previewimg">
                                         <li class="col-md-7 text-center position-relative m-auto">
                                             <div class="previewimg">
-                                                <img id="previewImg" class="img-fluid" src="{{ asset($brand_identities->favicon ? config('designwala_paths.show.site_cms.brand_icon') . $brand_identities->favicon : config('designwala_paths.default.no_preview')) }}" alt="Browser Favicon">
+                                                <img id="previewImg" class="img-fluid" src="{{ asset($brand_identities->favicon ? $brand_icon . $brand_identities->favicon : config('designwala_paths.default.no_preview')) }}" alt="Browser Favicon">
                                             </div>
                                         </li>
                                     </ul>
@@ -155,6 +156,15 @@
                 </div>
             </form>
         </div>
+        @else
+            <div class="mt-4">
+                <div style="font-size: 30px;text-align: center;height: 60vh;display: flex;align-items: center;">
+                    <p>This site has static data. Please run seeders to make changes or contact your
+                        <strong><a href="https://facebook.com/saaberdev" target="_blank">Developer</a></strong>.
+                    </p>
+                </div>
+            </div>
+        @endif
     </div>
 @endsection
 

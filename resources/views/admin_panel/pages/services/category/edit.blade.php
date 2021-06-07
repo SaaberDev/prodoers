@@ -119,7 +119,7 @@
                             <ul class="row list-unstyled previewimg">
                                 <li class="col-md-4 py-4 text-center position-relative m-auto">
                                     <div class="previewImg">
-                                        <img id="previewImg" class="img-fluid" src="{{ asset(config('designwala_paths.show.service_categories.banner') . $service_categories->category_banner) }}" alt="Category Banner Image">
+                                        <img id="previewImg" class="img-fluid" src="{{ asset($banner . $service_categories->category_banner) }}" alt="Category Banner Image">
                                     </div>
                                 </li>
                             </ul>
@@ -160,7 +160,7 @@
                             <ul class="row list-unstyled previewimg">
                                 <li class="col-md-4 py-4 text-center position-relative m-auto">
                                     <div class="previewImg">
-                                        <img id="previewImg" class="img-fluid" src="{{ asset(config('designwala_paths.show.service_categories.thumbnail') . $service_categories->category_thumbnail) }}" alt="Category Thumbnail">
+                                        <img id="previewImg" class="img-fluid" src="{{ asset($thumbnail . $service_categories->category_thumbnail) }}" alt="Category Thumbnail">
                                     </div>
                                 </li>
                             </ul>

@@ -64,7 +64,7 @@ class ServiceController extends Controller
                 'service_category_id' => $request->input('allCategories'),
                 'price' => $request->input('service_price'),
                 'slug' => $slug,
-                'thumbnail' => SingleImageUploadHandler($request, $slug,'service_thumbnail', 'thumbnail', config('designwala_paths.store.services.thumbnail')),
+                'thumbnail' => SingleImageUploadHandler($request, $slug,'service_thumbnail', 'thumbnail', config('designwala_paths.images.services.thumbnail')),
                 'service_desc' => $request->input('service_description'),
             ]);
 
@@ -73,7 +73,7 @@ class ServiceController extends Controller
                 $services->service_tags()->attach($tag);
             });
 
-            $images = collect(MultiImageUploadHandler($request, $slug,'service_images', 'service-image', config('designwala_paths.store.services.service_image')));
+            $images = collect(MultiImageUploadHandler($request, $slug,'service_images', 'service-image', config('designwala_paths.images.services.service_image')));
             $images->each(function ($image) use ($services){
                 ServiceImage::firstOrCreate([
                     'service_id' => $services->id,
@@ -136,7 +136,11 @@ class ServiceController extends Controller
         $services = Service::findOrFail($id);
         $service_categories = ServiceCategory::getTitle();
         $service_tags = ServiceTag::getTitle();
-        return view('admin_panel.pages.services.service.edit', compact('services', 'id', 'service_categories', 'service_tags'));
+
+        $service_image = \Storage::disk('local')->url(config('designwala_paths.images.services.service_image'));
+        $thumbnail = \Storage::disk('local')->url(config('designwala_paths.images.services.thumbnail'));
+
+        return view('admin_panel.pages.services.service.edit', compact('services', 'id', 'service_categories', 'service_tags', 'service_image', 'thumbnail'));
     }
 
 
@@ -148,7 +152,7 @@ class ServiceController extends Controller
 //        ];
         $service_image = ServiceImage::findOrFail($id);
         DB::transaction(function () use ($service_image){
-            deleteFileBefore(config('designwala_paths.store.services.service_image'), $service_image->filename);
+            deleteFileBefore(config('designwala_paths.images.services.service_image'), $service_image->filename);
             $service_image->delete();
         });
 
@@ -208,7 +212,7 @@ class ServiceController extends Controller
                 'service_category_id' => $request->input('allCategories'),
                 'price' => $request->input('service_price'),
                 'slug' => $slug,
-                'thumbnail' => SingleImageUpdateHandler($request, $slug, $services->thumbnail, 'service_thumbnail', 'thumbnail',config('designwala_paths.store.services.thumbnail')),
+                'thumbnail' => SingleImageUpdateHandler($request, $slug, $services->thumbnail, 'service_thumbnail', 'thumbnail',config('designwala_paths.images.services.thumbnail')),
                 'service_desc' => $request->input('service_description'),
             ]);
 
@@ -216,7 +220,7 @@ class ServiceController extends Controller
             $services->service_tags()->sync($service_tagInputs);
 
 
-            $images = MultiImageUpdateHandler($request, $slug,'service_images', 'service-image', config('designwala_paths.store.services.service_image'));
+            $images = MultiImageUpdateHandler($request, $slug,'service_images', 'service-image', config('designwala_paths.images.services.service_image'));
             foreach ($images as $image) {
                 $services->serviceImages()->create([
                     'service_id' => $services->id,
@@ -272,9 +276,9 @@ class ServiceController extends Controller
         $services = Service::findOrFail($id);
         DB::transaction(function () use ($services){
             foreach ($services->serviceImages as $service_image){
-                deleteFileBefore(config('designwala_paths.store.services.service_image'), $service_image->filename);
+                deleteFileBefore(config('designwala_paths.images.services.service_image'), $service_image->filename);
             }
-            deleteFileBefore(config('designwala_paths.store.services.thumbnail'), $services->thumbnail);
+            deleteFileBefore(config('designwala_paths.images.services.thumbnail'), $services->thumbnail);
             $services->delete();
         });
 

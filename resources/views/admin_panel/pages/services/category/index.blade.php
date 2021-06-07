@@ -23,7 +23,7 @@
                 </div>
             </div>
         </div>
-        @livewire('admin.services.category.index-component')
+        @livewire('admin.services.category.index-component', ['banner' => $banner, 'thumbnail' => $thumbnail])
     </div>
 @endsection
 

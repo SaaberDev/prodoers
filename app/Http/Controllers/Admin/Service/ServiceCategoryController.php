@@ -23,7 +23,9 @@ class ServiceCategoryController extends Controller
      */
     public function index()
     {
-        return view('admin_panel.pages.services.category.index');
+        $banner = \Storage::disk('local')->url(config('designwala_paths.images.service_categories.banner'));
+        $thumbnail = \Storage::disk('local')->url(config('designwala_paths.images.service_categories.thumbnail'));
+        return view('admin_panel.pages.services.category.index', compact('banner', 'thumbnail'));
     }
 
     /**
@@ -55,9 +57,9 @@ class ServiceCategoryController extends Controller
                 'meta_desc' => $request->input('meta_description'),
                 'slug' => $slug,
                 'category_banner' => SingleImageUploadHandler($request, $slug, 'banner_image', 'banner',
-                    config('designwala_paths.store.service_categories.banner')),
+                    config('designwala_paths.images.service_categories.banner')),
                 'category_thumbnail' => SingleImageUploadHandler($request, $slug, 'thumbnail_image', 'thumbnail',
-                    config('designwala_paths.store.service_categories.thumbnail')),
+                    config('designwala_paths.images.service_categories.thumbnail')),
                 'desc' => $request->input('service_description'),
             ]);
 
@@ -106,7 +108,9 @@ class ServiceCategoryController extends Controller
     public function edit($id)
     {
         $service_categories = ServiceCategory::findOrFail($id);
-        return \view('admin_panel.pages.services.category.edit', compact('id', 'service_categories'));
+        $banner = \Storage::disk('local')->url(config('designwala_paths.images.service_categories.banner'));
+        $thumbnail = \Storage::disk('local')->url(config('designwala_paths.images.service_categories.thumbnail'));
+        return \view('admin_panel.pages.services.category.edit', compact('id', 'service_categories', 'banner', 'thumbnail'));
     }
 
     public function destroyServiceCategoryFaq($id)
@@ -144,10 +148,10 @@ class ServiceCategoryController extends Controller
                 'meta_desc' => $request->input('meta_description'),
                 'slug' => $slug,
                 'category_banner' => SingleImageUpdateHandler($request, $slug, $service_categories->category_banner,
-                    'banner_image', 'banner', config('designwala_paths.store.service_categories.banner')),
+                    'banner_image', 'banner', config('designwala_paths.images.service_categories.banner')),
                 'category_thumbnail' => SingleImageUpdateHandler($request, $slug,
                     $service_categories->category_thumbnail, 'thumbnail_image', 'thumbnail',
-                    config('designwala_paths.store.service_categories.thumbnail')),
+                    config('designwala_paths.images.service_categories.thumbnail')),
                 'desc' => $request->input('service_description')
             ]);
 
@@ -188,8 +192,8 @@ class ServiceCategoryController extends Controller
             'message' => 'Service Category Deleted !',
         ];
         $service_categories = ServiceCategory::findOrFail($id);
-        deleteFileBefore(config('designwala_paths.store.service_categories.banner'), $service_categories->category_banner);
-        deleteFileBefore(config('designwala_paths.store.service_categories.thumbnail'), $service_categories->category_thumbnail);
+        deleteFileBefore(config('designwala_paths.images.service_categories.banner'), $service_categories->category_banner);
+        deleteFileBefore(config('designwala_paths.images.service_categories.thumbnail'), $service_categories->category_thumbnail);
         $service_categories->delete();
         return redirect()->back()->with($notify);
     }
