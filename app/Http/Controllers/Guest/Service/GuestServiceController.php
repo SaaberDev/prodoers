@@ -29,13 +29,9 @@ class GuestServiceController extends Controller
 //        dd($related_services);
         request()->session()->put('url.intended', route('guest.order.index', $services->slug));
 
-        if (app()->environment() == 'staging') {
-            $service_image = \Storage::disk('s3')->url(config('designwala_paths.show.services.service_image'));
-            $thumbnail = \Storage::disk('s3')->url(config('designwala_paths.show.services.thumbnail'));
-        } else {
-            $service_image = \Storage::disk('local')->url(config('designwala_paths.show.services.service_image'));
-            $thumbnail = \Storage::disk('local')->url(config('designwala_paths.show.services.thumbnail'));
-        }
+        $service_image = \Storage::disk('local')->url(config('designwala_paths.show.services.service_image'));
+        $thumbnail = \Storage::disk('local')->url(config('designwala_paths.show.services.thumbnail'));
+
         return view('guest.pages.service_show', compact('services', 'related_services', 'service_image', 'thumbnail'));
     }
 }
