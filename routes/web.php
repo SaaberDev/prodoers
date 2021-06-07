@@ -396,6 +396,7 @@
         Route::any('/checkout/cancel', [TestPaypalController::class, 'cancelCheckout'])->name('cancel');
 
 
+
         //        Route::get('/cancel', [TestController::class, 'index']);
 
 //        $ip = file_get_contents("http://ipecho.net/plain");
