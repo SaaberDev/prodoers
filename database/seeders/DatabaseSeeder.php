@@ -20,15 +20,17 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            RolesAndPermissionsSeeder::class,
-            UserSeeder::class,
-            ServiceCategorySeeder::class,
+//            RolesAndPermissionsSeeder::class,
+//            UserSeeder::class,
+//            ServiceCategorySeeder::class,
 //            ServiceCategoryFaqSeeder::class,
 //            ServiceTagSeeder::class,
-            ServiceSeeder::class,
+//            ServiceSeeder::class,
 //            ServiceFeatureSeeder::class,
 //            ServiceImageSeeder::class,
 //            ServiceFaqSeeder::class,
+            PaymentSeeder::class,
+            InvoiceSeeder::class,
             OrderSeeder::class,
             SiteCmsSeeder::class,
         ]);

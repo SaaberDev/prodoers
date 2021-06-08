@@ -55,8 +55,8 @@
                         @forelse($orders as $order)
                             <tr>
                                 <td>{{ $order->order_number }}</td>
-                                <td>XYZ</td>
-                                <td>XYZ</td>
+                                <td>Abdul Kader</td>
+                                <td>Saber</td>
                                 <td> Logo Design </td>
                                 @foreach($order->payments as $payment)
                                 <td> &#36;{{ $payment->paid_amount }} </td>

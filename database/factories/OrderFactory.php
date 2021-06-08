@@ -21,13 +21,12 @@ class OrderFactory extends Factory
      */
     public function definition()
     {
-        $order = Order::count() + 1;
         return [
             'user_id' => null,
             'service_id' => rand(1, 5),
-            'order_number' => config('payment_gateway.prefix.order_number') + $order,
+            'order_number' => $this->faker->uuid,
             'requirements' => 'Recusandae Ea praes. Recusandae Ea praes. Recusandae Ea praes. ',
-            'delivery_time' => 4,
+            'delivery_time' => '4',
             'applied_coupon' => '2222',
             'order_status' => $this->faker->randomElement(['pending', 'ongoing', 'delivered', 'in_revision', 'cancelled', 'completed']),
         ];

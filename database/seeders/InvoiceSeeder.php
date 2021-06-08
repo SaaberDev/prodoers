@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Invoice;
 use App\Models\Order;
-use App\Models\Payment;
 use Illuminate\Database\Seeder;
 
-class PaymentSeeder extends Seeder
+class InvoiceSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,7 @@ class PaymentSeeder extends Seeder
      */
     public function run()
     {
-        Payment::factory()->for(
+        Invoice::factory()->for(
             Order::factory(), 'orderable'
         )
             ->create();

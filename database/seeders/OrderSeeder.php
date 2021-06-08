@@ -2,11 +2,14 @@
 
 namespace Database\Seeders;
 
+use App\Models\Invoice;
 use App\Models\Order;
+use App\Models\Payment;
 use Illuminate\Database\Seeder;
 
 class OrderSeeder extends Seeder
 {
+    protected $toTruncate = ['orders'];
     /**
      * Run the database seeds.
      *
@@ -14,6 +17,17 @@ class OrderSeeder extends Seeder
      */
     public function run()
     {
-        Order::factory(60)->create();
+        \DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        foreach($this->toTruncate as $table) {
+            \DB::table($table)->truncate();
+        }
+        \DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
+        Order::factory(60)
+            ->hasAttached(
+                Payment::factory(),
+                Invoice::factory()
+            )
+            ->create();
     }
 }
