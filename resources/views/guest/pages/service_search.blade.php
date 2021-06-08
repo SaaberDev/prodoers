@@ -6,7 +6,7 @@
 @endpush
 
 @section('content')
-    @livewire('guest.search.search-result-page-component')
+    @livewire('guest.search.search-result-page-component', ['service_thumbnail' => $service_thumbnail])
 
     {{-- Like to discuss Start --}}
     {{--<div class="section py100 bgcustomLightgray ptSm50 pbSm50" id="searchPageWouldLiketoDiscussYourNewProject">

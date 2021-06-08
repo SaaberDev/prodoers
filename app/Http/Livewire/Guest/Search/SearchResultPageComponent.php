@@ -10,6 +10,8 @@ class SearchResultPageComponent extends Component
 {
     use WithPagination;
 
+    public $service_thumbnail;
+
     public $query;
     public $recordPerPage = 9;
     public $page = 1;

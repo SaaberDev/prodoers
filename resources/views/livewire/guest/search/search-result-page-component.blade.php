@@ -41,7 +41,7 @@
                     <div class="col-lg-4 col-md-6 padding25" wire:key="{{ $service->id }}">
                         <div class="searchPageResultSingle position-relative">
                             <div class="card ">
-                                <img src="{{ asset($service->thumbnail ? config('designwala_paths.admin.images.show.services.thumbnails') . $service->thumbnail : config('designwala_paths.default.no_preview')) }}" class="card-img-top" alt="">
+                                <img src="{{ asset($service->thumbnail ? $service_thumbnail . $service->thumbnail : config('designwala_paths.default.no_preview')) }}" class="card-img-top" alt="">
                                 <div class="card-body">
                                     <h5 class="card-title ">
                                     <span class="w-75 float-left font-medium"><a href="{{ route('guest.service.index', $service->slug) }}" class="text-dark">{{ $service->title }}</a></span>
