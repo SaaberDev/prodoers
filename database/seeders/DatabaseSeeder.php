@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
 //            ServiceFeatureSeeder::class,
 //            ServiceImageSeeder::class,
 //            ServiceFaqSeeder::class,
+            OrderSeeder::class,
             SiteCmsSeeder::class,
         ]);
     }

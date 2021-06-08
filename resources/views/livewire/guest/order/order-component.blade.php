@@ -24,7 +24,7 @@
                     <div class="w-100 ">
                         <div class="w25imgdiv ">
                             <div class="text-center">
-                                <img src="https://via.placeholder.com/100x100.png" alt="img-fluid w-10" style="height: 100px;width: 100px;">
+                                <img src="{{ asset($service->thumbnail ? $service_thumbnail . $service->thumbnail  : config('designwala_paths.default.no_preview')) }}" alt="img-fluid w-10" style="height: 100px;width: 100px;">
                             </div>
                         </div>
                         <div class="w75cartdiv ">

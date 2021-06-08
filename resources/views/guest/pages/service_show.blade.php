@@ -519,7 +519,7 @@
                 @forelse($related_services as $related_service)
                 <div class="col-lg-4 col-md-6 padding25">
                     <div class="searchPageResultSingle position-relative">
-                        <div class="card "><img src="{{ asset($thumbnail . $related_service->thumbnail) }}" class="card-img-top" alt="...">
+                        <div class="card "><img src="{{ asset($service_thumbnail . $related_service->thumbnail) }}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title ">
                                     <span class="w-75 float-left font-medium"><a href="{{ route('guest.service.index', $related_service->slug) }}"

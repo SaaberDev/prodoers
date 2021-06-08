@@ -6,7 +6,7 @@
 @endpush
 
 @section('content')
-    @livewire('guest.order.order-component', ['service' => $service])
+    @livewire('guest.order.order-component', ['service' => $service, 'service_thumbnail' => $service_thumbnail])
 @endsection
 
 @push('scripts')

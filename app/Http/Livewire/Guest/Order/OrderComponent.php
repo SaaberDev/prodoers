@@ -8,6 +8,8 @@ use Livewire\Component;
 
 class OrderComponent extends Component
 {
+    public $service_thumbnail;
+
     public $service;
     public $form = [
         'requirements' => '',

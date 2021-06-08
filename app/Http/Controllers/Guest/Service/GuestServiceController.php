@@ -29,9 +29,9 @@ class GuestServiceController extends Controller
 //        dd($related_services);
         request()->session()->put('url.intended', route('guest.order.index', $services->slug));
 
-        $service_image = \Storage::disk('local')->url(config('designwala_paths.show.services.service_image'));
-        $thumbnail = \Storage::disk('local')->url(config('designwala_paths.show.services.thumbnail'));
+        $service_image = \Storage::disk('local')->url(config('designwala_paths.images.services.service_image'));
+        $service_thumbnail = \Storage::disk('local')->url(config('designwala_paths.images.services.thumbnail'));
 
-        return view('guest.pages.service_show', compact('services', 'related_services', 'service_image', 'thumbnail'));
+        return view('guest.pages.service_show', compact('services', 'related_services', 'service_image', 'service_thumbnail'));
     }
 }
