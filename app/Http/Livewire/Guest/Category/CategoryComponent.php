@@ -11,6 +11,7 @@ class CategoryComponent extends Component
 {
     use WithPagination;
 
+    public $service_thumbnail;
     public $category;
     public $recordPerPage = 9;
     public $page = 1;

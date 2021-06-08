@@ -19,7 +19,7 @@
                 </div>
                 <div class=" col-lg-6 col-md-6 singlecaregoryBannerImg">
                     <div class="text-right pr-md-4">
-                        <img src="{{ asset($category->category_banner ? config('designwala_paths.show.service_categories.banner') . $category->category_banner : config('designwala_paths.default.no_preview')) }}" alt="" class="img-fluid">
+                        <img src="{{ asset($category->category_banner ? $category_banner . $category->category_banner : config('designwala_paths.default.no_preview')) }}" alt="" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -27,7 +27,7 @@
     </div>
     {{-- Category Banner End --}}
 
-    @livewire('guest.category.category-component', ['category' => $category])
+    @livewire('guest.category.category-component', ['category' => $category, 'service_thumbnail' => $service_thumbnail])
 
     {{-- Similar Services Start --}}
     <div class="singleCategorySimilarService bgcustomLightgray py-5" id="singleCategorySimilarService">
@@ -43,7 +43,7 @@
                 @forelse($popular_services as $popular_service)
                 <div class="col-lg-4 col-md-6 padding25">
                     <div class="searchPageResultSingle position-relative">
-                        <div class="card "> <img src="{{ asset($popular_service->thumbnail ? config('designwala_paths.show.services.thumbnail') . $popular_service->thumbnail : config('designwala_paths.default.no_preview')) }}" class="card-img-top" alt="...">
+                        <div class="card "> <img src="{{ asset($popular_service->thumbnail ? $service_thumbnail . $popular_service->thumbnail : config('designwala_paths.default.no_preview')) }}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title ">
                                     <span class="w-75 float-left font-medium"><a href="{{ route('guest.service.index', $popular_service->slug) }}" class="text-dark">{{ $popular_service->title }}</a></span> <span class="w-25 float-right text-right font-medium">$ {{ $popular_service->price }}</span>

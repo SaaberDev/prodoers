@@ -22,7 +22,10 @@ class GuestServiceCategoryController extends Controller
     {
         $category = ServiceCategory::getSlug($category_slug)->firstOrFail();
         $popular_services = Service::getAllPopular()->getAllPublished()->inRandomOrder()->limit(3)->get();
-        return view('guest.pages.category_show', compact('category', 'popular_services'));
+
+        $category_banner = \Storage::disk('local')->url(config('designwala_paths.images.service_categories.banner'));
+        $service_thumbnail = \Storage::disk('local')->url(config('designwala_paths.images.services.thumbnail'));
+        return view('guest.pages.category_show', compact('category', 'popular_services', 'category_banner', 'service_thumbnail'));
     }
 
     /**
