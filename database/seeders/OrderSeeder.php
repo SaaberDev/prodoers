@@ -23,11 +23,10 @@ class OrderSeeder extends Seeder
         }
         \DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
-        Order::factory(60)
-            ->hasAttached(
-                Payment::factory(),
-                Invoice::factory()
-            )
+        Order::factory()
+            ->times(60)
+            ->has(Payment::factory(), 'payments')
+            ->has(Invoice::factory(), 'invoices')
             ->create();
     }
 }

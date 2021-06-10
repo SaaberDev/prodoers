@@ -22,7 +22,7 @@ class InvoiceFactory extends Factory
     public function definition()
     {
         return [
-            'invoice_id' => $this->faker->uuid,
+            'invoice_number' => $this->faker->uuid,
             'billing_name' => $this->faker->name,
             'billing_company_name' => $this->faker->company,
             'billing_address' => $this->faker->address,

@@ -31,7 +31,7 @@
         public function storeInvoice($data, $order)
         {
             return $order->invoices()->create([
-                'invoice_id' => $data['invoice_id'],
+                'invoice_number' => $data['invoice_id'],
             ]);
         }
     }

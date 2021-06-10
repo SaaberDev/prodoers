@@ -29,8 +29,6 @@ class DatabaseSeeder extends Seeder
 //            ServiceFeatureSeeder::class,
 //            ServiceImageSeeder::class,
 //            ServiceFaqSeeder::class,
-            PaymentSeeder::class,
-            InvoiceSeeder::class,
             OrderSeeder::class,
             SiteCmsSeeder::class,
         ]);

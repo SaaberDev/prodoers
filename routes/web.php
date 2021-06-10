@@ -179,7 +179,7 @@
                 // Orders
                 Route::prefix('/orders')->name('order.')->group(function () {
                     Route::get('/', [OrderController::class, 'index'])->name('index');
-                    Route::get('/show', [OrderController::class, 'show'])->name('show');
+                    Route::get('/show/{id}', [OrderController::class, 'show'])->name('show');
                 });
                 // Payments
                 Route::prefix('/payments')->name('payment.')->group(function () {

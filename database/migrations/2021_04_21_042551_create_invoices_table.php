@@ -18,7 +18,7 @@ class CreateInvoicesTable extends Migration
             // Foreign Key Constraint [Users Table]
 //            $table->unsignedBigInteger('order_id')->nullable();
 
-            $table->string('invoice_id')->unique()->nullable();
+            $table->string('invoice_number')->unique()->nullable();
             // Bill To
             $table->string('billing_name')->nullable();
             $table->string('billing_company_name')->nullable();

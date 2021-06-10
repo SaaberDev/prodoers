@@ -29,11 +29,12 @@ class CreateOrdersTable extends Migration
 
         // Polymorphic Coupon Schema
         Schema::create('orderables', function (Blueprint $table) {
-            // Foreign Key Constraint [Service Categories Table]
+            // Foreign Key Constraint [Orders Table]
             $table->unsignedBigInteger('order_id');
             $table->foreign('order_id')
                 ->references('id')->on('orders')
                 ->onDelete('cascade')->onUpdate('cascade');
+
             $table->unsignedBigInteger('orderable_id');
             $table->string('orderable_type');
         });
