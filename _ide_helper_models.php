@@ -211,7 +211,7 @@ namespace App\Models{
  *
  * @mixin IdeHelperInvoice
  * @property int $id
- * @property string|null $invoice_id
+ * @property string|null $invoice_number
  * @property string|null $billing_name
  * @property string|null $billing_company_name
  * @property string|null $billing_address
@@ -221,6 +221,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Order[] $orders
  * @property-read int|null $orders_count
+ * @method static \Database\Factories\InvoiceFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Invoice newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Invoice newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Invoice query()
@@ -231,7 +232,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Invoice whereBillingPhone($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Invoice whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Invoice whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Invoice whereInvoiceId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Invoice whereInvoiceNumber($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Invoice whereUpdatedAt($value)
  */
 	class IdeHelperInvoice extends \Eloquent {}
@@ -257,6 +258,7 @@ namespace App\Models{
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Payment[] $payments
  * @property-read int|null $payments_count
  * @property-read \App\Models\Service $services
+ * @method static \Database\Factories\OrderFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Order filterBy($column, $arg)
  * @method static \Illuminate\Database\Eloquent\Builder|Order newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Order newQuery()
@@ -316,6 +318,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Order[] $orders
  * @property-read int|null $orders_count
+ * @method static \Database\Factories\PaymentFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Payment newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Payment newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Payment query()
@@ -717,6 +720,30 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Subscriber whereUpdatedAt($value)
  */
 	class IdeHelperSubscriber extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Tag
+ *
+ * @mixin IdeHelperTag
+ * @property int $id
+ * @property string $title
+ * @property int $taggable_id
+ * @property string $taggable_type
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag whereTaggableId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag whereTaggableType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag whereUpdatedAt($value)
+ */
+	class IdeHelperTag extends \Eloquent {}
 }
 
 namespace App\Models{

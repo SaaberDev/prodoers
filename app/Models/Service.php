@@ -68,6 +68,11 @@ class Service extends Model
         return $this->belongsTo(Order::class);
     }
 
+    public function tags()
+    {
+        return $this->morphToMany(Tag::class, 'taggable');
+    }
+
     public function service_tags()
     {
         return $this->belongsToMany(ServiceTag::class, 'service_service_tag', 'service_id', 'service_tag_id');
