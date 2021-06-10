@@ -23,11 +23,11 @@ class ServiceCategorySeeder extends Seeder
             ->has(
                 Service::factory()
                     ->count(3)
-                    ->has(ServiceFaq::factory()->count(5))
-                    ->has(ServiceFeature::factory()->count(6))
+                    ->has(ServiceFaq::factory()->count(5), 'serviceFaqs')
+                    ->has(ServiceFeature::factory()->count(6), 'serviceFeatures')
             )
             ->has(
-                ServiceCategoryFaq::factory()->count(4)
+                ServiceCategoryFaq::factory()->count(4), 'serviceCategoryFaqs'
             )
             ->create();
     }

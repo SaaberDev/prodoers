@@ -72,9 +72,7 @@ class ServiceController extends Controller
 
             $service_tagInputs = $request->input('service_tags');
             $decode = json_decode($service_tagInputs);
-            dump(collect($decode));
             collect($decode)->each(function ($tag) use ($services){
-//                dd($tag->value);
                 $services->tags()->attach($tag->value);
             });
 
@@ -140,7 +138,7 @@ class ServiceController extends Controller
     {
         $services = Service::findOrFail($id);
         $service_categories = ServiceCategory::getTitle();
-        $service_tags = ServiceTag::getTitle();
+        $service_tags = Tag::getTitle();
 
         $service_image = \Storage::disk('local')->url(config('designwala_paths.images.services.service_image'));
         $thumbnail = \Storage::disk('local')->url(config('designwala_paths.images.services.thumbnail'));
@@ -222,7 +220,7 @@ class ServiceController extends Controller
             ]);
 
             $service_tagInputs = collect(explode(',', $request->input('service_tags')));
-            $services->service_tags()->sync($service_tagInputs);
+            $services->tags()->sync($service_tagInputs);
 
 
             $images = MultiImageUpdateHandler($request, $slug,'service_images', 'service-image', config('designwala_paths.images.services.service_image'));

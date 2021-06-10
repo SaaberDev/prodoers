@@ -54,7 +54,7 @@
                             <div class="input-group">
 
                                 <input name="service_tags"
-                                       value="@foreach($services->service_tags as $tag) {{ old('service_tags') ?? $tag->id }}, @endforeach"
+                                       value="@foreach($services->tags as $tag) {{ old('service_tags') ?? $tag->id }}, @endforeach"
                                        class="{{ $errors->has('service_tags') ? ' is-invalid' : '' }}"
                                        type="text"
                                        placeholder=""
