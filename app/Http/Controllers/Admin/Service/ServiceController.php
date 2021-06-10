@@ -10,11 +10,13 @@ use App\Models\ServiceFaq;
 use App\Models\ServiceFeature;
 use App\Models\ServiceImage;
 use App\Models\ServiceTag;
+use App\Models\Tag;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 
@@ -38,7 +40,7 @@ class ServiceController extends Controller
     public function create()
     {
         $service_categories = ServiceCategory::orderByDesc('title')->get(['title', 'id']);
-        $service_tags = ServiceTag::orderByDesc('title')->get(['title', 'id']);
+        $service_tags = Tag::orderByDesc('title')->get(['title', 'id']);
         return view('admin_panel.pages.services.service.create', compact('service_categories', 'service_tags'));
     }
 
@@ -48,7 +50,7 @@ class ServiceController extends Controller
      * @param ServiceRequest $request
      * @return RedirectResponse
      */
-    public function store(ServiceRequest $request)
+    public function store(Request $request)
     {
 //        $notify = [
 //            'alert-type' => 'success',
@@ -68,9 +70,12 @@ class ServiceController extends Controller
                 'service_desc' => $request->input('service_description'),
             ]);
 
-            $service_tagInputs = collect(explode(',', $request->input('service_tags')));
-            $service_tagInputs->each(function ($tag) use ($services){
-                $services->service_tags()->attach($tag);
+            $service_tagInputs = $request->input('service_tags');
+            $decode = json_decode($service_tagInputs);
+            dump(collect($decode));
+            collect($decode)->each(function ($tag) use ($services){
+//                dd($tag->value);
+                $services->tags()->attach($tag->value);
             });
 
             $images = collect(MultiImageUploadHandler($request, $slug,'service_images', 'service-image', config('designwala_paths.images.services.service_image')));

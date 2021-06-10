@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin\Services\Tag;
 
 use App\Models\ServiceTag;
+use App\Models\Tag;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -26,10 +27,10 @@ class IndexComponent extends Component
         $this->fill(request()->only('search', 'page'));
     }
 
-    public function hydrate()
-    {
-        $this->emit('postAdded');
-    }
+//    public function hydrate()
+//    {
+//        $this->emit('postAdded');
+//    }
 
     public function resetSearch()
     {
@@ -45,7 +46,7 @@ class IndexComponent extends Component
     public function render()
     {
         $search = $this->search;
-        $tags = ServiceTag::searchBy('title', $search)
+        $tags = Tag::searchBy('title', $search)
             ->orderByDesc('id')
             ->paginate($this->recordPerPage);
 

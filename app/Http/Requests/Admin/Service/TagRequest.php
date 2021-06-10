@@ -29,6 +29,9 @@ class TagRequest extends FormRequest
             case 'DELETE':
                 return [];
             case 'PATCH':
+                return [
+                    'edit_tags' => 'required'
+                ];
             case 'POST':
                 return [
                     'tags' => 'required'
@@ -40,7 +43,8 @@ class TagRequest extends FormRequest
     public function messages()
     {
         return [
-            'tags.required' => 'Tags field is required'
+            'tags.required' => 'Tags field is required',
+            'edit_tags.required' => 'Tags field is required'
         ];
     }
 }

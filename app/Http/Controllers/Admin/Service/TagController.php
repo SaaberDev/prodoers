@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Service;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Service\TagRequest;
 use App\Models\ServiceTag;
+use App\Models\Tag;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -44,12 +45,12 @@ class TagController extends Controller
 //
 //        ];
         \DB::transaction(function () use ($request){
-            $tagInputs = collect(explode(',', $request->input('tags')));
-//            dd($tagInputs);
-            $tagInputs->each(function ($value) {
-//                dd();
-                ServiceTag::firstOrCreate([
-                    'title' => str_replace(' ', '', $value),
+            $tagInputs = $request->input('tags');
+            $decode = json_decode($tagInputs);
+
+            collect($decode)->each(function ($item) {
+                Tag::Create([
+                    'title' => $item->value,
                 ]);
             });
         });
@@ -75,7 +76,7 @@ class TagController extends Controller
      */
     public function edit($id)
     {
-        $tags = ServiceTag::findOrFail($id);
+        $tags = Tag::findOrFail($id);
         return \view('admin_panel.pages.services.tag.edit', compact('tags'));
     }
 
@@ -88,11 +89,11 @@ class TagController extends Controller
      */
     public function update(TagRequest $request, $id)
     {
-        $tags = ServiceTag::findOrFail($id);
+        $tags = Tag::findOrFail($id);
 //        $notify = [
 //
 //        ];
-        $input = str_replace(' ','', $request->input('tags'));
+        $input = $request->input('edit_tags');
 //        dd($input);
         \DB::transaction(function () use ($request, $tags, $input){
             $tags->update([
@@ -115,10 +116,7 @@ class TagController extends Controller
 //            'alert-type' => 'success_toast',
 //            'message' => 'ServiceTag Deleted !',
 //        ];
-        $tags = ServiceTag::findOrFail($id);
-        \DB::transaction(function () use ($tags){
-            $tags->delete();
-        });
+        Tag::findOrFail($id)->delete();
         return redirect()->back();
     }
 }

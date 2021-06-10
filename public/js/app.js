@@ -3822,6 +3822,9 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 
 window.Swal = (sweetalert2__WEBPACK_IMPORTED_MODULE_0___default());
+/**
+ * flatpickr v4
+ */
 
 var flatpickr = __webpack_require__(/*! flatpickr */ "./node_modules/flatpickr/dist/esm/index.js").default;
 

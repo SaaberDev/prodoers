@@ -569,7 +569,7 @@
             tagTextProp: 'name', // very important since a custom template is used with this property as text. allows typing a "value" or a "name" to match input with whitelist
             enforceWhitelist: true,
             skipInvalid: true, // do not remporarily add invalid tags
-            originalInputValueFormat: valuesArr => valuesArr.map(item => item.value).join(','),
+            // originalInputValueFormat: valuesArr => valuesArr.map(item => item.value).join(','),
             dropdown: {
                 closeOnSelect: false,
                 enabled: 0,
@@ -578,7 +578,12 @@
             },
             templates: {
                 tag: tagTemplate,
-                dropdownItem: suggestionItemTemplate
+                dropdownItem: suggestionItemTemplate,
+                dropdownItemNoMatch: function(data) {
+                    return `
+                    No suggestion found for: ${data.value}
+                `
+                }
             },
             whitelist: usersList
         })

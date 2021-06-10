@@ -364,6 +364,8 @@ namespace App\Models{
  * @property-read int|null $service_images_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ServiceTag[] $service_tags
  * @property-read int|null $service_tags_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Tag[] $tags
+ * @property-read int|null $tags_count
  * @method static \Database\Factories\ServiceFactory factory(...$parameters)
  * @method static Builder|Service filterBy($column, $arg)
  * @method static Builder|Service findSimilarSlugs(string $attribute, array $config, string $slug)
@@ -729,17 +731,17 @@ namespace App\Models{
  * @mixin IdeHelperTag
  * @property int $id
  * @property string $title
- * @property int $taggable_id
- * @property string $taggable_type
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Service[] $services
+ * @property-read int|null $services_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag getTitle()
  * @method static \Illuminate\Database\Eloquent\Builder|Tag newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Tag newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Tag query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Tag searchBy($column, $search)
  * @method static \Illuminate\Database\Eloquent\Builder|Tag whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Tag whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Tag whereTaggableId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Tag whereTaggableType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Tag whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Tag whereUpdatedAt($value)
  */
