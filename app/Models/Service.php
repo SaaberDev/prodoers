@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
+use App\Traits\Searchable;
 use App\Traits\Shareable;
 use Cviebrock\EloquentSluggable\Sluggable;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Service extends Model
 {
-    use HasFactory, Sluggable, Shareable;
+    use HasFactory, Sluggable, Shareable, Searchable;
 
     protected $guarded = [];
 
@@ -36,27 +36,14 @@ class Service extends Model
         'url' => null
     ];
 
+    protected $searchable = [
+        'title', 'serviceCategories.title', 'serviceCategories.navbar_status'
+    ];
+
     public function coupons()
     {
         return $this->morphToMany(Coupon::class, 'couponable');
     }
-
-//    public function allDiscounts()
-//    {
-//        return $this->coupons
-//            ->merge($this->serviceCategories->coupons)
-//            ->unique();
-//    }
-//
-//    public function getTotalDiscountAttribute()
-//    {
-//        return $this->allDiscounts()
-//            ->reject
-//            ->expired()
-//            ->map
-//            ->apply($this)
-//            ->sum();
-//    }
 
     public function getUrlAttribute()
     {
@@ -72,11 +59,6 @@ class Service extends Model
     {
         return $this->morphToMany(Tag::class, 'taggable');
     }
-
-//    public function service_tags()
-//    {
-//        return $this->belongsToMany(ServiceTag::class, 'service_service_tag', 'service_id', 'service_tag_id');
-//    }
 
     public function serviceCategories()
     {
@@ -102,20 +84,6 @@ class Service extends Model
     {
         return $query->where(function ($query) use ($arg, $column) {
             $arg == '' ? $query->orderBy('id', 'desc') : $query->orWhere($column, '=', $arg);
-        });
-    }
-
-    public function scopeSearchBy($query, $column, $search)
-    {
-        return $query->where(function ($query) use ($search, $column) {
-            $query->orWhere($column, 'like', '%' . $search . '%');
-        });
-    }
-
-    public function scopeWordSearchBy($query, $column, $search)
-    {
-        return $query->where(function ($query) use ($search, $column) {
-            $query->orWhere($column, 'like', $search . '%');
         });
     }
 

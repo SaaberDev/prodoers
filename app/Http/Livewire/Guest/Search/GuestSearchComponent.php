@@ -3,12 +3,12 @@
 namespace App\Http\Livewire\Guest\Search;
 
 use App\Models\Service;
+use App\Traits\Searchable;
 use Livewire\Component;
 
 class GuestSearchComponent extends Component
 {
     public $query = '';
-    public $services;
 
     // Shows search query in URL
     protected $queryString = [
@@ -44,7 +44,7 @@ class GuestSearchComponent extends Component
 
     public function render()
     {
-        $this->services = Service::latest('id')->getAllPublished()->wordSearchBy('title', $this->query)->limit(100)->get(['title', 'slug', 'id']);
-        return view('livewire.guest.search.guest-search-component');
+        $services = Service::latest('id')->getAllPublished()->search($this->query)->limit(100)->get(['title', 'slug', 'id']);
+        return view('livewire.guest.search.guest-search-component', compact('services'));
     }
 }

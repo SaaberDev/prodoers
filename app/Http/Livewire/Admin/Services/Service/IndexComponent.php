@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin\Services\Service;
 
 use App\Models\Service;
+use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -41,9 +42,9 @@ class IndexComponent extends Component
     public function render()
     {
         $search = $this->search;
-        $services = Service::filterBy('published_status', $this->filterByStatus)
-            ->searchBy('title', $search)
-            ->with('serviceCategories')
+        $services = Service::with('serviceCategories')
+            ->filterBy('published_status', $this->filterByStatus)
+            ->search($search)
             ->orderByDesc('id')
             ->paginate($this->recordPerPage);
 

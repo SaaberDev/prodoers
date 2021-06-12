@@ -16,7 +16,7 @@
             </div>
         </div>
 
-        @livewire('admin.orders.index-component')
+        @livewire('admin.order.order-table')
     </div>
 @endsection
 

@@ -263,7 +263,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Order newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Order newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Order query()
- * @method static \Illuminate\Database\Eloquent\Builder|Order searchBy($column, $search)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereAppliedCoupon($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereDeliveryTime($value)
@@ -362,36 +361,32 @@ namespace App\Models{
  * @property-read int|null $service_features_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ServiceImage[] $serviceImages
  * @property-read int|null $service_images_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ServiceTag[] $service_tags
- * @property-read int|null $service_tags_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Tag[] $tags
  * @property-read int|null $tags_count
  * @method static \Database\Factories\ServiceFactory factory(...$parameters)
- * @method static Builder|Service filterBy($column, $arg)
- * @method static Builder|Service findSimilarSlugs(string $attribute, array $config, string $slug)
- * @method static Builder|Service getAllPopular()
- * @method static Builder|Service getAllPublished()
- * @method static Builder|Service getSlug($slug)
- * @method static Builder|Service hideCurrent($arg)
- * @method static Builder|Service newModelQuery()
- * @method static Builder|Service newQuery()
- * @method static Builder|Service query()
- * @method static Builder|Service searchBy($column, $search)
- * @method static Builder|Service whereCategories($arg)
- * @method static Builder|Service whereCreatedAt($value)
- * @method static Builder|Service whereId($value)
- * @method static Builder|Service whereMetaDesc($value)
- * @method static Builder|Service wherePopularStatus($value)
- * @method static Builder|Service wherePrice($value)
- * @method static Builder|Service wherePublishedStatus($value)
- * @method static Builder|Service whereServiceCategoryId($value)
- * @method static Builder|Service whereServiceDesc($value)
- * @method static Builder|Service whereSlug($value)
- * @method static Builder|Service whereThumbnail($value)
- * @method static Builder|Service whereTitle($value)
- * @method static Builder|Service whereUpdatedAt($value)
- * @method static Builder|Service withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
- * @method static Builder|Service wordSearchBy($column, $search)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service filterBy($column, $arg)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service findSimilarSlugs(string $attribute, array $config, string $slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service getAllPopular()
+ * @method static \Illuminate\Database\Eloquent\Builder|Service getAllPublished()
+ * @method static \Illuminate\Database\Eloquent\Builder|Service getSlug($slug)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service hideCurrent($arg)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Service newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Service query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereCategories($arg)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereMetaDesc($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service wherePopularStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service wherePrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service wherePublishedStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereServiceCategoryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereServiceDesc($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereThumbnail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
  */
 	class IdeHelperService extends \Eloquent {}
 }
@@ -576,31 +571,6 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * App\Models\ServiceTag
- *
- * @mixin IdeHelperServiceTag
- * @property int $id
- * @property string $title
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Service[] $services
- * @property-read int|null $services_count
- * @method static \Database\Factories\ServiceTagFactory factory(...$parameters)
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceTag getTitle()
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceTag newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceTag newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceTag query()
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceTag searchBy($column, $search)
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceTag whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceTag whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceTag whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceTag whereUpdatedAt($value)
- */
-	class IdeHelperServiceTag extends \Eloquent {}
-}
-
-namespace App\Models{
-/**
  * App\Models\SiteCms
  *
  * @mixin IdeHelperSiteCms
@@ -735,6 +705,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Service[] $services
  * @property-read int|null $services_count
+ * @method static \Database\Factories\TagFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Tag getTitle()
  * @method static \Illuminate\Database\Eloquent\Builder|Tag newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Tag newQuery()

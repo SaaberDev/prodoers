@@ -48,7 +48,7 @@ class IndexComponent extends Component
     {
         $search = $this->search;
         $service_categories = ServiceCategory::filterBy('published_status', $this->filterByStatus)
-            ->searchBy('title', $search)
+            ->search($search)
             ->orderByDesc('id')
             ->paginate($this->recordPerPage);
 

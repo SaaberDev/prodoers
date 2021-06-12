@@ -24,7 +24,6 @@ class DatabaseSeeder extends Seeder
 //            UserSeeder::class,
             TagSeeder::class,
             ServiceCategorySeeder::class,
-//            ServiceFeatureSeeder::class,
 //            ServiceImageSeeder::class,
             OrderSeeder::class,
             SiteCmsSeeder::class,

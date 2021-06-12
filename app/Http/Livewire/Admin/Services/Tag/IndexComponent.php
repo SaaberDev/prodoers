@@ -46,7 +46,7 @@ class IndexComponent extends Component
     public function render()
     {
         $search = $this->search;
-        $tags = Tag::searchBy('title', $search)
+        $tags = Tag::search($search)
             ->orderByDesc('id')
             ->paginate($this->recordPerPage);
 

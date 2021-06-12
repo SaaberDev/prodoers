@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\Searchable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -11,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class ServiceCategory extends Model
 {
-    use HasFactory, Sluggable;
+    use HasFactory, Sluggable, Searchable;
 
     protected $guarded = [];
 
@@ -23,6 +24,10 @@ class ServiceCategory extends Model
             ]
         ];
     }
+
+    protected $searchable = [
+        'title'
+    ];
 
     public function coupons()
     {

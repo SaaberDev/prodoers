@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\Searchable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,9 +11,13 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Order extends Model
 {
-    use HasFactory;
+    use HasFactory, Searchable;
 
     protected $guarded = [];
+
+    protected $searchable = [
+        'order_number'
+    ];
 
     public function services()
     {
@@ -33,13 +38,6 @@ class Order extends Model
     {
         return $query->where(function ($query) use ($arg, $column) {
             $arg == '' ? $query->orderBy('id', 'desc') : $query->orWhere($column, '=', $arg);
-        });
-    }
-
-    public function scopeSearchBy($query, $column, $search)
-    {
-        return $query->where(function ($query) use ($search, $column) {
-            $query->orWhere($column, 'like', '%' . $search . '%');
         });
     }
 }

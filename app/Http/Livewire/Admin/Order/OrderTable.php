@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Livewire\Admin\Orders;
+namespace App\Http\Livewire\Admin\Order;
 
 use App\Models\Order;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class IndexComponent extends Component
+class OrderTable extends Component
 {
     use WithPagination;
 
@@ -51,11 +51,11 @@ class IndexComponent extends Component
     {
         $search = $this->search;
         $orders = Order::filterBy('order_status', $this->filterByStatus)
-            ->searchBy('order_number', $search)
+            ->search($search)
             ->with('payments:id,paid_amount')
             ->orderByDesc('id')
             ->paginate($this->recordPerPage);
 //        dd($orders);
-        return view('livewire.admin.orders.index-component', compact('orders'));
+        return view('livewire.admin.order.order-table', compact('orders'));
     }
 }
