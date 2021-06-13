@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class UserSeeder extends Seeder
@@ -42,27 +43,55 @@ class UserSeeder extends Seeder
         $admin->assignRole($designwala_role);
 
         // User
+//        $user_role = Role::findByName('user');
+//        $users = [
+//            [
+//                'name' => 'Designwala User 1',
+//                'username' => 'user123',
+//                'email' => 'demo1@designwala.com',
+//                'email_verified_at' => Carbon::now(),
+//                'password' => \Hash::make('1234'),
+//                'remember_token' => \Str::random($token_length)
+//            ],
+//            [
+//                'name' => 'Designwala User 2',
+//                'username' => 'user321',
+//                'email' => 'demo2@designwala.com',
+//                'email_verified_at' => Carbon::now(),
+//                'password' => \Hash::make('1234'),
+//                'remember_token' => \Str::random($token_length)
+//            ]
+//        ];
+//        foreach ($users as $user) {
+//            User::create($user)->assignRole($user_role);
+//        }
+
+        // Fake Designwala
+        $users_factory = User::factory()->times(20)->make();
+        $user_role = Role::findByName('designwala');
+        foreach ($users_factory as $user_factory) {
+            User::create([
+                'name' => $user_factory->name,
+                'username' => $user_factory->username,
+                'email' => $user_factory->email,
+                'email_verified_at' => $user_factory->email_verified_at,
+                'password' => $user_factory->password,
+                'remember_token' => $user_factory->remember_token
+            ])->assignRole($user_role);
+        }
+
+        // Fake Users
+        $users_factory = User::factory()->times(10)->make();
         $user_role = Role::findByName('user');
-        $users = [
-            [
-                'name' => 'Designwala User 1',
-                'username' => 'user123',
-                'email' => 'demo1@designwala.com',
-                'email_verified_at' => Carbon::now(),
-                'password' => \Hash::make('1234'),
-                'remember_token' => \Str::random($token_length)
-            ],
-            [
-                'name' => 'Designwala User 2',
-                'username' => 'user321',
-                'email' => 'demo2@designwala.com',
-                'email_verified_at' => Carbon::now(),
-                'password' => \Hash::make('1234'),
-                'remember_token' => \Str::random($token_length)
-            ]
-        ];
-        foreach ($users as $user) {
-            User::create($user)->assignRole($user_role);
+        foreach ($users_factory as $user_factory) {
+            User::create([
+                'name' => $user_factory->name,
+                'username' => $user_factory->username,
+                'email' => $user_factory->email,
+                'email_verified_at' => $user_factory->email_verified_at,
+                'password' => $user_factory->password,
+                'remember_token' => $user_factory->remember_token
+            ])->assignRole($user_role);
         }
     }
 }
