@@ -52,10 +52,10 @@ class OrderTable extends Component
         $search = $this->search;
         $orders = Order::filterBy('order_status', $this->filterByStatus)
             ->search($search)
-            ->with('payments:id,paid_amount')
+            ->with('payments')
             ->orderByDesc('id')
             ->paginate($this->recordPerPage);
-//        dd($orders);
+
         return view('livewire.admin.order.order-table', compact('orders'));
     }
 }

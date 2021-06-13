@@ -16,12 +16,7 @@ class CreateServicesTable extends Migration
         Schema::create('services', function (Blueprint $table) {
             // Primary Key
             $table->id();
-
-            // Foreign Key Constraint [Service Categories Table]
-            $table->unsignedBigInteger('service_category_id');
-            $table->foreign('service_category_id')
-                ->references('id')->on('service_categories')
-                ->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('service_category_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
 
             // Primary Attributes
             $table->string('title')->index();

@@ -35,10 +35,10 @@
                                 <div class="col-md-4"> <img src="img/devimg/rectangletwo.png" class="card-img" alt="..."> </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
-                                        <h4 class="card-title m-0">Flyer Design</h4>
-                                        <p class="card-text m-0">Order ID : #DW001</p>
-                                        <p class="card-text m-0">Amount&#40; USD &#41; : $500 <span> &#40; -$20 &#41;</span></p>
-                                        <p class="card-text m-0">Promo Code : XY123 </p>
+                                        <h4 class="card-title m-0">{{ $order->services->title }}</h4>
+                                        <p class="card-text m-0">Order ID : #{{ $order->order_number }}</p>
+                                        <p class="card-text m-0">Amount&#40; USD &#41; : ${{ $order->payments->paid_amount }} <span> &#40; -${{ $order->payments->discount }} &#41;</span></p>
+                                        <p class="card-text m-0">Promo Code : {{ $order->applied_coupon }} </p>
                                     </div>
                                 </div>
                             </div>
@@ -51,8 +51,8 @@
                             <div class="">
                                 <h4>John Smith</h4>
                                 <p class="m-0">username@gmail.com</p>
-                                <p class="pt-4 m-0">Transaction ID : #DW001</p>
-                                <p class="m-0">Payment method : Bkash</p>
+                                <p class="pt-4 m-0">Transaction ID : #{{ $order->payments->transaction_id }}</p>
+                                <p class="m-0">Payment method : {{ $order->payments->payment_method }}</p>
                                 <p class="m-0">Assigned To : @username</p>
                             </div>
                         </div>

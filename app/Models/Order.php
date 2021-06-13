@@ -21,17 +21,19 @@ class Order extends Model
 
     public function services()
     {
-        return $this->belongsTo(Service::class);
+        return $this->belongsTo(Service::class, 'service_id');
     }
 
     public function invoices()
     {
-        return $this->morphedByMany(Invoice::class, 'orderable');
+//        return $this->morphedByMany(Invoice::class, 'orderable');
+        return $this->hasOne(Invoice::class);
     }
 
     public function payments()
     {
-        return $this->morphedByMany(Payment::class, 'orderable');
+//        return $this->morphedByMany(Payment::class, 'orderable');
+        return $this->hasOne(Payment::class);
     }
 
     public function scopeFilterBy($query, $column, $arg)

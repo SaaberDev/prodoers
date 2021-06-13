@@ -15,8 +15,8 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            // Foreign Key Constraint [Users Table]
-//            $table->unsignedBigInteger('order_id')->nullable();
+            $table->foreignId('order_id')->nullable()->constrained();
+
             $table->double('paid_amount')->nullable();
             $table->string('transaction_id')->unique()->nullable();
             $table->double('discount')->nullable();

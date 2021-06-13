@@ -15,9 +15,8 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            // Foreign Key Constraint [Users & Services Table]
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->unsignedBigInteger('service_id')->nullable();
+            $table->foreignId('user_id')->nullable()->constrained();
+            $table->foreignId('service_id')->nullable()->constrained();
 
             $table->string('order_number')->unique()->nullable();
             $table->string('requirements')->nullable();
@@ -25,18 +24,6 @@ class CreateOrdersTable extends Migration
             $table->string('applied_coupon')->nullable();
             $table->enum('order_status', ['pending', 'ongoing', 'delivered', 'in_revision', 'cancelled', 'completed']);
             $table->timestamps();
-        });
-
-        // Polymorphic Coupon Schema
-        Schema::create('orderables', function (Blueprint $table) {
-            // Foreign Key Constraint [Orders Table]
-            $table->unsignedBigInteger('order_id');
-            $table->foreign('order_id')
-                ->references('id')->on('orders')
-                ->onDelete('cascade')->onUpdate('cascade');
-
-            $table->unsignedBigInteger('orderable_id');
-            $table->string('orderable_type');
         });
     }
 
@@ -48,6 +35,5 @@ class CreateOrdersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('orders');
-        Schema::dropIfExists('orderables');
     }
 }

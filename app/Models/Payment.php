@@ -16,6 +16,7 @@ class Payment extends Model
 
     public function orders()
     {
-        return $this->morphToMany(Order::class, 'orderable');
+        return $this->belongsTo(Order::class);
+//        return $this->morphToMany(Order::class, 'orderable');
     }
 }

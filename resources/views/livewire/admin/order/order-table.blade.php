@@ -58,9 +58,7 @@
                                 <td>Abdul Kader</td>
                                 <td>Saber</td>
                                 <td> Logo Design </td>
-                                @foreach($order->payments as $payment)
-                                <td> &#36;{{ $payment->paid_amount }} </td>
-                                @endforeach
+                                <td> &#36;{{ $order->payments->paid_amount }} </td>
                                 <td>5 / 3 days left || In Time || Late</td>
                                 <td>
                                     @if($order->order_status === 'pending')

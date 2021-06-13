@@ -85,7 +85,7 @@
     // Dashboard > Orders > Order Details
     Breadcrumbs::for('orders.order.show', fn(Trail $trail) => $trail
         ->parent('orders.order.index')
-        ->push('Order Details', route('orders.order.show'))
+        ->push('Order Details', route('orders.order.show', ['id']))
     );
 
     /*

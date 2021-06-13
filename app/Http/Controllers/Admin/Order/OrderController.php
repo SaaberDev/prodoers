@@ -3,6 +3,7 @@
     namespace App\Http\Controllers\Admin\Order;
 
     use App\Http\Controllers\Controller;
+    use App\Models\Order;
     use Illuminate\Contracts\Foundation\Application;
     use Illuminate\Contracts\View\Factory;
     use Illuminate\Contracts\View\View;
@@ -50,7 +51,11 @@
          */
         public function show($id)
         {
-            return \view('admin_panel.pages.orders.order.show');
+            $order = Order::with('services:id,title,thumbnail', 'payments:order_id,paid_amount,discount,transaction_id,payment_method')
+                ->select('id', 'service_id', 'order_number', 'requirements', 'applied_coupon')
+                ->findOrFail($id);
+//            dd($order);
+            return \view('admin_panel.pages.orders.order.show', compact('order'));
         }
 
         /**
