@@ -52,11 +52,13 @@
          */
         public function show($id)
         {
-            $order = Order::with('services:id,title,thumbnail', 'payments:order_id,paid_amount,discount,transaction_id,payment_method')
-                ->select('id', 'service_id', 'order_number', 'requirements', 'applied_coupon')
+            $order = Order::with('users', 'services:id,title,thumbnail', 'payments:order_id,paid_amount,discount,transaction_id,payment_method')
+                ->select('id', 'service_id', 'order_number', 'requirements', 'applied_coupon', 'user_id')
                 ->findOrFail($id);
 
-            return \view('admin_panel.pages.orders.order.show', compact('order'));
+            $designwalas = User::role('designwala')->get();
+//            dd($designwalas);
+            return \view('admin_panel.pages.orders.order.show', compact('order', 'designwalas'));
         }
 
         /**

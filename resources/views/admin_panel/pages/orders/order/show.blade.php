@@ -49,8 +49,8 @@
                     <div class="row p-4 border">
                         <div class="col-md-8">
                             <div class="">
-                                <h4>John Smith</h4>
-                                <p class="m-0">username@gmail.com</p>
+                                <h4>{{ $order->users->name }}</h4>
+                                <p class="m-0">{{ $order->users->email }}</p>
                                 <p class="pt-4 m-0">Transaction ID : #{{ $order->payments->transaction_id }}</p>
                                 <p class="m-0">Payment method : {{ $order->payments->payment_method }}</p>
                                 <p class="m-0">Assigned To : @username</p>

@@ -22,7 +22,7 @@ class OrderFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => null,
+            'user_id' => rand(23, 32),
             'service_id' => rand(1, 5),
             'order_number' => $this->faker->uuid,
             'requirements' => 'Recusandae Ea praes. Recusandae Ea praes. Recusandae Ea praes. ',
