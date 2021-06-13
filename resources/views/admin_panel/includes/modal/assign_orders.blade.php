@@ -25,10 +25,12 @@
                                     <tr>
                                         <td>{{ $designwala->username }}</td>
                                         <td>{{ $designwala->email }}</td>
-                                        <td> Some designation</td>
+                                        <td>{{ $designwala->designation }}</td>
                                         <td>
-                                            <div class="tableDataLastButtonLiketab   tabletabLightSKY"><span class="">
-                                                            Ongoing</span></div>
+                                            <div class="" style="display: grid">
+                                                <span class="tableDataLastButtonLiketab tabletabLightSKY" style="margin-bottom: 4px">aniyah01</span>
+                                                <span class="tableDataLastButtonLiketab tabletabRED" style="margin-bottom: 4px">Not assigned yet</span>
+                                            </div>
                                         </td>
                                         <td>
                                             <button  class="btn shadow bgOne text-white px-2 py-0">

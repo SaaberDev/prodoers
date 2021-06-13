@@ -10,6 +10,7 @@
     use Illuminate\Contracts\View\View;
     use Illuminate\Http\Request;
     use Illuminate\Http\Response;
+    use Spatie\Permission\Models\Role;
 
     class OrderController extends Controller
     {
@@ -57,6 +58,7 @@
                 ->findOrFail($id);
 
             $designwalas = User::role('designwala')->get();
+
 //            dd($designwalas);
             return \view('admin_panel.pages.orders.order.show', compact('order', 'designwalas'));
         }

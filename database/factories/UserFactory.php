@@ -22,8 +22,10 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+        $designations = ['laravel web developer', 'php developer', 'logo designer', 'digital marketer', 'web designer', 'wordpress developer'];
         return [
             'name' => $this->faker->name,
+            'designation' => $designations[array_rand($designations)],
             'username' => $this->faker->userName,
             'email' => $this->faker->unique()->safeEmail,
             'email_verified_at' => now(),

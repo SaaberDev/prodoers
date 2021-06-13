@@ -22,6 +22,7 @@ class UserSeeder extends Seeder
         $super_admin_role = Role::findByName('super_admin');
         $admin = User::create([
             'name' => 'Mahfuzur Rahman Saber',
+            'designation' => 'maintainer',
             'username' => 'saaberdev',
             'email' => 'saaberdev@gmail.com',
             'email_verified_at' => Carbon::now(),
@@ -31,16 +32,16 @@ class UserSeeder extends Seeder
         $admin->assignRole($super_admin_role);
 
         // Designwala
-        $designwala_role = Role::findByName('designwala');
-        $admin = User::create([
-            'name' => 'Ekjon Designwala',
-            'username' => 'designwala',
-            'email' => 'designwala@gmail.com',
-            'email_verified_at' => Carbon::now(),
-            'password' => \Hash::make('1234'),
-            'remember_token' => \Str::random($token_length)
-        ]);
-        $admin->assignRole($designwala_role);
+//        $designwala_role = Role::findByName('designwala');
+//        $admin = User::create([
+//            'name' => 'Ekjon Designwala',
+//            'username' => 'designwala',
+//            'email' => 'designwala@gmail.com',
+//            'email_verified_at' => Carbon::now(),
+//            'password' => \Hash::make('1234'),
+//            'remember_token' => \Str::random($token_length)
+//        ]);
+//        $admin->assignRole($designwala_role);
 
         // User
 //        $user_role = Role::findByName('user');
@@ -72,6 +73,7 @@ class UserSeeder extends Seeder
         foreach ($users_factory as $user_factory) {
             User::create([
                 'name' => $user_factory->name,
+                'designation' => $user_factory->designation,
                 'username' => $user_factory->username,
                 'email' => $user_factory->email,
                 'email_verified_at' => $user_factory->email_verified_at,
@@ -86,6 +88,7 @@ class UserSeeder extends Seeder
         foreach ($users_factory as $user_factory) {
             User::create([
                 'name' => $user_factory->name,
+                'designation' => $user_factory->designation,
                 'username' => $user_factory->username,
                 'email' => $user_factory->email,
                 'email_verified_at' => $user_factory->email_verified_at,
