@@ -53,7 +53,16 @@
                                 <p class="m-0">{{ $order->users->email }}</p>
                                 <p class="pt-4 m-0">Transaction ID : #{{ $order->payments->transaction_id }}</p>
                                 <p class="m-0">Payment method : {{ $order->payments->payment_method }}</p>
-                                <p class="m-0">Assigned To : @username</p>
+                                <p class="m-0">Assigned To :
+                                    @forelse($order->assignUsers as $assignUsers)
+                                        <span class="tabletabLightSKY text-white font-weight-bold">{{ $assignUsers->name }}</span>
+                                        @if(!$loop->last)
+                                            ,
+                                        @endif
+                                    @empty
+                                        Not Assigned Yet
+                                    @endforelse
+                                </p>
                             </div>
                         </div>
                         <div class="col-md-4 v-center">

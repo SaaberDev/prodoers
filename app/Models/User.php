@@ -47,6 +47,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Order::class);
     }
 
+    public function assignOrders()
+    {
+        return $this->belongsToMany(Order::class, 'order_assigned_to_designwalas')->withPivot('status');
+    }
+
     public function socialProviders()
     {
         return $this->hasMany(SocialiteAuth::class);

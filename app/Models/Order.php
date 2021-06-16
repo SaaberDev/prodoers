@@ -24,6 +24,11 @@ class Order extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function assignUsers()
+    {
+        return $this->belongsToMany(User::class, 'order_assigned_to_designwalas')->withPivot('status');
+    }
+
     public function services()
     {
         return $this->belongsTo(Service::class, 'service_id');

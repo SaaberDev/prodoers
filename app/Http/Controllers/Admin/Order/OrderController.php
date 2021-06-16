@@ -53,13 +53,12 @@
          */
         public function show($id)
         {
-            $order = Order::with('users', 'services:id,title,thumbnail', 'payments:order_id,paid_amount,discount,transaction_id,payment_method')
+            $order = Order::with('assignUsers', 'services:id,title,thumbnail', 'payments:order_id,paid_amount,discount,transaction_id,payment_method')
                 ->select('id', 'service_id', 'order_number', 'requirements', 'applied_coupon', 'user_id')
                 ->findOrFail($id);
 
-            $designwalas = User::role('designwala')->get();
+            $designwalas = User::with('assignOrders')->role('designwala')->get();
 
-//            dd($designwalas);
             return \view('admin_panel.pages.orders.order.show', compact('order', 'designwalas'));
         }
 
