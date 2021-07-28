@@ -9,7 +9,6 @@ use App\Models\ServiceCategory;
 use App\Models\ServiceFaq;
 use App\Models\ServiceFeature;
 use App\Models\ServiceImage;
-use App\Models\ServiceTag;
 use App\Models\Tag;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Contracts\Foundation\Application;

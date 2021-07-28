@@ -1,9 +1,4 @@
 <div>
-{{--    @if($isActive)--}}
-{{--        <button type="button" wire:click="assign" class="btn shadow px-2 py-0">--}}
-{{--            Assign--}}
-{{--        </button>--}}
-    {{ $status }}
     @if($status == 'pending')
         <button type="button" class="btn tabletabORANGE text-white px-2 py-0">
             Pending

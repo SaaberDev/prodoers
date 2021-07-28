@@ -55,7 +55,7 @@
                                 <p class="m-0">Payment method : {{ $order->payments->payment_method }}</p>
                                 <p class="m-0">Assigned To :
                                     @forelse($order->assignUsers as $assignUsers)
-                                        <span class="tabletabLightSKY text-white font-weight-bold">{{ $assignUsers->name }}</span>
+                                        <span class="tabletabLightSKY text-white font-weight-bold">{{ $assignUsers->username }}</span>
                                         @if(!$loop->last)
                                             ,
                                         @endif

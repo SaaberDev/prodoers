@@ -254,6 +254,8 @@ namespace App\Models{
  * @property string $order_status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $assignUsers
+ * @property-read int|null $assign_users_count
  * @property-read \App\Models\Invoice $invoices
  * @property-read \App\Models\Payment $payments
  * @property-read \App\Models\Service|null $services
@@ -736,6 +738,8 @@ namespace App\Models{
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Order[] $assignOrders
+ * @property-read int|null $assign_orders_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Order[] $orders

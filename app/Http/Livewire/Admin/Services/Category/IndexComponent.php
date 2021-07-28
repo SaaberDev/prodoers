@@ -10,10 +10,7 @@ class IndexComponent extends Component
 {
     use WithPagination;
 
-    public $status = [
-        'Published',
-        'Not Published'
-    ];
+    public $status = 'published_status';
 
     public $banner;
     public $thumbnail;
