@@ -27,7 +27,7 @@
         {{-- form--}}
         <div class="mt-4 py-3 bg-white rounded">
             {{-- New Service Form --}}
-            <form action="{{ route('services.service.update', $id) }}" method="POST" enctype="multipart/form-data" id="form">
+            <form action="{{ route('super_admin.service.self.update', $id) }}" method="POST" enctype="multipart/form-data" id="form">
                 @csrf @method('PATCH')
                 <div class="row m-0 justify-content-between ">
                     {{-- Service Title --}}
@@ -181,7 +181,7 @@
                                     <li class="col-md-4 py-4 text-center position-relative m-auto">
                                         <div class="previewimg">
                                             <img src="{{ asset($service_image . $service->filename) }}" alt="{{ $services->title }}" class="img-fluid">
-                                            <a class="sweet_delete close closeImgdiv" data-action="{{ route('services.service.destroyServiceImage', $service->id) }}" style="cursor: pointer; position: absolute;top: 10px; right: 27px;">
+                                            <a class="sweet_delete close closeImgdiv" data-action="{{ route('super_admin.service.self.destroyServiceImage', $service->id) }}" style="cursor: pointer; position: absolute;top: 10px; right: 27px;">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
                                                     <g transform="translate(-642 -792)">
                                                         <circle cx="9" cy="9" r="9" transform="translate(642 792)" fill="#ff6767"></circle>
@@ -258,7 +258,7 @@
                                         {{--<label class="mr-3 mt-2" for="field-1">Feature #1</label>--}}
                                         <input type="text" id="field-{{ $key + 1 }}" value="{{ $service->feature_desc }}" class="form-control validation" name="features[]" aria-describedby="button-addon2">
                                         <div class="input-group-append">
-                                            <a type="button" data-action="{{ route('services.service.destroyServiceFeature', $service->id) }}" class="btn sweet_delete p-0 m-0">
+                                            <a type="button" data-action="{{ route('super_admin.service.self.destroyServiceFeature', $service->id) }}" class="btn sweet_delete p-0 m-0">
                                                 <svg style="width: 16px; height: auto; margin: 8px 5px 0 15px;" xmlns="http://www.w3.org/2000/svg" width="11.91" height="16.027" viewBox="0 0 11.91 16.027"><path d="M8.279,16.969a1.563,1.563,0,0,0,1.559,1.559h6.234a1.563,1.563,0,0,0,1.559-1.559V7.617H8.279ZM18.41,4.279H15.683L14.9,3.5h-3.9l-.779.779H7.5V5.838H18.41Z" transform="translate(-7 -3)" fill="none" stroke="#000" stroke-width="1"></path></svg>
                                             </a>
                                         </div>
@@ -314,7 +314,7 @@
                                 <div  class="input-group  mb-0">
                                     <input type="text" id="faqs-question-{{ $key + 1 }}" value="{{ $faq->question }}" class="form-control validation-faqs" name="question[]" placeholder="">
                                     <div class="input-group-append">
-                                        <a type="button" data-action="{{ route('services.service.destroyServiceFaq', $faq->id) }}" class="btn sweet_delete p-0 m-0">
+                                        <a type="button" data-action="{{ route('super_admin.service.self.destroyServiceFaq', $faq->id) }}" class="btn sweet_delete p-0 m-0">
                                             <svg style="width: 16px; height: auto; margin: 8px 5px 0 15px;" xmlns="http://www.w3.org/2000/svg" width="11.91" height="16.027" viewBox="0 0 11.91 16.027"><path d="M8.279,16.969a1.563,1.563,0,0,0,1.559,1.559h6.234a1.563,1.563,0,0,0,1.559-1.559V7.617H8.279ZM18.41,4.279H15.683L14.9,3.5h-3.9l-.779.779H7.5V5.838H18.41Z" transform="translate(-7 -3)" fill="none" stroke="#000" stroke-width="1"></path></svg>
                                         </a>
                                     </div>

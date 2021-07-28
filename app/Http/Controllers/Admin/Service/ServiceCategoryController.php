@@ -176,7 +176,7 @@ class ServiceCategoryController extends Controller
             }
         });
 
-        return redirect()->route('services.category.index');
+        return redirect()->route('super_admin.service.category.index');
     }
 
     /**

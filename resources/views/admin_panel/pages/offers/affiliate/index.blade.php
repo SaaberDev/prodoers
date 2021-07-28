@@ -15,7 +15,7 @@
                 </div>
                 <div class="col-md-4 col-sm-4  v-center">
                     <div class="text-right">
-                        <a href="{{ route('offers.affiliate.create') }}" class="btn shadow bg-white rounded"> <span>
+                        <a href="{{ route('super_admin.offer.affiliate.create') }}" class="btn shadow bg-white rounded"> <span>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="12.672" height="12.672" viewBox="0 0 12.672 12.672">
                                                 <path d="M20.848,14.512H16.09V9.754a.789.789,0,0,0-1.578,0v4.758H9.754a.789.789,0,0,0,0,1.578h4.758v4.758a.789.789,0,0,0,1.578,0V16.09h4.758a.789.789,0,0,0,0-1.578Z" transform="translate(-8.965 -8.965)" fill="#000"></path>
                                             </svg></span> Add new </a>
@@ -100,7 +100,7 @@
                                 </td>
                                 <td>
                                     <div class="">
-                                        <a href="{{ route('offers.affiliate.edit') }}" class="btn p-0 m-0" data-toggle="tooltip" title="" data-original-title="view or edit">
+                                        <a href="{{ route('super_admin.offer.affiliate.edit') }}" class="btn p-0 m-0" data-toggle="tooltip" title="" data-original-title="view or edit">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="14.322" height="14.322" viewBox="0 0 14.322 14.322">
                                                 <g transform="translate(-2.5 -2.203)">
                                                     <path d="M8.907,6H4.313A1.313,1.313,0,0,0,3,7.313V16.5a1.313,1.313,0,0,0,1.313,1.313H13.5A1.313,1.313,0,0,0,14.815,16.5V11.907" transform="translate(0 -1.79)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
@@ -127,7 +127,7 @@
                                 </td>
                                 <td>
                                     <div class="">
-                                        <a href="{{ route('offers.affiliate.edit') }}" class="btn p-0 m-0" data-toggle="tooltip" title="" data-original-title="view or edit">
+                                        <a href="{{ route('super_admin.offer.affiliate.edit') }}" class="btn p-0 m-0" data-toggle="tooltip" title="" data-original-title="view or edit">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="14.322" height="14.322" viewBox="0 0 14.322 14.322">
                                                 <g transform="translate(-2.5 -2.203)">
                                                     <path d="M8.907,6H4.313A1.313,1.313,0,0,0,3,7.313V16.5a1.313,1.313,0,0,0,1.313,1.313H13.5A1.313,1.313,0,0,0,14.815,16.5V11.907" transform="translate(0 -1.79)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>

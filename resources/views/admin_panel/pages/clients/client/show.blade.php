@@ -232,7 +232,7 @@
                                             Not assigned</span></div>
                                 </td>
                                 <td>
-                                    <a href="{{ route('orders.order.show') }}" class="btn m-0 p-0">
+                                    <a href="#" class="btn m-0 p-0">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16.661" height="12.39"
                                              viewBox="0 0 16.661 12.39">
                                             <g transform="translate(-1 -5.5)">

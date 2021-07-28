@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="mt-4">
-            <form action="{{ route('services.category.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('super_admin.service.category.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf @method('POST')
                 <div class="row m-0 justify-content-between py-3 bg-white rounded mt-4">
                     <div class="col-md-6">

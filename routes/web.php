@@ -8,6 +8,7 @@
     use App\Http\Controllers\Admin\Client\SubscriberController;
     use App\Http\Controllers\Admin\DashboardController;
     use App\Http\Controllers\Admin\Designwala\DesignwalaController;
+    use App\Http\Controllers\Admin\Dropzone\DropzoneController;
     use App\Http\Controllers\Admin\Faq\FaqController;
     use App\Http\Controllers\Admin\Offer\AffiliateController;
     use App\Http\Controllers\Admin\Offer\CouponController;
@@ -63,9 +64,9 @@
         Route::prefix('/services')->name('order.')
 //            ->middleware('auth')
             ->group(function () {
-            Route::get('/{service_slug}/order', [GuestOrderController::class, 'index'])->name('index');
-            Route::get('/{service_slug}/order/pay', [GuestOrderController::class, 'store'])->name('store');
-        });
+                Route::get('/{service_slug}/order', [GuestOrderController::class, 'index'])->name('index');
+                Route::get('/{service_slug}/order/pay', [GuestOrderController::class, 'store'])->name('store');
+            });
 
         // Policies
         Route::name('policy.')->group(function () {
@@ -115,277 +116,238 @@
 //        'auth',
 //        'role:super_admin|admin',
 //    ])->group(function () {
-        Route::prefix('/dashboard')->group(function () {
-            // Dashboard
-            Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
+    Route::prefix('/super-admin/dashboard')->name('super_admin.')->group(function () {
+        // Dashboard
+        Route::get('/', [DashboardController::class, 'super_admin'])->name('index');
 
-            // Services Route Section
-            Route::name('services.')->group(function () {
-                // Services
-                Route::prefix('/services')->name('service.')->group(function () {
-                    Route::get('/', [ServiceController::class, 'index'])->name('index');
-                    Route::get('/add-service', [ServiceController::class, 'create'])->name('create');
-                    Route::get('/edit-service/{id}', [ServiceController::class, 'edit'])->name('edit');
+        // Services Route Section
+        Route::prefix('/services')->name('service.')->group(function () {
+            // Services
+            Route::name('self.')->group(function () {
+                Route::get('/', [ServiceController::class, 'index'])->name('index');
+                Route::get('/add-service', [ServiceController::class, 'create'])->name('create');
+                Route::get('/edit-service/{id}', [ServiceController::class, 'edit'])->name('edit');
 
-                    Route::get('/destroy-service-image/{id}',
-                        [ServiceController::class, 'destroyServiceImage'])->name('destroyServiceImage');
-                    Route::get('/destroy-service-feature/{id}',
-                        [ServiceController::class, 'destroyServiceFeature'])->name('destroyServiceFeature');
-                    Route::get('/destroy-service-faq/{id}',
-                        [ServiceController::class, 'destroyServiceFaq'])->name('destroyServiceFaq');
+                Route::get('/destroy-service-image/{id}', [ServiceController::class, 'destroyServiceImage'])->name('destroyServiceImage');
+                Route::get('/destroy-service-feature/{id}', [ServiceController::class, 'destroyServiceFeature'])->name('destroyServiceFeature');
+                Route::get('/destroy-service-faq/{id}', [ServiceController::class, 'destroyServiceFaq'])->name('destroyServiceFaq');
 
-                    Route::post('/store-service', [ServiceController::class, 'store'])->name('store');
-                    Route::patch('/update-service/{id}', [ServiceController::class, 'update'])->name('update');
-                    Route::get('/destroy-service/{id}', [ServiceController::class, 'destroy'])->name('destroy');
-                });
-                // Service Categories
-                Route::prefix('/service-category')->name('category.')->group(function () {
-                    Route::get('/', [ServiceCategoryController::class, 'index'])->name('index');
-                    Route::get('/add-category', [ServiceCategoryController::class, 'create'])->name('create');
-                    Route::get('/edit-category/{id}', [ServiceCategoryController::class, 'edit'])->name('edit');
+                Route::post('/store-service', [ServiceController::class, 'store'])->name('store');
+                Route::patch('/update-service/{id}', [ServiceController::class, 'update'])->name('update');
+                Route::get('/destroy-service/{id}', [ServiceController::class, 'destroy'])->name('destroy');
 
-                    Route::get('/destroy-category-faq/{id}', [
-                        ServiceCategoryController::class,
-                        'destroyServiceCategoryFaq'
-                    ])->name('destroyServiceCategoryFaq');
-
-                    Route::post('/store-category', [ServiceCategoryController::class, 'store'])->name('store');
-                    Route::patch('/update-category/{id}', [ServiceCategoryController::class, 'update'])->name('update');
-                    Route::get('/destroy-category/{id}',
-                        [ServiceCategoryController::class, 'destroy'])->name('destroy');
-                });
-                // Tags
-                Route::prefix('/tags')->name('tag.')->group(function () {
-                    Route::get('/', [TagController::class, 'index'])->name('index');
-                    Route::get('/edit-tag/{id}', [TagController::class, 'edit'])->name('edit');
-                    Route::get('/destroy-tag/{id}', [TagController::class, 'destroy'])->name('destroy');
-                    Route::post('/store-tag', [TagController::class, 'store'])->name('store');
-                    Route::patch('/update-tag/{id}', [TagController::class, 'update'])->name('update');
-                });
+                // Dropzone Media Ajax
+                Route::post('/store-media', [ServiceController::class, 'storeMedia'])->name('storeMedia');
+                Route::delete('/delete-media', [ServiceController::class, 'destroyMedia'])->name('deleteMedia');
             });
+            // Service Categories
+            Route::prefix('/category')->name('category.')->group(function () {
+                Route::get('/', [ServiceCategoryController::class, 'index'])->name('index');
+                Route::get('/add-category', [ServiceCategoryController::class, 'create'])->name('create');
+                Route::get('/edit-category/{id}', [ServiceCategoryController::class, 'edit'])->name('edit');
 
-            // Chat Route Section
-            Route::name('chats.')->group(function () {
-                Route::prefix('/designwala-chat')->name('designwala_chat.')->group(function () {
-                    Route::get('/', [DesignwalaChatController::class, 'index'])->name('index');
-                });
-                Route::prefix('/order-chat')->name('order_chat.')->group(function () {
-                    Route::get('/', [OrderChatController::class, 'index'])->name('index');
-                });
+                Route::get('/destroy-category-faq/{id}', [ServiceCategoryController::class, 'destroyServiceCategoryFaq'])->name('destroyServiceCategoryFaq');
+
+                Route::post('/store-category', [ServiceCategoryController::class, 'store'])->name('store');
+                Route::patch('/update-category/{id}', [ServiceCategoryController::class, 'update'])->name('update');
+                Route::get('/destroy-category/{id}', [ServiceCategoryController::class, 'destroy'])->name('destroy');
             });
-
-            // TODO -- Assign Order Process
-            // Order Route Section
-            Route::name('orders.')->group(function () {
-                // Orders
-                Route::prefix('/orders')->name('order.')->group(function () {
-                    Route::get('/', [OrderController::class, 'index'])->name('index');
-                    Route::get('/show/{id}', [OrderController::class, 'show'])->name('show');
-                });
-                // Payments
-                Route::prefix('/payments')->name('payment.')->group(function () {
-                    Route::get('/', [PaymentController::class, 'index'])->name('index');
-                    Route::get('/show', [PaymentController::class, 'show'])->name('show');
-                });
-            });
-
-            // Blog Route Section
-            Route::name('blogs.')->group(function () {
-                // Blogs
-                Route::prefix('/blogs')->name('blog.')->group(function () {
-                    Route::get('/', [BlogController::class, 'index'])->name('index');
-                    Route::get('/add-blog', [BlogController::class, 'create'])->name('create');
-                    Route::get('/edit-blog', [BlogController::class, 'edit'])->name('edit');
-                    Route::get('/show', [BlogController::class, 'show'])->name('show');
-                });
-                // Blog Category
-                Route::prefix('/category')->name('category.')->group(function () {
-                    Route::get('/', [BlogCategoryController::class, 'index'])->name('index');
-                    Route::get('/edit-category', [BlogCategoryController::class, 'edit'])->name('edit');
-                });
-            });
-
-            // Client Route Section
-            Route::name('clients.')->group(function () {
-                // Clients
-                Route::prefix('/clients')->name('client.')->group(function () {
-                    Route::get('/', [ClientController::class, 'index'])->name('index');
-                    Route::get('/show', [ClientController::class, 'show'])->name('show');
-                });
-                // Subscribers
-                Route::prefix('/subscribers')->name('subscribers.')->group(function () {
-                    Route::get('/', [SubscriberController::class, 'index'])->name('index');
-                    Route::get('/destroy-subscriber/{id}', [SubscriberController::class, 'destroy'])->name('destroy');
-                });
-            });
-
-            // Reviews Route Section
-            Route::prefix('/reviews')->name('reviews.')->group(function () {
-                // Reviews
-                Route::get('/', [ReviewController::class, 'index'])->name('index');
-            });
-
-            // FAQ's Route Section
-            Route::prefix('/faqs')->name('faqs.')->group(function () {
-                // FAQ's
-                Route::get('/', [FaqController::class, 'index'])->name('index');
-                Route::get('/add-faq', [FaqController::class, 'create'])->name('create');
-                Route::get('/edit-faq', [FaqController::class, 'edit'])->name('edit');
-            });
-
-            // Offers Route Section
-            Route::name('offers.')->group(function () {
-                // Coupons
-                Route::prefix('/coupons')->name('coupon.')->group(function () {
-                    Route::get('/', [CouponController::class, 'index'])->name('index');
-                    Route::get('/add-coupon', [CouponController::class, 'create'])->name('create');
-                    Route::get('/edit-coupon', [CouponController::class, 'edit'])->name('edit');
-                    Route::post('/store-coupon', [CouponController::class, 'store'])->name('store');
-                });
-                // Affiliates
-                Route::prefix('/affiliates')->name('affiliate.')->group(function () {
-                    Route::get('/', [AffiliateController::class, 'index'])->name('index');
-                    Route::get('/add-affiliate', [AffiliateController::class, 'create'])->name('create');
-                    Route::get('/edit-affiliate', [AffiliateController::class, 'edit'])->name('edit');
-                });
-            });
-
-            // Promotions Route Section
-            Route::name('promotions.')->group(function () {
-                // Email Marketing
-                Route::name('email_marketing.')->group(function () {
-                    Route::prefix('/all-mail')->name('all_mail.')->group(function () {
-                        Route::get('/', [EmailMarketingController::class, 'index'])->name('index');
-                        Route::get('/compose-mail', [EmailMarketingController::class, 'create'])->name('create');
-                        Route::get('/edit-mail', [EmailMarketingController::class, 'edit'])->name('edit');
-                    });
-
-                    Route::prefix('/drafts')->name('draft.')->group(function () {
-                        Route::get('/', [DraftMailController::class, 'index'])->name('index');
-                        Route::get('/edit-drafts', [DraftMailController::class, 'edit'])->name('edit');
-                    });
-                });
-                // Advertisement Banner
-                Route::prefix('/advertisement-banner')->name('advertisement_banner.')->group(function () {
-                    Route::get('/', [AdvertisementBannerController::class, 'index'])->name('index');
-                    Route::get('/add-affiliate', [AdvertisementBannerController::class, 'create'])->name('create');
-                    Route::get('/edit-affiliate', [AdvertisementBannerController::class, 'edit'])->name('edit');
-                });
-            });
-
-            // Designwalas Route Section
-            Route::name('designwalas.')->group(function () {
-                // Designwalas
-                Route::prefix('/designwalas')->name('designwala.')->group(function () {
-                    Route::get('/', [DesignwalaController::class, 'index'])->name('index');
-                    Route::get('/show', [DesignwalaController::class, 'show'])->name('show');
-                });
-            });
-
-            // Roles & Permissions Route Section
-            Route::name('roles_permissions.')->group(function () {
-                // Roles
-                Route::prefix('/roles')->name('role.')->group(function () {
-                    Route::get('/', [RoleController::class, 'index'])->name('index');
-                    Route::get('/add-role', [RoleController::class, 'create'])->name('create');
-                    Route::get('/edit', [RoleController::class, 'edit'])->name('edit');
-                });
-                // Permissions
-                Route::prefix('/permissions')->name('permission.')->group(function () {
-                    Route::get('/', [PermissionController::class, 'index'])->name('index');
-                    Route::get('/show', [PermissionController::class, 'show'])->name('show');
-                });
-            });
-
-            // Settings Route Section
-            Route::name('settings.')->group(function () {
-                // SEO Tools
-                Route::name('seo_tools.')->group(function () {
-                    Route::prefix('/google-analytics')->name('google_analytics.')->group(function () {
-                        Route::get('/',
-                            [SEOToolsController::class, 'index_google_analytics'])->name('index_google_analytics');
-                    });
-                    Route::prefix('/open-graph')->name('open_graph.')->group(function () {
-                        Route::get('/', [SEOToolsController::class, 'index_open_graph'])->name('index_open_graph');
-                        Route::get('/edit-meta',
-                            [SEOToolsController::class, 'edit_open_graph'])->name('edit_open_graph');
-                    });
-                });
-
-                // Site CMS
-                Route::prefix('/site-cms')->name('site_cms.')->group(function () {
-                    Route::get('/', [SiteCMSController::class, 'index'])->name('index');
-                    Route::get('/update-site-cms', [SiteCMSController::class, 'update'])->name('update');
-                });
-
-                // Site CMS
-                Route::name('site_cms.')->group(function () {
-                    // Brand Identity Section
-                    Route::prefix('/brand-identity')->name('brand_identity.')->group(function () {
-                        Route::get('/', [SiteCMSController::class, 'index_brand_identity'])->name('index');
-                        Route::patch('/update-brand-identity',
-                            [SiteCMSController::class, 'update_brand_identity'])->name('update');
-                    });
-                    // Banners
-                    Route::prefix('/banners')->name('banner.')->group(function () {
-                        Route::get('/', [SiteCMSController::class, 'index_banner'])->name('index');
-                        Route::patch('/update-banners', [SiteCMSController::class, 'update_banner'])->name('update');
-                    });
-                    // Service Process Section
-                    Route::prefix('/service-process')->name('service_process.')->group(function () {
-                        Route::get('/', [SiteCMSController::class, 'index_service_process'])->name('index');
-                        Route::patch('/update-service-process',
-                            [SiteCMSController::class, 'update_service_process'])->name('update');
-                    });
-                    // How Designwala Works ?
-                    Route::prefix('/how-designwala-works')->name('how_designwala_works.')->group(function () {
-                        Route::get('/', [SiteCMSController::class, 'index_how_designwala_works'])->name('index');
-                        Route::patch('/update-how-designwala-works',
-                            [SiteCMSController::class, 'update_how_designwala_works'])->name('update');
-                    });
-                    // Statistics Section
-                    Route::prefix('/statistics')->name('statistics.')->group(function () {
-                        Route::get('/', [SiteCMSController::class, 'index_statistics'])->name('index');
-                        Route::patch('/update-statistics',
-                            [SiteCMSController::class, 'update_statistics'])->name('update');
-                    });
-                    // Footer Content
-                    Route::prefix('/footer')->name('footer.')->group(function () {
-                        Route::get('/', [SiteCMSController::class, 'index_footer'])->name('index');
-                        Route::patch('/update-footer', [SiteCMSController::class, 'update_footer'])->name('update');
-                    });
-                    // Social Links
-                    Route::prefix('/social-links')->name('social_link.')->group(function () {
-                        Route::get('/', [SiteCMSController::class, 'index_social_links'])->name('index');
-                        Route::get('/create-social-links',
-                            [SiteCMSController::class, 'create_social_links'])->name('create');
-                        Route::get('/edit-social-links/{id}',
-                            [SiteCMSController::class, 'edit_social_links'])->name('edit');
-                        Route::post('/store-social-links',
-                            [SiteCMSController::class, 'store_social_links'])->name('store');
-                        Route::patch('/update-social-links/{id}',
-                            [SiteCMSController::class, 'update_social_links'])->name('update');
-                        Route::get('/destroy-social-links/{id}',
-                            [SiteCMSController::class, 'destroy_social_links'])->name('destroy');
-                    });
-                    // Policies
-                    Route::prefix('/policies')->name('policy.')->group(function () {
-                        Route::get('/', [SiteCMSController::class, 'index_policy'])->name('index');
-                        Route::patch('/update-policies', [SiteCMSController::class, 'update_policy'])->name('update');
-                    });
-                    // Other Contents
-                    Route::prefix('/other-contents')->name('other_content.')->group(function () {
-                        Route::get('/', [SiteCMSController::class, 'index_other_content'])->name('index');
-                        Route::patch('/update-other-contents',
-                            [SiteCMSController::class, 'update_other_content'])->name('update');
-                    });
-                });
-                // Maintenance Mode
-                Route::prefix('/maintenance-mode')->name('maintenance.')->group(function () {
-                    Route::get('/', [MaintenanceModeController::class, 'index'])->name('index');
-                });
+            // Tags
+            Route::prefix('/tags')->name('tag.')->group(function () {
+                Route::get('/', [TagController::class, 'index'])->name('index');
+                Route::get('/edit-tag/{id}', [TagController::class, 'edit'])->name('edit');
+                Route::get('/destroy-tag/{id}', [TagController::class, 'destroy'])->name('destroy');
+                Route::post('/store-tag', [TagController::class, 'store'])->name('store');
+                Route::patch('/update-tag/{id}', [TagController::class, 'update'])->name('update');
             });
         });
+
+        // TODO -- Assign Order Process
+        // Order Route Section
+        Route::prefix('/orders')->name('order.')->group(function () {
+            // Orders
+            Route::name('self.')->group(function () {
+                Route::get('/', [OrderController::class, 'index'])->name('index');
+                Route::get('/show/{id}', [OrderController::class, 'show'])->name('show');
+            });
+            // Payments
+            Route::prefix('/payments')->name('payment.')->group(function () {
+                Route::get('/', [PaymentController::class, 'index'])->name('index');
+                Route::get('/show', [PaymentController::class, 'show'])->name('show');
+            });
+        });
+
+        // Client Route Section
+        Route::prefix('/clients')->name('client.')->group(function () {
+            // Clients
+            Route::name('self.')->group(function () {
+                Route::get('/', [ClientController::class, 'index'])->name('index');
+                Route::get('/show', [ClientController::class, 'show'])->name('show');
+            });
+            // Subscribers
+            Route::prefix('/subscribers')->name('subscriber.')->group(function () {
+                Route::get('/', [SubscriberController::class, 'index'])->name('index');
+                Route::get('/destroy-subscriber/{id}', [SubscriberController::class, 'destroy'])->name('destroy');
+            });
+        });
+
+        // Reviews Route Section
+        Route::prefix('/reviews')->name('review.')->group(function () {
+            // Reviews
+            Route::get('/', [ReviewController::class, 'index'])->name('index');
+        });
+
+        // Offers Route Section
+        Route::prefix('/offers')->name('offer.')->group(function () {
+            // Coupons
+            Route::prefix('/coupons')->name('coupon.')->group(function () {
+                Route::get('/', [CouponController::class, 'index'])->name('index');
+                Route::get('/add-coupon', [CouponController::class, 'create'])->name('create');
+                Route::get('/edit-coupon', [CouponController::class, 'edit'])->name('edit');
+                Route::post('/store-coupon', [CouponController::class, 'store'])->name('store');
+            });
+            // Affiliates
+            Route::prefix('/affiliates')->name('affiliate.')->group(function () {
+                Route::get('/', [AffiliateController::class, 'index'])->name('index');
+                Route::get('/add-affiliate', [AffiliateController::class, 'create'])->name('create');
+                Route::get('/edit-affiliate', [AffiliateController::class, 'edit'])->name('edit');
+            });
+        });
+
+        // Promotions Route Section
+        Route::prefix('/promotions')->name('promotion.')->group(function () {
+            // Email Marketing
+            Route::name('email_marketing.')->group(function () {
+                Route::prefix('/all-mail')->name('all_mail.')->group(function () {
+                    Route::get('/', [EmailMarketingController::class, 'index'])->name('index');
+                    Route::get('/compose-mail', [EmailMarketingController::class, 'create'])->name('create');
+                    Route::get('/edit-mail', [EmailMarketingController::class, 'edit'])->name('edit');
+                });
+
+                Route::prefix('/drafts')->name('draft.')->group(function () {
+                    Route::get('/', [DraftMailController::class, 'index'])->name('index');
+                    Route::get('/edit-drafts', [DraftMailController::class, 'edit'])->name('edit');
+                });
+            });
+            // Advertisement Banner
+            Route::prefix('/advertisement-banner')->name('advertisement_banner.')->group(function () {
+                Route::get('/', [AdvertisementBannerController::class, 'index'])->name('index');
+                Route::get('/add-affiliate', [AdvertisementBannerController::class, 'create'])->name('create');
+                Route::get('/edit-affiliate', [AdvertisementBannerController::class, 'edit'])->name('edit');
+            });
+        });
+
+        // Doers Route Section
+        Route::prefix('/doers')->name('doer.')->group(function () {
+            Route::get('/', [DesignwalaController::class, 'index'])->name('index');
+            Route::get('/show', [DesignwalaController::class, 'show'])->name('show');
+        });
+
+        // Roles & Permissions Route Section
+//        Route::prefix('roles-permissions')->name('roles_permissions.')->group(function () {
+//            // Roles
+//            Route::prefix('/roles')->name('role.')->group(function () {
+//                Route::get('/', [RoleController::class, 'index'])->name('index');
+//                Route::get('/add-role', [RoleController::class, 'create'])->name('create');
+//                Route::get('/edit', [RoleController::class, 'edit'])->name('edit');
+//            });
+//            // Permissions
+//            Route::prefix('/permissions')->name('permission.')->group(function () {
+//                Route::get('/', [PermissionController::class, 'index'])->name('index');
+//                Route::get('/show', [PermissionController::class, 'show'])->name('show');
+//            });
+//        });
+
+        // Settings Route Section
+        Route::name('settings.')->group(function () {
+            // SEO Tools
+            Route::name('seo_tools.')->group(function () {
+                Route::prefix('/google-analytics')->name('google_analytics.')->group(function () {
+                    Route::get('/',
+                        [SEOToolsController::class, 'index_google_analytics'])->name('index_google_analytics');
+                });
+                Route::prefix('/open-graph')->name('open_graph.')->group(function () {
+                    Route::get('/', [SEOToolsController::class, 'index_open_graph'])->name('index_open_graph');
+                    Route::get('/edit-meta',
+                        [SEOToolsController::class, 'edit_open_graph'])->name('edit_open_graph');
+                });
+            });
+
+            // Site CMS
+            Route::prefix('/site-cms')->name('site_cms.')->group(function () {
+                Route::get('/', [SiteCMSController::class, 'index'])->name('index');
+                Route::get('/update-site-cms', [SiteCMSController::class, 'update'])->name('update');
+            });
+
+            // Site CMS
+            Route::name('site_cms.')->group(function () {
+                // Brand Identity Section
+                Route::prefix('/brand-identity')->name('brand_identity.')->group(function () {
+                    Route::get('/', [SiteCMSController::class, 'index_brand_identity'])->name('index');
+                    Route::patch('/update-brand-identity',
+                        [SiteCMSController::class, 'update_brand_identity'])->name('update');
+                });
+                // Banners
+                Route::prefix('/banners')->name('banner.')->group(function () {
+                    Route::get('/', [SiteCMSController::class, 'index_banner'])->name('index');
+                    Route::patch('/update-banners', [SiteCMSController::class, 'update_banner'])->name('update');
+                });
+                // Service Process Section
+                Route::prefix('/service-process')->name('service_process.')->group(function () {
+                    Route::get('/', [SiteCMSController::class, 'index_service_process'])->name('index');
+                    Route::patch('/update-service-process',
+                        [SiteCMSController::class, 'update_service_process'])->name('update');
+                });
+                // How Designwala Works ?
+                Route::prefix('/how-designwala-works')->name('how_designwala_works.')->group(function () {
+                    Route::get('/', [SiteCMSController::class, 'index_how_designwala_works'])->name('index');
+                    Route::patch('/update-how-designwala-works',
+                        [SiteCMSController::class, 'update_how_designwala_works'])->name('update');
+                });
+                // Statistics Section
+                Route::prefix('/statistics')->name('statistics.')->group(function () {
+                    Route::get('/', [SiteCMSController::class, 'index_statistics'])->name('index');
+                    Route::patch('/update-statistics',
+                        [SiteCMSController::class, 'update_statistics'])->name('update');
+                });
+                // Footer Content
+                Route::prefix('/footer')->name('footer.')->group(function () {
+                    Route::get('/', [SiteCMSController::class, 'index_footer'])->name('index');
+                    Route::patch('/update-footer', [SiteCMSController::class, 'update_footer'])->name('update');
+                });
+                // Social Links
+                Route::prefix('/social-links')->name('social_link.')->group(function () {
+                    Route::get('/', [SiteCMSController::class, 'index_social_links'])->name('index');
+                    Route::get('/create-social-links',
+                        [SiteCMSController::class, 'create_social_links'])->name('create');
+                    Route::get('/edit-social-links/{id}',
+                        [SiteCMSController::class, 'edit_social_links'])->name('edit');
+                    Route::post('/store-social-links',
+                        [SiteCMSController::class, 'store_social_links'])->name('store');
+                    Route::patch('/update-social-links/{id}',
+                        [SiteCMSController::class, 'update_social_links'])->name('update');
+                    Route::get('/destroy-social-links/{id}',
+                        [SiteCMSController::class, 'destroy_social_links'])->name('destroy');
+                });
+                // Policies
+                Route::prefix('/policies')->name('policy.')->group(function () {
+                    Route::get('/', [SiteCMSController::class, 'index_policy'])->name('index');
+                    Route::patch('/update-policies', [SiteCMSController::class, 'update_policy'])->name('update');
+                });
+                // Other Contents
+                Route::prefix('/other-contents')->name('other_content.')->group(function () {
+                    Route::get('/', [SiteCMSController::class, 'index_other_content'])->name('index');
+                    Route::patch('/update-other-contents',
+                        [SiteCMSController::class, 'update_other_content'])->name('update');
+                });
+            });
+            // Maintenance Mode
+            Route::prefix('/maintenance-mode')->name('maintenance.')->group(function () {
+                Route::get('/', [MaintenanceModeController::class, 'index'])->name('index');
+            });
+        });
+    });
+
 //    });
 
 
@@ -395,54 +357,4 @@
         Route::get('/checkout/pay', [TestPaypalController::class, 'checkout'])->name('payment');
         Route::any('/checkout/success', [TestPaypalController::class, 'successCheckout'])->name('success');
         Route::any('/checkout/cancel', [TestPaypalController::class, 'cancelCheckout'])->name('cancel');
-
-
-
-        //        Route::get('/cancel', [TestController::class, 'index']);
-
-//        $ip = file_get_contents("http://ipecho.net/plain");
-//        $access_key = '01d075bd3a1134ae3109b83a458c2c41';
-//
-//        // Initialize CURL:
-//        $ch = curl_init('http://api.ipstack.com/'.$ip.'?access_key='.$access_key.'');
-//        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-//
-//        // Store the data:
-//        $json = curl_exec($ch);
-//        curl_close($ch);
-//
-//        // Decode JSON response:
-//        $api_result = json_decode($json, true);
-//        dd($api_result);
-//
-//        // Output the "capital" object inside "location"
-//        echo $api_result['location']['capital'];
-
-        //======================================================
-
-//        $date = \App\Models\Coupon::findOrFail(6);
-//        echo $date->end_date;
-//        if (config('cache.default') === 'file'){
-//            config(['cache.default' => 'array']);
-//            $ip = file_get_contents("http://ipecho.net/plain");
-//            $geoLocation = geoip()->getLocation($ip);
-////            $currency = $geoLocation['currency.code'];
-//            dd($geoLocation);
-//        }
-
-//        dd($date->end_date);
     });
-
-    //    Route::get('/{category_name}', [UserServiceCategoryController::class, 'show'])->name('show');
-    //    Route::get('/{category_name}/{service_name}', [UserServiceCategoryController::class, 'show'])->name('show');
-    //    Route::get('/search?=logo', [UserServiceSearchController::class, 'index'])->name('index');
-
-    //    Route::get('/image', function (){
-    //        $service_categories = ServiceCategory::find(1);
-    //        $imgCache = ImageManagerStatic::cache(function($image) use ($service_categories) {
-    //            $image->make(Storage::get('public/admin_panel/services_categories/banner/' . $service_categories->category_banner));
-    //            $image->encode('webp', 100);
-    //        }, 10, true);
-    //
-    //        return ImageManagerStatic::make($imgCache)->response();
-    //    });

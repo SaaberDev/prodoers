@@ -13,7 +13,7 @@ class DashboardController extends Controller
     /**
      * @return Application|Factory|View
      */
-    public function index()
+    public function super_admin()
     {
         return view('admin_panel.index');
     }

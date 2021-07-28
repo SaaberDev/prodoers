@@ -31,7 +31,7 @@
         {{-- form--}}
         <div class="mt-4 py-3 bg-white rounded">
             {{-- New Service Form --}}
-            <form action="{{ route('services.service.store') }}" method="POST" enctype="multipart/form-data" id="form">
+            <form action="{{ route('super_admin.service.self.store') }}" method="POST" enctype="multipart/form-data" id="form">
                 @csrf @method('POST')
                 <div class="row m-0 justify-content-between">
                     <div class="col-md-3">
@@ -297,8 +297,8 @@
 
 @push('scripts')
     {{-- Internal Scripts --}}
-    {{-- Single Dynamic Input for Features Start --}}
     <script>
+        // Dynamic field (Features)
         $(document).ready(function() {
             var buttonAdd = $("#add-button");
             var buttonRemove = $("#remove-button");
@@ -391,11 +391,8 @@
                 return value.replace(/^\s+|\s+$/g, '');
             }
         });
-    </script>
-    {{-- Single Dynamic Input for Features End --}}
 
-    {{-- Form Clone Dynamic Input for Faqs Start --}}
-    <script>
+        // Dynamic field (FAQ)
         $(document).ready(function() {
             var buttonAdd = $("#add-button-faq");
             var buttonRemove = $("#remove-button-faq");
@@ -491,13 +488,8 @@
             }
         });
 
-    </script>
-    {{-- Form Clone Dynamic Input for Faqs End --}}
 
-
-    <script>
-        // $('.select2').select2()
-
+        // Select2
         $("#allCategories").select2();
 
         $('#popular_status').change(function () {
@@ -620,6 +612,58 @@
                     }, 0) + " Members"
                 }]
             )
+        }
+
+        // Dropzone
+        // Dropzone
+        var uploadedDocumentMap = {}
+        Dropzone.options.documentDropzone = {
+            url: '{{ route('super_admin.service.self.storeMedia') }}',
+            maxFilesize: 2, // MB
+            acceptedFiles: 'image/jpeg, image/png, application/pdf',
+            addRemoveLinks: true,
+            thumbnailWidth: 120,
+            thumbnailHeight: 120,
+            thumbnailMethod: 'contain',
+            init: function() {
+                let myDropzone = this;
+                myDropzone.on("addedfile", function(file) {
+                    $('.dz-image').last().find('img').addClass('dz-thumb')
+                    if (!file.type.match(/image.*/)) {
+                        this.emit("thumbnail", file, "/_assets/_default/file_icon.png");
+                    }
+                });
+            },
+            headers: {
+                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+            },
+            success: function (file, response) {
+                $('form').append('<input type="hidden" name="document[]" value="' + response.name + '">')
+                uploadedDocumentMap[file.name] = response.name
+            },
+            removedfile: function (file) {
+                file.previewElement.remove()
+                var name = ''
+                if (typeof file.file_name !== 'undefined') {
+                    name = file.file_name
+                } else {
+                    name = uploadedDocumentMap[file.name]
+                }
+                $('form').find('input[name="document[]"][value="' + name + '"]').remove()
+
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    type: 'DELETE',
+                    url: '{{ route('super_admin.service.self.deleteMedia') }}',
+                    data: {
+                        document: name,
+                    },
+                });
+            }
         }
     </script>
 @endpush

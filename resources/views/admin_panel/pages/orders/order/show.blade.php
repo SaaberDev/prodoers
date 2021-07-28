@@ -66,24 +66,6 @@
                             </div>
                         </div>
                         <div class="col-md-4 v-center">
-                            <div class="text-center">
-                                <button class="btn border shadow py-2 btn-block" data-toggle="modal" data-target="#assignorder">Assign Order <span class="pl-3">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="9.882" height="17.283" viewBox="0 0 9.882 17.283">
-                                                        <path d="M18.149,14.834,11.609,8.3a1.23,1.23,0,0,1,0-1.744,1.245,1.245,0,0,1,1.749,0l7.41,7.4a1.233,1.233,0,0,1,.036,1.7l-7.441,7.456a1.235,1.235,0,0,1-1.749-1.744Z" transform="translate(-11.246 -6.196)" />
-                                                    </svg></span></button>
-                            </div>
-                            <div class="text-center">
-                                <button class="btn border shadow py-2 btn-block">accept<span class="pl-3">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="9.882" height="17.283" viewBox="0 0 9.882 17.283">
-                                                        <path d="M18.149,14.834,11.609,8.3a1.23,1.23,0,0,1,0-1.744,1.245,1.245,0,0,1,1.749,0l7.41,7.4a1.233,1.233,0,0,1,.036,1.7l-7.441,7.456a1.235,1.235,0,0,1-1.749-1.744Z" transform="translate(-11.246 -6.196)" />
-                                                    </svg></span></button>
-                            </div>
-                            <div class="text-center">
-                                <button class="btn border shadow py-2 btn-block">Cancel<span class="pl-3">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="9.882" height="17.283" viewBox="0 0 9.882 17.283">
-                                                        <path d="M18.149,14.834,11.609,8.3a1.23,1.23,0,0,1,0-1.744,1.245,1.245,0,0,1,1.749,0l7.41,7.4a1.233,1.233,0,0,1,.036,1.7l-7.441,7.456a1.235,1.235,0,0,1-1.749-1.744Z" transform="translate(-11.246 -6.196)" />
-                                                    </svg></span></button>
-                            </div>
                             <div class="text-center pt-5">
                                 <p class="tabletabLightSKY text-white font-weight-bold">ongoing</p>
                             </div>
@@ -200,8 +182,6 @@
             </div>
         </div>
     </div>
-
-    @include('admin_panel.includes.modal.assign_orders')
 @endsection
 
 @push('scripts')

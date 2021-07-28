@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="mt-4">
-            <form action="{{ route('offers.coupon.store') }}" method="POST">
+            <form action="{{ route('super_admin.offer.coupon.store') }}" method="POST">
                 @csrf @method('POST')
                 <div class="row m-0  py-3 bg-white rounded">
                     @livewire('admin.offers.coupon.form.apply-coupon-to-dropdown')

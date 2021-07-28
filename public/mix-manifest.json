@@ -32,5 +32,7 @@
     "/_assets/_guest/img/Icon zocial-facebook.svg": "/_assets/_guest/img/Icon zocial-facebook.svg",
     "/_assets/_guest/img/Payment_Methods.svg": "/_assets/_guest/img/Payment_Methods.svg",
     "/_assets/_guest/img/sjkq9o.jpg": "/_assets/_guest/img/sjkq9o.jpg",
-    "/_assets/_guest/video/Sticker.mp4": "/_assets/_guest/video/Sticker.mp4"
+    "/_assets/_guest/video/Sticker.mp4": "/_assets/_guest/video/Sticker.mp4",
+    "/_assets/plugins/dropzone/css/dropzone.css": "/_assets/plugins/dropzone/css/dropzone.css",
+    "/_assets/plugins/dropzone/js/dropzone.js": "/_assets/plugins/dropzone/js/dropzone.js"
 }

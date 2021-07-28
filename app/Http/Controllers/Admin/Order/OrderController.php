@@ -57,9 +57,7 @@
                 ->select('id', 'service_id', 'order_number', 'requirements', 'applied_coupon', 'user_id')
                 ->findOrFail($id);
 
-            $designwalas = User::with('assignOrders')->role('designwala')->get();
-
-            return \view('admin_panel.pages.orders.order.show', compact('order', 'designwalas'));
+            return \view('admin_panel.pages.orders.order.show', compact('order'));
         }
 
         /**

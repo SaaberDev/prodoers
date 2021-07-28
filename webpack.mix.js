@@ -118,7 +118,21 @@ mix.styles([
 
     ], 'public/_assets/_guest/js/guest.js')
     .copyDirectory('resources/_assets/_guest/img', 'public/_assets/_guest/img')
-    .copyDirectory('resources/_assets/_guest/video', 'public/_assets/_guest/video');
+    .copyDirectory('resources/_assets/_guest/video', 'public/_assets/_guest/video')
+
+    /*
+    |--------------------------------------------------------------------------
+    | Plugins
+    |--------------------------------------------------------------------------
+    */
+    // Dropzone
+    .styles([
+        'resources/_assets/plugins/dropzone/css/dropzone.css'
+    ], 'public/_assets/plugins/dropzone/css/dropzone.css')
+    .scripts([
+        'resources/_assets/plugins/dropzone/js/dropzone.js'
+    ], 'public/_assets/plugins/dropzone/js/dropzone.js')
+;
 
 
 /*****

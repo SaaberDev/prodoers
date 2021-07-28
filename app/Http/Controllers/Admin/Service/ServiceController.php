@@ -10,10 +10,12 @@ use App\Models\ServiceFaq;
 use App\Models\ServiceFeature;
 use App\Models\ServiceImage;
 use App\Models\Tag;
+use App\Services\Dropzone\DropzoneAjax;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -44,6 +46,24 @@ class ServiceController extends Controller
     }
 
     /**
+     * @param DropzoneAjax $dropzoneAjax
+     * @return JsonResponse
+     */
+    public function storeMedia(DropzoneAjax $dropzoneAjax): JsonResponse
+    {
+        return $dropzoneAjax->storeMedia();
+    }
+
+    /**
+     * @param DropzoneAjax $dropzoneAjax
+     * @return JsonResponse
+     */
+    public function destroyMedia(DropzoneAjax $dropzoneAjax): JsonResponse
+    {
+        return $dropzoneAjax->deleteMedia('service');
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param ServiceRequest $request
@@ -51,10 +71,6 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-//        $notify = [
-//            'alert-type' => 'success',
-//            'message' => 'New Service Added Successfully !',
-//        ];
         DB::transaction(function () use ($request){
             $slug = SlugService::createSlug(Service::class, 'slug', $request->input('service_title'));
             $services = Service::firstOrCreate([
@@ -104,7 +120,6 @@ class ServiceController extends Controller
                 $faqs[] = $data;
             }
             foreach ($faqs as $faq){
-//                dd($faq);
                 ServiceFaq::firstOrCreate([
                     'service_id' => $services->id,
                     'question' => $faq['question'],
@@ -148,10 +163,6 @@ class ServiceController extends Controller
 
     public function destroyServiceImage($id)
     {
-//        $notify = [
-//            'alert-type' => 'success_toast',
-//            'message' => 'Banner Image Deleted !',
-//        ];
         $service_image = ServiceImage::findOrFail($id);
         DB::transaction(function () use ($service_image){
             deleteFileBefore(config('designwala_paths.images.services.service_image'), $service_image->filename);
@@ -163,10 +174,6 @@ class ServiceController extends Controller
 
     public function destroyServiceFeature($id)
     {
-//        $notify = [
-//            'alert-type' => 'success_toast',
-//            'message' => 'Feature Deleted !',
-//        ];
         $service_feature = ServiceFeature::findOrFail($id);
         DB::transaction(function () use ($service_feature){
             $service_feature->delete();
@@ -177,10 +184,6 @@ class ServiceController extends Controller
 
     public function destroyServiceFaq($id)
     {
-//        $notify = [
-//            'alert-type' => 'success_toast',
-//            'message' => 'FAQ Deleted !',
-//        ];
         $service_faqs = ServiceFaq::findOrFail($id);
         DB::transaction(function () use ($service_faqs){
             $service_faqs->delete();
@@ -199,10 +202,6 @@ class ServiceController extends Controller
      */
     public function update(ServiceRequest $request, $id)
     {
-//        $notify = [
-//            'alert-type' => 'success',
-//            'message' => 'Service Updated Successfully!',
-//        ];
         $services = Service::findOrFail($id);
         DB::transaction(function () use ($request, $services){
             $slug = SlugService::createSlug(Service::class, 'slug', $request->input('service_title'));
@@ -260,7 +259,7 @@ class ServiceController extends Controller
             }
         });
 
-        return redirect()->route('services.service.index');
+        return redirect()->route('super_admin.service.self.index');
     }
 
     /**

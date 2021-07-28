@@ -36,14 +36,12 @@ class TagController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param TagRequest $request
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Throwable
      */
     public function store(TagRequest $request)
     {
-//        $notify = [
-//
-//        ];
         \DB::transaction(function () use ($request){
             $tagInputs = $request->input('tags');
             $decode = json_decode($tagInputs);
@@ -55,17 +53,6 @@ class TagController extends Controller
             });
         });
         return redirect()->back();
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -90,18 +77,13 @@ class TagController extends Controller
     public function update(TagRequest $request, $id)
     {
         $tags = Tag::findOrFail($id);
-//        $notify = [
-//
-//        ];
         $input = $request->input('edit_tags');
-//        dd($input);
         \DB::transaction(function () use ($request, $tags, $input){
             $tags->update([
                 'title' => $input,
             ]);
-
         });
-        return redirect()->route('services.tag.index');
+        return redirect()->route('super_admin.service.tag.index');
     }
 
     /**
@@ -112,10 +94,6 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-//        $notify = [
-//            'alert-type' => 'success_toast',
-//            'message' => 'ServiceTag Deleted !',
-//        ];
         Tag::findOrFail($id)->delete();
         return redirect()->back();
     }

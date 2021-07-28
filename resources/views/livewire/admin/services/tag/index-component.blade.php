@@ -47,7 +47,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Title</h5>
 {{--                            <hr>--}}
-                            <form action="{{ route('services.tag.store') }}" method="POST">
+                            <form action="{{ route('super_admin.service.tag.store') }}" method="POST">
                                 @csrf @method('POST')
                                 <div class="form-group">
                                     <input type="text" name="tags" value="{{ old('tags') }}" class="tags {{ $errors->has('tags') ? 'is-invalid border-danger' : '' }}">
@@ -86,7 +86,7 @@
 
                             <td>
                                 <div class="">
-                                    <a href="{{ route('services.tag.edit', $tag->id) }}" class="btn p-0 m-0" data-toggle="tooltip" title=""
+                                    <a href="{{ route('super_admin.service.tag.edit', $tag->id) }}" class="btn p-0 m-0" data-toggle="tooltip" title=""
                                        data-original-title="view or edit">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="14.322" height="14.322"
                                              viewBox="0 0 14.322 14.322">
@@ -104,7 +104,7 @@
                                             </g>
                                         </svg>
                                     </a>
-                                    <a data-action="{{ route('services.tag.destroy', $tag->id) }}" class="sweet_delete btn m-0 p-0">
+                                    <a data-action="{{ route('super_admin.service.tag.destroy', $tag->id) }}" class="sweet_delete btn m-0 p-0">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="11.91" height="16.027"
                                              viewBox="0 0 11.91 16.027">
                                             <path

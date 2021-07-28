@@ -86,7 +86,7 @@
                                 <td>{{ formatDMY($service->created_at) }}</td>
                                 <td>
                                     <div class="">
-                                        <a href="{{ route('services.service.edit', $service->id) }}" class="btn p-0 m-0"
+                                        <a href="{{ route('super_admin.service.self.edit', $service->id) }}" class="btn p-0 m-0"
                                                      data-toggle="tooltip" title="" data-original-title="view or edit">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="14.322" height="14.322"
                                                  viewBox="0 0 14.322 14.322">
@@ -104,7 +104,7 @@
                                                 </g>
                                             </svg>
                                         </a>
-                                        <a data-action="{{ route('services.service.destroy', $service->id) }}" class="sweet_delete btn m-0 p-0">
+                                        <a data-action="{{ route('super_admin.service.self.destroy', $service->id) }}" class="sweet_delete btn m-0 p-0">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="11.91" height="16.027"
                                                  viewBox="0 0 11.91 16.027">
                                                 <path
