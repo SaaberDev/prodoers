@@ -87,25 +87,22 @@ class ServiceController extends Controller
                 'slug' => $slug,
                 'service_desc' => $request->input('service_description'),
             ]);
-            $services->addMedia(storage_path('tmp/uploads/' . $request->input('single_media')))->toMediaCollection('service_thumb', 'public');
+
+            // Service Image
             foreach ($request->input('multiple_media', []) as $file) {
                 $services->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection('service', 'public');
             }
+            // Service Thumbnail Image
+            $services->addMedia(storage_path('tmp/uploads/' . $request->input('single_media')))->toMediaCollection('service_thumb', 'public');
 
+            // Service Tags
             $service_tagInputs = $request->input('service_tags');
             $decode = json_decode($service_tagInputs);
             collect($decode)->each(function ($tag) use ($services){
                 $services->tags()->attach($tag->value);
             });
 
-//            $images = collect(MultiImageUploadHandler($request, $slug,'service_images', 'service-image', config('designwala_paths.images.services.service_image')));
-//            $images->each(function ($image) use ($services){
-//                ServiceImage::firstOrCreate([
-//                    'service_id' => $services->id,
-//                    'filename' => $image
-//                ]);
-//            });
-
+            // Service Features
             $inputs = collect($request->input('features'));
             $inputs->each(function ($input) use ($services){
                 ServiceFeature::firstOrCreate([
@@ -114,7 +111,7 @@ class ServiceController extends Controller
                 ]);
             });
 
-
+            // Service Faqs
             $faqs = [];
             $question = $request->input('question');
             $answer = $request->input('answer');
@@ -157,33 +154,13 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
-        $services = Service::findOrFail($id);
-//        dd($service->serviceFaqs);
-//        dd($service->serviceFeatures);
-//        foreach ($service->serviceFaqs as $key => $serviceFaq) {
-//            print_r('Key:' . ($key + 1) . '<br>' . 'Question:' . $serviceFaq->question . '<br>' . 'Answer:' . $serviceFaq->answer . '<br> <br>');
-//        }
-//        dd();
+        $services = Service::findOrFail($id); // TODO -- $service->serviceFaqs does not work in blade but $services->serviceFaqs works
         $service_categories = ServiceCategory::getTitle();
         $service_tags = Tag::getTitle();
-
-//        $service_image = \Storage::disk('local')->url(config('designwala_paths.images.services.service_image'));
-//        $thumbnail = \Storage::disk('local')->url(config('designwala_paths.images.services.thumbnail'));
 
         return view('admin_panel.pages.services.service.edit', compact('services', 'id', 'service_categories', 'service_tags'));
     }
 
-
-    public function destroyServiceImage($id)
-    {
-        $service_image = ServiceImage::findOrFail($id);
-        DB::transaction(function () use ($service_image){
-            deleteFileBefore(config('designwala_paths.images.services.service_image'), $service_image->filename);
-            $service_image->delete();
-        });
-
-        return redirect()->back();
-    }
 
     public function destroyServiceFeature($id)
     {
@@ -229,6 +206,24 @@ class ServiceController extends Controller
                 'thumbnail' => SingleImageUpdateHandler($request, $slug, $services->thumbnail, 'service_thumbnail', 'thumbnail',config('designwala_paths.images.services.thumbnail')),
                 'service_desc' => $request->input('service_description'),
             ]);
+
+            // TODO --- need to work in update
+            if (count($services->getMedia('document')) > 0) {
+                foreach ($services->getMedia('document') as $media) {
+                    if (!in_array($media->file_name, $request->input('document', []))) {
+                        $media->delete();
+                    }
+                }
+            }
+
+            $media = $services->getMedia('document')->pluck('file_name')->toArray();
+
+            foreach ($request->input('document', []) as $file) {
+                if (count($media) === 0 || !in_array($file, $media)) {
+                    $services->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection('document', 'public');
+                }
+            }
+            // TODO ---
 
             $service_tagInputs = collect(explode(',', $request->input('service_tags')));
             $services->tags()->sync($service_tagInputs);
