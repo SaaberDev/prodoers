@@ -356,6 +356,8 @@ namespace App\Models{
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Coupon[] $coupons
  * @property-read int|null $coupons_count
  * @property-read mixed $url
+ * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection|\Spatie\MediaLibrary\MediaCollections\Models\Media[] $media
+ * @property-read int|null $media_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Order[] $orders
  * @property-read int|null $orders_count
  * @property-read \App\Models\ServiceCategory $serviceCategories
@@ -392,7 +394,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Service whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Service withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
  */
-	class IdeHelperService extends \Eloquent {}
+	class IdeHelperService extends \Eloquent implements \Spatie\MediaLibrary\HasMedia {}
 }
 
 namespace App\Models{
@@ -535,7 +537,6 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Service $services
- * @method static \Database\Factories\ServiceImageFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceImage newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceImage newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceImage query()

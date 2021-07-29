@@ -26,7 +26,6 @@ class CreateServicesTable extends Migration
             $table->tinyInteger('published_status')->nullable()->default(0);
             $table->string('slug');
             $table->decimal('price');
-            $table->string('thumbnail')->nullable();
             $table->longText('service_desc');
             $table->timestamps();
         });

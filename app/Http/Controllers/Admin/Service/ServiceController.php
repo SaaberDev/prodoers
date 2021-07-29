@@ -56,11 +56,15 @@ class ServiceController extends Controller
 
     /**
      * @param DropzoneAjax $dropzoneAjax
+     * @param Request $request
      * @return JsonResponse
      */
-    public function destroyMedia(DropzoneAjax $dropzoneAjax): JsonResponse
+    public function destroyMedia(DropzoneAjax $dropzoneAjax, Request $request): JsonResponse
     {
-        return $dropzoneAjax->deleteMedia('service');
+        if ($request->input('single_media')) {
+            $dropzoneAjax->deleteMedia('single_media');
+        }
+        return $dropzoneAjax->deleteMedia('multiple_media');
     }
 
     /**
@@ -81,9 +85,12 @@ class ServiceController extends Controller
                 'service_category_id' => $request->input('allCategories'),
                 'price' => $request->input('service_price'),
                 'slug' => $slug,
-                'thumbnail' => SingleImageUploadHandler($request, $slug,'service_thumbnail', 'thumbnail', config('designwala_paths.images.services.thumbnail')),
                 'service_desc' => $request->input('service_description'),
             ]);
+            $services->addMedia(storage_path('tmp/uploads/' . $request->input('single_media')))->toMediaCollection('service_thumb', 'public');
+            foreach ($request->input('multiple_media', []) as $file) {
+                $services->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection('service', 'public');
+            }
 
             $service_tagInputs = $request->input('service_tags');
             $decode = json_decode($service_tagInputs);
@@ -91,13 +98,13 @@ class ServiceController extends Controller
                 $services->tags()->attach($tag->value);
             });
 
-            $images = collect(MultiImageUploadHandler($request, $slug,'service_images', 'service-image', config('designwala_paths.images.services.service_image')));
-            $images->each(function ($image) use ($services){
-                ServiceImage::firstOrCreate([
-                    'service_id' => $services->id,
-                    'filename' => $image
-                ]);
-            });
+//            $images = collect(MultiImageUploadHandler($request, $slug,'service_images', 'service-image', config('designwala_paths.images.services.service_image')));
+//            $images->each(function ($image) use ($services){
+//                ServiceImage::firstOrCreate([
+//                    'service_id' => $services->id,
+//                    'filename' => $image
+//                ]);
+//            });
 
             $inputs = collect($request->input('features'));
             $inputs->each(function ($input) use ($services){
@@ -151,13 +158,19 @@ class ServiceController extends Controller
     public function edit($id)
     {
         $services = Service::findOrFail($id);
+//        dd($service->serviceFaqs);
+//        dd($service->serviceFeatures);
+//        foreach ($service->serviceFaqs as $key => $serviceFaq) {
+//            print_r('Key:' . ($key + 1) . '<br>' . 'Question:' . $serviceFaq->question . '<br>' . 'Answer:' . $serviceFaq->answer . '<br> <br>');
+//        }
+//        dd();
         $service_categories = ServiceCategory::getTitle();
         $service_tags = Tag::getTitle();
 
-        $service_image = \Storage::disk('local')->url(config('designwala_paths.images.services.service_image'));
-        $thumbnail = \Storage::disk('local')->url(config('designwala_paths.images.services.thumbnail'));
+//        $service_image = \Storage::disk('local')->url(config('designwala_paths.images.services.service_image'));
+//        $thumbnail = \Storage::disk('local')->url(config('designwala_paths.images.services.thumbnail'));
 
-        return view('admin_panel.pages.services.service.edit', compact('services', 'id', 'service_categories', 'service_tags', 'service_image', 'thumbnail'));
+        return view('admin_panel.pages.services.service.edit', compact('services', 'id', 'service_categories', 'service_tags'));
     }
 
 

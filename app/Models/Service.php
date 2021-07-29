@@ -7,13 +7,15 @@ use App\Traits\Shareable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
 /**
  * @mixin IdeHelperService
  */
-class Service extends Model
+class Service extends Model implements HasMedia
 {
-    use HasFactory, Sluggable, Shareable, Searchable;
+    use HasFactory, Sluggable, Shareable, Searchable, InteractsWithMedia;
 
     protected $guarded = [];
 

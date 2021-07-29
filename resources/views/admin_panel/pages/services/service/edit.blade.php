@@ -3,6 +3,71 @@
 
 @push('styles')
     {{-- Internal Styles --}}
+    <link rel="stylesheet" href="{{ mix('_assets/plugins/dropzone/css/dropzone.css') }}">
+    <style>
+        .dropzone {
+            min-height: 140px;
+            background-color: #e8efe87a;
+            padding: 0;
+            border: 1px dashed #038D08!important;
+        }
+
+        .dropzone .dz-message {
+            text-align: center;
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .dropzone .dz-message .dz-button {
+            background: none;
+            color: inherit;
+            border: none;
+            padding: 0;
+            font: inherit;
+            cursor: pointer;
+            outline: inherit;
+            font-weight: 300;
+        }
+
+        .dropzone .dz-preview .dz-error-message {
+            pointer-events: none;
+            z-index: 1000;
+            position: absolute;
+            display: block;
+            display: none;
+            opacity: 0;
+            -webkit-transition: opacity 0.3s ease;
+            -moz-transition: opacity 0.3s ease;
+            -ms-transition: opacity 0.3s ease;
+            -o-transition: opacity 0.3s ease;
+            transition: opacity 0.3s ease;
+            border-radius: 8px;
+            font-size: 13px;
+            top: 150px;
+            left: -10px;
+            width: 140px;
+            background: #be2626;
+            background: linear-gradient(to bottom, #be2626, #a92222);
+            padding: 0.5em 1.2em;
+            color: white;
+        }
+
+        .dropzone.dz-clickable .dz-message, .dropzone.dz-clickable .dz-message * {
+            cursor: pointer;
+            font-weight: 300;
+            line-height: 40px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .dz-thumb {
+            width: 100%;
+            height: 100%;
+            object-fit: contain!important;
+        }
+        .dropzone .dz-preview.dz-image-preview {
+            background: transparent;
+        }
+    </style>
 @endpush
 
 @section('content')
@@ -148,56 +213,20 @@
                             <label for="">
                                 <h5>Service Image</h5>
                             </label>
-                            <div class="input-group">
-                                <input type='text'
-                                       name="service_images[]"
-                                       class="form-control {{ $errors->has('service_images.*') ? ' is-invalid' : '' }}"
-                                       onchange="preview(this);"
-                                       placeholder="No File Chosen"
-                                       readonly
-                                />
 
-                                <div class="input-group-btn">
-                                    <span class="fileUpload btn btnOne">
-                                        <span class="upl" id="upload">Choose</span>
-                                        <input type='file'
-                                               name="service_images[]"
-                                               class="upload up"
-                                               multiple
-                                        />
-                                    </span>
-                                </div>
-                                @if($errors->has('service_images.*'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('service_images.*') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="mt-4 border">
-                            <ul class="row list-unstyled previewimg">
-                                @foreach ($services->serviceImages as $service)
-                                    <li class="col-md-4 py-4 text-center position-relative m-auto">
-                                        <div class="previewimg">
-                                            <img src="{{ asset($service_image . $service->filename) }}" alt="{{ $services->title }}" class="img-fluid">
-                                            <a class="sweet_delete close closeImgdiv" data-action="{{ route('super_admin.service.self.destroyServiceImage', $service->id) }}" style="cursor: pointer; position: absolute;top: 10px; right: 27px;">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
-                                                    <g transform="translate(-642 -792)">
-                                                        <circle cx="9" cy="9" r="9" transform="translate(642 792)" fill="#ff6767"></circle>
-                                                        <g transform="translate(647.17 797.205)">
-                                                            <g transform="translate(0 0)">
-                                                                <line x2="7.442" y2="7.442" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2"></line>
-                                                                <line x1="7.442" y2="7.442" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="2"></line>
-                                                            </g>
-                                                        </g>
-                                                    </g>
-                                                </svg>
-                                            </a>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="needsclick dropzone" id="multiple-media-dropzone">
+                                            <div class="dz-message" data-dz-message>
+                                                <span>Drop files here or click to upload.</span> <br>
+                                                <span style="color: #dc3545;font-size: 13px;">Maximum allowed file size 2MB. Allowed file types are jpeg, png.</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                </li>
-                                @endforeach
-                            </ul>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
 
@@ -208,39 +237,20 @@
                             <label for="">
                                 <h5>Service Thumbnail</h5>
                             </label>
-                            <div class="input-group">
-                                <input type='text'
-                                       name="service_thumbnail"
-                                       class="form-control {{ $errors->has('service_thumbnail') ? ' is-invalid' : '' }}"
-                                       onchange="preview(this);"
-                                       placeholder="No File Chosen"
-                                       readonly
-                                />
 
-                                <div class="input-group-btn">
-                        <span class="fileUpload btn btnOne">
-                            <span class="upl" id="upload">Choose</span>
-                            <input type='file'
-                                   name="service_thumbnail"
-                                   class="upload up"
-                            />
-                        </span>
-                                </div>
-                                @if($errors->has('service_thumbnail'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('service_thumbnail') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="mt-4 border">
-                            <ul class="row list-unstyled previewimg">
-                                <li class="col-md-4 py-4 text-center position-relative m-auto">
-                                    <div class="previewimg">
-                                        <img id="previewImg" class="img-fluid" src="{{ asset($thumbnail . $services->thumbnail) }}" alt="{{ $services->title }}">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="needsclick dropzone" id="single-media-dropzone">
+                                            <div class="dz-message" data-dz-message>
+                                                <span>Drop files here or click to upload.</span> <br>
+                                                <span style="color: #dc3545;font-size: 13px;">Maximum allowed file size 2MB. Allowed file types are jpeg, png.</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                </li>
-                            </ul>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -367,6 +377,7 @@
 
 @push('scripts')
     {{-- Internal Scripts --}}
+    <script src="{{ mix('_assets/plugins/dropzone/js/dropzone.js') }}"></script>
     {{-- Single Dynamic Input for Features Start --}}
     <script>
         $(document).ready(function() {
@@ -685,6 +696,144 @@
                     }, 0) + " Members"
                 }]
             )
+        }
+
+        // Dropzone Service Image
+        var multipleUploadMap = {}
+        Dropzone.options.multipleMediaDropzone = {
+            url: '{{ route('super_admin.service.self.storeMedia') }}',
+            maxFilesize: 2, // MB
+            acceptedFiles: 'image/jpeg, image/png',
+            addRemoveLinks: true,
+            thumbnailWidth: 120,
+            thumbnailHeight: 120,
+            thumbnailMethod: 'contain',
+            init: function () {
+                let myDropzone = this;
+                myDropzone.on("addedfile", function(file) {
+                    $('.dz-image').last().find('img').addClass('dz-thumb')
+                    if (!file.type.match(/image.*/)) {
+                        this.emit("thumbnail", file, "/_assets/_default/file_icon.png");
+                    }
+                });
+                @if(isset($services) && $services->getMedia('service'))
+                var files = {!! json_encode($services->getMedia('service')) !!}
+                for (var i in files) {
+                    const file = files[i]
+                    console.log(file)
+                    this.options.addedfile.call(this, file)
+                    if (file.extension === 'pdf') {
+                        this.options.thumbnail.call(this, file, "{{ asset('_assets/_default/file_icon.png') }}")
+                    } else {
+                        this.options.thumbnail.call(this, file, file.original_url)
+                    }
+
+                    file.previewElement.classList.add('dz-complete')
+                    $('form').append('<input type="hidden" name="multiple_media[]" value="' + file.file_name + '">')
+                    $('.dz-image').last().find('img').addClass('dz-thumb')
+                }
+                @endif
+            },
+            headers: {
+                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+            },
+            success: function (file, response) {
+                $('form').append('<input type="hidden" name="multiple_media[]" value="' + response.name + '">')
+                multipleUploadMap[file.name] = response.name
+            },
+            removedfile: function (file) {
+                file.previewElement.remove()
+                var name = ''
+                if (typeof file.file_name !== 'undefined') {
+                    name = file.file_name
+                } else {
+                    name = multipleUploadMap[file.name]
+                }
+                $('form').find('input[name="multiple_media[]"][value="' + name + '"]').remove()
+
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    type: 'DELETE',
+                    url: '{{ route('super_admin.service.self.deleteMedia') }}',
+                    data: {
+                        multiple_media: name,
+                    },
+                });
+            }
+        }
+
+        // Dropzone Service Thumb
+        var singleUploadMap = {}
+        Dropzone.options.singleMediaDropzone = {
+            url: '{{ route('super_admin.service.self.storeMedia') }}',
+            maxFilesize: 2, // MB
+            maxFiles: 1,
+            uploadMultiple: false,
+            acceptedFiles: 'image/jpeg, image/png',
+            addRemoveLinks: true,
+            thumbnailWidth: 120,
+            thumbnailHeight: 120,
+            thumbnailMethod: 'contain',
+            init: function () {
+                let myDropzone = this;
+                myDropzone.on("addedfile", function(file) {
+                    $('.dz-image').last().find('img').addClass('dz-thumb')
+                    if (!file.type.match(/image.*/)) {
+                        this.emit("thumbnail", file, "/_assets/_default/file_icon.png");
+                    }
+                });
+                @if(isset($services) && $services->getMedia('service_thumb'))
+                var files = {!! json_encode($services->getMedia('service_thumb')) !!}
+                for (var i in files) {
+                    const file = files[i]
+                    console.log(file)
+                    this.options.addedfile.call(this, file)
+                    if (file.extension === 'pdf') {
+                        this.options.thumbnail.call(this, file, "{{ asset('_assets/_default/file_icon.png') }}")
+                    } else {
+                        this.options.thumbnail.call(this, file, file.original_url)
+                    }
+
+                    file.previewElement.classList.add('dz-complete')
+                    $('form').append('<input type="hidden" name="single_media" value="' + file.file_name + '">')
+                    $('.dz-image').last().find('img').addClass('dz-thumb')
+                }
+                @endif
+            },
+            headers: {
+                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+            },
+            success: function (file, response) {
+                $('form').append('<input type="hidden" name="single_media" value="' + response.name + '">')
+                singleUploadMap[file.name] = response.name
+            },
+            removedfile: function (file) {
+                file.previewElement.remove()
+                var name = ''
+                if (typeof file.file_name !== 'undefined') {
+                    name = file.file_name
+                } else {
+                    name = singleUploadMap[file.name]
+                }
+                $('form').find('input[name="single_media"][value="' + name + '"]').remove()
+
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    type: 'DELETE',
+                    url: '{{ route('super_admin.service.self.deleteMedia') }}',
+                    data: {
+                        single_media: name,
+                    },
+                });
+            }
         }
     </script>
     @include('alerts.admin_panel.delete_confirmation_modal')
