@@ -59,12 +59,13 @@ class ServiceController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
-    public function destroyMedia(DropzoneAjax $dropzoneAjax, Request $request): JsonResponse
+    public function destroyMedia(DropzoneAjax $dropzoneAjax, Request $request, $id = null): JsonResponse
     {
+        $services = Service::findOrFail($id);
         if ($request->input('single_media')) {
-            $dropzoneAjax->deleteMedia('single_media');
+            $dropzoneAjax->deleteMedia('single_media', $services, 'service_thumb');
         }
-        return $dropzoneAjax->deleteMedia('multiple_media');
+        return $dropzoneAjax->deleteMedia('multiple_media', $services, 'service');
     }
 
     /**
@@ -181,6 +182,13 @@ class ServiceController extends Controller
 
         return redirect()->back();
     }
+
+//    public function getMedia($id)
+//    {
+//        $services = Service::findOrFail($id);
+//        $media = $services->getMedia('service_thumb');
+//        return \response()->json($media);
+//    }
 
 
     /**

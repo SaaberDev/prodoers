@@ -4,6 +4,7 @@
     namespace App\Services\Dropzone;
 
 
+    use App\Models\Service;
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
 
@@ -43,12 +44,16 @@
          * @param $key
          * @return JsonResponse
          */
-        public function deleteMedia($key): JsonResponse
+        public function deleteMedia($key, $models, $mediaKey): JsonResponse
         {
             $photo = $this->request->get($key);
-
+            $medias = $models->getMedia($mediaKey);
             if (\Storage::disk('tmp')->exists('uploads/' .$photo)) {
                 \Storage::disk('tmp')->delete('uploads/' . $photo);
+            } else {
+                foreach ($medias as $index => $media) {
+                    $media[$index]->delete();
+                }
             }
 
             return response()->json();

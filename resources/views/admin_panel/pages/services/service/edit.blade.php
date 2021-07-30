@@ -91,6 +91,7 @@
         </div>
         {{-- form--}}
         <div class="mt-4 py-3 bg-white rounded">
+            <input type="hidden" name="service_id" value="{{ $services->id }}">
             {{-- New Service Form --}}
             <form action="{{ route('super_admin.service.self.update', $id) }}" method="POST" enctype="multipart/form-data" id="form">
                 @csrf @method('PATCH')
@@ -720,7 +721,7 @@
                 var files = {!! json_encode($services->getMedia('service')) !!}
                 for (var i in files) {
                     const file = files[i]
-                    console.log(file)
+                    // console.log(file)
                     this.options.addedfile.call(this, file)
                     if (file.extension === 'pdf') {
                         this.options.thumbnail.call(this, file, "{{ asset('_assets/_default/file_icon.png') }}")
@@ -758,7 +759,7 @@
                 });
                 $.ajax({
                     type: 'DELETE',
-                    url: '{{ route('super_admin.service.self.deleteMedia') }}',
+                    url: '{{ route('super_admin.service.self.deleteMedia', $services->id) }}',
                     data: {
                         multiple_media: name,
                     },
@@ -768,10 +769,16 @@
 
         // Dropzone Service Thumb
         var singleUploadMap = {}
+        var files = {!! json_encode($services->getMedia('service_thumb')) !!};
+            var max_file = 1;
+        if(Object.keys(files).length === 1){
+            max_file = 0;
+        }
+        // alert(max_file)
         Dropzone.options.singleMediaDropzone = {
             url: '{{ route('super_admin.service.self.storeMedia') }}',
             maxFilesize: 2, // MB
-            maxFiles: 1,
+            maxFiles: max_file,
             uploadMultiple: false,
             acceptedFiles: 'image/jpeg, image/png',
             addRemoveLinks: true,
@@ -813,6 +820,7 @@
             },
             removedfile: function (file) {
                 file.previewElement.remove()
+                console.log(file)
                 var name = ''
                 if (typeof file.file_name !== 'undefined') {
                     name = file.file_name
@@ -826,12 +834,15 @@
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
                 });
-                $.ajax({
+                var request = $.ajax({
                     type: 'DELETE',
-                    url: '{{ route('super_admin.service.self.deleteMedia') }}',
+                    url: '{{ route('super_admin.service.self.deleteMedia', $services->id) }}',
                     data: {
                         single_media: name,
                     },
+                });
+                request.done(function(msg) {
+                    console.log( msg );
                 });
             }
         }
