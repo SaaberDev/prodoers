@@ -705,7 +705,7 @@
             url: '{{ route('super_admin.service.self.storeMedia') }}',
             maxFilesize: 2, // MB
             acceptedFiles: 'image/jpeg, image/png',
-            addRemoveLinks: true,
+            // addRemoveLinks: true,
             thumbnailWidth: 120,
             thumbnailHeight: 120,
             thumbnailMethod: 'contain',
@@ -717,11 +717,13 @@
                         this.emit("thumbnail", file, "/_assets/_default/file_icon.png");
                     }
                 });
+
+
                 @if(isset($services) && $services->getMedia('service'))
                 var files = {!! json_encode($services->getMedia('service')) !!}
                 for (var i in files) {
                     const file = files[i]
-                    // console.log(file)
+                    console.log(file)
                     this.options.addedfile.call(this, file)
                     if (file.extension === 'pdf') {
                         this.options.thumbnail.call(this, file, "{{ asset('_assets/_default/file_icon.png') }}")
@@ -731,6 +733,10 @@
 
                     file.previewElement.classList.add('dz-complete')
                     $('form').append('<input type="hidden" name="multiple_media[]" value="' + file.file_name + '">')
+
+                    var removeButton = Dropzone.createElement('<a class="dz-remove" href="'+file.uuid+'" data-dz-remove="">Remove file</a>');
+                    // Add the button to the file preview element.
+                    file.previewElement.appendChild(removeButton);
                     $('.dz-image').last().find('img').addClass('dz-thumb')
                 }
                 @endif
