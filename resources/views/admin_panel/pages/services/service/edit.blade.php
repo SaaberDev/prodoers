@@ -705,7 +705,7 @@
             url: '{{ route('super_admin.service.self.storeMedia') }}',
             maxFilesize: 2, // MB
             acceptedFiles: 'image/jpeg, image/png',
-            // addRemoveLinks: true,
+            addRemoveLinks: true,
             thumbnailWidth: 120,
             thumbnailHeight: 120,
             thumbnailMethod: 'contain',
@@ -734,9 +734,10 @@
                     file.previewElement.classList.add('dz-complete')
                     $('form').append('<input type="hidden" name="multiple_media[]" value="' + file.file_name + '">')
 
-                    var removeButton = Dropzone.createElement('<a class="dz-remove" href="'+file.uuid+'" data-dz-remove="">Remove file</a>');
+                    // remove button
+                    // var removeButton = Dropzone.createElement('<a class="dz-remove" href="'+file.uuid+'" data-dz-remove="">Remove file</a>');
                     // Add the button to the file preview element.
-                    file.previewElement.appendChild(removeButton);
+                    // file.previewElement.appendChild(removeButton);
                     $('.dz-image').last().find('img').addClass('dz-thumb')
                 }
                 @endif
@@ -765,9 +766,10 @@
                 });
                 $.ajax({
                     type: 'DELETE',
-                    url: '{{ route('super_admin.service.self.deleteMedia', $services->id) }}',
+                    url: '{{ route('super_admin.service.self.deleteMedia') }}',
                     data: {
                         multiple_media: name,
+                        uuid: uuid
                     },
                 });
             }

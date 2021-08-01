@@ -45,17 +45,17 @@
          * @param $key
          * @return JsonResponse
          */
-        public function deleteMedia($key, $models, $mediaKey): JsonResponse
+        public function deleteMedia($key, $mediaUuid = null): JsonResponse
         {
             $photo = $this->request->get($key);
-            $medias = $models->getMedia($mediaKey);
+            $media = Media::findByUuid($this->request->get('uuid'));
+
             if (\Storage::disk('tmp')->exists('uploads/' .$photo)) {
                 \Storage::disk('tmp')->delete('uploads/' . $photo);
-            } else {
-                $medias = Media::findByUuid('445b0255-2b54-407d-8caa-055469d590b7');
-                $medias->delete();
-            }
+            } /*else {
+                $media->delete();
+            }*/
 
-            return response()->json();
+            return response()->json($media);
         }
     }
