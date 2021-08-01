@@ -752,12 +752,17 @@
             removedfile: function (file) {
                 file.previewElement.remove()
                 var name = ''
+                var uuid = ''
                 if (typeof file.file_name !== 'undefined') {
                     name = file.file_name
+                    uuid = file.uuid
                 } else {
                     name = multipleUploadMap[file.name]
+                    uuid = multipleUploadMap[file.uuid]
                 }
                 $('form').find('input[name="multiple_media[]"][value="' + name + '"]').remove()
+
+                console.log('NAME:' + name + 'UUID:' + uuid)
 
                 $.ajaxSetup({
                     headers: {
