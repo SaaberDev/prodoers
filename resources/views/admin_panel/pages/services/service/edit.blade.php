@@ -713,9 +713,6 @@
                 let myDropzone = this;
                 myDropzone.on("addedfile", function(file) {
                     $('.dz-image').last().find('img').addClass('dz-thumb')
-                    // if (!file.type.match(/image.*/)) {
-                    //     this.emit("thumbnail", file, "/_assets/_default/file_icon.png");
-                    // }
                 });
 
                 @if(isset($services) && $services->getMedia('service'))
@@ -732,9 +729,6 @@
                     file.previewElement.classList.add('dz-complete')
                     $('form').append('<input type="hidden" name="multiple_media[]" value="' + file.file_name + '">')
                     $('.dz-image').last().find('img').addClass('dz-thumb')
-
-                    // let fileCountOnServer = 4; // The number of files already uploaded
-                    // myDropzone.options.maxFiles = myDropzone.options.maxFiles - fileCountOnServer;
                 }
                 @endif
             },

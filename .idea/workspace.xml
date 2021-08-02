@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f616bec-9873-4c54-8a6f-71f691274991" name="Changes" comment="[dropzone] - added dropzone in edit page and fixed existing issue">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="3f616bec-9873-4c54-8a6f-71f691274991" name="Changes" comment="[dropzone] - added dropzone in edit page">
       <change beforePath="$PROJECT_DIR$/resources/views/admin_panel/pages/services/service/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_panel/pages/services/service/edit.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -232,7 +231,7 @@
       <updated>1627827296233</updated>
       <workItem from="1627827299400" duration="6520000" />
       <workItem from="1627835944502" duration="1455000" />
-      <workItem from="1627837446406" duration="25712000" />
+      <workItem from="1627837446406" duration="26096000" />
     </task>
     <task id="LOCAL-00001" summary="[service] - working on dropzone">
       <created>1627838312357</created>
@@ -262,7 +261,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627867616922</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="[dropzone] - added dropzone in edit page">
+      <created>1627935649939</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1627935649939</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -285,6 +291,7 @@
     <MESSAGE value="[service] - working on dropzone" />
     <MESSAGE value="[service] - added remove function (fixed db issue)" />
     <MESSAGE value="[dropzone] - added dropzone in edit page and fixed existing issue" />
-    <option name="LAST_COMMIT_MESSAGE" value="[dropzone] - added dropzone in edit page and fixed existing issue" />
+    <MESSAGE value="[dropzone] - added dropzone in edit page" />
+    <option name="LAST_COMMIT_MESSAGE" value="[dropzone] - added dropzone in edit page" />
   </component>
 </project>
