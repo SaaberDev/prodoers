@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f616bec-9873-4c54-8a6f-71f691274991" name="Changes" comment="[dropzone] - added dropzone in edit page">
-      <change beforePath="$PROJECT_DIR$/resources/views/admin_panel/pages/services/service/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_panel/pages/services/service/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Service/ServiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Service/ServiceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/Dropzone/DropzoneAjax.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/Dropzone/DropzoneAjax.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -231,7 +233,7 @@
       <updated>1627827296233</updated>
       <workItem from="1627827299400" duration="6520000" />
       <workItem from="1627835944502" duration="1455000" />
-      <workItem from="1627837446406" duration="26096000" />
+      <workItem from="1627837446406" duration="26261000" />
     </task>
     <task id="LOCAL-00001" summary="[service] - working on dropzone">
       <created>1627838312357</created>
@@ -268,7 +270,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627935649939</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="[dropzone] - added dropzone in edit page">
+      <created>1627935775377</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1627935775377</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

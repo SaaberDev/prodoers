@@ -69,7 +69,12 @@
             return $dropzoneAjax->deleteMedia('multiple_media', 'uuid');
         }
 
-        public function getMedia(DropzoneAjax $dropzoneAjax, Request $request)
+        /**
+         * @param DropzoneAjax $dropzoneAjax
+         * @param Request $request
+         * @return JsonResponse|void
+         */
+        public function getMedia(DropzoneAjax $dropzoneAjax, Request $request) // TODO -- Need to work here
         {
             if ($request->get('request') === 'singleUploader') {
                 return $dropzoneAjax->getMedia(Service::class,'service_thumb', 'id');
@@ -78,10 +83,6 @@
             if ($request->get('request') === 'multipleUploader'){
                 return $dropzoneAjax->getMedia(Service::class,'service', 'id');
             }
-//            $services = Service::findOrFail($request->get('id'));
-//            $medias = $services->getMedia('service');
-//
-//            return \response()->json($medias);
         }
 
         /**

@@ -19,11 +19,12 @@
         }
 
         /**
+         * @param $model
          * @param $mediaKey
          * @param $param
          * @return JsonResponse
          */
-        public function getMedia($model, $mediaKey, $param)
+        public function getMedia($model, $mediaKey, $param): JsonResponse
         {
             $models = $model::findOrFail($this->request->get($param));
             $medias = $models->getMedia($mediaKey);
