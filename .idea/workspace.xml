@@ -4,21 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f616bec-9873-4c54-8a6f-71f691274991" name="Changes" comment="[service] - added remove function (fixed db issue)">
-      <change afterPath="$PROJECT_DIR$/resources/_assets/plugins/dropzone/dropzone.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/_assets/plugins/dropzone/js/preview-template.html" afterDir="false" />
+    <list default="true" id="3f616bec-9873-4c54-8a6f-71f691274991" name="Changes" comment="[dropzone] - added dropzone in edit page and fixed existing issue">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Service/ServiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Service/ServiceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Settings/SiteCmsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Settings/SiteCmsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/Dropzone/DropzoneAjax.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/Dropzone/DropzoneAjax.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_assets/plugins/dropzone/js/dropzone.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_assets/plugins/dropzone/js/dropzone.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_assets/plugins/dropzone/js/dropzone.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin_panel/pages/services/service/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_panel/pages/services/service/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin_panel/pages/settings/site_cms/statistics_section/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_panel/pages/settings/site_cms/statistics_section/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/tmp/uploads/6103fd474146e_458-4586484_laravel-meetup-logo-know-hd-png-download.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -244,7 +232,7 @@
       <updated>1627827296233</updated>
       <workItem from="1627827299400" duration="6520000" />
       <workItem from="1627835944502" duration="1455000" />
-      <workItem from="1627837446406" duration="19490000" />
+      <workItem from="1627837446406" duration="25712000" />
     </task>
     <task id="LOCAL-00001" summary="[service] - working on dropzone">
       <created>1627838312357</created>
@@ -267,7 +255,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627839157321</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="[dropzone] - added dropzone in edit page and fixed existing issue">
+      <created>1627867616922</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1627867616922</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -289,6 +284,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="[service] - working on dropzone" />
     <MESSAGE value="[service] - added remove function (fixed db issue)" />
-    <option name="LAST_COMMIT_MESSAGE" value="[service] - added remove function (fixed db issue)" />
+    <MESSAGE value="[dropzone] - added dropzone in edit page and fixed existing issue" />
+    <option name="LAST_COMMIT_MESSAGE" value="[dropzone] - added dropzone in edit page and fixed existing issue" />
   </component>
 </project>

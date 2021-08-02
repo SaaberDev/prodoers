@@ -812,7 +812,7 @@
         Dropzone.options.singleMediaDropzone = {
             url: '{{ route('super_admin.service.self.storeMedia') }}',
             maxFilesize: 2, // MB
-            // maxFiles: 1,
+            maxFiles: 1,
             uploadMultiple: false,
             acceptedFiles: 'image/jpeg, image/png',
             addRemoveLinks: true,
@@ -820,20 +820,13 @@
             thumbnailHeight: 120,
             thumbnailMethod: 'contain',
             init: function () {
-                let myDropzone = this;
-                myDropzone.on("addedfile", function(file) {
-                    $('.dz-image').last().find('img').addClass('dz-thumb')
-                    // if (!file.type.match(/image.*/)) {
-                    //     this.emit("thumbnail", file, "/_assets/_default/file_icon.png");
-                    // }
-                });
 
-
+                // Data fetch
                 @if(isset($services) && $services->getMedia('service_thumb'))
                 var files = {!! json_encode($services->getMedia('service_thumb')) !!}
                 for (var i in files) {
                     const file = files[i]
-                    console.log(file)
+
                     this.options.addedfile.call(this, file)
                     if (file.extension === 'pdf') {
                         this.options.thumbnail.call(this, file, "{{ asset('_assets/_default/file_icon.png') }}")
@@ -846,6 +839,42 @@
                     $('.dz-image').last().find('img').addClass('dz-thumb')
                 }
                 @endif
+
+                // Single upload validation
+                let myDropzone = this;
+                myDropzone.on("addedfile", function(file) {
+                    $('.dz-image').last().find('img').addClass('dz-thumb')
+                    var maxFiles = 1;
+                    var existing = Object.keys(files).length
+
+                    if (maxFiles === existing) {
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            // position: 'bottom-left',
+                            position: 'top-right',
+                            showConfirmButton: false,
+                            showCloseButton: true,
+                            showClass: {
+                                popup: 'swal2-show',
+                                backdrop: 'swal2-backdrop-show',
+                                icon: 'swal2-icon-show',
+                            },
+                            hideClass: {
+                                popup: 'swal2-hide',
+                                backdrop: 'swal2-backdrop-hide',
+                                icon: 'swal2-icon-hide'
+                            },
+                            customClass: 'swal-toast-height',
+                            // background: '#E9EFE8'
+                            background: 'rgb(244 255 244)'
+                        })
+                        Toast.fire({
+                            icon: 'warning',
+                            title: "Delete the first one to upload new image."
+                        })
+                        myDropzone.removeFile(file);
+                    }
+                });
             },
             headers: {
                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
