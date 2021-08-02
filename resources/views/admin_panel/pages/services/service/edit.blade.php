@@ -713,11 +713,10 @@
                 let myDropzone = this;
                 myDropzone.on("addedfile", function(file) {
                     $('.dz-image').last().find('img').addClass('dz-thumb')
-                    if (!file.type.match(/image.*/)) {
-                        this.emit("thumbnail", file, "/_assets/_default/file_icon.png");
-                    }
+                    // if (!file.type.match(/image.*/)) {
+                    //     this.emit("thumbnail", file, "/_assets/_default/file_icon.png");
+                    // }
                 });
-
 
                 @if(isset($services) && $services->getMedia('service'))
                 var files = {!! json_encode($services->getMedia('service')) !!}
@@ -730,15 +729,12 @@
                     } else {
                         this.options.thumbnail.call(this, file, file.original_url)
                     }
-
                     file.previewElement.classList.add('dz-complete')
                     $('form').append('<input type="hidden" name="multiple_media[]" value="' + file.file_name + '">')
-
-                    // remove button
-                    // var removeButton = Dropzone.createElement('<a class="dz-remove" href="'+file.uuid+'" data-dz-remove="">Remove file</a>');
-                    // Add the button to the file preview element.
-                    // file.previewElement.appendChild(removeButton);
                     $('.dz-image').last().find('img').addClass('dz-thumb')
+
+                    // let fileCountOnServer = 4; // The number of files already uploaded
+                    // myDropzone.options.maxFiles = myDropzone.options.maxFiles - fileCountOnServer;
                 }
                 @endif
             },
@@ -750,48 +746,73 @@
                 multipleUploadMap[file.name] = response.name
             },
             removedfile: function (file) {
-                file.previewElement.remove()
+
                 var name = ''
                 var uuid = ''
+
                 if (typeof file.file_name !== 'undefined') {
+
                     name = file.file_name
                     uuid = file.uuid
+
+                    Swal.fire({
+                        title: "Are you sure ?",
+                        text: "You won't be able to revert this!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: 'rgb(0 0 0)',
+                        cancelButtonColor: 'rgb(204 75 75)',
+                        background: 'rgb(235 246 236)',
+                        confirmButtonText: 'Yes, delete it!',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $.ajaxSetup({
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                }
+                            });
+                            $.ajax({
+                                type: 'DELETE',
+                                url: '{{ route('super_admin.service.self.deleteMedia') }}',
+                                data: {
+                                    multiple_media: name,
+                                    uuid: uuid
+                                },
+                                success: function (response) {
+                                    file.previewElement.remove()
+                                    $('form').find('input[name="multiple_media[]"][value="' + name + '"]').remove()
+                                }
+                            });
+                        }
+                        return false;
+                    })
                 } else {
                     name = multipleUploadMap[file.name]
-                    uuid = multipleUploadMap[file.uuid]
+
+                    file.previewElement.remove()
+                    $('form').find('input[name="multiple_media[]"][value="' + name + '"]').remove()
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+                    $.ajax({
+                        type: 'DELETE',
+                        url: '{{ route('super_admin.service.self.deleteMedia') }}',
+                        data: {
+                            multiple_media: name,
+                        },
+                    });
                 }
-                $('form').find('input[name="multiple_media[]"][value="' + name + '"]').remove()
-
-                console.log('NAME:' + name + 'UUID:' + uuid)
-
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-                $.ajax({
-                    type: 'DELETE',
-                    url: '{{ route('super_admin.service.self.deleteMedia') }}',
-                    data: {
-                        multiple_media: name,
-                        uuid: uuid
-                    },
-                });
             }
         }
 
         // Dropzone Service Thumb
         var singleUploadMap = {}
-        var files = {!! json_encode($services->getMedia('service_thumb')) !!};
-            var max_file = 1;
-        if(Object.keys(files).length === 1){
-            max_file = 0;
-        }
-        // alert(max_file)
         Dropzone.options.singleMediaDropzone = {
             url: '{{ route('super_admin.service.self.storeMedia') }}',
             maxFilesize: 2, // MB
-            maxFiles: max_file,
+            // maxFiles: 1,
             uploadMultiple: false,
             acceptedFiles: 'image/jpeg, image/png',
             addRemoveLinks: true,
@@ -802,10 +823,12 @@
                 let myDropzone = this;
                 myDropzone.on("addedfile", function(file) {
                     $('.dz-image').last().find('img').addClass('dz-thumb')
-                    if (!file.type.match(/image.*/)) {
-                        this.emit("thumbnail", file, "/_assets/_default/file_icon.png");
-                    }
+                    // if (!file.type.match(/image.*/)) {
+                    //     this.emit("thumbnail", file, "/_assets/_default/file_icon.png");
+                    // }
                 });
+
+
                 @if(isset($services) && $services->getMedia('service_thumb'))
                 var files = {!! json_encode($services->getMedia('service_thumb')) !!}
                 for (var i in files) {
@@ -832,31 +855,66 @@
                 singleUploadMap[file.name] = response.name
             },
             removedfile: function (file) {
-                file.previewElement.remove()
-                console.log(file)
                 var name = ''
-                if (typeof file.file_name !== 'undefined') {
-                    name = file.file_name
-                } else {
-                    name = singleUploadMap[file.name]
-                }
-                $('form').find('input[name="single_media"][value="' + name + '"]').remove()
+                var uuid = ''
 
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-                var request = $.ajax({
-                    type: 'DELETE',
-                    url: '{{ route('super_admin.service.self.deleteMedia', $services->id) }}',
-                    data: {
-                        single_media: name,
-                    },
-                });
-                request.done(function(msg) {
-                    console.log( msg );
-                });
+                if (typeof file.file_name !== 'undefined') {
+
+                    name = file.file_name
+                    uuid = file.uuid
+
+                    Swal.fire({
+                        title: "Are you sure ?",
+                        text: "You won't be able to revert this!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: 'rgb(0 0 0)',
+                        cancelButtonColor: 'rgb(204 75 75)',
+                        background: 'rgb(235 246 236)',
+                        confirmButtonText: 'Yes, delete it!',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $.ajaxSetup({
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                }
+                            });
+                            $.ajax({
+                                type: 'DELETE',
+                                url: '{{ route('super_admin.service.self.deleteMedia') }}',
+                                data: {
+                                    single_media: name,
+                                    uuid: uuid
+                                },
+                                success:function(response) {
+                                    file.previewElement.remove()
+                                    $('form').find('input[name="single_media"][value="' + name + '"]').remove()
+                                    window.location.reload()
+                                }
+                            });
+                        }
+                        return false;
+                    })
+                } else {
+
+                    name = singleUploadMap[file.name]
+
+                    file.previewElement.remove()
+                    $('form').find('input[name="single_media"][value="' + name + '"]').remove()
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+                    $.ajax({
+                        type: 'DELETE',
+                        url: '{{ route('super_admin.service.self.deleteMedia') }}',
+                        data: {
+                            single_media: name
+                        },
+                    });
+                }
+
             }
         }
     </script>

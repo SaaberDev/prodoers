@@ -63,11 +63,25 @@
          */
         public function destroyMedia(DropzoneAjax $dropzoneAjax, Request $request): JsonResponse
         {
-//        $services = Service::findOrFail($id);
             if ($request->input('single_media')) {
-                $dropzoneAjax->deleteMedia('single_media');
+                return $dropzoneAjax->deleteMedia('single_media', 'uuid');
             }
-            return $dropzoneAjax->deleteMedia('multiple_media');
+            return $dropzoneAjax->deleteMedia('multiple_media', 'uuid');
+        }
+
+        public function getMedia(DropzoneAjax $dropzoneAjax, Request $request)
+        {
+            if ($request->get('request') === 'singleUploader') {
+                return $dropzoneAjax->getMedia(Service::class,'service_thumb', 'id');
+            }
+
+            if ($request->get('request') === 'multipleUploader'){
+                return $dropzoneAjax->getMedia(Service::class,'service', 'id');
+            }
+//            $services = Service::findOrFail($request->get('id'));
+//            $medias = $services->getMedia('service');
+//
+//            return \response()->json($medias);
         }
 
         /**

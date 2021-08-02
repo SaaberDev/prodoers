@@ -137,7 +137,7 @@
                 Route::get('/destroy-service/{id}', [ServiceController::class, 'destroy'])->name('destroy');
 
                 // Dropzone Media Ajax
-                Route::get('/get-media/{id}', [ServiceController::class, 'getMedia'])->name('getMedia');
+                Route::post('/get-media', [ServiceController::class, 'getMedia'])->name('getMedia');
                 Route::post('/store-media', [ServiceController::class, 'storeMedia'])->name('storeMedia');
                 Route::delete('/delete-media', [ServiceController::class, 'destroyMedia'])->name('deleteMedia');
             });

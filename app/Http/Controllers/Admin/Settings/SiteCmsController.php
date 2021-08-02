@@ -339,7 +339,7 @@ class SiteCmsController extends Controller
                 'social_url' => $request->input('social_url'),
             ]);
         });
-        return redirect()->route('settings.site_cms.social_link.index');
+        return redirect()->route('super_admin.settings.site_cms.social_link.index');
     }
 
     public function destroy_social_links($id)

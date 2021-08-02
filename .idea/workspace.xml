@@ -4,10 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f616bec-9873-4c54-8a6f-71f691274991" name="Changes" comment="[service] - working on dropzone">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+    <list default="true" id="3f616bec-9873-4c54-8a6f-71f691274991" name="Changes" comment="[service] - added remove function (fixed db issue)">
+      <change afterPath="$PROJECT_DIR$/resources/_assets/plugins/dropzone/dropzone.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/plugins/dropzone/js/preview-template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Service/ServiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Service/ServiceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Settings/SiteCmsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Settings/SiteCmsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/Dropzone/DropzoneAjax.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/Dropzone/DropzoneAjax.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/plugins/dropzone/js/dropzone.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_assets/plugins/dropzone/js/dropzone.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/plugins/dropzone/js/dropzone.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin_panel/pages/services/service/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_panel/pages/services/service/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin_panel/pages/settings/site_cms/statistics_section/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_panel/pages/settings/site_cms/statistics_section/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/tmp/uploads/6103fd474146e_458-4586484_laravel-meetup-logo-know-hd-png-download.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +29,23 @@
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -172,11 +198,15 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1w85HkfDnyowSi3CJOLdXF8weCE" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="NEW_TOOLWINDOW_STRIPE_DEFAULTS" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
@@ -190,6 +220,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="advanced.settings" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -213,7 +244,7 @@
       <updated>1627827296233</updated>
       <workItem from="1627827299400" duration="6520000" />
       <workItem from="1627835944502" duration="1455000" />
-      <workItem from="1627837446406" duration="1467000" />
+      <workItem from="1627837446406" duration="19490000" />
     </task>
     <task id="LOCAL-00001" summary="[service] - working on dropzone">
       <created>1627838312357</created>
@@ -222,7 +253,21 @@
       <option name="project" value="LOCAL" />
       <updated>1627838312357</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="[service] - added remove function (fixed db issue)">
+      <created>1627839125807</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1627839125807</updated>
+    </task>
+    <task id="LOCAL-00003" summary="[service] - added remove function (fixed db issue)">
+      <created>1627839157321</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1627839157321</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,7 +286,9 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="[service] - working on dropzone" />
-    <option name="LAST_COMMIT_MESSAGE" value="[service] - working on dropzone" />
+    <MESSAGE value="[service] - added remove function (fixed db issue)" />
+    <option name="LAST_COMMIT_MESSAGE" value="[service] - added remove function (fixed db issue)" />
   </component>
 </project>

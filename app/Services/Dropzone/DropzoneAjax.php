@@ -19,6 +19,19 @@
         }
 
         /**
+         * @param $mediaKey
+         * @param $param
+         * @return JsonResponse
+         */
+        public function getMedia($model, $mediaKey, $param)
+        {
+            $models = $model::findOrFail($this->request->get($param));
+            $medias = $models->getMedia($mediaKey);
+
+            return \response()->json($medias);
+        }
+
+        /**
          * @return JsonResponse
          */
         public function storeMedia(): JsonResponse
@@ -42,20 +55,23 @@
         }
 
         /**
-         * @param $key
+         * @param $mediaKey
+         * @param $mediaUuid
          * @return JsonResponse
          */
-        public function deleteMedia($key, $mediaUuid = null): JsonResponse
+        public function deleteMedia($mediaKey, $mediaUuid): JsonResponse
         {
-            $photo = $this->request->get($key);
-            $media = Media::findByUuid($this->request->get('uuid'));
+            $photo = $this->request->get($mediaKey);
+            $uuid = $this->request->get($mediaUuid);
 
-            if (\Storage::disk('tmp')->exists('uploads/' .$photo)) {
-                \Storage::disk('tmp')->delete('uploads/' . $photo);
-            } /*else {
-                $media->delete();
-            }*/
+            if (!$uuid) {
+                if (\Storage::disk('tmp')->exists('uploads/' .$photo)) {
+                    \Storage::disk('tmp')->delete('uploads/' . $photo);
+                }
+            } else {
+                Media::findByUuid($uuid)->delete();
+            }
 
-            return response()->json($media);
+            return response()->json();
         }
     }
