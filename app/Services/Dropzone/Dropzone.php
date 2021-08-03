@@ -4,12 +4,11 @@
     namespace App\Services\Dropzone;
 
 
-    use App\Models\Service;
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
     use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-    class DropzoneAjax
+    class Dropzone
     {
         private Request $request;
 

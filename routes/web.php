@@ -1,15 +1,9 @@
 <?php
 
-    use App\Http\Controllers\Admin\Blog\BlogCategoryController;
-    use App\Http\Controllers\Admin\Blog\BlogController;
-    use App\Http\Controllers\Admin\Chat\DesignwalaChatController;
-    use App\Http\Controllers\Admin\Chat\OrderChatController;
     use App\Http\Controllers\Admin\Client\ClientController;
     use App\Http\Controllers\Admin\Client\SubscriberController;
     use App\Http\Controllers\Admin\DashboardController;
     use App\Http\Controllers\Admin\Designwala\DesignwalaController;
-    use App\Http\Controllers\Admin\Dropzone\DropzoneController;
-    use App\Http\Controllers\Admin\Faq\FaqController;
     use App\Http\Controllers\Admin\Offer\AffiliateController;
     use App\Http\Controllers\Admin\Offer\CouponController;
     use App\Http\Controllers\Admin\Order\OrderController;
@@ -18,8 +12,6 @@
     use App\Http\Controllers\Admin\Promotion\DraftMailController;
     use App\Http\Controllers\Admin\Promotion\EmailMarketingController;
     use App\Http\Controllers\Admin\Review\ReviewController;
-    use App\Http\Controllers\Admin\Roles_and_permission\PermissionController;
-    use App\Http\Controllers\Admin\Roles_and_permission\RoleController;
     use App\Http\Controllers\Admin\Service\ServiceCategoryController;
     use App\Http\Controllers\Admin\Service\ServiceController;
     use App\Http\Controllers\Admin\Service\TagController;
@@ -137,7 +129,7 @@
                 Route::get('/destroy-service/{id}', [ServiceController::class, 'destroy'])->name('destroy');
 
                 // Dropzone Media Ajax
-                Route::post('/get-media', [ServiceController::class, 'getMedia'])->name('getMedia');
+                Route::get('/get-media', [ServiceController::class, 'getMedia'])->name('getMedia');
                 Route::post('/store-media', [ServiceController::class, 'storeMedia'])->name('storeMedia');
                 Route::delete('/delete-media', [ServiceController::class, 'destroyMedia'])->name('deleteMedia');
             });

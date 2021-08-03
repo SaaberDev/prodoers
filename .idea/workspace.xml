@@ -5,9 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f616bec-9873-4c54-8a6f-71f691274991" name="Changes" comment="[dropzone] - added dropzone in edit page">
+      <change afterPath="$PROJECT_DIR$/resources/views/plugins/dropzone/create/multiple.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/plugins/dropzone/create/single.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/plugins/dropzone/edit/multiple.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/plugins/dropzone/edit/single.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/symfony2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Dropzone/DropzoneController.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Service/ServiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Service/ServiceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/Dropzone/DropzoneAjax.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/Dropzone/DropzoneAjax.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/Dropzone/DropzoneAjax.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/Dropzone/Dropzone.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin_panel/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_panel/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin_panel/pages/services/service/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_panel/pages/services/service/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,7 +211,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/plugins/dropzone/edit" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -216,6 +225,16 @@
   <component name="ReaderModeSettings">
     <option name="increaseLineSpacing" value="true" />
     <option name="showLigatures" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\designwala\resources\views\plugins\dropzone\edit" />
+      <recent name="C:\laragon\www\designwala\resources\views\plugins\dropzone\create" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\designwala\resources\views\plugins\dropzone\edit" />
+      <recent name="C:\laragon\www\designwala\resources\views\plugins\dropzone\create" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -233,7 +252,7 @@
       <updated>1627827296233</updated>
       <workItem from="1627827299400" duration="6520000" />
       <workItem from="1627835944502" duration="1455000" />
-      <workItem from="1627837446406" duration="26261000" />
+      <workItem from="1627837446406" duration="42926000" />
     </task>
     <task id="LOCAL-00001" summary="[service] - working on dropzone">
       <created>1627838312357</created>
@@ -277,7 +296,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627935775377</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="[dropzone] - added dropzone in edit page">
+      <created>1627935943117</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1627935943117</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

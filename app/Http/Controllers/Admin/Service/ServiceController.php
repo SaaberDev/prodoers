@@ -10,7 +10,7 @@
     use App\Models\ServiceFeature;
     use App\Models\ServiceImage;
     use App\Models\Tag;
-    use App\Services\Dropzone\DropzoneAjax;
+    use App\Services\Dropzone\Dropzone;
     use Cviebrock\EloquentSluggable\Services\SlugService;
     use Illuminate\Contracts\Foundation\Application;
     use Illuminate\Contracts\View\Factory;
@@ -48,40 +48,40 @@
         }
 
         /**
-         * @param DropzoneAjax $dropzoneAjax
+         * @param Dropzone $dropzone
          * @return JsonResponse
          */
-        public function storeMedia(DropzoneAjax $dropzoneAjax): JsonResponse
+        public function storeMedia(Dropzone $dropzone): JsonResponse
         {
-            return $dropzoneAjax->storeMedia();
+            return $dropzone->storeMedia();
         }
 
         /**
-         * @param DropzoneAjax $dropzoneAjax
+         * @param Dropzone $dropzone
          * @param Request $request
          * @return JsonResponse
          */
-        public function destroyMedia(DropzoneAjax $dropzoneAjax, Request $request): JsonResponse
+        public function destroyMedia(Dropzone $dropzone, Request $request): JsonResponse
         {
             if ($request->input('single_media')) {
-                return $dropzoneAjax->deleteMedia('single_media', 'uuid');
+                return $dropzone->deleteMedia('single_media', 'uuid');
             }
-            return $dropzoneAjax->deleteMedia('multiple_media', 'uuid');
+            return $dropzone->deleteMedia('multiple_media', 'uuid');
         }
 
         /**
-         * @param DropzoneAjax $dropzoneAjax
+         * @param Dropzone $dropzone
          * @param Request $request
          * @return JsonResponse|void
          */
-        public function getMedia(DropzoneAjax $dropzoneAjax, Request $request) // TODO -- Need to work here
+        public function getMedia(Dropzone $dropzone, Request $request)
         {
             if ($request->get('request') === 'singleUploader') {
-                return $dropzoneAjax->getMedia(Service::class,'service_thumb', 'id');
+                return $dropzone->getMedia(Service::class,'service_thumb', 'id');
             }
 
             if ($request->get('request') === 'multipleUploader'){
-                return $dropzoneAjax->getMedia(Service::class,'service', 'id');
+                return $dropzone->getMedia(Service::class,'service', 'id');
             }
         }
 
