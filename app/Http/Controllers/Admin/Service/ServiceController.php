@@ -19,6 +19,7 @@
     use Illuminate\Http\Request;
     use Illuminate\Http\Response;
     use Illuminate\Support\Facades\DB;
+    use Illuminate\Support\Facades\Storage;
     use Throwable;
 
     class ServiceController extends Controller
@@ -138,9 +139,6 @@
             // Tags
             $tags = Tag::getTitle();
             $service_tags = $service->tags->pluck('title');
-//            dd($service_tags);
-
-//            dd($service->tags);
 
             return view('admin_panel.pages.services.service.edit', compact('service', 'service_categories', 'tags', 'service_tags'));
         }
@@ -192,20 +190,22 @@
                 ]);
 
                 // TODO --- need to work in update
-                if (count($service->getMedia('service')) > 0) {
-                    foreach ($service->getMedia('service') as $media) {
-                        if (!in_array($media->file_name, $request->input('multiple_media', []))) {
-                            $media->delete();
-                        }
-                    }
-                }
+//                if (count($service->getMedia('service')) > 0) {
+//                    foreach ($service->getMedia('service') as $media) {
+//                        if (!in_array($media->file_name, $request->input('multiple_media', []))) {
+//                            $media->delete();
+//                        }
+//                    }
+//                }
 
                 $media = $service->getMedia('service')->pluck('file_name')->toArray();
 
                 foreach ($request->input('multiple_media', []) as $file) {
-                    if (count($media) === 0 || !in_array($file, $media)) {
+//                    if (count($media) === 0 || !in_array($file, $media)) {
+//                    if (Storage::exists('tmp/uploads/' . $file)) {
                         $service->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection('service', 'public');
-                    }
+//                    }
+//                    }
                 }
                 // TODO ---
 
