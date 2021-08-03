@@ -71,6 +71,12 @@
 @endpush
 
 @section('content')
+
+{{--    @foreach($service->serviceFaqs as $faq)--}}
+{{--        {{ dump($faq) }}--}}
+{{--        @endforeach--}}
+{{--    {{ dd($service->serviceFaqs) }}--}}
+
     <div class="col-xl-10 col-lg-9 col-md-12 dashboardRightside scrollbar scroll-style">
         <div class="">
             <div class="row justify-content-center pb-3 m-0">
@@ -91,9 +97,9 @@
         </div>
         {{-- form--}}
         <div class="mt-4 py-3 bg-white rounded">
-            <input type="hidden" name="service_id" value="{{ $services->id }}">
+            <input type="hidden" name="service_id" value="{{ $service->id }}">
             {{-- New Service Form --}}
-            <form action="{{ route('super_admin.service.self.update', $id) }}" method="POST" enctype="multipart/form-data" id="form">
+            <form action="{{ route('super_admin.service.self.update', $service->id) }}" method="POST" enctype="multipart/form-data" id="form">
                 @csrf @method('PATCH')
                 <div class="row m-0 justify-content-between ">
                     {{-- Service Title --}}
@@ -102,7 +108,7 @@
                             <label for="">
                                 <h5>Title </h5></label>
                             <div class="input-group">
-                                <input name="service_title" value="{{ old('service_title') ? old('service_title') : $services->title }}" class="form-control {{ $errors->has('service_title') ? ' is-invalid' : '' }}" type="text" placeholder="">
+                                <input name="service_title" value="{{ old('service_title') ? old('service_title') : $service->title }}" class="form-control {{ $errors->has('service_title') ? ' is-invalid' : '' }}" type="text" placeholder="">
                                 @if($errors->has('service_title'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('service_title') }}</strong>
@@ -120,7 +126,7 @@
                             <div class="input-group">
 
                                 <input name="service_tags"
-                                       value="@foreach($services->tags as $tag) {{ old('service_tags') ?? $tag->id }}, @endforeach"
+                                       value="{{ old('service_tags', $service_tags) }}"
                                        class="{{ $errors->has('service_tags') ? ' is-invalid' : '' }}"
                                        type="text"
                                        placeholder=""
@@ -141,7 +147,7 @@
                             <label for="">
                                 <h5>Popular</h5></label>
                             <div class="">
-                                <input id="popular_status" name="popular_status" value="{{ old('popular_status') ? old('popular_status') : $services->popular_status }}" {{ (old('popular_status') ? old('popular_status') : $services->popular_status) == 1 ? 'checked='.'"'.'checked'.'"' : '' }} type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
+                                <input id="popular_status" name="popular_status" value="{{ old('popular_status') ? old('popular_status') : $service->popular_status }}" {{ (old('popular_status') ? old('popular_status') : $service->popular_status) == 1 ? 'checked='.'"'.'checked'.'"' : '' }} type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
                             </div>
                         </div>
                     </div>
@@ -152,7 +158,7 @@
                             <label for="">
                                 <h5>Publish</h5></label>
                             <div class="">
-                                <input id="published_status" name="published_status" value="{{ old('published_status') ? old('published_status') : $services->published_status }}" {{ (old('published_status') ? old('published_status') : $services->published_status) == 1 ? 'checked='.'"'.'checked'.'"' : '' }} type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
+                                <input id="published_status" name="published_status" value="{{ old('published_status') ? old('published_status') : $service->published_status }}" {{ (old('published_status') ? old('published_status') : $service->published_status) == 1 ? 'checked='.'"'.'checked'.'"' : '' }} type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
                             </div>
                         </div>
                     </div>
@@ -164,7 +170,7 @@
                         <div class="form-group">
                             <label for="">
                                 <h5>meta description </h5></label>
-                            <textarea name="meta_description" class="form-control {{ $errors->has('meta_description') ? ' is-invalid' : '' }}" id="meta_description" rows="5">{{ old('meta_description') ? old('meta_description') : $services->meta_desc }}</textarea>
+                            <textarea name="meta_description" class="form-control {{ $errors->has('meta_description') ? ' is-invalid' : '' }}" id="meta_description" rows="5">{{ old('meta_description') ? old('meta_description') : $service->meta_desc }}</textarea>
                             @if($errors->has('meta_description'))
                                 <span class="invalid-feedback">
                                     <strong>{{ $errors->first('meta_description') }}</strong>
@@ -182,7 +188,7 @@
                                     name="allCategories" style="width: 100%;">
                                 <option selected="selected" disabled>Choose a category</option>
                                 @foreach($service_categories as $service_category)
-                                    <option value="{{ $service_category->id }}" {{ $service_category->id == $services->serviceCategories->id ? 'selected' : '' }}>{{ $service_category->title }}</option>
+                                    <option value="{{ $service_category->id }}" {{ $service_category->id == $service->serviceCategories->id ? 'selected' : '' }}>{{ $service_category->title }}</option>
                                 @endforeach
                             </select>
                             @if($errors->has('allCategories'))
@@ -196,7 +202,7 @@
                             <label for="">
                                 <h5>price </h5></label>
                             <div class="input-group">
-                                <input class="form-control {{ $errors->has('service_price') ? ' is-invalid' : '' }}" value="{{ old('service_price') ? old('service_price') : $services->price }}" name="service_price" placeholder="$" type="text">
+                                <input class="form-control {{ $errors->has('service_price') ? ' is-invalid' : '' }}" value="{{ old('service_price') ? old('service_price') : $service->price }}" name="service_price" placeholder="$" type="text">
                             </div>
                             @if($errors->has('service_price'))
                                 <span class="invalid-feedback">
@@ -264,12 +270,12 @@
                             <div class="col-md-12">
                                 <label for="">
                                     <h5>features </h5> </label>
-                                @forelse($services->serviceFeatures as $key => $service)
+                                @forelse($service->serviceFeatures as $key => $serviceFeatures)
                                     <div id="dynamic-field-{{ $key + 1 }}" class="input-group dynamic-field mb-3">
                                         {{--<label class="mr-3 mt-2" for="field-1">Feature #1</label>--}}
-                                        <input type="text" id="field-{{ $key + 1 }}" value="{{ $service->feature_desc }}" class="form-control validation" name="features[]" aria-describedby="button-addon2">
+                                        <input type="text" id="field-{{ $key + 1 }}" value="{{ $serviceFeatures->feature_desc }}" class="form-control validation" name="features[]" aria-describedby="button-addon2">
                                         <div class="input-group-append">
-                                            <a type="button" data-action="{{ route('super_admin.service.self.destroyServiceFeature', $service->id) }}" class="btn sweet_delete p-0 m-0">
+                                            <a type="button" data-action="{{ route('super_admin.service.self.destroyServiceFeature', $serviceFeatures->id) }}" class="btn sweet_delete p-0 m-0">
                                                 <svg style="width: 16px; height: auto; margin: 8px 5px 0 15px;" xmlns="http://www.w3.org/2000/svg" width="11.91" height="16.027" viewBox="0 0 11.91 16.027"><path d="M8.279,16.969a1.563,1.563,0,0,0,1.559,1.559h6.234a1.563,1.563,0,0,0,1.559-1.559V7.617H8.279ZM18.41,4.279H15.683L14.9,3.5h-3.9l-.779.779H7.5V5.838H18.41Z" transform="translate(-7 -3)" fill="none" stroke="#000" stroke-width="1"></path></svg>
                                             </a>
                                         </div>
@@ -303,7 +309,7 @@
                             <h5>description </h5></label>
                         <div class="row">
                             <div class="col-md-12">
-                                <textarea name="service_description" class="form-control {{ $errors->has('service_description') ? ' is-invalid' : '' }}" rows="8">{{ old('service_description') ?? $services->service_desc }}</textarea>
+                                <textarea name="service_description" class="form-control {{ $errors->has('service_description') ? ' is-invalid' : '' }}" rows="8">{{ old('service_description') ?? $service->service_desc }}</textarea>
                                 @if($errors->has('service_description'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('service_description') }}</strong>
@@ -319,7 +325,7 @@
                     <div class="col-md-12 py-3">
                         <!-- COMPONENT START -->
                         <h5>FAQ's</h5>
-                        @forelse($services->serviceFaqs as $key => $faq)
+                        @forelse($service->serviceFaqs as $key => $faq)
                             <div id="dynamic-field-faq-{{ $key + 1 }}" class="row dynamic-field-faq">
                             <div class="col-md-12">
                                 <div  class="input-group  mb-0">
@@ -611,10 +617,10 @@
         var inputElm = document.querySelector('input[name=service_tags]');
 
         var usersList = [
-            @foreach($service_tags as $service_tag)
+            @foreach($tags as $tag)
             {
-                "value": {{ $service_tag->id }},
-                "name": "{{ $service_tag->title }}",
+                "value": {{ $tag->id }},
+                "name": "{{ $tag->title }}",
             },
             @endforeach
         ]
@@ -704,7 +710,7 @@
         'get' => route('super_admin.service.self.getMedia'),
         'store' => route('super_admin.service.self.storeMedia'),
         'delete' => route('super_admin.service.self.deleteMedia'),
-        'model' => $services,
+        'model' => $service, // your model name for query
         'maxFilesize' => 2,
         'acceptedFiles' => 'image/jpeg, image/png',
     ])
@@ -712,7 +718,7 @@
         'get' => route('super_admin.service.self.getMedia'),
         'store' => route('super_admin.service.self.storeMedia'),
         'delete' => route('super_admin.service.self.deleteMedia'),
-        'model' => $services,
+        'model' => $service, // your model name for query
         'maxFilesize' => 2,
         'acceptedFiles' => 'image/jpeg, image/png',
     ])

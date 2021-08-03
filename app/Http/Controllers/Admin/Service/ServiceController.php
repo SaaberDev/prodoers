@@ -8,7 +8,6 @@
     use App\Models\ServiceCategory;
     use App\Models\ServiceFaq;
     use App\Models\ServiceFeature;
-    use App\Models\ServiceImage;
     use App\Models\Tag;
     use App\Services\Dropzone\Dropzone;
     use Cviebrock\EloquentSluggable\Services\SlugService;
@@ -20,7 +19,6 @@
     use Illuminate\Http\Request;
     use Illuminate\Http\Response;
     use Illuminate\Support\Facades\DB;
-    use Spatie\MediaLibrary\MediaCollections\Models\Media;
     use Throwable;
 
     class ServiceController extends Controller
@@ -28,7 +26,7 @@
         /**
          * Display a listing of the resource.
          *
-         * @return Application|Factory|View|Response
+         * @return Application|Factory|View
          */
         public function index()
         {
@@ -38,51 +36,13 @@
         /**
          * Show the form for creating a new resource.
          *
-         * @return Application|Factory|View|Response
+         * @return Application|Factory|View
          */
         public function create()
         {
             $service_categories = ServiceCategory::orderByDesc('title')->get(['title', 'id']);
             $service_tags = Tag::orderByDesc('title')->get(['title', 'id']);
             return view('admin_panel.pages.services.service.create', compact('service_categories', 'service_tags'));
-        }
-
-        /**
-         * @param Dropzone $dropzone
-         * @return JsonResponse
-         */
-        public function storeMedia(Dropzone $dropzone): JsonResponse
-        {
-            return $dropzone->storeMedia();
-        }
-
-        /**
-         * @param Dropzone $dropzone
-         * @param Request $request
-         * @return JsonResponse
-         */
-        public function destroyMedia(Dropzone $dropzone, Request $request): JsonResponse
-        {
-            if ($request->input('single_media')) {
-                return $dropzone->deleteMedia('single_media', 'uuid');
-            }
-            return $dropzone->deleteMedia('multiple_media', 'uuid');
-        }
-
-        /**
-         * @param Dropzone $dropzone
-         * @param Request $request
-         * @return JsonResponse|void
-         */
-        public function getMedia(Dropzone $dropzone, Request $request)
-        {
-            if ($request->get('request') === 'singleUploader') {
-                return $dropzone->getMedia(Service::class,'service_thumb', 'id');
-            }
-
-            if ($request->get('request') === 'multipleUploader'){
-                return $dropzone->getMedia(Service::class,'service', 'id');
-            }
         }
 
         /**
@@ -172,11 +132,17 @@
          */
         public function edit($id)
         {
-            $services = Service::findOrFail($id); // TODO -- $service->serviceFaqs does not work in blade but $services->serviceFaqs works
+            $service = Service::findOrFail($id);
             $service_categories = ServiceCategory::getTitle();
-            $service_tags = Tag::getTitle();
 
-            return view('admin_panel.pages.services.service.edit', compact('services', 'id', 'service_categories', 'service_tags'));
+            // Tags
+            $tags = Tag::getTitle();
+            $service_tags = $service->tags->pluck('title');
+//            dd($service_tags);
+
+//            dd($service->tags);
+
+            return view('admin_panel.pages.services.service.edit', compact('service', 'service_categories', 'tags', 'service_tags'));
         }
 
 
@@ -200,13 +166,6 @@
             return redirect()->back();
         }
 
-//    public function getMedia($id)
-//    {
-//        $services = Service::findOrFail($id);
-//        $media = $services->getMedia('service_thumb');
-//        return \response()->json($media);
-//    }
-
 
         /**
          * Update the specified resource in storage.
@@ -214,13 +173,14 @@
          * @param ServiceRequest $request
          * @param int $id
          * @return RedirectResponse
+         * @throws Throwable
          */
         public function update(ServiceRequest $request, $id)
         {
-            $services = Service::findOrFail($id);
-            DB::transaction(function () use ($request, $services) {
+            $service = Service::findOrFail($id);
+            DB::transaction(function () use ($request, $service) {
                 $slug = SlugService::createSlug(Service::class, 'slug', $request->input('service_title'));
-                $services->update([
+                $service->update([
                     'title' => $request->input('service_title'),
                     'popular_status' => $request->input('popular_status'),
                     'published_status' => $request->input('published_status'),
@@ -228,45 +188,44 @@
                     'service_category_id' => $request->input('allCategories'),
                     'price' => $request->input('service_price'),
                     'slug' => $slug,
-                    'thumbnail' => SingleImageUpdateHandler($request, $slug, $services->thumbnail, 'service_thumbnail', 'thumbnail', config('designwala_paths.images.services.thumbnail')),
                     'service_desc' => $request->input('service_description'),
                 ]);
 
                 // TODO --- need to work in update
-                if (count($services->getMedia('document')) > 0) {
-                    foreach ($services->getMedia('document') as $media) {
-                        if (!in_array($media->file_name, $request->input('document', []))) {
+                if (count($service->getMedia('service')) > 0) {
+                    foreach ($service->getMedia('service') as $media) {
+                        if (!in_array($media->file_name, $request->input('multiple_media', []))) {
                             $media->delete();
                         }
                     }
                 }
 
-                $media = $services->getMedia('document')->pluck('file_name')->toArray();
+                $media = $service->getMedia('service')->pluck('file_name')->toArray();
 
-                foreach ($request->input('document', []) as $file) {
+                foreach ($request->input('multiple_media', []) as $file) {
                     if (count($media) === 0 || !in_array($file, $media)) {
-                        $services->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection('document', 'public');
+                        $service->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection('service', 'public');
                     }
                 }
                 // TODO ---
 
                 $service_tagInputs = collect(explode(',', $request->input('service_tags')));
-                $services->tags()->sync($service_tagInputs);
+                $service->tags()->sync($service_tagInputs);
 
 
                 $images = MultiImageUpdateHandler($request, $slug, 'service_images', 'service-image', config('designwala_paths.images.services.service_image'));
                 foreach ($images as $image) {
-                    $services->serviceImages()->create([
-                        'service_id' => $services->id,
+                    $service->serviceImages()->create([
+                        'service_id' => $service->id,
                         'filename' => $image
                     ]);
                 }
 
                 $inputs = $request->input('features');
-                $services->serviceFeatures()->delete();
+                $service->serviceFeatures()->delete();
                 foreach ($inputs as $input) {
-                    $services->serviceFeatures()->create([
-                        'service_id' => $services->id,
+                    $service->serviceFeatures()->create([
+                        'service_id' => $service->id,
                         'feature_desc' => $input
                     ]);
                 }
@@ -281,10 +240,10 @@
                     );
                     $faqs[] = $data;
                 }
-                $services->serviceFaqs()->delete();
+                $service->serviceFaqs()->delete();
                 foreach ($faqs as $faq) {
-                    $services->serviceFaqs()->create([
-                        'service_id' => $services->id,
+                    $service->serviceFaqs()->create([
+                        'service_id' => $service->id,
                         'question' => $faq['question'],
                         'answer' => $faq['answer']
                     ]);
@@ -299,6 +258,7 @@
          *
          * @param int $id
          * @return RedirectResponse
+         * @throws Throwable
          */
         public function destroy($id)
         {
@@ -316,5 +276,44 @@
             });
 
             return redirect()->back()->with($notify);
+        }
+
+
+        /**
+         * @param Dropzone $dropzone
+         * @param Request $request
+         * @return JsonResponse|void
+         */
+        public function getMedia(Dropzone $dropzone, Request $request)
+        {
+            if ($request->get('request') === 'singleUploader') {
+                return $dropzone->getMedia(Service::class,'service_thumb', 'id');
+            }
+
+            if ($request->get('request') === 'multipleUploader'){
+                return $dropzone->getMedia(Service::class,'service', 'id');
+            }
+        }
+
+        /**
+         * @param Dropzone $dropzone
+         * @return JsonResponse
+         */
+        public function storeMedia(Dropzone $dropzone): JsonResponse
+        {
+            return $dropzone->storeMedia();
+        }
+
+        /**
+         * @param Dropzone $dropzone
+         * @param Request $request
+         * @return JsonResponse
+         */
+        public function destroyMedia(Dropzone $dropzone, Request $request): JsonResponse
+        {
+            if ($request->input('single_media')) {
+                return $dropzone->deleteMedia('single_media', 'uuid');
+            }
+            return $dropzone->deleteMedia('multiple_media', 'uuid');
         }
     }
