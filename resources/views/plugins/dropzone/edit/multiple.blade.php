@@ -2,7 +2,7 @@
     // Dropzone Service Image
     var multipleUploadMap = {}
     Dropzone.options.multipleMediaDropzone = {
-        url: '{{ route('super_admin.service.self.storeMedia') }}',
+        url: "{{ $store }}",
         maxFilesize: '{{ $maxFilesize }}', // MB
         acceptedFiles: '{{ $acceptedFiles }}',
         addRemoveLinks: true,
@@ -17,7 +17,7 @@
             // Data fetch
             $.ajax({
                 type: 'get',
-                url: '{{ route('super_admin.service.self.getMedia') }}',
+                url: "{{ $get }}",
                 data: {
                     request: 'multipleUploader',
                     id: '{{ $model->id }}'
@@ -71,7 +71,7 @@
                         // Delete media from server and filesystem - ajax
                         $.ajax({
                             type: 'DELETE',
-                            url: '{{ route('super_admin.service.self.deleteMedia') }}',
+                            url: "{{ $delete }}",
                             headers: {
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                             },
@@ -95,7 +95,7 @@
                 // Delete preview from filesystem - ajax
                 $.ajax({
                     type: 'DELETE',
-                    url: '{{ route('super_admin.service.self.deleteMedia') }}',
+                    url: "{{ $delete }}",
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },

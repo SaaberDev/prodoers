@@ -701,11 +701,17 @@
     </script>
     @include('alerts.admin_panel.delete_confirmation_modal')
     @include('plugins.dropzone.edit.single', [
+        'get' => route('super_admin.service.self.getMedia'),
+        'store' => route('super_admin.service.self.storeMedia'),
+        'delete' => route('super_admin.service.self.deleteMedia'),
         'model' => $services,
         'maxFilesize' => 2,
         'acceptedFiles' => 'image/jpeg, image/png',
     ])
     @include('plugins.dropzone.edit.multiple', [
+        'get' => route('super_admin.service.self.getMedia'),
+        'store' => route('super_admin.service.self.storeMedia'),
+        'delete' => route('super_admin.service.self.deleteMedia'),
         'model' => $services,
         'maxFilesize' => 2,
         'acceptedFiles' => 'image/jpeg, image/png',

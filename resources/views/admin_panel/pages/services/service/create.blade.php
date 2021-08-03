@@ -663,16 +663,16 @@
 
     {{-- Dropzone Service Thumb --}}
     @include('plugins.dropzone.create.single', [
-        'delete' => route('super_admin.service.self.deleteMedia'),
         'store' => route('super_admin.service.self.storeMedia'),
+        'delete' => route('super_admin.service.self.deleteMedia'),
         'maxFilesize' => 2,
         'acceptedFiles' => 'image/jpeg, image/png',
     ])
 
     {{-- Dropzone Service Image --}}
     @include('plugins.dropzone.create.multiple', [
-        'delete' => route('super_admin.service.self.deleteMedia'),
         'store' => route('super_admin.service.self.storeMedia'),
+        'delete' => route('super_admin.service.self.deleteMedia'),
         'maxFilesize' => 2,
         'acceptedFiles' => 'image/jpeg, image/png',
     ])
