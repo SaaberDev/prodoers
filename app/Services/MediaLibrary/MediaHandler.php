@@ -62,7 +62,6 @@
         {
             try {
                 $media = $model->getFirstMedia($mediaCollection);
-                // If not empty and if file name matches delete existing file
                 if (!empty($media)) {
                     if ($media->file_name === $this->request->input($inputKey, '')) {
                         $media->addMediaFromRequest($inputKey)
@@ -75,7 +74,6 @@
                     }
                 }
 
-                // If media is empty or input request is not equals to stored file name
                 if (empty($media) || $this->request->input($inputKey, '') !== $media->file_name) {
                     $model->addMedia(storage_path('tmp/uploads/' . $this->request->input($inputKey, '')))
                         ->sanitizingFileName(function ($fileName) {
@@ -88,7 +86,4 @@
                 report($exception->getMessage());
             }
         }
-
-        // TODO -- Do not upload if file name and size matches
-
     }
