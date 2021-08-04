@@ -10,6 +10,7 @@
     use App\Models\ServiceFeature;
     use App\Models\Tag;
     use App\Services\Dropzone\Dropzone;
+    use App\Services\MediaLibrary\MediaHandler;
     use Cviebrock\EloquentSluggable\Services\SlugService;
     use Illuminate\Contracts\Foundation\Application;
     use Illuminate\Contracts\View\Factory;
@@ -20,6 +21,7 @@
     use Illuminate\Http\Response;
     use Illuminate\Support\Facades\DB;
     use Illuminate\Support\Facades\Storage;
+    use Str;
     use Throwable;
 
     class ServiceController extends Controller
@@ -133,6 +135,10 @@
          */
         public function edit($id)
         {
+//            $service = Service::findOrFail(53);
+//            $media = $service->getFirstMedia('service_thumb');
+//            dd($media->file_name);
+//            dd();
             $service = Service::findOrFail($id);
             $service_categories = ServiceCategory::getTitle();
 
@@ -173,10 +179,15 @@
          * @return RedirectResponse
          * @throws Throwable
          */
-        public function update(ServiceRequest $request, $id)
+        public function update(ServiceRequest $request, MediaHandler $mediaHandler, int $id)
         {
-            $service = Service::findOrFail($id);
-            DB::transaction(function () use ($request, $service) {
+//            $service = Service::findOrFail($id);
+//            dd($service->first('file_name'));
+
+
+            DB::beginTransaction();
+            try {
+                $service = Service::findOrFail($id);
                 $slug = SlugService::createSlug(Service::class, 'slug', $request->input('service_title'));
                 $service->update([
                     'title' => $request->input('service_title'),
@@ -189,38 +200,17 @@
                     'service_desc' => $request->input('service_description'),
                 ]);
 
-                // Service Image
-                $medias = $service->getMedia('service');
-                if (count($medias) > 0) {
-                    foreach ($medias as $media) {
-                        if (!in_array($media->file_name, $request->input('multiple_media', []))) {
-                            $media->delete();
-                        }
-                    }
-                }
 
-                $media = $medias->pluck('file_name')->toArray();
+                // Media
+                $mediaHandler->updateMultipleMedia($service, 'service', 'multiple_media');
+                $mediaHandler->updateSingleMedia($service, 'service_thumb', 'single_media');
 
-                foreach ($request->input('multiple_media', []) as $file) {
-                    if (count($media) === 0 || !in_array($file, $media)) {
-                        $service->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection('service', 'public');
-                    }
-                }
-
-                // Service Thumb -- TODO
-
+                // Tags
                 $service_tagInputs = collect(explode(',', $request->input('service_tags')));
                 $service->tags()->sync($service_tagInputs);
 
 
-                $images = MultiImageUpdateHandler($request, $slug, 'service_images', 'service-image', config('designwala_paths.images.services.service_image'));
-                foreach ($images as $image) {
-                    $service->serviceImages()->create([
-                        'service_id' => $service->id,
-                        'filename' => $image
-                    ]);
-                }
-
+                // Features
                 $inputs = $request->input('features');
                 $service->serviceFeatures()->delete();
                 foreach ($inputs as $input) {
@@ -230,6 +220,7 @@
                     ]);
                 }
 
+                // Faqs
                 $faqs = [];
                 $question = $request->input('question');
                 $answer = $request->input('answer');
@@ -248,9 +239,15 @@
                         'answer' => $faq['answer']
                     ]);
                 }
-            });
 
-            return redirect()->route('super_admin.service.self.index');
+                DB::commit();
+
+                return redirect()->route('super_admin.service.self.index');
+            } catch (\Exception $exception) {
+                DB::rollBack();
+                report($exception->getMessage());
+                return back();
+            }
         }
 
         /**

@@ -112,4 +112,22 @@ class Service extends Model implements HasMedia
     {
         return $query->where('service_category_id', '=', $arg);
     }
+
+
+    /**
+     * Spatie Media Collection
+     */
+    public function registerMediaCollections(): void
+    {
+        // Service Image
+        $this->addMediaCollection('service')
+            ->acceptsMimeTypes(['image/jpeg', 'image/png'])
+        ;
+
+        // Service Thumb
+        $this->addMediaCollection('service_thumb')
+            ->acceptsMimeTypes(['image/jpeg', 'image/png'])
+            ->singleFile()
+        ;
+    }
 }
