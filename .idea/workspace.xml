@@ -6,7 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="3f616bec-9873-4c54-8a6f-71f691274991" name="Changes" comment="[dropzone] - added dropzone in edit page (reusable)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Designwala/DesignwalaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Doer/DoerController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Service/ServiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Service/ServiceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin_panel/pages/designwalas/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_panel/pages/doers/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin_panel/pages/designwalas/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_panel/pages/doers/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,7 +246,7 @@
       <updated>1627827296233</updated>
       <workItem from="1627827299400" duration="6520000" />
       <workItem from="1627835944502" duration="1455000" />
-      <workItem from="1627837446406" duration="56713000" />
+      <workItem from="1627837446406" duration="60231000" />
     </task>
     <task id="LOCAL-00001" summary="[service] - working on dropzone">
       <created>1627838312357</created>
@@ -321,7 +325,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628018711880</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="[dropzone] - added dropzone in edit page (reusable)">
+      <created>1628019390289</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1628019390289</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

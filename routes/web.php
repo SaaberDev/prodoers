@@ -3,7 +3,7 @@
     use App\Http\Controllers\Admin\Client\ClientController;
     use App\Http\Controllers\Admin\Client\SubscriberController;
     use App\Http\Controllers\Admin\DashboardController;
-    use App\Http\Controllers\Admin\Designwala\DesignwalaController;
+    use App\Http\Controllers\Admin\Doer\DoerController;
     use App\Http\Controllers\Admin\Offer\AffiliateController;
     use App\Http\Controllers\Admin\Offer\CouponController;
     use App\Http\Controllers\Admin\Order\OrderController;
@@ -232,8 +232,8 @@
 
         // Doers Route Section
         Route::prefix('/doers')->name('doer.')->group(function () {
-            Route::get('/', [DesignwalaController::class, 'index'])->name('index');
-            Route::get('/show', [DesignwalaController::class, 'show'])->name('show');
+            Route::get('/', [DoerController::class, 'index'])->name('index');
+            Route::get('/show', [DoerController::class, 'show'])->name('show');
         });
 
         // Roles & Permissions Route Section

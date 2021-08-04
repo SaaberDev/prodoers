@@ -240,7 +240,7 @@
                                             Not assigned</span></div>
                                 </td>
                                 <td>
-                                    <a href="{{ route('orders.order.show') }}" class="btn m-0 p-0">
+                                    <a href="{{ route('super_admin.doer.show') }}" class="btn m-0 p-0">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16.661" height="12.39"
                                              viewBox="0 0 16.661 12.39">
                                             <g transform="translate(-1 -5.5)">
@@ -271,7 +271,7 @@
                                             pending</span></div>
                                 </td>
                                 <td>
-                                    <a href="{{ route('orders.order.show') }}" class="btn m-0 p-0">
+                                    <a href="{{ route('super_admin.doer.show') }}" class="btn m-0 p-0">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16.661" height="12.39"
                                              viewBox="0 0 16.661 12.39">
                                             <g transform="translate(-1 -5.5)">
@@ -302,7 +302,7 @@
                                             Delivered</span></div>
                                 </td>
                                 <td>
-                                    <a href="{{ route('orders.order.show') }}" class="btn m-0 p-0">
+                                    <a href="{{ route('super_admin.doer.show') }}" class="btn m-0 p-0">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16.661" height="12.39"
                                              viewBox="0 0 16.661 12.39">
                                             <g transform="translate(-1 -5.5)">
@@ -333,7 +333,7 @@
                                             Completed</span></div>
                                 </td>
                                 <td>
-                                    <a href="{{ route('orders.order.show') }}" class="btn m-0 p-0">
+                                    <a href="{{ route('super_admin.doer.show') }}" class="btn m-0 p-0">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16.661" height="12.39"
                                              viewBox="0 0 16.661 12.39">
                                             <g transform="translate(-1 -5.5)">
@@ -362,7 +362,7 @@
                                             Ongoing</span></div>
                                 </td>
                                 <td>
-                                    <a href="{{ route('orders.order.show') }}" class="btn m-0 p-0">
+                                    <a href="{{ route('super_admin.doer.show') }}" class="btn m-0 p-0">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16.661" height="12.39"
                                              viewBox="0 0 16.661 12.39">
                                             <g transform="translate(-1 -5.5)">

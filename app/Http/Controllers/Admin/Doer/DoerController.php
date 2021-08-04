@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Designwala;
+namespace App\Http\Controllers\Admin\Doer;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Foundation\Application;
@@ -9,7 +9,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class DesignwalaController extends Controller
+class DoerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +18,7 @@ class DesignwalaController extends Controller
      */
     public function index()
     {
-        return view('admin_panel.pages.designwalas.index');
+        return view('admin_panel.pages.doers.index');
     }
 
     /**
@@ -50,7 +50,7 @@ class DesignwalaController extends Controller
      */
     public function show(/*$id*/)
     {
-        return \view('admin_panel.pages.designwalas.show');
+        return \view('admin_panel.pages.doers.show');
     }
 
     /**

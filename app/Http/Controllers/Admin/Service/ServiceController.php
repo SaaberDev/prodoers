@@ -189,25 +189,25 @@
                     'service_desc' => $request->input('service_description'),
                 ]);
 
-                // TODO --- need to work in update
-//                if (count($service->getMedia('service')) > 0) {
-//                    foreach ($service->getMedia('service') as $media) {
-//                        if (!in_array($media->file_name, $request->input('multiple_media', []))) {
-//                            $media->delete();
-//                        }
-//                    }
-//                }
+                // Service Image
+                $medias = $service->getMedia('service');
+                if (count($medias) > 0) {
+                    foreach ($medias as $media) {
+                        if (!in_array($media->file_name, $request->input('multiple_media', []))) {
+                            $media->delete();
+                        }
+                    }
+                }
 
-                $media = $service->getMedia('service')->pluck('file_name')->toArray();
+                $media = $medias->pluck('file_name')->toArray();
 
                 foreach ($request->input('multiple_media', []) as $file) {
-//                    if (count($media) === 0 || !in_array($file, $media)) {
-//                    if (Storage::exists('tmp/uploads/' . $file)) {
+                    if (count($media) === 0 || !in_array($file, $media)) {
                         $service->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection('service', 'public');
-//                    }
-//                    }
+                    }
                 }
-                // TODO ---
+
+                // Service Thumb -- TODO
 
                 $service_tagInputs = collect(explode(',', $request->input('service_tags')));
                 $service->tags()->sync($service_tagInputs);
