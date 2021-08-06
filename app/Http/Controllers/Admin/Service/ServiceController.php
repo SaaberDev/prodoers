@@ -21,6 +21,7 @@
     use Illuminate\Http\Response;
     use Illuminate\Support\Facades\DB;
     use Illuminate\Support\Facades\Storage;
+    use Spatie\MediaLibrary\MediaCollections\Models\Media;
     use Str;
     use Throwable;
 
@@ -43,6 +44,9 @@
          */
         public function create()
         {
+//            $service = Media::findOrFail('e8b4a0bd-7631-4b1e-abab-684d40ba86c0');
+//            dd($service);
+
             $service_categories = ServiceCategory::orderByDesc('title')->get(['title', 'id']);
             $service_tags = Tag::orderByDesc('title')->get(['title', 'id']);
             return view('admin_panel.pages.services.service.create', compact('service_categories', 'service_tags'));
@@ -135,10 +139,6 @@
          */
         public function edit($id)
         {
-//            $service = Service::findOrFail(53);
-//            $media = $service->getFirstMedia('service_thumb');
-//            dd($media->file_name);
-//            dd();
             $service = Service::findOrFail($id);
             $service_categories = ServiceCategory::getTitle();
 
@@ -309,8 +309,8 @@
         public function destroyMedia(Dropzone $dropzone, Request $request): JsonResponse
         {
             if ($request->input('single_media')) {
-                return $dropzone->deleteMedia('single_media', 'uuid');
+                return $dropzone->deleteMedia(Media::class,'single_media', 'uuid');
             }
-            return $dropzone->deleteMedia('multiple_media', 'uuid');
+            return $dropzone->deleteMedia(Media::class,'multiple_media', 'uuid');
         }
     }
