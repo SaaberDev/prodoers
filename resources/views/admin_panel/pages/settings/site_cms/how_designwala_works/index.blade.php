@@ -26,7 +26,7 @@
 
         @if(!$how_designwala_works->count() == 0 && $how_designwala_works_video)
         <div class="mt-4">
-            <form action="{{ route('settings.site_cms.how_designwala_works.update') }}" method="POST" enctype="multipart/form-data" autocomplete="off">
+            <form action="{{ route('super_admin.settings.site_cms.how_designwala_works.update') }}" method="POST" enctype="multipart/form-data" autocomplete="off">
                 @csrf @method('PATCH')
                 <div class="row m-0 justify-content-center py-3 bg-white rounded">
                     <div class="col-md-10">

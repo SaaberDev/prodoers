@@ -17,8 +17,6 @@ class CreateServiceCategoriesTable extends Migration
             $table->id();
             $table->string('title');
             $table->longText('meta_desc');
-            $table->string('category_banner')->nullable();
-            $table->string('category_thumbnail')->nullable();
             $table->string('slug');
             $table->longText('desc');
             $table->tinyInteger('navbar_status')->nullable()->default(0);

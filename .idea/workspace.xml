@@ -4,11 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f616bec-9873-4c54-8a6f-71f691274991" name="Changes" comment="[filesystem] - service image upload">
-      <change afterPath="$PROJECT_DIR$/app/Services/MediaLibrary/MediaHandler.php" afterDir="false" />
+    <list default="true" id="3f616bec-9873-4c54-8a6f-71f691274991" name="Changes" comment="[filesystem] - added media library handler class and completed service filesystem change">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/42998568-e479-49a9-b55c-54acc0d14cfe.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/42998568-e479-49a9-b55c-54acc0d14cfe/entities/entities.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/42998568-e479-49a9-b55c-54acc0d14cfe/entities/entities.dat.len" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/42998568-e479-49a9-b55c-54acc0d14cfe/entities/entities.dat.values" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/42998568-e479-49a9-b55c-54acc0d14cfe/entities/entities.dat.values.at" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/42998568-e479-49a9-b55c-54acc0d14cfe/entities/entities.dat.values.s" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/42998568-e479-49a9-b55c-54acc0d14cfe/entities/entities.dat_i" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/42998568-e479-49a9-b55c-54acc0d14cfe/entities/entities.dat_i.len" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/42998568-e479-49a9-b55c-54acc0d14cfe/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/42998568-e479-49a9-b55c-54acc0d14cfe/storage_v2/_src_/schema/mysql.osA4Bg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/42998568-e479-49a9-b55c-54acc0d14cfe/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/42998568-e479-49a9-b55c-54acc0d14cfe/storage_v2/_src_/schema/sys.zb4BAA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat_i" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat_i" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Service/ServiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Service/ServiceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Service.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Service.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/Dropzone/Dropzone.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/Dropzone/Dropzone.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/media-library.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/media-library.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/ServiceCategoryFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/ServiceCategoryFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/ServiceFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/ServiceFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_15_232213_create_service_categories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_15_232213_create_service_categories_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin_panel/pages/settings/site_cms/banners/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_panel/pages/settings/site_cms/banners/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin_panel/pages/settings/site_cms/brand_identity/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_panel/pages/settings/site_cms/brand_identity/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin_panel/pages/settings/site_cms/footer/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_panel/pages/settings/site_cms/footer/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin_panel/pages/settings/site_cms/how_designwala_works/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_panel/pages/settings/site_cms/how_designwala_works/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin_panel/pages/settings/site_cms/other_contents/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_panel/pages/settings/site_cms/other_contents/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin_panel/pages/settings/site_cms/policies/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_panel/pages/settings/site_cms/policies/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin_panel/pages/settings/site_cms/service_process/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_panel/pages/settings/site_cms/service_process/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin_panel/pages/settings/site_cms/social_links/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_panel/pages/settings/site_cms/social_links/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin_panel/pages/settings/site_cms/social_links/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_panel/pages/settings/site_cms/social_links/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/site-cms/social-link/index-component.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/site-cms/social-link/index-component.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -244,7 +271,8 @@
       <updated>1627827296233</updated>
       <workItem from="1627827299400" duration="6520000" />
       <workItem from="1627835944502" duration="1455000" />
-      <workItem from="1627837446406" duration="73591000" />
+      <workItem from="1627837446406" duration="79319000" />
+      <workItem from="1628262660592" duration="2588000" />
     </task>
     <task id="LOCAL-00001" summary="[service] - working on dropzone">
       <created>1627838312357</created>
@@ -337,7 +365,21 @@
       <option name="project" value="LOCAL" />
       <updated>1628101707419</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="[filesystem] - added media library handler class and completed service filesystem change">
+      <created>1628121358364</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1628121358364</updated>
+    </task>
+    <task id="LOCAL-00015" summary="[filesystem] - added media library handler class and completed service filesystem change">
+      <created>1628121576295</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1628121576295</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -363,6 +405,7 @@
     <MESSAGE value="[dropzone] - added dropzone in edit page" />
     <MESSAGE value="[dropzone] - added dropzone in edit page (reusable)" />
     <MESSAGE value="[filesystem] - service image upload" />
-    <option name="LAST_COMMIT_MESSAGE" value="[filesystem] - service image upload" />
+    <MESSAGE value="[filesystem] - added media library handler class and completed service filesystem change" />
+    <option name="LAST_COMMIT_MESSAGE" value="[filesystem] - added media library handler class and completed service filesystem change" />
   </component>
 </project>

@@ -31,7 +31,7 @@
 
         @if($company_policies)
         <div class="mt-4">
-            <form action="{{ route('settings.site_cms.policy.update') }}" method="POST" autocomplete="off">
+            <form action="{{ route('super_admin.settings.site_cms.policy.update') }}" method="POST" autocomplete="off">
                 @csrf @method('PATCH')
                 <div class="row m-0 py-3 boxshadow rounded">
                     <div class="col-md-12">

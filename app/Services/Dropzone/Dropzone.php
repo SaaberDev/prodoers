@@ -44,7 +44,7 @@
 
             $file = $this->request->file('file');
 
-            $name = uniqid() . '_' . trim($file->getClientOriginalName());
+            $name = trim($file->getClientOriginalName());
 
             $file->move($path, $name);
 
