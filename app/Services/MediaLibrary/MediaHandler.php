@@ -18,12 +18,36 @@
 
         /**
          * @param $model
+         * @param $inputKey
+         * @param $mediaCollection
+         * @param string $disk
+         */
+        public function uploadMultipleMedia($model, $inputKey, $mediaCollection, string $disk = 'public')
+        {
+            foreach ($this->request->input($inputKey, []) as $file) {
+                $model->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection($mediaCollection, $disk);
+            }
+        }
+
+        /**
+         * @param $model
+         * @param $inputKey
+         * @param $mediaCollection
+         * @param string $disk
+         */
+        public function uploadSingleMedia($model, $inputKey, $mediaCollection, string $disk = 'public')
+        {
+            $model->addMedia(storage_path('tmp/uploads/' . $this->request->input($inputKey)))->toMediaCollection($mediaCollection, $disk);
+        }
+
+        /**
+         * @param $model
          * @param $mediaCollection
          * @param $inputKey
          * @param string $disk
          * @throws Throwable
          */
-        public function updateMultipleMedia($model, $mediaCollection, $inputKey, string $disk = 'public')
+        public function updateMultipleMedia($model, $inputKey, $mediaCollection, string $disk = 'public')
         {
             try {
                 $medias = $model->getMedia($mediaCollection);
@@ -58,7 +82,7 @@
          * @param string $disk
          * @throws Throwable
          */
-        public function updateSingleMedia($model, $mediaCollection, $inputKey, string $disk = 'public')
+        public function updateSingleMedia($model, $inputKey, $mediaCollection, string $disk = 'public')
         {
             try {
                 $media = $model->getFirstMedia($mediaCollection);

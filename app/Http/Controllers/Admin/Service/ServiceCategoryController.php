@@ -8,6 +8,7 @@
     use App\Models\ServiceCategory;
     use App\Models\ServiceCategoryFaq;
     use App\Services\Dropzone\Dropzone;
+    use App\Services\MediaLibrary\MediaHandler;
     use Cviebrock\EloquentSluggable\Services\SlugService;
     use Illuminate\Contracts\Foundation\Application;
     use Illuminate\Contracts\View\Factory;
@@ -50,9 +51,9 @@
          *
          * @return RedirectResponse
          */
-        public function store(Request $request)
+        public function store(Request $request, MediaHandler $mediaHandler)
         {
-            DB::transaction(function () use ($request) {
+            DB::transaction(function () use ($request, $mediaHandler) {
                 $slug = SlugService::createSlug(ServiceCategory::class, 'slug', $request->input('service_category_title'));
                 $service_categories = ServiceCategory::firstOrCreate([
                     'title' => $request->input('service_category_title'),
@@ -61,17 +62,13 @@
                     'published_status' => $request->input('category_status'),
                     'meta_desc' => $request->input('meta_description'),
                     'slug' => $slug,
-//                    'category_banner' => SingleImageUploadHandler($request, $slug, 'banner_image', 'banner', config('designwala_paths.images.service_categories.banner')),
-//                    'category_thumbnail' => SingleImageUploadHandler($request, $slug, 'thumbnail_image', 'thumbnail', config('designwala_paths.images.service_categories.thumbnail')),
                     'desc' => $request->input('service_description'),
                 ]);
 
-                // Category Image
-                foreach ($request->input('multiple_media', []) as $file) {
-                    $service_categories->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection('category', 'public');
-                }
                 // Category Thumbnail Image
-                $service_categories->addMedia(storage_path('tmp/uploads/' . $request->input('single_media')))->toMediaCollection('category_thumb', 'public');
+                $service_categories->addMedia(storage_path('tmp/uploads/' . $request->input('single_media_1')))->toMediaCollection('category', 'public');
+                // Category Image
+                $service_categories->addMedia(storage_path('tmp/uploads/' . $request->input('single_media_2')))->toMediaCollection('category_thumb', 'public');
 
                 $faqs = [];
                 $question = $request->input('question');
@@ -84,7 +81,6 @@
                     $faqs[] = $data;
                 }
                 foreach ($faqs as $faq) {
-//                dd($faq);
                     $service_categories->serviceCategoryFaqs()->firstOrCreate([
                         'service_category_id' => $service_categories->id,
                         'question' => $faq['question'],
@@ -143,11 +139,12 @@
          * @param ServiceCategoryRequest $request
          * @param int $id
          * @return RedirectResponse
+         * @throws \Throwable
          */
-        public function update(ServiceCategoryRequest $request, $id)
+        public function update(ServiceCategoryRequest $request, MediaHandler $mediaHandler, $id)
         {
             $service_categories = ServiceCategory::findOrFail($id);
-            DB::transaction(function () use ($request, $service_categories) {
+            DB::transaction(function () use ($request, $service_categories, $mediaHandler) {
                 $slug = SlugService::createSlug(ServiceCategory::class, 'slug', $request->input('service_category_title'));
                 $service_categories->update([
                     'title' => $request->input('service_category_title'),
@@ -156,13 +153,13 @@
                     'published_status' => $request->input('category_status'),
                     'meta_desc' => $request->input('meta_description'),
                     'slug' => $slug,
-                    'category_banner' => SingleImageUpdateHandler($request, $slug, $service_categories->category_banner,
-                        'banner_image', 'banner', config('designwala_paths.images.service_categories.banner')),
-                    'category_thumbnail' => SingleImageUpdateHandler($request, $slug,
-                        $service_categories->category_thumbnail, 'thumbnail_image', 'thumbnail',
-                        config('designwala_paths.images.service_categories.thumbnail')),
                     'desc' => $request->input('service_description')
                 ]);
+
+                // Banner Image
+                $mediaHandler->updateSingleMedia($service_categories, 'single_media_1', 'category');
+                // Category Thumbnail Image
+                $mediaHandler->updateSingleMedia($service_categories, 'single_media_2', 'category_thumb');
 
                 $faqs = [];
                 $question = $request->input('question');

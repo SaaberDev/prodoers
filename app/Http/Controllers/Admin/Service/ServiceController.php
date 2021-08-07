@@ -56,9 +56,9 @@
          * @return RedirectResponse
          * @throws Throwable
          */
-        public function store(Request $request)
+        public function store(Request $request, MediaHandler $mediaHandler)
         {
-            DB::transaction(function () use ($request) {
+            DB::transaction(function () use ($request, $mediaHandler) {
                 $slug = SlugService::createSlug(Service::class, 'slug', $request->input('service_title'));
                 $services = Service::firstOrCreate([
                     'title' => $request->input('service_title'),
@@ -72,11 +72,9 @@
                 ]);
 
                 // Service Image
-                foreach ($request->input('multiple_media', []) as $file) {
-                    $services->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection('service', 'public');
-                }
+                $mediaHandler->uploadMultipleMedia($services, 'multiple_media', 'service');
                 // Service Thumbnail Image
-                $services->addMedia(storage_path('tmp/uploads/' . $request->input('single_media')))->toMediaCollection('service_thumb', 'public');
+                $mediaHandler->uploadSingleMedia($services, 'single_media', 'service_thumb');
 
                 // Service Tags
                 $service_tagInputs = $request->input('service_tags');
@@ -195,8 +193,8 @@
 
 
                 // Media
-                $mediaHandler->updateMultipleMedia($service, 'service', 'multiple_media');
-                $mediaHandler->updateSingleMedia($service, 'service_thumb', 'single_media');
+                $mediaHandler->updateMultipleMedia($service, 'multiple_media', 'service');
+                $mediaHandler->updateSingleMedia($service, 'single_media', 'service_thumb');
 
                 // Tags
                 $service_tagInputs = collect(explode(',', $request->input('service_tags')));
