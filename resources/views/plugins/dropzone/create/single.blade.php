@@ -1,6 +1,6 @@
 <script>
     var singleUploadMap = {}
-    Dropzone.options.singleMediaDropzone = {
+    Dropzone.options.{{ $dropzone }} = {
         url: "{{ $store }}",
         maxFilesize: '{{ $maxFilesize }}', // MB
         maxFiles: '{{ $maxFiles }}',

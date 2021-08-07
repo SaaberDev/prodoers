@@ -4,70 +4,6 @@
 @push('styles')
     {{-- Internal Styles --}}
     <link rel="stylesheet" href="{{ mix('_assets/plugins/dropzone/css/dropzone.css') }}">
-    <style>
-        .dropzone {
-            min-height: 140px;
-            background-color: #e8efe87a;
-            padding: 0;
-            border: 1px dashed #038D08!important;
-        }
-
-        .dropzone .dz-message {
-            text-align: center;
-            margin: 0;
-            font-size: 16px;
-        }
-
-        .dropzone .dz-message .dz-button {
-            background: none;
-            color: inherit;
-            border: none;
-            padding: 0;
-            font: inherit;
-            cursor: pointer;
-            outline: inherit;
-            font-weight: 300;
-        }
-
-        .dropzone .dz-preview .dz-error-message {
-            pointer-events: none;
-            z-index: 1000;
-            position: absolute;
-            display: block;
-            display: none;
-            opacity: 0;
-            -webkit-transition: opacity 0.3s ease;
-            -moz-transition: opacity 0.3s ease;
-            -ms-transition: opacity 0.3s ease;
-            -o-transition: opacity 0.3s ease;
-            transition: opacity 0.3s ease;
-            border-radius: 8px;
-            font-size: 13px;
-            top: 150px;
-            left: -10px;
-            width: 140px;
-            background: #be2626;
-            background: linear-gradient(to bottom, #be2626, #a92222);
-            padding: 0.5em 1.2em;
-            color: white;
-        }
-
-        .dropzone.dz-clickable .dz-message, .dropzone.dz-clickable .dz-message * {
-            cursor: pointer;
-            font-weight: 300;
-            line-height: 40px;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-        .dz-thumb {
-            width: 100%;
-            height: 100%;
-            object-fit: contain!important;
-        }
-        .dropzone .dz-preview.dz-image-preview {
-            background: transparent;
-        }
-    </style>
 @endpush
 
 @section('content')
@@ -341,7 +277,6 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ mix('_assets/plugins/dropzone/js/dropzone.js') }}"></script>
     {{-- Internal Scripts --}}
     <script>
         // Dynamic field (Features)
@@ -661,8 +596,10 @@
         }
     </script>
 
+    <script src="{{ mix('_assets/plugins/dropzone/js/dropzone.js') }}"></script>
     {{-- Dropzone Service Thumb --}}
     @include('plugins.dropzone.create.single', [
+        'dropzone' => Str::camel('single-media-dropzone'),
         'store' => route('super_admin.service.self.storeMedia'),
         'delete' => route('super_admin.service.self.deleteMedia'),
         'maxFilesize' => 2,
@@ -672,6 +609,7 @@
 
     {{-- Dropzone Service Image --}}
     @include('plugins.dropzone.create.multiple', [
+        'dropzone' => Str::camel('multiple-media-dropzone'),
         'store' => route('super_admin.service.self.storeMedia'),
         'delete' => route('super_admin.service.self.deleteMedia'),
         'maxFilesize' => 2,

@@ -15,7 +15,7 @@
     };
 
     var multipleUploadMap = {}
-    Dropzone.options.multipleMediaDropzone = {
+    Dropzone.options.{{ $dropzone }} = {
         url: '{{ $store }}',
         maxFilesize: '{{ $maxFilesize }}', // MB
         acceptedFiles: '{{ $acceptedFiles }}',

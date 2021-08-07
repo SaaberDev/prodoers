@@ -130,7 +130,6 @@
 
                 // Dropzone Media Ajax
                 Route::get('/get-media', [ServiceController::class, 'getMedia'])->name('getMedia');
-                Route::get('/remember-media', [ServiceController::class, 'rememberMedia'])->name('rememberMedia');
                 Route::post('/store-media', [ServiceController::class, 'storeMedia'])->name('storeMedia');
                 Route::delete('/delete-media', [ServiceController::class, 'destroyMedia'])->name('deleteMedia');
             });
@@ -145,6 +144,11 @@
                 Route::post('/store-category', [ServiceCategoryController::class, 'store'])->name('store');
                 Route::patch('/update-category/{id}', [ServiceCategoryController::class, 'update'])->name('update');
                 Route::get('/destroy-category/{id}', [ServiceCategoryController::class, 'destroy'])->name('destroy');
+
+                // Dropzone Media Ajax
+                Route::get('/get-media', [ServiceCategoryController::class, 'getMedia'])->name('getMedia');
+                Route::post('/store-media', [ServiceCategoryController::class, 'storeMedia'])->name('storeMedia');
+                Route::delete('/delete-media', [ServiceCategoryController::class, 'destroyMedia'])->name('deleteMedia');
             });
             // Tags
             Route::prefix('/tags')->name('tag.')->group(function () {

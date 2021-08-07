@@ -3,6 +3,7 @@
 
 @push('styles')
     {{-- Internal Styles --}}
+    <link rel="stylesheet" href="{{ mix('_assets/plugins/dropzone/css/dropzone.css') }}">
 @endpush
 
 @section('content')
@@ -86,6 +87,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-md-6 mt-4">
                         <div class="form-group">
                             <label for="">
@@ -149,6 +151,56 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="row m-0 justify-content-around mt-4 ">
+                        <div class="col-md-6">
+                            {{-- Service Image --}}
+                            <div class="form-group">
+                                <label for="">
+                                    <h5>Service Image</h5>
+                                </label>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <div class="needsclick dropzone" id="single-media-dropzone-1">
+                                                <div class="dz-message" data-dz-message>
+                                                    <span>Drop files here or click to upload.</span> <br>
+                                                    <span style="color: #dc3545;font-size: 13px;">Maximum allowed file size 2MB. Allowed file types are jpeg, png.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        {{-- Service Thumbnail --}}
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">
+                                    <h5>Service Thumbnail</h5>
+                                </label>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <div class="needsclick dropzone" id="single-media-dropzone-2">
+                                                <div class="dz-message" data-dz-message>
+                                                    <span>Drop files here or click to upload.</span> <br>
+                                                    <span style="color: #dc3545;font-size: 13px;">Maximum allowed file size 2MB. Allowed file types are jpeg, png.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
                     <div class="col-md-12 mt-4">
                         <label for="">
                             <h5>description </h5></label>
@@ -340,4 +392,24 @@
             }
         }
     </script>
+
+    <script src="{{ mix('_assets/plugins/dropzone/js/dropzone.js') }}"></script>
+    {{-- Dropzone Service Thumb --}}
+    @include('plugins.dropzone.create.single', [
+        'dropzone' => Str::camel('single-media-dropzone-1'),
+        'store' => route('super_admin.service.self.storeMedia'),
+        'delete' => route('super_admin.service.self.deleteMedia'),
+        'maxFilesize' => 2,
+        'maxFiles' => 1,
+        'acceptedFiles' => 'image/jpeg, image/png',
+    ])
+
+    @include('plugins.dropzone.create.single', [
+        'dropzone' => Str::camel('single-media-dropzone-2'),
+        'store' => route('super_admin.service.self.storeMedia'),
+        'delete' => route('super_admin.service.self.deleteMedia'),
+        'maxFilesize' => 2,
+        'maxFiles' => 1,
+        'acceptedFiles' => 'image/jpeg, image/png',
+    ])
 @endpush
