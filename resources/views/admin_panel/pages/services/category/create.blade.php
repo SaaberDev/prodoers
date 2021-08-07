@@ -88,76 +88,13 @@
                         </div>
                     </div>
 
-                    <div class="col-md-6 mt-4">
-                        <div class="form-group">
-                            <label for="">
-                                <h5>banner image </h5>
-                            </label>
-                            <div class="input-group">
-                                <input type='text'
-                                       name="banner_image"
-                                       value="{{ old('banner_image') }}"
-                                       class="form-control {{ $errors->has('banner_image') ? ' is-invalid' : '' }}"
-                                       onchange="preview(this);"
-                                       readonly
-                                />
 
-                                <div class="input-group-btn">
-                                    <span class="fileUpload btn btnOne">
-                                        <span class="upl" id="upload">Choose</span>
-                                        <input type='file'
-                                               name="banner_image"
-                                               class="upload up"
-                                        />
-                                    </span>
-                                </div>
-                                @if($errors->has('banner_image'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('banner_image') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 mt-4">
-                        <div class="form-group">
-                            <label for="">
-                                <h5>category thumbnail </h5>
-                            </label>
-                            <div class="input-group">
-                                <input type='text'
-                                       name="thumbnail_image"
-                                       value="{{ old('thumbnail_image') }}"
-                                       class="form-control {{ $errors->has('thumbnail_image') ? ' is-invalid' : '' }}"
-                                       onchange="preview(this);"
-                                       readonly
-                                />
-
-                                <div class="input-group-btn">
-                                    <span class="fileUpload btn btnOne">
-                                        <span class="upl" id="upload">Choose</span>
-                                        <input type='file'
-                                               name="thumbnail_image"
-                                               class="upload up"
-                                        />
-                                    </span>
-                                </div>
-                                @if($errors->has('thumbnail_image'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('thumbnail_image') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row m-0 justify-content-around mt-4 ">
+                    <div class="row col-md-12 m-0 justify-content-around mt-4 ">
                         <div class="col-md-6">
                             {{-- Service Image --}}
                             <div class="form-group">
                                 <label for="">
-                                    <h5>Service Image</h5>
+                                    <h5>Banner Image</h5>
                                 </label>
 
                                 <div class="row">
@@ -180,7 +117,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">
-                                    <h5>Service Thumbnail</h5>
+                                    <h5>Category Thumbnail</h5>
                                 </label>
 
                                 <div class="row">
@@ -397,6 +334,7 @@
     {{-- Dropzone Service Thumb --}}
     @include('plugins.dropzone.create.single', [
         'dropzone' => Str::camel('single-media-dropzone-1'),
+        'fileInputName' => 'single_media_1',
         'store' => route('super_admin.service.self.storeMedia'),
         'delete' => route('super_admin.service.self.deleteMedia'),
         'maxFilesize' => 2,
@@ -406,6 +344,7 @@
 
     @include('plugins.dropzone.create.single', [
         'dropzone' => Str::camel('single-media-dropzone-2'),
+        'fileInputName' => 'single_media_2',
         'store' => route('super_admin.service.self.storeMedia'),
         'delete' => route('super_admin.service.self.deleteMedia'),
         'maxFilesize' => 2,

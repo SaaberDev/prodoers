@@ -600,6 +600,7 @@
     {{-- Dropzone Service Thumb --}}
     @include('plugins.dropzone.create.single', [
         'dropzone' => Str::camel('single-media-dropzone'),
+        'fileInputName' => 'single_media',
         'store' => route('super_admin.service.self.storeMedia'),
         'delete' => route('super_admin.service.self.deleteMedia'),
         'maxFilesize' => 2,
@@ -610,6 +611,7 @@
     {{-- Dropzone Service Image --}}
     @include('plugins.dropzone.create.multiple', [
         'dropzone' => Str::camel('multiple-media-dropzone'),
+        'fileInputName' => 'multiple_media',
         'store' => route('super_admin.service.self.storeMedia'),
         'delete' => route('super_admin.service.self.deleteMedia'),
         'maxFilesize' => 2,

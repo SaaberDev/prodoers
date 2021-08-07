@@ -50,7 +50,7 @@
          *
          * @return RedirectResponse
          */
-        public function store(ServiceCategoryRequest $request)
+        public function store(Request $request)
         {
             DB::transaction(function () use ($request) {
                 $slug = SlugService::createSlug(ServiceCategory::class, 'slug', $request->input('service_category_title'));
@@ -238,6 +238,7 @@
          */
         public function destroyMedia(Dropzone $dropzone, Request $request): JsonResponse
         {
+            // TODO --  Need to work here
             if ($request->input('single_media')) {
                 return $dropzone->deleteMedia(Media::class,'single_media', 'uuid', 'spatie');
             }

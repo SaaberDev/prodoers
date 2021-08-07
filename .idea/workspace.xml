@@ -4,16 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f616bec-9873-4c54-8a6f-71f691274991" name="Changes" comment="[filesystem] - added media library handler class and completed service filesystem change">
+    <list default="true" id="3f616bec-9873-4c54-8a6f-71f691274991" name="Changes" comment="[filesystem] - made dropzone dynamic for multiple dropzone in one page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Service/ServiceCategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Service/ServiceCategoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/ServiceCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ServiceCategory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_assets/_custom/css/custom_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/_assets/_custom/css/custom_styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/_assets/_custom/css/custom_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/_assets/_custom/css/custom_styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin_panel/pages/services/category/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_panel/pages/services/category/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin_panel/pages/services/service/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_panel/pages/services/service/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/plugins/dropzone/create/multiple.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/plugins/dropzone/create/multiple.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/plugins/dropzone/create/single.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/plugins/dropzone/create/single.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -252,7 +249,7 @@
       <workItem from="1627835944502" duration="1455000" />
       <workItem from="1627837446406" duration="79319000" />
       <workItem from="1628262660592" duration="7236000" />
-      <workItem from="1628279922521" duration="16819000" />
+      <workItem from="1628279922521" duration="18705000" />
     </task>
     <task id="LOCAL-00001" summary="[service] - working on dropzone">
       <created>1627838312357</created>
@@ -387,7 +384,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628295178049</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="[filesystem] - made dropzone dynamic for multiple dropzone in one page">
+      <created>1628297434899</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1628297434899</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -414,6 +418,7 @@
     <MESSAGE value="[dropzone] - added dropzone in edit page (reusable)" />
     <MESSAGE value="[filesystem] - service image upload" />
     <MESSAGE value="[filesystem] - added media library handler class and completed service filesystem change" />
-    <option name="LAST_COMMIT_MESSAGE" value="[filesystem] - added media library handler class and completed service filesystem change" />
+    <MESSAGE value="[filesystem] - made dropzone dynamic for multiple dropzone in one page" />
+    <option name="LAST_COMMIT_MESSAGE" value="[filesystem] - made dropzone dynamic for multiple dropzone in one page" />
   </component>
 </project>
