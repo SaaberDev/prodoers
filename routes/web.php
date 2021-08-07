@@ -126,7 +126,7 @@
 
                 Route::post('/store-service', [ServiceController::class, 'store'])->name('store');
                 Route::patch('/update-service/{id}', [ServiceController::class, 'update'])->name('update');
-                Route::get('/destroy-service/{id}', [ServiceController::class, 'destroy'])->name('destroy');
+                Route::delete('/destroy-service/{id}', [ServiceController::class, 'destroy'])->name('destroy');
 
                 // Dropzone Media Ajax
                 Route::get('/get-media', [ServiceController::class, 'getMedia'])->name('getMedia');

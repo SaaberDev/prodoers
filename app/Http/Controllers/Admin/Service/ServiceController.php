@@ -251,25 +251,28 @@
          * Remove the specified resource from storage.
          *
          * @param int $id
-         * @return RedirectResponse
+         * @return JsonResponse
          * @throws Throwable
          */
         public function destroy($id)
         {
-            $notify = [
-                'alert-type' => 'success_toast',
-                'message' => 'Service has been Deleted !',
-            ];
-            $services = Service::findOrFail($id);
-            DB::transaction(function () use ($services) {
-                foreach ($services->serviceImages as $service_image) {
-                    deleteFileBefore(config('designwala_paths.images.services.service_image'), $service_image->filename);
-                }
-                deleteFileBefore(config('designwala_paths.images.services.thumbnail'), $services->thumbnail);
+            DB::beginTransaction();
+            try {
+                $services = Service::findOrFail($id);
                 $services->delete();
-            });
-
-            return redirect()->back()->with($notify);
+                DB::commit();
+                return \response()->json([
+                    'alert_type' => 'success',
+                    'message' => 'Purchase Deleted Successfully!',
+                ]);
+            } catch (\Exception $exception) {
+                DB::rollBack();
+                report($exception->getMessage());
+                return \response()->json([
+                    'alert_type' => 'warning',
+                    'message' => 'Opps, Something went wrong!',
+                ]);
+            }
         }
 
 

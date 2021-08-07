@@ -41,7 +41,6 @@
                         <thead>
                         <tr>
                             <th scope="col">Title</th>
-{{--                            <th scope="col">THUMBNAIL</th>--}}
                             <th scope="col">category</th>
                             <th scope="col">Price</th>
                             <th scope="col">Popular status</th>
@@ -55,10 +54,6 @@
                         @forelse($services as $service)
                             <tr>
                                 <td>{{ $service->title }}</td>
-                                {{--<td>
-                                    <img src="{{ asset('storage/admin_panel/services/thumbnail/' . $service->thumbnail) }}" alt="" class="img-fluid"
-                                         style="height: 25px;">
-                                </td>--}}
                                 @if(empty($service->serviceCategories))
                                     <td>No Category</td>
                                 @else
@@ -104,7 +99,9 @@
                                                 </g>
                                             </svg>
                                         </a>
-                                        <a data-action="{{ route('super_admin.service.self.destroy', $service->id) }}" class="sweet_delete btn m-0 p-0">
+                                        <a href="{{ route('super_admin.service.self.destroy', $service->id) }}"
+                                           class="sweet_delete btn m-0 p-0"
+                                        >
                                             <svg xmlns="http://www.w3.org/2000/svg" width="11.91" height="16.027"
                                                  viewBox="0 0 11.91 16.027">
                                                 <path
