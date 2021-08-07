@@ -178,10 +178,6 @@
          */
         public function update(ServiceRequest $request, MediaHandler $mediaHandler, int $id)
         {
-//            $service = Service::findOrFail($id);
-//            dd($service->first('file_name'));
-
-
             DB::beginTransaction();
             try {
                 $service = Service::findOrFail($id);
