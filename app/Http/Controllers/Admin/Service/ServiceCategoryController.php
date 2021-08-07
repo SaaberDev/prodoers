@@ -117,21 +117,7 @@
         public function edit($id)
         {
             $service_category = ServiceCategory::findOrFail($id);
-            return \view('admin_panel.pages.services.category.edit', compact('id', 'service_category'));
-        }
-
-        public function destroyServiceCategoryFaq($id)
-        {
-            $notify = [
-                'alert-type' => 'success_toast',
-                'message' => 'FAQ Deleted !',
-            ];
-            $service_category_faqs = ServiceCategoryFaq::findOrFail($id);
-            DB::transaction(function () use ($service_category_faqs) {
-                $service_category_faqs->delete();
-            });
-
-            return redirect()->back()->with($notify);
+            return \view('admin_panel.pages.services.category.edit', compact('service_category'));
         }
 
         /**
@@ -205,6 +191,32 @@
             try {
                 $service_categories = ServiceCategory::findOrFail($id);
                 $service_categories->delete();
+                DB::commit();
+                return \response()->json([
+                    'alert_type' => 'success',
+                    'message' => 'Category Deleted Successfully!',
+                ]);
+            } catch (\Exception $exception) {
+                DB::rollBack();
+                report($exception->getMessage());
+                return \response()->json([
+                    'alert_type' => 'warning',
+                    'message' => 'Opps, Something went wrong!',
+                ]);
+            }
+        }
+
+        /**
+         * @param $id
+         * @return JsonResponse
+         * @throws Throwable
+         */
+        public function destroyFaq($id)
+        {
+            DB::beginTransaction();
+            try {
+                $faq = ServiceCategoryFaq::findOrFail($id);
+                $faq->delete();
                 DB::commit();
                 return \response()->json([
                     'alert_type' => 'success',

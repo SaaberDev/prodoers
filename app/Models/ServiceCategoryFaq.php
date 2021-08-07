@@ -12,6 +12,8 @@ class ServiceCategoryFaq extends Model
 {
     use HasFactory;
 
+    protected $table = 'service_category_faqs';
+
     protected $guarded = [];
 
     public function service_categories()
