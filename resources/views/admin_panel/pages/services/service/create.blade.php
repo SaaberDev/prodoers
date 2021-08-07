@@ -666,6 +666,7 @@
         'store' => route('super_admin.service.self.storeMedia'),
         'delete' => route('super_admin.service.self.deleteMedia'),
         'maxFilesize' => 2,
+        'maxFiles' => 1,
         'acceptedFiles' => 'image/jpeg, image/png',
     ])
 

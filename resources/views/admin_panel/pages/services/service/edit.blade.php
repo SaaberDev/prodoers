@@ -712,6 +712,7 @@
         'delete' => route('super_admin.service.self.deleteMedia'),
         'model' => $service, // your model name for query
         'maxFilesize' => 2,
+        'maxFiles' => 1,
         'acceptedFiles' => 'image/jpeg, image/png',
     ])
     @include('plugins.dropzone.edit.multiple', [

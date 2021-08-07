@@ -6,7 +6,6 @@
 
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
-    use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
     class Dropzone
     {
@@ -55,24 +54,27 @@
         }
 
         /**
-         * @param $mediaKey
-         * @param $mediaUuid
+         * @param $model
+         * @param $requestInput
+         * @param $mediaId
+         * @param null $library
          * @return JsonResponse
          */
-        public function deleteMedia($model, $requestInput, $mediaUuid, $library): JsonResponse
+        public function deleteMedia($model, $requestInput, $mediaId, $library = null): JsonResponse
         {
             $file = $this->request->get($requestInput);
-            $id = $this->request->get($mediaUuid);
+            $id = $this->request->get($mediaId);
 
             if (!$id) {
                 if (\Storage::disk('tmp')->exists('uploads/' . $file)) {
                     \Storage::disk('tmp')->delete('uploads/' . $file);
                 }
             } else {
-                if ($library == 'spatie') {
+                if ($library === 'spatie') {
                     $model::findByUuid($id)->delete();
+                } else {
+                    $model::findOrFail($id)->delete();
                 }
-                $model::findOrFail($id)->delete();
             }
 
             return response()->json();

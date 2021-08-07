@@ -130,6 +130,7 @@
 
                 // Dropzone Media Ajax
                 Route::get('/get-media', [ServiceController::class, 'getMedia'])->name('getMedia');
+                Route::get('/remember-media', [ServiceController::class, 'rememberMedia'])->name('rememberMedia');
                 Route::post('/store-media', [ServiceController::class, 'storeMedia'])->name('storeMedia');
                 Route::delete('/delete-media', [ServiceController::class, 'destroyMedia'])->name('deleteMedia');
             });
