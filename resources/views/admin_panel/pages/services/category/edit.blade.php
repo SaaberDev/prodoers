@@ -3,6 +3,7 @@
 
 @push('styles')
     {{-- Internal Styles --}}
+    <link rel="stylesheet" href="{{ mix('_assets/plugins/dropzone/css/dropzone.css') }}">
 @endpush
 
 @section('content')
@@ -32,7 +33,7 @@
                             <label for="">
                                 <h5>Title</h5></label>
                             <div class="input-group">
-                                <input name="service_category_title" class="form-control {{ $errors->has('service_category_title') ? ' is-invalid' : '' }}" value="{{ old('service_category_title') ? old('service_category_title') : $service_categories->title }}" type="text">
+                                <input name="service_category_title" class="form-control {{ $errors->has('service_category_title') ? ' is-invalid' : '' }}" value="{{ old('service_category_title') ? old('service_category_title') : $service_category->title }}" type="text">
                                 @if($errors->has('service_category_title'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('service_category_title') }}</strong>
@@ -48,7 +49,7 @@
                             <label for="">
                                 <h5>Navbar</h5></label>
                             <div class="">
-                                <input id="navbar_status" name="navbar_status" value="{{ old('navbar_status') ? old('navbar_status') : $service_categories->navbar_status }}" {{ (old('navbar_status') ? old('navbar_status') : $service_categories->navbar_status) == 1 ? 'checked='.'"'.'checked'.'"' : '' }} type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
+                                <input id="navbar_status" name="navbar_status" value="{{ old('navbar_status') ? old('navbar_status') : $service_category->navbar_status }}" {{ (old('navbar_status') ? old('navbar_status') : $service_category->navbar_status) == 1 ? 'checked='.'"'.'checked'.'"' : '' }} type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
                             </div>
                         </div>
                     </div>
@@ -58,7 +59,7 @@
                             <label for="">
                                 <h5>Popular</h5></label>
                             <div class="">
-                                <input name="category_popular" value="{{ old('category_popular') ? old('category_popular') : $service_categories->popular_status }}" {{ (old('category_popular') ? old('category_popular') : $service_categories->popular_status) == 1 ? 'checked='.'"'.'checked'.'"' : '' }}  id="category_popular" type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
+                                <input name="category_popular" value="{{ old('category_popular') ? old('category_popular') : $service_category->popular_status }}" {{ (old('category_popular') ? old('category_popular') : $service_category->popular_status) == 1 ? 'checked='.'"'.'checked'.'"' : '' }}  id="category_popular" type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
                             </div>
                         </div>
                     </div>
@@ -67,7 +68,7 @@
                             <label for="">
                                 <h5>Publish</h5></label>
                             <div class="">
-                                <input name="category_status" value="{{ old('category_status') ? old('category_status') : $service_categories->published_status }}" {{ (old('category_status') ? old('category_status') : $service_categories->published_status) == 1 ? 'checked='.'"'.'checked'.'"' : '' }} id="category_status" type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
+                                <input name="category_status" value="{{ old('category_status') ? old('category_status') : $service_category->published_status }}" {{ (old('category_status') ? old('category_status') : $service_category->published_status) == 1 ? 'checked='.'"'.'checked'.'"' : '' }} id="category_status" type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
                             </div>
                         </div>
                     </div>
@@ -76,7 +77,7 @@
                             <div class="form-group">
                                 <label for="">
                                     <h5>meta description </h5></label>
-                                <textarea name="meta_description" class="form-control {{ $errors->has('meta_description') ? ' is-invalid' : '' }}" id="exampleFormControlTextarea1" rows="5">{{ old('meta_description') ? old('meta_description') : $service_categories->meta_desc }}</textarea>
+                                <textarea name="meta_description" class="form-control {{ $errors->has('meta_description') ? ' is-invalid' : '' }}" id="exampleFormControlTextarea1" rows="5">{{ old('meta_description') ? old('meta_description') : $service_category->meta_desc }}</textarea>
                                 @if($errors->has('meta_description'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('meta_description') }}</strong>
@@ -85,93 +86,63 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 mt-4">
-                        <div class="form-group">
-                            <label for="">
-                                <h5>banner image </h5>
-                            </label>
-                            <div class="input-group">
-                                <input type='text'
-                                       name="old_banner_image"
-                                       class="form-control {{ $errors->has('banner_image') ? ' is-invalid' : '' }}"
-                                       onchange="preview(this);"
-                                       placeholder="No File Chosen"
-                                       readonly
-                                />
 
-                                <div class="input-group-btn">
-                                    <span class="fileUpload btn btnOne">
-                                        <span class="upl" id="upload">Choose</span>
-                                        <input type='file'
-                                               name="banner_image"
-                                               class="upload up"
-                                        />
-                                    </span>
+
+                    <div class="row col-md-12 m-0 justify-content-around mt-4 ">
+                        <div class="col-md-6">
+                            {{-- Banner Image --}}
+                            <div class="form-group">
+                                <label for="">
+                                    <h5>Banner Image</h5>
+                                </label>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <div class="needsclick dropzone" id="single-media-dropzone-1">
+                                                <div class="dz-message" data-dz-message>
+                                                    <span>Drop files here or click to upload.</span> <br>
+                                                    <span style="color: #dc3545;font-size: 13px;">Maximum allowed file size 2MB. Allowed file types are jpeg, png.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                @if($errors->has('banner_image'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('banner_image') }}</strong>
-                                    </span>
-                                @endif
+
                             </div>
                         </div>
-                        <div class="mt-4 border">
-                            <ul class="row list-unstyled previewimg">
-                                <li class="col-md-4 py-4 text-center position-relative m-auto">
-                                    <div class="previewImg">
-                                        <img id="previewImg" class="img-fluid" src="{{ asset($banner . $service_categories->category_banner) }}" alt="Category Banner Image">
+
+                        {{-- Category Thumbnail --}}
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">
+                                    <h5>Category Thumbnail</h5>
+                                </label>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <div class="needsclick dropzone" id="single-media-dropzone-2">
+                                                <div class="dz-message" data-dz-message>
+                                                    <span>Drop files here or click to upload.</span> <br>
+                                                    <span style="color: #dc3545;font-size: 13px;">Maximum allowed file size 2MB. Allowed file types are jpeg, png.</span>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </li>
-                            </ul>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
 
-                    <div class="col-md-6 mt-4">
-                        <div class="form-group">
-                            <label for="">
-                                <h5>category thumbnail </h5>
-                            </label>
-                            <div class="input-group">
-                                <input type='text'
-                                       name="old_thumbnail_image"
-                                       class="form-control {{ $errors->has('thumbnail_image') ? ' is-invalid' : '' }}"
-                                       onchange="preview(this);"
-                                       placeholder="No File Chosen"
-                                       readonly
-                                />
 
-                                <div class="input-group-btn">
-                                    <span class="fileUpload btn btnOne">
-                                        <span class="upl" id="upload">Choose</span>
-                                        <input type='file'
-                                               name="thumbnail_image"
-                                               class="upload up"
-                                        />
-                                    </span>
-                                </div>
-                                @if($errors->has('thumbnail_image'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('thumbnail_image') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="mt-4 border">
-                            <ul class="row list-unstyled previewimg">
-                                <li class="col-md-4 py-4 text-center position-relative m-auto">
-                                    <div class="previewImg">
-                                        <img id="previewImg" class="img-fluid" src="{{ asset($thumbnail . $service_categories->category_thumbnail) }}" alt="Category Thumbnail">
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
                     <div class="col-md-12 mt-4">
                         <label for="">
                             <h5>description </h5></label>
                         <div class="row">
                             <div class="col-md-12">
-                                <textarea name="service_description" class="form-control {{ $errors->has('service_description') ? 'is-invalid' : '' }}" id="exampleFormControlTextarea1" rows="8">{{ old('service_description') ? old('service_description') : $service_categories->desc }}</textarea>
+                                <textarea name="service_description" class="form-control {{ $errors->has('service_description') ? 'is-invalid' : '' }}" id="exampleFormControlTextarea1" rows="8">{{ old('service_description') ? old('service_description') : $service_category->desc }}</textarea>
                                 @if($errors->has('service_description'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('service_description') }}</strong>
@@ -185,7 +156,7 @@
                         <div class="col-md-12 py-3">
                             <!-- COMPONENT START -->
                             <h5>FAQ's</h5>
-                            @forelse($service_categories->serviceCategoryFaqs as $faq)
+                            @forelse($service_category->serviceCategoryFaqs as $faq)
                                 <div id="dynamic-field-faq-1" class="row dynamic-field-faq">
                                     <div class="col-md-12">
                                         <div  class="input-group  mb-0">
@@ -374,5 +345,33 @@
             }
         }
     </script>
+
+    <script src="{{ mix('_assets/plugins/dropzone/js/dropzone.js') }}"></script>
+    @include('plugins.dropzone.edit.single', [
+        'dropzone' => Str::camel('single-media-dropzone-1'),
+        'getRequestParam' => 'banner',
+        'fileInputName' => 'single_media_1',
+        'get' => route('super_admin.service.category.getMedia'),
+        'store' => route('super_admin.service.category.storeMedia'),
+        'delete' => route('super_admin.service.category.deleteMedia'),
+        'model' => $service_category, // your model name for query
+        'maxFilesize' => 2,
+        'maxFiles' => 1,
+        'acceptedFiles' => 'image/jpeg, image/png',
+    ])
+
+    @include('plugins.dropzone.edit.single', [
+        'dropzone' => Str::camel('single-media-dropzone-2'),
+        'getRequestParam' => 'category',
+        'fileInputName' => 'single_media_2',
+        'get' => route('super_admin.service.category.getMedia'),
+        'store' => route('super_admin.service.category.storeMedia'),
+        'delete' => route('super_admin.service.category.deleteMedia'),
+        'model' => $service_category, // your model name for query
+        'maxFilesize' => 2,
+        'maxFiles' => 1,
+        'acceptedFiles' => 'image/jpeg, image/png',
+    ])
+
     @include('alerts.admin_panel.delete_confirmation_modal')
 @endpush

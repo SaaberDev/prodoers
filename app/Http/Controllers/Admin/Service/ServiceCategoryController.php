@@ -29,9 +29,7 @@
          */
         public function index()
         {
-            $banner = \Storage::disk('local')->url(config('designwala_paths.images.service_categories.banner'));
-            $thumbnail = \Storage::disk('local')->url(config('designwala_paths.images.service_categories.thumbnail'));
-            return view('admin_panel.pages.services.category.index', compact('banner', 'thumbnail'));
+            return view('admin_panel.pages.services.category.index');
         }
 
         /**
@@ -65,10 +63,10 @@
                     'desc' => $request->input('service_description'),
                 ]);
 
+                // Banner Image
+                $mediaHandler->uploadSingleMedia($service_categories, 'single_media_1', 'banner');
                 // Category Thumbnail Image
-                $service_categories->addMedia(storage_path('tmp/uploads/' . $request->input('single_media_1')))->toMediaCollection('category', 'public');
-                // Category Image
-                $service_categories->addMedia(storage_path('tmp/uploads/' . $request->input('single_media_2')))->toMediaCollection('category_thumb', 'public');
+                $mediaHandler->uploadSingleMedia($service_categories, 'single_media_2', 'category');
 
                 $faqs = [];
                 $question = $request->input('question');
@@ -112,10 +110,10 @@
          */
         public function edit($id)
         {
-            $service_categories = ServiceCategory::findOrFail($id);
+            $service_category = ServiceCategory::findOrFail($id);
             $banner = \Storage::disk('local')->url(config('designwala_paths.images.service_categories.banner'));
             $thumbnail = \Storage::disk('local')->url(config('designwala_paths.images.service_categories.thumbnail'));
-            return \view('admin_panel.pages.services.category.edit', compact('id', 'service_categories', 'banner', 'thumbnail'));
+            return \view('admin_panel.pages.services.category.edit', compact('id', 'service_category', 'banner', 'thumbnail'));
         }
 
         public function destroyServiceCategoryFaq($id)
@@ -157,9 +155,9 @@
                 ]);
 
                 // Banner Image
-                $mediaHandler->updateSingleMedia($service_categories, 'single_media_1', 'category');
+                $mediaHandler->updateSingleMedia($service_categories, 'single_media_1', 'banner');
                 // Category Thumbnail Image
-                $mediaHandler->updateSingleMedia($service_categories, 'single_media_2', 'category_thumb');
+                $mediaHandler->updateSingleMedia($service_categories, 'single_media_2', 'category');
 
                 $faqs = [];
                 $question = $request->input('question');
@@ -210,11 +208,11 @@
          */
         public function getMedia(Dropzone $dropzone, Request $request)
         {
-            if ($request->get('request') === 'singleUploader') {
-                return $dropzone->getMedia(ServiceCategory::class,'category_thumb', 'id');
+            if ($request->get('request') === 'banner') {
+                return $dropzone->getMedia(ServiceCategory::class,'banner', 'id');
             }
 
-            if ($request->get('request') === 'multipleUploader'){
+            if ($request->get('request') === 'category'){
                 return $dropzone->getMedia(ServiceCategory::class,'category', 'id');
             }
         }
@@ -236,9 +234,9 @@
         public function destroyMedia(Dropzone $dropzone, Request $request): JsonResponse
         {
             // TODO --  Need to work here
-            if ($request->input('single_media')) {
-                return $dropzone->deleteMedia(Media::class,'single_media', 'uuid', 'spatie');
+            if ($request->input('single_media_1')) {
+                return $dropzone->deleteMedia(Media::class,'single_media_1', 'uuid', 'spatie');
             }
-            return $dropzone->deleteMedia(Media::class,'multiple_media', 'uuid', 'spatie');
+            return $dropzone->deleteMedia(Media::class,'single_media_2', 'uuid', 'spatie');
         }
     }

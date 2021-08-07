@@ -349,7 +349,6 @@ namespace App\Models{
  * @property int|null $published_status
  * @property string $slug
  * @property string $price
- * @property string|null $thumbnail
  * @property string $service_desc
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -389,7 +388,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Service whereServiceCategoryId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Service whereServiceDesc($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Service whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Service whereThumbnail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Service whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Service whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Service withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
@@ -405,8 +403,6 @@ namespace App\Models{
  * @property int $id
  * @property string $title
  * @property string $meta_desc
- * @property string|null $category_banner
- * @property string|null $category_thumbnail
  * @property string $slug
  * @property string $desc
  * @property int|null $navbar_status
@@ -416,6 +412,8 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Coupon[] $coupons
  * @property-read int|null $coupons_count
+ * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection|\Spatie\MediaLibrary\MediaCollections\Models\Media[] $media
+ * @property-read int|null $media_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ServiceCategoryFaq[] $serviceCategoryFaqs
  * @property-read int|null $service_category_faqs_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Service[] $services
@@ -432,8 +430,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory query()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory searchBy($column, $search)
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereCategoryBanner($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereCategoryThumbnail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereDesc($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereId($value)
@@ -447,7 +443,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory withAndWhereHas($relation, $constraint)
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
  */
-	class IdeHelperServiceCategory extends \Eloquent {}
+	class IdeHelperServiceCategory extends \Eloquent implements \Spatie\MediaLibrary\HasMedia {}
 }
 
 namespace App\Models{
@@ -531,20 +527,10 @@ namespace App\Models{
  * App\Models\ServiceImage
  *
  * @mixin IdeHelperServiceImage
- * @property int $id
- * @property int $service_id
- * @property string|null $filename
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Service $services
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceImage newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceImage newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceImage query()
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceImage whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceImage whereFilename($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceImage whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceImage whereServiceId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceImage whereUpdatedAt($value)
  */
 	class IdeHelperServiceImage extends \Eloquent {}
 }

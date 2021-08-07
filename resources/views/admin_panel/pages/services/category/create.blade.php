@@ -91,7 +91,7 @@
 
                     <div class="row col-md-12 m-0 justify-content-around mt-4 ">
                         <div class="col-md-6">
-                            {{-- Service Image --}}
+                            {{-- Banner Image --}}
                             <div class="form-group">
                                 <label for="">
                                     <h5>Banner Image</h5>
@@ -113,7 +113,7 @@
                             </div>
                         </div>
 
-                        {{-- Service Thumbnail --}}
+                        {{-- Category Thumbnail --}}
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">

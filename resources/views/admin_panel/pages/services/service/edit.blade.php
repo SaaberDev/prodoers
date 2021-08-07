@@ -708,6 +708,8 @@
     @include('alerts.admin_panel.delete_confirmation_modal')
     @include('plugins.dropzone.edit.single', [
         'dropzone' => Str::camel('single-media-dropzone'),
+        'getRequestParam' => 'service_thumb',
+        'fileInputName' => 'single_media',
         'get' => route('super_admin.service.self.getMedia'),
         'store' => route('super_admin.service.self.storeMedia'),
         'delete' => route('super_admin.service.self.deleteMedia'),
@@ -718,6 +720,8 @@
     ])
     @include('plugins.dropzone.edit.multiple', [
         'dropzone' => Str::camel('multiple-media-dropzone'),
+        'getRequestParam' => 'service',
+        'fileInputName' => 'multiple_media',
         'get' => route('super_admin.service.self.getMedia'),
         'store' => route('super_admin.service.self.storeMedia'),
         'delete' => route('super_admin.service.self.deleteMedia'),

@@ -58,7 +58,8 @@
          */
         public function store(Request $request, MediaHandler $mediaHandler)
         {
-            DB::transaction(function () use ($request, $mediaHandler) {
+            DB::beginTransaction();
+            try {
                 $slug = SlugService::createSlug(Service::class, 'slug', $request->input('service_title'));
                 $services = Service::firstOrCreate([
                     'title' => $request->input('service_title'),
@@ -110,9 +111,14 @@
                         'answer' => $faq['answer']
                     ]);
                 }
-            });
 
-            return redirect()->back();
+                DB::commit();
+                return redirect()->route('super_admin.service.self.index');
+            } catch (\Exception $exception) {
+                DB::rollBack();
+                report($exception->getMessage());
+                return redirect()->back();
+            }
         }
 
         /**
@@ -192,8 +198,9 @@
                 ]);
 
 
-                // Media
+                // Service Image
                 $mediaHandler->updateMultipleMedia($service, 'multiple_media', 'service');
+                // Service Thumb
                 $mediaHandler->updateSingleMedia($service, 'single_media', 'service_thumb');
 
                 // Tags
@@ -232,7 +239,6 @@
                 }
 
                 DB::commit();
-
                 return redirect()->route('super_admin.service.self.index');
             } catch (\Exception $exception) {
                 DB::rollBack();
@@ -274,12 +280,12 @@
          */
         public function getMedia(Dropzone $dropzone, Request $request)
         {
-            if ($request->get('request') === 'singleUploader') {
-                return $dropzone->getMedia(Service::class,'service_thumb', 'id');
+            if ($request->get('request') === 'service'){
+                return $dropzone->getMedia(Service::class,'service', 'id');
             }
 
-            if ($request->get('request') === 'multipleUploader'){
-                return $dropzone->getMedia(Service::class,'service', 'id');
+            if ($request->get('request') === 'service_thumb') {
+                return $dropzone->getMedia(Service::class,'service_thumb', 'id');
             }
         }
 

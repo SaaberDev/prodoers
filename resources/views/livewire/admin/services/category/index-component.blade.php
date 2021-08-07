@@ -53,8 +53,8 @@
                         @forelse($service_categories as $service_category)
                             <tr>
                                 <td>{{ $service_category->title }}</td>
-                                <td><img src="{{ asset($banner . $service_category->category_banner) }}" alt="" class="img-fluid" style="height: 25px;"> </td>
-                                <td><img src="{{ asset($thumbnail . $service_category->category_thumbnail) }}" alt="" class="img-fluid" style="height: 25px;"> </td>
+                                <td><img src="{{ optional($service_category)->getFirstMediaUrl('banner') ? $service_category->getFirstMediaUrl('banner') : asset('_default/no-preview-available.png') }}" alt="" class="img-fluid" style="height: 25px;"> </td>
+                                <td><img src="{{ optional($service_category)->getFirstMediaUrl('category') ? $service_category->getFirstMediaUrl('category') : asset('_default/no-preview-available.png') }}" alt="" class="img-fluid" style="height: 25px;"> </td>
                                 <td>
                                     @if($service_category->navbar_status == 1)
                                         <div class="tableDataLastButtonLiketab  tabletabGREEN"><span class="">Active</span></div>

@@ -24,9 +24,11 @@
          */
         public function uploadMultipleMedia($model, $inputKey, $mediaCollection, string $disk = 'public')
         {
-            foreach ($this->request->input($inputKey, []) as $file) {
-                $model->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection($mediaCollection, $disk);
-            }
+            \DB::afterCommit(function () use ($model, $inputKey, $mediaCollection, $disk){
+                foreach ($this->request->input($inputKey, []) as $file) {
+                    $model->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection($mediaCollection, $disk);
+                }
+            });
         }
 
         /**
@@ -37,7 +39,9 @@
          */
         public function uploadSingleMedia($model, $inputKey, $mediaCollection, string $disk = 'public')
         {
-            $model->addMedia(storage_path('tmp/uploads/' . $this->request->input($inputKey)))->toMediaCollection($mediaCollection, $disk);
+            \DB::afterCommit(function () use ($model, $inputKey, $mediaCollection, $disk){
+                $model->addMedia(storage_path('tmp/uploads/' . $this->request->input($inputKey)))->toMediaCollection($mediaCollection, $disk);
+            });
         }
 
         /**
@@ -49,7 +53,7 @@
          */
         public function updateMultipleMedia($model, $inputKey, $mediaCollection, string $disk = 'public')
         {
-            try {
+            \DB::afterCommit(function () use ($model, $inputKey, $mediaCollection, $disk){
                 $medias = $model->getMedia($mediaCollection);
                 if (count($medias) > 0) {
                     foreach ($medias as $media) {
@@ -70,9 +74,7 @@
                             ->toMediaCollection($mediaCollection, $disk);
                     }
                 }
-            } catch (Exception $exception) {
-                report($exception->getMessage());
-            }
+            });
         }
 
         /**
@@ -84,7 +86,7 @@
          */
         public function updateSingleMedia($model, $inputKey, $mediaCollection, string $disk = 'public')
         {
-            try {
+            \DB::afterCommit(function () use ($model, $inputKey, $mediaCollection, $disk){
                 $media = $model->getFirstMedia($mediaCollection);
                 if (!empty($media)) {
                     if ($media->file_name === $this->request->input($inputKey, '')) {
@@ -106,8 +108,6 @@
                         })
                         ->toMediaCollection($mediaCollection, $disk);
                 }
-            } catch (Exception $exception) {
-                report($exception->getMessage());
-            }
+            });
         }
     }

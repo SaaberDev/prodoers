@@ -89,4 +89,22 @@ class ServiceCategory extends Model implements HasMedia
             ->with([$relation => $constraint]);
     }
 
+    /**
+     * Spatie Media Collection
+     */
+    public function registerMediaCollections(): void
+    {
+        // Service Image
+        $this->addMediaCollection('category')
+            ->acceptsMimeTypes(['image/jpeg', 'image/png'])
+            ->singleFile()
+        ;
+
+        // Service Thumb
+        $this->addMediaCollection('category_thumb')
+            ->acceptsMimeTypes(['image/jpeg', 'image/png'])
+            ->singleFile()
+        ;
+    }
+
 }
