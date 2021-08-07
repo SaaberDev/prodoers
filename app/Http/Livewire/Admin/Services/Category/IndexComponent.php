@@ -10,6 +10,8 @@ class IndexComponent extends Component
 {
     use WithPagination;
 
+    protected $listeners = ['$refresh'];
+
     public $status = 'published_status';
 
     public $banner;

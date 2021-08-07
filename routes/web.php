@@ -143,7 +143,7 @@
 
                 Route::post('/store-category', [ServiceCategoryController::class, 'store'])->name('store');
                 Route::patch('/update-category/{id}', [ServiceCategoryController::class, 'update'])->name('update');
-                Route::get('/destroy-category/{id}', [ServiceCategoryController::class, 'destroy'])->name('destroy');
+                Route::delete('/destroy-category/{id}', [ServiceCategoryController::class, 'destroy'])->name('destroy');
 
                 // Dropzone Media Ajax
                 Route::get('/get-media', [ServiceCategoryController::class, 'getMedia'])->name('getMedia');

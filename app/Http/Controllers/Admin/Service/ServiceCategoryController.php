@@ -19,6 +19,7 @@
     use Illuminate\Http\Response;
     use Illuminate\Support\Facades\DB;
     use Spatie\MediaLibrary\MediaCollections\Models\Media;
+    use Throwable;
 
     class ServiceCategoryController extends Controller
     {
@@ -48,10 +49,12 @@
          * @param ServiceCategoryRequest $request
          *
          * @return RedirectResponse
+         * @throws Throwable
          */
         public function store(Request $request, MediaHandler $mediaHandler)
         {
-            DB::transaction(function () use ($request, $mediaHandler) {
+            DB::beginTransaction();
+            try {
                 $slug = SlugService::createSlug(ServiceCategory::class, 'slug', $request->input('service_category_title'));
                 $service_categories = ServiceCategory::firstOrCreate([
                     'title' => $request->input('service_category_title'),
@@ -85,10 +88,13 @@
                         'answer' => $faq['answer']
                     ]);
                 }
-
-            });
-
-            return redirect()->back();
+                DB::commit();
+                return redirect()->route('super_admin.service.category.index');
+            } catch (\Exception $exception) {
+                DB::rollBack();
+                report($exception->getMessage());
+                return redirect()->back();
+            }
         }
 
         /**
@@ -111,9 +117,7 @@
         public function edit($id)
         {
             $service_category = ServiceCategory::findOrFail($id);
-            $banner = \Storage::disk('local')->url(config('designwala_paths.images.service_categories.banner'));
-            $thumbnail = \Storage::disk('local')->url(config('designwala_paths.images.service_categories.thumbnail'));
-            return \view('admin_panel.pages.services.category.edit', compact('id', 'service_category', 'banner', 'thumbnail'));
+            return \view('admin_panel.pages.services.category.edit', compact('id', 'service_category'));
         }
 
         public function destroyServiceCategoryFaq($id)
@@ -127,7 +131,6 @@
                 $service_category_faqs->delete();
             });
 
-//        return \response()->json($notify);
             return redirect()->back()->with($notify);
         }
 
@@ -135,16 +138,19 @@
          * Update the specified resource in storage.
          *
          * @param ServiceCategoryRequest $request
+         * @param MediaHandler $mediaHandler
          * @param int $id
          * @return RedirectResponse
-         * @throws \Throwable
+         * @throws Throwable
          */
         public function update(ServiceCategoryRequest $request, MediaHandler $mediaHandler, $id)
         {
-            $service_categories = ServiceCategory::findOrFail($id);
-            DB::transaction(function () use ($request, $service_categories, $mediaHandler) {
+            DB::beginTransaction();
+            try {
+                $service_category = ServiceCategory::findOrFail($id);
+
                 $slug = SlugService::createSlug(ServiceCategory::class, 'slug', $request->input('service_category_title'));
-                $service_categories->update([
+                $service_category->update([
                     'title' => $request->input('service_category_title'),
                     'navbar_status' => $request->input('navbar_status'),
                     'popular_status' => $request->input('category_popular'),
@@ -155,9 +161,9 @@
                 ]);
 
                 // Banner Image
-                $mediaHandler->updateSingleMedia($service_categories, 'single_media_1', 'banner');
+                $mediaHandler->updateSingleMedia($service_category, 'single_media_1', 'banner');
                 // Category Thumbnail Image
-                $mediaHandler->updateSingleMedia($service_categories, 'single_media_2', 'category');
+                $mediaHandler->updateSingleMedia($service_category, 'single_media_2', 'category');
 
                 $faqs = [];
                 $question = $request->input('question');
@@ -169,36 +175,49 @@
                     );
                     $faqs[] = $data;
                 }
-                $service_categories->serviceCategoryFaqs()->delete();
+                $service_category->serviceCategoryFaqs()->delete();
                 foreach ($faqs as $faq) {
-                    $service_categories->serviceCategoryFaqs()->firstOrCreate([
-                        'service_category_id' => $service_categories->id,
+                    $service_category->serviceCategoryFaqs()->firstOrCreate([
+                        'service_category_id' => $service_category->id,
                         'question' => $faq['question'],
                         'answer' => $faq['answer']
                     ]);
                 }
-            });
-
-            return redirect()->route('super_admin.service.category.index');
+                DB::commit();
+                return redirect()->route('super_admin.service.category.index');
+            } catch (\Exception $exception) {
+                DB::rollBack();
+                report($exception->getMessage());
+                return redirect()->back();
+            }
         }
 
         /**
          * Remove the specified resource from storage.
          *
          * @param int $id
-         * @return RedirectResponse
+         * @return JsonResponse
+         * @throws Throwable
          */
         public function destroy($id)
         {
-            $notify = [
-                'alert-type' => 'success_toast',
-                'message' => 'Service Category Deleted !',
-            ];
-            $service_categories = ServiceCategory::findOrFail($id);
-            deleteFileBefore(config('designwala_paths.images.service_categories.banner'), $service_categories->category_banner);
-            deleteFileBefore(config('designwala_paths.images.service_categories.thumbnail'), $service_categories->category_thumbnail);
-            $service_categories->delete();
-            return redirect()->back()->with($notify);
+            DB::beginTransaction();
+            try {
+                $service_categories = ServiceCategory::findOrFail($id);
+                $service_categories->delete();
+                DB::commit();
+                return \response()->json([
+                    'alert_type' => 'success',
+                    'message' => 'Purchase Deleted Successfully!',
+                ]);
+            } catch (\Exception $exception) {
+                DB::rollBack();
+                report($exception->getMessage());
+                return \response()->json([
+                    'alert_type' => 'warning',
+                    'message' => 'Opps, Something went wrong!',
+                ]);
+            }
         }
 
         /**
@@ -233,7 +252,6 @@
          */
         public function destroyMedia(Dropzone $dropzone, Request $request): JsonResponse
         {
-            // TODO --  Need to work here
             if ($request->input('single_media_1')) {
                 return $dropzone->deleteMedia(Media::class,'single_media_1', 'uuid', 'spatie');
             }
