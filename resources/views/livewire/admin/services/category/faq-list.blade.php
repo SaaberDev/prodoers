@@ -4,7 +4,7 @@
 
         <h5>FAQ #{{ $loop->iteration }}</h5>
 
-        <div id="dynamic-field-faq-1" class="row dynamic-field-faq">
+        <div id="dynamic-field-faq-1" class="row dynamic-field-faq" wire:key="{{ $loop->index }}">
             <div class="col-md-12">
                 <div  class="input-group  mb-0">
                     <input type="text" id="faqs-question-1" value="{{ $faq->question }}" class="form-control validation-faqs" name="question[]" placeholder="">
