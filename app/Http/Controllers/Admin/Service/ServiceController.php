@@ -150,32 +150,11 @@
             return view('admin_panel.pages.services.service.edit', compact('service', 'service_categories', 'tags', 'service_tags'));
         }
 
-
-        public function destroyServiceFeature($id)
-        {
-            $service_feature = ServiceFeature::findOrFail($id);
-            DB::transaction(function () use ($service_feature) {
-                $service_feature->delete();
-            });
-
-            return redirect()->back();
-        }
-
-        public function destroyServiceFaq($id)
-        {
-            $service_faqs = ServiceFaq::findOrFail($id);
-            DB::transaction(function () use ($service_faqs) {
-                $service_faqs->delete();
-            });
-
-            return redirect()->back();
-        }
-
-
         /**
          * Update the specified resource in storage.
          *
          * @param ServiceRequest $request
+         * @param MediaHandler $mediaHandler
          * @param int $id
          * @return RedirectResponse
          * @throws Throwable
@@ -263,7 +242,59 @@
                 DB::commit();
                 return \response()->json([
                     'alert_type' => 'success',
-                    'message' => 'Purchase Deleted Successfully!',
+                    'message' => 'Service Deleted Successfully!',
+                ]);
+            } catch (\Exception $exception) {
+                DB::rollBack();
+                report($exception->getMessage());
+                return \response()->json([
+                    'alert_type' => 'warning',
+                    'message' => 'Opps, Something went wrong!',
+                ]);
+            }
+        }
+
+        /**
+         * @param $id
+         * @return JsonResponse
+         * @throws Throwable
+         */
+        public function destroyFeature($id)
+        {
+            DB::beginTransaction();
+            try {
+                $service_feature = ServiceFeature::findOrFail($id);
+                $service_feature->delete();
+                DB::commit();
+                return \response()->json([
+                    'alert_type' => 'success',
+                    'message' => 'Feature Deleted Successfully!',
+                ]);
+            } catch (\Exception $exception) {
+                DB::rollBack();
+                report($exception->getMessage());
+                return \response()->json([
+                    'alert_type' => 'warning',
+                    'message' => 'Opps, Something went wrong!',
+                ]);
+            }
+        }
+
+        /**
+         * @param $id
+         * @return JsonResponse
+         * @throws Throwable
+         */
+        public function destroyFaq($id)
+        {
+            DB::beginTransaction();
+            try {
+                $service_faqs = ServiceFaq::findOrFail($id);
+                $service_faqs->delete();
+                DB::commit();
+                return \response()->json([
+                    'alert_type' => 'success',
+                    'message' => 'Faq Deleted Successfully!',
                 ]);
             } catch (\Exception $exception) {
                 DB::rollBack();
