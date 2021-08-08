@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f616bec-9873-4c54-8a6f-71f691274991" name="Changes" comment="[filesystem] - category delete_confirmation_modal.blade.php">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/services/category/faq-list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/services/category/faq-list.blade.php" afterDir="false" />
-    </list>
+    <list default="true" id="3f616bec-9873-4c54-8a6f-71f691274991" name="Changes" comment="[livewire-faq-list] - fixed Dom Diffing Issues" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -248,7 +245,7 @@
       <workItem from="1627835944502" duration="1455000" />
       <workItem from="1627837446406" duration="79319000" />
       <workItem from="1628262660592" duration="7236000" />
-      <workItem from="1628279922521" duration="39983000" />
+      <workItem from="1628279922521" duration="40340000" />
     </task>
     <task id="LOCAL-00001" summary="[service] - working on dropzone">
       <created>1627838312357</created>
@@ -439,7 +436,21 @@
       <option name="project" value="LOCAL" />
       <updated>1628379155501</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="[livewire-faq-list] - fixed Dom Diffing Issues">
+      <created>1628381166626</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1628381166626</updated>
+    </task>
+    <task id="LOCAL-00029" summary="[livewire-faq-list] - fixed Dom Diffing Issues">
+      <created>1628381191886</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1628381191886</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -469,6 +480,8 @@
     <MESSAGE value="[filesystem] - made dropzone dynamic for multiple dropzone in one page" />
     <MESSAGE value="[filesystem] - category filesystem changed on update method" />
     <MESSAGE value="[filesystem] - category delete_confirmation_modal.blade.php" />
-    <option name="LAST_COMMIT_MESSAGE" value="[filesystem] - category delete_confirmation_modal.blade.php" />
+    <MESSAGE value="[livewire-faq-list] - fixed Dom Diffing Issues with [wire:key=&quot;{{ $loop-&gt;index }}&quot;]" />
+    <MESSAGE value="[livewire-faq-list] - fixed Dom Diffing Issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="[livewire-faq-list] - fixed Dom Diffing Issues" />
   </component>
 </project>
