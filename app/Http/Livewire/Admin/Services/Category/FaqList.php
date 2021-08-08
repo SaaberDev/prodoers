@@ -8,7 +8,6 @@ class FaqList extends Component
 {
     public $service_category;
 
-    // TODO -- List doesn't auto updating
     protected $listeners = ['$refresh'];
 
     public function render()
