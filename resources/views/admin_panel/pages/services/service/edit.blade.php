@@ -71,12 +71,6 @@
 @endpush
 
 @section('content')
-
-{{--    @foreach($service->serviceFaqs as $faq)--}}
-{{--        {{ dump($faq) }}--}}
-{{--        @endforeach--}}
-{{--    {{ dd($service->serviceFaqs) }}--}}
-
     <div class="col-xl-10 col-lg-9 col-md-12 dashboardRightside scrollbar scroll-style">
         <div class="">
             <div class="row justify-content-center pb-3 m-0">
@@ -268,24 +262,7 @@
                     <div class="col-md-12">
                         <div class="row mt-4">
                             <div class="col-md-12">
-                                <label for="">
-                                    <h5>features </h5> </label>
-                                @forelse($service->serviceFeatures as $key => $serviceFeatures)
-                                    <div id="dynamic-field-{{ $key + 1 }}" class="input-group dynamic-field mb-3">
-                                        {{--<label class="mr-3 mt-2" for="field-1">Feature #1</label>--}}
-                                        <input type="text" id="field-{{ $key + 1 }}" value="{{ $serviceFeatures->feature_desc }}" class="form-control validation" name="features[]" aria-describedby="button-addon2">
-                                        <div class="input-group-append">
-                                            <a type="button" data-action="{{ route('super_admin.service.self.destroyServiceFeature', $serviceFeatures->id) }}" class="btn sweet_delete p-0 m-0">
-                                                <svg style="width: 16px; height: auto; margin: 8px 5px 0 15px;" xmlns="http://www.w3.org/2000/svg" width="11.91" height="16.027" viewBox="0 0 11.91 16.027"><path d="M8.279,16.969a1.563,1.563,0,0,0,1.559,1.559h6.234a1.563,1.563,0,0,0,1.559-1.559V7.617H8.279ZM18.41,4.279H15.683L14.9,3.5h-3.9l-.779.779H7.5V5.838H18.41Z" transform="translate(-7 -3)" fill="none" stroke="#000" stroke-width="1"></path></svg>
-                                            </a>
-                                        </div>
-                                    </div>
-                                @empty
-                                    <div id="dynamic-field-1" class="input-group dynamic-field mb-3">
-                                        {{--<label class="mr-3 mt-2" for="field-1">Feature #1</label>--}}
-                                        <input type="text" id="field-1" name="features[]" value="{{ old('features.*') }}" class="form-control validation" aria-describedby="button-addon2">
-                                    </div>
-                                @endforelse
+                                @livewire('admin.services.service.feature-list', ['service' => $service])
                             </div>
                         </div>
                     </div>
@@ -352,205 +329,6 @@
 
 @push('scripts')
     {{-- Internal Scripts --}}
-    <script src="{{ mix('_assets/plugins/dropzone/js/dropzone.js') }}"></script>
-    {{-- Single Dynamic Input for Features Start --}}
-    <script>
-        $(document).ready(function() {
-            var buttonAdd = $("#add-button-feature");
-            var buttonRemove = $("#remove-button-feature");
-            var className = ".dynamic-field";
-            var count = 0;
-            var field = "";
-            var maxFields = 50;
-
-            function totalFields() {
-                return $(className).length;
-            }
-
-            function addNewField() {
-                count = totalFields() + 1;
-                field = $("#dynamic-field-1").clone();
-                field.attr("id", "dynamic-field-" + count);
-                field.children("label").text("Feature #" + count);
-                field.children("input").attr("id", "field-" + count);
-                // field.children("input").attr("name", "features." + count);
-                field.find("input").val("");
-                $(className + ":last").after($(field));
-            }
-
-            function removeLastField() {
-                if (totalFields() > 1) {
-                    $(className + ":last").remove();
-                }
-            }
-
-            function enableButtonRemove() {
-                if (totalFields() > 1) {
-                    buttonRemove.removeAttr("disabled");
-                    buttonRemove.addClass("shadow-sm");
-                }
-            }
-
-            function disableButtonRemove() {
-                if (totalFields() === 1) {
-                    buttonRemove.attr("disabled", "disabled");
-                    buttonRemove.removeClass("shadow-sm");
-                }
-            }
-
-            function disableButtonAdd() {
-                if (totalFields() === maxFields) {
-                    buttonAdd.attr("disabled", "disabled");
-                    buttonAdd.removeClass("shadow-sm");
-                }
-            }
-
-            function enableButtonAdd() {
-                if (totalFields() === (maxFields - 1)) {
-                    buttonAdd.removeAttr("disabled");
-                    buttonAdd.addClass("shadow-sm");
-                }
-            }
-
-            buttonAdd.click(function() {
-                addNewField();
-                enableButtonRemove();
-                disableButtonAdd();
-            });
-
-            buttonRemove.click(function() {
-                removeLastField();
-                disableButtonRemove();
-                enableButtonAdd();
-            });
-        });
-
-        $("form").submit(function (e) {
-            e.preventDefault();
-            $(".validation").each(function() {
-                var data = $(this).val();
-                var id  =  $(this).attr('id');
-
-                if(Trim(data) === ''){
-                    $(".validation").each(function(e) {
-                        $("#" + id).addClass('is-invalid').focus();
-                        e.preventDefault();
-                        return false;
-                    });
-                }
-                else{
-                    $("#"+id).removeClass('is-invalid');
-                }
-            });
-            // $(this).unbind('submit').submit();
-            function Trim(value) {
-                return value.replace(/^\s+|\s+$/g, '');
-            }
-        });
-    </script>
-    {{-- Single Dynamic Input for Features End --}}
-
-    {{-- Form Clone Dynamic Input for Faqs Start --}}
-    <script>
-        $(document).ready(function() {
-            var buttonAdd = $("#add-button-faq");
-            var buttonRemove = $("#remove-button-faq");
-            var className = ".dynamic-field-faq";
-            var count = 0;
-            var field = "";
-            var maxFields = 50;
-
-            function totalFields() {
-                return $(className).length;
-            }
-
-            function addNewField() {
-                count = totalFields() + 1;
-                field = $("#dynamic-field-faq-1").clone();
-                field.attr("id", "dynamic-field-faq-" + count);
-                field.children("label").text("Feature #" + count);
-                field.find("input").attr("id", "faq-question-" + count);
-                field.find("textarea").attr("id", "faq-answer-" + count);
-                // field.find("input").attr("name", "faq.question." + count);
-                // field.find("textarea").attr("name", "faq.answer." + count);
-                field.find("input").val("");
-                field.find("textarea").val("");
-                $(className + ":last").after($(field));
-            }
-
-            function removeLastField() {
-                if (totalFields() > 1) {
-                    $(className + ":last").remove();
-                }
-            }
-
-            function enableButtonRemove() {
-                if (totalFields() > 1) {
-                    buttonRemove.removeAttr("disabled");
-                    buttonRemove.addClass("shadow-sm");
-                }
-            }
-
-            function disableButtonRemove() {
-                if (totalFields() === 1) {
-                    buttonRemove.attr("disabled", "disabled");
-                    buttonRemove.removeClass("shadow-sm");
-                }
-            }
-
-            function disableButtonAdd() {
-                if (totalFields() === maxFields) {
-                    buttonAdd.attr("disabled", "disabled");
-                    buttonAdd.removeClass("shadow-sm");
-                }
-            }
-
-            function enableButtonAdd() {
-                if (totalFields() === (maxFields - 1)) {
-                    buttonAdd.removeAttr("disabled");
-                    buttonAdd.addClass("shadow-sm");
-                }
-            }
-
-            buttonAdd.click(function() {
-                addNewField();
-                enableButtonRemove();
-                disableButtonAdd();
-            });
-
-            buttonRemove.click(function() {
-                removeLastField();
-                disableButtonRemove();
-                enableButtonAdd();
-            });
-        });
-
-        $("form").submit(function (e) {
-            e.preventDefault();
-            $(".validation-faqs").each(function() {
-                var data = $(this).val();
-                var id  =  $(this).attr('id');
-
-                if(Trim(data) === ''){
-                    $(".validation-faqs").each(function(e) {
-                        $("#" + id).addClass('is-invalid').focus();
-                        e.preventDefault();
-                        return false;
-                    });
-                }else{
-                    $("#"+id).removeClass('is-invalid');
-                }
-            });
-            $(this).unbind('submit').submit();
-            function Trim(value) {
-                return value.replace(/^\s+|\s+$/g, '');
-            }
-        });
-
-    </script>
-    {{-- Form Clone Dynamic Input for Faqs End --}}
-
-
     <script>
         // $('.select2').select2()
         $("#allCategories").select2();
@@ -564,20 +342,6 @@
             let isChecked = $(this).prop('checked') === true ? 1 : 0;
             $(this).val(isChecked);
         });
-
-        // Image input
-        window.preview = function (input) {
-            if (input.files && input.files[0]) {
-                $(input.files).each(function () {
-                    $("#previewImg").html("");
-                    var reader = new FileReader();
-                    reader.readAsDataURL(this);
-                    reader.onload = function (e) {
-                        $("#previewImg").append("<img class='previewpic' src='" + e.target.result + "'>");
-                    }
-                });
-            }
-        }
 
         /*
         *  Tagify for Service Tags
@@ -673,7 +437,30 @@
             )
         }
     </script>
+
+    {{-- Features --}}
+    @include('plugins.dynamic-form.single_input')
+    {{-- Faqs --}}
+    @include('plugins.dynamic-form.multiple_input')
+
     @include('alerts.admin_panel.delete_confirmation_modal')
+
+    {{-- Dropzone --}}
+    <script src="{{ mix('_assets/plugins/dropzone/js/dropzone.js') }}"></script>
+    {{-- Service Image --}}
+    @include('plugins.dropzone.edit.multiple', [
+        'dropzone' => Str::camel('multiple-media-dropzone'),
+        'getRequestParam' => 'service',
+        'fileInputName' => 'multiple_media',
+        'get' => route('super_admin.service.self.getMedia'),
+        'store' => route('super_admin.service.self.storeMedia'),
+        'delete' => route('super_admin.service.self.deleteMedia'),
+        'model' => $service, // your model name for query
+        'maxFilesize' => 2,
+        'acceptedFiles' => 'image/jpeg, image/png',
+    ])
+
+    {{-- Service Thumb --}}
     @include('plugins.dropzone.edit.single', [
         'dropzone' => Str::camel('single-media-dropzone'),
         'getRequestParam' => 'service_thumb',
@@ -684,17 +471,6 @@
         'model' => $service, // your model name for query
         'maxFilesize' => 2,
         'maxFiles' => 1,
-        'acceptedFiles' => 'image/jpeg, image/png',
-    ])
-    @include('plugins.dropzone.edit.multiple', [
-        'dropzone' => Str::camel('multiple-media-dropzone'),
-        'getRequestParam' => 'service',
-        'fileInputName' => 'multiple_media',
-        'get' => route('super_admin.service.self.getMedia'),
-        'store' => route('super_admin.service.self.storeMedia'),
-        'delete' => route('super_admin.service.self.deleteMedia'),
-        'model' => $service, // your model name for query
-        'maxFilesize' => 2,
         'acceptedFiles' => 'image/jpeg, image/png',
     ])
 @endpush

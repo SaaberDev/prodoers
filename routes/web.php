@@ -120,7 +120,7 @@
                 Route::get('/add-service', [ServiceController::class, 'create'])->name('create');
                 Route::get('/edit-service/{id}', [ServiceController::class, 'edit'])->name('edit');
 
-                Route::get('/destroy-service-feature/{id}', [ServiceController::class, 'destroyFeature'])->name('destroyServiceFeature');
+                Route::delete('/destroy-service-feature/{id}', [ServiceController::class, 'destroyFeature'])->name('destroyServiceFeature');
                 Route::delete('/destroy-service-faq/{id}', [ServiceController::class, 'destroyFaq'])->name('destroyServiceFaq');
 
                 Route::post('/store-service', [ServiceController::class, 'store'])->name('store');

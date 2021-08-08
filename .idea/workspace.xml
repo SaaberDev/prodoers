@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f616bec-9873-4c54-8a6f-71f691274991" name="Changes" comment="[livewire-faq-list] - fixed Dom Diffing Issues">
+    <list default="true" id="3f616bec-9873-4c54-8a6f-71f691274991" name="Changes" comment="[livewire-faq-list] - service faq list delete in edit page">
+      <change afterPath="$PROJECT_DIR$/resources/views/plugins/dynamic-form/multiple_input.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/plugins/dynamic-form/single_input.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Service/ServiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Service/ServiceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Admin/Services/Service/FaqList.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Admin/Services/Service/FaqList.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Admin/Services/Service/FeatureList.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Admin/Services/Service/FeatureList.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin_panel/pages/services/service/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_panel/pages/services/service/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/services/service/faq-list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/services/service/faq-list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/services/service/feature-list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/services/service/feature-list.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -252,7 +253,7 @@
       <workItem from="1627835944502" duration="1455000" />
       <workItem from="1627837446406" duration="79319000" />
       <workItem from="1628262660592" duration="7236000" />
-      <workItem from="1628279922521" duration="47699000" />
+      <workItem from="1628279922521" duration="49785000" />
     </task>
     <task id="LOCAL-00001" summary="[service] - working on dropzone">
       <created>1627838312357</created>
@@ -464,7 +465,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628381551426</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="[livewire-faq-list] - service faq list delete in edit page">
+      <created>1628453529108</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1628453529108</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -496,6 +504,7 @@
     <MESSAGE value="[filesystem] - category delete_confirmation_modal.blade.php" />
     <MESSAGE value="[livewire-faq-list] - fixed Dom Diffing Issues with [wire:key=&quot;{{ $loop-&gt;index }}&quot;]" />
     <MESSAGE value="[livewire-faq-list] - fixed Dom Diffing Issues" />
-    <option name="LAST_COMMIT_MESSAGE" value="[livewire-faq-list] - fixed Dom Diffing Issues" />
+    <MESSAGE value="[livewire-faq-list] - service faq list delete in edit page" />
+    <option name="LAST_COMMIT_MESSAGE" value="[livewire-faq-list] - service faq list delete in edit page" />
   </component>
 </project>
