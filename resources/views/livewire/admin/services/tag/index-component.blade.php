@@ -104,7 +104,9 @@
                                             </g>
                                         </svg>
                                     </a>
-                                    <a data-action="{{ route('super_admin.service.tag.destroy', $tag->id) }}" class="sweet_delete btn m-0 p-0">
+                                    <a href="{{ route('super_admin.service.tag.destroy', $tag->id) }}"
+                                       class="sweet_delete btn m-0 p-0"
+                                    >
                                         <svg xmlns="http://www.w3.org/2000/svg" width="11.91" height="16.027"
                                              viewBox="0 0 11.91 16.027">
                                             <path

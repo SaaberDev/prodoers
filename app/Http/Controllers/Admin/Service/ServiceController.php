@@ -20,9 +20,7 @@
     use Illuminate\Http\Request;
     use Illuminate\Http\Response;
     use Illuminate\Support\Facades\DB;
-    use Illuminate\Support\Facades\Storage;
     use Spatie\MediaLibrary\MediaCollections\Models\Media;
-    use Str;
     use Throwable;
 
     class ServiceController extends Controller

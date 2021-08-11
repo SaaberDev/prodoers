@@ -56,7 +56,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Title</h5>
 {{--                                <hr>--}}
-                                <form action="{{ route('services.tag.update', $tags->id) }}" method="POST">
+                                <form action="{{ route('super_admin.service.tag.update', $tags->id) }}" method="POST">
                                     @csrf @method('PATCH')
                                     <div class="form-group">
                                         <input type="text" name="edit_tags" value="{{ old('edit_tags') ?? $tags->title }}" class="form-control {{ $errors->has('edit_tags') ? 'is-invalid border-danger' : '' }}" id="exampleInputEmail1" aria-describedby="emailHelp">

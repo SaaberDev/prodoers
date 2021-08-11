@@ -152,10 +152,10 @@
             // Tags
             Route::prefix('/tags')->name('tag.')->group(function () {
                 Route::get('/', [TagController::class, 'index'])->name('index');
-                Route::get('/edit-tag/{id}', [TagController::class, 'edit'])->name('edit');
-                Route::get('/destroy-tag/{id}', [TagController::class, 'destroy'])->name('destroy');
                 Route::post('/store-tag', [TagController::class, 'store'])->name('store');
+                Route::get('/edit-tag/{id}', [TagController::class, 'edit'])->name('edit');
                 Route::patch('/update-tag/{id}', [TagController::class, 'update'])->name('update');
+                Route::delete('/destroy-tag/{id}', [TagController::class, 'destroy'])->name('destroy');
             });
         });
 

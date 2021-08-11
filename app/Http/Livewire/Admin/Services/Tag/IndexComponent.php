@@ -15,6 +15,7 @@ class IndexComponent extends Component
     public $recordPerPage = 15;
     public $page = 1;
 
+    protected $listeners = ['$refresh'];
 
     // Shows search query in URL
     protected $queryString = [
