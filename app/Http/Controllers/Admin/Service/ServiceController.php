@@ -63,11 +63,13 @@
                     'title' => $request->input('service_title'),
                     'popular_status' => $request->input('popular_status'),
                     'published_status' => $request->input('published_status'),
+                    'delivery_time' => $request->input('delivery_time'),
+                    'revision_limit' => $request->input('revision_limit'),
                     'meta_desc' => $request->input('meta_description'),
+                    'short_desc' => $request->input('short_desc'),
                     'service_category_id' => $request->input('allCategories'),
                     'price' => $request->input('service_price'),
                     'slug' => $slug,
-                    'service_desc' => $request->input('service_description'),
                 ]);
 
                 // Service Image
@@ -167,11 +169,13 @@
                     'title' => $request->input('service_title'),
                     'popular_status' => $request->input('popular_status'),
                     'published_status' => $request->input('published_status'),
+                    'delivery_time' => $request->input('delivery_time'),
+                    'revision_limit' => $request->input('revision_limit'),
                     'meta_desc' => $request->input('meta_description'),
+                    'short_desc' => $request->input('short_desc'),
                     'service_category_id' => $request->input('allCategories'),
                     'price' => $request->input('service_price'),
                     'slug' => $slug,
-                    'service_desc' => $request->input('service_description'),
                 ]);
 
 

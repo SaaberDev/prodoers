@@ -44,7 +44,6 @@ mix.js('resources/js/app.js', 'public/js/app.js')
         'resources/_assets/_admin_panel/css/toggle/bootstrap-toggle.min.css',
         'resources/_assets/_admin_panel/css/tagify/tagify.css',
         'resources/_assets/_admin_panel/css/menukit.css',
-        'resources/_assets/_admin_panel/css/select2/select2.min.css',
         'resources/_assets/_admin_panel/css/style.css',
         'resources/_assets/_admin_panel/css/media.css',
     ], 'public/_assets/_admin_panel/css/dashboard.css')
@@ -60,33 +59,16 @@ mix.js('resources/js/app.js', 'public/js/app.js')
         'resources/_assets/_admin_panel/js/toggle/bootstrap-toggle.min.js',
         'resources/_assets/_admin_panel/js/tagify/tagify.min.js',
         'resources/_assets/_admin_panel/js/fontawesome/all.js',
-        'resources/_assets/_admin_panel/js/select2/select2.min.js',
     ], 'public/_assets/_admin_panel/js/dashboard.js')
     .copyDirectory('resources/_assets/_admin_panel/img', 'public/_assets/_admin_panel/img')
 
-    /*
-    * Plugins CSS
-    * */
-    // .styles([
-    //     'resources/_assets/_admin_panel/css/tagify/tagify.css',
-    //     'resources/_assets/_admin_panel/css/select2/select2.min.css',
-    // ], 'public/_assets/_plugins/css/plugins.css')
-
-    /*
-    * Plugins JS
-    * */
-    // .scripts([
-    //     'resources/_assets/_admin_panel/js/bootstrap4/jquery.min.js',
-    //     'resources/_assets/_admin_panel/js/tagify/tagify.min.js',
-    //     'resources/_assets/_admin_panel/js/select2/select2.min.js',
-    // ], 'public/_assets/_plugins/js/plugins.js');
 
 /*
 |--------------------------------------------------------------------------
 | Guest Assets
 |--------------------------------------------------------------------------
 */
-mix.styles([
+    .styles([
     'resources/_assets/_guest/fonts/fonts.css',
     'resources/_assets/_guest/css/v5/bootstrap.min.css',
     'resources/_assets/_guest/css/filepond/filepond.min.css',
@@ -127,11 +109,22 @@ mix.styles([
     */
     // Dropzone
     .styles([
-        'resources/_assets/plugins/dropzone/css/dropzone.css'
+        'resources/_assets/plugins/dropzone/css/dropzone.css',
+        'resources/_assets/plugins/dropzone/css/custom.css'
     ], 'public/_assets/plugins/dropzone/css/dropzone.css')
     .js([
         'resources/_assets/plugins/dropzone/js/dropzone-amd-module.js'
     ], 'public/_assets/plugins/dropzone/js/dropzone.js')
+
+    // Select2
+    .styles([
+        'resources/_assets/plugins/select2/css/select2.min.css',
+        'resources/_assets/plugins/select2/css/select2-bootstrap4.css',
+        'resources/_assets/plugins/select2/css/custom.css'
+    ], 'public/_assets/plugins/select2/css/select2.css')
+    .scripts([
+        'resources/_assets/plugins/select2/js/select2.full.js'
+    ], 'public/_assets/plugins/select2/js/select2.js')
 ;
 
 

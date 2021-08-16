@@ -31,25 +31,20 @@ class ServiceRequest extends FormRequest
                 return [
                     'service_title' => 'required',
                     'service_tags' => 'required',
-                    'published_status' => 'nullable',
                     'meta_description' => 'required',
+                    'short_desc' => 'required',
                     'allCategories' => 'required',
-                    'service_price' => 'required',
-                    'service_images.*' => 'required|image|mimes:jpg,svg,png',
-                    'service_thumbnail' => 'required|image|mimes:jpg,svg,png',
-                    'service_description' => 'required',
+                    'service_price' => 'required'
                 ];
             case 'PUT':
             case 'PATCH':
                 return [
                     'service_title' => 'required',
-                    'published_status' => 'nullable',
+                    'service_tags' => 'required',
                     'meta_description' => 'required',
+                    'short_desc' => 'required',
                     'allCategories' => 'required',
                     'service_price' => 'required',
-                    'service_images.*' => 'nullable|image|mimes:jpg,svg,png',
-                    'service_thumbnail' => 'nullable|image|mimes:jpg,svg,png',
-                    'service_description' => 'required',
                 ];
             default: break;
         }
@@ -61,14 +56,9 @@ class ServiceRequest extends FormRequest
             'service_title.required' => 'Title field is required',
             'service_tags.required' => 'ServiceTag field is required',
             'meta_description.required' => 'Meta Description field is required',
+            'short_desc.required' => 'Short Description field is required',
             'allCategories.required' => 'Categories field is required',
             'service_price.required' => 'Price field is required',
-
-            'service_images.*.required' => 'Service image field is required',
-            'service_images.*.image' => 'Service image must be jpg,svg,png',
-            'service_thumbnail.required' => 'Service thumbnail field is required',
-            'service_thumbnail.image' => 'Service thumbnail must be jpg,svg,png',
-            'service_description.required' => 'Description field is required',
         ];
     }
 }

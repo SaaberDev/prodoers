@@ -1,7 +1,7 @@
 <div>
     @forelse($service->serviceFeatures as $key => $serviceFeatures)
         <div id="dynamic-field-{{ $key + 1 }}" class="input-group dynamic-field mb-3" wire:key="{{ $loop->index }}">
-            <label class="mr-3 mt-2" for="field-1">Feature #{{ $loop->iteration }}</label>
+            <label class="mr-3 mt-2" for="field-1">Feature #{{ $loop->iteration }}<span class="ctm-required">*</span></label>
             <input type="text" id="field-{{ $key + 1 }}" value="{{ $serviceFeatures->feature_desc }}" class="form-control validation" name="features[]" aria-describedby="button-addon2">
             <div class="input-group-append">
                 <a type="button" href="{{ route('super_admin.service.self.destroyServiceFeature', $serviceFeatures->id) }}" class="btn sweet_delete p-0 m-0">

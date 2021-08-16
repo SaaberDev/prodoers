@@ -4,7 +4,7 @@
 {{--        <h5>FAQ #{{ $loop->iteration }}</h5>--}}
 
         <div id="dynamic-field-faq-{{ $key + 1 }}" class="row dynamic-field-faq" wire:key="{{ $loop->index }}">
-            <label class="mr-3 mt-2" for="field-1">FAQ #{{ $loop->iteration }}</label>
+            <label class="mr-3 mt-2" for="field-1">FAQ #{{ $loop->iteration }}<span class="ctm-required">*</span></label>
 
             <div class="col-md-12">
                 <div  class="input-group  mb-0">

@@ -4,70 +4,7 @@
 @push('styles')
     {{-- Internal Styles --}}
     <link rel="stylesheet" href="{{ mix('_assets/plugins/dropzone/css/dropzone.css') }}">
-    <style>
-        .dropzone {
-            min-height: 140px;
-            background-color: #e8efe87a;
-            padding: 0;
-            border: 1px dashed #038D08!important;
-        }
-
-        .dropzone .dz-message {
-            text-align: center;
-            margin: 0;
-            font-size: 16px;
-        }
-
-        .dropzone .dz-message .dz-button {
-            background: none;
-            color: inherit;
-            border: none;
-            padding: 0;
-            font: inherit;
-            cursor: pointer;
-            outline: inherit;
-            font-weight: 300;
-        }
-
-        .dropzone .dz-preview .dz-error-message {
-            pointer-events: none;
-            z-index: 1000;
-            position: absolute;
-            display: block;
-            display: none;
-            opacity: 0;
-            -webkit-transition: opacity 0.3s ease;
-            -moz-transition: opacity 0.3s ease;
-            -ms-transition: opacity 0.3s ease;
-            -o-transition: opacity 0.3s ease;
-            transition: opacity 0.3s ease;
-            border-radius: 8px;
-            font-size: 13px;
-            top: 150px;
-            left: -10px;
-            width: 140px;
-            background: #be2626;
-            background: linear-gradient(to bottom, #be2626, #a92222);
-            padding: 0.5em 1.2em;
-            color: white;
-        }
-
-        .dropzone.dz-clickable .dz-message, .dropzone.dz-clickable .dz-message * {
-            cursor: pointer;
-            font-weight: 300;
-            line-height: 40px;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-        .dz-thumb {
-            width: 100%;
-            height: 100%;
-            object-fit: contain!important;
-        }
-        .dropzone .dz-preview.dz-image-preview {
-            background: transparent;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ mix('_assets/plugins/select2/css/select2.css') }}">
 @endpush
 
 @section('content')
@@ -99,10 +36,11 @@
                     {{-- Service Title --}}
                     <div class="col-md-3">
                         <div class="form-group mb-0">
-                            <label for="">
-                                <h5>Title </h5></label>
+                            <label for="service_title">
+                                <h5>Title<span class="ctm-required">*</span></h5>
+                            </label>
                             <div class="input-group">
-                                <input name="service_title" value="{{ old('service_title') ? old('service_title') : $service->title }}" class="form-control {{ $errors->has('service_title') ? ' is-invalid' : '' }}" type="text" placeholder="">
+                                <input id="service_title" name="service_title" value="{{ old('service_title') ? old('service_title') : $service->title }}" class="form-control {{ $errors->has('service_title') ? ' is-invalid' : '' }}" type="text" placeholder="">
                                 @if($errors->has('service_title'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('service_title') }}</strong>
@@ -115,11 +53,13 @@
                     {{-- Service Tags --}}
                     <div class="col-md-3">
                         <div class="form-group mb-0">
-                            <label for="">
-                                <h5>Tags</h5></label>
+                            <label for="service_tags">
+                                <h5>Tags<span class="ctm-required">*</span></h5>
+                            </label>
                             <div class="input-group">
 
                                 <input name="service_tags"
+                                       id="service_tags"
                                        value="{{ old('service_tags', $service_tags) }}"
                                        class="{{ $errors->has('service_tags') ? ' is-invalid' : '' }}"
                                        type="text"
@@ -138,8 +78,9 @@
                     {{-- Popular Status --}}
                     <div class="col-md-3">
                         <div class=" ">
-                            <label for="">
-                                <h5>Popular</h5></label>
+                            <label for="popular_status">
+                                <h5>Popular</h5>
+                            </label>
                             <div class="">
                                 <input id="popular_status" name="popular_status" value="{{ old('popular_status') ? old('popular_status') : $service->popular_status }}" {{ (old('popular_status') ? old('popular_status') : $service->popular_status) == 1 ? 'checked='.'"'.'checked'.'"' : '' }} type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
                             </div>
@@ -160,23 +101,12 @@
 
                 <div class="row m-0 justify-content-between mt-4">
                     <div class="col-md-6">
-                        {{-- Meta Description --}}
-                        <div class="form-group">
-                            <label for="">
-                                <h5>meta description </h5></label>
-                            <textarea name="meta_description" class="form-control {{ $errors->has('meta_description') ? ' is-invalid' : '' }}" id="meta_description" rows="5">{{ old('meta_description') ? old('meta_description') : $service->meta_desc }}</textarea>
-                            @if($errors->has('meta_description'))
-                                <span class="invalid-feedback">
-                                    <strong>{{ $errors->first('meta_description') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="col-md-6">
                         {{-- Categories --}}
                         <div class="form-group">
-                            <label>Categories</label>
-                            <select class="js-states select2 form-control {{ $errors->has('allCategories') ? ' is-invalid' : '' }}"
+                            <label>
+                                <h5>Categories<span class="ctm-required">*</span></h5>
+                            </label>
+                            <select class="js-states select2bs4 form-control {{ $errors->has('allCategories') ? ' is-invalid' : '' }}"
                                     data-placeholder="categories"
                                     id="allCategories"
                                     name="allCategories" style="width: 100%;">
@@ -193,14 +123,79 @@
                         </div>
                         {{-- Price --}}
                         <div class="form-group mb-0 mt-4">
-                            <label for="">
-                                <h5>price </h5></label>
+                            <label for="service_price">
+                                <h5>Price<span class="ctm-required">*</span></h5>
+                            </label>
                             <div class="input-group">
-                                <input class="form-control {{ $errors->has('service_price') ? ' is-invalid' : '' }}" value="{{ old('service_price') ? old('service_price') : $service->price }}" name="service_price" placeholder="$" type="text">
+                                <input id="service_price" class="form-control {{ $errors->has('service_price') ? ' is-invalid' : '' }}" value="{{ old('service_price', $service->price) }}" name="service_price" placeholder="$100" type="text">
                             </div>
                             @if($errors->has('service_price'))
                                 <span class="invalid-feedback">
                                     <strong>{{ $errors->first('service_price') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        {{-- Meta Description --}}
+                        <div class="form-group">
+                            <label for="meta_description">
+                                <h5>Meta Description<span class="ctm-required">*</span></h5>
+                            </label>
+                            <textarea name="meta_description" class="form-control {{ $errors->has('meta_description') ? ' is-invalid' : '' }}" id="meta_description" rows="5">{{ old('meta_description') ? old('meta_description') : $service->meta_desc }}</textarea>
+                            @if($errors->has('meta_description'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('meta_description') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row m-0 justify-content-between">
+                    <div class="col-md-6">
+                        {{-- Delivery Time --}}
+                        <div class="form-group mb-0">
+                            <label for="delivery_time">
+                                <h5>Delivery Time<span class="ctm-required">*</span></h5>
+                            </label>
+                            <div class="input-group">
+                                <input class="form-control {{ $errors->has('delivery_time') ? ' is-invalid' : '' }}" id="delivery_time" min="1" name="delivery_time" placeholder="2 days" type="number" value="{{ old('delivery_time', $service->delivery_time) }}">
+                            </div>
+                            @if($errors->has('delivery_time'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('delivery_time') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+
+                        {{-- Revision Limit --}}
+                        <div class="form-group mb-0 mt-4">
+                            <label for="revision_limit">
+                                <h5>Revision Limit<span class="ctm-required">*</span></h5>
+                            </label>
+                            <div class="input-group">
+                                <input class="form-control {{ $errors->has('revision_limit') ? ' is-invalid' : '' }}" id="revision_limit" name="revision_limit" placeholder="5" min="1" type="number" value="{{ old('revision_limit', $service->revision_limit) }}">
+                            </div>
+                            @if($errors->has('revision_limit'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('revision_limit') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        {{-- Short Description --}}
+                        <div class="form-group">
+                            <label for="short_desc">
+                                <h5>Short Description<span class="ctm-required">*</span></h5>
+                            </label>
+                            <textarea name="short_desc" class="form-control {{ $errors->has('short_desc') ? ' is-invalid' : '' }}" id="short_desc" rows="5">{{ old('short_desc', $service->short_desc) }}</textarea>
+                            @if($errors->has('short_desc'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('short_desc') }}</strong>
                                 </span>
                             @endif
                         </div>
@@ -212,7 +207,7 @@
                         {{-- Service Image --}}
                         <div class="form-group">
                             <label for="">
-                                <h5>Service Image</h5>
+                                <h5>Service Image<span class="ctm-required">*</span></h5>
                             </label>
 
                             <div class="row">
@@ -236,7 +231,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="">
-                                <h5>Service Thumbnail</h5>
+                                <h5>Service Thumbnail<span class="ctm-required">*</span></h5>
                             </label>
 
                             <div class="row">
@@ -279,24 +274,6 @@
                 </div>
                 {{-- Features --}}
 
-                <div class="row m-0 justify-content-between mt-4">
-                    {{-- Description --}}
-                    <div class="col-md-12">
-                        <label for="">
-                            <h5>description </h5></label>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <textarea name="service_description" class="form-control {{ $errors->has('service_description') ? ' is-invalid' : '' }}" rows="8">{{ old('service_description') ?? $service->service_desc }}</textarea>
-                                @if($errors->has('service_description'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('service_description') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 {{-- Faqs --}}
                 <div class="row m-0 justify-content-between">
                     <div class="col-md-12 py-3">
@@ -329,9 +306,13 @@
 
 @push('scripts')
     {{-- Internal Scripts --}}
+    <script src="{{ mix('_assets/plugins/select2/js/select2.js') }}"></script>
+
+    {{-- In Page --}}
     <script>
-        // $('.select2').select2()
-        $("#allCategories").select2();
+        $('.select2bs4').select2({
+            theme: 'bootstrap4',
+        })
 
         $('#popular_status').change(function () {
             let isChecked = $(this).prop('checked') === true ? 1 : 0;
@@ -342,10 +323,11 @@
             let isChecked = $(this).prop('checked') === true ? 1 : 0;
             $(this).val(isChecked);
         });
+    </script>
 
-        /*
-        *  Tagify for Service Tags
-        * */
+
+    {{-- Tagify for Service Tags --}}
+    <script>
         var inputElm = document.querySelector('input[name=service_tags]');
 
         var usersList = [
