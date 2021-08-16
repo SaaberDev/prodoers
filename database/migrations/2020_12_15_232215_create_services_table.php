@@ -21,7 +21,9 @@ class CreateServicesTable extends Migration
             // Primary Attributes
             $table->string('title')->index();
             $table->longText('meta_desc');
-//            $table->string('delivery_time');
+            $table->longText('desc');
+            $table->integer('delivery_time');
+            $table->integer('revision_limit');
             $table->tinyInteger('popular_status')->nullable()->default(0);
             $table->tinyInteger('published_status')->nullable()->default(0);
             $table->string('slug');

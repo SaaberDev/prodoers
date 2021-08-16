@@ -17,6 +17,7 @@ class CreateServiceCategoriesTable extends Migration
             $table->id();
             $table->string('title');
             $table->longText('meta_desc');
+            $table->longText('order_instruction_desc');
             $table->string('slug');
             $table->longText('desc');
             $table->tinyInteger('navbar_status')->nullable()->default(0);

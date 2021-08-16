@@ -474,6 +474,18 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\ServiceCategoryInstruction
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategoryInstruction newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategoryInstruction newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategoryInstruction query()
+ * @mixin \Eloquent
+ */
+	class IdeHelperServiceCategoryInstruction extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\ServiceFaq
  *
  * @mixin IdeHelperServiceFaq

@@ -16,10 +16,8 @@ class CreateServiceCategoryFaqsTable extends Migration
         Schema::create('service_category_faqs', function (Blueprint $table) {
             $table->id();
             // Foreign Key Constraint
-            $table->unsignedBigInteger('service_category_id');
-            $table->foreign('service_category_id')
-                ->references('id')->on('service_categories')
-                ->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('service_category_id')->constrained()->cascadeOnDelete();
+
             $table->string('question');
             $table->longText('answer');
             $table->timestamps();

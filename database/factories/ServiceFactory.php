@@ -28,6 +28,9 @@ class ServiceFactory extends Factory
             'published_status' => '1',
             'popular_status' => '1',
             'meta_desc' => $this->faker->text,
+            'desc' => $this->faker->text,
+            'delivery_time' => rand(2, 5),
+            'revision_limit' => rand(2, 5),
             'price' => $this->faker->numberBetween(45.00, 100.00),
             'service_desc' => $this->faker->text,
         ];

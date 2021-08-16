@@ -46,6 +46,11 @@ class ServiceCategory extends Model implements HasMedia
         return $this->hasMany(ServiceCategoryFaq::class, 'service_category_id');
     }
 
+    public function serviceCategoryInstructions()
+    {
+        return $this->hasMany(ServiceCategoryInstruction::class);
+    }
+
     public function scopeGetSlug($query, $slug){
         return $query->where('slug', $slug);
     }
