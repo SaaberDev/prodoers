@@ -41,11 +41,11 @@
                         <thead>
                         <tr>
                             <th scope="col">Title</th>
-                            <th scope="col">category</th>
                             <th scope="col">Price</th>
                             <th scope="col">Popular status</th>
                             <th scope="col">Published status</th>
-                            <th scope="col">Date</th>
+                            <th scope="col">Delivery Time</th>
+                            <th scope="col">Revision Limit</th>
                             <th scope="col">Action</th>
 
                         </tr>
@@ -54,14 +54,7 @@
                         @forelse($services as $service)
                             <tr>
                                 <td>{{ $service->title }}</td>
-                                @if(empty($service->serviceCategories))
-                                    <td>No Category</td>
-                                @else
-                                    <td>{{ $service->serviceCategories->title }}</td>
-                                @endif
-
                                 <td>{{ $service->price }}</td>
-
 
                                 <td>
                                     @if($service->popular_status == 1)
@@ -78,7 +71,8 @@
                                         <div class="tableDataLastButtonLiketab  tabletabRED"><span class="">Not Published</span></div>
                                     @endif
                                 </td>
-                                <td>{{ formatDMY($service->created_at) }}</td>
+                                <td>{{ $service->delivery_time }}</td>
+                                <td>{{ $service->revision_limit }}</td>
                                 <td>
                                     <div class="">
                                         <a href="{{ route('super_admin.service.self.edit', $service->id) }}" class="btn p-0 m-0"

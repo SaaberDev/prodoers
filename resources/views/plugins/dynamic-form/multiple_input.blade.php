@@ -15,7 +15,8 @@
             count = totalFields() + 1;
             field = $("#dynamic-field-faq-1").clone();
             field.attr("id", "dynamic-field-faq-" + count);
-            field.children("label").text("FAQ #" + count);
+            // field.children("label").text("FAQ #" + count);
+            field.find("label").attr("for", "faq-question-" + count).text("FAQ #" + count);
             field.find("input").attr("id", "faq-question-" + count);
             field.find("textarea").attr("id", "faq-answer-" + count);
             // field.find("input").attr("name", "faq.question." + count);

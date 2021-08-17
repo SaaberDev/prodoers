@@ -294,7 +294,6 @@
                 return value.replace(/^\s+|\s+$/g, '');
             }
         });
-
     </script>
     {{-- Form Clone Dynamic Input for Faqs End --}}
 
@@ -315,19 +314,6 @@
             let isChecked = $(this).prop('checked') === true ? 1 : 0;
             $(this).val(isChecked);
         });
-
-        window.preview = function (input) {
-            if (input.files && input.files[0]) {
-                $(input.files).each(function () {
-                    $("#previewImg").html("");
-                    var reader = new FileReader();
-                    reader.readAsDataURL(this);
-                    reader.onload = function (e) {
-                        $("#previewImg").append("<img class='previewpic' src='" + e.target.result + "'>");
-                    }
-                });
-            }
-        }
     </script>
 
     <script src="{{ mix('_assets/plugins/dropzone/js/dropzone.js') }}"></script>

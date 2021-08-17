@@ -253,22 +253,27 @@
 
 
                 {{-- Features --}}
-                <div class="row m-0 justify-content-between mt-4">
+                <div class="row m-0 justify-content-between">
                     <div class="col-md-12">
-                        <div class="row mt-4">
+                        <div class="row">
                             <div class="col-md-12">
                                 @livewire('admin.services.service.feature-list', ['service' => $service])
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12 mt-4">
+                    <div class="col-md-12">
                         <div class="text-right">
-                            <button type="button" id="remove-button-feature" class="btn shadow bg-danger text-white rounded" disabled="disabled"> <span>
-                                    </span>Remove</button>
-                            <button type="button" id="add-button-feature" class="btn shadow bg-white rounded"> <span>
+                            <button type="button" id="remove-button-feature" class="btn shadow bg-danger text-white rounded" disabled="disabled">
+                                Remove
+                            </button>
+                            <button type="button" id="add-button-feature" class="btn shadow bg-white rounded">
+                                <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="12.672" height="12.672" viewBox="0 0 12.672 12.672">
                                         <path d="M20.848,14.512H16.09V9.754a.789.789,0,0,0-1.578,0v4.758H9.754a.789.789,0,0,0,0,1.578h4.758v4.758a.789.789,0,0,0,1.578,0V16.09h4.758a.789.789,0,0,0,0-1.578Z" transform="translate(-8.965 -8.965)" fill="#000"></path>
-                                    </svg></span> Add new field</button>
+                                    </svg>
+                                </span>
+                                Add new field
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -280,7 +285,7 @@
                         <!-- COMPONENT START -->
                         @livewire('admin.services.service.faq-list', ['service' => $service])
                     </div>
-                    <div class="col-md-12 mt-4">
+                    <div class="col-md-12">
                         <div class="text-right">
                             <button type="button" id="remove-button-faq" class="btn shadow bg-danger text-white rounded" disabled="disabled"> <span>
                                     </span>Remove</button>
