@@ -5,18 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f616bec-9873-4c54-8a6f-71f691274991" name="Changes" comment="[service] - new changes">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat.values.at" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat_i" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat_i" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Service/ServiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Service/ServiceController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin_panel/pages/services/category/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_panel/pages/services/category/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin_panel/pages/services/service/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_panel/pages/services/service/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin_panel/pages/services/service/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_panel/pages/services/service/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/services/service/faq-list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/services/service/faq-list.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/services/service/feature-list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/services/service/feature-list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/services/service/index-component.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/services/service/index-component.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/plugins/dynamic-form/multiple_input.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/plugins/dynamic-form/multiple_input.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/plugins/dynamic-form/single_input.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/plugins/dynamic-form/single_input.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -260,7 +257,7 @@
       <workItem from="1628262660592" duration="7236000" />
       <workItem from="1628279922521" duration="51228000" />
       <workItem from="1628705908797" duration="2054000" />
-      <workItem from="1629112053761" duration="31105000" />
+      <workItem from="1629112053761" duration="37075000" />
     </task>
     <task id="LOCAL-00001" summary="[service] - working on dropzone">
       <created>1627838312357</created>
@@ -507,7 +504,14 @@
       <option name="project" value="LOCAL" />
       <updated>1629151141675</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="[service] - new changes">
+      <created>1629208006655</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1629208006655</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

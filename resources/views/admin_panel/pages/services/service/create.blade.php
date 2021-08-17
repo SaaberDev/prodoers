@@ -252,18 +252,18 @@
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-12">
-                                <div id="dynamic-field-1" class="dynamic-field mb-3">
+                                <div id="dynamic-field-single-1" class="dynamic-field-single mb-3">
                                     <label class="mr-3 mt-2" for="field-1"><h5>Features<span class="ctm-required">*</span></h5></label>
-                                    <input type="text" id="field-1" name="features[]" value="{{ old('features.*') }}" class="form-control validation" aria-describedby="button-addon2">
+                                    <input type="text" id="field-1" name="features[]" value="{{ old('features.*') }}" class="form-control validation-single" aria-describedby="button-addon2">
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="text-right">
-                            <button type="button" id="remove-button-feature" class="btn shadow bg-danger text-white rounded" disabled="disabled"> <span>
+                            <button type="button" id="remove-button-single" class="btn shadow bg-danger text-white rounded" disabled="disabled"> <span>
                                 </span>Remove</button>
-                            <button type="button" id="add-button-feature" class="btn shadow bg-white rounded">
+                            <button type="button" id="add-button-single" class="btn shadow bg-white rounded">
                                 <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="12.672" height="12.672" viewBox="0 0 12.672 12.672">
                                         <path d="M20.848,14.512H16.09V9.754a.789.789,0,0,0-1.578,0v4.758H9.754a.789.789,0,0,0,0,1.578h4.758v4.758a.789.789,0,0,0,1.578,0V16.09h4.758a.789.789,0,0,0,0-1.578Z" transform="translate(-8.965 -8.965)" fill="#000"></path>
@@ -280,20 +280,20 @@
                 <div class="row m-0 justify-content-between">
                     <div class="col-md-12 py-3">
                         <!-- COMPONENT START -->
-                        <div id="dynamic-field-faq-1" class="row dynamic-field-faq mb-3">
+                        <div id="dynamic-field-multiple-1" class="row dynamic-field-multiple mb-3">
                             <div class="col-md-12">
-                                <label for="faqs-question-1"><h5>FAQ's<span class="ctm-required">*</span></h5></label>
-                                <input type="text" id="faqs-question-1" class="form-control validation-faqs" name="question[]" placeholder="">
+                                <label for="field-1-1"><h5>FAQ's<span class="ctm-required">*</span></h5></label>
+                                <input type="text" id="field-1-1" class="form-control validation-multiple" name="question[]" placeholder="">
                             </div>
                             <div class="col-md-12 mt-4">
-                                <textarea type="text" id="faqs-answer-1" class="form-control validation-faqs" name="answer[]" rows="5"></textarea>
+                                <textarea type="text" id="field-2-1" class="form-control validation-multiple" name="answer[]" rows="5"></textarea>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="text-right">
-                            <button type="button" id="remove-button-faq" class="btn shadow bg-danger text-white rounded" disabled="disabled">Remove</button>
-                            <button type="button" id="add-button-faq" class="btn shadow bg-white rounded">
+                            <button type="button" id="remove-button-multiple" class="btn shadow bg-danger text-white rounded" disabled="disabled">Remove</button>
+                            <button type="button" id="add-button-multiple" class="btn shadow bg-white rounded">
                                 <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="12.672" height="12.672" viewBox="0 0 12.672 12.672">
                                         <path d="M20.848,14.512H16.09V9.754a.789.789,0,0,0-1.578,0v4.758H9.754a.789.789,0,0,0,0,1.578h4.758v4.758a.789.789,0,0,0,1.578,0V16.09h4.758a.789.789,0,0,0,0-1.578Z" transform="translate(-8.965 -8.965)" fill="#000"></path>

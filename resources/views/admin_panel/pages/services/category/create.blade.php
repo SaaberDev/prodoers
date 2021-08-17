@@ -77,7 +77,8 @@
                         <div class="form-group mb-0">
                             <div class="form-group">
                                 <label for="">
-                                    <h5>meta description </h5></label>
+                                    <h5>Meta Description</h5>
+                                </label>
                                 <textarea name="meta_description" class="form-control {{ $errors->has('meta_description') ? ' is-invalid' : '' }}" id="exampleFormControlTextarea1" rows="5">{{ old('meta_description') }}</textarea>
                                 @if($errors->has('meta_description'))
                                     <span class="invalid-feedback">
@@ -89,7 +90,6 @@
                     </div>
 
 
-                    <div class="row col-md-12 m-0 justify-content-around mt-4 ">
                         <div class="col-md-6">
                             {{-- Banner Image --}}
                             <div class="form-group">
@@ -135,7 +135,6 @@
 
                             </div>
                         </div>
-                    </div>
 
 
                     <div class="col-md-12 mt-4">
@@ -143,48 +142,75 @@
                             <h5>description </h5></label>
                         <div class="row">
                             <div class="col-md-12">
-
-                                <!--                                             text editor-->
-                                <!--                                             text editor-->
                                 <textarea name="service_description" class="form-control {{ $errors->has('service_description') ? 'is-invalid' : '' }}" id="exampleFormControlTextarea1" rows="8">{{ old('service_description') }}</textarea>
                                 @if($errors->has('service_description'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('service_description') }}</strong>
                                     </span>
                                 @endif
-                                <!--                                             text editor-->
-                                <!--                                             text editor-->
                             </div>
                         </div>
                     </div>
+
+
                     {{-- Faqs --}}
-                    <div class="col-md-12 py-3">
-                        <!-- COMPONENT START -->
-                        <h5>FAQ's</h5>
-                        <div id="dynamic-field-faq-1" class="row dynamic-field-faq">
-                            <div class="col-md-12">
-                                <div  class="form-group  mb-0">
+                        <div class="col-md-12 py-3">
+                            <!-- COMPONENT START -->
+                            <div id="dynamic-field-faq-1" class="row dynamic-field-faq mb-3">
+                                <div class="col-md-12">
+                                    <label for="faqs-question-1"><h5>FAQ's<span class="ctm-required">*</span></h5></label>
                                     <input type="text" id="faqs-question-1" class="form-control validation-faqs" name="question[]" placeholder="">
                                 </div>
-                            </div>
-                            <div class="col-md-12 mt-4">
-                                <div class="form-group">
+                                <div class="col-md-12 mt-4">
                                     <textarea type="text" id="faqs-answer-1" class="form-control validation-faqs" name="answer[]" rows="5"></textarea>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-12 mt-4">
-                        <div class="text-right">
-                            <button type="button" id="remove-button-faq" class="btn shadow bg-danger text-white rounded" disabled="disabled"> <span>
-                                    </span>Remove</button>
-                            <button type="button" id="add-button-faq" class="btn shadow bg-white rounded"> <span>
+                        <div class="col-md-12">
+                            <div class="text-right">
+                                <button type="button" id="remove-button-multiple" class="btn shadow bg-danger text-white rounded" disabled="disabled">Remove</button>
+                                <button type="button" id="add-button-multiple" class="btn shadow bg-white rounded">
+                                <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="12.672" height="12.672" viewBox="0 0 12.672 12.672">
                                         <path d="M20.848,14.512H16.09V9.754a.789.789,0,0,0-1.578,0v4.758H9.754a.789.789,0,0,0,0,1.578h4.758v4.758a.789.789,0,0,0,1.578,0V16.09h4.758a.789.789,0,0,0,0-1.578Z" transform="translate(-8.965 -8.965)" fill="#000"></path>
-                                    </svg></span> Add new field</button>
+                                    </svg>
+                                </span>
+                                    Add new field
+                                </button>
+                            </div>
                         </div>
-                    </div>
                     {{-- Faqs --}}
+
+
+                    {{-- Features --}}
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="dynamic-field-1" class="dynamic-field mb-3">
+                                        <label class="mr-3 mt-2" for="field-1"><h5>Features<span class="ctm-required">*</span></h5></label>
+                                        <input type="text" id="field-1" name="features[]" value="{{ old('features.*') }}" class="form-control validation" aria-describedby="button-addon2">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="text-right">
+                                <button type="button" id="remove-button-single" class="btn shadow bg-danger text-white rounded" disabled="disabled"> <span>
+                                </span>Remove</button>
+                                <button type="button" id="add-button-single" class="btn shadow bg-white rounded">
+                                <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12.672" height="12.672" viewBox="0 0 12.672 12.672">
+                                        <path d="M20.848,14.512H16.09V9.754a.789.789,0,0,0-1.578,0v4.758H9.754a.789.789,0,0,0,0,1.578h4.758v4.758a.789.789,0,0,0,1.578,0V16.09h4.758a.789.789,0,0,0,0-1.578Z" transform="translate(-8.965 -8.965)" fill="#000"></path>
+                                    </svg>
+                                </span>
+                                    Add new field
+                                </button>
+                            </div>
+                        </div>
+                    {{-- Features --}}
+
+
+
                     <div class="col-md-12 py-4 ">
                         <div class="text-right">
                             <button type="submit" class="btn shadow bgOne rounded text-white px-4"> Submit</button>
@@ -198,105 +224,6 @@
 
 @push('scripts')
     {{-- Internal Scripts --}}
-    {{-- Form Clone Dynamic Input for Faqs Start --}}
-    <script>
-        $(document).ready(function() {
-            var buttonAdd = $("#add-button-faq");
-            var buttonRemove = $("#remove-button-faq");
-            var className = ".dynamic-field-faq";
-            var count = 0;
-            var field = "";
-            var maxFields = 50;
-
-            function totalFields() {
-                return $(className).length;
-            }
-
-            function addNewField() {
-                count = totalFields() + 1;
-                field = $("#dynamic-field-faq-1").clone();
-                field.attr("id", "dynamic-field-faq-" + count);
-                field.children("label").text("Feature #" + count);
-                field.find("input").attr("id", "faq-question-" + count);
-                field.find("textarea").attr("id", "faq-answer-" + count);
-                // field.find("input").attr("name", "faq.question." + count);
-                // field.find("textarea").attr("name", "faq.answer." + count);
-                field.find("input").val("");
-                field.find("textarea").val("");
-                $(className + ":last").after($(field));
-            }
-
-            function removeLastField() {
-                if (totalFields() > 1) {
-                    $(className + ":last").remove();
-                }
-            }
-
-            function enableButtonRemove() {
-                if (totalFields() === 2) {
-                    buttonRemove.removeAttr("disabled");
-                    buttonRemove.addClass("shadow-sm");
-                }
-            }
-
-            function disableButtonRemove() {
-                if (totalFields() === 1) {
-                    buttonRemove.attr("disabled", "disabled");
-                    buttonRemove.removeClass("shadow-sm");
-                }
-            }
-
-            function disableButtonAdd() {
-                if (totalFields() === maxFields) {
-                    buttonAdd.attr("disabled", "disabled");
-                    buttonAdd.removeClass("shadow-sm");
-                }
-            }
-
-            function enableButtonAdd() {
-                if (totalFields() === (maxFields - 1)) {
-                    buttonAdd.removeAttr("disabled");
-                    buttonAdd.addClass("shadow-sm");
-                }
-            }
-
-            buttonAdd.click(function() {
-                addNewField();
-                enableButtonRemove();
-                disableButtonAdd();
-            });
-
-            buttonRemove.click(function() {
-                removeLastField();
-                disableButtonRemove();
-                enableButtonAdd();
-            });
-        });
-
-        $("form").submit(function (e) {
-            e.preventDefault();
-            $(".validation-faqs").each(function() {
-                var data = $(this).val();
-                var id  =  $(this).attr('id');
-
-                if(Trim(data) === ''){
-                    $(".validation-faqs").each(function(e) {
-                        $("#" + id).addClass('is-invalid').focus();
-                        e.preventDefault();
-                        return false;
-                    });
-                }else{
-                    $("#"+id).removeClass('is-invalid');
-                }
-            });
-            $(this).unbind('submit').submit();
-            function Trim(value) {
-                return value.replace(/^\s+|\s+$/g, '');
-            }
-        });
-    </script>
-    {{-- Form Clone Dynamic Input for Faqs End --}}
-
     {{-- Status Toggle --}}
     <script>
         $('#navbar_status').change(function () {
@@ -315,6 +242,11 @@
             $(this).val(isChecked);
         });
     </script>
+
+    {{-- Features --}}
+    @include('plugins.dynamic-form.single_input')
+    {{-- Faqs --}}
+    @include('plugins.dynamic-form.multiple_input')
 
     <script src="{{ mix('_assets/plugins/dropzone/js/dropzone.js') }}"></script>
     {{-- Dropzone Service Thumb --}}

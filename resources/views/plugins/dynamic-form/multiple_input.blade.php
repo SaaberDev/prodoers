@@ -1,8 +1,8 @@
 <script>
     $(document).ready(function() {
-        var buttonAdd = $("#add-button-faq");
-        var buttonRemove = $("#remove-button-faq");
-        var className = ".dynamic-field-faq";
+        var buttonAdd = $("#add-button-multiple");
+        var buttonRemove = $("#remove-button-multiple");
+        var className = ".dynamic-field-multiple";
         var count = 0;
         var field = "";
         var maxFields = 50;
@@ -13,14 +13,10 @@
 
         function addNewField() {
             count = totalFields() + 1;
-            field = $("#dynamic-field-faq-1").clone();
-            field.attr("id", "dynamic-field-faq-" + count);
-            // field.children("label").text("FAQ #" + count);
-            field.find("label").attr("for", "faq-question-" + count).text("FAQ #" + count);
-            field.find("input").attr("id", "faq-question-" + count);
-            field.find("textarea").attr("id", "faq-answer-" + count);
-            // field.find("input").attr("name", "faq.question." + count);
-            // field.find("textarea").attr("name", "faq.answer." + count);
+            field = $("#dynamic-field-multiple-1").clone();
+            field.attr("id", "dynamic-field-multiple-" + count);
+            field.find("input").attr("id", "field-1-" + count);
+            field.find("textarea").attr("id", "field-2-" + count);
             field.find("input").val("");
             field.find("textarea").val("");
             $(className + ":last").after($(field));
@@ -76,12 +72,12 @@
 
     $("form").submit(function (e) {
         e.preventDefault();
-        $(".validation-faqs").each(function() {
+        $(".validation-multiple").each(function() {
             var data = $(this).val();
             var id  =  $(this).attr('id');
 
             if(Trim(data) === ''){
-                $(".validation-faqs").each(function(e) {
+                $(".validation-multiple").each(function(e) {
                     $("#" + id).addClass('is-invalid').focus();
                     e.preventDefault();
                     return false;

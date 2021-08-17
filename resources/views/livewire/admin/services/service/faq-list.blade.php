@@ -1,10 +1,10 @@
 <div>
     @forelse($service->serviceFaqs as $key => $faq)
-        <div id="dynamic-field-faq-{{ $key + 1 }}" class="row dynamic-field-faq" wire:key="{{ $loop->index }}">
+        <div id="dynamic-field-multiple-{{ $key + 1 }}" class="row dynamic-field-multiple" wire:key="{{ $loop->index }}">
             <div class="col-md-12 mt-3">
-                <label for="faqs-question-{{ $key + 1 }}">FAQ #{{ $loop->iteration }}<span class="ctm-required">*</span></label>
+                <label for="field-1-{{ $loop->iteration }}">FAQ's<span class="ctm-required">*</span></label>
                 <div class="input-group-append">
-                    <input type="text" id="faqs-question-{{ $key + 1 }}" value="{{ $faq->question }}" class="form-control validation-faqs" name="question[]" placeholder="">
+                    <input type="text" id="field-1-{{ $loop->iteration }}" value="{{ $faq->question }}" class="form-control validation-multiple" name="question[]" placeholder="">
                     <a type="button"
                        id="sweet_delete"
                        href="{{ route('super_admin.service.self.destroyServiceFaq', $faq->id) }}"
@@ -15,20 +15,20 @@
                 </div>
             </div>
             <div class="col-md-12 mt-4">
-                <textarea type="text" id="faqs-answer-{{ $key + 1 }}" class="form-control validation-faqs" name="answer[]" rows="5">{{ $faq->answer }}</textarea>
+                <textarea type="text" id="field-2-{{ $loop->iteration }}" class="form-control validation-multiple" name="answer[]" rows="5">{{ $faq->answer }}</textarea>
             </div>
         </div>
     @empty
-        <div id="dynamic-field-faq-1" class="row dynamic-field-faq">
+        <div id="dynamic-field-multiple-1" class="row dynamic-field-multiple">
             <div class="col-md-12">
                 <div  class="form-group mb-0">
-                    <label for="faqs-question-1">FAQ's<span class="ctm-required">*</span></label>
-                    <input type="text" id="faqs-question-1" class="form-control validation-faqs" name="question[]" placeholder="">
+                    <label for="field-1-1">FAQ's<span class="ctm-required">*</span></label>
+                    <input type="text" id="field-1-1" class="form-control validation-multiple" name="question[]" placeholder="">
                 </div>
             </div>
             <div class="col-md-12 mt-4">
                 <div class="form-group">
-                    <textarea type="text" id="faqs-answer-1" class="form-control validation-faqs" name="answer[]" rows="5"></textarea>
+                    <textarea type="text" id="field-2-1" class="form-control validation-multiple" name="answer[]" rows="5"></textarea>
                 </div>
             </div>
         </div>

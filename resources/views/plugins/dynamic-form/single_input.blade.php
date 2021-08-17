@@ -1,8 +1,8 @@
 <script>
     $(document).ready(function() {
-        var buttonAdd = $("#add-button-feature");
-        var buttonRemove = $("#remove-button-feature");
-        var className = ".dynamic-field";
+        var buttonAdd = $("#add-button-single");
+        var buttonRemove = $("#remove-button-single");
+        var className = ".dynamic-field-single";
         var count = 0;
         var field = "";
         var maxFields = 50;
@@ -13,11 +13,9 @@
 
         function addNewField() {
             count = totalFields() + 1;
-            field = $("#dynamic-field-1").clone();
-            field.attr("id", "dynamic-field-" + count);
-            field.children("label").text("Feature #" + count);
-            field.children("input").attr("id", "field-" + count);
-            // field.children("input").attr("name", "features." + count);
+            field = $("#dynamic-field-single-1").clone();
+            field.attr("id", "dynamic-field-single-" + count);
+            field.find("input").attr("id", "field-" + count);
             field.find("input").val("");
             $(className + ":last").after($(field));
             field.find("a").attr("id", "sweet_delete").addClass('d-none');
@@ -72,12 +70,12 @@
 
     $("form").submit(function (e) {
         e.preventDefault();
-        $(".validation").each(function() {
+        $(".validation-single").each(function() {
             var data = $(this).val();
             var id  =  $(this).attr('id');
 
             if(Trim(data) === ''){
-                $(".validation").each(function(e) {
+                $(".validation-single").each(function(e) {
                     $("#" + id).addClass('is-invalid').focus();
                     e.preventDefault();
                     return false;
