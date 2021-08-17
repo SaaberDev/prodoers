@@ -6,14 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="3f616bec-9873-4c54-8a6f-71f691274991" name="Changes" comment="[service] - new changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Service/ServiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Service/ServiceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Service/ServiceCategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Service/ServiceCategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/Service/ServiceCategoryRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/Service/ServiceCategoryRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/ServiceCategoryFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/ServiceCategoryFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_15_232212_create_service_categories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_15_232212_create_service_categories_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin_panel/pages/services/category/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_panel/pages/services/category/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin_panel/pages/services/service/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_panel/pages/services/service/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin_panel/pages/services/service/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_panel/pages/services/service/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/services/service/faq-list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/services/service/faq-list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/services/service/feature-list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/services/service/feature-list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/plugins/dynamic-form/multiple_input.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/plugins/dynamic-form/multiple_input.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/plugins/dynamic-form/single_input.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/plugins/dynamic-form/single_input.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -257,7 +254,7 @@
       <workItem from="1628262660592" duration="7236000" />
       <workItem from="1628279922521" duration="51228000" />
       <workItem from="1628705908797" duration="2054000" />
-      <workItem from="1629112053761" duration="37075000" />
+      <workItem from="1629112053761" duration="43137000" />
     </task>
     <task id="LOCAL-00001" summary="[service] - working on dropzone">
       <created>1627838312357</created>
@@ -511,7 +508,14 @@
       <option name="project" value="LOCAL" />
       <updated>1629208006655</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="[service] - new changes">
+      <created>1629215826101</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1629215826101</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

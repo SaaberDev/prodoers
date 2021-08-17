@@ -27,7 +27,7 @@ class ServiceCategoryFactory extends Factory
             'popular_status' => '1',
             'published_status' => '1',
             'meta_desc' => $this->faker->text,
-            'desc' => $this->faker->text,
+            'short_desc' => $this->faker->text,
             'order_instruction_desc' => $this->faker->text,
         ];
     }

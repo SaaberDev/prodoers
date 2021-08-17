@@ -27,26 +27,16 @@ class ServiceCategoryRequest extends FormRequest
             case 'GET':
             case 'DELETE':
                 return [];
+            case 'PATCH':
+            case 'PUT':
             case 'POST':
                 return [
                     'service_category_title' => 'required',
                     'category_popular' => 'nullable',
                     'category_status' => 'nullable',
-                    'meta_description' => 'required',
-                    'banner_image' => 'required|image|mimes:jpg,bmp,png',
-                    'thumbnail_image' => 'required|image|mimes:jpg,bmp,png',
-                    'service_description' => 'required',
-                ];
-            case 'PUT':
-            case 'PATCH':
-                return [
-                    'service_category_title' => 'required',
-                    'category_popular' => 'nullable',
-                    'category_status' => 'nullable',
-                    'meta_description' => 'required',
-                    'banner_image' => 'nullable|image|mimes:jpg,bmp,png',
-                    'thumbnail_image' => 'nullable|image|mimes:jpg,bmp,png',
-                    'service_description' => 'required',
+                    'meta_desc' => 'required',
+                    'short_desc' => 'required',
+                    'order_instruction_desc' => 'required',
                 ];
             default: break;
         }

@@ -61,9 +61,10 @@
                     'navbar_status' => $request->input('navbar_status'),
                     'popular_status' => $request->input('category_popular'),
                     'published_status' => $request->input('category_status'),
-                    'meta_desc' => $request->input('meta_description'),
+                    'meta_desc' => $request->input('meta_desc'),
                     'slug' => $slug,
-                    'desc' => $request->input('service_description'),
+                    'short_desc' => $request->input('short_desc'),
+                    'order_instruction_desc' => $request->input('order_instruction_desc'),
                 ]);
 
                 // Banner Image
@@ -141,9 +142,10 @@
                     'navbar_status' => $request->input('navbar_status'),
                     'popular_status' => $request->input('category_popular'),
                     'published_status' => $request->input('category_status'),
-                    'meta_desc' => $request->input('meta_description'),
+                    'meta_desc' => $request->input('meta_desc'),
                     'slug' => $slug,
-                    'desc' => $request->input('service_description')
+                    'short_desc' => $request->input('service_description'),
+                    'order_instruction_desc' => $request->input('order_instruction_desc')
                 ]);
 
                 // Banner Image
