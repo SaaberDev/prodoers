@@ -48,30 +48,30 @@
                         {{-- Navbar Status --}}
                         <div class="col-md-2">
                             <div class=" ">
-                                <label for="">
+                                <label for="navbar_status">
                                     <h5>Navbar</h5></label>
                                 <div class="">
-                                    <input id="navbar_status" name="navbar_status" value="{{ old('navbar_status') ?? 0 }}" {{ old('navbar_status') == 1 ? 'checked='.'"'.'checked'.'"' : '' }} type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
+                                    <input id="navbar_status" name="navbar_status" value="{{ old('navbar_status', 0) }}" {{ old('navbar_status') == 1 ? 'checked='.'"'.'checked'.'"' : '' }} type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-md-2">
                             <div class=" ">
-                                <label for="">
+                                <label for="category_popular">
                                     <h5>Popular</h5></label>
                                 <div class="">
-                                    <input name="category_popular" value="{{ old('category_popular') }}" {{ old('category_popular') == 1 ? 'checked='.'"'.'checked'.'"' : '' }}  id="category_popular" type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
+                                    <input name="category_popular" value="{{ old('category_popular', 0) }}" {{ old('category_popular') == 1 ? 'checked='.'"'.'checked'.'"' : '' }}  id="category_popular" type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-md-2">
                             <div class=" ">
-                                <label for="">
+                                <label for="category_status">
                                     <h5>Publish</h5></label>
                                 <div class="">
-                                    <input name="category_status" value="{{ old('category_status') }}" {{ old('category_status') == 1 ? 'checked='.'"'.'checked'.'"' : '' }} id="category_status" type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
+                                    <input name="category_status" value="{{ old('category_status', 0) }}" {{ old('category_status') == 1 ? 'checked='.'"'.'checked'.'"' : '' }} id="category_status" type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
                                 </div>
                             </div>
                         </div>
@@ -81,10 +81,10 @@
                         {{-- Meta Description --}}
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="">
+                                <label for="meta_desc">
                                     <h5>Meta Description</h5>
                                 </label>
-                                <textarea name="meta_desc" class="form-control {{ $errors->has('meta_desc') ? ' is-invalid' : '' }}" id="exampleFormControlTextarea1" rows="5">{{ old('meta_desc') }}</textarea>
+                                <textarea id="meta_desc" name="meta_desc" class="form-control {{ $errors->has('meta_desc') ? ' is-invalid' : '' }}" id="exampleFormControlTextarea1" rows="5">{{ old('meta_desc') }}</textarea>
                                 @if($errors->has('meta_desc'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('meta_desc') }}</strong>

@@ -20,9 +20,9 @@ class CreateServiceCategoriesTable extends Migration
             $table->longText('order_instruction_desc');
             $table->string('slug');
             $table->longText('short_desc');
-            $table->tinyInteger('navbar_status')->nullable()->default(0);
-            $table->tinyInteger('published_status')->nullable()->default(0);
-            $table->tinyInteger('popular_status')->nullable()->default(0);
+            $table->tinyInteger('navbar_status')->default('0');
+            $table->tinyInteger('published_status')->default('0');
+            $table->tinyInteger('popular_status')->default('0');
             $table->timestamps();
         });
     }

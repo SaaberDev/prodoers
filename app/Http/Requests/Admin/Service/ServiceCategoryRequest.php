@@ -32,8 +32,9 @@ class ServiceCategoryRequest extends FormRequest
             case 'POST':
                 return [
                     'service_category_title' => 'required',
-                    'category_popular' => 'nullable',
-                    'category_status' => 'nullable',
+                    'navbar_status' => 'integer',
+                    'category_popular' => 'integer',
+                    'category_status' => 'integer',
                     'meta_desc' => 'required',
                     'short_desc' => 'required',
                     'order_instruction_desc' => 'required',
