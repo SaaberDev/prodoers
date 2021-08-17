@@ -47,12 +47,13 @@
          * Store a newly created resource in storage.
          *
          * @param ServiceCategoryRequest $request
-         *
+         * @param MediaHandler $mediaHandler
          * @return RedirectResponse
          * @throws Throwable
          */
-        public function store(Request $request, MediaHandler $mediaHandler)
+        public function store(ServiceCategoryRequest $request, MediaHandler $mediaHandler)
         {
+//            dd($request->all());
             DB::beginTransaction();
             try {
                 $slug = SlugService::createSlug(ServiceCategory::class, 'slug', $request->input('service_category_title'));
@@ -89,6 +90,14 @@
                         'answer' => $faq['answer']
                     ]);
                 }
+
+                $order_instructions = $request->input('order_instructions');
+                foreach ($order_instructions as $order_instruction) {
+                    $service_categories->serviceCategoryInstructions()->create([
+                        'order_instructions' => $order_instruction
+                    ]);
+                }
+
                 DB::commit();
                 return redirect()->route('super_admin.service.category.index');
             } catch (\Exception $exception) {
@@ -132,6 +141,7 @@
          */
         public function update(ServiceCategoryRequest $request, MediaHandler $mediaHandler, $id)
         {
+            dd($request->all());
             DB::beginTransaction();
             try {
                 $service_category = ServiceCategory::findOrFail($id);

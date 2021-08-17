@@ -23,7 +23,7 @@ class ServiceCategoryInstructionFactory extends Factory
     {
         return [
             'service_category_id' => rand(1, 10),
-            'order_instruction' => $this->faker->sentence(),
+            'order_instructions' => $this->faker->sentence(),
         ];
     }
 }

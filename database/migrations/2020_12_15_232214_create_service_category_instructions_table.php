@@ -16,7 +16,7 @@ class CreateServiceCategoryInstructionsTable extends Migration
         Schema::create('service_category_instructions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('service_category_id')->constrained()->cascadeOnDelete();
-            $table->string('order_instruction');
+            $table->string('order_instructions');
             $table->timestamps();
         });
     }

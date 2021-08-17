@@ -56,25 +56,19 @@
                                 <td><img src="{{ optional($service_category)->getFirstMediaUrl('banner') ? $service_category->getFirstMediaUrl('banner') : asset('_default/no-preview-available.png') }}" alt="" class="img-fluid" style="height: 25px;"> </td>
                                 <td><img src="{{ optional($service_category)->getFirstMediaUrl('category') ? $service_category->getFirstMediaUrl('category') : asset('_default/no-preview-available.png') }}" alt="" class="img-fluid" style="height: 25px;"> </td>
                                 <td>
-                                    @if($service_category->navbar_status == 1)
-                                        <div class="tableDataLastButtonLiketab  tabletabGREEN"><span class="">Active</span></div>
-                                    @else
-                                        <div class="tableDataLastButtonLiketab  tabletabRED"><span class="">Not Active</span></div>
-                                    @endif
+                                    <div class="tableDataLastButtonLiketab {{ $service_category->navbar_status == 1 ? 'tabletabGREEN' : 'tabletabRED' }}">
+                                        <span class="">{{ $service_category->navbar_status == 1 ? 'Active' : 'Not Active' }}</span>
+                                    </div>
                                 </td>
                                 <td>
-                                    @if($service_category->popular_status == 1)
-                                        <div class="tableDataLastButtonLiketab  tabletabGREEN"><span class="">Active</span></div>
-                                    @else
-                                        <div class="tableDataLastButtonLiketab  tabletabRED"><span class="">Not Active</span></div>
-                                    @endif
+                                    <div class="tableDataLastButtonLiketab {{ $service_category->popular_status == 1 ? 'tabletabGREEN' : 'tabletabRED' }} ">
+                                        <span class="">{{ $service_category->popular_status == 1 ? 'Active' : 'Not Active' }}</span>
+                                    </div>
                                 </td>
                                 <td>
-                                    @if($service_category->published_status == 1)
-                                        <div class="tableDataLastButtonLiketab tabletabGREEN"><span class="">Published</span></div>
-                                    @else
-                                        <div class="tableDataLastButtonLiketab tabletabRED"><span class=""> Not Published</span></div>
-                                    @endif
+                                    <div class="tableDataLastButtonLiketab {{ $service_category->published_status == 1 ? 'tabletabGREEN' : 'tabletabRED' }} ">
+                                        <span class="">{{ $service_category->published_status == 1 ? 'Published' : 'Not Published' }}</span>
+                                    </div>
                                 </td>
                                 <td>
                                     <div class="">

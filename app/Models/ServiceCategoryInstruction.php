@@ -11,4 +11,6 @@ use Illuminate\Database\Eloquent\Model;
 class ServiceCategoryInstruction extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
 }
