@@ -51,7 +51,7 @@
                                 <label for="navbar_status">
                                     <h5>Navbar</h5></label>
                                 <div class="">
-                                    <input id="navbar_status" name="navbar_status" value="{{ old('navbar_status', 0) }}" {{ old('navbar_status') == 1 ? 'checked='.'"'.'checked'.'"' : '' }} type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
+                                    <input id="navbar_status" name="navbar_status" value="{{ old('navbar_status') }}" {{ old('navbar_status') == 1 ? 'checked='.'"'.'checked'.'"' : '' }} type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
                                 </div>
                             </div>
                         </div>
@@ -250,21 +250,32 @@
     {{-- Internal Scripts --}}
     {{-- Status Toggle --}}
     <script>
-        $('#navbar_status').change(function () {
-            let isChecked = $(this).prop('checked') === true ? 1 : 0;
-            $(this).val(isChecked);
-        });
+        $(document).ready(function (){
+            const navbar_status = $('#navbar_status');
+            const category_popular = $('#category_popular');
+            const category_status = $('#category_status');
 
-        $('#category_popular').change(function () {
-            let isChecked = $(this).prop('checked') === true ? 1 : 0;
-            $(this).val(isChecked);
-            // console.log('isChecked: ' + isChecked);
-        });
+            navbar_status.val(0);
+            category_popular.val(0);
+            category_status.val(0);
 
-        $('#category_status').change(function () {
-            let isChecked = $(this).prop('checked') === true ? 1 : 0;
-            $(this).val(isChecked);
-        });
+            navbar_status.change(function () {
+                $(this).val(0);
+                const isChecked = $(this).prop('checked') === true ? 1 : 0;
+                $(this).val(isChecked);
+            });
+
+            category_popular.change(function () {
+                const isChecked = $(this).prop('checked') === true ? 1 : 0;
+                $(this).val(isChecked);
+                // console.log('isChecked: ' + isChecked);
+            });
+
+            category_status.change(function () {
+                const isChecked = $(this).prop('checked') === true ? 1 : 0;
+                $(this).val(isChecked);
+            });
+        })
     </script>
 
     {{-- Features --}}
