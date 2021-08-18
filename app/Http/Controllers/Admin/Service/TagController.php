@@ -57,7 +57,6 @@
             try {
                 $tagInputs = $request->input('tags');
                 $explode = json_decode($tagInputs);
-//                $explode = explode(',', $tagInputs);
 
                 collect($explode)->each(function ($item) {
                     Tag::Create([
@@ -101,6 +100,7 @@
          */
         public function update(TagRequest $request, $id)
         {
+            // TODO ---- Tags Update
             $tags = Tag::findOrFail($id);
             $input = $request->input('edit_tags');
             DB::transaction(function () use ($request, $tags, $input) {
