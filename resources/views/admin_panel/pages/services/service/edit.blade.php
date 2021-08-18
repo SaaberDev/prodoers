@@ -444,6 +444,7 @@
         'delete' => route('super_admin.service.self.deleteMedia'),
         'model' => $service, // your model name for query
         'maxFilesize' => 2,
+        'maxFiles' => 6,
         'acceptedFiles' => 'image/jpeg, image/png',
     ])
 

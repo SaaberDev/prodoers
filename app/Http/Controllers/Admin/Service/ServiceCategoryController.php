@@ -7,9 +7,11 @@
     use App\Models\Service;
     use App\Models\ServiceCategory;
     use App\Models\ServiceCategoryFaq;
+    use App\Models\ServiceCategoryInstruction;
     use App\Services\Dropzone\Dropzone;
     use App\Services\MediaLibrary\MediaHandler;
     use Cviebrock\EloquentSluggable\Services\SlugService;
+    use Exception;
     use Illuminate\Contracts\Foundation\Application;
     use Illuminate\Contracts\View\Factory;
     use Illuminate\Contracts\View\View;
@@ -98,6 +100,7 @@
                     ]);
                 }
 
+                // Order Instructions
                 $order_instructions = $request->input('order_instructions');
                 foreach ($order_instructions as $order_instruction) {
                     $service_categories->serviceCategoryInstructions()->create([
@@ -112,14 +115,13 @@
                         'alert-type' => 'success_toast',
                         'message' => $this->_className . ' Updated Successfully!',
                     ]);
-            } catch (\Exception $exception) {
+            } catch (Exception $exception) {
                 DB::rollBack();
                 report($exception->getMessage());
-                return back()
-                    ->with([
-                        'alert-type' => 'warning_toast',
-                        'message' => 'Opps, Something went wrong!',
-                    ]);
+                return back()->with([
+                    'alert-type' => 'warning_toast',
+                    'message' => 'Opps, Something went wrong!',
+                ]);
             }
         }
 
@@ -169,14 +171,15 @@
                     'published_status' => $request->input('category_status'),
                     'meta_desc' => $request->input('meta_desc'),
                     'slug' => $slug,
-                    'short_desc' => $request->input('service_description'),
-                    'order_instruction_desc' => $request->input('order_instruction_desc')
+                    'short_desc' => $request->input('short_desc'),
+                    'order_instruction_desc' => $request->input('order_instruction_desc'),
                 ]);
 
-                // Banner Image
+//                // Banner Image
                 $mediaHandler->updateSingleMedia($service_category, 'single_media_1', 'banner');
-                // Category Thumbnail Image
+//                // Category Thumbnail Image
                 $mediaHandler->updateSingleMedia($service_category, 'single_media_2', 'category');
+
 
                 $faqs = [];
                 $question = $request->input('question');
@@ -197,12 +200,28 @@
                     ]);
                 }
 
+                // Order Instructions
+                $order_instructions = $request->input('order_instructions');
+                $service_category->serviceCategoryInstructions()->delete();
+                foreach ($order_instructions as $order_instruction) {
+                    $service_category->serviceCategoryInstructions()->create([
+                        'order_instructions' => $order_instruction
+                    ]);
+                }
+
                 DB::commit();
-                return redirect()->route('super_admin.service.category.index');
-            } catch (\Exception $exception) {
+                return redirect()->route('super_admin.service.category.index')
+                    ->with([
+                        'alert-type' => 'success_toast',
+                        'message' => $this->_className . ' Updated Successfully!',
+                    ]);
+            } catch (Exception $exception) {
                 DB::rollBack();
                 report($exception->getMessage());
-                return redirect()->back();
+                return back()->with([
+                    'alert-type' => 'warning_toast',
+                    'message' => 'Opps, Something went wrong!',
+                ]);
             }
         }
 
@@ -222,9 +241,9 @@
                 DB::commit();
                 return \response()->json([
                     'alert_type' => 'success',
-                    'message' => 'Category Deleted Successfully!',
+                    'message' => $this->_className . ' Deleted Successfully!',
                 ]);
-            } catch (\Exception $exception) {
+            } catch (Exception $exception) {
                 DB::rollBack();
                 report($exception->getMessage());
                 return \response()->json([
@@ -248,9 +267,35 @@
                 DB::commit();
                 return \response()->json([
                     'alert_type' => 'success',
-                    'message' => 'Purchase Deleted Successfully!',
+                    'message' => $this->_className . ' Deleted Successfully!',
                 ]);
-            } catch (\Exception $exception) {
+            } catch (Exception $exception) {
+                DB::rollBack();
+                report($exception->getMessage());
+                return \response()->json([
+                    'alert_type' => 'warning',
+                    'message' => 'Opps, Something went wrong!',
+                ]);
+            }
+        }
+
+        /**
+         * @param $id
+         * @return JsonResponse
+         * @throws Throwable
+         */
+        public function destroyInstruction($id)
+        {
+            DB::beginTransaction();
+            try {
+                $order_instruction = ServiceCategoryInstruction::findOrFail($id);
+                $order_instruction->delete();
+                DB::commit();
+                return \response()->json([
+                    'alert_type' => 'success',
+                    'message' => $this->_className . ' Deleted Successfully!',
+                ]);
+            } catch (Exception $exception) {
                 DB::rollBack();
                 report($exception->getMessage());
                 return \response()->json([
@@ -268,11 +313,11 @@
         public function getMedia(Dropzone $dropzone, Request $request)
         {
             if ($request->get('request') === 'banner') {
-                return $dropzone->getMedia(ServiceCategory::class,'banner', 'id');
+                return $dropzone->getMedia(ServiceCategory::class, 'banner', 'id');
             }
 
-            if ($request->get('request') === 'category'){
-                return $dropzone->getMedia(ServiceCategory::class,'category', 'id');
+            if ($request->get('request') === 'category') {
+                return $dropzone->getMedia(ServiceCategory::class, 'category', 'id');
             }
         }
 
@@ -293,8 +338,8 @@
         public function destroyMedia(Dropzone $dropzone, Request $request): JsonResponse
         {
             if ($request->input('single_media_1')) {
-                return $dropzone->deleteMedia(Media::class,'single_media_1', 'uuid', 'spatie');
+                return $dropzone->deleteMedia(Media::class, 'single_media_1', 'uuid', 'spatie');
             }
-            return $dropzone->deleteMedia(Media::class,'single_media_2', 'uuid', 'spatie');
+            return $dropzone->deleteMedia(Media::class, 'single_media_2', 'uuid', 'spatie');
         }
     }

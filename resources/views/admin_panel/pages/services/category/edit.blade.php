@@ -88,7 +88,7 @@
                                 <label for="meta_desc">
                                     <h5>Meta Description</h5>
                                 </label>
-                                <textarea id="meta_desc" name="meta_desc" class="form-control {{ $errors->has('meta_desc') ? ' is-invalid' : '' }}" id="exampleFormControlTextarea1" rows="5">{{ old('meta_desc') ? old('meta_desc') : $service_category->meta_desc }}</textarea>
+                                <textarea id="meta_desc" name="meta_desc" class="form-control {{ $errors->has('meta_desc') ? ' is-invalid' : '' }}" id="exampleFormControlTextarea1" rows="5">{{ old('meta_desc', $service_category->meta_desc) }}</textarea>
                                 @if($errors->has('meta_desc'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('meta_desc') }}</strong>
@@ -103,7 +103,7 @@
                                 <label for="">
                                     <h5>Short Description</h5>
                                 </label>
-                                <textarea name="short_desc" class="form-control {{ $errors->has('short_desc') ? 'is-invalid' : '' }}" id="exampleFormControlTextarea1" rows="5">{{ old('short_desc') ? old('short_desc') : $service_category->short_desc }}</textarea>
+                                <textarea name="short_desc" class="form-control {{ $errors->has('short_desc') ? 'is-invalid' : '' }}" id="exampleFormControlTextarea1" rows="5">{{ old('short_desc', $service_category->short_desc) }}</textarea>
                                 @if($errors->has('short_desc'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('short_desc') }}</strong>
@@ -186,14 +186,7 @@
                     <div class="row">
                         {{-- Order Instructions --}}
                         <div class="col-md-12">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div id="dynamic-field-single-1" class="dynamic-field-single mb-3">
-                                        <label class="mr-3 mt-2" for="field-1"><h5>Order Instructions<span class="ctm-required">*</span></h5></label>
-                                        <input type="text" id="field-1" name="order_instructions[]" value="{{ old('order_instructions.*') }}" class="form-control validation-single" aria-describedby="button-addon2">
-                                    </div>
-                                </div>
-                            </div>
+                            @livewire('admin.services.category.order-instruction-list', ['service_category' => $service_category])
                         </div>
                         <div class="col-md-12">
                             <div class="text-right">
@@ -219,7 +212,7 @@
                                 <label for="">
                                     <h5>Order Instruction Description</h5>
                                 </label>
-                                <textarea name="order_instruction_desc" class="form-control {{ $errors->has('order_instruction_desc') ? 'is-invalid' : '' }}" id="exampleFormControlTextarea1" rows="5">{{ old('order_instruction_desc') }}</textarea>
+                                <textarea name="order_instruction_desc" class="form-control {{ $errors->has('order_instruction_desc') ? 'is-invalid' : '' }}" id="exampleFormControlTextarea1" rows="5">{{ old('order_instruction_desc', $service_category->order_instruction_desc) }}</textarea>
                                 @if($errors->has('order_instruction_desc'))
                                     <span class="invalid-feedback">
                                     <strong>{{ $errors->first('order_instruction_desc') }}</strong>

@@ -139,6 +139,7 @@
                 Route::get('/edit-category/{id}', [ServiceCategoryController::class, 'edit'])->name('edit');
 
                 Route::delete('/destroy-category-faq/{id}', [ServiceCategoryController::class, 'destroyFaq'])->name('destroyFaq');
+                Route::delete('/destroy-instruction/{id}', [ServiceCategoryController::class, 'destroyInstruction'])->name('destroyInstruction');
 
                 Route::post('/store-category', [ServiceCategoryController::class, 'store'])->name('store');
                 Route::patch('/update-category/{id}', [ServiceCategoryController::class, 'update'])->name('update');

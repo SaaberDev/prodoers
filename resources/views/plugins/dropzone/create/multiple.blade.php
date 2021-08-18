@@ -1,12 +1,11 @@
 <script>
-    Dropzone.prototype.isFileExist = function(file) {
+    Dropzone.prototype.isFileExist = function (file) {
         var i;
-        if(this.files.length > 0) {
-            for(i = 0; i < this.files.length; i++) {
-                if(this.files[i].name === file.name
+        if (this.files.length > 0) {
+            for (i = 0; i < this.files.length; i++) {
+                if (this.files[i].name === file.name
                     && this.files[i].size === file.size
-                    && this.files[i].lastModifiedDate.toString() === file.lastModifiedDate.toString())
-                {
+                    && this.files[i].lastModifiedDate.toString() === file.lastModifiedDate.toString()) {
                     return true;
                 }
             }
@@ -19,15 +18,16 @@
         url: '{{ $store }}',
         maxFilesize: '{{ $maxFilesize }}', // MB
         acceptedFiles: '{{ $acceptedFiles }}',
+        maxFiles: '{{ $maxFiles }}',
         addRemoveLinks: true,
         thumbnailWidth: 120,
         thumbnailHeight: 120,
         thumbnailMethod: 'contain',
         dictDuplicateFile: "Duplicate Files Cannot Be Uploaded",
         preventDuplicates: true,
-        init: function() {
+        init: function () {
             let myDropzone = this;
-            myDropzone.on("addedfile", function(file) {
+            myDropzone.on("addedfile", function (file) {
                 $('.dz-image').last().find('img').addClass('dz-thumb')
                 if (!file.type.match(/image.*/)) {
                     this.emit("thumbnail", file, "/_assets/_default/file_icon.png");
@@ -66,7 +66,7 @@
         }
     }
 
-    Dropzone.prototype.addFile = function(file) {
+    Dropzone.prototype.addFile = function (file) {
         file.upload = {
             progress: 0,
             total: file.size,
@@ -101,8 +101,8 @@
         file.status = Dropzone.ADDED;
         this.emit("addedfile", file);
         this._enqueueThumbnail(file);
-        return this.accept(file, (function(_this) {
-            return function(error) {
+        return this.accept(file, (function (_this) {
+            return function (error) {
                 if (error) {
                     file.accepted = false;
                     _this._errorProcessing([file], error);

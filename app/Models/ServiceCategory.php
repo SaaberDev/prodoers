@@ -99,14 +99,14 @@ class ServiceCategory extends Model implements HasMedia
      */
     public function registerMediaCollections(): void
     {
-        // Service Image
-        $this->addMediaCollection('category')
+        // Category Banner
+        $this->addMediaCollection('banner')
             ->acceptsMimeTypes(['image/jpeg', 'image/png'])
             ->singleFile()
         ;
 
-        // Service Thumb
-        $this->addMediaCollection('category_thumb')
+        // Category Thumb
+        $this->addMediaCollection('category')
             ->acceptsMimeTypes(['image/jpeg', 'image/png'])
             ->singleFile()
         ;

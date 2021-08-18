@@ -2,7 +2,6 @@
 
     namespace App\Services\MediaLibrary;
 
-    use Exception;
     use Illuminate\Http\Request;
     use Str;
     use Throwable;
@@ -53,7 +52,7 @@
          */
         public function updateMultipleMedia($model, $inputKey, $mediaCollection, string $disk = 'public')
         {
-            \DB::afterCommit(function () use ($model, $inputKey, $mediaCollection, $disk){
+            \DB::afterCommit(function () use ($model, $inputKey, $mediaCollection, $disk) {
                 $medias = $model->getMedia($mediaCollection);
                 if (count($medias) > 0) {
                     foreach ($medias as $media) {
@@ -64,7 +63,8 @@
                 }
 
                 $stored_files = $medias->pluck('file_name')->toArray();
-                foreach ($this->request->input($inputKey, []) as $local_file) {
+                if (!empty($this->request->input($inputKey, ''))) {
+                    foreach ($this->request->input($inputKey, []) as $local_file) {
                     if (count($stored_files) === 0 || !in_array($local_file, $stored_files)) {
                         $model->addMedia(storage_path('tmp/uploads/' . $local_file))
                             ->sanitizingFileName(function ($fileName) {
@@ -74,6 +74,7 @@
                             ->toMediaCollection($mediaCollection, $disk);
                     }
                 }
+            }
             });
         }
 
@@ -89,24 +90,29 @@
             \DB::afterCommit(function () use ($model, $inputKey, $mediaCollection, $disk){
                 $media = $model->getFirstMedia($mediaCollection);
                 if (!empty($media)) {
-                    if ($media->file_name === $this->request->input($inputKey, '')) {
-                        $media->addMediaFromRequest($inputKey)
+                    if ($media->file_name === $this->request->input($inputKey)) {
+                        if ($this->request->hasFile($inputKey))
+                        {
+                            $media->addMedia($this->request->file($inputKey))
+                                ->sanitizingFileName(function ($fileName) {
+                                    $replace_duplicates = preg_replace("/(.)\\1+/", "$1", $fileName);
+                                    return Str::lower(Str::replace(['#', '/', '_', '\\', ' '], '-', $replace_duplicates));
+                                })
+                                ->toMediaCollection($mediaCollection)
+                            ;
+                        }
+                    }
+                }
+
+                if (!empty($this->request->input($inputKey, ''))) {
+                    if (empty($media) || $this->request->input($inputKey, '') !== $media->file_name) {
+                        $model->addMedia(storage_path('tmp/uploads/' . $this->request->input($inputKey, '')))
                             ->sanitizingFileName(function ($fileName) {
                                 $replace_duplicates = preg_replace("/(.)\\1+/", "$1", $fileName);
                                 return Str::lower(Str::replace(['#', '/', '_', '\\', ' '], '-', $replace_duplicates));
                             })
-                            ->toMediaCollection($mediaCollection)
-                        ;
+                            ->toMediaCollection($mediaCollection, $disk);
                     }
-                }
-
-                if (empty($media) || $this->request->input($inputKey, '') !== $media->file_name) {
-                    $model->addMedia(storage_path('tmp/uploads/' . $this->request->input($inputKey, '')))
-                        ->sanitizingFileName(function ($fileName) {
-                            $replace_duplicates = preg_replace("/(.)\\1+/", "$1", $fileName);
-                            return Str::lower(Str::replace(['#', '/', '_', '\\', ' '], '-', $replace_duplicates));
-                        })
-                        ->toMediaCollection($mediaCollection, $disk);
                 }
             });
         }
