@@ -61,6 +61,14 @@
         return number_format($price, 2);
     }
 
+    function getClassName($class)
+    {
+        $arr = preg_split('/(?=[A-Z])/', class_basename($class));
+        array_shift($arr);
+        array_pop($arr);
+        return implode(' ', $arr);
+    }
+
 //    function getGeoLocation(string $attribute)
 //    {
 //        $geoLocation = '';

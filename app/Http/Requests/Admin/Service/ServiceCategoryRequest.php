@@ -27,14 +27,14 @@ class ServiceCategoryRequest extends FormRequest
             case 'GET':
             case 'DELETE':
                 return [];
-            case 'PATCH':
             case 'PUT':
+            case 'PATCH':
             case 'POST':
                 return [
                     'service_category_title' => 'required',
-                    'navbar_status' => 'integer',
-                    'category_popular' => 'integer',
-                    'category_status' => 'integer',
+                    'navbar_status' => '',
+                    'category_popular' => '',
+                    'category_status' => '',
                     'meta_desc' => 'required',
                     'short_desc' => 'required',
                     'order_instruction_desc' => 'required',

@@ -49,8 +49,10 @@
                         <div class="col-md-2">
                             <div class=" ">
                                 <label for="navbar_status">
-                                    <h5>Navbar</h5></label>
+                                    <h5>Navbar</h5>
+                                </label>
                                 <div class="">
+                                    <input type="hidden" name="navbar_status" value="0">
                                     <input id="navbar_status" name="navbar_status" value="{{ old('navbar_status') }}" {{ old('navbar_status') == 1 ? 'checked='.'"'.'checked'.'"' : '' }} type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
                                 </div>
                             </div>
@@ -61,7 +63,8 @@
                                 <label for="category_popular">
                                     <h5>Popular</h5></label>
                                 <div class="">
-                                    <input name="category_popular" value="{{ old('category_popular', 0) }}" {{ old('category_popular') == 1 ? 'checked='.'"'.'checked'.'"' : '' }}  id="category_popular" type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
+                                    <input type="hidden" name="category_popular" value="0">
+                                    <input name="category_popular" value="{{ old('category_popular') }}" {{ old('category_popular') == 1 ? 'checked='.'"'.'checked'.'"' : '' }}  id="category_popular" type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
                                 </div>
                             </div>
                         </div>
@@ -71,7 +74,8 @@
                                 <label for="category_status">
                                     <h5>Publish</h5></label>
                                 <div class="">
-                                    <input name="category_status" value="{{ old('category_status', 0) }}" {{ old('category_status') == 1 ? 'checked='.'"'.'checked'.'"' : '' }} id="category_status" type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
+                                    <input type="hidden" name="category_status" value="0">
+                                    <input name="category_status" value="{{ old('category_status') }}" {{ old('category_status') == 1 ? 'checked='.'"'.'checked'.'"' : '' }} id="category_status" type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
                                 </div>
                             </div>
                         </div>
@@ -251,27 +255,17 @@
     {{-- Status Toggle --}}
     <script>
         $(document).ready(function (){
-            const navbar_status = $('#navbar_status');
-            const category_popular = $('#category_popular');
-            const category_status = $('#category_status');
-
-            navbar_status.val(0);
-            category_popular.val(0);
-            category_status.val(0);
-
-            navbar_status.change(function () {
-                $(this).val(0);
+            $('#navbar_status').change(function () {
                 const isChecked = $(this).prop('checked') === true ? 1 : 0;
                 $(this).val(isChecked);
             });
 
-            category_popular.change(function () {
+            $('#category_popular').change(function () {
                 const isChecked = $(this).prop('checked') === true ? 1 : 0;
                 $(this).val(isChecked);
-                // console.log('isChecked: ' + isChecked);
             });
 
-            category_status.change(function () {
+            $('#category_status').change(function () {
                 const isChecked = $(this).prop('checked') === true ? 1 : 0;
                 $(this).val(isChecked);
             });

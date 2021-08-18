@@ -17,12 +17,20 @@
     use Illuminate\Http\RedirectResponse;
     use Illuminate\Http\Request;
     use Illuminate\Http\Response;
+    use Illuminate\Support\Arr;
     use Illuminate\Support\Facades\DB;
     use Spatie\MediaLibrary\MediaCollections\Models\Media;
     use Throwable;
 
     class ServiceCategoryController extends Controller
     {
+        private $_className;
+
+        public function __construct()
+        {
+            $this->_className = getClassName($this);
+        }
+
         /**
          * Display a listing of the resource.
          *
@@ -53,7 +61,7 @@
          */
         public function store(ServiceCategoryRequest $request, MediaHandler $mediaHandler)
         {
-//            dd($request->all());
+            dd($request->all());
             DB::beginTransaction();
             try {
                 $slug = SlugService::createSlug(ServiceCategory::class, 'slug', $request->input('service_category_title'));
@@ -99,11 +107,20 @@
                 }
 
                 DB::commit();
-                return redirect()->route('super_admin.service.category.index');
+                return redirect()
+                    ->route('super_admin.service.category.index')
+                    ->with([
+                        'alert-type' => 'success_toast',
+                        'message' => $this->_className . ' Updated Successfully!',
+                    ]);
             } catch (\Exception $exception) {
                 DB::rollBack();
                 report($exception->getMessage());
-                return redirect()->back();
+                return back()
+                    ->with([
+                        'alert-type' => 'warning_toast',
+                        'message' => 'Opps, Something went wrong!',
+                    ]);
             }
         }
 
