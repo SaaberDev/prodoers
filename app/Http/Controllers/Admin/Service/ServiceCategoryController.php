@@ -61,7 +61,6 @@
          */
         public function store(ServiceCategoryRequest $request, MediaHandler $mediaHandler)
         {
-            dd($request->all());
             DB::beginTransaction();
             try {
                 $slug = SlugService::createSlug(ServiceCategory::class, 'slug', $request->input('service_category_title'));
@@ -158,7 +157,6 @@
          */
         public function update(ServiceCategoryRequest $request, MediaHandler $mediaHandler, $id)
         {
-            dd($request->all());
             DB::beginTransaction();
             try {
                 $service_category = ServiceCategory::findOrFail($id);
@@ -198,6 +196,7 @@
                         'answer' => $faq['answer']
                     ]);
                 }
+
                 DB::commit();
                 return redirect()->route('super_admin.service.category.index');
             } catch (\Exception $exception) {

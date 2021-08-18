@@ -27,70 +27,95 @@
         <div class="mt-4">
             <form action="{{ route('super_admin.service.category.update', $service_category->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf @method('PATCH')
-                <div class="row m-0 justify-content-between py-3 bg-white rounded mt-4">
-                    <div class="col-md-6">
-                        <div class="form-group mb-0">
-                            <label for="">
-                                <h5>Title</h5></label>
-                            <div class="input-group">
-                                <input name="service_category_title" class="form-control {{ $errors->has('service_category_title') ? ' is-invalid' : '' }}" value="{{ old('service_category_title') ? old('service_category_title') : $service_category->title }}" type="text">
-                                @if($errors->has('service_category_title'))
-                                    <span class="invalid-feedback">
+                <div class="col-md-12 py-3 bg-white rounded">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group mb-0">
+                                <label for="">
+                                    <h5>Title</h5></label>
+                                <div class="input-group">
+                                    <input name="service_category_title" class="form-control {{ $errors->has('service_category_title') ? ' is-invalid' : '' }}" value="{{ old('service_category_title') ? old('service_category_title') : $service_category->title }}" type="text">
+                                    @if($errors->has('service_category_title'))
+                                        <span class="invalid-feedback">
                                         <strong>{{ $errors->first('service_category_title') }}</strong>
                                     </span>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- Navbar Status --}}
+                        <div class="col-md-2">
+                            <div class=" ">
+                                <label for="navbar_status">
+                                    <h5>Navbar</h5>
+                                </label>
+                                <div class="">
+                                    <input type="hidden" name="navbar_status" value="0">
+                                    <input id="navbar_status" name="navbar_status" value="{{ old('navbar_status') ? old('navbar_status') : $service_category->navbar_status }}" {{ (old('navbar_status') ? old('navbar_status') : $service_category->navbar_status) == 1 ? 'checked='.'"'.'checked'.'"' : '' }} type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class=" ">
+                                <label for="category_popular">
+                                    <h5>Popular</h5></label>
+                                <div class="">
+                                    <input type="hidden" name="category_popular" value="0">
+                                    <input name="category_popular" value="{{ old('category_popular') ? old('category_popular') : $service_category->popular_status }}" {{ (old('category_popular') ? old('category_popular') : $service_category->popular_status) == 1 ? 'checked='.'"'.'checked'.'"' : '' }}  id="category_popular" type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class=" ">
+                                <label for="category_status">
+                                    <h5>Publish</h5></label>
+                                <div class="">
+                                    <input type="hidden" name="category_status" value="0">
+                                    <input name="category_status" value="{{ old('category_status') ? old('category_status') : $service_category->published_status }}" {{ (old('category_status') ? old('category_status') : $service_category->published_status) == 1 ? 'checked='.'"'.'checked'.'"' : '' }} id="category_status" type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row p-0 mt-4">
+                        {{-- Meta Description --}}
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="meta_desc">
+                                    <h5>Meta Description</h5>
+                                </label>
+                                <textarea id="meta_desc" name="meta_desc" class="form-control {{ $errors->has('meta_desc') ? ' is-invalid' : '' }}" id="exampleFormControlTextarea1" rows="5">{{ old('meta_desc') ? old('meta_desc') : $service_category->meta_desc }}</textarea>
+                                @if($errors->has('meta_desc'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('meta_desc') }}</strong>
+                                    </span>
                                 @endif
                             </div>
                         </div>
-                    </div>
 
-                    {{-- Navbar Status --}}
-                    <div class="col-md-2">
-                        <div class=" ">
-                            <label for="">
-                                <h5>Navbar</h5></label>
-                            <div class="">
-                                <input id="navbar_status" name="navbar_status" value="{{ old('navbar_status') ? old('navbar_status') : $service_category->navbar_status }}" {{ (old('navbar_status') ? old('navbar_status') : $service_category->navbar_status) == 1 ? 'checked='.'"'.'checked'.'"' : '' }} type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-2">
-                        <div class=" ">
-                            <label for="">
-                                <h5>Popular</h5></label>
-                            <div class="">
-                                <input name="category_popular" value="{{ old('category_popular') ? old('category_popular') : $service_category->popular_status }}" {{ (old('category_popular') ? old('category_popular') : $service_category->popular_status) == 1 ? 'checked='.'"'.'checked'.'"' : '' }}  id="category_popular" type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class=" ">
-                            <label for="">
-                                <h5>Publish</h5></label>
-                            <div class="">
-                                <input name="category_status" value="{{ old('category_status') ? old('category_status') : $service_category->published_status }}" {{ (old('category_status') ? old('category_status') : $service_category->published_status) == 1 ? 'checked='.'"'.'checked'.'"' : '' }} id="category_status" type="checkbox" data-on="Active" data-off="Inactive" data-toggle="toggle">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12 mt-4">
-                        <div class="form-group mb-0">
+                        {{-- Short Description --}}
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">
-                                    <h5>meta description </h5></label>
-                                <textarea name="meta_description" class="form-control {{ $errors->has('meta_description') ? ' is-invalid' : '' }}" id="exampleFormControlTextarea1" rows="5">{{ old('meta_description') ? old('meta_description') : $service_category->meta_desc }}</textarea>
-                                @if($errors->has('meta_description'))
+                                    <h5>Short Description</h5>
+                                </label>
+                                <textarea name="short_desc" class="form-control {{ $errors->has('short_desc') ? 'is-invalid' : '' }}" id="exampleFormControlTextarea1" rows="5">{{ old('short_desc') ? old('short_desc') : $service_category->short_desc }}</textarea>
+                                @if($errors->has('short_desc'))
                                     <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('meta_description') }}</strong>
+                                        <strong>{{ $errors->first('short_desc') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
                     </div>
 
-
-                    <div class="row col-md-12 m-0 justify-content-around mt-4 ">
+                    <div class="row">
+                        {{-- Banner Image --}}
                         <div class="col-md-6">
-                            {{-- Banner Image --}}
                             <div class="form-group">
                                 <label for="">
                                     <h5>Banner Image</h5>
@@ -136,39 +161,79 @@
                         </div>
                     </div>
 
+                    <div class="row">
+                        {{-- Faqs --}}
 
-                    <div class="col-md-12 mt-4">
-                        <label for="">
-                            <h5>description </h5></label>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <textarea name="service_description" class="form-control {{ $errors->has('service_description') ? 'is-invalid' : '' }}" id="exampleFormControlTextarea1" rows="8">{{ old('service_description') ? old('service_description') : $service_category->desc }}</textarea>
-                                @if($errors->has('service_description'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('service_description') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+
+
+                        <div class="col-md-12 py-3">
+                            <!-- COMPONENT START -->
+                            @livewire('admin.services.category.faq-list', ['service_category' => $service_category])
                         </div>
-                    </div>
-
-                    {{-- Faqs --}}
-                    @livewire('admin.services.category.faq-list', ['service_category' => $service_category])
-                        <div class="col-md-12 mt-4">
+                        <div class="col-md-12">
                             <div class="text-right">
-                                <button type="button" id="remove-button-faq" class="btn shadow bg-danger text-white rounded" data-toggle="tooltip" data-placement="left" data-original-title="Remove last FAQ" disabled="disabled"> <span>
+                                <button type="button" id="remove-button-multiple" class="btn shadow bg-danger text-white rounded" disabled="disabled"> <span>
                                     </span>Remove</button>
-                                <button type="button" id="add-button-faq" class="btn shadow bg-white rounded"> <span>
+                                <button type="button" id="add-button-multiple" class="btn shadow bg-white rounded"> <span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="12.672" height="12.672" viewBox="0 0 12.672 12.672">
                                         <path d="M20.848,14.512H16.09V9.754a.789.789,0,0,0-1.578,0v4.758H9.754a.789.789,0,0,0,0,1.578h4.758v4.758a.789.789,0,0,0,1.578,0V16.09h4.758a.789.789,0,0,0,0-1.578Z" transform="translate(-8.965 -8.965)" fill="#000"></path>
                                     </svg></span> Add new field</button>
                             </div>
                         </div>
-                    {{-- Faqs --}}
+                        {{-- Faqs --}}
+                    </div>
 
-                    <div class="col-md-12 py-4 ">
-                        <div class="text-right">
-                            <button type="submit" class="btn shadow bgOne rounded text-white px-4"> Update</button>
+                    <div class="row">
+                        {{-- Order Instructions --}}
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="dynamic-field-single-1" class="dynamic-field-single mb-3">
+                                        <label class="mr-3 mt-2" for="field-1"><h5>Order Instructions<span class="ctm-required">*</span></h5></label>
+                                        <input type="text" id="field-1" name="order_instructions[]" value="{{ old('order_instructions.*') }}" class="form-control validation-single" aria-describedby="button-addon2">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="text-right">
+                                <button type="button" id="remove-button-single" class="btn shadow bg-danger text-white rounded" disabled="disabled"> <span>
+                                </span>Remove</button>
+                                <button type="button" id="add-button-single" class="btn shadow bg-white rounded">
+                                <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12.672" height="12.672" viewBox="0 0 12.672 12.672">
+                                        <path d="M20.848,14.512H16.09V9.754a.789.789,0,0,0-1.578,0v4.758H9.754a.789.789,0,0,0,0,1.578h4.758v4.758a.789.789,0,0,0,1.578,0V16.09h4.758a.789.789,0,0,0,0-1.578Z" transform="translate(-8.965 -8.965)" fill="#000"></path>
+                                    </svg>
+                                </span>
+                                    Add new field
+                                </button>
+                            </div>
+                        </div>
+                        {{-- Order Instructions --}}
+                    </div>
+
+                    <div class="row p-0 mt-4">
+                        {{-- Order Instruction Description --}}
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="">
+                                    <h5>Order Instruction Description</h5>
+                                </label>
+                                <textarea name="order_instruction_desc" class="form-control {{ $errors->has('order_instruction_desc') ? 'is-invalid' : '' }}" id="exampleFormControlTextarea1" rows="5">{{ old('order_instruction_desc') }}</textarea>
+                                @if($errors->has('order_instruction_desc'))
+                                    <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('order_instruction_desc') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 py-4">
+                            <div class="text-right">
+                                <button type="submit" class="btn shadow bgOne rounded text-white px-4"> Submit</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -179,136 +244,30 @@
 
 @push('scripts')
     {{-- Status Toggle --}}
-    {{-- Form Clone Dynamic Input for Faqs Start --}}
+    {{-- Status Toggle --}}
     <script>
-        $(document).ready(function() {
-            var buttonAdd = $("#add-button-faq");
-            var buttonRemove = $("#remove-button-faq");
-            var className = ".dynamic-field-faq";
-            var count = 0;
-            var field = "";
-            var maxFields = 5;
-
-            function totalFields() {
-                return $(className).length;
-            }
-
-            function addNewField() {
-                count = totalFields() + 1;
-                field = $("#dynamic-field-faq-1").clone();
-                field.attr("id", "dynamic-field-faq-" + count);
-                field.children("label").text("Feature #" + count);
-                field.find("input").attr("id", "faq-question-" + count);
-                field.find("textarea").attr("id", "faq-answer-" + count);
-                // field.find("input").attr("name", "faq.question." + count);
-                // field.find("textarea").attr("name", "faq.answer." + count);
-                field.find("input").val("");
-                field.find("textarea").val("");
-                $(className + ":last").after($(field));
-            }
-
-            function removeLastField() {
-                if (totalFields() > 1) {
-                    $(className + ":last").remove();
-                }
-            }
-
-            function enableButtonRemove() {
-                if (totalFields() > 1) {
-                    buttonRemove.removeAttr("disabled");
-                    buttonRemove.addClass("shadow-sm");
-                }
-            }
-
-            function disableButtonRemove() {
-                if (totalFields() === 1) {
-                    buttonRemove.attr("disabled", "disabled");
-                    buttonRemove.removeClass("shadow-sm");
-                }
-            }
-
-            function disableButtonAdd() {
-                if (totalFields() === maxFields) {
-                    buttonAdd.attr("disabled", "disabled");
-                    buttonAdd.removeClass("shadow-sm");
-                }
-            }
-
-            function enableButtonAdd() {
-                if (totalFields() === (maxFields - 1)) {
-                    buttonAdd.removeAttr("disabled");
-                    buttonAdd.addClass("shadow-sm");
-                }
-            }
-
-            buttonAdd.click(function() {
-                addNewField();
-                enableButtonRemove();
-                disableButtonAdd();
+        $(document).ready(function (){
+            $('#navbar_status').change(function () {
+                const isChecked = $(this).prop('checked') === true ? 1 : 0;
+                $(this).val(isChecked);
             });
 
-            buttonRemove.click(function() {
-                removeLastField();
-                disableButtonRemove();
-                enableButtonAdd();
+            $('#category_popular').change(function () {
+                const isChecked = $(this).prop('checked') === true ? 1 : 0;
+                $(this).val(isChecked);
             });
-        });
 
-        $("form").submit(function (e) {
-            e.preventDefault();
-            $(".validation-faqs").each(function() {
-                var data = $(this).val();
-                var id  =  $(this).attr('id');
-
-                if(Trim(data) === ''){
-                    $(".validation-faqs").each(function(e) {
-                        $("#" + id).addClass('is-invalid').focus();
-                        e.preventDefault();
-                        return false;
-                    });
-                }else{
-                    $("#"+id).removeClass('is-invalid');
-                }
+            $('#category_status').change(function () {
+                const isChecked = $(this).prop('checked') === true ? 1 : 0;
+                $(this).val(isChecked);
             });
-            $(this).unbind('submit').submit();
-            function Trim(value) {
-                return value.replace(/^\s+|\s+$/g, '');
-            }
-        });
-
+        })
     </script>
-    {{-- Form Clone Dynamic Input for Faqs End --}}
 
-    <script>
-        $('#navbar_status').change(function () {
-            let isChecked = $(this).prop('checked') === true ? 1 : 0;
-            $(this).val(isChecked);
-        });
-
-        $('#category_popular').change(function () {
-            let isChecked = $(this).prop('checked') === true ? 1 : 0;
-            $(this).val(isChecked);
-            // console.log('isChecked: ' + isChecked);
-        });
-
-        $('#category_status').change(function () {
-            let isChecked = $(this).prop('checked') === true ? 1 : 0;
-            $(this).val(isChecked);
-        });
-
-        window.preview = function (input) {
-            if (input.files && input.files[0]) {
-                $(input.files).each(function () {
-                    $("#previewImg").html("");
-                    var reader = new FileReader();
-                    reader.readAsDataURL(this);
-                    reader.onload = function (e) {
-                        $("#previewImg").append("<img class='previewpic' src='" + e.target.result + "'>");
-                    }
-                });
-            }
-        }
-    </script>
+    {{-- Features --}}
+    @include('plugins.dynamic-form.single_input')
+    {{-- Faqs --}}
+    @include('plugins.dynamic-form.multiple_input')
 
     <script src="{{ mix('_assets/plugins/dropzone/js/dropzone.js') }}"></script>
     @include('plugins.dropzone.edit.single', [
