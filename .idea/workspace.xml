@@ -4,19 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f616bec-9873-4c54-8a6f-71f691274991" name="Changes" comment="[service] - new changes">
-      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/Admin/Services/Category/OrderInstructionList.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/livewire/admin/services/category/order-instruction-list.blade.php" afterDir="false" />
+    <list default="true" id="3f616bec-9873-4c54-8a6f-71f691274991" name="Changes" comment="[bug fix] - fixed MediaHandler.php bugs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Service/ServiceCategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Service/ServiceCategoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/ServiceCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ServiceCategory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/MediaLibrary/MediaHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/MediaLibrary/MediaHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin_panel/pages/services/category/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_panel/pages/services/category/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin_panel/pages/services/service/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_panel/pages/services/service/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/services/category/faq-list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/services/category/faq-list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/plugins/dropzone/create/multiple.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/plugins/dropzone/create/multiple.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/plugins/dropzone/edit/multiple.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/plugins/dropzone/edit/multiple.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Service/TagController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Service/TagController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Admin/Services/Tag/IndexComponent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Admin/Services/Tag/IndexComponent.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_custom/js/custom_scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_assets/_custom/js/custom_scripts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_custom/js/custom_scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/_assets/_custom/js/custom_scripts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin_panel/pages/services/tag/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_panel/pages/services/tag/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/includes/per_page_show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/includes/per_page_show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/services/tag/index-component.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/services/tag/index-component.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -260,7 +256,7 @@
       <workItem from="1628262660592" duration="7236000" />
       <workItem from="1628279922521" duration="51228000" />
       <workItem from="1628705908797" duration="2054000" />
-      <workItem from="1629112053761" duration="73985000" />
+      <workItem from="1629112053761" duration="75382000" />
     </task>
     <task id="LOCAL-00001" summary="[service] - working on dropzone">
       <created>1627838312357</created>
@@ -563,7 +559,14 @@
       <option name="project" value="LOCAL" />
       <updated>1629302218038</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="[bug fix] - fixed MediaHandler.php bugs">
+      <created>1629318848538</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1629318848538</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -598,6 +601,7 @@
     <MESSAGE value="[livewire-faq-list] - service faq list delete in edit page" />
     <MESSAGE value="[livewire-faq-list] - service feature list delete in edit page" />
     <MESSAGE value="[service] - new changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="[service] - new changes" />
+    <MESSAGE value="[bug fix] - fixed MediaHandler.php bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="[bug fix] - fixed MediaHandler.php bugs" />
   </component>
 </project>

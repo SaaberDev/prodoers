@@ -49,7 +49,8 @@
 {{--                            <hr>--}}
                             <form action="{{ route('super_admin.service.tag.store') }}" method="POST">
                                 @csrf @method('POST')
-                                <div class="form-group">
+
+                                <div class="form-group" wire:ignore>
                                     <input type="text" name="tags" value="{{ old('tags') }}" class="tags {{ $errors->has('tags') ? 'is-invalid border-danger' : '' }}">
                                     @if($errors->has('tags'))
                                         <span class="invalid-feedback">

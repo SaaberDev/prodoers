@@ -28,11 +28,6 @@ class IndexComponent extends Component
         $this->fill(request()->only('search', 'page'));
     }
 
-//    public function hydrate()
-//    {
-//        $this->emit('postAdded');
-//    }
-
     public function resetSearch()
     {
         $this->reset('search');

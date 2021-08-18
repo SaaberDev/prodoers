@@ -18,6 +18,12 @@
 
     class TagController extends Controller
     {
+        private $_className;
+
+        public function __construct()
+        {
+            $this->_className = getClassName($this);
+        }
         /**
          * Display a listing of the resource.
          *
@@ -47,17 +53,31 @@
          */
         public function store(TagRequest $request)
         {
-            DB::transaction(function () use ($request) {
+            DB::beginTransaction();
+            try {
                 $tagInputs = $request->input('tags');
-                $explode = explode(',', $tagInputs);
+                $explode = json_decode($tagInputs);
+//                $explode = explode(',', $tagInputs);
 
                 collect($explode)->each(function ($item) {
                     Tag::Create([
-                        'title' => $item,
+                        'title' => $item->value,
                     ]);
                 });
-            });
-            return redirect()->back();
+
+                DB::commit();
+                return back()->with([
+                    'alert-type' => 'success_toast',
+                    'message' => $this->_className . ' Updated Successfully!',
+                ]);
+            } catch (\Exception $exception) {
+                DB::rollBack();
+                report($exception->getMessage());
+                return back()->with([
+                    'alert-type' => 'warning_toast',
+                    'message' => 'Opps, Something went wrong!',
+                ]);
+            }
         }
 
         /**
