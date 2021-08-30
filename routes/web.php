@@ -167,6 +167,7 @@
             Route::name('self.')->group(function () {
                 Route::get('/', [OrderController::class, 'index'])->name('index');
                 Route::get('/show/{id}', [OrderController::class, 'show'])->name('show');
+                Route::get('/download-attachments/{id}', [OrderController::class, 'downloadZip'])->name('downloadZip');
             });
             // Payments
             Route::prefix('/payments')->name('payment.')->group(function () {

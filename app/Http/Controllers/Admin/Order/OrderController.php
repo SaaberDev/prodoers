@@ -11,6 +11,7 @@
     use Illuminate\Contracts\View\View;
     use Illuminate\Http\Request;
     use Illuminate\Http\Response;
+    use Spatie\MediaLibrary\Support\MediaStream;
     use Spatie\Permission\Models\Role;
 
     class OrderController extends Controller
@@ -60,7 +61,10 @@
             $order_attachments = [];
             foreach ($order->getMedia('requirements') as $media) {
 //                dd($media);
-                $order_attachments[] = $media->getFullUrl();
+                $order_attachments[] = [
+                    'name' => $media->name,
+                    'url' => $media->getFullUrl()
+                ];
 //                dump($order_attachments);
             }
 //            dd($order_attachments);
@@ -107,6 +111,17 @@
 //            dd($order_details);
 
             return \view('admin_panel.pages.orders.order.show', compact('order_details'));
+        }
+
+        public function downloadZip(Request $request, $id)
+        {
+            $order = Order::findOrFail($id);
+            $filename = 'client-requirements-'.$request->get('order-number').'.zip';
+            $attachments = $order->getMedia('requirements');
+
+//            dd($attachments);
+
+            return MediaStream::create($filename)->addMedia($attachments);
         }
 
         /**

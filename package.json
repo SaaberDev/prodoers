@@ -30,6 +30,7 @@
         "latest-version": "^5.1.0",
         "node-sass": "^5.0.0",
         "node-snackbar": "^0.1.16",
+        "smooth-scrollbar": "^8.6.3",
         "sweetalert2": "^10.12.6"
     }
 }

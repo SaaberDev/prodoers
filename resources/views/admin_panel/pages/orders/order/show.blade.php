@@ -32,7 +32,7 @@
                     <div class="">
                         <div class="card p-5" style="">
                             <div class="row no-gutters">
-                                <div class="col-md-4"> <img src="{{ optional($order_details['service_info'])->service_thumb }}" class="card-img" alt="..."> </div>
+                                <div class="col-md-4"> <img src="{{ optional($order_details['service_info'])->service_thumb }}" class="img-thumbnail" alt="{{ $order_details['service_info']->service_name }}"> </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
                                         <h4 class="card-title m-0">{{ $order_details['service_info']->service_name }}</h4>
@@ -88,7 +88,9 @@
                     <div class="col-md-6"><h5>Image</h5> </div>
                     <div class="col-md-6">
                         <div class="text-right">
-                            <button class="btn">
+                            <a class="btn"
+                               href="{{ route('super_admin.order.self.downloadZip', ['id' => $order_details['order_info']->id,'order-number' => $order_details['order_info']->order_number]) }}"
+                            >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
                                     <g transform="translate(-3 -3)">
                                         <path d="M31.5,22.5v6a3,3,0,0,1-3,3H7.5a3,3,0,0,1-3-3v-6" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" />
@@ -96,14 +98,14 @@
                                         <path d="M18,22.5V4.5" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" />
                                     </g>
                                 </svg>
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
                 <ul class="row m-0 py-3 previewimgTwo" style="list-style: none;">
                     @forelse($order_details['order_info']->attachments as $attachment)
                     <li class="col-md-2 py-3">
-                        <a href="#"><img src="{{ $attachment }}" alt="" class="img-thumbnail"></a>
+                        <a href="#"><img alt="{{ $attachment->name }}" class="img-thumbnail" src="{{ $attachment->url }}"></a>
                     </li>
                     @empty
                         No Attachments
