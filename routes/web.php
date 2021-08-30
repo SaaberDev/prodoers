@@ -108,7 +108,7 @@
 //        'auth',
 //        'role:super_admin|admin',
 //    ])->group(function () {
-    Route::prefix('/super-admin/dashboard')->name('super_admin.')->group(function () {
+    Route::prefix('/dashboard')->name('super_admin.')->group(function () {
         // Dashboard
         Route::get('/', [DashboardController::class, 'super_admin'])->name('index');
 

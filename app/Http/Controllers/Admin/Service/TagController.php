@@ -35,16 +35,6 @@
         }
 
         /**
-         * Show the form for creating a new resource.
-         *
-         * @return Response
-         */
-        public function create()
-        {
-            //
-        }
-
-        /**
          * Store a newly created resource in storage.
          *
          * @param TagRequest $request
@@ -94,21 +84,34 @@
         /**
          * Update the specified resource in storage.
          *
-         * @param Request $request
+         * @param TagRequest $request
          * @param int $id
          * @return RedirectResponse
+         * @throws Throwable
          */
         public function update(TagRequest $request, $id)
         {
-            // TODO ---- Tags Update
-            $tags = Tag::findOrFail($id);
-            $input = $request->input('edit_tags');
-            DB::transaction(function () use ($request, $tags, $input) {
+            DB::beginTransaction();
+            try {
+                $tags = Tag::findOrFail($id);
+                $input = $request->input('edit_tags');
+
                 $tags->update([
                     'title' => $input,
                 ]);
-            });
-            return redirect()->route('super_admin.service.tag.index');
+                DB::commit();
+                return redirect()->route('super_admin.service.tag.index')->with([
+                    'alert-type' => 'success_toast',
+                    'message' => $this->_className . ' Updated Successfully!',
+                ]);
+            } catch (\Exception $exception) {
+                DB::rollBack();
+                report($exception->getMessage());
+                return back()->with([
+                    'alert-type' => 'warning_toast',
+                    'message' => 'Opps, Something went wrong!',
+                ]);
+            }
         }
 
         /**
