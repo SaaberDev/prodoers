@@ -4,7 +4,6 @@
 
     use App\Http\Controllers\Controller;
     use App\Http\Requests\Admin\Service\TagRequest;
-    use App\Models\ServiceTag;
     use App\Models\Tag;
     use DB;
     use Exception;
@@ -12,7 +11,6 @@
     use Illuminate\Contracts\View\Factory;
     use Illuminate\Contracts\View\View;
     use Illuminate\Http\RedirectResponse;
-    use Illuminate\Http\Request;
     use Illuminate\Http\Response;
     use Throwable;
 

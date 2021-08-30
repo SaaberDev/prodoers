@@ -35,10 +35,10 @@
                                 <div class="col-md-4"> <img src="img/devimg/rectangletwo.png" class="card-img" alt="..."> </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
-                                        <h4 class="card-title m-0">{{ $order->services->title }}</h4>
-                                        <p class="card-text m-0">Order ID : #{{ $order->order_number }}</p>
-                                        <p class="card-text m-0">Amount&#40; USD &#41; : ${{ $order->payments->paid_amount }} <span> &#40; -${{ $order->payments->discount }} &#41;</span></p>
-                                        <p class="card-text m-0">Promo Code : {{ $order->applied_coupon }} </p>
+                                        <h4 class="card-title m-0">{{ $order_details['service_info']->service_name }}</h4>
+                                        <p class="card-text m-0">Order ID : #{{ $order_details['order_info']->order_number }}</p>
+                                        <p class="card-text m-0">Amount&#40; USD &#41; : ${{ $order_details['payment_info']->paid_amount }} <span> &#40; -${{ $order_details['payment_info']->discount }} &#41;</span></p>
+                                        <p class="card-text m-0">Promo Code : {{ $order_details['order_info']->applied_coupon }} </p>
                                     </div>
                                 </div>
                             </div>
@@ -49,12 +49,12 @@
                     <div class="row p-4 border">
                         <div class="col-md-8">
                             <div class="">
-                                <h4>{{ $order->users->name }}</h4>
-                                <p class="m-0">{{ $order->users->email }}</p>
-                                <p class="pt-4 m-0">Transaction ID : #{{ $order->payments->transaction_id }}</p>
-                                <p class="m-0">Payment method : {{ $order->payments->payment_method }}</p>
+                                <h4>{{ $order_details['user_info']->name }}</h4>
+                                <p class="m-0">{{ $order_details['user_info']->email }}</p>
+                                <p class="pt-4 m-0">Transaction ID : #{{ $order_details['payment_info']->transaction_id }}</p>
+                                <p class="m-0">Payment method : {{ $order_details['payment_info']->payment_method }}</p>
                                 <p class="m-0">Assigned To :
-                                    @forelse($order->assignUsers as $assignUsers)
+                                    @forelse($order_details['assigned_users'] as $assignUsers)
                                         <span class="tabletabLightSKY text-white font-weight-bold">{{ $assignUsers->username }}</span>
                                         @if(!$loop->last)
                                             ,
@@ -67,7 +67,7 @@
                         </div>
                         <div class="col-md-4 v-center">
                             <div class="text-center pt-5">
-                                <p class="tabletabLightSKY text-white font-weight-bold">ongoing</p>
+                                <p class="tabletabLightSKY text-white font-weight-bold">{{ $order_details['order_info']->order_status }}</p>
                             </div>
                         </div>
                     </div>
@@ -79,16 +79,7 @@
                 <div class="col-md-7 clearfix">
                     <h5>Order Requirements</h5>
                     <div class="w-100">
-                        <div class="w-50 float-left">Brand Name</div>
-                        <div class="w-50 float-left">XDesigns</div>
-                    </div>
-                    <div class="w-100">
-                        <div class="w-50 float-left">Tagline</div>
-                        <div class="w-50 float-left">Lorem ipsum is simply dummy text </div>
-                    </div>
-                    <div class="w-100">
-                        <div class="w-50 float-left">Tagline</div>
-                        <div class="w-50 float-left">Lorem ipsum is simply dummy text </div>
+                        <div class="w-50 float-left">{{ $order_details['order_info']->requirements }}</div>
                     </div>
                 </div>
             </div>

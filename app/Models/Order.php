@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Traits\Searchable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 /**
  * @mixin IdeHelperOrder
@@ -51,5 +52,20 @@ class Order extends Model
         return $query->where(function ($query) use ($arg, $column) {
             $arg == '' ? $query->orderBy('id', 'desc') : $query->orWhere($column, '=', $arg);
         });
+    }
+
+    /**
+     * @param $db | true or false
+     * @return string
+     */
+    public function getStatus($db): string
+    {
+        $query = $this->order_status;
+        if ($db === false) {
+            $sanitize = Str::replace('_', ' ', $query);
+            return ucwords($sanitize);
+        }
+
+        return $query;
     }
 }

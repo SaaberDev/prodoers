@@ -4,6 +4,7 @@
 
     use App\Http\Controllers\Controller;
     use App\Models\Order;
+    use App\Models\Service;
     use App\Models\User;
     use Illuminate\Contracts\Foundation\Application;
     use Illuminate\Contracts\View\Factory;
@@ -53,11 +54,48 @@
          */
         public function show($id)
         {
-            $order = Order::with('assignUsers', 'services:id,title,thumbnail', 'payments:order_id,paid_amount,discount,transaction_id,payment_method')
-                ->select('id', 'service_id', 'order_number', 'requirements', 'applied_coupon', 'user_id')
-                ->findOrFail($id);
+            $order = Order::findOrFail($id);
+            $service_media = $order->services->getFirstMedia('service_thumb');
 
-            return \view('admin_panel.pages.orders.order.show', compact('order'));
+            $assignedUserData = [];
+            foreach ($order->assignUsers as $assignUser) {
+                $assignedUserData[] = [
+                    'id' => $assignUser->id,
+                    'username' => $assignUser->username,
+                ];
+            }
+
+            $data = [
+                'service_info' => [
+                    'id' => $order->services->id,
+                    'service_name' => $order->services->title,
+                    'delivery_time' => $order->services->delivery_time,
+                    'service_thumb' => $service_media->getFullUrl(),
+                ],
+                'order_info' => [
+                    'id' => $order->id,
+                    'order_number' => $order->order_number,
+                    'requirements' => $order->requirements,
+                    'order_status' => $order->getStatus(false),
+                    'applied_coupon' => $order->applied_coupon,
+                ],
+                'user_info' => [
+                    'id' => $order->users->id,
+                    'name' => $order->users->name,
+                    'email' => $order->users->email,
+                ],
+                'payment_info' => [
+                    'transaction_id' => $order->payments->transaction_id,
+                    'payment_method' => $order->payments->paid_amount,
+                    'paid_amount' => $order->payments->paid_amount,
+                    'discount' => $order->payments->discount,
+                ],
+                'assigned_users' => $assignedUserData,
+            ];
+
+            $order_details = collect(json_decode(json_encode($data)));
+
+            return \view('admin_panel.pages.orders.order.show', compact('order_details'));
         }
 
         /**
