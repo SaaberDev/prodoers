@@ -57,6 +57,14 @@
             $order = Order::findOrFail($id);
             $service_media = $order->services->getFirstMedia('service_thumb');
 
+            $order_attachments = [];
+            foreach ($order->getMedia('requirements') as $media) {
+//                dd($media);
+                $order_attachments[] = $media->getFullUrl();
+//                dump($order_attachments);
+            }
+//            dd($order_attachments);
+
             $assignedUserData = [];
             foreach ($order->assignUsers as $assignUser) {
                 $assignedUserData[] = [
@@ -78,6 +86,7 @@
                     'requirements' => $order->requirements,
                     'order_status' => $order->getStatus(false),
                     'applied_coupon' => $order->applied_coupon,
+                    'attachments' => $order_attachments,
                 ],
                 'user_info' => [
                     'id' => $order->users->id,
@@ -86,7 +95,7 @@
                 ],
                 'payment_info' => [
                     'transaction_id' => $order->payments->transaction_id,
-                    'payment_method' => $order->payments->paid_amount,
+                    'payment_method' => $order->payments->payment_method,
                     'paid_amount' => $order->payments->paid_amount,
                     'discount' => $order->payments->discount,
                 ],
@@ -94,6 +103,8 @@
             ];
 
             $order_details = collect(json_decode(json_encode($data)));
+
+//            dd($order_details);
 
             return \view('admin_panel.pages.orders.order.show', compact('order_details'));
         }

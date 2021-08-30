@@ -6,13 +6,15 @@ use App\Traits\Searchable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
 /**
  * @mixin IdeHelperOrder
  */
-class Order extends Model
+class Order extends Model implements HasMedia
 {
-    use HasFactory, Searchable;
+    use HasFactory, Searchable, InteractsWithMedia;
 
     protected $guarded = [];
 

@@ -32,7 +32,7 @@
                     <div class="">
                         <div class="card p-5" style="">
                             <div class="row no-gutters">
-                                <div class="col-md-4"> <img src="img/devimg/rectangletwo.png" class="card-img" alt="..."> </div>
+                                <div class="col-md-4"> <img src="{{ optional($order_details['service_info'])->service_thumb }}" class="card-img" alt="..."> </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
                                         <h4 class="card-title m-0">{{ $order_details['service_info']->service_name }}</h4>
@@ -101,75 +101,14 @@
                     </div>
                 </div>
                 <ul class="row m-0 py-3 previewimgTwo" style="list-style: none;">
+                    @forelse($order_details['order_info']->attachments as $attachment)
                     <li class="col-md-2 py-3">
-                        <a href="#"><img src="img/devimg/rectangle.png" alt=""></a>
+                        <a href="#"><img src="{{ $attachment }}" alt="" class="img-thumbnail"></a>
                     </li>
-                    <li class="col-md-2 py-3">
-                        <a href="#"><img src="img/devimg/rectangle.png" alt=""></a>
-                    </li>
-                    <li class="col-md-2 py-3">
-                        <a href="#"><img src="img/devimg/rectangle.png" alt=""></a>
-                    </li>
-                    <li class="col-md-2 py-3">
-                        <a href="#"><img src="img/devimg/rectangle.png" alt=""></a>
-                    </li>
-                    <li class="col-md-2 py-3">
-                        <a href="#"><img src="img/devimg/rectangle.png" alt=""></a>
-                    </li>
-                    <li class="col-md-2 py-3">
-                        <a href="#"><img src="img/devimg/rectangle.png" alt=""></a>
-                    </li>
-                    <li class="col-md-2 py-3">
-                        <a href="#"><img src="img/devimg/rectangle.png" alt=""></a>
-                    </li>
-                    <li class="col-md-2 py-3">
-                        <a href="#"><img src="img/devimg/rectangle.png" alt=""></a>
-                    </li>
-
+                    @empty
+                        No Attachments
+                    @endforelse
                 </ul>
-            </div>
-            <div class="   ">
-                <div class="row  m-0 py-3">
-                    <div class="col-md-6"><h5>Image</h5> </div>
-                    <div class="col-md-6">
-                        <div class="text-right">
-                            <button class="btn">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
-                                    <g transform="translate(-3 -3)">
-                                        <path d="M31.5,22.5v6a3,3,0,0,1-3,3H7.5a3,3,0,0,1-3-3v-6" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" />
-                                        <path d="M10.5,15,18,22.5,25.5,15" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" />
-                                        <path d="M18,22.5V4.5" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" />
-                                    </g>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <ul class="row m-0 py-3 previewimgTwo" style="list-style: none;">
-                    <li class="col-md-2 py-3">
-                        <a href="#"><img src="img/devimg/rectangle.png" alt=""></a>
-                    </li>
-                    <li class="col-md-2 py-3">
-                        <a href="#"><img src="img/devimg/rectangle.png" alt=""></a>
-                    </li>
-                    <li class="col-md-2 py-3">
-                        <a href="#"><img src="img/devimg/rectangle.png" alt=""></a>
-                    </li>
-                    <li class="col-md-2 py-3">
-                        <a href="#"><img src="img/devimg/rectangle.png" alt=""></a>
-                    </li>
-                    <li class="col-md-2 py-3">
-                        <a href="#"><img src="img/devimg/rectangle.png" alt=""></a>
-                    </li>
-                    <li class="col-md-2 py-3">
-                        <a href="#"><img src="img/devimg/rectangle.png" alt=""></a>
-                    </li>
-
-                </ul>
-            </div>
-            <div class="row  m-0 py-3">
-                <div class="col-md-3">Additional Requirements </div>
-                <div class="col-md-9"> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore </div>
             </div>
         </div>
     </div>
