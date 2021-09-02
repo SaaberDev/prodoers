@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 8.53.1.
+ * Generated for Laravel 8.58.0.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -5496,7 +5496,7 @@
                     /**
          * Register an event listener with the dispatcher.
          *
-         * @param \Closure|string $listener
+         * @param \Closure|string|array $listener
          * @param bool $wildcard
          * @return \Closure 
          * @static 
@@ -6741,7 +6741,7 @@
      * @method static \Illuminate\Http\Client\PendingRequest contentType(string $contentType)
      * @method static \Illuminate\Http\Client\PendingRequest dd()
      * @method static \Illuminate\Http\Client\PendingRequest dump()
-     * @method static \Illuminate\Http\Client\PendingRequest retry(int $times, int $sleep = 0)
+     * @method static \Illuminate\Http\Client\PendingRequest retry(int $times, int $sleep = 0, ?callable $when = null)
      * @method static \Illuminate\Http\Client\PendingRequest sink(string|resource $to)
      * @method static \Illuminate\Http\Client\PendingRequest stub(callable $callback)
      * @method static \Illuminate\Http\Client\PendingRequest timeout(int $seconds)
@@ -7651,9 +7651,22 @@
                         $instance->assertSent($mailable, $callback);
         }
                     /**
+         * Determine if a mailable was not sent or queued to be sent based on a truth-test callback.
+         *
+         * @param string|\Closure $mailable
+         * @param callable|null $callback
+         * @return void 
+         * @static 
+         */ 
+        public static function assertNotOutgoing($mailable, $callback = null)
+        {
+                        /** @var \Illuminate\Support\Testing\Fakes\MailFake $instance */
+                        $instance->assertNotOutgoing($mailable, $callback);
+        }
+                    /**
          * Determine if a mailable was not sent based on a truth-test callback.
          *
-         * @param string $mailable
+         * @param string|\Closure $mailable
          * @param callable|null $callback
          * @return void 
          * @static 
@@ -7662,6 +7675,17 @@
         {
                         /** @var \Illuminate\Support\Testing\Fakes\MailFake $instance */
                         $instance->assertNotSent($mailable, $callback);
+        }
+                    /**
+         * Assert that no mailables were sent or queued to be sent.
+         *
+         * @return void 
+         * @static 
+         */ 
+        public static function assertNothingOutgoing()
+        {
+                        /** @var \Illuminate\Support\Testing\Fakes\MailFake $instance */
+                        $instance->assertNothingOutgoing();
         }
                     /**
          * Assert that no mailables were sent.
@@ -7690,7 +7714,7 @@
                     /**
          * Determine if a mailable was not queued based on a truth-test callback.
          *
-         * @param string $mailable
+         * @param string|\Closure $mailable
          * @param callable|null $callback
          * @return void 
          * @static 
@@ -7714,7 +7738,7 @@
                     /**
          * Get all of the mailables matching a truth-test callback.
          *
-         * @param string $mailable
+         * @param string|\Closure $mailable
          * @param callable|null $callback
          * @return \Illuminate\Support\Collection 
          * @static 
@@ -7739,7 +7763,7 @@
                     /**
          * Get all of the queued mailables matching a truth-test callback.
          *
-         * @param string $mailable
+         * @param string|\Closure $mailable
          * @param callable|null $callback
          * @return \Illuminate\Support\Collection 
          * @static 
@@ -8200,7 +8224,6 @@
             /**
      * 
      *
-     * @method static void popUsing(string $workerName, callable $callback)
      * @see \Illuminate\Queue\QueueManager
      * @see \Illuminate\Queue\Queue
      */ 
@@ -9105,6 +9128,18 @@
         {
                         /** @var \Illuminate\Http\Request $instance */
                         return $instance->fullUrlWithQuery($query);
+        }
+                    /**
+         * Get the full URL for the request without the given query string parameters.
+         *
+         * @param array|string $query
+         * @return string 
+         * @static 
+         */ 
+        public static function fullUrlWithoutQuery($keys)
+        {
+                        /** @var \Illuminate\Http\Request $instance */
+                        return $instance->fullUrlWithoutQuery($keys);
         }
                     /**
          * Get the current path info for the request.
@@ -14950,14 +14985,14 @@
          *
          * @param string $name
          * @param string|null $content
+         * @param array $attributes
          * @return void 
-         * @throws \InvalidArgumentException
          * @static 
          */ 
-        public static function slot($name, $content = null)
+        public static function slot($name, $content = null, $attributes = [])
         {
                         /** @var \Illuminate\View\Factory $instance */
-                        $instance->slot($name, $content);
+                        $instance->slot($name, $content, $attributes);
         }
                     /**
          * Save the slot content for rendering.
@@ -19219,6 +19254,72 @@ namespace  {
             }
              
                 /**
+             * Add a basic where clause to a relationship query.
+             *
+             * @param string $relation
+             * @param \Closure|string|array|\Illuminate\Database\Query\Expression $column
+             * @param mixed $operator
+             * @param mixed $value
+             * @return \Illuminate\Database\Eloquent\Builder|static 
+             * @static 
+             */ 
+            public static function whereRelation($relation, $column, $operator = null, $value = null)
+            {
+                                /** @var \Illuminate\Database\Eloquent\Builder $instance */
+                                return $instance->whereRelation($relation, $column, $operator, $value);
+            }
+             
+                /**
+             * Add an "or where" clause to a relationship query.
+             *
+             * @param string $relation
+             * @param \Closure|string|array|\Illuminate\Database\Query\Expression $column
+             * @param mixed $operator
+             * @param mixed $value
+             * @return \Illuminate\Database\Eloquent\Builder|static 
+             * @static 
+             */ 
+            public static function orWhereRelation($relation, $column, $operator = null, $value = null)
+            {
+                                /** @var \Illuminate\Database\Eloquent\Builder $instance */
+                                return $instance->orWhereRelation($relation, $column, $operator, $value);
+            }
+             
+                /**
+             * Add a polymorphic relationship condition to the query with a where clause.
+             *
+             * @param \Illuminate\Database\Eloquent\Relations\MorphTo|string $relation
+             * @param string|array $types
+             * @param \Closure|string|array|\Illuminate\Database\Query\Expression $column
+             * @param mixed $operator
+             * @param mixed $value
+             * @return \Illuminate\Database\Eloquent\Builder|static 
+             * @static 
+             */ 
+            public static function whereMorphRelation($relation, $types, $column, $operator = null, $value = null)
+            {
+                                /** @var \Illuminate\Database\Eloquent\Builder $instance */
+                                return $instance->whereMorphRelation($relation, $types, $column, $operator, $value);
+            }
+             
+                /**
+             * Add a polymorphic relationship condition to the query with an "or where" clause.
+             *
+             * @param \Illuminate\Database\Eloquent\Relations\MorphTo|string $relation
+             * @param string|array $types
+             * @param \Closure|string|array|\Illuminate\Database\Query\Expression $column
+             * @param mixed $operator
+             * @param mixed $value
+             * @return \Illuminate\Database\Eloquent\Builder|static 
+             * @static 
+             */ 
+            public static function orWhereMorphRelation($relation, $types, $column, $operator = null, $value = null)
+            {
+                                /** @var \Illuminate\Database\Eloquent\Builder $instance */
+                                return $instance->orWhereMorphRelation($relation, $types, $column, $operator, $value);
+            }
+             
+                /**
              * Add subselect queries to include an aggregate value for a relationship.
              *
              * @param mixed $relations
@@ -19477,7 +19578,7 @@ namespace  {
              * Pass the query to a given callback.
              *
              * @param callable $callback
-             * @return \Illuminate\Database\Eloquent\Builder|static 
+             * @return $this|mixed 
              * @static 
              */ 
             public static function tap($callback)

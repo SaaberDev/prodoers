@@ -3,6 +3,20 @@
 
 @push('styles')
     {{-- Internal Styles --}}
+    <link rel="stylesheet" href="{{ mix('_assets/plugins/select2/css/select2.css') }}">
+    <style>
+        .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice {
+            float: left;
+            padding: 0 0.75rem 0 0;
+            margin-top: calc(0.375rem - 2px);
+            margin-right: 0.375rem;
+            color: #ffffff;
+            cursor: pointer;
+            border: 1px solid #ffffff;
+            border-radius: 0.2rem;
+            background-color: rgb(3 141 8 / 70%);
+        }
+    </style>
 @endpush
 
 @section('content')
@@ -71,6 +85,24 @@
                             </div>
                         </div>
                     </div>
+
+                    <div>
+                        <label for="assignDoers"></label>
+                        <select class="form-control select2bs4 {{ $errors->has('assignDoers') ? ' is-invalid' : '' }}"
+                                id="assignDoers"
+                                name="assignDoers"
+                                style="width: 100%;"
+                                data-placeholder="Choose a category"
+                                required
+                        >
+                            <option>fghfgh</option>
+                            <option>fghfghf</option>
+                            <option>fghfghfgh</option>
+                            {{--                                    @foreach($doers as $assignedDoers)--}}
+                            {{--                                        <option value="{{ $assignedDoers->id }}" {{ $assignedDoers->id == old('allCategories') ? 'selected' : '' }}>{{ $assignedDoers->title }}</option>--}}
+                            {{--                                    @endforeach--}}
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>
@@ -117,5 +149,10 @@
 @endsection
 
 @push('scripts')
-    {{-- Internal Scripts --}}
+    <script src="{{ mix('_assets/plugins/select2/js/select2.js') }}"></script>
+    <script>
+        $('.select2bs4').select2({
+            theme: 'bootstrap4',
+        })
+    </script>
 @endpush

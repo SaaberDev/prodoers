@@ -257,6 +257,8 @@ namespace App\Models{
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $assignUsers
  * @property-read int|null $assign_users_count
  * @property-read \App\Models\Invoice $invoices
+ * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection|\Spatie\MediaLibrary\MediaCollections\Models\Media[] $media
+ * @property-read int|null $media_count
  * @property-read \App\Models\Payment $payments
  * @property-read \App\Models\Service|null $services
  * @property-read \App\Models\User|null $users
@@ -276,7 +278,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereUserId($value)
  */
-	class IdeHelperOrder extends \Eloquent {}
+	class IdeHelperOrder extends \Eloquent implements \Spatie\MediaLibrary\HasMedia {}
 }
 
 namespace App\Models{
@@ -345,11 +347,13 @@ namespace App\Models{
  * @property int $service_category_id
  * @property string $title
  * @property string $meta_desc
+ * @property string $short_desc
+ * @property int $delivery_time
+ * @property int $revision_limit
  * @property int|null $popular_status
  * @property int|null $published_status
  * @property string $slug
  * @property string $price
- * @property string $service_desc
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Coupon[] $coupons
@@ -380,13 +384,15 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Service query()
  * @method static \Illuminate\Database\Eloquent\Builder|Service whereCategories($arg)
  * @method static \Illuminate\Database\Eloquent\Builder|Service whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereDeliveryTime($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Service whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Service whereMetaDesc($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Service wherePopularStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Service wherePrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Service wherePublishedStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereRevisionLimit($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Service whereServiceCategoryId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Service whereServiceDesc($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Service whereShortDesc($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Service whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Service whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Service whereUpdatedAt($value)
@@ -403,11 +409,12 @@ namespace App\Models{
  * @property int $id
  * @property string $title
  * @property string $meta_desc
+ * @property string $order_instruction_desc
  * @property string $slug
- * @property string $desc
- * @property int|null $navbar_status
- * @property int|null $published_status
- * @property int|null $popular_status
+ * @property string $short_desc
+ * @property int $navbar_status
+ * @property int $published_status
+ * @property int $popular_status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Coupon[] $coupons
@@ -416,6 +423,8 @@ namespace App\Models{
  * @property-read int|null $media_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ServiceCategoryFaq[] $serviceCategoryFaqs
  * @property-read int|null $service_category_faqs_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ServiceCategoryInstruction[] $serviceCategoryInstructions
+ * @property-read int|null $service_category_instructions_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Service[] $services
  * @property-read int|null $services_count
  * @method static \Database\Factories\ServiceCategoryFactory factory(...$parameters)
@@ -431,12 +440,13 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory query()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory searchBy($column, $search)
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereDesc($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereMetaDesc($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereNavbarStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereOrderInstructionDesc($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory wherePopularStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory wherePublishedStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereShortDesc($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory whereUpdatedAt($value)
@@ -476,10 +486,21 @@ namespace App\Models{
 /**
  * App\Models\ServiceCategoryInstruction
  *
+ * @mixin IdeHelperServiceCategoryInstruction
+ * @property int $id
+ * @property int $service_category_id
+ * @property string $order_instructions
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Database\Factories\ServiceCategoryInstructionFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategoryInstruction newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategoryInstruction newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategoryInstruction query()
- * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategoryInstruction whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategoryInstruction whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategoryInstruction whereOrderInstructions($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategoryInstruction whereServiceCategoryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategoryInstruction whereUpdatedAt($value)
  */
 	class IdeHelperServiceCategoryInstruction extends \Eloquent {}
 }

@@ -57,15 +57,15 @@ class Order extends Model implements HasMedia
     }
 
     /**
-     * @param $db | true or false
+     * @param $sanitize | true or false
      * @return string
      */
-    public function getStatus($db): string
+    public function getStatus($sanitize): string
     {
         $query = $this->order_status;
-        if ($db === false) {
-            $sanitize = Str::replace('_', ' ', $query);
-            return ucwords($sanitize);
+        if ($sanitize === true) {
+            $string = Str::replace('_', ' ', $query);
+            return ucwords($string);
         }
 
         return $query;

@@ -55,6 +55,8 @@
          */
         public function show($id)
         {
+            $doers = [];
+
             $order = Order::findOrFail($id);
             $service_media = $order->services->getFirstMedia('service_thumb');
 
@@ -82,13 +84,13 @@
                     'id' => $order->services->id,
                     'service_name' => $order->services->title,
                     'delivery_time' => $order->services->delivery_time,
-                    'service_thumb' => $service_media->getFullUrl(),
+                    'service_thumb' => optional($service_media)->getFullUrl(),
                 ],
                 'order_info' => [
                     'id' => $order->id,
                     'order_number' => $order->order_number,
                     'requirements' => $order->requirements,
-                    'order_status' => $order->getStatus(false),
+                    'order_status' => $order->getStatus(true),
                     'applied_coupon' => $order->applied_coupon,
                     'attachments' => $order_attachments,
                 ],
@@ -110,7 +112,7 @@
 
 //            dd($order_details);
 
-            return \view('admin_panel.pages.orders.order.show', compact('order_details'));
+            return \view('admin_panel.pages.orders.order.show', compact('order_details', 'doers'));
         }
 
         public function downloadZip(Request $request, $id)

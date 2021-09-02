@@ -97,7 +97,7 @@
                     <div class="col-md-6">
                         {{-- Categories --}}
                         <div class="form-group">
-                            <label>
+                            <label for="allCategories">
                                 <h5>Categories<span class="ctm-required">*</span></h5>
                             </label>
                             <select class="form-control select2bs4 {{ $errors->has('allCategories') ? ' is-invalid' : '' }}"
@@ -462,6 +462,7 @@
         'store' => route('super_admin.service.self.storeMedia'),
         'delete' => route('super_admin.service.self.deleteMedia'),
         'maxFilesize' => 2,
+        'maxFiles' => 5,
         'acceptedFiles' => 'image/jpeg, image/png',
     ])
 @endpush
