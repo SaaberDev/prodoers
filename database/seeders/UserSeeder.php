@@ -69,7 +69,7 @@ class UserSeeder extends Seeder
 
         // Fake Designwala
         $users_factory = User::factory()->times(20)->make();
-        $user_role = Role::findByName('designwala');
+        $user_role = Role::findByName('doers');
         foreach ($users_factory as $user_factory) {
             User::create([
                 'name' => $user_factory->name,

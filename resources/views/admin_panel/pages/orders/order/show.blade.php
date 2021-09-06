@@ -86,22 +86,33 @@
                         </div>
                     </div>
 
-                    <div>
-                        <label for="assignDoers"></label>
-                        <select class="form-control select2bs4 {{ $errors->has('assignDoers') ? ' is-invalid' : '' }}"
-                                id="assignDoers"
-                                name="assignDoers"
-                                style="width: 100%;"
-                                data-placeholder="Choose a category"
-                                required
-                        >
-                            <option>fghfgh</option>
-                            <option>fghfghf</option>
-                            <option>fghfghfgh</option>
-                            {{--                                    @foreach($doers as $assignedDoers)--}}
-                            {{--                                        <option value="{{ $assignedDoers->id }}" {{ $assignedDoers->id == old('allCategories') ? 'selected' : '' }}>{{ $assignedDoers->title }}</option>--}}
-                            {{--                                    @endforeach--}}
-                        </select>
+                    <div class="row">
+                        <div class="col-md-9">
+                            <label for="doers"></label>
+                            <select class="form-control select2bs4 {{ $errors->has('doers') ? ' is-invalid' : '' }}"
+                                    id="doers"
+                                    name="doers"
+                                    style="width: 100%;"
+                                    data-placeholder="Choose a category"
+                                    required
+                            >
+                                <option></option>
+                                @foreach($doers as $id => $doer)
+                                    <option value="{{ $id }}"
+                                        {{ $id == old('doers') ? 'selected' : '' }}
+                                    >
+                                        {{ $doer }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="col-md-3 py-4 ">
+                            <div class="text-right">
+                                <button type="submit" class="btn shadow bgOne rounded text-white px-4">Assign</button>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

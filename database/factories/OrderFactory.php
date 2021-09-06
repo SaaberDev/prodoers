@@ -26,7 +26,6 @@ class OrderFactory extends Factory
             'service_id' => rand(1, 5),
             'order_number' => $this->faker->uuid,
             'requirements' => 'Recusandae Ea praes. Recusandae Ea praes. Recusandae Ea praes. ',
-            'delivery_time' => '4',
             'applied_coupon' => '2222',
             'order_status' => $this->faker->randomElement(['pending', 'ongoing', 'delivered', 'in_revision', 'cancelled', 'completed']),
         ];

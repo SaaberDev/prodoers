@@ -15,13 +15,19 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->constrained();
-            $table->foreignId('service_id')->nullable()->constrained();
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('service_id')->constrained();
 
             $table->string('order_number')->unique()->nullable();
-            $table->string('requirements')->nullable();
-            $table->string('delivery_time')->nullable();
+            $table->longText('requirements');
             $table->string('applied_coupon')->nullable();
+            $table->enum('order_status', ['pending', 'ongoing', 'delivered', 'in_revision', 'cancelled', 'completed']);
+            $table->timestamps();
+        });
+
+        Schema::create('order_logs', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('order_id')->constrained()->cascadeOnDelete();
             $table->enum('order_status', ['pending', 'ongoing', 'delivered', 'in_revision', 'cancelled', 'completed']);
             $table->timestamps();
         });
@@ -35,5 +41,6 @@ class CreateOrdersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('orders');
+        Schema::dropIfExists('order_logs');
     }
 }

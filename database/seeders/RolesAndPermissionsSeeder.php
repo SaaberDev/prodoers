@@ -52,7 +52,7 @@
                 'super_admin',
                 'admin',
                 'project_manager',
-                'designwala',
+                'doers',
                 'user'
             ];
 

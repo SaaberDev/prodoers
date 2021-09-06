@@ -9,6 +9,7 @@
     use Illuminate\Contracts\Foundation\Application;
     use Illuminate\Contracts\View\Factory;
     use Illuminate\Contracts\View\View;
+    use Illuminate\Database\Eloquent\Builder;
     use Illuminate\Http\Request;
     use Illuminate\Http\Response;
     use Spatie\MediaLibrary\Support\MediaStream;
@@ -55,27 +56,22 @@
          */
         public function show($id)
         {
-            $doers = [];
-
             $order = Order::findOrFail($id);
             $service_media = $order->services->getFirstMedia('service_thumb');
 
             $order_attachments = [];
             foreach ($order->getMedia('requirements') as $media) {
-//                dd($media);
                 $order_attachments[] = [
                     'name' => $media->name,
                     'url' => $media->getFullUrl()
                 ];
-//                dump($order_attachments);
             }
-//            dd($order_attachments);
 
-            $assignedUserData = [];
-            foreach ($order->assignUsers as $assignUser) {
-                $assignedUserData[] = [
-                    'id' => $assignUser->id,
-                    'username' => $assignUser->username,
+            $assignedOrderData = [];
+            foreach ($order->assignedOrders as $assignedOrder) {
+                $assignedOrderData[] = [
+                    'id' => $assignedOrder->id,
+                    'username' => $assignedOrder->username,
                 ];
             }
 
@@ -105,12 +101,14 @@
                     'paid_amount' => $order->payments->paid_amount,
                     'discount' => $order->payments->discount,
                 ],
-                'assigned_users' => $assignedUserData,
+                'assigned_users' => $assignedOrderData,
             ];
 
             $order_details = collect(json_decode(json_encode($data)));
 
-//            dd($order_details);
+            $doers = User::role('doers')->get()->pluck('name', 'id');
+
+//            dd($doers);
 
             return \view('admin_panel.pages.orders.order.show', compact('order_details', 'doers'));
         }
@@ -120,8 +118,6 @@
             $order = Order::findOrFail($id);
             $filename = 'client-requirements-'.$request->get('order-number').'.zip';
             $attachments = $order->getMedia('requirements');
-
-//            dd($attachments);
 
             return MediaStream::create($filename)->addMedia($attachments);
         }

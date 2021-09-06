@@ -27,9 +27,9 @@ class Order extends Model implements HasMedia
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function assignUsers()
+    public function assignedOrders()
     {
-        return $this->belongsToMany(User::class, 'order_assigned_to_designwalas')->withPivot('status');
+        return $this->hasMany(AssignedOrder::class);
     }
 
     public function services()
