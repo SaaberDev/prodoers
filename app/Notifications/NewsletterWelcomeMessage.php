@@ -12,7 +12,7 @@ class NewsletterWelcomeMessage extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    private $subscriber;
+    public $subscriber;
 
     /**
      * Create a new notification instance.
@@ -33,7 +33,7 @@ class NewsletterWelcomeMessage extends Notification implements ShouldQueue
     public function via($notifiable)
     {
 //        return explode(', ', $notifiable->notification_preference);
-        return ['database'];
+        return ['mail'];
     }
 
     /**
@@ -48,6 +48,7 @@ class NewsletterWelcomeMessage extends Notification implements ShouldQueue
         return (new MailMessage)
             ->subject('Welcome to Designwala Newsletter.')
             ->view('emails.newsletter_welcome_mail', [
+                'subscriber' => $this->subscriber,
                 'social_links' => $social_links,
             ]);
     }

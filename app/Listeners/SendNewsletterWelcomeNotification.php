@@ -10,18 +10,23 @@
     use Illuminate\Support\Facades\Auth;
     use Notification;
 
-    class SendNewsletterWelcomeNotification
+    class SendNewsletterWelcomeNotification implements ShouldQueue
     {
+        use InteractsWithQueue;
+
+        public $afterCommit = true;
+
         /**
          * Handle the event.
          *
-         * @param $event
          * @return void
          */
-        public function handle($event)
+        public function handle(Newsletter $newsletter)
         {
-            Notification::send($event,
-                new NewsletterWelcomeMessage($event)
+//            $newsletter->subscriber->notify(new NewsletterWelcomeMessage($newsletter));
+//            dd($newsletter->subscriber);
+            Notification::send($newsletter->subscriber,
+                new NewsletterWelcomeMessage($newsletter)
             );
         }
     }

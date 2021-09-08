@@ -3,6 +3,7 @@
 namespace App\Events;
 
 use App\Models\SocialLinks;
+use App\Models\Subscriber;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -20,9 +21,9 @@ class Newsletter
     /**
      * Create a new event instance.
      *
-     * @param $subscriber
+     * @param Subscriber $subscriber
      */
-    public function __construct($subscriber)
+    public function __construct(Subscriber $subscriber)
     {
         $this->subscriber = $subscriber;
     }
