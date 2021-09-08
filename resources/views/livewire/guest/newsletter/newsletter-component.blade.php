@@ -1,19 +1,16 @@
 <form class="pt-3">
     <div class="input-group mb-3">
-        <input wire:model.defer="newsletter"
+        <input wire:model.defer="subscriber_mail"
                type="text"
-               name="newsletter"
-               class="form-control rounded-0 {{ $errors->has('newsletter') ? ' is-invalid' : '' }}"
+               class="form-control rounded-0 {{ $errors->has('subscriber_mail') ? ' is-invalid' : '' }}"
                placeholder="Enter your email"
-               aria-label="Recipient's Email"
-               aria-describedby="button-addon2"
         >
         <div class="input-group-append">
             <button wire:click.prevent="store" class="btn btn-outline-secondary px-3 text-white rounded-0" type="button" id="">Subscribe</button>
         </div>
-        @if($errors->has('newsletter'))
+        @if($errors->has('subscriber_mail'))
             <span class="invalid-feedback">
-                <strong>{{ $errors->first('newsletter') }}</strong>
+                <strong>{{ $errors->first('subscriber_mail') }}</strong>
             </span>
         @endif
     </div>

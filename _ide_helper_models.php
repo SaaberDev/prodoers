@@ -14,7 +14,7 @@ namespace App\Models{
 /**
  * App\Models\AssignOrder
  *
- * @mixin IdeHelperAssignedOrder
+ * @mixin IdeHelperAssignOrder
  * @property int $id
  * @property int $order_id
  * @property int $user_id

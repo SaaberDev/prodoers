@@ -19,18 +19,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $siteCms = SiteCms::homeInfos();
-
-        dd($siteCms);
-
-        $home = [
-            'headline' => $siteCms['banner_sections']->pluck('key'),
-            'tagline' => '',
-            'banner' => '',
-        ];
-
-
-        dd($home);
+//        $siteCms = SiteCms::homeInfos();
+//
+//        dd($siteCms);
+//
+//        $home = [
+//            'headline' => $siteCms['banner_sections']->pluck('key'),
+//            'tagline' => '',
+//            'banner' => '',
+//        ];
+//
+//
+//        dd($home);
 
 
         $popular_categories = ServiceCategory::getAllPopular()

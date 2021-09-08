@@ -5,18 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f616bec-9873-4c54-8a6f-71f691274991" name="Changes" comment="[assign-order] - preparing assign migrations">
+      <change afterPath="$PROJECT_DIR$/app/Events/Order/AssignOrderEvent.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Listeners/Order/AssignOrderListener.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Notifications/Order/SendAssignOrderNotification.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2021_09_08_133538_create_notifications_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Service/ServiceCategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Service/ServiceCategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_ide_helper_models.php" beforeDir="false" afterPath="$PROJECT_DIR$/_ide_helper_models.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Events/Newsletter.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Events/Newsletter.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Guest/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Guest/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Guest/Service/GuestServiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Guest/Service/GuestServiceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Admin/Services/Category/IndexComponent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Admin/Services/Category/IndexComponent.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/SendNewsletterMail.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jobs/SendWelcomeUserMail.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/ServiceCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ServiceCategory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/SiteCms.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SiteCms.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/MediaLibrary/MediaHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/MediaLibrary/MediaHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/guest/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/guest/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/services/category/index-component.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/services/category/index-component.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Guest/Newsletter/NewsletterComponent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Guest/Newsletter/NewsletterComponent.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Listeners/SendNewsletterWelcomeNotification.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Listeners/SendNewsletterWelcomeNotification.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Subscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Subscriber.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Notifications/NewsletterWelcomeMessage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Notifications/NewsletterWelcomeMessage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/alerts/admin_panel/livewire/toast_alert.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/alerts/admin_panel/livewire/toast_alert.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/guest/newsletter/newsletter-component.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/guest/newsletter/newsletter-component.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -267,14 +271,7 @@
       <workItem from="1630464524028" duration="3483000" />
       <workItem from="1630531406471" duration="2630000" />
       <workItem from="1630562804427" duration="1061000" />
-      <workItem from="1630933831557" duration="34632000" />
-    </task>
-    <task id="LOCAL-00005" summary="[dropzone] - added dropzone in edit page">
-      <created>1627935649939</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1627935649939</updated>
+      <workItem from="1630933831557" duration="49155000" />
     </task>
     <task id="LOCAL-00006" summary="[dropzone] - added dropzone in edit page">
       <created>1627935775377</created>
@@ -612,7 +609,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631079385070</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="[assign-order] - preparing assign migrations">
+      <created>1631104938324</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1631104938324</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

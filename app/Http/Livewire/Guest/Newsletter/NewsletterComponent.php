@@ -2,60 +2,63 @@
 
 namespace App\Http\Livewire\Guest\Newsletter;
 
-use App\Jobs\SendNewsletterMail;
+use App\Events\Newsletter;
 use App\Models\Subscriber;
 use Carbon\Carbon;
 use Livewire\Component;
 
 class NewsletterComponent extends Component
 {
-    public $newsletter;
+    public $subscriber_mail;
     public $subscriber_status = 1;
 
     public function mount()
     {
-        $this->newsletter = '';
+        $this->subscriber_mail = '';
     }
 
     protected $rules = [
-        'newsletter' => 'required|email:rfc,dns|unique:subscribers,email'
+        'subscriber_mail' => 'required|email:rfc,dns|unique:subscribers,email'
     ];
 
     protected $messages = [
-        'newsletter.required' => 'Email field is required',
-        'newsletter.email' => 'Please provide a valid email address',
-        'newsletter.unique' => 'This email address has already been taken',
+        'subscriber_mail.required' => 'Email field is required',
+        'subscriber_mail.email' => 'Please provide a valid email address',
+        'subscriber_mail.unique' => 'This email address has already been taken',
     ];
 
+    /**
+     * @throws \Throwable
+     */
     public function store()
     {
         $this->validate();
-//        \DB::beginTransaction();
-//        try {
-//            Subscriber::create([
-//                'email' => $this->newsletter,
-//                'subscriber_status' => $this->subscriber_status
-//            ]);
-//            \DB::commit();
-//            SendNewsletterMail::dispatch($this->newsletter)->delay(Carbon::now()->addSeconds(5));
-//            $this->dispatchBrowserEvent('success_toast', [
-//                'title' => 'Thank you for subscribing to our newsletter !',
-//            ]);
-//            $this->newsletter = '';
-//        } catch (\Exception $exception){
-//
-//        }
-        \DB::transaction(function (){
-            Subscriber::create([
-                'email' => $this->newsletter,
+        \DB::beginTransaction();
+        try {
+            $subscriber = Subscriber::create([
+                'email' => $this->subscriber_mail,
                 'subscriber_status' => $this->subscriber_status
             ]);
-        });
-        SendNewsletterMail::dispatch($this->newsletter)->delay(Carbon::now()->addSeconds(5));
-        $this->dispatchBrowserEvent('success_toast', [
-            'title' => 'Thank you for subscribing to our newsletter !',
-        ]);
-        $this->newsletter = '';
+
+            \DB::afterCommit(function () use ($subscriber) {
+                // Fire Event
+                event(new Newsletter($subscriber));
+                $this->subscriber_mail = '';
+
+                // Toast Alert
+                $this->dispatchBrowserEvent('success_toast', [
+                    'title' => 'Thank you for subscribing to our newsletter !',
+                ]);
+            });
+
+            \DB::commit();
+        } catch (\Exception $exception){
+            \DB::rollBack();
+            report($exception->getMessage());
+            $this->dispatchBrowserEvent('warning_toast', [
+                'title' => 'Oops, Looks like something went wrong !',
+            ]);
+        }
     }
 
     public function render()

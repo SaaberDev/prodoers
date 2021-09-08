@@ -1,36 +1,27 @@
 <?php
 
-namespace App\Listeners;
+    namespace App\Listeners;
 
-use App\Models\SocialLinks;
-use App\Notifications\NewsletterWelcomeMessage;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
+    use App\Events\Newsletter;
+    use App\Notifications\NewsletterWelcomeMessage;
+    use Illuminate\Auth\Events\Registered;
+    use Illuminate\Contracts\Queue\ShouldQueue;
+    use Illuminate\Queue\InteractsWithQueue;
+    use Illuminate\Support\Facades\Auth;
+    use Notification;
 
-class SendNewsletterWelcomeNotification implements ShouldQueue
-{
-    public $social_links;
-    /**
-     * Create the event listener.
-     *
-     * @return void
-     */
-    public function __construct()
+    class SendNewsletterWelcomeNotification
     {
-        $this->social_links = SocialLinks::orderByDesc('id')->get();
+        /**
+         * Handle the event.
+         *
+         * @param $event
+         * @return void
+         */
+        public function handle($event)
+        {
+            Notification::send($event,
+                new NewsletterWelcomeMessage($event)
+            );
+        }
     }
-
-    /**
-     * Handle the event.
-     *
-     * @param Registered $event
-     * @return void
-     */
-    public function handle(Registered $event)
-    {
-        $delay = now()->addSeconds(5);
-        $event->user->notify((new NewsletterWelcomeMessage($this->social_links, $event->user))
-            ->delay($delay));
-    }
-}

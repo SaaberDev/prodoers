@@ -164,15 +164,6 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
-         * 3rd Party Package Service Providers...
-         */
-        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-        Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
-        Intervention\Image\ImageServiceProvider::class,
-        Spatie\Permission\PermissionServiceProvider::class,
-        Torann\GeoIP\GeoIPServiceProvider::class,
-
-        /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
@@ -181,6 +172,15 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\TelescopeServiceProvider::class,
+
+        /*
+         * 3rd Party Package Service Providers...
+         */
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
+        Torann\GeoIP\GeoIPServiceProvider::class,
 
         /**
          * Custom Service Providers

@@ -1,27 +1,24 @@
 <?php
 
-namespace App\Notifications;
+namespace App\Notifications\Order;
 
-use App\Models\SocialLinks;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class NewsletterWelcomeMessage extends Notification implements ShouldQueue
+class SendAssignOrderNotification extends Notification
 {
     use Queueable;
-
-    private $subscriber;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($subscriber)
+    public function __construct()
     {
-        $this->subscriber = $subscriber;
+        //
     }
 
     /**
@@ -32,24 +29,21 @@ class NewsletterWelcomeMessage extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-//        return explode(', ', $notifiable->notification_preference);
-        return ['database'];
+        return ['mail'];
     }
 
     /**
      * Get the mail representation of the notification.
      *
      * @param  mixed  $notifiable
-     * @return MailMessage
+     * @return \Illuminate\Notifications\Messages\MailMessage
      */
     public function toMail($notifiable)
     {
-        $social_links = SocialLinks::orderByDesc('id')->get();
         return (new MailMessage)
-            ->subject('Welcome to Designwala Newsletter.')
-            ->view('emails.newsletter_welcome_mail', [
-                'social_links' => $social_links,
-            ]);
+                    ->line('The introduction to the notification.')
+                    ->action('Notification Action', url('/'))
+                    ->line('Thank you for using our application!');
     }
 
     /**
