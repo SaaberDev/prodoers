@@ -12,6 +12,34 @@
 
 namespace App\Models{
 /**
+ * App\Models\AssignOrder
+ *
+ * @mixin IdeHelperAssignedOrder
+ * @property int $id
+ * @property int $order_id
+ * @property int $user_id
+ * @property string $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $assignOrderLogs
+ * @property-read int|null $assign_order_logs_count
+ * @property-read \App\Models\Order $orders
+ * @property-read \App\Models\User $users
+ * @method static \Illuminate\Database\Eloquent\Builder|AssignOrder newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|AssignOrder newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|AssignOrder query()
+ * @method static \Illuminate\Database\Eloquent\Builder|AssignOrder whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AssignOrder whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AssignOrder whereOrderId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AssignOrder whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AssignOrder whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AssignOrder whereUserId($value)
+ */
+	class IdeHelperAssignOrder extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\BannerSection
  *
  * @mixin IdeHelperBannerSection
@@ -245,23 +273,21 @@ namespace App\Models{
  *
  * @mixin IdeHelperOrder
  * @property int $id
- * @property int|null $user_id
- * @property int|null $service_id
+ * @property int $user_id
+ * @property int $service_id
  * @property string|null $order_number
- * @property string|null $requirements
- * @property string|null $delivery_time
+ * @property string $requirements
  * @property string|null $applied_coupon
  * @property string $order_status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $assignUsers
- * @property-read int|null $assign_users_count
+ * @property-read \App\Models\User $assignOrders
  * @property-read \App\Models\Invoice $invoices
  * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection|\Spatie\MediaLibrary\MediaCollections\Models\Media[] $media
  * @property-read int|null $media_count
  * @property-read \App\Models\Payment $payments
- * @property-read \App\Models\Service|null $services
- * @property-read \App\Models\User|null $users
+ * @property-read \App\Models\Service $services
+ * @property-read \App\Models\User $users
  * @method static \Database\Factories\OrderFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Order filterBy($column, $arg)
  * @method static \Illuminate\Database\Eloquent\Builder|Order newModelQuery()
@@ -269,7 +295,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Order query()
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereAppliedCoupon($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order whereDeliveryTime($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereOrderNumber($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereOrderStatus($value)

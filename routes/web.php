@@ -6,6 +6,7 @@
     use App\Http\Controllers\Admin\Doer\DoerController;
     use App\Http\Controllers\Admin\Offer\AffiliateController;
     use App\Http\Controllers\Admin\Offer\CouponController;
+    use App\Http\Controllers\Admin\Order\AssignOrderController;
     use App\Http\Controllers\Admin\Order\OrderController;
     use App\Http\Controllers\Admin\Order\PaymentController;
     use App\Http\Controllers\Admin\Promotion\AdvertisementBannerController;
@@ -169,6 +170,12 @@
                 Route::get('/show/{id}', [OrderController::class, 'show'])->name('show');
                 Route::get('/download-attachments/{id}', [OrderController::class, 'downloadZip'])->name('downloadZip');
             });
+
+            // Orders
+            Route::name('assignOrder.')->group(function () {
+                Route::patch('/assign-order/{id}', [AssignOrderController::class, 'update'])->name('update');
+            });
+
             // Payments
             Route::prefix('/payments')->name('payment.')->group(function () {
                 Route::get('/', [PaymentController::class, 'index'])->name('index');

@@ -251,7 +251,7 @@
                 report($exception->getMessage());
                 return \response()->json([
                     'alert_type' => 'warning',
-                    'message' => 'Opps, Something went wrong!',
+                    'message' => 'Oops, Something went wrong!',
                 ]);
             }
         }
@@ -277,7 +277,7 @@
                 report($exception->getMessage());
                 return \response()->json([
                     'alert_type' => 'warning',
-                    'message' => 'Opps, Something went wrong!',
+                    'message' => 'Oops, Something went wrong!',
                 ]);
             }
         }
@@ -303,7 +303,7 @@
                 report($exception->getMessage());
                 return \response()->json([
                     'alert_type' => 'warning',
-                    'message' => 'Opps, Something went wrong!',
+                    'message' => 'Oops, Something went wrong!',
                 ]);
             }
         }

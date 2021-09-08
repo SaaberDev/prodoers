@@ -6,6 +6,10 @@ use App\Events\Newsletter;
 use App\Listeners\SendVerificationNotification;
 use App\Listeners\SendNewsletterWelcomeNotification;
 use App\Listeners\SendRegisterWelcomeNotification;
+use App\Models\AssignOrder;
+use App\Models\Order;
+use App\Observers\Admin\Order\AssignOrderObserver;
+use App\Observers\Admin\Order\OrderObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -39,6 +43,7 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Order::observe(OrderObserver::class);
+        AssignOrder::observe(AssignOrderObserver::class);
     }
 }

@@ -67,15 +67,15 @@
                                 <p class="m-0">{{ $order_details['user_info']->email }}</p>
                                 <p class="pt-4 m-0">Transaction ID : #{{ $order_details['payment_info']->transaction_id }}</p>
                                 <p class="m-0">Payment method : {{ $order_details['payment_info']->payment_method }}</p>
-                                <p class="m-0">Assigned To :
-                                    @forelse($order_details['assigned_users'] as $assignUsers)
-                                        <span class="tabletabLightSKY text-white font-weight-bold">{{ $assignUsers->username }}</span>
-                                        @if(!$loop->last)
-                                            ,
-                                        @endif
-                                    @empty
-                                        Not Assigned Yet
-                                    @endforelse
+                                <p class="m-0">Assigned To : <span class="tabletabLightSKY text-white font-weight-bold">{{ $order_details['assigned_users']->username }}</span>
+{{--                                    @forelse($order_details['assigned_users'] as $assignUsers)--}}
+{{--                                        <span class="tabletabLightSKY text-white font-weight-bold">{{ $assignUsers->username }}</span>--}}
+{{--                                        @if(!$loop->last)--}}
+{{--                                            ,--}}
+{{--                                        @endif--}}
+{{--                                    @empty--}}
+{{--                                        Not Assigned Yet--}}
+{{--                                    @endforelse--}}
                                 </p>
                             </div>
                         </div>
@@ -86,34 +86,42 @@
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-9">
-                            <label for="doers"></label>
-                            <select class="form-control select2bs4 {{ $errors->has('doers') ? ' is-invalid' : '' }}"
-                                    id="doers"
-                                    name="doers"
-                                    style="width: 100%;"
-                                    data-placeholder="Choose a category"
-                                    required
-                            >
-                                <option></option>
-                                @foreach($doers as $id => $doer)
-                                    <option value="{{ $id }}"
-                                        {{ $id == old('doers') ? 'selected' : '' }}
-                                    >
-                                        {{ $doer }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
+                    <form action="{{ route('super_admin.order.assignOrder.update', $order_details['service_info']->id) }}" method="POST">
+                        @csrf @method('PATCH')
+                        <div class="row">
+                            <div class="col-md-9">
+                                <label for="assignOrder"></label>
+                                <select class="form-control select2bs4 {{ $errors->has('assignOrder') ? ' is-invalid' : '' }}"
+                                        id="assignOrder"
+                                        name="assignOrder"
+                                        style="width: 100%;"
+                                        data-placeholder="Assign a Doer"
+                                        required
+                                >
+                                    <option></option>
+                                    @foreach($doers as $id => $doer)
+                                        <option value="{{ $id }}"
+                                            {{ $id == old('assignOrder') ? 'selected' : '' }}
+                                        >
+                                            {{ $doer }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @if($errors->has('assignOrder'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('assignOrder') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
 
-                        <div class="col-md-3 py-4 ">
-                            <div class="text-right">
-                                <button type="submit" class="btn shadow bgOne rounded text-white px-4">Assign</button>
+                            <div class="col-md-3 py-4 ">
+                                <div class="text-right">
+                                    <button type="submit" class="btn shadow bgOne rounded text-white px-4">Assign</button>
+                                </div>
                             </div>
                         </div>
+                    </form>
 
-                    </div>
                 </div>
             </div>
         </div>

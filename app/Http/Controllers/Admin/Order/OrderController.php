@@ -67,13 +67,10 @@
                 ];
             }
 
-            $assignedOrderData = [];
-            foreach ($order->assignedOrders as $assignedOrder) {
-                $assignedOrderData[] = [
-                    'id' => $assignedOrder->id,
-                    'username' => $assignedOrder->username,
-                ];
-            }
+            $assignedOrderData = [
+                'id' => $order->assignOrders->id,
+                'username' => $order->assignOrders->username,
+            ];
 
             $data = [
                 'service_info' => [
@@ -108,7 +105,7 @@
 
             $doers = User::role('doers')->get()->pluck('name', 'id');
 
-//            dd($doers);
+//            dd($order_details);
 
             return \view('admin_panel.pages.orders.order.show', compact('order_details', 'doers'));
         }

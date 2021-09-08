@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAssignedOrdersTable extends Migration
+class CreateAssignOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateAssignedOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::create('assigned_orders', function (Blueprint $table) {
+        Schema::create('assign_orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('order_id')->constrained();
             $table->foreignId('user_id')->constrained();
@@ -21,11 +21,11 @@ class CreateAssignedOrdersTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('assigned_order_logs', function (Blueprint $table) {
+        Schema::create('assign_order_logs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('assigned_order_id')->constrained();
+            $table->foreignId('assign_order_id')->constrained();
             $table->foreignId('user_id')->constrained();
-            $table->enum('status', ['pending', 'assigned', 'cancelled', 'done']);
+            $table->string('status');
             $table->timestamps();
         });
     }
@@ -37,7 +37,7 @@ class CreateAssignedOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('assigned_orders');
-        Schema::dropIfExists('assigned_order_logs');
+        Schema::dropIfExists('assign_orders');
+        Schema::dropIfExists('assign_order_logs');
     }
 }
