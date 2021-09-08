@@ -14,8 +14,6 @@ class IndexComponent extends Component
 
     public $status = 'published_status';
 
-    public $banner;
-    public $thumbnail;
     public $search = '';
     public $recordPerPage = 15;
     public $filterByStatus = null;
@@ -46,10 +44,11 @@ class IndexComponent extends Component
     public function render()
     {
         $search = $this->search;
-        $service_categories = ServiceCategory::filterBy('published_status', $this->filterByStatus)
+        $service_categories = ServiceCategory::orderByDesc('id')
+            ->filterBy('published_status', $this->filterByStatus)
             ->search($search)
-            ->orderByDesc('id')
-            ->paginate($this->recordPerPage);
+            ->paginate($this->recordPerPage)
+        ;
 
         return view('livewire.admin.services.category.index-component', compact('service_categories'));
     }

@@ -22,9 +22,14 @@ class GuestServiceController extends Controller
     public function index($service_slug)
     {
         $services = Service::getSlug($service_slug)->first();
-        $related_services = Service::hideCurrent($services)->getAllPublished()->whereHas('tags', function(Builder $query) use ($services) {
-            $query->select('tags.id')->whereIn('tags.id', $services->tags->pluck('id'));
-        })->select(['title', 'slug', 'price', 'thumbnail'])->get();
+        $related_services = Service::hideCurrent($services)
+            ->getAllPublished()
+            ->whereHas('tags', function(Builder $query) use ($services) {
+            $query->select('tags.id')
+                ->whereIn('tags.id', $services->tags->pluck('id'));
+        })
+            ->select(['title', 'slug', 'price', 'thumbnail'])
+            ->get();
 
         $service_image = \Storage::disk('local')->url(config('designwala_paths.images.services.service_image'));
         $service_thumbnail = \Storage::disk('local')->url(config('designwala_paths.images.services.thumbnail'));

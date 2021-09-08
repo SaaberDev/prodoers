@@ -130,11 +130,11 @@
                     <div class="col-lg-4 col-md-6 text-center py-5 popularCetegoriesSmallpadding">
                         <div class="sectionServicePopularCategoriesSingleCategories m-auto">
                             <div class="sectionServicePopularCategoriesSingleImage">
-                                <img src="{{ asset($popular_category->category_thumbnail ? config('designwala_paths.show.service_categories.thumbnail') . $popular_category->category_thumbnail : config('designwala_paths.default.no_preview')) }}" alt="categories image one" class="img-fluid" loading="lazy">
+{{--                                <img src="{{ asset($popular_category->category_thumbnail ? config('designwala_paths.show.service_categories.thumbnail') . $popular_category->category_thumbnail : config('designwala_paths.default.no_preview')) }}" alt="categories image one" class="img-fluid" loading="lazy">--}}
                             </div>
                             <div class="sectionServicePopularCategoriesSingleContent">
                                 <h3 class="pt-3"><a href="{{ route('guest.service_category.index', $popular_category->slug) }}" class="text-dark">{{ $popular_category->title }}</a></h3>
-                                <p>{{ Str::limit($popular_category->desc, $limit = 20, $end = ' ...') }}</p>
+                                <p>{{ Str::limit($popular_category->short_desc, $limit = 20, $end = ' ...') }}</p>
                                 <h4 class="">Starts at ${{ $popular_category->services->min('price') }}</h4>
                             </div>
                         </div>

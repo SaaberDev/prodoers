@@ -78,9 +78,9 @@
                 ]);
 
                 // Banner Image
-                $mediaHandler->uploadSingleMedia($service_categories, 'single_media_1', 'banner');
+                $mediaHandler->uploadSingleMedia($service_categories, 'single_media_1', 'category_banner');
                 // Category Thumbnail Image
-                $mediaHandler->uploadSingleMedia($service_categories, 'single_media_2', 'category');
+                $mediaHandler->uploadSingleMedia($service_categories, 'single_media_2', 'category_thumb');
 
                 $faqs = [];
                 $question = $request->input('question');
@@ -175,10 +175,10 @@
                     'order_instruction_desc' => $request->input('order_instruction_desc'),
                 ]);
 
-//                // Banner Image
-                $mediaHandler->updateSingleMedia($service_category, 'single_media_1', 'banner');
-//                // Category Thumbnail Image
-                $mediaHandler->updateSingleMedia($service_category, 'single_media_2', 'category');
+                // Banner Image
+                $mediaHandler->updateSingleMedia($service_category, 'single_media_1', 'category_banner');
+                // Category Thumbnail Image
+                $mediaHandler->updateSingleMedia($service_category, 'single_media_2', 'category_thumb');
 
 
                 $faqs = [];

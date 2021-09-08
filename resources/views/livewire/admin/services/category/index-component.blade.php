@@ -53,8 +53,8 @@
                         @forelse($service_categories as $service_category)
                             <tr>
                                 <td>{{ $service_category->title }}</td>
-                                <td><img src="{{ optional($service_category)->getFirstMediaUrl('banner') ? $service_category->getFirstMediaUrl('banner') : asset('_default/no-preview-available.png') }}" alt="" class="img-fluid" style="height: 25px;"> </td>
-                                <td><img src="{{ optional($service_category)->getFirstMediaUrl('category') ? $service_category->getFirstMediaUrl('category') : asset('_default/no-preview-available.png') }}" alt="" class="img-fluid" style="height: 25px;"> </td>
+                                <td><img src="{{ optional($service_category)->getFirstMediaUrl('category_banner') ? $service_category->getFirstMediaUrl('category_banner') : asset('_default/no-preview-available.png') }}" alt="" class="img-fluid" style="height: 25px;"> </td>
+                                <td><img src="{{ optional($service_category)->getFirstMediaUrl('category_thumb') ? $service_category->getFirstMediaUrl('category_thumb') : asset('_default/no-preview-available.png') }}" alt="" class="img-fluid" style="height: 25px;"> </td>
                                 <td>
                                     <div class="tableDataLastButtonLiketab {{ $service_category->navbar_status == 1 ? 'tabletabGREEN' : 'tabletabRED' }}">
                                         <span class="">{{ $service_category->navbar_status == 1 ? 'Active' : 'Not Active' }}</span>

@@ -65,16 +65,16 @@
                 $stored_files = $medias->pluck('file_name')->toArray();
                 if (!empty($this->request->input($inputKey, ''))) {
                     foreach ($this->request->input($inputKey, []) as $local_file) {
-                    if (count($stored_files) === 0 || !in_array($local_file, $stored_files)) {
-                        $model->addMedia(storage_path('tmp/uploads/' . $local_file))
-                            ->sanitizingFileName(function ($fileName) {
-                                $replace_duplicates = preg_replace("/(.)\\1+/", "$1", $fileName);
-                                return Str::lower(Str::replace(['#', '/', '_', '\\', ' '], '-', $replace_duplicates));
-                            })
-                            ->toMediaCollection($mediaCollection, $disk);
+                        if (count($stored_files) === 0 || !in_array($local_file, $stored_files)) {
+                            $model->addMedia(storage_path('tmp/uploads/' . $local_file))
+                                ->sanitizingFileName(function ($fileName) {
+                                    $replace_duplicates = preg_replace("/(.)\\1+/", "$1", $fileName);
+                                    return Str::lower(Str::replace(['#', '/', '_', '\\', ' '], '-', $replace_duplicates));
+                                })
+                                ->toMediaCollection($mediaCollection, $disk);
+                        }
                     }
                 }
-            }
             });
         }
 

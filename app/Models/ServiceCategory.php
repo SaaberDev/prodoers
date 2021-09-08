@@ -6,6 +6,7 @@ use App\Traits\Searchable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
@@ -63,7 +64,7 @@ class ServiceCategory extends Model implements HasMedia
     public function scopeFilterBy($query, $column, $arg)
     {
         return $query->where(function ($query) use ($arg, $column) {
-            $arg == '' ? $query->orderBy('id', 'desc') : $query->orWhere($column, '=', $arg);
+            $arg == '' ? $query->orderByDesc('id') : $query->orWhere($column, '=', $arg);
         });
     }
 
@@ -100,13 +101,13 @@ class ServiceCategory extends Model implements HasMedia
     public function registerMediaCollections(): void
     {
         // Category Banner
-        $this->addMediaCollection('banner')
+        $this->addMediaCollection('category_banner')
             ->acceptsMimeTypes(['image/jpeg', 'image/png'])
             ->singleFile()
         ;
 
         // Category Thumb
-        $this->addMediaCollection('category')
+        $this->addMediaCollection('category_thumb')
             ->acceptsMimeTypes(['image/jpeg', 'image/png'])
             ->singleFile()
         ;
