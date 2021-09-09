@@ -40,6 +40,30 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\AssignOrderLog
+ *
+ * @mixin IdeHelperAssignOrderLog
+ * @property int $id
+ * @property int $order_id
+ * @property int $user_id
+ * @property string $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|AssignOrderLog newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|AssignOrderLog newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|AssignOrderLog query()
+ * @method static \Illuminate\Database\Eloquent\Builder|AssignOrderLog whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AssignOrderLog whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AssignOrderLog whereOrderId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AssignOrderLog whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AssignOrderLog whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|AssignOrderLog whereUserId($value)
+ */
+	class IdeHelperAssignOrderLog extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\BannerSection
  *
  * @mixin IdeHelperBannerSection
@@ -281,7 +305,9 @@ namespace App\Models{
  * @property string $order_status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\User $assignOrders
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $assignOrderLogs
+ * @property-read int|null $assign_order_logs_count
+ * @property-read \App\Models\AssignOrder|null $assignOrders
  * @property-read \App\Models\Invoice $invoices
  * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection|\Spatie\MediaLibrary\MediaCollections\Models\Media[] $media
  * @property-read int|null $media_count
@@ -726,9 +752,12 @@ namespace App\Models{
  * @mixin IdeHelperSubscriber
  * @property int $id
  * @property string $email
+ * @property string $name
  * @property int $subscriber_status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
+ * @property-read int|null $notifications_count
  * @method static \Illuminate\Database\Eloquent\Builder|Subscriber filterBy($column, $arg)
  * @method static \Illuminate\Database\Eloquent\Builder|Subscriber newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Subscriber newQuery()
@@ -737,6 +766,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Subscriber whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Subscriber whereEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Subscriber whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Subscriber whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Subscriber whereSubscriberStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Subscriber whereUpdatedAt($value)
  */
@@ -783,8 +813,7 @@ namespace App\Models{
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Order[] $assignOrders
- * @property-read int|null $assign_orders_count
+ * @property-read \App\Models\AssignOrder|null $assignOrders
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Order[] $orders

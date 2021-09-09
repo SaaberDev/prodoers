@@ -16,7 +16,7 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable, HasRoles;
 
-    
+
     protected $guarded = [];
 
     /**
@@ -45,7 +45,8 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function assignOrders()
     {
-        return $this->belongsToMany(Order::class, 'order_assigned_to_designwalas')->withPivot('status');
+        return $this->hasOne(AssignOrder::class);
+//        return $this->belongsToMany(Order::class, 'order_assigned_to_designwalas')->withPivot('status');
     }
 
     public function socialProviders()

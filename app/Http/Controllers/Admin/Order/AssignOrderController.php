@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Order\AssignOrderRequest;
 use App\Models\AssignOrder;
 use App\Models\Order;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -30,19 +31,20 @@ class AssignOrderController extends Controller
      */
     public function update(AssignOrderRequest $request, $id)
     {
-//        dd($request->all());
+//        dd($id);
         DB::beginTransaction();
         try {
             $order = Order::findOrFail($id);
-            $order->assignedOrders()->updateOrCreate([
-                'order_id' => $order->id,
-                'user_id' => $request->input('assignOrder'),
-                'status' => AssignOrder::PENDING
-            ]);
+            $order->assignOrders()
+                ->updateOrCreate(
+                ['order_id' => $order->id],
+                [
+                    'user_id' => $request->input('assignOrder'),
+                    'status' => AssignOrder::PENDING
+                ]
+            );
             DB::commit();
-            return redirect()
-                ->route('super_admin.order.self.show')
-                ->with([
+            return back()->with([
                     'alert-type' => 'success_toast',
                     'message' => $this->_className . ' Updated Successfully!',
                 ]);

@@ -5,19 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f616bec-9873-4c54-8a6f-71f691274991" name="Changes" comment="[bug-fix] - newsletter and register mail events">
+      <change afterPath="$PROJECT_DIR$/app/Models/AssignOrderLog.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat_i" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat_i" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Events/Newsletter.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Events/Newsletter/NewsletterEvent.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Auth/RegisterComponent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Auth/RegisterComponent.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Guest/Newsletter/NewsletterComponent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Guest/Newsletter/NewsletterComponent.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Listeners/Order/AssignOrderListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Listeners/Order/SendNotificationToAssignedUser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Listeners/SendNewsletterWelcomeNotification.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Listeners/Newsletter/SendNewsletterWelcomeNotification.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Listeners/SendRegisterWelcomeNotification.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Listeners/Auth/SendRegisterWelcomeNotification.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Listeners/SendVerificationNotification.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Listeners/Auth/SendVerificationNotification.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Notifications/NewsletterWelcomeMessage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Notifications/NewsletterWelcomeMessage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_30_231608_create_subscribers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_30_231608_create_subscribers_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/emails/newsletter_welcome_mail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/emails/newsletter_welcome_mail.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/auth/register-component.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/auth/register-component.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_ide_helper_models.php" beforeDir="false" afterPath="$PROJECT_DIR$/_ide_helper_models.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Events/Order/AssignOrderEvent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Events/Order/AssignOrderEvent.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Order/AssignOrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Order/AssignOrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Order/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Order/OrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/AssignOrder.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/AssignOrder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Observers/Admin/Order/AssignOrderObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Observers/Admin/Order/AssignOrderObserver.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_26_233119_create_assign_orders_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_26_233119_create_assign_orders_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin_panel/pages/orders/order/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_panel/pages/orders/order/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -224,7 +227,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.uml" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="ReaderModeSettings">
@@ -272,14 +275,7 @@
       <workItem from="1630464524028" duration="3483000" />
       <workItem from="1630531406471" duration="2630000" />
       <workItem from="1630562804427" duration="1061000" />
-      <workItem from="1630933831557" duration="69720000" />
-    </task>
-    <task id="LOCAL-00008" summary="[dropzone] - added dropzone in edit page (reusable)">
-      <created>1627955120746</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1627955120746</updated>
+      <workItem from="1630933831557" duration="92742000" />
     </task>
     <task id="LOCAL-00009" summary="[dropzone] - added dropzone in edit page (reusable)">
       <created>1627956031947</created>
@@ -617,7 +613,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631127514708</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="[bug-fix] - newsletter and register mail events">
+      <created>1631175760252</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1631175760252</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -660,5 +663,9 @@
     <MESSAGE value="[assign-order] - preparing assign migrations" />
     <MESSAGE value="[bug-fix] - newsletter and register mail events" />
     <option name="LAST_COMMIT_MESSAGE" value="[bug-fix] - newsletter and register mail events" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

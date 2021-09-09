@@ -68,8 +68,8 @@
             }
 
             $assignedOrderData = [
-                'id' => $order->assignOrders->id,
-                'username' => $order->assignOrders->username,
+                'id' => $order->assignOrders ? $order->assignOrders->users->id : '',
+                'username' => $order->assignOrders ? $order->assignOrders->users->username : '',
             ];
 
             $data = [

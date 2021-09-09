@@ -86,7 +86,7 @@
                         </div>
                     </div>
 
-                    <form action="{{ route('super_admin.order.assignOrder.update', $order_details['service_info']->id) }}" method="POST">
+                    <form action="{{ route('super_admin.order.assignOrder.update', $order_details['order_info']->id) }}" method="POST">
                         @csrf @method('PATCH')
                         <div class="row">
                             <div class="col-md-9">

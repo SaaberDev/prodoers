@@ -23,7 +23,7 @@ class CreateAssignOrdersTable extends Migration
 
         Schema::create('assign_order_logs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('assign_order_id')->constrained();
+            $table->foreignId('order_id')->constrained();
             $table->foreignId('user_id')->constrained();
             $table->string('status');
             $table->timestamps();

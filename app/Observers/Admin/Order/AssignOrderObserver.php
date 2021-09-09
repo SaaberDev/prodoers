@@ -2,61 +2,70 @@
 
 namespace App\Observers\Admin\Order;
 
+use App\Events\Order\AssignOrderEvent;
 use App\Models\AssignOrder;
+use Illuminate\Support\Facades\Event;
 
 class AssignOrderObserver
 {
     /**
-     * Handle the AssignedOrder "created" event.
+     * Handle the AssignOrder "created" event.
      *
-     * @param  \App\Models\AssignOrder  $assignedOrder
+     * @param  \App\Models\AssignOrder  $assignOrder
      * @return void
      */
-    public function created(AssignOrder $assignedOrder)
+    public function created(AssignOrder $assignOrder)
+    {
+        // Update assigned order log
+        $assignOrder->assignOrderLogs()->attach($assignOrder->user_id, [
+            'status' => $assignOrder->status,
+        ]);
+        // Fire event
+    }
+
+    /**
+     * Handle the AssignOrder "updated" event.
+     *
+     * @param  \App\Models\AssignOrder  $assignOrder
+     * @return void
+     */
+    public function updated(AssignOrder $assignOrder)
+    {
+        // Update assigned order log
+        $assignOrder->assignOrderLogs()->attach($assignOrder->user_id, [
+            'status' => $assignOrder->status,
+        ]);
+    }
+
+    /**
+     * Handle the AssignOrder "deleted" event.
+     *
+     * @param  \App\Models\AssignOrder  $assignOrder
+     * @return void
+     */
+    public function deleted(AssignOrder $assignOrder)
     {
         //
     }
 
     /**
-     * Handle the AssignedOrder "updated" event.
+     * Handle the AssignOrder "restored" event.
      *
-     * @param  \App\Models\AssignOrder  $assignedOrder
+     * @param  \App\Models\AssignOrder  $assignOrder
      * @return void
      */
-    public function updated(AssignOrder $assignedOrder)
+    public function restored(AssignOrder $assignOrder)
     {
         //
     }
 
     /**
-     * Handle the AssignedOrder "deleted" event.
+     * Handle the AssignOrder "force deleted" event.
      *
-     * @param  \App\Models\AssignOrder  $assignedOrder
+     * @param  \App\Models\AssignOrder  $assignOrder
      * @return void
      */
-    public function deleted(AssignOrder $assignedOrder)
-    {
-        //
-    }
-
-    /**
-     * Handle the AssignedOrder "restored" event.
-     *
-     * @param  \App\Models\AssignOrder  $assignedOrder
-     * @return void
-     */
-    public function restored(AssignOrder $assignedOrder)
-    {
-        //
-    }
-
-    /**
-     * Handle the AssignedOrder "force deleted" event.
-     *
-     * @param  \App\Models\AssignOrder  $assignedOrder
-     * @return void
-     */
-    public function forceDeleted(AssignOrder $assignedOrder)
+    public function forceDeleted(AssignOrder $assignOrder)
     {
         //
     }

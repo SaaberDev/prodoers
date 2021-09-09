@@ -29,7 +29,12 @@ class Order extends Model implements HasMedia
 
     public function assignOrders()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->hasOne(AssignOrder::class, 'order_id');
+    }
+
+    public function assignOrderLogs()
+    {
+        return $this->belongsToMany(User::class, 'assign_order_logs', 'user_id', 'order_id', 'user_id')->withPivot('status');
     }
 
     public function services()

@@ -12,6 +12,8 @@ class AssignOrder extends Model
 {
     use HasFactory;
 
+    protected $table = 'assign_orders';
+
     const PENDING = 'pending';
     const ASSIGNED = 'assigned';
     const CANCELLED = 'cancelled';
@@ -29,8 +31,13 @@ class AssignOrder extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+//    public function assignOrderLogs()
+//    {
+//        return $this->hasMany(AssignOrderLog::class);
+//    }
+
     public function assignOrderLogs()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsToMany(Order::class, 'assign_order_logs', 'order_id', 'user_id', 'order_id')->withPivot('status');
     }
 }
