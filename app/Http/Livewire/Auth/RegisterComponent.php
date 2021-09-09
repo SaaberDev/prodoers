@@ -40,6 +40,9 @@ class RegisterComponent extends Component
         'form.confirm_password.required' => 'Password Confirmation field is required.',
     ];
 
+    /**
+     * @throws \Throwable
+     */
     public function store()
     {
         $this->validate();
@@ -48,6 +51,7 @@ class RegisterComponent extends Component
             $user = User::create([
                 'name' => head(explode('@', strtolower($this->form['email']))),
                 'email' => $this->form['email'],
+                'designation' => 'Client',
                 'username' => head(explode('@', strtolower($this->form['email']))),
                 'password' => Hash::make($this->form['password']),
                 'remember_token' => \Str::random(64)
@@ -56,8 +60,10 @@ class RegisterComponent extends Component
             event(new Registered($user));
             \DB::commit();
             session()->flash('message', "We've sent you a verification link to your email address. Please verify within 48 hours.");
-        } catch (\Exception $e) {
+        } catch (\Exception $exception) {
             \DB::rollBack();
+            report($exception->getMessage());
+            session()->flash('error', $exception->getMessage());
         }
         $this->reset();
     }

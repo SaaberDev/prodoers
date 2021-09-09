@@ -9,7 +9,7 @@
 {{-- Body Content --}}
 <div class="container">
     <div class="row" style="height: 513px;">
-        <h4 class="mt-5 mb-5">Hello {{ $subscriber->email }},</h4>
+        <h4 class="mt-5 mb-5">Hello {{ $subscriber->name }},</h4>
         <h4 class="mt-5 mb-5">Welcome to Designwala Newsletter.</h4>
         <h4 class="mt-5 mb-5">Here are some services you might be interested in !</h4>
 

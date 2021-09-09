@@ -2,10 +2,10 @@
 
 namespace App\Http\Livewire\Guest\Newsletter;
 
-use App\Events\Newsletter;
+use App\Events\Newsletter\NewsletterEvent;
 use App\Models\Subscriber;
-use Carbon\Carbon;
 use Livewire\Component;
+use Throwable;
 
 class NewsletterComponent extends Component
 {
@@ -18,7 +18,7 @@ class NewsletterComponent extends Component
     }
 
     protected $rules = [
-        'subscriber_mail' => 'required|email:rfc,dns|unique:subscribers,email'
+        'subscriber_mail' => 'required|unique:subscribers,email'
     ];
 
     protected $messages = [
@@ -28,28 +28,29 @@ class NewsletterComponent extends Component
     ];
 
     /**
-     * @throws \Throwable
+     * @throws Throwable
      */
     public function store()
     {
         $this->validate();
         \DB::beginTransaction();
         try {
+            $explodeEmail = explode('@', $this->subscriber_mail);
+            $getName = head($explodeEmail);
             $subscriber = Subscriber::create([
                 'email' => $this->subscriber_mail,
+                'name' => $getName,
                 'subscriber_status' => $this->subscriber_status
             ]);
 
-            \DB::afterCommit(function () use ($subscriber) {
-                // Fire Event
-                event(new Newsletter($subscriber));
-                $this->subscriber_mail = '';
+            // Fire Event
+            event(new NewsletterEvent($subscriber));
+            $this->subscriber_mail = '';
 
-                // Toast Alert
-                $this->dispatchBrowserEvent('success_toast', [
-                    'title' => 'Thank you for subscribing to our newsletter !',
-                ]);
-            });
+            // Toast Alert
+            $this->dispatchBrowserEvent('success_toast', [
+                'title' => 'Thank you for subscribing to our newsletter !',
+            ]);
 
             \DB::commit();
         } catch (\Exception $exception){

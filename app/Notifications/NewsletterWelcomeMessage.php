@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class NewsletterWelcomeMessage extends Notification implements ShouldQueue
+class NewsletterWelcomeMessage extends Notification
 {
     use Queueable;
 
@@ -32,7 +32,6 @@ class NewsletterWelcomeMessage extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-//        return explode(', ', $notifiable->notification_preference);
         return ['mail'];
     }
 
@@ -51,18 +50,5 @@ class NewsletterWelcomeMessage extends Notification implements ShouldQueue
                 'subscriber' => $this->subscriber,
                 'social_links' => $social_links,
             ]);
-    }
-
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
-    public function toArray($notifiable)
-    {
-        return [
-            //
-        ];
     }
 }

@@ -37,6 +37,11 @@
     |--------------------------------------------------------------------------
     */
 
+    Route::get('/event', function () {
+       $subscriber = \App\Models\Subscriber::find(2);
+       event(new \App\Events\NewsletterEvent($subscriber));
+    });
+
     // Home Route Section
     Route::prefix('/')->name('guest.')->group(function () {
         // Home

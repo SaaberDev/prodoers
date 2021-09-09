@@ -1,13 +1,11 @@
 <?php
 
-    namespace App\Listeners;
+    namespace App\Listeners\Newsletter;
 
-    use App\Events\Newsletter;
+    use App\Events\Newsletter\NewsletterEvent;
     use App\Notifications\NewsletterWelcomeMessage;
-    use Illuminate\Auth\Events\Registered;
     use Illuminate\Contracts\Queue\ShouldQueue;
     use Illuminate\Queue\InteractsWithQueue;
-    use Illuminate\Support\Facades\Auth;
     use Notification;
 
     class SendNewsletterWelcomeNotification implements ShouldQueue
@@ -15,18 +13,17 @@
         use InteractsWithQueue;
 
         public $afterCommit = true;
+        public $delay = 5;
 
         /**
          * Handle the event.
          *
          * @return void
          */
-        public function handle(Newsletter $newsletter)
+        public function handle(NewsletterEvent $event)
         {
-//            $newsletter->subscriber->notify(new NewsletterWelcomeMessage($newsletter));
-//            dd($newsletter->subscriber);
-            Notification::send($newsletter->subscriber,
-                new NewsletterWelcomeMessage($newsletter)
+            Notification::send($event->subscriber,
+                new NewsletterWelcomeMessage($event->subscriber)
             );
         }
     }
