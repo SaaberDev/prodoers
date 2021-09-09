@@ -16,4 +16,16 @@ class AssignOrderLog extends Pivot
     protected $table = 'assign_order_logs';
 
     protected $guarded = [];
+
+    protected $touches = ['users'];
+
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function orders()
+    {
+        return $this->belongsTo(Order::class, 'order_id');
+    }
 }

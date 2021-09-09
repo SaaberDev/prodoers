@@ -38,6 +38,14 @@ class AssignOrder extends Model
 
     public function assignOrderLogs()
     {
-        return $this->belongsToMany(Order::class, 'assign_order_logs', 'order_id', 'user_id', 'order_id')->withPivot('status');
+        return $this->belongsToMany(
+            Order::class,
+            'assign_order_logs',
+            'order_id', 'user_id', 'order_id'
+        )
+            ->using(AssignOrderLog::class)
+            ->withPivot('status')
+            ->withTimestamps()
+            ;
     }
 }

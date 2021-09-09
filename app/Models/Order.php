@@ -46,7 +46,15 @@
          */
         public function assignOrderLogs()
         {
-            return $this->belongsToMany(User::class, 'assign_order_logs', 'user_id', 'order_id', 'user_id')->withPivot('status');
+            return $this->belongsToMany(
+                User::class,
+                'assign_order_logs',
+                'user_id', 'order_id', 'user_id'
+            )
+                ->using(AssignOrderLog::class)
+                ->withPivot('status')
+                ->withTimestamps()
+                ;
         }
 
         /**
