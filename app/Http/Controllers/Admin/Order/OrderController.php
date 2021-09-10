@@ -59,6 +59,14 @@
             $order = Order::findOrFail($id);
             $service_media = $order->services->getFirstMedia('service_thumb');
 
+            // Previously assigned doers
+            foreach ($order->assignOrders->assignOrderLogs as $assignOrderLog) {
+                dump($assignOrderLog->pivot->users);
+                dump($assignOrderLog->pivot->status);
+                dump($assignOrderLog->pivot->updated_at);
+            }
+            dd();
+
             $order_attachments = [];
             foreach ($order->getMedia('requirements') as $media) {
                 $order_attachments[] = [

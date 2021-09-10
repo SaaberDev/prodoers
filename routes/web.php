@@ -37,9 +37,8 @@
     |--------------------------------------------------------------------------
     */
 
-//    Route::get('/event', function () {
-//       $subscriber = \App\Models\Subscriber::find(2);
-//       event(new \App\Events\NewsletterEvent($subscriber));
+//    Route::get('/sebpo', function () {
+//        //
 //    });
 
     // Home Route Section
