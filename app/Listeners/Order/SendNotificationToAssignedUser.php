@@ -3,20 +3,16 @@
 namespace App\Listeners\Order;
 
 use App\Events\Order\AssignOrderEvent;
+use App\Notifications\Order\SendAssignOrderNotification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
-class SendNotificationToAssignedUser
+class SendNotificationToAssignedUser implements ShouldQueue
 {
-    /**
-     * Create the event listener.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
+    use InteractsWithQueue;
+
+    public $afterCommit = true;
+    public $delay = 5;
 
     /**
      * Handle the event.
@@ -26,6 +22,6 @@ class SendNotificationToAssignedUser
      */
     public function handle(AssignOrderEvent $event)
     {
-        dd($event);
+        \Notification::send($event->user, new SendAssignOrderNotification());
     }
 }

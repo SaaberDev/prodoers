@@ -34,7 +34,7 @@
             <div class="row justify-content-center m-0 py-1 boxshadow rounded">
                 <div class="col-xl-12 col-lg-12 col-md-12 v-center">
                     <div class="">
-                        <h2 class="  m-0">View Order </h2>
+                        <h2 class="m-0">View Order </h2>
                     </div>
                 </div>
 

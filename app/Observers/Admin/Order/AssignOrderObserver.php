@@ -2,6 +2,7 @@
 
 namespace App\Observers\Admin\Order;
 
+use App\Events\Order\AssignOrderEvent;
 use App\Models\AssignOrder;
 
 class AssignOrderObserver
@@ -14,11 +15,13 @@ class AssignOrderObserver
      */
     public function created(AssignOrder $assignOrder)
     {
-        // Update assigned order log
+        // Create assigned doers log if it doesn't exist
         $assignOrder->assignOrderLogs()->attach($assignOrder->user_id, [
             'status' => $assignOrder->status,
         ], true);
+
         // Fire event
+        event(new AssignOrderEvent($assignOrder->users));
     }
 
     /**
@@ -29,17 +32,12 @@ class AssignOrderObserver
      */
     public function updated(AssignOrder $assignOrder)
     {
-        // Update assigned order log
+        // Update assigned doers log
         $assignOrder->assignOrderLogs()->attach($assignOrder->user_id, [
             'status' => $assignOrder->status,
         ], true);
-        // Fire event
 
-//        $assignOrder->assignOrderLogs()->sync(
-//            [
-//                'user_id' => $assignOrder->user_id,
-//                'status' => $assignOrder->status,
-//            ]
-//        );
+        // Fire event
+        event(new AssignOrderEvent($assignOrder->users));
     }
 }

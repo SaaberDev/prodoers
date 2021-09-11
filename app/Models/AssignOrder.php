@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * @mixin IdeHelperAssignOrder
@@ -21,21 +23,25 @@ class AssignOrder extends Model
 
     protected $guarded = [];
 
+    /**
+     * @return BelongsTo
+     */
     public function orders()
     {
         return $this->belongsTo(Order::class, 'order_id');
     }
 
+    /**
+     * @return BelongsTo
+     */
     public function users()
     {
         return $this->belongsTo(User::class, 'user_id');
     }
 
-//    public function assignOrderLogs()
-//    {
-//        return $this->hasMany(AssignOrderLog::class);
-//    }
-
+    /**
+     * @return BelongsToMany
+     */
     public function assignOrderLogs()
     {
         return $this->belongsToMany(
