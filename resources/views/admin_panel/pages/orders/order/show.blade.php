@@ -20,7 +20,7 @@
 @endpush
 
 @section('content')
-    <div class="col-xl-10 col-lg-9 col-md-12 dashboardRightside scrollbar scroll-style" >
+    <div class="col-xl-10 col-lg-9 col-md-12 dashboardRightside scrollbar scroll-style">
         <div class="">
             <div class="row  pb-3 m-0">
                 <div class="col-md-8 col-sm-8  v-center">
