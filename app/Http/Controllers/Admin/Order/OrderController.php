@@ -60,12 +60,16 @@
             $service_media = $order->services->getFirstMedia('service_thumb');
 
             // Previously assigned doers
-            foreach ($order->assignOrders->assignOrderLogs as $assignOrderLog) {
-                dump($assignOrderLog->pivot->users);
-                dump($assignOrderLog->pivot->status);
-                dump($assignOrderLog->pivot->updated_at);
+            $assign_logs = [];
+            // Sort by latest data except duplicate
+            $assign_order_logs = optional($order->assignOrders)->assignOrderLogs->sortByDesc('created_at')->unique('user_id') ?? [];
+            foreach ($assign_order_logs as $assignOrderLog) {
+                $assign_logs[] = [
+                    'username' => $assignOrderLog->pivot->users->username,
+                    'status' => $assignOrderLog->pivot->status,
+                    'updated_at' => $assignOrderLog->pivot->updated_at,
+                ];
             }
-            dd();
 
             $order_attachments = [];
             foreach ($order->getMedia('requirements') as $media) {
@@ -78,6 +82,7 @@
             $assignedOrderData = [
                 'id' => $order->assignOrders ? $order->assignOrders->users->id : '',
                 'username' => $order->assignOrders ? $order->assignOrders->users->username : '',
+                'status' => $order->assignOrders ? $order->assignOrders->status : '',
             ];
 
             $data = [
@@ -107,6 +112,7 @@
                     'discount' => $order->payments->discount,
                 ],
                 'assigned_users' => $assignedOrderData,
+                'previously_assigned' => $assign_logs,
             ];
 
             $order_details = collect(json_decode(json_encode($data)));

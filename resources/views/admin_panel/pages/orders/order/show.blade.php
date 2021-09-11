@@ -67,7 +67,23 @@
                                 <p class="m-0">{{ $order_details['user_info']->email }}</p>
                                 <p class="pt-4 m-0">Transaction ID : #{{ $order_details['payment_info']->transaction_id }}</p>
                                 <p class="m-0">Payment method : {{ $order_details['payment_info']->payment_method }}</p>
-                                <p class="m-0">Assigned To : <span class="tabletabLightSKY text-white font-weight-bold">{{ $order_details['assigned_users']->username }}</span>
+
+                                <p class="m-0">Previously Assigned :
+                                    @forelse($order_details['previously_assigned'] as $assignUsers)
+                                        <span class="tabletabLightSKY text-white font-weight-bold">
+                                            {{ $assignUsers->username }}
+                                        </span>
+                                        <span>({{ $assignUsers->status }})</span>
+                                    @empty
+                                        Not Assigned Yet
+                                    @endforelse
+                                <p class="m-0">Assigned To :
+                                    <span class="tabletabLightSKY text-white font-weight-bold">
+                                        {{ $order_details['assigned_users']->username }}
+                                    </span>
+                                    <span>({{ $order_details['assigned_users']->status }})</span>
+
+
 {{--                                    @forelse($order_details['assigned_users'] as $assignUsers)--}}
 {{--                                        <span class="tabletabLightSKY text-white font-weight-bold">{{ $assignUsers->username }}</span>--}}
 {{--                                        @if(!$loop->last)--}}
