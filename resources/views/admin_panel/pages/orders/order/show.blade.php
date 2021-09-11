@@ -68,31 +68,27 @@
                                 <p class="pt-4 m-0">Transaction ID : #{{ $order_details['payment_info']->transaction_id }}</p>
                                 <p class="m-0">Payment method : {{ $order_details['payment_info']->payment_method }}</p>
 
-                                <p class="m-0">Previously Assigned :
-                                    @forelse($order_details['previously_assigned'] as $assignUsers)
+                                @if(!empty($order_details['previously_assigned']))
+                                    <p class="m-0">Previously Assigned :
+                                        @forelse($order_details['previously_assigned'] as $assignUsers)
+                                            <span class="tabletabLightSKY text-white font-weight-bold">
+                                                {{ $assignUsers->username }}
+                                            </span>
+                                            <span>{{ '( ' . $assignUsers->status . ' )' }}</span>
+                                        @empty
+                                            No Previously Assigned Doers
+                                        @endforelse
+                                    </p>
+                                @endif
+
+                                @if(!empty($order_details['assigned_users']))
+                                    <p class="m-0">Assigned To :
                                         <span class="tabletabLightSKY text-white font-weight-bold">
-                                            {{ $assignUsers->username }}
+                                            {{ $order_details['assigned_users']->username }}
                                         </span>
-                                        <span>({{ $assignUsers->status }})</span>
-                                    @empty
-                                        Not Assigned Yet
-                                    @endforelse
-                                <p class="m-0">Assigned To :
-                                    <span class="tabletabLightSKY text-white font-weight-bold">
-                                        {{ $order_details['assigned_users']->username }}
-                                    </span>
-                                    <span>({{ $order_details['assigned_users']->status }})</span>
-
-
-{{--                                    @forelse($order_details['assigned_users'] as $assignUsers)--}}
-{{--                                        <span class="tabletabLightSKY text-white font-weight-bold">{{ $assignUsers->username }}</span>--}}
-{{--                                        @if(!$loop->last)--}}
-{{--                                            ,--}}
-{{--                                        @endif--}}
-{{--                                    @empty--}}
-{{--                                        Not Assigned Yet--}}
-{{--                                    @endforelse--}}
-                                </p>
+                                        <span>{{ '( ' . $order_details['assigned_users']->status . ' )' }}</span>
+                                    </p>
+                                @endif
                             </div>
                         </div>
                         <div class="col-md-4 v-center">

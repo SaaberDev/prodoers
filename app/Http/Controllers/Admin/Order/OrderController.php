@@ -62,15 +62,19 @@
             // Previously assigned doers
             $assign_logs = [];
             // Sort by latest data except duplicate
-            $assign_order_logs = optional($order->assignOrders)->assignOrderLogs->sortByDesc('created_at')->unique('user_id') ?? [];
+            $assign_order_logs = optional($order->assignOrders)->assignOrderLogs ? $order->assignOrders->assignOrderLogs->sortByDesc('created_at')->unique('user_id') : [];
             foreach ($assign_order_logs as $assignOrderLog) {
-                $assign_logs[] = [
-                    'username' => $assignOrderLog->pivot->users->username,
-                    'status' => $assignOrderLog->pivot->status,
-                    'updated_at' => $assignOrderLog->pivot->updated_at,
-                ];
+                if ($assignOrderLog->pivot->users->id != $order->assignOrders->users->id) {
+                    $assign_logs[] = [
+                        'id' => $assignOrderLog->pivot->users->id,
+                        'username' => $assignOrderLog->pivot->users->username,
+                        'status' => $assignOrderLog->pivot->status,
+                        'updated_at' => $assignOrderLog->pivot->updated_at,
+                    ];
+                }
             }
 
+            // Order requirements media
             $order_attachments = [];
             foreach ($order->getMedia('requirements') as $media) {
                 $order_attachments[] = [
@@ -79,12 +83,15 @@
                 ];
             }
 
-            $assignedOrderData = [
-                'id' => $order->assignOrders ? $order->assignOrders->users->id : '',
-                'username' => $order->assignOrders ? $order->assignOrders->users->username : '',
-                'status' => $order->assignOrders ? $order->assignOrders->status : '',
-            ];
+            // Assigned doers
+            $assignedOrderData = optional($order->assignOrders)->users ?
+                [
+                    'id' => optional($order->assignOrders)->users->id ?? null,
+                    'username' => optional($order->assignOrders)->users->username ?? null,
+                    'status' => optional($order->assignOrders)->status ?? null,
+                ] : [];
 
+            // Data array
             $data = [
                 'service_info' => [
                     'id' => $order->services->id,
@@ -115,6 +122,7 @@
                 'previously_assigned' => $assign_logs,
             ];
 
+            // Convert array to object
             $order_details = collect(json_decode(json_encode($data)));
 
             $doers = User::role('doers')->get()->pluck('name', 'id');
