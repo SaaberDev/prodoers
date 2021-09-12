@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f616bec-9873-4c54-8a6f-71f691274991" name="Changes" comment="[assign-order] - assign order and update log">
-      <change afterPath="$PROJECT_DIR$/resources/views/emails/order-assign-mail.blade.php" afterDir="false" />
+    <list default="true" id="3f616bec-9873-4c54-8a6f-71f691274991" name="Changes" comment="[assign-order] - assign order notification and mail">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_ide_helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/_ide_helper.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_ide_helper_models.php" beforeDir="false" afterPath="$PROJECT_DIR$/_ide_helper_models.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Listeners/Order/SendNotificationToAssignedUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Listeners/Order/SendNotificationToAssignedUser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/AssignOrder.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/AssignOrder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Order.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Notifications/Order/SendAssignOrderNotification.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Notifications/Order/SendAssignOrderNotification.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Observers/Admin/Order/AssignOrderObserver.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Observers/Admin/Order/AssignOrderObserver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin_panel/pages/orders/order/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_panel/pages/orders/order/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -265,14 +265,7 @@
       <workItem from="1630464524028" duration="3483000" />
       <workItem from="1630531406471" duration="2630000" />
       <workItem from="1630562804427" duration="1061000" />
-      <workItem from="1630933831557" duration="121427000" />
-    </task>
-    <task id="LOCAL-00016" summary="[filesystem] - added media library handler class and completed service filesystem change">
-      <created>1628270849189</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1628270849189</updated>
+      <workItem from="1630933831557" duration="127029000" />
     </task>
     <task id="LOCAL-00017" summary="[filesystem] - added media library handler class and completed service filesystem change">
       <created>1628281678829</created>
@@ -610,7 +603,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631367686266</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="[assign-order] - assign order notification and mail">
+      <created>1631381317623</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1631381317623</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -653,7 +653,8 @@
     <MESSAGE value="[assign-order] - preparing assign migrations" />
     <MESSAGE value="[bug-fix] - newsletter and register mail events" />
     <MESSAGE value="[assign-order] - assign order and update log" />
-    <option name="LAST_COMMIT_MESSAGE" value="[assign-order] - assign order and update log" />
+    <MESSAGE value="[assign-order] - assign order notification and mail" />
+    <option name="LAST_COMMIT_MESSAGE" value="[assign-order] - assign order notification and mail" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

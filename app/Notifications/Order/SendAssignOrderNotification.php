@@ -2,6 +2,7 @@
 
 namespace App\Notifications\Order;
 
+use App\Models\SocialLinks;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -42,10 +43,12 @@ class SendAssignOrderNotification extends Notification
      */
     public function toMail($notifiable)
     {
+        $social_links = SocialLinks::orderByDesc('id')->get();
         return (new MailMessage)
             ->subject('You got a new work.')
-            ->view('emails.newsletter_welcome_mail', [
+            ->view('emails.order-assign-mail', [
                 'user' => $this->user,
+                'social_links' => $social_links,
             ]);
     }
 

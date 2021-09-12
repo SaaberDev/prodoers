@@ -13,8 +13,8 @@
     use Spatie\MediaLibrary\InteractsWithMedia;
 
     /**
-     * @mixin IdeHelperOrder
-     */
+ * @mixin IdeHelperOrder
+ */
     class Order extends Model implements HasMedia
     {
         use HasFactory, Searchable, InteractsWithMedia;

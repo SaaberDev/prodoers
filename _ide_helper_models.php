@@ -21,7 +21,7 @@ namespace App\Models{
  * @property string $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $assignOrderLogs
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Order[] $assignOrderLogs
  * @property-read int|null $assign_order_logs_count
  * @property-read \App\Models\Order $orders
  * @property-read \App\Models\User $users
@@ -49,6 +49,8 @@ namespace App\Models{
  * @property string $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Order $orders
+ * @property-read \App\Models\User $users
  * @method static \Illuminate\Database\Eloquent\Builder|AssignOrderLog newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|AssignOrderLog newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|AssignOrderLog query()
