@@ -32,7 +32,7 @@ class SendAssignOrderNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail', 'database'];
     }
 
     /**
@@ -61,7 +61,14 @@ class SendAssignOrderNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'data' => [
+                'user_data' => [
+                    'name' => $this->user->name,
+                    'username' => $this->user->username,
+                    'email' => $this->user->email
+                ],
+                'message' => 'You were assigned to a new order.'
+            ],
         ];
     }
 }

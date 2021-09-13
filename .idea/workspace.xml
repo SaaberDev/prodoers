@@ -6,12 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3f616bec-9873-4c54-8a6f-71f691274991" name="Changes" comment="[assign-order] - assign order notification and mail">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_ide_helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/_ide_helper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_ide_helper_models.php" beforeDir="false" afterPath="$PROJECT_DIR$/_ide_helper_models.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Listeners/Order/SendNotificationToAssignedUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Listeners/Order/SendNotificationToAssignedUser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Order.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Notifications/Order/SendAssignOrderNotification.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Notifications/Order/SendAssignOrderNotification.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -265,14 +260,7 @@
       <workItem from="1630464524028" duration="3483000" />
       <workItem from="1630531406471" duration="2630000" />
       <workItem from="1630562804427" duration="1061000" />
-      <workItem from="1630933831557" duration="127029000" />
-    </task>
-    <task id="LOCAL-00017" summary="[filesystem] - added media library handler class and completed service filesystem change">
-      <created>1628281678829</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1628281678829</updated>
+      <workItem from="1630933831557" duration="131211000" />
     </task>
     <task id="LOCAL-00018" summary="[filesystem] - added media library handler class and completed service filesystem change">
       <created>1628294707616</created>
@@ -610,7 +598,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631381317623</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="[assign-order] - assign order notification and mail">
+      <created>1631442239639</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1631442239639</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
