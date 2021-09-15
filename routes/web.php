@@ -38,15 +38,15 @@
     */
 
     Route::get('/update-logs', function () {
-        $order = \App\Models\Order::findOrFail(60);
-        $order->assignOrders()
-            ->updateOrCreate(
-                ['order_id' => $order->id],
-                [
-                    'user_id' => 2,
-                    'status' => \App\Models\AssignOrder::CANCELLED
-                ]
-            );
+//        $order = \App\Models\Order::findOrFail(60);
+//        $order->assignOrders()
+//            ->updateOrCreate(
+//                ['order_id' => $order->id],
+//                [
+//                    'user_id' => 2,
+//                    'status' => \App\Models\AssignOrder::CANCELLED
+//                ]
+//            );
     });
 
     // Home Route Section

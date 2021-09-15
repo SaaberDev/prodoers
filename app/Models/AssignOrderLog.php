@@ -17,7 +17,7 @@ class AssignOrderLog extends Pivot
 
     protected $guarded = [];
 
-    protected $touches = ['users'];
+//    protected $touches = ['users'];
 
     public function users()
     {

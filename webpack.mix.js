@@ -32,9 +32,6 @@ mix.js('resources/js/app.js', 'public/js/app.js')
     | Admin Panel Assets
     |--------------------------------------------------------------------------
     */
-    /*****
-     * Site CSS
-     */
     .styles([
         'resources/_assets/_admin_panel/fonts/fonts.css',
         'resources/_assets/_admin_panel/css/bootstrap4/css/bootstrap.min.css',
@@ -47,10 +44,6 @@ mix.js('resources/js/app.js', 'public/js/app.js')
         'resources/_assets/_admin_panel/css/style.css',
         'resources/_assets/_admin_panel/css/media.css',
     ], 'public/_assets/_admin_panel/css/dashboard.css')
-
-    /*****
-     * Site JS
-     */
     .scripts([
         'resources/_assets/_admin_panel/js/bootstrap4/jquery.min.js',
         'resources/_assets/_admin_panel/js/bootstrap4/popper.min.js',
@@ -63,11 +56,11 @@ mix.js('resources/js/app.js', 'public/js/app.js')
     .copyDirectory('resources/_assets/_admin_panel/img', 'public/_assets/_admin_panel/img')
 
 
-/*
-|--------------------------------------------------------------------------
-| Guest Assets
-|--------------------------------------------------------------------------
-*/
+    /*
+    |--------------------------------------------------------------------------
+    | Guest Assets
+    |--------------------------------------------------------------------------
+    */
     .styles([
     'resources/_assets/_guest/fonts/fonts.css',
     'resources/_assets/_guest/css/v5/bootstrap.min.css',
