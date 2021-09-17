@@ -5,20 +5,270 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f616bec-9873-4c54-8a6f-71f691274991" name="Changes" comment="[assign-order] - assign order notification and mail">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat.values" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat.values" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat.values.at" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat.values.s" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat.values.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat_i" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat_i" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Console/Commands/CacheCleaner.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/_assets/_guest/css/main.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/_assets/_guest/js/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/_assets/plugins/counter/js/count.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/_assets/plugins/fancybox/css/fancybox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/_assets/plugins/fancybox/js/fancybox.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/_assets/plugins/flatpickr/flatpickr.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/_assets/plugins/flatpickr/flatpickr.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/_assets/plugins/jquery-modal/css/jquery-modal.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/_assets/plugins/jquery-modal/css/jquery.modal.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/_assets/plugins/jquery-modal/js/jquery-modal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/_assets/plugins/jquery-modal/js/jquery.modal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/_assets/plugins/owl-carousel/css/owl-carousel.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/_assets/plugins/owl-carousel/js/owl-carousel.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/_assets/plugins/slick/css/slick.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/_assets/plugins/slick/js/slick.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/_guest/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/_guest/css/menu-kit.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/_guest/img/arrow.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/_guest/img/confirmationpage/order-img.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/_guest/img/favicon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/_guest/img/final-logo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/_guest/img/footer/Image 7.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/_guest/img/footer/Image 8.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/_guest/img/footer/footer-logo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/_guest/img/footer/paypal.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/_guest/img/paymentdetails/arrow-down.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/_guest/img/paymentdetails/dropdown.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/_guest/img/paymentdetails/payment-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/_guest/img/paymentdetails/rectangle.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/_guest/img/paymentdetails/right.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/_guest/img/paymentdetails/sslcomers.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/_guest/img/paymentdetails/x.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/_guest/img/searchpage/service-img.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/_guest/img/servicepage/client-one.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/_guest/img/servicepage/client-two.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/_guest/img/servicepage/howdesignwalaworks/1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/_guest/img/servicepage/howdesignwalaworks/Group 531.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/_guest/img/servicepage/play-button-bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/_guest/img/servicepage/play-button.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/_guest/img/singlecategory/searching.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/_guest/img/singlecategory/service-img.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/_guest/img/singlecategoryitem/Social-media-Banner.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/_guest/img/singlecategoryitem/copy.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/_guest/img/singlecategoryitem/related-img.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/_guest/img/svg/logo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/_guest/js/jquery/jquery.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/_guest/js/off-canvas/off-canvas.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/_guest/video/nature.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/plugins/counter/js/count.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/plugins/fancybox/css/jquery.fancybox.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/plugins/fancybox/js/jquery.fancybox.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/plugins/owl-carousel/css/owl.carousel.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/plugins/owl-carousel/js/owl.carousel.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/plugins/slick/css/slick-theme.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/plugins/slick/css/slick.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/plugins/slick/js/slick-init.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/_assets/plugins/slick/js/slick.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/designwala.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/designwala.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.phpstorm.meta.php" beforeDir="false" afterPath="$PROJECT_DIR$/.phpstorm.meta.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_ide_helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/_ide_helper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/AssignOrderLog.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/AssignOrderLog.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Console/Commands/DeleteDirectory.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/DeleteDirectory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Console/Commands/MakeDirectory.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/MakeDirectory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/vendor/livewire/livewire.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/vendor/livewire/livewire.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/vendor/livewire/livewire.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/vendor/livewire/livewire.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/vendor/livewire/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/vendor/livewire/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/telescope.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/telescope.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_custom/css/app.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_custom/css/custom_styles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_custom/js/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_custom/js/custom_script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_custom/js/custom_scripts.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/css/guest.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/D.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/DESIGNWALA.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/Group 187.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/Group 650.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/Group 650.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/Icon awesome-google.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/Icon awesome-twitter.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/Icon zocial-facebook.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/Payment_Methods.svg" beforeDir="false" afterPath="$PROJECT_DIR$/resources/_assets/_guest/img/footer/payment_methods.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/confirmationpage/Group 533.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/confirmationpage/Group 533@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/confirmationpage/PayPal-Logo.wine.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/confirmationpage/PayPal-Logo.wine@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/confirmationpage/confirmationimg.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/demo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/demotwo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/download.htm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/footer/Icon awesome-facebook-f.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/footer/Icon awesome-facebook-f.svg" beforeDir="false" afterPath="$PROJECT_DIR$/resources/_assets/_guest/img/footer/facebook.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/footer/Icon awesome-facebook-f@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/footer/Icon awesome-linkedin-in.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/footer/Icon awesome-linkedin-in.svg" beforeDir="false" afterPath="$PROJECT_DIR$/resources/_assets/_guest/img/footer/linkedin.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/footer/Icon awesome-linkedin-in@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/footer/Icon awesome-twitter.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/footer/Icon awesome-twitter.svg" beforeDir="false" afterPath="$PROJECT_DIR$/resources/_assets/_guest/img/footer/twitter.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/footer/Icon awesome-twitter@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/footer/Icon awesome-youtube.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/footer/Icon awesome-youtube.svg" beforeDir="false" afterPath="$PROJECT_DIR$/resources/_assets/_guest/img/footer/youtube.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/footer/Icon awesome-youtube@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/footerpaymentmethod.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/notfoundpage/notfound.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/paymentdetails/Group 248.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/paymentdetails/Group 249.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/paymentdetails/Icon ionic-ios-attach.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/paymentdetails/Path 1882.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/paymentdetails/bkash.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/paymentdetails/master.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/paymentdetails/paypal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/paymentdetails/visa.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/searchpage/liketodiscuss.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/searchpage/search.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/servicepage/homeservices/customer.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/servicepage/homeservices/employee.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/servicepage/homeservices/order.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/servicepage/homeservices/sales.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/servicepage/howdesignwalaworks/get_your_final_delivery.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/servicepage/howdesignwalaworks/place_order.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/servicepage/howdesignwalaworks/send_your_content.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/servicepage/icon_search.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/servicepage/main_image.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/servicepage/popularcategories/digital_marketing.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/servicepage/popularcategories/logo_branding.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/servicepage/popularcategories/photo_editing.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/servicepage/popularcategories/print_media.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/servicepage/popularcategories/seo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/servicepage/popularcategories/social_media.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/servicepage/popularcategories/web_design.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/servicepage/popularcategories/web_development.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/servicepage/popularcategories/wordpress.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/servicepage/videobanner.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/servicepage/whydesignwalasection/human.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/servicepage/whydesignwalasection/modern_designs.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/servicepage/whydesignwalasection/on_time_delivery.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/servicepage/whydesignwalasection/reliable_and_quick.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/servicepage/whydesignwalasection/satisfactory_services.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/servicepage/whydesignwalasection/unlimited_revisions.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/singlecategorypage/singlecategorydetails.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/sjkq9o.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/svg/facebook.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/svg/instagram.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/svg/linkedin.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/svg/twitter.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/img/svg/youtube.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/js/guest.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/video/Sticker.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/plugins/dropzone/js/dropzone.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_assets/plugins/dropzone/js/dropzone.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendor/plugins/jquery-modal/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/_assets/plugins/jquery-modal/css/custom.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendor/plugins/jquery-modal/css/jquery.modal.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/_assets/plugins/jquery-modal/css/jquery.modal.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendor/plugins/jquery-modal/js/custom.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/_assets/plugins/jquery-modal/js/custom.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vendor/plugins/jquery-modal/js/jquery.modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/_assets/plugins/jquery-modal/js/jquery.modal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_custom/css/custom_styles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_custom/js/custom_scripts.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/css/bootstrap4/css/bootstrap-grid.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/css/bootstrap4/css/bootstrap-grid.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/css/bootstrap4/css/bootstrap-grid.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/css/bootstrap4/css/bootstrap-grid.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/css/bootstrap4/css/bootstrap-reboot.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/css/bootstrap4/css/bootstrap-reboot.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/css/bootstrap4/css/bootstrap-reboot.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/css/bootstrap4/css/bootstrap-reboot.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/css/bootstrap4/css/bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/css/bootstrap4/css/bootstrap.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/css/bootstrap4/css/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/css/bootstrap4/css/bootstrap.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/css/filepond/filepond-plugin-image-preview.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/css/filepond/filepond.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/css/font/all.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/css/loader.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/css/loader2.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/css/media.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/_assets/_guest/css/media.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/css/menukit.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/css/menukit.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/css/owl.carousel.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/css/owl.theme.default.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/_assets/_guest/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/css/v5/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/filepond/css/filepond-plugin-image-preview.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/filepond/css/filepond.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/filepond/filepond.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/filepond/js/filepond-plugin-file-encode.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/filepond/js/filepond-plugin-file-validate-size.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/filepond/js/filepond-plugin-image-exif-orientation.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/filepond/js/filepond-plugin-image-preview.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/filepond/js/filepond.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/fonts/fonts.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/img/D.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/img/DESIGNWALA.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/img/Group 187.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/img/Group 650.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/img/Group 650.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/img/Icon awesome-google.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/img/Icon awesome-twitter.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/img/Icon zocial-facebook.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/img/Payment_Methods.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/img/confirmationpage/Group 533.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/img/confirmationpage/Group 533@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/img/confirmationpage/PayPal-Logo.wine.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/img/confirmationpage/PayPal-Logo.wine@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/img/demo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/img/demotwo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/img/download.htm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/img/footer/Icon awesome-facebook-f.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/img/footer/Icon awesome-facebook-f.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/img/footer/Icon awesome-facebook-f@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/img/footer/Icon awesome-linkedin-in.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/img/footer/Icon awesome-linkedin-in.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/img/footer/Icon awesome-linkedin-in@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/img/footer/Icon awesome-twitter.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/img/footer/Icon awesome-twitter.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/img/footer/Icon awesome-twitter@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/img/footer/Icon awesome-youtube.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/img/footer/Icon awesome-youtube.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/img/footer/Icon awesome-youtube@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/img/footerpaymentmethod.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/img/notfoundpage/notfound.svg" beforeDir="false" afterPath="$PROJECT_DIR$/resources/_assets/_guest/img/notfoundpage/notfound.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/img/paymentdetails/Group 248.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/img/paymentdetails/Group 249.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/img/paymentdetails/Icon ionic-ios-attach.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/img/paymentdetails/Path 1882.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/img/searchpage/liketodiscuss.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/img/searchpage/search.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/img/servicepage/icon_search.svg" beforeDir="false" afterPath="$PROJECT_DIR$/resources/_assets/_guest/img/servicepage/icon_search.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/img/servicepage/videobanner.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/img/sjkq9o.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/js/bootstrap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/js/bootstrap.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/js/bootstrap4/js/bootstrap.bundle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/js/bootstrap4/js/bootstrap.bundle.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/js/bootstrap4/js/bootstrap.bundle.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/js/bootstrap4/js/bootstrap.bundle.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/js/bootstrap4/js/bootstrap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/js/bootstrap4/js/bootstrap.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/js/bootstrap4/js/bootstrap.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/js/bootstrap4/js/bootstrap.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/js/bootstrap5/bootstrap.bundle.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/js/bootstrap5/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/_assets/_guest/js/bootstrap5/bootstrap.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/js/bootstrap5/jquery.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/js/bootstrap5/popper.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/_assets/_guest/js/bootstrap5/popper.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/js/count.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/js/filepond/filepond-plugin-file-encode.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/js/filepond/filepond-plugin-file-validate-size.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/js/filepond/filepond-plugin-image-exif-orientation.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/js/filepond/filepond-plugin-image-preview.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/js/filepond/filepond.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/js/jquery-3.5.1.slim.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/js/jquery-ui.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/js/jquery.counterup.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/js/loader.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/js/loader2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/js/menukit.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/js/offcanvas.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/js/owl.carousel.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/js/owl.carousel.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/js/remote.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/_assets/_guest/js/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/video/Sticker.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,6 +304,14 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="GithubProjectSettings">
+    <option name="branchProtectionPatterns">
+      <list>
+        <option value="main" />
+        <option value="dev" />
+      </list>
+    </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -119,7 +377,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
       <path value="$PROJECT_DIR$/vendor/laravel/breeze" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php72" />
-      <path value="$PROJECT_DIR$/vendor/laravel/telescope" />
       <path value="$PROJECT_DIR$/vendor/symfony/mime" />
       <path value="$PROJECT_DIR$/vendor/laravel/tinker" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
@@ -204,6 +461,7 @@
       <path value="$PROJECT_DIR$/vendor/psr/http-client" />
       <path value="$PROJECT_DIR$/vendor/psr/http-message" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php81" />
+      <path value="$PROJECT_DIR$/vendor/laravel/telescope" />
     </include_path>
   </component>
   <component name="ProjectId" id="1w85HkfDnyowSi3CJOLdXF8weCE" />
@@ -281,14 +539,7 @@
       <workItem from="1630933831557" duration="139926000" />
       <workItem from="1631616254117" duration="914000" />
       <workItem from="1631739125452" duration="159000" />
-      <workItem from="1631739326257" duration="1127000" />
-    </task>
-    <task id="LOCAL-00019" summary="[filesystem] - added media library handler class and completed service filesystem change">
-      <created>1628295178049</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1628295178049</updated>
+      <workItem from="1631739326257" duration="21695000" />
     </task>
     <task id="LOCAL-00020" summary="[filesystem] - made dropzone dynamic for multiple dropzone in one page">
       <created>1628297434899</created>
@@ -626,7 +877,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631535348945</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="[assign-order] - assign order notification and mail">
+      <created>1631740557159</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1631740557160</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

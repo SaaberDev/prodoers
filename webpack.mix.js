@@ -14,18 +14,8 @@ const mix = require('laravel-mix');
 // Laravel Default
 mix.js('resources/js/app.js', 'public/js/app.js')
     .postCss('resources/css/app.css', 'public/css/app.css', [
-        // require('postcss-import'),
-        // require('tailwindcss'),
-        // require('autoprefixer'),
+        //
     ])
-    .stylus('node_modules/flatpickr/src/style/flatpickr.styl', 'public/css/app.css')
-    // Application Default Custom
-    .styles([
-        'resources/_assets/_custom/css/custom_styles.css',
-    ], 'public/_assets/_custom/css/custom_styles.css')
-    .scripts([
-        'resources/_assets/_custom/js/custom_scripts.js'
-    ],'public/_assets/_custom/js/custom_scripts.js')
 
     /*
     |--------------------------------------------------------------------------
@@ -62,36 +52,18 @@ mix.js('resources/js/app.js', 'public/js/app.js')
     |--------------------------------------------------------------------------
     */
     .styles([
-    'resources/_assets/_guest/fonts/fonts.css',
-    'resources/_assets/_guest/css/v5/bootstrap.min.css',
-    'resources/_assets/_guest/css/filepond/filepond.min.css',
-    'resources/_assets/_guest/css/filepond/filepond-plugin-image-preview.min.css',
-    'resources/_assets/_guest/css/menukit.css',
-    'resources/_assets/_guest/css/owl.carousel.min.css',
-    'resources/_assets/_guest/css/loader2.css',
-    'resources/_assets/_guest/css/style.css',
-    'resources/_assets/_guest/css/media.css',
-    'node_modules/node-snackbar/dist/snackbar.css',
-], 'public/_assets/_guest/css/guest.css')
+        'resources/_assets/_guest/css/bootstrap5/bootstrap.min.css',
+        'resources/_assets/_guest/css/menu-kit.css',
+        'resources/_assets/_guest/css/style.css',
+        'resources/_assets/_guest/css/media.css'
+    ], 'public/_assets/_guest/css/main.css')
     .scripts([
-        'resources/_assets/_guest/js/bootstrap5/jquery.min.js',
-        'resources/_assets/_guest/js/bootstrap5/popper.min.js',
+        'resources/_assets/_guest/js/jquery/jquery.min.js',
         'resources/_assets/_guest/js/bootstrap5/bootstrap.min.js',
-        'resources/_assets/_guest/js/count.js',
-        'resources/_assets/_guest/js/owl.carousel.min.js',
-        'resources/_assets/_guest/js/offcanvas.js',
-        'resources/_assets/_guest/js/loader.js',
-        'node_modules/node-snackbar/dist/snackbar.js',
-
-        // Filepond
-        'resources/_assets/_guest/filepond/js/filepond-plugin-file-encode.min.js',
-        'resources/_assets/_guest/filepond/js/filepond-plugin-file-validate-size.min.js',
-        'resources/_assets/_guest/filepond/js/filepond-plugin-image-exif-orientation.min.js',
-        'resources/_assets/_guest/filepond/js/filepond-plugin-image-preview.min.js',
-        'resources/_assets/_guest/filepond/js/filepond.min.js',
-        'resources/_assets/_guest/js/script.js',
-
-    ], 'public/_assets/_guest/js/guest.js')
+        'resources/_assets/_guest/js/bootstrap5/popper.min.js',
+        'resources/_assets/_guest/js/off-canvas/off-canvas.js',
+        'resources/_assets/_guest/js/script.js'
+    ], 'public/_assets/_guest/js/main.js')
     .copyDirectory('resources/_assets/_guest/img', 'public/_assets/_guest/img')
     .copyDirectory('resources/_assets/_guest/video', 'public/_assets/_guest/video')
 
@@ -100,12 +72,52 @@ mix.js('resources/js/app.js', 'public/js/app.js')
     | Plugins
     |--------------------------------------------------------------------------
     */
+
+    // Flatpickr
+    .styles([
+        'node_modules/flatpickr/dist/flatpickr.css'
+    ], 'public/_assets/plugins/flatpickr/flatpickr.css')
+    .scripts([
+        'node_modules/flatpickr/dist/flatpickr.js'
+    ], 'public/_assets/plugins/flatpickr/flatpickr.js')
+
+    // Counter
+    .scripts([
+        'resources/_assets/plugins/counter/js/count.js'
+    ], 'public/_assets/plugins/counter/js/count.js')
+
+    // FancyBox
+    .styles([
+        'resources/_assets/plugins/fancybox/css/jquery.fancybox.min.css',
+    ], 'public/_assets/plugins/fancybox/css/fancybox.css')
+    .scripts([
+        'resources/_assets/plugins/fancybox/js/jquery.fancybox.min.js'
+    ], 'public/_assets/plugins/fancybox/js/fancybox.js')
+
+    // Slick
+    .styles([
+        'resources/_assets/plugins/slick/css/slick.css',
+        'resources/_assets/plugins/slick/css/slick-theme.css'
+    ], 'public/_assets/plugins/slick/css/slick.css')
+    .scripts([
+        'resources/_assets/plugins/slick/js/slick.min.js',
+        'resources/_assets/plugins/slick/js/slick-init.js'
+    ], 'public/_assets/plugins/slick/js/slick.js')
+
+    // Owl Carousel
+    .styles([
+        'resources/_assets/plugins/owl-carousel/css/owl.carousel.min.css'
+    ], 'public/_assets/plugins/owl-carousel/css/owl-carousel.css')
+    .scripts([
+        'resources/_assets/plugins/owl-carousel/js/owl.carousel.min.js'
+    ], 'public/_assets/plugins/owl-carousel/js/owl-carousel.js')
+
     // Dropzone
     .styles([
         'resources/_assets/plugins/dropzone/css/dropzone.css',
         'resources/_assets/plugins/dropzone/css/custom.css'
     ], 'public/_assets/plugins/dropzone/css/dropzone.css')
-    .js([
+    .scripts([
         'resources/_assets/plugins/dropzone/js/dropzone-amd-module.js'
     ], 'public/_assets/plugins/dropzone/js/dropzone.js')
 
@@ -118,6 +130,16 @@ mix.js('resources/js/app.js', 'public/js/app.js')
     .scripts([
         'resources/_assets/plugins/select2/js/select2.full.js'
     ], 'public/_assets/plugins/select2/js/select2.js')
+
+    // jQuery Modal
+    .styles([
+        'resources/_assets/plugins/jquery-modal/css/jquery.modal.css',
+        'resources/_assets/plugins/jquery-modal/css/custom.css'
+    ], 'public/_assets/plugins/jquery-modal/css/jquery-modal.css')
+    .scripts([
+        'resources/_assets/plugins/jquery-modal/js/jquery.modal.js',
+        'resources/_assets/plugins/jquery-modal/js/custom.js'
+    ], 'public/_assets/plugins/jquery-modal/js/jquery-modal.js')
 ;
 
 
