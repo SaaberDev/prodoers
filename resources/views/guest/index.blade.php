@@ -2,31 +2,22 @@
 {{--@section('title', 'Designwala')--}}
 
 @push('styles')
-    <style>
-        .list-group-item-action:focus, .list-group-item-action:hover {
-            z-index: 1;
-            color: #495057;
-            text-decoration: none;
-            background-color: rgb(235 246 236);
-        }
-    </style>
+    {{----}}
 @endpush
 
 @section('content')
     {{-- Banner Section Start --}}
-    <div class="section sectionServiceBanner ptSm50 pbSm50 animate-bottom" id="sectionServiceBanner" >
-        <div class="container-xl container-fluid-lg">
+    <div class="section sectionServiceBanner ptSm50 pbSm50 animate-bottom" id="sectionServiceBanner">
+        <div class="container-xl container">
             <div class="row">
-                <div class="col-lg-7 col-md-12 mt-3">
+                <div class="col-lg-7 col-md-12 v-center">
                     <div class="sectionServiceBannerContent textsm-center">
-{{--                        <h1 class="font-medium d-none d-lg-block">Stop wasting time on hassling, let professionals do your job.</h1>--}}
-                        <h1 class="font-medium d-none d-lg-block">Search Your Desired Services</h1>
-{{--                        <h1 class="font-medium d-lg-none d-md-block text-center">Stop wasting time on hassling,<br> let professionals do your job.</h1>--}}
-                        <h1 class="font-medium d-lg-none d-md-block text-center">Search Your Desired Services</h1>
-{{--                        <p class="d-none d-lg-block">Search your desired services</p>--}}
-                        <p class="d-none d-lg-block">Stop wasting time on hassling, let professionals do your job.</p>
-{{--                        <p class="d-lg-none d-md-block text-center">Search your desire services</p>--}}
-                        <p class="d-lg-none d-md-block text-center">Stop wasting time on hassling,<br> let professionals do your job.</p>
+                        <h1 class="font-medium d-none d-lg-block">Stop wasting time on hassling, let professionals do your job.</h1>
+                        <h1 class="font-medium d-lg-none d-md-block text-center">Stop wasting time on hassling,<br> let professionals do your job.</h1>
+                        <p class="d-none d-lg-block">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat </p>
+                        <p class="d-lg-none d-md-block text-center">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat </p>
+
+                        {{-- Search Component --}}
                         @livewire('guest.search.guest-search-component')
                     </div>
                 </div>

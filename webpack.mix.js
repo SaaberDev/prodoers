@@ -52,7 +52,7 @@ mix.js('resources/js/app.js', 'public/js/app.js')
     |--------------------------------------------------------------------------
     */
     .styles([
-        'resources/_assets/_guest/css/bootstrap5/bootstrap.min.css',
+        'resources/_assets/_guest/css/bootstrap.min.css',
         'resources/_assets/_guest/css/menu-kit.css',
         'resources/_assets/_guest/css/style.css',
         'resources/_assets/_guest/css/media.css'
