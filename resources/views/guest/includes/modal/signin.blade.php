@@ -3,8 +3,8 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12 text-center">
-                <h4 class="pb-4">Sign In</h4>
-                <p>Connect with</p>
+                <h3>Sign In</h3>
+                <p class="pt-3">Connect with</p>
                 <div class="modalButton">
                     <button type="button"
                             onclick="location.href='{{ route('socialite.index', 'facebook') }}'"
