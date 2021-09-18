@@ -19,6 +19,7 @@
 
                         {{-- search component --}}
                         @livewire('guest.search.guest-search-component')
+
                     </div>
                 </div>
                 <div class="col-lg-5 col-md-12 v-center">

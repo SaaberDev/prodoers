@@ -352,7 +352,7 @@ a#dropdownMenuLink {
 
 .dropdown-toggle::after {
     margin-left: 1em!important;
-    
+
 }
 
 
@@ -503,11 +503,11 @@ h4.pb-4 {
 /* singup css end */
 
 header#designwalaHeader nav.navbar .navbar-nav li {
-        line-height: 2;
+    line-height: 2;
 }
 
 header#adminHeader nav.navbar .navbar-nav li {
-        line-height: 3;
+    line-height: 3;
 }
 
 .sectionServiceBanner {
@@ -794,7 +794,7 @@ a {
 
 .searchPageResultSingle {
     box-shadow: 0px 3px 10px #2125291a;
-} 
+}
 
 .searchPageResultSingle .card-body .card-title {
     margin-bottom: 0;
@@ -1006,7 +1006,7 @@ button.close {
     text-align: right;
 }
 .forgotPass a{
-  color: #038D08!important;
+    color: #038D08!important;
 }
 
 
@@ -1131,7 +1131,7 @@ button.close {
 }
 .filepond--drop-label {
     justify-content: flex-start!important;
-    
+
 }
 
 
@@ -1513,7 +1513,7 @@ div.selectablescustom .form-check {
 .selectablescustom :checked + label:before {
     content: "✓";
     background-color: #038D08;
-    ;
+;
     transform: scale(1);
 }
 .selectablescustom :checked + label img {
@@ -1651,10 +1651,10 @@ a[aria-expanded="true"] .nav-arrow {
 }
 .joinUsmodal ul li a {
     color: #6c757d !important;
-     font-size: 20px;
+    font-size: 20px;
 }
 .joinUsmodal ul li a.active {
-       color: #038D08 !important;
+    color: #038D08 !important;
     background: transparent !important;
     border-bottom: 3px solid #038D08;
     border-radius: 0px !important;
@@ -1666,10 +1666,10 @@ a[aria-expanded="true"] .nav-arrow {
     border-right: 0px;
 }
 .joinUsmodal ul li:focus {
-       outline: none !important;
+    outline: none !important;
 }
 .modal.show {
-    
+
     padding-right: 0px !important;
 }
 
@@ -1713,7 +1713,7 @@ a[aria-expanded="true"] .nav-arrow {
     background-color: #fff;
     border: none;
     border-bottom: 2px solid #038D08;
-    
+
 }
 
 .wsm-1001 {
@@ -1742,10 +1742,10 @@ a[aria-expanded="true"] .nav-arrow {
 }
 .notfound-p {
     font-size: 22px;
-     position: absolute;
-     left: 0;
-     right: 0;
-     bottom: 10%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 10%;
 }
 
 /* not found page End */
@@ -1834,7 +1834,7 @@ a[aria-expanded="true"] .nav-arrow {
     font-size: 22px;
     font-weight: 300;
     color: #141414!important;
-    
+
 }
 .login_email,
 .login_pass,
@@ -1847,7 +1847,7 @@ a[aria-expanded="true"] .nav-arrow {
     padding-left: 25px;
 }
 
-.last_one p {   
+.last_one p {
     padding-bottom: 25px;
     text-align: center;
     color: #141414;
@@ -1864,9 +1864,9 @@ a[aria-expanded="true"] .nav-arrow {
 }
 
 
- input:focus {
+input:focus {
     border: 1px solid #038D08;
-} 
+}
 .forget {
     width: 230px;
     margin: 0 auto;
@@ -2399,7 +2399,7 @@ svg.bi.bi-ui-radios-grid {
     padding-bottom: 40px;
 }
 .order-wraper {
-    
+
     padding:0px 25px;
     box-shadow: 0px 3px 10px #2125291a;
 }
@@ -2421,11 +2421,11 @@ svg.bi.bi-ui-radios-grid {
     font-weight: 600;
     margin-bottom: 0;
     margin-left: 6px;
-    
+
 }
 /* .review-area, */
 .order-price-total {
- position: relative;
+    position: relative;
 }
 
 .order-wraper .order-wraper{
@@ -2447,7 +2447,7 @@ svg.bi.bi-ui-radios-grid {
     font-size: 12px;
     font-weight: 400;
     line-height: 24px;
-    
+
 }
 ::placeholder {
     color: #A29F9D !important;
@@ -2503,8 +2503,8 @@ span.nav-arrow.custom-arrow img{
 .text-area-wraper .problem {
     background-color: #f6f6f6;
     margin-top: 66px;
-    
-    
+
+
 }
 
 .problem span {
@@ -2535,7 +2535,7 @@ span.nav-arrow.custom-arrow img{
     font-weight: 400;
     margin-bottom: 8px;
     list-style-type: square;
-} 
+}
 .Instruction p {
     background-color: #f6f6f6;
     padding: 22px;
@@ -2585,12 +2585,12 @@ span.nav-arrow.custom-arrow img{
     font-weight: 500;
 }
 .total-section p {
-   margin: 0;
-   padding: 31px 0;
-   font-size: 12px;
-   font-weight: 300;
-   color: #B1B1B1;
-   
+    margin: 0;
+    padding: 31px 0;
+    font-size: 12px;
+    font-weight: 300;
+    color: #B1B1B1;
+
 }
 input.cp {
     width: 100%;
@@ -2633,9 +2633,9 @@ section.Order-Requirement {
     margin: 0;
 }
 .my-label{
-        margin: 25px 0;
-        padding: 0;
-        text-align: end;
+    margin: 25px 0;
+    padding: 0;
+    text-align: end;
 }
 label.paymentdetailsCheck.my-label {
     margin: 30px 0 15px 0;
@@ -2646,7 +2646,7 @@ label.paymentdetailsCheck.my-label {
     color: #212529!important;
 }
 .payment_gatway_wraper h4 {
-    font-size: 24px; 
+    font-size: 24px;
     font-weight: 500;
 }
 .cupon-wraper {
@@ -2671,21 +2671,21 @@ h4.text-center.m-t {
     margin-bottom: 0;
 }
 
- .filepond--drop-label.filepond--drop-label label {
-     width: 100%;
-     display: flex;
-     justify-content: space-between;
-     margin: 0;
-     padding: .5em;
- }
- span.filepond--label-action:focus {
+.filepond--drop-label.filepond--drop-label label {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: .5em;
+}
+span.filepond--label-action:focus {
 
-     outline: 0;
- }
- .problem span {
-     padding-inline: 16px;
- }
- .orderSummery{
+    outline: 0;
+}
+.problem span {
+    padding-inline: 16px;
+}
+.orderSummery{
     display:none;
 }
 /* order Requirement end */
@@ -2698,11 +2698,11 @@ h4.text-center.m-t {
     right: 10px;
     bottom: 0px;
     z-index: 999;
-        
+
 }
 .input-group-append2 button{
     border: 0;
-    background: transparent; 
+    background: transparent;
 }
 /* single-category-item start */
 .banner-wraper{
@@ -2732,12 +2732,12 @@ h4.text-center.m-t {
 }
 .social-banner-a img{
     margin-left: 10px;
-} 
+}
 .social-banner-a span.pd-10 svg {
     margin-right: 8px;
 }
 .social-banner-a span.pd-10.home svg {
-   margin-bottom: 4px;
+    margin-bottom: 4px;
 }
 .sale-share > a:first-child {
     display: inline-block;
@@ -2789,7 +2789,7 @@ h2.m-top {
     font-size: 20px;
     font-weight: 500;
     padding-bottom: 15px;
-    
+
 }
 .requirement p {
     font-size: 16px;
@@ -2972,7 +2972,7 @@ p.text-color {
 
 /*Dropzone CSS*/
 
-  .dropzone {
+.dropzone {
     min-height: 75px;
     background-color: #f6f6f6;
     padding: 10px 12px;
@@ -2981,7 +2981,7 @@ p.text-color {
     align-items: center;
     justify-content:center;
     flex-wrap: wrap;
-  }
+}
 
 .dropzone .dz-message {
     text-align: center;
@@ -3052,15 +3052,15 @@ p.text-color {
 
 /*How Designwala work*/
 
-   .inst_img .play_btn {
+.inst_img .play_btn {
     overflow: hidden;
     z-index: 9;
-  }
-  .inst_img .play_btn button{
-      border: none;
-      background: transparent;
-  }
-   .inst_img .play_btn img {
+}
+.inst_img .play_btn button{
+    border: none;
+    background: transparent;
+}
+.inst_img .play_btn img {
     width: 80px;
     height: 80px;
     line-height: 80px;
@@ -3070,24 +3070,24 @@ p.text-color {
     cursor: pointer;
     -webkit-transition: .7s;
     transition: .7s;
-  }
-    .inst_img .load_css {
+}
+.inst_img .load_css {
     position: absolute;
     top: 42%;
     left: 42%;
     z-index: 2;
-  }
-  
-    .inst_img .load_css .ball-scale-multiple div {
+}
+
+.inst_img .load_css .ball-scale-multiple div {
     width: 180px;
     height: 180px;
     background-color: #038d0896;
     -webkit-animation-duration: 1.5s;
-            animation-duration: 1.5s;
-  }
-  
+    animation-duration: 1.5s;
+}
 
-  @-webkit-keyframes ball-scale-multiple {
+
+@-webkit-keyframes ball-scale-multiple {
     0% {
         -webkit-transform: scale(0);
         transform: scale(0);
@@ -3228,6 +3228,8 @@ p.text-color {
     font-size: 18px;
     font-weight:400;
     line-height:32px;
+    padding: 1px 30px 1px 15px;
+    display: block;
 }
 
 .error-message{
@@ -3243,6 +3245,7 @@ p.text-color {
 .warning-border-color{
     border: 1px solid #dc3545!important;
 }
+
 /* Extra small devices (portrait phones, less than 375 px)*/
 @media (min-width: 320px) and (max-width: 575.98px) {
   /* order-section for mobile */
