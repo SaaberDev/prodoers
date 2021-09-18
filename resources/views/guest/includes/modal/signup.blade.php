@@ -1,10 +1,9 @@
 <div class="modalCtm" id="sign_up" style="display:none;">
-
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12 text-center">
-                <h4 class="pb-4">Sign Up</h4>
-                <p>Connect with</p>
+                <h3>Sign Up</h3>
+                <p class="pt-3">Connect with</p>
                 <div class="modalButton">
                     <button type="button" class="btn bgFb"><svg xmlns="http://www.w3.org/2000/svg" width="16.885" height="31.385" viewBox="0 0 16.885 31.385">
                             <path id="Icon_zocial-facebook" data-name="Icon zocial-facebook" d="M13.257,16.854V10.86h4.834V7.846a7.887,7.887,0,0,1,2.118-5.555A6.737,6.737,0,0,1,25.34,0h4.8V5.995h-4.8a1.057,1.057,0,0,0-.846.518,2.1,2.1,0,0,0-.377,1.271v3.076h6.025v5.994H24.116V31.385H18.09V16.854Z" transform="translate(-13.257)" fill="#fff" />

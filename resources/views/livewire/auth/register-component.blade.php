@@ -13,7 +13,7 @@
         <div class="mb-3 col-md-12">
             <input type="text"
                    wire:model.defer="form.email"
-                   class="form-control {{ $errors->has('form.email') ? ' is-invalid' : '' }}"
+                   class="form-control login_email {{ $errors->has('form.email') ? ' is-invalid' : '' }}"
                    id="exampleInputEmail1"
                    aria-describedby="emailHelp"
                    placeholder="{{ __('Email Address') }}"
@@ -27,7 +27,7 @@
         <div class="mb-3 col-md-12">
             <input type="password"
                    wire:model.defer="form.password"
-                   class="form-control {{ $errors->has('form.password') ? ' is-invalid' : '' }}"
+                   class="form-control login_pass {{ $errors->has('form.password') ? ' is-invalid' : '' }}"
                    id="exampleInputPassword1"
                    placeholder="{{ __('Password') }}"
             >
@@ -40,7 +40,7 @@
         <div class="mb-3 col-md-12">
             <input type="password"
                    wire:model.defer="form.confirm_password"
-                   class="form-control {{ $errors->has('form.confirm_password') ? ' is-invalid' : '' }}"
+                   class="form-control login_confirm_pass {{ $errors->has('form.confirm_password') ? ' is-invalid' : '' }}"
                    id="exampleInputPassword1"
                    placeholder="{{ __('Confirm Password') }}"
             >
@@ -53,23 +53,29 @@
             {{--            symbol.</label>--}}
         </div>
         <div class="col-md-12">
-            <button type="submit" class="btn btn-block bgOne text-white py-2">
+            <button type="submit" class="btn btn-block bgOne text-white py-2 signUp_button">
                 {{ __('Sign Up') }}
             </button>
         </div>
+
+
         <div class="col-md-12">
             <div class="row py-4">
                 <div class="col-md-12">
-                    <label class="form-check-label paymentdetailsCheck" for="gridCheck" style="display: inline;">
-                        By signing up, I agree to<span class=""> Designwala's</span>
-                        <span><button class="btn btn-link m-0 p-0" type="button" data-toggle="modal" data-target="#exampleModal-1"> Terms &amp; Condition</button></span> and
-                        <span><button class="btn btn-link m-0 p-0" type="button" data-toggle="modal" data-target="#exampleModal-2">Privacy Policy</button>, as well as receive occasional emails.</span>
-                    </label>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label agreement" style="font-size: 15px">
+                            By signing up, I agree to<span class="colorOne"> ProDoers</span>
+                            <span><a href="{{ route('guest.policy.terms_and_conditions') }}" class="btn btn-link m-0 p-0" style="font-size: 15px; color: #000000; font-weight: 600;" type="button" target="_blank"> Terms &amp; Condition</a></span> and
+                            <span><a href="{{ route('guest.policy.privacy') }}" class="btn btn-link m-0 p-0" style="font-size: 15px; color: #000000; font-weight: 600;" type="button" target="_blank">Privacy Policy</a>, as well as receive promotional emails.</span>
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>
+
         <div class="col-md-12">
-            <div class="text-center">
+            <div class="text-center forgotPass">
                 <h6>Already a member?
                     <a class="btn colorOne px-0" href="#sign_in">Sign In</a>
                 </h6>
