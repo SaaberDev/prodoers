@@ -2,11 +2,11 @@
 {{--@section('title', 'Designwala')--}}
 
 @push('styles')
-    {{----}}
+    {{-- internal css --}}
 @endpush
 
 @section('content')
-    {{-- Banner Section Start --}}
+    {{-- banner section start --}}
     <div class="section sectionServiceBanner ptSm50 pbSm50 animate-bottom" id="sectionServiceBanner">
         <div class="container-xl container">
             <div class="row">
@@ -17,7 +17,7 @@
                         <p class="d-none d-lg-block">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat </p>
                         <p class="d-lg-none d-md-block text-center">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat </p>
 
-                        {{-- Search Component --}}
+                        {{-- search component --}}
                         @livewire('guest.search.guest-search-component')
                     </div>
                 </div>
@@ -29,330 +29,454 @@
             </div>
         </div>
     </div>
-    {{-- Banner Section End --}}
+    {{-- banner section end --}}
 
-    {{-- Why Designwala Section Start --}}
+    {{-- why prodoers section start --}}
     <div class="section whydesignWala" id="whydesignWala">
         <div class="container">
+            <h2 class="d-block d-md-none text-center">Why designwala?</h2>
             <div class="row bg-white whyDesignwalaPosition">
-{{--                @foreach($service_processes->where('type', '=', 'image') as $service_process)--}}
-                <div class="col-lg-2 col-md-6 p-0 ">
-                    <div class="whydesignwalaSingleService p-3">
-                        <div class="text-center pt-3 pb-2">
-                            <img src="{{ asset(/*$service_process->value ? config('designwala_paths.show.site_cms.service_process') . $service_process->value : */config('designwala_paths.default.service_process_1')) }}" alt="service image" class="img-fluid ">
+                <!----------- box one ------------->
+                <div class="col-lg-2 col-md-4 col-6 p-0 ">
+                    <div class="whydesignwalaSingleService p_3">
+                        <div class="text-center ptpb_32">
+                            <img src="{{ asset('_assets/_guest/img/servicepage/whydesignwalasection/reliable_and_quick.svg') }}" alt="service image" class="img-fluid ">
                         </div>
-                        <div class="text-center py-3">
+                        <div class="text-center py_3">
                             <p class="mb-0">Reliable and Quick Communication</p>
                         </div>
                     </div>
                 </div>
-{{--                @endforeach--}}
-                {{--<div class="col-lg-2 col-md-6 p-0 ">
-                    <div class="whydesignwalaSingleService p-3">
-                        <div class="text-center pt-3 pb-2">
+                <!--                box two -->
+                <div class="col-lg-2 col-md-4 col-6 p-0 ">
+                    <div class="whydesignwalaSingleService p_3">
+                        <div class="text-center ptpb_32">
                             <img src="{{ asset('_assets/_guest/img/servicepage/whydesignwalasection/human.svg') }}" alt="service image" class="img-fluid ">
                         </div>
-                        <div class="text-center py-3">
+                        <div class="text-center py_3">
                             <p class="mb-0">Reliable and Quick Communication</p>
                         </div>
                     </div>
                 </div>
                 <!--                box three -->
-                <div class="col-lg-2 col-md-6 p-0 ">
-                    <div class="whydesignwalaSingleService p-3">
-                        <div class="text-center pt-3 pb-2">
+                <div class="col-lg-2 col-md-4 col-6 p-0 ">
+                    <div class="whydesignwalaSingleService p_3">
+                        <div class="text-center ptpb_32">
                             <img src="{{ asset('_assets/_guest/img/servicepage/whydesignwalasection/satisfactory_services.svg') }}" alt="service image" class="img-fluid ">
                         </div>
-                        <div class="text-center py-3">
+                        <div class="text-center py_3">
                             <p class="mb-0">Satisfactory and Quick Communication</p>
                         </div>
                     </div>
                 </div>
                 <!--                box four -->
-                <div class="col-lg-2 col-md-6 p-0 ">
-                    <div class="whydesignwalaSingleService p-3">
-                        <div class="text-center pt-3 pb-2">
+                <div class="col-lg-2 col-md-4 col-6 p-0 ">
+                    <div class="whydesignwalaSingleService p_3">
+                        <div class="text-center ptpb_32">
                             <img src="{{ asset('_assets/_guest/img/servicepage/whydesignwalasection/modern_designs.svg') }}" alt="service image" class="img-fluid ">
                         </div>
-                        <div class="text-center py-3">
+                        <div class="text-center py_3">
                             <p class="mb-0">Reliable and Quick Communication</p>
                         </div>
                     </div>
                 </div>
                 <!--                box five -->
-                <div class="col-lg-2 col-md-6 p-0 ">
-                    <div class="whydesignwalaSingleService p-3">
-                        <div class="text-center pt-3 pb-2">
+                <div class="col-lg-2 col-md-4 col-6 p-0 ">
+                    <div class="whydesignwalaSingleService p_3">
+                        <div class="text-center ptpb_32">
                             <img src="{{ asset('_assets/_guest/img/servicepage/whydesignwalasection/on_time_delivery.svg') }}" alt="service image" class="img-fluid ">
                         </div>
-                        <div class="text-center py-3">
+                        <div class="text-center py_3">
                             <p class="mb-0">Reliable and Quick Communication</p>
                         </div>
                     </div>
                 </div>
                 <!--                box six -->
-                <div class="col-lg-2 col-md-6 p-0 ">
-                    <div class="whydesignwalaSingleService p-3">
-                        <div class="text-center pt-3 pb-2">
+                <div class="col-lg-2 col-md-4 col-6 p-0 ">
+                    <div class="whydesignwalaSingleService p_3">
+                        <div class="text-center ptpb_32">
                             <img src="{{ asset('_assets/_guest/img/servicepage/whydesignwalasection/unlimited_revisions.svg') }}" alt="service image" class="img-fluid ">
                         </div>
-                        <div class="text-center py-3">
+                        <div class="text-center py_3">
                             <p class="mb-0">Reliable and Quick Communication</p>
                         </div>
                     </div>
-                </div>--}}
+                </div>
             </div>
         </div>
     </div>
-    {{-- Why Designwala Section End --}}
 
-    {{-- Popular Categories Section Start --}}
-    <div class="section pb100 pt100 bgcustomLightgray ptSm50 pbSm50 sectionServicePopularCategories" id="sectionServicePopularCategories" style="">
+    <section class="whydesignWala-sm d-sm-none">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="whydesignWalaCarousel" class="carousel slide" data-bs-ride="carousel">
+
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="whydesignwalaSingleService p_3">
+                                            <div class="text-center ptpb_32">
+                                                <img src="{{ asset('_assets/_guest/img/servicepage/whydesignwalasection/reliable_and_quick.svg') }}" alt="service image" class="img-fluid ">
+                                            </div>
+                                            <div class="text-center py_3">
+                                                <p class="mb-0">Reliable and Quick Communication</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row">
+
+
+                                    <div class="col-12">
+                                        <div class="whydesignwalaSingleService p_3">
+                                            <div class="text-center ptpb_32">
+                                                <img src="{{ asset('_assets/_guest/img/servicepage/whydesignwalasection/human.svg') }}" alt="service image" class="img-fluid ">
+                                            </div>
+                                            <div class="text-center py_3">
+                                                <p class="mb-0">Reliable and Quick Communication</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row ">
+                                    <div class="col-12">
+                                        <div class="whydesignwalaSingleService p_3">
+                                            <div class="text-center ptpb_32">
+                                                <img src="{{ asset('_assets/_guest/img/servicepage/whydesignwalasection/satisfactory_services.svg') }}" alt="service image" class="img-fluid ">
+                                            </div>
+                                            <div class="text-center py_3">
+                                                <p class="mb-0">Satisfactory and Quick Communication</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row ">
+                                    <div class="col-12">
+                                        <div class="whydesignwalaSingleService p_3">
+                                            <div class="text-center ptpb_32">
+                                                <img src="{{ asset('_assets/_guest/img/servicepage/whydesignwalasection/modern_designs.svg') }}" alt="service image" class="img-fluid ">
+                                            </div>
+                                            <div class="text-center py_3">
+                                                <p class="mb-0">Reliable and Quick Communication</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="whydesignwalaSingleService p_3">
+                                            <div class="text-center ptpb_32">
+                                                <img src="{{ asset('_assets/_guest/img/servicepage/whydesignwalasection/on_time_delivery.svg') }}" alt="service image" class="img-fluid ">
+                                            </div>
+                                            <div class="text-center py_3">
+                                                <p class="mb-0">Reliable and Quick Communication</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="whydesignwalaSingleService p_3">
+                                            <div class="text-center ptpb_32">
+                                                <img src="{{ asset('_assets/_guest/img/servicepage/whydesignwalasection/unlimited_revisions.svg') }}" alt="service image" class="img-fluid ">
+                                            </div>
+                                            <div class="text-center py_3">
+                                                <p class="mb-0">Reliable and Quick Communication</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {{-- why prodoers section end --}}
+
+    {{-- popular categories section start --}}
+    <div class="section pb100 pt100 bgcustomLightgray ptSm50 pbSm50 sectionServicePopularCategories" id="sectionServicePopularCategories">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 text-center">
                     <h1 class=" font-medium populartext">Popular Categories</h1>
                 </div>
             </div>
-            <!--               popular categories items single-->
 
             <div class="row">
                 @foreach($popular_categories->take(9) as $popular_category)
-                    <div class="col-lg-4 col-md-6 text-center py-5 popularCetegoriesSmallpadding">
-                        <div class="sectionServicePopularCategoriesSingleCategories m-auto">
+                    <div class="col-lg-4 col-md-6 col-12 text-center py_md_5 popularCetegoriesSmallpadding">
+                        <div class="sectionServicePopularCategoriesSingleCategories  m-auto">
                             <div class="sectionServicePopularCategoriesSingleImage">
-{{--                                <img src="{{ asset($popular_category->category_thumbnail ? config('designwala_paths.show.service_categories.thumbnail') . $popular_category->category_thumbnail : config('designwala_paths.default.no_preview')) }}" alt="categories image one" class="img-fluid" loading="lazy">--}}
+                                <img src="{{ asset($popular_category->category_thumbnail ? config('designwala_paths.show.service_categories.thumbnail') . $popular_category->category_thumbnail : config('designwala_paths.default.no_preview')) }}" alt="categories image one" class="img-fluid">
                             </div>
                             <div class="sectionServicePopularCategoriesSingleContent">
                                 <h3 class="pt-3"><a href="{{ route('guest.service_category.index', $popular_category->slug) }}" class="text-dark">{{ $popular_category->title }}</a></h3>
-                                <p>{{ Str::limit($popular_category->short_desc, $limit = 20, $end = ' ...') }}</p>
+                                <p class="d-none d-md-block">{{ Str::limit($popular_category->short_desc, $limit = 20, $end = ' ...') }}</p>
                                 <h4 class="">Starts at ${{ $popular_category->services->min('price') }}</h4>
                             </div>
                         </div>
                     </div>
-                @endforeach
+            @endforeach
             </div>
         </div>
     </div>
-    {{-- Popular Categories Section End --}}
+    {{-- popular categories section end --}}
 
-    {{-- How designwala works Section Start --}}
-    <div class="section  sectionServiceHowdesignwalaWorks ptSm50 pbSm50" id="sectionServiceHowdesignwalaWorks">
+    {{-- how prodoers works section start --}}
+    <section class="main_how_works">
         <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <h1 class="pb-5 font-medium">How Designwala Works?</h1>
-                </div>
+            <div class="hw_h1">
+                <h1>How Designwala Works ?</h1>
             </div>
-            <div class="row justify-content-center py-4">
-                <div class="col-lg-6 col-md-12">
-                    <div class="card howdesignwalaworksCard mb-3" style="position: relative;">
-                        <div class="PointNo"> <span>1</span> </div>
-                        <div class="row no-gutters">
-                            <div class="col-md-8 py-4">
-                                <div class="card-body w-90 wSm100 textsm-center">
-                                    <h5 class="card-title colorgreen">Place Order</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <div class="row justify-content-between align-items-center">
+                <div class="col-lg-7">
+
+                    <div class="inst_img position-relative mb-4 mb-lg-0">
+                        <img src="{{ asset('_assets/_guest/img/servicepage/play-button-bg.jpg') }}" alt="designwala" class="img-fluid">
+                        <div class="play_btn position-absolute trans-center">
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#videoModal">
+                                <img src="{{ asset('_assets/_guest/img/servicepage/play-button.svg') }}" class="img-fluid border-rounded play_button" alt="designwala"></a>
+                            </button>
+                        </div>
+                        <div class="load_css">
+                            <div class="ball-scale-multiple">
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-5 col-xxl-4">
+                    <div class="hwpt">
+                        <!-- 1st -->
+                        <div class="hw_wrapper">
+                            <!-- <div class="row"> -->
+                            <div class="col-lg-3 col-3 col_3">
+                                <div class="hw_no hw_no_line">
+                                    1
                                 </div>
                             </div>
-                            <div class="col-md-4 v-center">
-                                <div class="howDesignwalaImg">
-                                    <img src="{{ asset('_assets/_guest/img/servicepage/howdesignwalaworks/place_order.svg') }}" class="card-img img-fluid" alt="howdesignwalaworksCardimg"> </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--           row end -->
-            <div class="row justify-content-center py-4">
-                <div class="col-lg-6 col-md-12">
-                    <div class="card howdesignwalaworksCard mb-3" style="position: relative;">
-                        <div class="PointNo"> <span>2</span> </div>
-                        <div class="row no-gutters">
-                            <div class="col-md-8 py-4">
-                                <div class="card-body w-90 wSm100 textsm-center">
-                                    <h5 class="card-title colorgreen">Send your content</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <div class="col-lg-9 col-9">
+                                <div class="hw_text">
+                                    <h2>Place Order</h2>
+                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed is diam nonumy</p>
                                 </div>
                             </div>
-                            <div class="col-md-4 v-center">
-                                <div class="howDesignwalaImg"> <img src="{{ asset('_assets/_guest/img/servicepage/howdesignwalaworks/send_your_content.svg') }}" class="card-img img-fluid" alt="howdesignwalaworksCardimg"> </div>
-                            </div>
+                            <!-- </div> -->
                         </div>
-                    </div>
-                </div>
-            </div>
-            <!--           row end -->
-            <div class="row justify-content-center py-4">
-                <div class="col-lg-6 col-md-12">
-                    <div class="card howdesignwalaworksCard mb-3" style="position: relative;">
-                        <div class="PointNo"> <span>3</span> </div>
-                        <div class="row no-gutters">
-                            <div class="col-md-8 py-4">
-                                <div class="card-body w-90 wSm100 textsm-center">
-                                    <h5 class="card-title colorgreen">Get your final delivery</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <!-- 2nd -->
+                        <div class="hw_wrapper">
+                            <!-- <div class="row"> -->
+                            <div class="col-lg-3 col-3 col_3">
+                                <div class="hw_no hw_no_line">
+                                    2
                                 </div>
                             </div>
-                            <div class="col-md-4 v-center">
-                                <div class="howDesignwalaImg"> <img src="{{ asset('_assets/_guest/img/servicepage/howdesignwalaworks/get_your_final_delivery.svg') }}" class="card-img img-fluid" alt="howdesignwalaworksCardimg"> </div>
+                            <div class="col-lg-9 col-9">
+                                <div class="hw_text">
+                                    <h2>Send your content</h2>
+                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed is diam nonumy</p>
+                                </div>
+                            </div>
+                            <!-- </div> -->
+                        </div>
+                        <!-- 3rd -->
+                        <div class="hw_wrapper">
+                            <!-- <div class="row"> -->
+                            <div class="col-lg-3 col-3 col_3">
+                                <div class="hw_no">
+                                    3
+                                </div>
+                            </div>
+                            <div class="col-lg-9 col-9">
+                                <div class="hw_text">
+                                    <h2>Get your final delivery</h2>
+                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed is diam nonumy</p>
+                                </div>
+                            </div>
+                            <!-- </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- how work end -->
+
+    <!--?Video Modal-->
+    <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <video width="100%" controls>
+                        <source src="{{ asset('_assets/_guest/video/nature.mp4') }}" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--?Video Modal-->
+    {{-- how prodoers works section end --}}
+
+    {{-- testimonial section start --}}
+    <section class="testimonial">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="why-choose-us">
+                        <h2>What Our Clients Say’s</h2>
+                    </div>
+                </div>
+                <div class="col-lg-10 offset-lg-1">
+                    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                            <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="row align-items-center">
+                                    <div class="col-md-3">
+                                        <div class="testimonialImage">
+                                            <img src="{{ asset('_assets/_guest/img/servicepage/client-one.jpg') }}" class="card-img-top img-fluid" alt="designwala">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="testimonial-content">
+                                            <p>Nullam et velit mollis, dictum eros a, vehicula turpis. Aenean feugiat congue faucibus. Nullam dapibus ex ex, vulputate gravida nisi mattis in. Duis maximus odio sed turpis vehicula auctor sit amet ut urna. Nam non libero ut ex fermentum consectetur et in dolor. Morbi tempor gravida diam nec lacinia. Suspendisse vehicula ultricies arcu.</p>
+                                            <h6>Cak Dikin</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row align-items-center">
+                                    <div class="col-md-3">
+                                        <div class="testimonialImage">
+                                            <img src="{{ asset('_assets/_guest/img/servicepage/client-two.jpg') }}" class="card-img-top img-fluid" alt="designwala">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="testimonial-content">
+                                            <p>Nullam et velit mollis, dictum eros a, vehicula turpis. Aenean feugiat congue faucibus. Nullam dapibus ex ex, vulputate gravida nisi mattis in. Duis maximus odio sed turpis vehicula auctor sit amet ut urna. Nam non libero ut ex fermentum consectetur et in dolor. Morbi tempor gravida diam nec lacinia. Suspendisse vehicula ultricies arcu.</p>
+                                            <h6>Cak Dikin</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row align-items-center">
+                                    <div class="col-md-3">
+                                        <div class="testimonialImage">
+                                            <img src="{{ asset('_assets/_guest/img/servicepage/client-one.jpg') }}" class="card-img-top img-fluid" alt="designwala">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="testimonial-content">
+                                            <p>Nullam et velit mollis, dictum eros a, vehicula turpis. Aenean feugiat congue faucibus. Nullam dapibus ex ex, vulputate gravida nisi mattis in. Duis maximus odio sed turpis vehicula auctor sit amet ut urna. Nam non libero ut ex fermentum consectetur et in dolor. Morbi tempor gravida diam nec lacinia. Suspendisse vehicula ultricies arcu.</p>
+                                            <h6>Cak Dikin</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row align-items-center">
+                                    <div class="col-md-3">
+                                        <div class="testimonialImage">
+                                            <img src="{{ asset('_assets/_guest/img/servicepage/client-two.jpg') }}" class="card-img-top img-fluid" alt="designwala">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="testimonial-content">
+                                            <p>Nullam et velit mollis, dictum eros a, vehicula turpis. Aenean feugiat congue faucibus. Nullam dapibus ex ex, vulputate gravida nisi mattis in. Duis maximus odio sed turpis vehicula auctor sit amet ut urna. Nam non libero ut ex fermentum consectetur et in dolor. Morbi tempor gravida diam nec lacinia. Suspendisse vehicula ultricies arcu.</p>
+                                            <h6>Cak Dikin</h6>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--           row end -->
         </div>
-    </div>
-    {{-- How designwala works Section End --}}
+    </section>
+    {{-- testimonial section end --}}
 
-    {{-- Designwala Clip Section Start --}}
-    <div class="section sectionServiceDesignwalainaClip bgcustomLightgray  ptSm50 pbSm50" id="sectionServiceDesignwalainaClip">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center pb-5">
-                    <h1 class="font-medium">Designwala In a clip</h1>
-                    <p>Lorem ipsum dolor sit amet, consetetur </p>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-9 col-md-12 text-center">
-                    <div class="video-wrapper  m-auto">
-                        <video src="{{ asset(config('designwala_paths.default.how_designwala_works_video')) }}" poster="{{ asset(config('designwala_paths.default.no_preview')) }}"></video>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    {{-- Designwala Clip Section End --}}
-
-    {{-- Blog Section Start --}}
-    <div class="section  ptSm50 pbSm50 sectionServiceDesignwalaLatestNews" id="sectionServiceDesignwalaLatestNews">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center pb-5">
-                    <h1 class="font-medium">Latest News</h1>
-                    <p>Reference site about Lorem Ipsum, giving information </p>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-8 pb-4">
-                    <div class="card" style=""> <img src="https://picsum.photos/400/280" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h3 class="card-title">Blog Title</h3>
-                            <h5 class="pb-3 font-weight-normal">Name | Date</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.</p>
-                            <a href="#" class="btn btn-link colorOne p-0">see more</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-8 pb-4">
-                    <div class="card" style="">
-                        <img src="https://picsum.photos/400/280" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h3 class="card-title">Blog Title</h3>
-                            <h5 class="pb-3 font-weight-normal">Name | Date</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.</p>
-                            <a href="#" class="btn btn-link colorOne p-0">see more</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-8 pb-4">
-                    <div class="card" style="">
-                        <img src="https://picsum.photos/400/280" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h3 class="card-title">Blog Title</h3>
-                            <h5 class="pb-3 font-weight-normal">Name | Date</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.</p>
-                            <a href="#" class="btn btn-link colorOne p-0">see more</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    {{-- Blog Section End --}}
-
-    {{-- Counter Section Start --}}
+    {{-- counter section start --}}
     <div class="section serviceCountSection bgcustomLightgray " id="serviceCountSection">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="text-center">
-                        <div class="">
-                            <!--                          <img src="img/service/Total%20Customers.png" alt="" class="img-fluid">-->
+                <div class="col-lg-3 col-6">
+                    <div class="text-center counter_wrapper">
+                        <div class="counter_icon">
                             <img src="{{ asset('_assets/_guest/img/servicepage/homeservices/customer.svg') }}" alt="" class="img-fluid">
                         </div>
-                        <div class="py-3">
+                        <div class="counter_title">
                             <h1 class="font-weight-bold colorFive timer  count-number" data-to="1000" data-speed="1500"></h1>
-                            <p class="mb-0">Total Customers</p>
+                            <p class="mb-0">Total Clients</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="text-center">
-                        <div class="">
-                            <!--                        <img src="img/service/Total%20Services.png" alt="" class="img-fluid">-->
+                <div class="col-lg-3 col-6">
+                    <div class="text-center counter_wrapper">
+                        <div class="counter_icon">
                             <img src="{{ asset('_assets/_guest/img/servicepage/homeservices/employee.svg') }}" alt="" class="img-fluid">
                         </div>
-                        <div class="py-3">
+                        <div class="counter_title">
                             <h1 class="font-weight-bold colorFive timer  count-number" data-to="1000" data-speed="1500"></h1>
-                            <p class="mb-0">Total Customers</p>
+                            <p class="mb-0">Total Designwalas </p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="text-center">
-                        <div class="">
-                            <!--<img src="img/service/Services%20Sold.png" alt="" class="img-fluid">-->
+                <div class="col-lg-3 col-6">
+                    <div class="text-center counter_wrapper">
+                        <div class="counter_icon">
                             <img src="{{ asset('_assets/_guest/img/servicepage/homeservices/order.svg') }}" alt="" class="img-fluid">
                         </div>
-                        <div class="py-3">
+                        <div class="counter_title">
                             <h1 class="font-weight-bold colorFive timer  count-number" data-to="1000" data-speed="1500"></h1>
-                            <p class="mb-0"> Total Customers</p>
+                            <p class="mb-0"> Total Orders</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="text-center">
-                        <div class="">
-                            <!--<img src="img/service/Services%20Sold.png" alt="" class="img-fluid">-->
+                <div class="col-lg-3 col-6">
+                    <div class="text-center counter_wrapper">
+                        <div class="counter_icon">
                             <img src="{{ asset('_assets/_guest/img/servicepage/homeservices/sales.svg') }}" alt="" class="img-fluid">
                         </div>
-                        <div class="py-3">
+                        <div class="counter_title">
                             <h1 class="font-weight-bold colorFive timer  count-number" data-to="1000" data-speed="1500">1000</h1>
-                            <p class="mb-0">Total Customers</p>
+                            <p class="mb-0">Total Transactions </p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    {{-- Counter Section End --}}
-
-    {{-- Newsletter Section Start --}}
-    <div class="section py50 ptSm50 pbSm50 sectionServiceDesignwalaNewsletter" id="sectionServiceDesignwalaNewsletter">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <h2 class="">Stay Updated With Our Newsletter</h2>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-6 col-md-8">
-                    <div class="">
-                        @livewire('guest.newsletter.newsletter-component')
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    {{-- Newsletter Section End --}}
+    {{-- counter section end --}}
 @endsection
 
 @push('scripts')
-    {{-- Video play Button Render --}}
-    <script>
-        videoMethods.renderVideoPlayButton();
-    </script>
+    <script src="{{ mix('_assets/plugins/counter/js/count.js') }}"></script>
 @endpush

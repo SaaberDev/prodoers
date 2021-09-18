@@ -5,19 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f616bec-9873-4c54-8a6f-71f691274991" name="Changes" comment="[guest-ui] - re-templating">
-      <change afterPath="$PROJECT_DIR$/resources/views/guest/includes/mega-menu/mega-menu.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/guest/includes/navbar/mobile-navbar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/_assets/_guest/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/guest/includes/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/guest/includes/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/guest/includes/navbar/mega_menu.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/guest/includes/navbar/mobile_top_navbar.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/guest/includes/navbar/top_navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/guest/includes/navbar/navbar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/guest/includes/navbar/top_sub_navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/guest/includes/navbar/sub-navbar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin_panel/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin_panel/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/guest/includes/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/guest/includes/footer.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/guest/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/guest/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/guest/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/guest/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/guest/search/guest-search-component.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/guest/search/guest-search-component.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/guest/newsletter/newsletter-component.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/guest/newsletter/newsletter-component.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -287,14 +279,7 @@
       <workItem from="1630933831557" duration="139926000" />
       <workItem from="1631616254117" duration="914000" />
       <workItem from="1631739125452" duration="159000" />
-      <workItem from="1631739326257" duration="33656000" />
-    </task>
-    <task id="LOCAL-00022" summary="[filesystem] - category filesystem changed on update method">
-      <created>1628348680133</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1628348680133</updated>
+      <workItem from="1631739326257" duration="41493000" />
     </task>
     <task id="LOCAL-00023" summary="[filesystem] - category filesystem changed on update method">
       <created>1628363591210</created>
@@ -632,7 +617,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631897528052</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="[guest-ui] - re-templating">
+      <created>1631918243623</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1631918243623</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
