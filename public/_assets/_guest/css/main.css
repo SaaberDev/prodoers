@@ -2243,6 +2243,7 @@ img.img-fluid.img-1 {
     display: flex;
     justify-content: flex-end;
     padding-right: 0;
+    text-align: end;
 }
 
 /* first footer end */
@@ -2335,7 +2336,7 @@ img.img-fluid.img-1 {
 
 .second_footer_four a img {
     margin-top: 20px;
-    margin-right: 30px;
+    margin-left: 30px;
 }
 
 .copyright {
@@ -3233,7 +3234,6 @@ p.text-color {
 }
 
 .error-message{
-    padding-left: 25px;
     display: inline-block;
     padding-top: 12px;
 }

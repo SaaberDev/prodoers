@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f616bec-9873-4c54-8a6f-71f691274991" name="Changes" comment="[guest-ui] - re-templating">
+    <list default="true" id="3f616bec-9873-4c54-8a6f-71f691274991" name="Changes" comment="[guest-ui] - re-templating - added search result list clickable effect">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/_assets/_guest/css/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/_assets/_guest/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/guest/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/guest/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/guest/search/guest-search-component.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/guest/search/guest-search-component.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -280,14 +277,7 @@
       <workItem from="1631616254117" duration="914000" />
       <workItem from="1631739125452" duration="159000" />
       <workItem from="1631739326257" duration="41566000" />
-      <workItem from="1631979511926" duration="4646000" />
-    </task>
-    <task id="LOCAL-00025" summary="[filesystem] - category delete_confirmation_modal.blade.php">
-      <created>1628376029142</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1628376029142</updated>
+      <workItem from="1631979511926" duration="5346000" />
     </task>
     <task id="LOCAL-00026" summary="[filesystem] - category delete_confirmation_modal.blade.php">
       <created>1628378516179</created>
@@ -625,7 +615,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631990202173</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="[guest-ui] - re-templating - added search result list clickable effect">
+      <created>1631992453055</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1631992453055</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -645,7 +642,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="[service] - working on dropzone" />
     <MESSAGE value="[service] - added remove function (fixed db issue)" />
     <MESSAGE value="[dropzone] - added dropzone in edit page and fixed existing issue" />
     <MESSAGE value="[dropzone] - added dropzone in edit page" />
@@ -670,7 +666,8 @@
     <MESSAGE value="[assign-order] - assign order and update log" />
     <MESSAGE value="[assign-order] - assign order notification and mail" />
     <MESSAGE value="[guest-ui] - re-templating" />
-    <option name="LAST_COMMIT_MESSAGE" value="[guest-ui] - re-templating" />
+    <MESSAGE value="[guest-ui] - re-templating - added search result list clickable effect" />
+    <option name="LAST_COMMIT_MESSAGE" value="[guest-ui] - re-templating - added search result list clickable effect" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
