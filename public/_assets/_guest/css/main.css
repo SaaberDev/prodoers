@@ -295,8 +295,6 @@ body.offcanvas-active {
 /* ============ small screen //end ============ */
 
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
-
 .custom-arrow svg{
     transform: rotate(90deg);
     margin-bottom: 1px;
@@ -774,15 +772,11 @@ a {
     border-radius: 40px!important;
     padding-left: 30px;
 }
-.searchPageSearchBar .form-control:focus {
-    border: 1px solid #038D08;
-}
 
 .searchPageSearchBar .input-group button {
     width: 65px;
     height: 59px;
     border-radius: 0;
-    border: 1px solid #038D08;
 }
 
 .page-link {
@@ -2562,6 +2556,11 @@ span.nav-arrow.custom-arrow img{
     color: #fff;
     width: 320px;
     height: 70px;
+    cursor: pointer;
+}
+.custom-checkout-btn:disabled{
+    pointer-events: none;
+    opacity:0.65;
 }
 .checkout_btn_wraper {
     text-align: end;
@@ -2601,7 +2600,6 @@ input.cp {
     font-size: 14px;
     font-weight: 400;
     outline: 0;
-    margin-bottom: 15px;
     border-radius: 40px;
 }
 input.cp:focus{
@@ -2616,6 +2614,7 @@ input.cp:focus{
     font-size: 15px;
     text-transform: unset;
     border-radius: 40px;
+    margin-top: 15px;
 }
 span.hr-border {
     margin-bottom: 50px;
@@ -2696,9 +2695,14 @@ h4.text-center.m-t {
 
 .input-group-append2{
     position: absolute;
-    right: 22px;
-    bottom: 14px;
-    z-index: 999;     
+    right: 10px;
+    bottom: 0px;
+    z-index: 999;
+        
+}
+.input-group-append2 button{
+    border: 0;
+    background: transparent; 
 }
 /* single-category-item start */
 .banner-wraper{
@@ -3164,7 +3168,81 @@ p.text-color {
     background-color: transparent!important;
     box-shadow:none!important;
 }
+.forget-password-modal img{
+    width: 200px;
+}
+.forget-password-modal p{
+    font-size: 16px;
+    color: #696969;
+    line-height:30px;
+}
 /* video Editor*/
+
+
+/*Search Box Design*/
+
+.search-form{
+    position: relative;
+}
+.search-form .input-group{
+    border: 1px solid #ced4da;
+    border-radius:40px;
+}
+
+.search-form .input-group input{
+    z-index: 999;
+    border: none;
+}
+
+.search-form .input-group input:focus{
+    z-index: 999!important;
+}
+
+.search-box-result{
+    background:#fff;
+    z-index: 99;
+    position: absolute;
+    top: 15px;
+    width:100%;
+    border-radius: 15px 15px 0px 0px;
+    padding-top: 65px;
+    box-shadow: 0 0 5px rgb(0 0 0 / 15%);
+    overflow-y:hidden;
+}
+.search-box-result ul{
+    overflow-y: scroll;
+    max-height:450px;
+    margin-bottom: 0rem;
+}
+
+.search-box-result ul li{
+    list-style-type: none;
+    padding:6px 15px;
+}
+
+.search-box-result ul li:hover{
+    background: #f9f9f9;
+}
+.search-box-result ul li a{
+    color: #2a2a2a;
+    font-size: 18px;
+    font-weight:400;
+    line-height:32px;
+}
+
+.error-message{
+    padding-left: 25px;
+    display: inline-block;
+    padding-top: 12px;
+}
+.error-message p{
+    font-size:14px;
+    color: #dc3545;
+    margin-bottom: 0;
+}
+.warning-border-color{
+    border: 1px solid #dc3545!important;
+}
 /* Extra small devices (portrait phones, less than 375 px)*/
 @media (min-width: 320px) and (max-width: 575.98px) {
   /* order-section for mobile */
@@ -3209,6 +3287,16 @@ p.text-color {
 }
 .login_email, .login_pass, .login_confirm_pass, .signIn_button, .signUp_button{
   height:48px;
+}
+
+/*Search Box Result*/
+.search-box-result ul{
+  padding-left: 0;
+  text-align:left;
+  margin-bottom: 0rem;
+}
+.search-box-result ul li a {
+  font-size:16px;
 }
 
 .carousel-control-prev, .carousel-control-next {
@@ -3268,7 +3356,9 @@ p.text-color {
 .reviewstabContent .row{
   align-items: center;
 }
-
+h4.pb-4 {
+  font-size: 28px;
+}
   .p-wraper2 {
     font-size: 14px;
     font-weight: 400;
@@ -3286,12 +3376,12 @@ p.text-color {
   }
 
   .p-wraper5 {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
     margin-bottom: 8px!important;
   }
   .p-wraper6 {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 400;
     color: #212529;
     margin-bottom: 8px!important;
@@ -3927,7 +4017,7 @@ p.text-color {
     margin-bottom: 50px;
   }
   .input-group-append2 {
-    bottom: 10px;
+    bottom: 0px;
   }
   .whyDesignwalaPosition{
     display: none;
@@ -4601,7 +4691,14 @@ p.text-color {
   .searchPageSearchBar {
     padding-bottom: 15px;
   }
-  
+  /*Search Box Result*/
+  .search-box-result ul{
+    padding-left: 0;
+    text-align:left;
+  }
+  .search-box-result ul li a {
+    font-size:16px;
+  }
 
    .my-label {
      text-align: center;
@@ -5821,6 +5918,14 @@ p.text-color {
 hr{
   margin: 0;
 }
+/*Search Box Result*/
+.search-box-result ul{
+  padding-left: 0;
+  text-align:left;
+}
+.search-box-result ul li a {
+  font-size:16px;
+}
 .sectionServiceBannerContent h1{
   font-size:30px
 }
@@ -6271,6 +6376,8 @@ section p {
 
   .second_footer_four {
     margin-top: 35px;
+  }
+  .second_footer_four .footer-icon{
     text-align: center;
   }
 
@@ -6559,6 +6666,15 @@ section p {
     padding-left: 5px;
   }
 
+  /*Search Box Result*/
+  .search-box-result ul{
+    padding-left: 0;
+    text-align:left;
+  }
+  .search-box-result ul li a {
+    font-size:16px;
+  }
+
   .p-wraper3 {
     font-size: 14px;
   }
@@ -6818,8 +6934,10 @@ section p {
   }
 
   .second_footer_four {
-    text-align:center;
     margin-top: 60px;
+  }
+  .second_footer_four .footer-icon{
+    text-align: center;
   }
 
   .second_footer_four h5 {
@@ -7014,7 +7132,7 @@ section p {
     object-fit: cover;
   }
   .inst_img .load_css {
-    left: 39%;
+    display: none;
   }  
   .main_how_works {
     padding:65px 0px;
@@ -7076,7 +7194,14 @@ section p {
   .sslcommerz_wraper.text-center img {
     width: 35%;
   }
-
+/*Search Box Result*/
+.search-box-result ul{
+  padding-left: 0;
+  text-align:left;
+}
+.search-box-result ul li a {
+  font-size:16px;
+}
   .inst_img .load_css {
     top: 41%;
     left: 41%;
@@ -7276,7 +7401,14 @@ section p {
   .text-area-wraper .problem {
     margin-top: 88px;
   }
-
+/*Search Box Result*/
+.search-box-result ul{
+  padding-left: 0;
+  text-align:left;
+}
+.search-box-result ul li a {
+  font-size:16px;
+}
   .order-wraper {
     padding: 0px 40px;
   }
@@ -7440,7 +7572,14 @@ section p {
   .order-wraper {
     padding: 36px 14px 0
   }
-
+/*Search Box Result*/
+.search-box-result ul{
+  padding-left: 0;
+  text-align:left;
+}
+.search-box-result ul li a {
+  font-size:16px;
+}
   .p-wraper {
     font-size: 14px;
   }
@@ -7607,7 +7746,14 @@ section p {
   .hw_text p {
     line-height: 30px;
   }
-
+/*Search Box Result*/
+.search-box-result ul{
+  padding-left: 0;
+  text-align:left;
+}
+.search-box-result ul li a {
+  font-size:16px;
+}
   /*How design wala works end*/
 
   .w-80 {

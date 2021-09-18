@@ -1,11 +1,11 @@
 <div>
-    <form class="d-flex" style="{{ $errors->has('subscriber_mail') ? 'border: 1px solid #aa0719;' : '' }}">
+    <form class="d-flex {{ $errors->has('subscriber_mail') ? 'warning-border-color' : '' }}">
         <input wire:model.defer="subscriber_mail"
                class="form-control"
-               placeholder="Type your email address"
                type="text"
+               aria-label="search"
+               placeholder="Type your email address"
         >
-
         <button wire:click.prevent="store"
                 class="btn"
                 type="submit"
@@ -15,8 +15,8 @@
     </form>
 
     @if($errors->has('subscriber_mail'))
-        <span class="">
-            <strong>{{ $errors->first('subscriber_mail') }}</strong>
+        <span class="error-message">
+            <p>{{ $errors->first('subscriber_mail') }}</p>
         </span>
     @endif
 </div>

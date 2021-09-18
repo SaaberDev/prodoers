@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
-
 .custom-arrow svg{
     transform: rotate(90deg);
     margin-bottom: 1px;
@@ -477,15 +475,11 @@ a {
     border-radius: 40px!important;
     padding-left: 30px;
 }
-.searchPageSearchBar .form-control:focus {
-    border: 1px solid #038D08;
-}
 
 .searchPageSearchBar .input-group button {
     width: 65px;
     height: 59px;
     border-radius: 0;
-    border: 1px solid #038D08;
 }
 
 .page-link {
@@ -2265,6 +2259,11 @@ span.nav-arrow.custom-arrow img{
     color: #fff;
     width: 320px;
     height: 70px;
+    cursor: pointer;
+}
+.custom-checkout-btn:disabled{
+    pointer-events: none;
+    opacity:0.65;
 }
 .checkout_btn_wraper {
     text-align: end;
@@ -2304,7 +2303,6 @@ input.cp {
     font-size: 14px;
     font-weight: 400;
     outline: 0;
-    margin-bottom: 15px;
     border-radius: 40px;
 }
 input.cp:focus{
@@ -2319,6 +2317,7 @@ input.cp:focus{
     font-size: 15px;
     text-transform: unset;
     border-radius: 40px;
+    margin-top: 15px;
 }
 span.hr-border {
     margin-bottom: 50px;
@@ -2399,9 +2398,14 @@ h4.text-center.m-t {
 
 .input-group-append2{
     position: absolute;
-    right: 22px;
-    bottom: 14px;
-    z-index: 999;     
+    right: 10px;
+    bottom: 0px;
+    z-index: 999;
+        
+}
+.input-group-append2 button{
+    border: 0;
+    background: transparent; 
 }
 /* single-category-item start */
 .banner-wraper{
@@ -2867,4 +2871,78 @@ p.text-color {
     background-color: transparent!important;
     box-shadow:none!important;
 }
+.forget-password-modal img{
+    width: 200px;
+}
+.forget-password-modal p{
+    font-size: 16px;
+    color: #696969;
+    line-height:30px;
+}
 /* video Editor*/
+
+
+/*Search Box Design*/
+
+.search-form{
+    position: relative;
+}
+.search-form .input-group{
+    border: 1px solid #ced4da;
+    border-radius:40px;
+}
+
+.search-form .input-group input{
+    z-index: 999;
+    border: none;
+}
+
+.search-form .input-group input:focus{
+    z-index: 999!important;
+}
+
+.search-box-result{
+    background:#fff;
+    z-index: 99;
+    position: absolute;
+    top: 15px;
+    width:100%;
+    border-radius: 15px 15px 0px 0px;
+    padding-top: 65px;
+    box-shadow: 0 0 5px rgb(0 0 0 / 15%);
+    overflow-y:hidden;
+}
+.search-box-result ul{
+    overflow-y: scroll;
+    max-height:450px;
+    margin-bottom: 0rem;
+}
+
+.search-box-result ul li{
+    list-style-type: none;
+    padding:6px 15px;
+}
+
+.search-box-result ul li:hover{
+    background: #f9f9f9;
+}
+.search-box-result ul li a{
+    color: #2a2a2a;
+    font-size: 18px;
+    font-weight:400;
+    line-height:32px;
+}
+
+.error-message{
+    padding-left: 25px;
+    display: inline-block;
+    padding-top: 12px;
+}
+.error-message p{
+    font-size:14px;
+    color: #dc3545;
+    margin-bottom: 0;
+}
+.warning-border-color{
+    border: 1px solid #dc3545!important;
+}

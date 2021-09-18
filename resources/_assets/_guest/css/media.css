@@ -44,6 +44,16 @@
   height:48px;
 }
 
+/*Search Box Result*/
+.search-box-result ul{
+  padding-left: 0;
+  text-align:left;
+  margin-bottom: 0rem;
+}
+.search-box-result ul li a {
+  font-size:16px;
+}
+
 .carousel-control-prev, .carousel-control-next {
   display: none;
   }
@@ -101,7 +111,9 @@
 .reviewstabContent .row{
   align-items: center;
 }
-
+h4.pb-4 {
+  font-size: 28px;
+}
   .p-wraper2 {
     font-size: 14px;
     font-weight: 400;
@@ -119,12 +131,12 @@
   }
 
   .p-wraper5 {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
     margin-bottom: 8px!important;
   }
   .p-wraper6 {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 400;
     color: #212529;
     margin-bottom: 8px!important;
@@ -760,7 +772,7 @@
     margin-bottom: 50px;
   }
   .input-group-append2 {
-    bottom: 10px;
+    bottom: 0px;
   }
   .whyDesignwalaPosition{
     display: none;
@@ -1434,7 +1446,14 @@
   .searchPageSearchBar {
     padding-bottom: 15px;
   }
-  
+  /*Search Box Result*/
+  .search-box-result ul{
+    padding-left: 0;
+    text-align:left;
+  }
+  .search-box-result ul li a {
+    font-size:16px;
+  }
 
    .my-label {
      text-align: center;
@@ -2654,6 +2673,14 @@
 hr{
   margin: 0;
 }
+/*Search Box Result*/
+.search-box-result ul{
+  padding-left: 0;
+  text-align:left;
+}
+.search-box-result ul li a {
+  font-size:16px;
+}
 .sectionServiceBannerContent h1{
   font-size:30px
 }
@@ -3104,6 +3131,8 @@ section p {
 
   .second_footer_four {
     margin-top: 35px;
+  }
+  .second_footer_four .footer-icon{
     text-align: center;
   }
 
@@ -3392,6 +3421,15 @@ section p {
     padding-left: 5px;
   }
 
+  /*Search Box Result*/
+  .search-box-result ul{
+    padding-left: 0;
+    text-align:left;
+  }
+  .search-box-result ul li a {
+    font-size:16px;
+  }
+
   .p-wraper3 {
     font-size: 14px;
   }
@@ -3651,8 +3689,10 @@ section p {
   }
 
   .second_footer_four {
-    text-align:center;
     margin-top: 60px;
+  }
+  .second_footer_four .footer-icon{
+    text-align: center;
   }
 
   .second_footer_four h5 {
@@ -3847,7 +3887,7 @@ section p {
     object-fit: cover;
   }
   .inst_img .load_css {
-    left: 39%;
+    display: none;
   }  
   .main_how_works {
     padding:65px 0px;
@@ -3909,7 +3949,14 @@ section p {
   .sslcommerz_wraper.text-center img {
     width: 35%;
   }
-
+/*Search Box Result*/
+.search-box-result ul{
+  padding-left: 0;
+  text-align:left;
+}
+.search-box-result ul li a {
+  font-size:16px;
+}
   .inst_img .load_css {
     top: 41%;
     left: 41%;
@@ -4109,7 +4156,14 @@ section p {
   .text-area-wraper .problem {
     margin-top: 88px;
   }
-
+/*Search Box Result*/
+.search-box-result ul{
+  padding-left: 0;
+  text-align:left;
+}
+.search-box-result ul li a {
+  font-size:16px;
+}
   .order-wraper {
     padding: 0px 40px;
   }
@@ -4273,7 +4327,14 @@ section p {
   .order-wraper {
     padding: 36px 14px 0
   }
-
+/*Search Box Result*/
+.search-box-result ul{
+  padding-left: 0;
+  text-align:left;
+}
+.search-box-result ul li a {
+  font-size:16px;
+}
   .p-wraper {
     font-size: 14px;
   }
@@ -4440,7 +4501,14 @@ section p {
   .hw_text p {
     line-height: 30px;
   }
-
+/*Search Box Result*/
+.search-box-result ul{
+  padding-left: 0;
+  text-align:left;
+}
+.search-box-result ul li a {
+  font-size:16px;
+}
   /*How design wala works end*/
 
   .w-80 {
