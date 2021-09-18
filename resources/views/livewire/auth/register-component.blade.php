@@ -19,7 +19,7 @@
                    placeholder="{{ __('Email Address') }}"
             >
             @if($errors->has('form.email'))
-                <span class="invalid-feedback">
+                <span class="invalid-feedback" style="padding: 0 26px;">
                 <strong>{{ $errors->first('form.email') }}</strong>
             </span>
             @endif
@@ -32,7 +32,7 @@
                    placeholder="{{ __('Password') }}"
             >
             @if($errors->has('form.password'))
-                <span class="invalid-feedback">
+                <span class="invalid-feedback" style="padding: 0 26px;">
                 <strong>{{ $errors->first('form.password') }}</strong>
             </span>
             @endif
@@ -45,12 +45,10 @@
                    placeholder="{{ __('Confirm Password') }}"
             >
             @if($errors->has('form.confirm_password'))
-                <span class="invalid-feedback">
+                <span class="invalid-feedback" style="padding: 0 26px;">
                 <strong>{{ $errors->first('form.confirm_password') }}</strong>
             </span>
             @endif
-            {{--        <label>8 characters or longer. Password must contain at least one uppercase, lowercase letter, a number and a--}}
-            {{--            symbol.</label>--}}
         </div>
         <div class="col-md-12">
             <button type="submit" class="btn btn-block bgOne text-white py-2 signUp_button">
