@@ -103,9 +103,9 @@
                         <!--                        carousel -->
                         <div class="">
                             <div class="owl-carousel">
-                                @forelse($services->serviceImages as $service)
+                                @forelse($services as $service)
                                 <div class="owlCustom" style="">
-                                    <img src="{{ asset($service->filename ? $service_image . $service->filename : config('designwala_paths.default.no_preview')) }}" alt="" class="img-fluid">
+                                    <img src="#" alt="" class="img-fluid">
                                 </div>
                                 @empty
                                     <div class="owlCustom" style="">
@@ -177,7 +177,7 @@
                             <div class="tab-pane fade show active " id="description" role="tabpanel"
                                  aria-labelledby="home-tab">
                                 <p>
-                                    {{ $services->service_desc }}
+                                    {{ $services->short_desc }}
                                 </p>
                             </div>
                             <div class="tab-pane fade" id="faq" role="tabpanel" aria-labelledby="profile-tab">
@@ -519,7 +519,7 @@
                 @forelse($related_services as $related_service)
                 <div class="col-lg-4 col-md-6 padding25">
                     <div class="searchPageResultSingle position-relative">
-                        <div class="card "><img src="{{ asset($service_thumbnail . $related_service->thumbnail) }}" class="card-img-top" alt="...">
+                        <div class="card "><img src="#" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title ">
                                     <span class="w-75 float-left font-medium"><a href="{{ route('guest.service.index', $related_service->slug) }}"

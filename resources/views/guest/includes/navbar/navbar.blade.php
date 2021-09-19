@@ -29,7 +29,8 @@
                 </ul>
                 @guest
 {{--                    <button type="button" class="btn text-white " data-bs-toggle="modal" data-bs-target="#joinUs"> Signin / Signup</button>--}}
-                    @livewire('auth.signin-button-component')
+                    <a type="button" id="logged_in" class="btn text-white" href="#sign_in">Sign In</a>
+{{--                    @livewire('auth.signin-button-component')--}}
                 @endguest
 
             </div>

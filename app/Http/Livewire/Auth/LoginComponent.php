@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Auth;
 use App\Models\Service;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Lockout;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
@@ -14,7 +15,7 @@ use Livewire\Component;
 
 class LoginComponent extends Component
 {
-    public $currentUrl;
+//    public $currentUrl;
     public $form = [
         'email' => '',
         'password' => '',
@@ -23,9 +24,15 @@ class LoginComponent extends Component
 
     protected $listeners = ['refreshErrors'];
 
+    public function render()
+    {
+        return view('livewire.auth.login-component');
+    }
+
     public function refreshErrors()
     {
         $this->resetValidation();
+        $this->reset('form', 'remember');
     }
 
     protected $rules = [
@@ -40,11 +47,14 @@ class LoginComponent extends Component
         'form.password.required' => 'Password field is required.',
     ];
 
-    public function mount()
-    {
-        $this->currentUrl = url()->current();
-    }
+//    public function mount()
+//    {
+//        $this->currentUrl = url()->current();
+//    }
 
+    /**
+     * @return RedirectResponse
+     */
     public function store()
     {
         $this->validate();
@@ -70,6 +80,9 @@ class LoginComponent extends Component
         return redirect()->route('login');
     }
 
+    /**
+     * authenticate user
+     */
     public function authenticate()
     {
         $this->ensureIsNotRateLimited();
@@ -85,6 +98,9 @@ class LoginComponent extends Component
         RateLimiter::clear($this->throttleKey());
     }
 
+    /**
+     * Check rate limit
+     */
     public function ensureIsNotRateLimited()
     {
         if (!RateLimiter::tooManyAttempts($this->throttleKey(), 2)) {
@@ -103,13 +119,11 @@ class LoginComponent extends Component
         ]);
     }
 
+    /**
+     * @return string
+     */
     public function throttleKey()
     {
         return Str::lower($this->form['email']) . '|' . \request()->ip();
-    }
-
-    public function render()
-    {
-        return view('livewire.auth.login-component');
     }
 }

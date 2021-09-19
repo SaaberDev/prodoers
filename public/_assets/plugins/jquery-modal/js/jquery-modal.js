@@ -163,7 +163,7 @@
             this.$body.css('padding-right', '');
             this.$body.css('overflow', '');
             // Removes error message when modal hides
-            livewire.emit('refreshErrors')
+            Livewire.emit('refreshErrors')
             var _this = this;
             if (this.options.doFade) {
                 this.$elm.fadeOut(this.options.fadeDuration, function () {
@@ -260,7 +260,23 @@
 }));
 
 // Authentication Modal
-$('a[href="#sign_in"],a[href="#forgot_pass"],a[href="#sign_up"]').click(function (event) {
+$('a[href="#sign_in"]').click(function (event) {
+    event.preventDefault();
+    $(this).modalCtm({
+        closeExisting: true,
+        fadeDuration: 250
+    });
+});
+
+$('a[href="#forgot_pass"]').click(function (event) {
+    event.preventDefault();
+    $(this).modalCtm({
+        closeExisting: true,
+        fadeDuration: 250
+    });
+});
+
+$('a[href="#sign_up"]').click(function (event) {
     event.preventDefault();
     $(this).modalCtm({
         closeExisting: true,

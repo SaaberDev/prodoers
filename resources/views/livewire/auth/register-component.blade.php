@@ -55,30 +55,6 @@
                 {{ __('Sign Up') }}
             </button>
         </div>
-
-
-        <div class="col-md-12">
-            <div class="row py-4">
-                <div class="col-md-12">
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label agreement" style="font-size: 15px">
-                            By signing up, I agree to<span class="colorOne"> ProDoers</span>
-                            <span><a href="{{ route('guest.policy.terms_and_conditions') }}" class="btn btn-link m-0 p-0" style="font-size: 15px; color: #000000; font-weight: 600;" type="button" target="_blank"> Terms &amp; Condition</a></span> and
-                            <span><a href="{{ route('guest.policy.privacy') }}" class="btn btn-link m-0 p-0" style="font-size: 15px; color: #000000; font-weight: 600;" type="button" target="_blank">Privacy Policy</a>, as well as receive promotional emails.</span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-12">
-            <div class="text-center forgotPass">
-                <h6>Already a member?
-                    <a class="btn colorOne px-0" href="#sign_in">Sign In</a>
-                </h6>
-            </div>
-        </div>
     </form>
 </div>
 

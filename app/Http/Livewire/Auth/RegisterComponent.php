@@ -15,9 +15,18 @@ class RegisterComponent extends Component
         'confirm_password' => '',
     ];
 
-    protected $listeners = [
-        'refreshErrors'
-    ];
+    protected $listeners = ['refreshErrors'];
+
+    public function render()
+    {
+        return view('livewire.auth.register-component');
+    }
+
+    public function refreshErrors()
+    {
+        $this->resetValidation();
+        $this->reset('form');
+    }
 
     protected $rules = [
 //        'form.name' => 'required|string|max:255',
@@ -66,15 +75,5 @@ class RegisterComponent extends Component
             session()->flash('error', $exception->getMessage());
         }
         $this->reset();
-    }
-
-    public function refreshErrors()
-    {
-        $this->resetValidation();
-    }
-
-    public function render()
-    {
-        return view('livewire.auth.register-component');
     }
 }

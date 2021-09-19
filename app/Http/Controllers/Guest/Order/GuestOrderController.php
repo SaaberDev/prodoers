@@ -30,13 +30,13 @@
         public function index($service_slug)
         {
             $service = Service::getSlug($service_slug)
-                ->select(['id', 'title', 'service_desc', 'price', 'slug', 'thumbnail'])
+                ->select(['id', 'title', 'short_desc', 'price', 'slug'])
                 ->first();
             \session()->put('order', [
                 'grand_total' => $service->price
             ]);
 
-            $service_thumbnail = \Storage::disk('local')->url(config('designwala_paths.images.services.thumbnail'));
+            $service_thumbnail = [];
 
             return view('guest.pages.order_requirements', compact('service', 'service_thumbnail'));
         }

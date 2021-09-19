@@ -24,13 +24,13 @@
                     <div class="w-100 ">
                         <div class="w25imgdiv ">
                             <div class="text-center">
-                                <img src="{{ asset($service->thumbnail ? $service_thumbnail . $service->thumbnail  : config('designwala_paths.default.no_preview')) }}" alt="img-fluid w-10" style="height: 100px;width: 100px;">
+                                <img src="{{ asset(config('designwala_paths.default.no_preview')) }}" alt="img-fluid w-10" style="height: 100px;width: 100px;">
                             </div>
                         </div>
                         <div class="w75cartdiv ">
                             <div class="">
                                 <h5>{{ $service->title }}</h5>
-                                <p class="m-0">{{ $service->service_desc }}</p>
+                                <p class="m-0">{{ $service->short_desc }}</p>
                                 <p class=" m-0 font-weight-bold text-dark">
                                     <span class="small"> Price :</span>
                                     <span>${{ $service->price }}</span>

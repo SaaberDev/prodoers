@@ -44,28 +44,30 @@ class UserSeeder extends Seeder
 //        $admin->assignRole($designwala_role);
 
         // User
-//        $user_role = Role::findByName('user');
-//        $users = [
-//            [
-//                'name' => 'Designwala User 1',
-//                'username' => 'user123',
-//                'email' => 'demo1@designwala.com',
-//                'email_verified_at' => Carbon::now(),
-//                'password' => \Hash::make('1234'),
-//                'remember_token' => \Str::random($token_length)
-//            ],
-//            [
-//                'name' => 'Designwala User 2',
-//                'username' => 'user321',
-//                'email' => 'demo2@designwala.com',
-//                'email_verified_at' => Carbon::now(),
-//                'password' => \Hash::make('1234'),
-//                'remember_token' => \Str::random($token_length)
-//            ]
-//        ];
-//        foreach ($users as $user) {
-//            User::create($user)->assignRole($user_role);
-//        }
+        $user_role = Role::findByName('user');
+        $users = [
+            [
+                'name' => 'Designwala User 1',
+                'designation' => 'client',
+                'username' => 'user123',
+                'email' => 'demo1@designwala.com',
+                'email_verified_at' => Carbon::now(),
+                'password' => \Hash::make('1234'),
+                'remember_token' => \Str::random($token_length)
+            ],
+            [
+                'name' => 'Designwala User 2',
+                'designation' => 'client',
+                'username' => 'user321',
+                'email' => 'demo2@designwala.com',
+                'email_verified_at' => Carbon::now(),
+                'password' => \Hash::make('1234'),
+                'remember_token' => \Str::random($token_length)
+            ]
+        ];
+        foreach ($users as $user) {
+            User::create($user)->assignRole($user_role);
+        }
 
         // Fake Designwala
         $users_factory = User::factory()->times(20)->make();

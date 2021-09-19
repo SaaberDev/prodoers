@@ -67,7 +67,7 @@
 
         // Order
         Route::prefix('/services')->name('order.')
-//            ->middleware('auth')
+            ->middleware('auth')
             ->group(function () {
                 Route::get('/{service_slug}/order', [GuestOrderController::class, 'index'])->name('index');
                 Route::get('/{service_slug}/order/pay', [GuestOrderController::class, 'store'])->name('store');

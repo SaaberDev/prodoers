@@ -4,12 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f616bec-9873-4c54-8a6f-71f691274991" name="Changes" comment="[guest-ui] - re-templating - signup modal">
+    <list default="true" id="3f616bec-9873-4c54-8a6f-71f691274991" name="Changes" comment="[guest-ui] - re-templating - forgot password modal">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat.values" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat.values" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat.values.s" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat.values.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat_i" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat_i" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/guest/includes/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/guest/includes/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Guest/Order/GuestOrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Guest/Order/GuestOrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Guest/Service/GuestServiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Guest/Service/GuestServiceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Auth/ForgotPasswordComponent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Auth/ForgotPasswordComponent.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Auth/LoginComponent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Auth/LoginComponent.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Auth/RegisterComponent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Auth/RegisterComponent.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Auth/SigninButtonComponent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Auth/SigninButtonComponent.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/UserSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/UserSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/plugins/jquery-modal/css/jquery.modal.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/plugins/jquery-modal/js/jquery-modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_assets/plugins/jquery-modal/js/jquery-modal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/plugins/jquery-modal/js/jquery.modal.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/guest/includes/modal/forgot-password.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/guest/includes/modal/forgot-password.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/guest/includes/modal/signup.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/guest/includes/modal/signup.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/guest/includes/navbar/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/guest/includes/navbar/navbar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/guest/pages/service_show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/guest/pages/service_show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/livewire/auth/forgot-password-component.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/auth/forgot-password-component.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/livewire/auth/register-component.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/auth/register-component.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/guest/order/order-component.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/guest/order/order-component.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -280,14 +300,8 @@
       <workItem from="1631616254117" duration="914000" />
       <workItem from="1631739125452" duration="159000" />
       <workItem from="1631739326257" duration="41566000" />
-      <workItem from="1631979511926" duration="14032000" />
-    </task>
-    <task id="LOCAL-00029" summary="[livewire-faq-list] - fixed Dom Diffing Issues">
-      <created>1628381191886</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1628381191886</updated>
+      <workItem from="1631979511926" duration="18456000" />
+      <workItem from="1632011597779" duration="4675000" />
     </task>
     <task id="LOCAL-00030" summary="[livewire-faq-list] - fixed Dom Diffing Issues">
       <created>1628381551426</created>
@@ -625,7 +639,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632006235704</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="[guest-ui] - re-templating - forgot password modal">
+      <created>1632007377421</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1632007377421</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -645,7 +666,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="[dropzone] - added dropzone in edit page (reusable)" />
     <MESSAGE value="[filesystem] - service image upload" />
     <MESSAGE value="[filesystem] - added media library handler class and completed service filesystem change" />
     <MESSAGE value="[filesystem] - made dropzone dynamic for multiple dropzone in one page" />
@@ -670,7 +690,8 @@
     <MESSAGE value="[guest-ui] - re-templating - changed some footer style" />
     <MESSAGE value="[guest-ui] - re-templating - signin modal" />
     <MESSAGE value="[guest-ui] - re-templating - signup modal" />
-    <option name="LAST_COMMIT_MESSAGE" value="[guest-ui] - re-templating - signup modal" />
+    <MESSAGE value="[guest-ui] - re-templating - forgot password modal" />
+    <option name="LAST_COMMIT_MESSAGE" value="[guest-ui] - re-templating - forgot password modal" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

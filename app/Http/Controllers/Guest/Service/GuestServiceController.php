@@ -28,13 +28,13 @@ class GuestServiceController extends Controller
             $query->select('tags.id')
                 ->whereIn('tags.id', $services->tags->pluck('id'));
         })
-            ->select(['title', 'slug', 'price', 'thumbnail'])
+            ->select(['title', 'slug', 'price'])
             ->get();
 
-        $service_image = \Storage::disk('local')->url(config('designwala_paths.images.services.service_image'));
-        $service_thumbnail = \Storage::disk('local')->url(config('designwala_paths.images.services.thumbnail'));
+//        $service_image = \Storage::disk('local')->url(config('designwala_paths.images.services.service_image'));
+//        $service_thumbnail = \Storage::disk('local')->url(config('designwala_paths.images.services.thumbnail'));
 
         request()->session()->put('url.intended', route('guest.order.index', $services->slug));
-        return view('guest.pages.service_show', compact('services', 'related_services', 'service_image', 'service_thumbnail'));
+        return view('guest.pages.service_show', compact('services', 'related_services'));
     }
 }
