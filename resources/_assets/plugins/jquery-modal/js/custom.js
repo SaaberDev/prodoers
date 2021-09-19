@@ -1,5 +1,21 @@
 // Authentication Modal
-$('a[href="#sign_in"],a[href="#forgot_pass"],a[href="#sign_up"]').click(function (event) {
+$('a[href="#sign_in"]').click(function (event) {
+    event.preventDefault();
+    $(this).modalCtm({
+        closeExisting: true,
+        fadeDuration: 250
+    });
+});
+
+$('a[href="#forgot_pass"]').click(function (event) {
+    event.preventDefault();
+    $(this).modalCtm({
+        closeExisting: true,
+        fadeDuration: 250
+    });
+});
+
+$('a[href="#sign_up"]').click(function (event) {
     event.preventDefault();
     $(this).modalCtm({
         closeExisting: true,

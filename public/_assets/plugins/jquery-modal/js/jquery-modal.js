@@ -162,8 +162,12 @@
             // This hides padding from body when modal is closed
             this.$body.css('padding-right', '');
             this.$body.css('overflow', '');
+
+
             // Removes error message when modal hides
             Livewire.emit('refreshErrors')
+
+
             var _this = this;
             if (this.options.doFade) {
                 this.$elm.fadeOut(this.options.fadeDuration, function () {
