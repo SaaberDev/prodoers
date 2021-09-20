@@ -14,6 +14,7 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <link href="{{ mix('_assets/_guest/css/main.css') }}" rel="stylesheet">
     <link href="{{ mix('_assets/plugins/jquery-modal/css/jquery-modal.css') }}" rel="stylesheet">
+
     {{-- Livewire Styles --}}
     @livewireStyles
     {{-- Internal Styles --}}
@@ -31,13 +32,13 @@
 
 {{-- Livewire Scripts --}}
 @livewireScripts
-
+{{--<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js"></script>--}}
 {{-- Scripts --}}
 <script src="{{ mix('js/app.js') }}"></script>
 <script src="{{ mix('_assets/_guest/js/main.js') }}"></script>
 <script src="{{ mix('_assets/plugins/jquery-modal/js/jquery-modal.js') }}"></script>
 
-<!--Start of Tawk.to Script-->
+{{-- Start of Tawk.to Script --}}
 {{--<script type="text/javascript">--}}
 {{--    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();--}}
 {{--    (function(){--}}
@@ -49,7 +50,7 @@
 {{--        s0.parentNode.insertBefore(s1,s0);--}}
 {{--    })();--}}
 {{--</script>--}}
-<!--End of Tawk.to Script-->
+{{-- End of Tawk.to Script --}}
 
 {{-- Internal Scripts --}}
 @stack('scripts')

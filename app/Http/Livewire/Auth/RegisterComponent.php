@@ -17,11 +17,6 @@ class RegisterComponent extends Component
 
     protected $listeners = ['refreshErrors'];
 
-    public function render()
-    {
-        return view('livewire.auth.register-component');
-    }
-
     public function refreshErrors()
     {
         $this->resetValidation();
@@ -75,5 +70,10 @@ class RegisterComponent extends Component
             session()->flash('error', $exception->getMessage());
         }
         $this->reset();
+    }
+
+    public function render()
+    {
+        return view('livewire.auth.register-component');
     }
 }

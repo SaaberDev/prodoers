@@ -13,11 +13,6 @@ class ForgotPasswordComponent extends Component
 
     protected $listeners = ['refreshErrors'];
 
-    public function render()
-    {
-        return view('livewire.auth.forgot-password-component');
-    }
-
     public function refreshErrors()
     {
         $this->resetValidation();
@@ -44,5 +39,10 @@ class ForgotPasswordComponent extends Component
             ? back()->with('status', __($status))
             : back()->withInput(['email' => $this->form['email']])
                 ->withErrors(['email' => __($status)]);
+    }
+
+    public function render()
+    {
+        return view('livewire.auth.forgot-password-component');
     }
 }

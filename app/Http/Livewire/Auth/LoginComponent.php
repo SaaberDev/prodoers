@@ -24,11 +24,6 @@ class LoginComponent extends Component
 
     protected $listeners = ['refreshErrors'];
 
-    public function render()
-    {
-        return view('livewire.auth.login-component');
-    }
-
     public function refreshErrors()
     {
         $this->resetValidation();
@@ -125,5 +120,10 @@ class LoginComponent extends Component
     public function throttleKey()
     {
         return Str::lower($this->form['email']) . '|' . \request()->ip();
+    }
+
+    public function render()
+    {
+        return view('livewire.auth.login-component');
     }
 }
