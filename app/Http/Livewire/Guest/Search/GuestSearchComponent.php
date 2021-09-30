@@ -8,43 +8,43 @@ use Livewire\Component;
 
 class GuestSearchComponent extends Component
 {
-    public $query = '';
+    public $search = '';
 
     // Shows search query in URL
     protected $queryString = [
-        'query' => ['except' => '']
+        'search' => ['except' => '']
     ];
 
     public function mount()
     {
-        $this->query = '';
+        $this->search = '';
     }
 
     protected $rules = [
-        'query' => 'required',
+        'search' => 'required',
     ];
 
     protected $messages = [
-        'query.required' => 'Type something to explore our great services.',
+        'search.required' => 'Type something to explore our great services.',
     ];
 
     public function search()
     {
         $this->validate();
-        session()->put(['query' => $this->query]);
-        return redirect()->route('guest.search.index', $this->query);
+        session()->put(['search' => $this->search]);
+        return redirect()->route('guest.search.index', $this->search);
     }
 
     public function updatingQuery()
     {
-        session()->forget('query');
+        session()->forget('search');
         $this->resetErrorBag();
     }
 
 
     public function render()
     {
-        $services = Service::latest('id')->getAllPublished()->search($this->query)->limit(100)->get(['title', 'slug', 'id']);
+        $services = Service::latest('id')->getAllPublished()->search($this->search)->limit(100)->get(['title', 'slug', 'id']);
         return view('livewire.guest.search.guest-search-component', compact('services'));
     }
 }

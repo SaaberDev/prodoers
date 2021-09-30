@@ -53,7 +53,7 @@
     Route::prefix('/')->name('guest.')->group(function () {
         // Home
         Route::get('/', [HomeController::class, 'index'])->name('home.index');
-        Route::get('/services/', [GuestSearchController::class, 'index'])->name('search.index');
+        Route::get('/services', [GuestSearchController::class, 'index'])->name('search.index');
 
         // Single Category Page
         Route::prefix('/categories')->name('service_category.')->group(function () {

@@ -20,10 +20,6 @@
          */
         public function index()
         {
-            $service_thumbnail = \Storage::disk('local')->url(config('designwala_paths.images.services.thumbnail'));
-
-
-
-            return view('guest.pages.service_search', compact('service_thumbnail'));
+            return view('guest.pages.service_search');
         }
     }

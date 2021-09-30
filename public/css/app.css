@@ -11,3 +11,7 @@
     bottom: 4px;
 }
 
+.pagination > li {
+    cursor: pointer;
+}
+

@@ -1,7 +1,7 @@
 <div>
     <form class="pt-3 search-form ">
         <div class="input-group mb-3">
-            <input wire:model="query"
+            <input wire:model="search"
                    type="text"
                    class="form-control"
                    id="search-input-box"
@@ -19,14 +19,14 @@
             </div>
         </div>
 
-    @if(!empty($query))
+    @if(!empty($search))
         @if(!empty($services))
         <!--Search Result-->
         <div class="search-box-result">
             <ul>
                 @forelse($services as $service)
                 <li>
-                    <a href="{{ route('guest.search.index', 'query=' . $service->title) }}">{{ $service->title }}</a>
+                    <a href="{{ route('guest.search.index', ['search' => $service->slug]) }}">{{ $service->title }}</a>
                 </li>
                 @empty
                     <li>

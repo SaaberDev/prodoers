@@ -3,11 +3,11 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-6 col-md-12">
-                    <form action="{{ route('guest.search.index', $query) }}" method="GET" class="pt-3 search-form ">
+                    <form action="{{ route('guest.search.index', $search) }}" method="GET" class="pt-3 search-form ">
                         <div class="input-group mb-3">
-                            <input wire:model="query"
+                            <input wire:model="search"
                                    name="query"
-                                   value="{{ $query }}"
+                                   value="{{ $search }}"
                                    type="text"
                                    class="form-control"
                                    id="search-input-box"

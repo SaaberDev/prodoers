@@ -10,23 +10,21 @@ class SearchResultPageComponent extends Component
 {
     use WithPagination;
 
-    public $service_thumbnail;
-
-    public $query;
+    public $search;
     public $recordPerPage = 9;
     public $page = 1;
 
     // Shows search query in URL
     protected $queryString = [
-        'query' => ['except' => ''],
+        'search' => ['except' => ''],
         'page' => ['except' => 1],
     ];
 
     public function mount()
     {
-        $this->query = session('query');
-        session()->forget('query');
-        $this->fill(request()->only('query', 'page'));
+        $this->search = session('search');
+        session()->forget('search');
+        $this->fill(request()->only('search', 'page'));
     }
 
     public function updatingQuery()
@@ -41,7 +39,7 @@ class SearchResultPageComponent extends Component
 
     public function render()
     {
-        $services = Service::with('media')->latest('id')->getAllPublished()->search($this->query)->paginate($this->recordPerPage);
+        $services = Service::with('media')->latest('id')->getAllPublished()->search($this->search)->paginate($this->recordPerPage);
         return view('livewire.guest.search.search-result-page-component', compact('services'));
     }
 }

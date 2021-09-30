@@ -61,16 +61,19 @@
         return number_format($price, 2);
     }
 
-    function getClassName($class)
-    {
-        $arr = preg_split('/(?=[A-Z])/', class_basename($class));
-        array_shift($arr);
-        array_pop($arr);
-        return implode(' ', $arr);
+    if (!function_exists('getClassName')) {
+        function getClassName($class)
+        {
+            $arr = preg_split('/(?=[A-Z])/', class_basename($class));
+            array_shift($arr);
+            array_pop($arr);
+            return implode(' ', $arr);
+        }
     }
 
-//    function getGeoLocation(string $attribute)
-//    {
+
+    //    function getGeoLocation(string $attribute)
+    //    {
 //        $geoLocation = '';
 //        if (config('cache.default') === 'file'){
 //            config(['cache.default' => 'array']);
