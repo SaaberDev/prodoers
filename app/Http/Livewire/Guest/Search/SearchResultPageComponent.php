@@ -41,7 +41,7 @@ class SearchResultPageComponent extends Component
 
     public function render()
     {
-        $services = Service::latest('id')->getAllPublished()->search($this->query)->paginate($this->recordPerPage);
+        $services = Service::with('media')->latest('id')->getAllPublished()->search($this->query)->paginate($this->recordPerPage);
         return view('livewire.guest.search.search-result-page-component', compact('services'));
     }
 }

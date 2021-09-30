@@ -101,8 +101,8 @@
         // Order Details
 //        Route::get('/order-details', [UserOrderDetailController::class, 'index'])->name('order_detail.index');
         // Blog
-        Route::get('/blog', [GuestBlogController::class, 'index'])->name('blog.index');
-        Route::get('/single-blog', [GuestBlogController::class, 'index'])->name('blog.show');
+//        Route::get('/blog', [GuestBlogController::class, 'index'])->name('blog.index');
+//        Route::get('/single-blog', [GuestBlogController::class, 'index'])->name('blog.show');
     });
 
     Route::prefix('/user')->name('user.')->middleware(['auth', 'verified'])->group(function () {

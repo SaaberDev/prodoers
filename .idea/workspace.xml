@@ -5,7 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f616bec-9873-4c54-8a6f-71f691274991" name="Changes" comment="[guest-ui] - re-templating - forgot password modal">
+      <change beforePath="$PROJECT_DIR$/.idea/blade.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/blade.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat.values" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat.values" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat.values.s" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat.values.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat_i" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat_i" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Guest/Search/GuestSearchController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Guest/Search/GuestSearchController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Guest/Search/SearchResultPageComponent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Guest/Search/SearchResultPageComponent.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/guest/search/search-result-page-component.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/guest/search/search-result-page-component.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -278,14 +287,15 @@
       <workItem from="1631739125452" duration="159000" />
       <workItem from="1631739326257" duration="41566000" />
       <workItem from="1631979511926" duration="18456000" />
-      <workItem from="1632011597779" duration="26120000" />
-    </task>
-    <task id="LOCAL-00033" summary="[livewire-faq-list] - service feature list delete in edit page">
-      <created>1628707968463</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1628707968463</updated>
+      <workItem from="1632011597779" duration="26147000" />
+      <workItem from="1632195366828" duration="37000" />
+      <workItem from="1632195452449" duration="73000" />
+      <workItem from="1632195575198" duration="38000" />
+      <workItem from="1632195760322" duration="8000" />
+      <workItem from="1632195833018" duration="1000000" />
+      <workItem from="1632284716748" duration="1304000" />
+      <workItem from="1632430454191" duration="35000" />
+      <workItem from="1633010613798" duration="6601000" />
     </task>
     <task id="LOCAL-00034" summary="[service] - new changes">
       <created>1629125264720</created>
@@ -623,7 +633,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632114045971</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="[guest-ui] - re-templating - forgot password modal">
+      <created>1632156917468</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1632156917468</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
