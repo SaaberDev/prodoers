@@ -32,7 +32,7 @@ class GuestSearchComponent extends Component
     {
         $this->validate();
         session()->put(['search' => $this->search]);
-        return redirect()->route('guest.search.index', $this->search);
+        return redirect()->route('guest.search.index', ['search' => $this->search]);
     }
 
     public function updatingQuery()
