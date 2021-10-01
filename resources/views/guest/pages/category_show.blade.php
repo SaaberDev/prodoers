@@ -25,6 +25,31 @@
             </div>
         </div>
     </div>
+
+
+
+
+
+
+
+
+    <div class="section singleCategoryHero bgcustomLightgray " id="SingleCategoryHero">
+        <div class="container">
+            <div class="row   justify-content-center singlecaregoryBannerCustom">
+                <div class=" col-lg-6 col-md-6 v-center">
+                    <div class="text-md-left">
+                        <h2>{{ $category->title }}</h2>
+                        <p >{{ $category->desc }}</p>
+                    </div>
+                </div>
+                <div class=" col-lg-6 col-md-6 singlecaregoryBannerImg">
+                    <div class="text-center">
+                        <img src="{{ asset($category->category_banner ? $category_banner . $category->category_banner : config('designwala_paths.default.no_preview')) }}" alt="designwala" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     {{-- Category Banner End --}}
 
     @livewire('guest.category.category-component', ['category' => $category, 'service_thumbnail' => $service_thumbnail])
