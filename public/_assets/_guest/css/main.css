@@ -2203,7 +2203,7 @@ div#sectionServicePopularCategories {
 
 /* footer start */
 footer {
-    padding-top: 122px;
+    padding-top: 35px;
     background-color: #F8F8F8;
 }
 .second_footer_one img {
@@ -2343,7 +2343,7 @@ img.img-fluid.img-1 {
     font-size: 16px;
     font-weight: lighter;
     line-height: 25px;
-    padding: 85px 0 20px 0;
+    padding: 35px 0;
 }
 .img-pad {
     height: 265px;
