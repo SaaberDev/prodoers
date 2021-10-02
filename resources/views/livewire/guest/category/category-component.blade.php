@@ -7,7 +7,7 @@
                     <div class="searchPageResultSingle position-relative">
                         <div class="card ">
                             <div class="img-pad">
-                                <img src="{{ asset(optional($service)->getFirstMedia('service_thumb') ? $service->getFirstMediaUrl('service_thumb') : config('static_content._default.image.no_preview')) }}" class="card-img-top img-fluid" alt="{{ config('static_content._default.image.alt') }}">
+                                <img src="{{ showImage($service, 'service_thumb') }}" class="card-img-top img-fluid" alt="{{ showAltText($service, 'service_thumb', $service->title) }}">
                             </div>
                             <div class="card-body">
                                 <div class="card-title ">

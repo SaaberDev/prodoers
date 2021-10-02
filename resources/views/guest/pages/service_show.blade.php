@@ -3,148 +3,246 @@
 
 @push('styles')
     {{-- Internal Styles --}}
+    {{-- FancyBox --}}
+    <link rel="stylesheet" href="{{ mix('_assets/plugins/fancybox/css/fancybox.css') }}">
+    {{-- Slick --}}
+    <link rel="stylesheet" href="{{ mix('_assets/plugins/slick/css/slick.css') }}">
+    {{-- OwlCarousel --}}
+    <link rel="stylesheet" href="{{ mix('_assets/plugins/owl-carousel/css/owl-carousel.css') }}">
 @endpush
 
 @section('content')
     {{-- Service Image & Features Start --}}
     <div class="singleCategoryItemSectionOne bgcustomLightgray pt-3" id="singleCategoryItemSectionOne">
         <div class="container">
-            <div class="row bgcustomLightgray">
-                <div class="col-lg-7 col-md-12 ">
-                    <div class="bg-white leftside" style="position: relative;">
-                        <div class="row justify-content-center  m-auto iconShareDIv" style="">
-                            <div class="col-lg-6 col-md-6  v-center smWidth50 xsWidth60 px0forsm">
-                                <div class="starIcons clearfix">
-                                    <span class="starIconsLeftIcon">
-                                        <span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="22.957" height="21.317"
-                                                 viewBox="0 0 22.957 21.317">
-                                                <path id="Icon_ionic-ios-star" data-name="Icon ionic-ios-star"
-                                                      d="M24.336,10.754H16.8L14.507,3.918a.83.83,0,0,0-1.558,0l-2.291,6.836H3.07a.822.822,0,0,0-.82.82.6.6,0,0,0,.015.138.788.788,0,0,0,.343.579l6.2,4.366L6.426,23.57a.822.822,0,0,0,.282.922.793.793,0,0,0,.461.2,1,1,0,0,0,.512-.184l6.047-4.31,6.047,4.31a.96.96,0,0,0,.512.184.736.736,0,0,0,.456-.2.812.812,0,0,0,.282-.922l-2.378-6.913,6.144-4.407.149-.128a.86.86,0,0,0,.266-.548A.868.868,0,0,0,24.336,10.754Z"
-                                                      transform="translate(-2.25 -3.375)" fill="#ffc506"/>
-                                            </svg> </span>
-                                        <span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="22.957" height="21.317"
-                                                 viewBox="0 0 22.957 21.317">
-                                                <path id="Icon_ionic-ios-star" data-name="Icon ionic-ios-star"
-                                                      d="M24.336,10.754H16.8L14.507,3.918a.83.83,0,0,0-1.558,0l-2.291,6.836H3.07a.822.822,0,0,0-.82.82.6.6,0,0,0,.015.138.788.788,0,0,0,.343.579l6.2,4.366L6.426,23.57a.822.822,0,0,0,.282.922.793.793,0,0,0,.461.2,1,1,0,0,0,.512-.184l6.047-4.31,6.047,4.31a.96.96,0,0,0,.512.184.736.736,0,0,0,.456-.2.812.812,0,0,0,.282-.922l-2.378-6.913,6.144-4.407.149-.128a.86.86,0,0,0,.266-.548A.868.868,0,0,0,24.336,10.754Z"
-                                                      transform="translate(-2.25 -3.375)" fill="#ffc506"/>
-                                            </svg> </span>
-                                        <span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="22.957" height="21.317"
-                                                 viewBox="0 0 22.957 21.317">
-                                                <path id="Icon_ionic-ios-star" data-name="Icon ionic-ios-star"
-                                                      d="M24.336,10.754H16.8L14.507,3.918a.83.83,0,0,0-1.558,0l-2.291,6.836H3.07a.822.822,0,0,0-.82.82.6.6,0,0,0,.015.138.788.788,0,0,0,.343.579l6.2,4.366L6.426,23.57a.822.822,0,0,0,.282.922.793.793,0,0,0,.461.2,1,1,0,0,0,.512-.184l6.047-4.31,6.047,4.31a.96.96,0,0,0,.512.184.736.736,0,0,0,.456-.2.812.812,0,0,0,.282-.922l-2.378-6.913,6.144-4.407.149-.128a.86.86,0,0,0,.266-.548A.868.868,0,0,0,24.336,10.754Z"
-                                                      transform="translate(-2.25 -3.375)" fill="#ffc506"/>
-                                            </svg> </span>
-                                        <span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="22.957" height="21.317"
-                                                 viewBox="0 0 22.957 21.317">
-                                                <path id="Icon_ionic-ios-star" data-name="Icon ionic-ios-star"
-                                                      d="M24.336,10.754H16.8L14.507,3.918a.83.83,0,0,0-1.558,0l-2.291,6.836H3.07a.822.822,0,0,0-.82.82.6.6,0,0,0,.015.138.788.788,0,0,0,.343.579l6.2,4.366L6.426,23.57a.822.822,0,0,0,.282.922.793.793,0,0,0,.461.2,1,1,0,0,0,.512-.184l6.047-4.31,6.047,4.31a.96.96,0,0,0,.512.184.736.736,0,0,0,.456-.2.812.812,0,0,0,.282-.922l-2.378-6.913,6.144-4.407.149-.128a.86.86,0,0,0,.266-.548A.868.868,0,0,0,24.336,10.754Z"
-                                                      transform="translate(-2.25 -3.375)" fill="#ffc506"/>
-                                            </svg> </span>
-                                        <span class="whitesvg">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="22.957" height="21.317"
-                                                 viewBox="0 0 22.957 21.317">
-                                                <path id="Icon_ionic-ios-star" data-name="Icon ionic-ios-star"
-                                                      d="M24.336,10.754H16.8L14.507,3.918a.83.83,0,0,0-1.558,0l-2.291,6.836H3.07a.822.822,0,0,0-.82.82.6.6,0,0,0,.015.138.788.788,0,0,0,.343.579l6.2,4.366L6.426,23.57a.822.822,0,0,0,.282.922.793.793,0,0,0,.461.2,1,1,0,0,0,.512-.184l6.047-4.31,6.047,4.31a.96.96,0,0,0,.512.184.736.736,0,0,0,.456-.2.812.812,0,0,0,.282-.922l-2.378-6.913,6.144-4.407.149-.128a.86.86,0,0,0,.266-.548A.868.868,0,0,0,24.336,10.754Z"
-                                                      transform="translate(-2.25 -3.375)" fill="#ffc506"/>
-                                            </svg> </span>
-                                    </span>
-                                    <span class="pl-2 starIconsRightIcon">75 Sales</span>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 v-center smWidth50 xsWidth40"
-                                 style="position: relative;overflow: hidden;padding-top: 25px;padding-bottom: 25px;">
-                                <div class="cardShareIcon">
-                                    <div class="float-sm">
-                                        <a class="fl-fl float-fb">
-                                            <input id="copy-url" value="{{ url()->current() }}" style="display: none">
-                                            <span class="firstIconOnShareIcon" id="copy-clipboard" style="cursor: pointer">
-                                                <svg data-brackets-id="2683" xmlns="http://www.w3.org/2000/svg" width="25" height="20" viewBox="0 0 25 29">
-                                                    <path data-brackets-id="2684" id="Icon_awesome-share-alt"
-                                                          data-name="Icon awesome-share-alt"
-                                                          d="M19.643,18.125a5.285,5.285,0,0,0-3.336,1.184L10.587,15.68a5.549,5.549,0,0,0,0-2.361l5.719-3.628a5.285,5.285,0,0,0,3.336,1.184A5.4,5.4,0,0,0,25,5.438a5.358,5.358,0,1,0-10.714,0,5.533,5.533,0,0,0,.127,1.18L8.694,10.246A5.285,5.285,0,0,0,5.357,9.063a5.438,5.438,0,0,0,0,10.875,5.285,5.285,0,0,0,3.336-1.184l5.719,3.628a5.533,5.533,0,0,0-.127,1.18,5.358,5.358,0,1,0,5.357-5.437Z"
-                                                          fill="#038d08">
-                                                    </path>
-                                                </svg>
-                                            </span>
 
-                                            <span style="cursor: pointer" onclick="window.open('{{ $services->getShareUrl('facebook') }}', 'services', params)">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="15.406" height="20"
-                                                     viewBox="0 0 15.406 28.764">
-                                                    <path id="Icon_awesome-facebook-f"
-                                                          data-name="Icon awesome-facebook-f"
-                                                          d="M16.005,16.18l.8-5.206H11.809V7.6a2.6,2.6,0,0,1,2.935-2.812h2.271V.352A27.692,27.692,0,0,0,12.984,0c-4.113,0-6.8,2.493-6.8,7.007v3.967H1.609V16.18H6.182V28.764h5.628V16.18Z"
-                                                          transform="translate(-1.609)" fill="#3b5999"></path>
-                                                </svg>
-                                            </span>
-                                            <span style="cursor: pointer" onclick="window.open('{{ $services->getShareUrl('twitter') }}', 'services', params)">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="28.764" height="20"
-                                                     viewBox="0 0 28.764 23.362">
-                                                    <path id="Icon_awesome-twitter" data-name="Icon awesome-twitter"
-                                                          d="M25.807,9.2c.018.256.018.511.018.767,0,7.793-5.932,16.773-16.773,16.773A16.659,16.659,0,0,1,0,24.1a12.2,12.2,0,0,0,1.424.073A11.806,11.806,0,0,0,8.742,21.65,5.906,5.906,0,0,1,3.23,17.562a7.434,7.434,0,0,0,1.113.091,6.235,6.235,0,0,0,1.551-.2,5.9,5.9,0,0,1-4.727-5.786v-.073a5.937,5.937,0,0,0,2.665.748A5.9,5.9,0,0,1,2.008,4.458a16.757,16.757,0,0,0,12.155,6.169,6.655,6.655,0,0,1-.146-1.351,5.9,5.9,0,0,1,10.2-4.034,11.606,11.606,0,0,0,3.742-1.424,5.879,5.879,0,0,1-2.592,3.249,11.818,11.818,0,0,0,3.395-.913A12.672,12.672,0,0,1,25.807,9.2Z"
-                                                          transform="translate(0 -3.381)" fill="#0797f8"></path>
-                                                </svg>
-                                            </span> <span style="cursor: pointer" onclick="window.open('{{ $services->getShareUrl('linkedin') }}', 'services', params)">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="25.168" height="20"
-                                                     viewBox="0 0 25.168 25.168">
-                                                    <path id="Icon_awesome-linkedin-in"
-                                                          data-name="Icon awesome-linkedin-in"
-                                                          d="M5.634,25.169H.416V8.365H5.634ZM3.022,6.073A3.036,3.036,0,1,1,6.044,3.023,3.047,3.047,0,0,1,3.022,6.073Zm22.141,19.1H19.956v-8.18c0-1.949-.039-4.449-2.713-4.449-2.713,0-3.129,2.118-3.129,4.309v8.32H8.9V8.365h5v2.292h.073a5.483,5.483,0,0,1,4.937-2.713c5.281,0,6.252,3.478,6.252,7.994v9.23Z"
-                                                          transform="translate(0 -0.001)" fill="#0173b2"></path>
-                                                </svg>
-                                            </span> </a>
+            <!-- Breadcrumb -->
+            <nav class="back-section">
+                <ul class=" list-unstyled d-flex">
+                    <li class="social-banner-a home"><a href="index.php"> <span class="pd-10 home"><svg xmlns="http://www.w3.org/2000/svg" width="15.316" height="17.209" viewBox="0 0 18.316 17.209">
+                    <path id="Icon_ionic-md-home" data-name="Icon ionic-md-home" d="M10.094,20.625V15.25h4.031v5.375h4.1V12.562h2.62L12.109,4.5,3.375,12.562H6v8.062Z" transform="translate(-2.951 -4.041)" fill="none" stroke="#212529" stroke-linejoin="bevel" stroke-width="1.25"/></svg></span> <span>Home</span></a></li>
+                    <li class="social-banner-a right-arrow"><a href="#"> <span class="pd-10"><svg xmlns="http://www.w3.org/2000/svg" width="8.77" height="20.58" viewBox="0 0 11.77 20.58">
+                <path id="Icon_ionic-ios-arrow-back" data-name="Icon ionic-ios-arrow-back" d="M14.8,16.481,22.588,8.7A1.471,1.471,0,0,0,20.5,6.623l-8.826,8.816a1.467,1.467,0,0,0-.043,2.028L20.5,26.345a1.471,1.471,0,0,0,2.084-2.077Z" transform="translate(23.021 26.774) rotate(180)" fill="#212529"/>
+                </svg>
+
+                </span>Logo Design</a></li>
+                    <li class="social-banner-a"><a href="#"><span class="pd-10"><svg xmlns="http://www.w3.org/2000/svg" width="8.77" height="20.58" viewBox="0 0 11.77 20.58">
+                <path id="Icon_ionic-ios-arrow-back" data-name="Icon ionic-ios-arrow-back" d="M14.8,16.481,22.588,8.7A1.471,1.471,0,0,0,20.5,6.623l-8.826,8.816a1.467,1.467,0,0,0-.043,2.028L20.5,26.345a1.471,1.471,0,0,0,2.084-2.077Z" transform="translate(23.021 26.774) rotate(180)" fill="#212529"/>
+                </svg>
+
+                </span> Single Service</a></li>
+                </ul>
+            </nav>
+
+
+            <div class="row banner-wraper">
+                <div class="col-lg-7 col-xl-8 banner-text">
+                    <h2>Social media Banner</h2>
+                </div>
+                <div class="col-lg-5 col-xl-4 sale-share">
+                    <div class="sale-box">
+                        <a href=""><span class="sale">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25.069" height="24.02" viewBox="0 0 25.069 24.02">
+                            <g id="Icon_feather-shopping-cart" data-name="Icon feather-shopping-cart" transform="translate(-0.5 -0.5)">
+                                <path id="Path_2236" data-name="Path 2236" d="M14.1,31.049A1.049,1.049,0,1,1,13.049,30,1.049,1.049,0,0,1,14.1,31.049Z" transform="translate(-3.16 -8.577)" fill="none" stroke="#212529" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                <path id="Path_2237" data-name="Path 2237" d="M30.6,31.049A1.049,1.049,0,1,1,29.549,30,1.049,1.049,0,0,1,30.6,31.049Z" transform="translate(-8.126 -8.577)" fill="none" stroke="#212529" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                <path id="Path_2238" data-name="Path 2238" d="M1.5,1.5H5.694L8.5,15.54a2.1,2.1,0,0,0,2.1,1.688H20.794a2.1,2.1,0,0,0,2.1-1.688l1.678-8.8H6.743" fill="none" stroke="#212529" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                            </g>
+                            </svg>
+                        </span>
+                            <span>312 sale</span>
+                        </a>
+                    </div>
+
+                    <div>
+                        <a href="#">
+                            <span class="social">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="9.645" height="18.008" viewBox="0 0 9.645 18.008">
+                                    <path id="Icon_awesome-facebook-f" data-name="Icon awesome-facebook-f" d="M10.622,10.129l.5-3.259H8V4.756A1.63,1.63,0,0,1,9.833,2.995h1.422V.22A17.337,17.337,0,0,0,8.731,0C6.155,0,4.472,1.561,4.472,4.387V6.87H1.609v3.259H4.472v7.878H8V10.129Z" transform="translate(-1.609)" fill="#212529"/>
+                                </svg>
+                            </span>
+                        </a>
+
+                        <a href="#">
+                            <span class="social">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15.16" height="15.16" viewBox="0 0 15.16 15.16">
+                                    <path id="Icon_awesome-linkedin-in" data-name="Icon awesome-linkedin-in" d="M3.393,15.161H.25V5.039H3.393ZM1.82,3.658a1.829,1.829,0,1,1,1.82-1.838A1.836,1.836,0,0,1,1.82,3.658Zm13.337,11.5H12.021V10.234c0-1.174-.024-2.68-1.634-2.68-1.634,0-1.885,1.276-1.885,2.6v5.012H5.362V5.039H8.377V6.42h.044a3.3,3.3,0,0,1,2.974-1.634c3.181,0,3.766,2.095,3.766,4.815v5.56Z" transform="translate(0 -0.001)" fill="#212529"/>
+                                </svg>
+                            </span>
+                        </a>
+
+                        <a href="#">
+                            <span class="social">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16.134" height="13.104"  viewBox="0 0 16.134 13.104">
+                                    <path id="Icon_awesome-twitter" data-name="Icon awesome-twitter" d="M14.476,6.646c.01.143.01.287.01.43a9.344,9.344,0,0,1-9.408,9.408A9.344,9.344,0,0,1,0,15a6.84,6.84,0,0,0,.8.041A6.622,6.622,0,0,0,4.9,13.628a3.313,3.313,0,0,1-3.092-2.293,4.17,4.17,0,0,0,.625.051,3.5,3.5,0,0,0,.87-.113A3.307,3.307,0,0,1,.655,8.029V7.988a3.33,3.33,0,0,0,1.495.42A3.312,3.312,0,0,1,1.126,3.985a9.4,9.4,0,0,0,6.818,3.46,3.733,3.733,0,0,1-.082-.758,3.31,3.31,0,0,1,5.723-2.262,6.51,6.51,0,0,0,2.1-.8A3.3,3.3,0,0,1,14.23,5.449a6.629,6.629,0,0,0,1.9-.512A7.108,7.108,0,0,1,14.476,6.646Z" transform="translate(0 -3.381)" fill="#212529"/>
+                                </svg>
+                            </span>
+                        </a>
+
+                        <a href="#">
+                            <span class="copy-link-sm">
+                                <img src="{{ asset('_assets/_guest/img/singlecategoryitem/copy.svg') }}" class="img-fluid d-sm-none" alt="designwala">
+                            </span>
+                        </a>
+
+                        <a href="#" class="copy-link">Copy Link</a>
+
+                    </div>
+                </div>
+            </div>
+            <div class=" order-section-wraper">
+                <div class="row bgcustomLightgray">
+                    <div class="col-lg-7 col-xl-8 col-md-12 ">
+
+                        <div id="serviceImageCarousel" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                @forelse($service->getMedia('service') as $media)
+                                    <div class="carousel-item {{ $loop->index == 0 ? 'active' : '' }}">
+                                        <a data-fancybox="gallery" href="{{ showImage($media, 'service', 'multiple') }}">
+                                            <img src="{{ showImage($media, 'service', 'multiple') }}" alt="designwala" class="img-fluid">
+                                        </a>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--                        carousel -->
-                        <div class="">
-                            <div class="owl-carousel">
-                                @forelse($services as $service)
-                                <div class="owlCustom" style="">
-                                    <img src="#" alt="" class="img-fluid">
-                                </div>
                                 @empty
-                                    <div class="owlCustom" style="">
-                                        <img src="{{ asset(config('designwala_paths.default.no_preview')) }}" alt="" class="img-fluid">
+                                    <div class="carousel-item active">
+                                        <a data-fancybox="gallery" href="{{ config('static_content._default.image.no_preview') }}">
+                                            <img src="{{ config('static_content._default.image.no_preview') }}" alt="designwala" class="img-fluid">
+                                        </a>
                                     </div>
                                 @endforelse
                             </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#serviceImageCarousel" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#serviceImageCarousel" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            </button>
                         </div>
+
                     </div>
-                </div>
-                <div class="col-lg-5  col-md-12">
-                    <div class="bg-white p-4 rightSide shadow-sm" style="">
-                        <div class="pt-3 pb-4 socialMediaBannerTxtpadding">
-                            <h3 style="">{{ $services->title }}</h3>
-                        </div>
-                        <div class=" " style="height: 308px;">
-                            <h4 class="pb-2">Features:</h4>
-                            @forelse($services->serviceFeatures->take(7) as $service)
-                            <p><span><svg xmlns="http://www.w3.org/2000/svg" width="12.711" height="9.479"
-                                          viewBox="0 0 12.711 9.479">
-                                        <path id="Icon_awesome-check" data-name="Icon awesome-check"
-                                              d="M4.317,13.87.186,9.739a.636.636,0,0,1,0-.9l.9-.9a.636.636,0,0,1,.9,0l2.783,2.783,5.961-5.961a.636.636,0,0,1,.9,0l.9.9a.636.636,0,0,1,0,.9L5.216,13.87A.636.636,0,0,1,4.317,13.87Z"
-                                              transform="translate(0 -4.577)" fill="#038d08"/>
+                    <!-- carousel  end-->
+                    <div class="col-lg-5 col-xl-4  col-md-12">
+                        <div class="bg-white rightSide">
+
+                            <div class="d-flex justify-content-between align-items-center d-sm-none">
+                                <div class="service-price">
+                                    <h2 class="m-top">$50</h2>
+                                </div>
+                                <div class="review-text">
+                                <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="12.667"  viewBox="0 0 28.906 27.667">
+                                        <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
                                     </svg>
-                                </span> <span>{{ $service->feature_desc }}</span></p>
-                            @empty
-                                No Features
-                            @endforelse
-
-
-                        </div>
-                        <div class="row py-5 pricepadding">
-                            <div class="col-md-12">
-                                <h2 class="colorOne mb-0" style="font-size: 25px;">$ {{ $services->price }}</h2>
+                                </span>
+                                    <span class="review">
+                                    4.9  (15 Review)
+                                </span>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="">
-                            <a rel="modal:open" id="place_order" href="{{ route('guest.order.index', $services->slug) }}" class="btn bgOne text-white btn-lg btn-block rounded-0">Place Order</a>
+                            <div class="starIcons ">
+
+                                <div class="review-icon">
+                                <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="12.667"  viewBox="0 0 28.906 27.667">
+                                        <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
+                                    </svg>
+                                </span>
+                                    <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="12" viewBox="0 0 28.906 27.667">
+                                        <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
+                                    </svg>
+                                </span>
+                                    <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="12" viewBox="0 0 28.906 27.667">
+                                        <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
+                                    </svg>
+                                </span>
+                                    <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="12" viewBox="0 0 28.906 27.667">
+                                        <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
+                                    </svg>
+                                </span>
+                                    <span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="12" viewBox="0 0 28.906 27.667">
+                                        <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
+                                    </svg>
+                                </span>
+                                </div>
+
+                                <div class="review-text">
+                                <span class="review">
+                                    4.9  (15 Review)
+                                </span>
+                                </div>
+                            </div>
+
+                            <div class="row pricepadding">
+                                <div class="col-md-12">
+                                    <h2 class="m-top">$50</h2>
+                                </div>
+                            </div>
+                            <div class="requirement">
+                                <h4>Features</h4>
+                                <p><span ><svg xmlns="http://www.w3.org/2000/svg" width="33.257" height="22.727" viewBox="0 0 33.257 22.727">
+                                        <g id="Group_602" data-name="Group 602" transform="translate(-1502.204 -600.791)">
+                                        <path id="Path_2215" data-name="Path 2215" d="M1536.148,629.515a3.79,3.79,0,1,1,3.79-3.79A3.8,3.8,0,0,1,1536.148,629.515Zm0-6.491a2.7,2.7,0,1,0,2.7,2.7A2.7,2.7,0,0,0,1536.148,623.024Z" transform="translate(-8.553 -5.997)" fill="#212529"/>
+                                        <path id="Path_2216" data-name="Path 2216" d="M1515.508,629.515a3.79,3.79,0,1,1,3.791-3.79A3.795,3.795,0,0,1,1515.508,629.515Zm0-6.491a2.7,2.7,0,1,0,2.7,2.7A2.7,2.7,0,0,0,1515.508,623.024Z" transform="translate(-2.698 -5.997)" fill="#212529"/>
+                                        <path id="Path_2217" data-name="Path 2217" d="M1538.137,605.2a.532.532,0,0,0-.48-.3h-4.493v-1.09h5.161a.544.544,0,0,1,.487.3l3.31,6.558-1.281-.094Z" transform="translate(-8.781 -0.857)" fill="#212529"/>
+                                        <path id="Path_2218" data-name="Path 2218" d="M1507.027,627.6a.544.544,0,0,1,0-1.089h3.751a.544.544,0,1,1,0,1.089Z" transform="translate(-1.214 -7.296)" fill="#212529"/>
+                                        <path id="Path_2219" data-name="Path 2219" d="M1532.055,620.308a.544.544,0,1,1,0-1.089h2.993a.538.538,0,0,0,.537-.537V613.1a.544.544,0,0,0-.113-.33l-1.575-2.029a.534.534,0,0,0-.424-.208h-8.414a.545.545,0,0,1-.544-.544v-7.573a.538.538,0,0,0-.537-.537h-16.95a.544.544,0,0,1,0-1.089h18.032a.544.544,0,0,1,.544.544v7.573a.539.539,0,0,0,.537.537H1534a.544.544,0,0,1,.431.211l2.127,2.74a.551.551,0,0,1,.114.335v7.033a.545.545,0,0,1-.544.544Z" transform="translate(-1.214)" fill="#212529"/>
+                                        <path id="Path_2220" data-name="Path 2220" d="M1505.215,619.953a.545.545,0,0,1,0-1.09h4.977a.545.545,0,0,1,0,1.09Z" transform="translate(-0.7 -5.126)" fill="#212529"/>
+                                        <path id="Path_2221" data-name="Path 2221" d="M1521.955,627.6c-.44,0-.8-.245-.8-.545s.356-.544.8-.544h7.272c.439,0,.8.244.8.544s-.358.545-.8.545Z" transform="translate(-5.376 -7.296)" fill="#212529"/>
+                                        <path id="Path_2222" data-name="Path 2222" d="M1502.749,614.013a.545.545,0,0,1,0-1.09h9.231a.545.545,0,1,1,0,1.09Z" transform="translate(0 -3.441)" fill="#212529"/>
+                                        <path id="Path_2223" data-name="Path 2223" d="M1505.215,608.072a.544.544,0,0,1,0-1.089h9.232a.544.544,0,1,1,0,1.089Z" transform="translate(-0.7 -1.756)" fill="#212529"/>
+                                        </g>
+                                        </svg>
+
+                                </span> <span class="requirement-text1">3 Day delivery</span></p>
+                                <p>
+                                <span >
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="34.771" height="31.058" viewBox="0 0 34.771 31.058">
+                                     <g id="Group_603" data-name="Group 603" transform="translate(-1547.486 -575.464)">
+                                    <path id="Path_2224" data-name="Path 2224" d="M1559.8,601.468a.509.509,0,1,0,0-1.019h-6.031a.509.509,0,0,0,0,1.019Zm0,0" transform="translate(-1.421 -6.146)" fill="#212529"/>
+                                    <path id="Path_2225" data-name="Path 2225" d="M1582.257,581.374a3.423,3.423,0,0,0-1.009-2.435l-2.477-2.477a3.463,3.463,0,0,0-.469-.393.509.509,0,1,0-.582.836,2.449,2.449,0,0,1,.331.277l2.476,2.477a2.424,2.424,0,0,1,0,3.43l-.893.894-5.907-5.907.893-.893a2.427,2.427,0,0,1,1.507-.7.509.509,0,0,0-.087-1.015,3.448,3.448,0,0,0-2.14,1l-.934.934a2.3,2.3,0,0,0-3.179,3.18l-3.982,3.982a4.215,4.215,0,0,0-.8-.077h-13.362a4.165,4.165,0,0,0-4.16,4.16v9.427a4.152,4.152,0,0,0,1.075,2.791.509.509,0,1,0,.755-.683,3.135,3.135,0,0,1-.812-2.107V588.64a3.144,3.144,0,0,1,3.141-3.141h13.217l-1.545,1.544a5.064,5.064,0,0,0-1.04,1.507.51.51,0,0,0-.207-.044h-9.72a.509.509,0,0,0,0,1.019h9.6c-.023.1-.043.2-.06.3l-.259,1.616h-9.285a.509.509,0,0,0,0,1.019h9.122l-.3,1.886a1.911,1.911,0,0,0,1.878,2.213,1.97,1.97,0,0,0,.31-.025l4.521-.724c.09-.014.179-.032.268-.051v2.305a3.144,3.144,0,0,1-3.14,3.141h-5.293a.511.511,0,0,0-.36.149l-3.814,3.814a1.119,1.119,0,0,1-1.909-.791v-2.662a.51.51,0,0,0-.51-.51h-1.477a3.119,3.119,0,0,1-.882-.125.509.509,0,1,0-.286.977,4.135,4.135,0,0,0,1.167.167h.968v2.154a2.1,2.1,0,0,0,1.319,1.974,2.174,2.174,0,0,0,.832.168,2.106,2.106,0,0,0,1.5-.631l3.665-3.665h5.082a4.164,4.164,0,0,0,4.159-4.159v-2.639a5.07,5.07,0,0,0,1.5-1.037l6.468-6.469a2.3,2.3,0,0,0,3.179-3.179l.933-.934a3.422,3.422,0,0,0,1.01-2.436Zm-11.911,11.568a2.464,2.464,0,0,0-1.371-.7l6.2-6.2,1.2,1.2-5.871,5.871c-.05-.059-.1-.116-.157-.171Zm.121-11.607,1.2,1.2-6.2,6.2a2.473,2.473,0,0,0-.7-1.373q-.082-.083-.172-.156Zm1.918,1.918,2.07,2.07-6.2,6.2a2.479,2.479,0,0,0-2.068-2.07Zm-9.187,12.277a.891.891,0,0,1-1.021-1.022l.239-1.49,2.273,2.273Zm4.52-.724-1.788.286-3.315-3.316.286-1.788a4.026,4.026,0,0,1,.973-2.051,1.424,1.424,0,0,1,.172.145,1.464,1.464,0,0,1,0,2.069.509.509,0,0,0,.72.721,1.463,1.463,0,0,1,2.069,2.069.509.509,0,0,0,.721.72,1.464,1.464,0,0,1,2.069,0,1.509,1.509,0,0,1,.145.172,4.022,4.022,0,0,1-2.051.973Zm11.554-7.925a1.288,1.288,0,0,1-1.819,0l-6.627-6.627h0a1.287,1.287,0,1,1,1.82-1.819l6.627,6.628a1.288,1.288,0,0,1,0,1.82Zm0,0" fill="#212529"/>
+                                    </g>
+                                </svg>
+                                </span>
+                                    <span class="requirement-text2">2 Revisions</span>
+                                </p>
+
+                                <p>
+                                    <span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="31.887" height="32" viewBox="0 0 31.887 32">
+                                        <g id="Group_604" data-name="Group 604" transform="translate(-1215.681 -615.211)">
+                                        <path id="Path_2226" data-name="Path 2226" d="M1236.239,619.278a.63.63,0,0,0,.63-.63v-2.807a.629.629,0,1,0-1.259,0v2.807a.629.629,0,0,0,.629.63Zm0,0" transform="translate(-4.67 0)" fill="#212529"/>
+                                        <path id="Path_2227" data-name="Path 2227" d="M1246.955,638.406l-1.113-1.109a2.106,2.106,0,0,0-2.494-.355l-2.1-2.093.1-.1a2.185,2.185,0,0,0,0-3.085,2.156,2.156,0,0,0-1.1-.592,2.214,2.214,0,0,0,.086-.613,2.179,2.179,0,0,0-1.734-2.135,2.2,2.2,0,0,0,.087-.612,2.177,2.177,0,0,0-1.734-2.134,2.178,2.178,0,0,0-2.328-2.78l-4.152-.786a2.246,2.246,0,0,0-1.924.256,1.092,1.092,0,0,0-.095.1,2.19,2.19,0,0,0-2.3.505,2.165,2.165,0,0,0-.637,1.543,2.21,2.21,0,0,0,.086.613,2.179,2.179,0,0,0-1.734,2.132,2.221,2.221,0,0,0,.087.614,3.78,3.78,0,0,1-2.191,3.89,2.185,2.185,0,0,0,0,3.086l.1.1-2.1,2.092a2.1,2.1,0,0,0-2.381.413l-1.113,1.109a2.1,2.1,0,0,0,0,2.969l1.389,1.387a.629.629,0,1,0,.889-.891l-1.388-1.387a.845.845,0,0,1,0-1.188l1.113-1.109a.843.843,0,0,1,1.027-.126.68.68,0,0,0,.079.1.658.658,0,0,0,.181.126l6.381,6.371a.621.621,0,0,0,.3.307.841.841,0,0,1-.035,1.149l-1.111,1.11a.846.846,0,0,1-1.191,0l-1.388-1.389a.63.63,0,0,0-.891.891l1.39,1.39a2.107,2.107,0,0,0,2.969,0l1.112-1.111a2.1,2.1,0,0,0,.295-2.6l2.358-2.356.008-.007c.27-.279,1.022-.227,1.75-.177a9.04,9.04,0,0,0,1.656.011l2.583,2.58a2.1,2.1,0,0,0,.357,2.492l1.113,1.111a2.1,2.1,0,0,0,2.968,0l6.746-6.738a2.1,2.1,0,0,0,0-2.97Zm-16.7-15.159,2.73.517-1.635,1.634a3.979,3.979,0,0,1-.979-.712,2.9,2.9,0,0,1-.927-1.431h0a.447.447,0,0,1,0-.062,2.135,2.135,0,0,1,.812.055Zm-3.191.513a.928.928,0,0,1,1.175-.111,4.508,4.508,0,0,0,1.263,1.946,4.664,4.664,0,0,0,1.813,1.123.924.924,0,0,1-1.412,1.18h0l-2.839-2.833a.928.928,0,0,1,0-1.3Zm-1.645,2.747a.928.928,0,0,1,1.308,0l2.286,2.281a.925.925,0,0,1-1.31,1.307l-1.734-1.733-.008-.008-.543-.542a.924.924,0,0,1,0-1.305Zm-1.648,2.746a.933.933,0,0,1,1.3,0l1.739,1.739a.925.925,0,0,1,0,1.3.933.933,0,0,1-1.309,0l-.631-.63h0l-1.1-1.1a.926.926,0,0,1,0-1.306Zm-1.1,3.3a.932.932,0,0,1,1.31,0l.632.631a.924.924,0,0,1-1.31,1.3l-.079-.079,0,0,0,0-.546-.544a.924.924,0,0,1,0-1.3Zm12.827,7.153a.63.63,0,0,0-.891,0l-.56.559c-.532.532-1.5.465-2.429.4-1.012-.07-2.06-.143-2.737.553l-2.318,2.315-5.8-5.789,2.052-2.047a2.184,2.184,0,0,0,3.323-1.862v-.016h.016a2.176,2.176,0,0,0,2.182-2.179v-.016h.016a2.175,2.175,0,0,0,2.182-2.2h.017a2.184,2.184,0,0,0,1.863-3.319l1.8-1.8a.92.92,0,0,1,.473-.252l.055-.008a.922.922,0,0,1,.784,1.565l-.548.545-.005.005-.631.63a.629.629,0,1,0,.89.891l.55-.549h0l.083-.083a.927.927,0,0,1,1.306,0,.923.923,0,0,1,0,1.305l-.55.551h0l-.631.628a.629.629,0,0,0,.888.892l.634-.631a.924.924,0,1,1,1.307,1.305l-1.1,1.1a.629.629,0,1,0,.89.89l.538-.538.01-.008a.928.928,0,0,1,1.308,0,.925.925,0,0,1,0,1.3l-.548.547h0l-.869.867a.629.629,0,0,0,.89.89l.425-.424,2.036,2.034-5.8,5.79-2.077-2.075a2.448,2.448,0,0,0,.413-.332l.56-.559a.63.63,0,0,0,0-.891Zm10.567.779-6.746,6.739a.846.846,0,0,1-1.189,0l-1.113-1.111a.843.843,0,0,1,0-1.187l6.746-6.738a.846.846,0,0,1,1.19,0l1.112,1.109a.844.844,0,0,1,0,1.188Zm0,0" transform="translate(0 -1.571)" fill="#212529"/>
+                                        <path id="Path_2228" data-name="Path 2228" d="M1224.757,618.8a.629.629,0,1,0,.889-.891l-2.294-2.289a.629.629,0,0,0-.889.891Zm0,0" transform="translate(-1.546 -0.052)" fill="#212529"/>
+                                        <path id="Path_2229" data-name="Path 2229" d="M1246.574,618.982a.626.626,0,0,0,.444-.184l2.292-2.289a.629.629,0,0,0-.89-.891l-2.292,2.289a.629.629,0,0,0,.445,1.074Zm0,0" transform="translate(-7.091 -0.053)" fill="#212529"/>
+                                        <path id="Path_2230" data-name="Path 2230" d="M1220.68,650.515a.63.63,0,0,0,.008.89l0,0a.629.629,0,1,0-.01-.892Zm0,0" transform="translate(-1.129 -8.228)" fill="#212529"/>
+                                        <path id="Path_2231" data-name="Path 2231" d="M1243.38,643.58a.629.629,0,1,0-.282-1.191l0,0a.629.629,0,0,0,.286,1.19Zm0,0" transform="translate(-6.343 -6.352)" fill="#212529"/>
+                                        </g>
+                                    </svg>
+
+                                </span>
+                                    <span class="requirement-text3">Support</span>
+                                </p>
+
+
+
+                                <p><span ><svg xmlns="http://www.w3.org/2000/svg" width="31.194" height="32.456" viewBox="0 0 31.194 32.456">
+                            <g id="Group_607" data-name="Group 607" transform="translate(-1207 -659)">
+                                <path id="Path_2234" data-name="Path 2234" d="M2020.577,616.848a7.552,7.552,0,1,1,7.552-7.552,7.561,7.561,0,0,1-7.552,7.552Zm0-13.594a6.042,6.042,0,1,0,6.042,6.042,6.047,6.047,0,0,0-6.042-6.042Zm0,0" transform="translate(-799.983 57.256)" fill="#212529"/>
+                                <path id="Path_2235" data-name="Path 2235" d="M2017.1,641.63h-12.083a.756.756,0,0,1-.755-.755v-6.042a6.8,6.8,0,0,1,6.8-6.8h9.062a.755.755,0,1,1,0,1.51h-9.062a5.292,5.292,0,0,0-5.286,5.286v5.287H2017.1a.755.755,0,1,1,0,1.51Zm0,0" transform="translate(-797.261 49.089)" fill="#212529"/>
+                                <path id="Icon_awesome-check-circle" data-name="Icon awesome-check-circle" d="M2042.845,635.568a6.591,6.591,0,1,1-6.592-6.591h0a6.59,6.59,0,0,1,6.592,6.59Zm-7.354,3.49,4.89-4.888a.426.426,0,0,0,0-.6h0l-.6-.6a.424.424,0,0,0-.6,0h0l-3.989,3.988-1.862-1.862a.425.425,0,0,0-.6,0h0l-.6.6a.425.425,0,0,0,0,.6h0l2.764,2.764a.425.425,0,0,0,.6,0Z" transform="translate(-805.152 48.796)" fill="none" stroke="#212529" stroke-width="1"/>
+                            </g>
+                            </svg>
+
+                                </span> <span class="requirement-text4">Dedicated Project manager</span></p>
+                            </div>
+                            <div class="place-order-btn">
+                                <button type="button" class="btn bgOne text-white btn-lg">Place Oder</button>
+                            </div>
+                            <a href="#"  class="order-btn">Contact the Designwala Help Team</a>
                         </div>
                     </div>
                 </div>
@@ -177,13 +275,13 @@
                             <div class="tab-pane fade show active " id="description" role="tabpanel"
                                  aria-labelledby="home-tab">
                                 <p>
-                                    {{ $services->short_desc }}
+                                    {{ $service->short_desc }}
                                 </p>
                             </div>
                             <div class="tab-pane fade" id="faq" role="tabpanel" aria-labelledby="profile-tab">
                                 <div class="">
                                     <div class="accordion" id="accordionExample275">
-                                        @forelse($services->serviceFaqs->take(6) as $faq)
+                                        @forelse($service->serviceFaqs->take(6) as $faq)
                                         <div class="card z-depth-0 bordered">
                                             <div class="card-header" id="headingOne2">
                                                 <h5 class="mb-0">
@@ -577,7 +675,7 @@
     <div class="singleCategoryItemDetailContent py-5 bgcustomLightgray" id="singleCategoryItemDetailContent">
         <div class="container">
             <div class="row">
-                @forelse($services->serviceCategories->serviceCategoryFaqs as $faq)
+                @forelse($service->serviceCategories->serviceCategoryFaqs as $faq)
                 <div class="col-md-6">
                     <div class="py-3">
                         <div class="detailsContent">
@@ -597,46 +695,24 @@
 
 @push('scripts')
     {{-- Internal Scripts --}}
-    {{--<script>
-        $(".owl-carousel").owlCarousel({
-            pagination: true,
-            items: 1,
-            loop: true,
-            margin: 0,
-            autoplay: true,
-            autoplayTimeout: 6000,
-            autoplayHoverPause: false,
-            dots: false, //nav: false,
-            responsive: {
-                0: {
-                    items: 1,
-                    nav: true,
-                    loop: true,
-                },
-                500: {
-                    items: 1,
-                    nav: true,
-                    loop: true,
-                },
-                768: {
-                    items: 1,
-                    nav: true,
-                    loop: true,
-                },
-                1000: {
-                    items: 1,
-                    nav: true,
-                    loop: true,
-                }
-            }
+    {{-- FancyBox --}}
+    <script src="{{ mix('_assets/plugins/fancybox/js/fancybox.js') }}"></script>
+    {{-- Slick --}}
+    <script src="{{ mix('_assets/plugins/slick/js/slick.js') }}"></script>
+    {{-- OwlCarousel --}}
+    <script src="{{ mix('_assets/plugins/owl-carousel/js/owl-carousel.js') }}"></script>
+    <script>
+        var myCarousel = document.querySelector('#serviceImageCarousel')
+        var carousel = new bootstrap.Carousel(myCarousel, {
+            interval: 5000,
+            wrap: true,
+        })
+        $(document).ready(function(){
+            $("[data-fancybox]").fancybox({
+
+            });
         });
-        $('.play').on('click', function() {
-            owl.trigger('play.owl.autoplay', [0])
-        })
-        $('.stop').on('click', function() {
-            owl.trigger('stop.owl.autoplay')
-        })
-    </script>--}}
+    </script>
 
     {{-- Social Sharing Parameters --}}
     <script>
@@ -699,12 +775,12 @@
     </script>
 
     {{-- Faq Accordian --}}
-    <script>
-        $(document).ready(function() {
-            $(".faqAccordion").hide();
-            $(".faqAccordion:first").show();
-        });
-    </script>
+{{--    <script>--}}
+{{--        $(document).ready(function() {--}}
+{{--            $(".faqAccordion").hide();--}}
+{{--            $(".faqAccordion:first").show();--}}
+{{--        });--}}
+{{--    </script>--}}
 
     @guest
         <script>

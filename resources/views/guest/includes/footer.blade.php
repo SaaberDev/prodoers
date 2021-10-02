@@ -86,7 +86,7 @@
                             @endforelse
                         </ul>
                     </div>
-                    <p class="m-0">{{ config('designwala.policy.site_content.copyright') }}</p>
+                    <p class="m-0">{!! config('static_content._default.data.footer.copyright') !!}</p>
                 </div>
             </div>
         </div>

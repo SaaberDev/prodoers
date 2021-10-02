@@ -225,7 +225,7 @@
                     <div class="col-lg-4 col-md-6 col-12 text-center py_md_5 popularCetegoriesSmallpadding">
                         <div class="sectionServicePopularCategoriesSingleCategories  m-auto">
                             <div class="sectionServicePopularCategoriesSingleImage">
-                                <img src="{{ asset($popular_category->category_thumbnail ? config('designwala_paths.show.service_categories.thumbnail') . $popular_category->category_thumbnail : config('designwala_paths.default.no_preview')) }}" alt="categories image one" class="img-fluid">
+                                <img src="{{ showImage($popular_category, 'category_thumb') }}" alt="{{ showAltText($popular_category, 'category_thumb', $popular_category->title) }}" class="img-fluid">
                             </div>
                             <div class="sectionServicePopularCategoriesSingleContent">
                                 <h3 class="pt-3"><a href="{{ route('guest.service_category.index', $popular_category->slug) }}" class="text-dark">{{ $popular_category->title }}</a></h3>

@@ -19,7 +19,7 @@
                 </div>
                 <div class=" col-lg-6 col-md-6 singlecaregoryBannerImg">
                     <div class="text-center">
-                        <img src="{{ asset(optional($category)->getFirstMedia('category_thumb') ? $category->getFirstMediaUrl('category_thumb')  : config('designwala_paths.default.no_preview')) }}" alt="designwala" class="img-fluid float-end">
+                        <img src="{{ showImage($category, 'category_thumb') }}" alt="{{ showAltText($category, 'category_thumb', $category->title) }}" class="img-fluid float-end">
                     </div>
                 </div>
             </div>
@@ -48,7 +48,7 @@
                     <div class="searchPageResultSingle position-relative">
                         <div class="card ">
                             <div class="img-pad">
-                                <img src="{{ asset(optional($popular_service)->getFirstMedia('service_thumb') ? $popular_service->getFirstMediaUrl('service_thumb') : config('static_content._default.image.no_preview')) }}" class="card-img-top img-fluid" alt="{{ config('static_content._default.image.alt') }}">
+                                <img src="{{ showImage($popular_service, 'service_thumb') }}" class="card-img-top img-fluid" alt="{{ showAltText($popular_service, 'service_thumb', $popular_service->title) }}">
                             </div>
                             <div class="card-body">
                                 <div class="card-title ">
@@ -84,8 +84,6 @@
                                     </svg>
                                 </span>
                                     <span> &#40;200&#41; </span>
-
-
                                 </div>
                             </div>
                         </div>

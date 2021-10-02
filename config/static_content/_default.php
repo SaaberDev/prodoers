@@ -17,7 +17,7 @@
             ],
 
             'footer' => [
-                'copyright' => 'Copyright © 2021 '. (\Carbon\Carbon::now()->year !== 2021 ? '- ' . \Carbon\Carbon::now()->year : '') . ' ' . env('APP_NAME'),
+                'copyright' => 'Copyright © 2021 '. (\Carbon\Carbon::now()->year !== 2021 ? '- ' . \Carbon\Carbon::now()->year : '') . ' | ' . env('APP_NAME'),
             ],
         ],
     ];

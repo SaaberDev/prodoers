@@ -71,6 +71,23 @@
         }
     }
 
+    if (!function_exists('showImage')) {
+        function showImage($model, $collectionName, $type = 'single')
+        {
+            if ($type === 'multiple') {
+                return asset(optional($model)->collection_name == $collectionName ? $model->getFullUrl() : config('static_content._default.image.no_preview'));
+            }
+            return asset(optional($model)->getFirstMedia($collectionName) ? $model->getFirstMediaUrl($collectionName) : config('static_content._default.image.no_preview'));
+        }
+    }
+
+    if (!function_exists('showAltText')) {
+        function showAltText($model, $collectionName, $altText, $type = 'single')
+        {
+            return optional($model)->getFirstMedia($collectionName) ? $altText : config('static_content._default.image.alt');
+        }
+    }
+
 
     //    function getGeoLocation(string $attribute)
     //    {
