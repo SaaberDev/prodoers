@@ -4,38 +4,40 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f616bec-9873-4c54-8a6f-71f691274991" name="Changes" comment="[bug-fix] - [search] - session.php config changed http 'secure' =&gt; null">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat.values" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat.values" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat.values.at" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat.values.s" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat.values.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat_i" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/61e8d45b-17a5-4dbe-ab48-5956735b9fba/entities/entities.dat_i" afterDir="false" />
+    <list default="true" id="3f616bec-9873-4c54-8a6f-71f691274991" name="Changes" comment="[styles] - removed extra footer padding and compiled npm">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/static_content/_default.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/_default/no-preview-available.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.phpstorm.meta.php" beforeDir="false" afterPath="$PROJECT_DIR$/.phpstorm.meta.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_ide_helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/_ide_helper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_ide_helper_models.php" beforeDir="false" afterPath="$PROJECT_DIR$/_ide_helper_models.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Guest/Search/GuestSearchComponent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Guest/Search/GuestSearchComponent.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/AssignOrder.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/AssignOrder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/AssignOrderLog.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/AssignOrderLog.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Coupon.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Coupon.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Invoice.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Invoice.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Order.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Payment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Payment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Service.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Service.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/ServiceCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ServiceCategory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/ServiceCategoryFaq.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ServiceCategoryFaq.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/ServiceCategoryInstruction.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/ServiceCategoryInstruction.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/SiteCms.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SiteCms.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Subscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Subscriber.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Tag.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Tag.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/vendor/livewire/livewire.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/vendor/livewire/livewire.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/guest/search/guest-search-component.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/guest/search/guest-search-component.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Service/ServiceCategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Service/ServiceCategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Guest/Service/Category/GuestServiceCategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Guest/Service/Category/GuestServiceCategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Guest/Category/CategoryComponent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Guest/Category/CategoryComponent.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/designwala/policy/policies.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/designwala/policy/site_content.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/designwala/sitemap/sitemap.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/designwala_paths.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/sluggable.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/sluggable.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_admin_panel/js/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_assets/_admin_panel/js/dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/_assets/_guest/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/_guest/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_assets/_guest/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/plugins/dropzone/css/dropzone.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/_assets/plugins/dropzone/css/dropzone.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/plugins/flatpickr/flatpickr.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/_assets/plugins/flatpickr/flatpickr.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/plugins/flatpickr/flatpickr.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_assets/plugins/flatpickr/flatpickr.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/plugins/jquery-modal/css/jquery-modal.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/_assets/plugins/jquery-modal/css/jquery-modal.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/plugins/jquery-modal/js/jquery-modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_assets/plugins/jquery-modal/js/jquery-modal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/plugins/select2/css/select2.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/_assets/plugins/select2/css/select2.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/plugins/slick/css/slick.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/_assets/plugins/slick/css/slick.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_assets/plugins/slick/js/slick.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/_assets/plugins/slick/js/slick.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/_default/no-preview-available.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/_assets/_guest/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/_assets/_guest/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/guest/includes/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/guest/includes/footer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/guest/pages/category_show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/guest/pages/category_show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/admin/services/category/index-component.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/admin/services/category/index-component.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/guest/category/category-component.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/guest/category/category-component.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -246,7 +248,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/_default" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -263,16 +265,17 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\prodoers\public\_default" />
       <recent name="C:\laragon\www\designwala\storage\app\public" />
       <recent name="C:\laragon\www\designwala\resources\views\plugins\dropzone\edit" />
       <recent name="C:\laragon\www\designwala\resources\views\plugins\dropzone\create" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\prodoers\config\designwala" />
       <recent name="C:\laragon\www\designwala\resources\views\guest\includes\mega-menu" />
       <recent name="C:\laragon\www\designwala\app\Listeners\Auth" />
       <recent name="C:\laragon\www\designwala\app\Listeners\Newsletter" />
       <recent name="C:\laragon\www\designwala\app\Events\Newsletter" />
-      <recent name="C:\laragon\www\designwala\resources\views\plugins\dropzone\edit" />
     </key>
   </component>
   <component name="RunManager">
@@ -318,14 +321,8 @@
       <workItem from="1633010613798" duration="11679000" />
       <workItem from="1633100493349" duration="4261000" />
       <workItem from="1633114629756" duration="820000" />
-      <workItem from="1633119198349" duration="2845000" />
-    </task>
-    <task id="LOCAL-00037" summary="[service] - new changes">
-      <created>1629215826101</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1629215826101</updated>
+      <workItem from="1633119198349" duration="2984000" />
+      <workItem from="1633181301674" duration="11496000" />
     </task>
     <task id="LOCAL-00038" summary="[service] - new changes">
       <created>1629230840301</created>
@@ -663,7 +660,14 @@
       <option name="project" value="LOCAL" />
       <updated>1633122044333</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="re-init">
+      <created>1633122130069</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1633122130069</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -683,8 +687,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="[filesystem] - category filesystem changed on update method" />
-    <MESSAGE value="[filesystem] - category delete_confirmation_modal.blade.php" />
     <MESSAGE value="[livewire-faq-list] - fixed Dom Diffing Issues with [wire:key=&quot;{{ $loop-&gt;index }}&quot;]" />
     <MESSAGE value="[livewire-faq-list] - fixed Dom Diffing Issues" />
     <MESSAGE value="[livewire-faq-list] - service faq list delete in edit page" />
@@ -708,7 +710,9 @@
     <MESSAGE value="[guest-ui] - [re-templating] - search page" />
     <MESSAGE value="[bug-fix] - [guest-ui] - [re-templating] - search page" />
     <MESSAGE value="[bug-fix] - [search] - session.php config changed http 'secure' =&gt; null" />
-    <option name="LAST_COMMIT_MESSAGE" value="[bug-fix] - [search] - session.php config changed http 'secure' =&gt; null" />
+    <MESSAGE value="re-init" />
+    <MESSAGE value="[styles] - removed extra footer padding and compiled npm" />
+    <option name="LAST_COMMIT_MESSAGE" value="[styles] - removed extra footer padding and compiled npm" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
