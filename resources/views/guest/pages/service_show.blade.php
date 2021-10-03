@@ -79,14 +79,14 @@
                             </span>
                         </a>
 
-                        <input id="copy-url" value="{{ url()->current() }}" style="display: none">
-                        <a style="cursor: pointer" id="copy-clipboard-mobile">
-                            <span class="copy-link-sm">
-                                <img src="{{ asset('_assets/_guest/img/singlecategoryitem/copy.svg') }}" class="img-fluid d-sm-none" alt="designwala">
-                            </span>
-                        </a>
+                        <input id="copy-url" value="{{ url()->current() }}" style="display: none" aria-label="Copy Url">
 
-                        <a style="cursor: pointer" id="copy-clipboard" class="copy-link" data-toggle="tooltip" data-placement="top" title="Tooltip on top">Copy Link</a>
+                        <button id="copy-clipboard-mobile" class="copy-link-sm d-sm-none" >
+                            <img src="{{ asset('_assets/_guest/img/singlecategoryitem/copy.svg') }}" id="copy-url-sm" class="img-fluid d-sm-none" alt="designwala" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Copied">
+                        </button>
+
+                        <button id="copy-url-lg" class="copy-link" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Copied">Copy Link</button>
+
                     </div>
                 </div>
             </div>
@@ -97,17 +97,21 @@
                         <div id="serviceImageCarousel" class="carousel slide" data-bs-ride="carousel">
                             <div class="carousel-inner">
                                 @forelse($service->getMedia('service') as $media)
-                                    <div class="carousel-item {{ $loop->index == 0 ? 'active' : '' }}">
-                                        <a data-fancybox="gallery" href="{{ showImage($media, 'service', 'multiple') }}">
-                                            <img src="{{ showImage($media, 'service', 'multiple') }}" alt="" class="img-fluid">
-                                        </a>
+                                    <div class="carousel-item {{ $loop->index == 0 ? 'active' : '' }}" data-fancybox="gallery" href="{{ showImage($media, 'service', 'multiple') }}" style="background:url({{ showImage($media, 'service', 'multiple') }});">
+
                                     </div>
                                 @empty
-                                    <div class="carousel-item active">
-                                        <a data-fancybox="gallery" href="{{ asset(config('static_content._default.image.no_preview')) }}">
-                                            <img src="{{ asset(config('static_content._default.image.no_preview')) }}" alt="{{ config('static_content._default.image.alt') }}" class="img-fluid">
-                                        </a>
+                                    <div class="carousel-item active" data-fancybox="gallery" href="{{ asset(config('static_content._default.image.no_preview')) }}" style="background:url({{ asset(config('static_content._default.image.no_preview')) }});">
+
                                     </div>
+
+
+
+{{--                                    <div class="carousel-item active">--}}
+{{--                                        <div data-fancybox="gallery" href="{{ asset(config('static_content._default.image.no_preview')) }}" style='background:url({{ asset('_assets/_guest/img/notfoundpage/notfound.svg') }});'>--}}
+{{--                                            <img src="{{ asset(config('static_content._default.image.no_preview')) }}" alt="{{ config('static_content._default.image.alt') }}" class="img-fluid">--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
                                 @endforelse
                             </div>
                             <button class="carousel-control-prev" type="button" data-bs-target="#serviceImageCarousel" data-bs-slide="prev">
@@ -240,7 +244,7 @@
                                 </span> <span class="requirement-text4">Dedicated Project manager</span></p>
                             </div>
                             <div class="place-order-btn">
-                                <button type="button" class="btn bgOne text-white btn-lg">Place Oder</button>
+                                <button type="button" id="place_order" class="btn bgOne text-white btn-lg">Place Oder</button>
                             </div>
                             <a href="#"  class="order-btn">Contact the Designwala Help Team</a>
                         </div>
@@ -252,349 +256,203 @@
     {{-- Service Image & Features End --}}
 
     {{-- Description, Service FAQ & Review Start --}}
-    <div class="singlecategoryDescriptionReviewFaq bgcustomLightgray py-3" id="singlecategoryDescriptionReviewFaq">
+    <div class="singlecategoryDescriptionReviewFaq bgcustomLightgray" id="singlecategoryDescriptionReviewFaq">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
-                    <div class=" bg-white tabSection shadow-sm">
+                <div class="col-lg-7 col-xl-8 border_right">
+                    <div class=" bg-white tabSection">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
-                            <li class="nav-item" role="presentation"><a class="nav-link active" id="description-tab"
-                                                                        data-toggle="tab" href="#description" role="tab"
-                                                                        aria-controls="home" aria-selected="true">Description </a>
-                            </li>
-                            <li class="nav-item" role="presentation"><a class="nav-link" id="profile-tab"
-                                                                        data-toggle="tab" href="#faq" role="tab"
-                                                                        aria-controls="profile" aria-selected="false">FAQ</a>
-                            </li>
-                            <li class="nav-item" role="presentation"><a class="nav-link" id="contact-tab"
-                                                                        data-toggle="tab" href="#reviews" role="tab"
-                                                                        aria-controls="contact" aria-selected="false">Reviews(00)</a>
-                            </li>
+                            <li class="nav-item" role="presentation"> <a class="nav-link active" id="description-tab" data-bs-toggle="tab" href="#description" role="tab" aria-controls="home" aria-selected="true">Description </a> </li>
+                            <li class="nav-item" role="presentation"> <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#faq" role="tab" aria-controls="profile" aria-selected="false">FAQ</a> </li>
+                            <li class="nav-item" role="presentation"> <a class="nav-link p-0" id="contact-tab" data-bs-toggle="tab" href="#reviews" role="tab" aria-controls="contact" aria-selected="false">Reviews</a> </li>
                         </ul>
                         <div class="tab-content pt-4" id="myTabContent">
-                            <div class="tab-pane fade show active " id="description" role="tabpanel"
-                                 aria-labelledby="home-tab">
+                            {{-- Description --}}
+                            <div class="tab-pane fade show active " id="description" role="tabpanel" aria-labelledby="home-tab">
                                 <p>
                                     {{ $service->short_desc }}
                                 </p>
+
+
+                                <p class="text-color">Banner Sizes:</p>
+                                <p>▪  Large Rectangle 336×280</p>
+                                <p>▪  Medium Rectangle 300×250</p>
+                                <p>▪  Banner 468×60</p>
+                                <p>▪  Mobile 320×100</p>
+                                <p>▪  Social Media Post 1080×1080</p>
+                                <p>▪  Instagram Stories 1080×1920</p>
+                                <p>▪  Facebook AD 1200×628</p>
+                                <p>▪  Facebook Cover 1350×500</p>
+                                <p>▪  Website Slider Banner 1500×500</p>
                             </div>
+
+                            {{-- FAQ Accordion --}}
                             <div class="tab-pane fade" id="faq" role="tabpanel" aria-labelledby="profile-tab">
-                                <div class="">
+                                <div>
                                     <div class="accordion" id="accordionExample275">
                                         @forelse($service->serviceFaqs->take(6) as $faq)
                                         <div class="card z-depth-0 bordered">
                                             <div class="card-header" id="headingOne2">
                                                 <h5 class="mb-0">
-                                                    <button class="btn btn-link btn-block text-left accordianFaq"
-                                                            type="button" data-toggle="collapse"
-                                                            data-target="#collapseOne" aria-expanded=""
-                                                            aria-controls="collapseOne2">
+                                                    <button class="btn btn-link btn-block text-left accordianFaq" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne-{{ $loop->index }}" aria-expanded="true" aria-controls="collapseOne-{{ $loop->index }}">
                                                         {{ $faq->question }}
                                                     </button>
                                                 </h5>
                                             </div>
-                                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne2"
-                                                 data-parent="#accordionExample275">
+
+                                            <div id="collapseOne-{{ $loop->index }}" class="collapse {{ $loop->index == 0 ? 'show' : '' }}" aria-labelledby="headingOne2" data-bs-parent="#accordionExample275">
                                                 <div class="card-body">
-                                                    {{ $faq->answer }}
+                                                    <p>
+                                                        {{ $faq->answer }}
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
                                         @empty
-                                            No FAQ
+                                            <div class="col-md-10  text-center">
+                                                <div class="d-flex justify-content-center align-items-center">
+                                                    <div class="notfound-2 position-relative">
+                                                        <img src="{{ asset('_assets/_guest/img/notfoundpage/notfound.svg') }}" alt="" class="img-fluid  ">
+
+                                                        <p class="notfound-p">Not Available !</p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         @endforelse
                                     </div>
                                 </div>
                             </div>
+
+                            {{-- Review --}}
                             <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="contact-tab">
                                 <div class="reviewstabContent">
                                     <!--         row-->
-                                    <!--         row-->
                                     <div class="row py-3">
-                                        <div class="col-md-12">
-                                            <div class="reviewstabSingle clearfix">
-                                                <div class="boxOne">
-                                                    <div class=""><img src="#"
-                                                                       alt="" class="img-fluid border"></div>
+                                        <div class="col-3 col-sm-2 col-lg-2">
+                                            <div class="boxOne">
+                                                <img src="https://via.placeholder.com/100x100.png" alt="" class="img-fluid border">
+                                            </div>
+                                        </div>
+                                        <div class="col-9 col-sm-4 col-lg-3 ">
+                                            <div class="boxTwo">
+                                                <h5 >Monica Fernandez</h5>
+                                                <p class="box2content "> August 15, 2020</p>
+                                                <div class="review-start">
+                                                    <span>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="28.342" height="27.667" viewBox="0 0 28.342 27.667">
+                                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.092.962,10.633,8.115,2.893,9.266a1.739,1.739,0,0,0-.938,2.95l5.6,5.565L6.23,25.642a1.7,1.7,0,0,0,2.458,1.821l6.924-3.712,6.924,3.712a1.7,1.7,0,0,0,2.458-1.821L23.67,17.781l5.6-5.565a1.739,1.739,0,0,0-.938-2.95l-7.74-1.151L17.133.962a1.682,1.682,0,0,0-3.041,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
+                                                        </svg>
+                                                    </span>
+                                                    <span>4.9</span>
                                                 </div>
-                                                <div class="boxTwo">
-                                                    <div class="">
-                                                        <h5 class="mb-0">Tom Ako</h5>
-                                                        <p class="box2content mb-0"> August 15,2020</p>
-                                                    </div>
-                                                </div>
-                                                <div class="boxThree">
-                                                    <div class="">
-                                                        <div class=""> <span><svg xmlns="http://www.w3.org/2000/svg"
-                                                                                  width="28.342" height="27.667"
-                                                                                  viewBox="0 0 28.342 27.667">
-                                                                    <path id="Icon_awesome-star"
-                                                                          data-name="Icon awesome-star"
-                                                                          d="M14.092.962,10.633,8.115,2.893,9.266a1.739,1.739,0,0,0-.938,2.95l5.6,5.565L6.23,25.642a1.7,1.7,0,0,0,2.458,1.821l6.924-3.712,6.924,3.712a1.7,1.7,0,0,0,2.458-1.821L23.67,17.781l5.6-5.565a1.739,1.739,0,0,0-.938-2.95l-7.74-1.151L17.133.962a1.682,1.682,0,0,0-3.041,0Z"
-                                                                          transform="translate(-1.441 0.001)"
-                                                                          fill="#f9bf00"/>
-                                                                </svg>
-                                                            </span> <span><svg xmlns="http://www.w3.org/2000/svg"
-                                                                               width="28.342" height="27.667"
-                                                                               viewBox="0 0 28.342 27.667">
-                                                                    <path id="Icon_awesome-star"
-                                                                          data-name="Icon awesome-star"
-                                                                          d="M14.092.962,10.633,8.115,2.893,9.266a1.739,1.739,0,0,0-.938,2.95l5.6,5.565L6.23,25.642a1.7,1.7,0,0,0,2.458,1.821l6.924-3.712,6.924,3.712a1.7,1.7,0,0,0,2.458-1.821L23.67,17.781l5.6-5.565a1.739,1.739,0,0,0-.938-2.95l-7.74-1.151L17.133.962a1.682,1.682,0,0,0-3.041,0Z"
-                                                                          transform="translate(-1.441 0.001)"
-                                                                          fill="#f9bf00"/>
-                                                                </svg>
-                                                            </span> <span><svg xmlns="http://www.w3.org/2000/svg"
-                                                                               width="28.342" height="27.667"
-                                                                               viewBox="0 0 28.342 27.667">
-                                                                    <path id="Icon_awesome-star"
-                                                                          data-name="Icon awesome-star"
-                                                                          d="M14.092.962,10.633,8.115,2.893,9.266a1.739,1.739,0,0,0-.938,2.95l5.6,5.565L6.23,25.642a1.7,1.7,0,0,0,2.458,1.821l6.924-3.712,6.924,3.712a1.7,1.7,0,0,0,2.458-1.821L23.67,17.781l5.6-5.565a1.739,1.739,0,0,0-.938-2.95l-7.74-1.151L17.133.962a1.682,1.682,0,0,0-3.041,0Z"
-                                                                          transform="translate(-1.441 0.001)"
-                                                                          fill="#f9bf00"/>
-                                                                </svg>
-                                                            </span> <span><svg xmlns="http://www.w3.org/2000/svg"
-                                                                               width="28.342" height="27.667"
-                                                                               viewBox="0 0 28.342 27.667">
-                                                                    <path id="Icon_awesome-star"
-                                                                          data-name="Icon awesome-star"
-                                                                          d="M14.092.962,10.633,8.115,2.893,9.266a1.739,1.739,0,0,0-.938,2.95l5.6,5.565L6.23,25.642a1.7,1.7,0,0,0,2.458,1.821l6.924-3.712,6.924,3.712a1.7,1.7,0,0,0,2.458-1.821L23.67,17.781l5.6-5.565a1.739,1.739,0,0,0-.938-2.95l-7.74-1.151L17.133.962a1.682,1.682,0,0,0-3.041,0Z"
-                                                                          transform="translate(-1.441 0.001)"
-                                                                          fill="#f9bf00"/>
-                                                                </svg>
-                                                            </span> <span><svg xmlns="http://www.w3.org/2000/svg"
-                                                                               width="28.342" height="27.667"
-                                                                               viewBox="0 0 28.342 27.667">
-                                                                    <path id="Icon_awesome-star"
-                                                                          data-name="Icon awesome-star"
-                                                                          d="M14.092.962,10.633,8.115,2.893,9.266a1.739,1.739,0,0,0-.938,2.95l5.6,5.565L6.23,25.642a1.7,1.7,0,0,0,2.458,1.821l6.924-3.712,6.924,3.712a1.7,1.7,0,0,0,2.458-1.821L23.67,17.781l5.6-5.565a1.739,1.739,0,0,0-.938-2.95l-7.74-1.151L17.133.962a1.682,1.682,0,0,0-3.041,0Z"
-                                                                          transform="translate(-1.441 0.001)"
-                                                                          fill="#f9bf00"/>
-                                                                </svg>
-                                                            </span></div>
-                                                        <p class="m-0 pt-2"> Lorem ipsum dolor sit amet, consetetur
-                                                            sadipscing elitr, sed diam nonumy eirmod. Lorem ipsum dolor
-                                                            sit amet, consetetur sadipscing elitr, sed diam nonumy
-                                                            eirmod. </p>
-                                                    </div>
-                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-lg-7 boxThree">
+                                            <div>
+                                                <p> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod. </p>
                                             </div>
                                         </div>
                                     </div>
                                     <!--         row-->
                                     <div class="row py-3">
-                                        <div class="col-md-12">
-                                            <div class="reviewstabSingle clearfix">
-                                                <div class="boxOne">
-                                                    <div class=""><img src="#"
-                                                                       alt="" class="img-fluid border"></div>
+                                        <div class="col-3 col-sm-2 col-lg-2">
+                                            <div class="boxOne">
+                                                <img src="https://via.placeholder.com/100x100.png" alt="" class="img-fluid border">
+                                            </div>
+                                        </div>
+                                        <div class="col-9 col-sm-4 col-lg-3 ">
+                                            <div class="boxTwo">
+                                                <h5 >Monica Fernandez</h5>
+                                                <p class="box2content "> August 15, 2020</p>
+                                                <div class="review-start">
+                                                    <span>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="28.342" height="27.667" viewBox="0 0 28.342 27.667">
+                                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.092.962,10.633,8.115,2.893,9.266a1.739,1.739,0,0,0-.938,2.95l5.6,5.565L6.23,25.642a1.7,1.7,0,0,0,2.458,1.821l6.924-3.712,6.924,3.712a1.7,1.7,0,0,0,2.458-1.821L23.67,17.781l5.6-5.565a1.739,1.739,0,0,0-.938-2.95l-7.74-1.151L17.133.962a1.682,1.682,0,0,0-3.041,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
+                                                        </svg>
+                                                    </span>
+                                                    <span>4.9</span>
                                                 </div>
-                                                <div class="boxTwo">
-                                                    <div class="">
-                                                        <h5 class="mb-0">Tom Ako</h5>
-                                                        <p class="box2content mb-0"> August 15,2020</p>
-                                                    </div>
-                                                </div>
-                                                <div class="boxThree">
-                                                    <div class="">
-                                                        <div class=""> <span><svg xmlns="http://www.w3.org/2000/svg"
-                                                                                  width="28.342" height="27.667"
-                                                                                  viewBox="0 0 28.342 27.667">
-                                                                    <path id="Icon_awesome-star"
-                                                                          data-name="Icon awesome-star"
-                                                                          d="M14.092.962,10.633,8.115,2.893,9.266a1.739,1.739,0,0,0-.938,2.95l5.6,5.565L6.23,25.642a1.7,1.7,0,0,0,2.458,1.821l6.924-3.712,6.924,3.712a1.7,1.7,0,0,0,2.458-1.821L23.67,17.781l5.6-5.565a1.739,1.739,0,0,0-.938-2.95l-7.74-1.151L17.133.962a1.682,1.682,0,0,0-3.041,0Z"
-                                                                          transform="translate(-1.441 0.001)"
-                                                                          fill="#f9bf00"/>
-                                                                </svg>
-                                                            </span> <span><svg xmlns="http://www.w3.org/2000/svg"
-                                                                               width="28.342" height="27.667"
-                                                                               viewBox="0 0 28.342 27.667">
-                                                                    <path id="Icon_awesome-star"
-                                                                          data-name="Icon awesome-star"
-                                                                          d="M14.092.962,10.633,8.115,2.893,9.266a1.739,1.739,0,0,0-.938,2.95l5.6,5.565L6.23,25.642a1.7,1.7,0,0,0,2.458,1.821l6.924-3.712,6.924,3.712a1.7,1.7,0,0,0,2.458-1.821L23.67,17.781l5.6-5.565a1.739,1.739,0,0,0-.938-2.95l-7.74-1.151L17.133.962a1.682,1.682,0,0,0-3.041,0Z"
-                                                                          transform="translate(-1.441 0.001)"
-                                                                          fill="#f9bf00"/>
-                                                                </svg>
-                                                            </span> <span><svg xmlns="http://www.w3.org/2000/svg"
-                                                                               width="28.342" height="27.667"
-                                                                               viewBox="0 0 28.342 27.667">
-                                                                    <path id="Icon_awesome-star"
-                                                                          data-name="Icon awesome-star"
-                                                                          d="M14.092.962,10.633,8.115,2.893,9.266a1.739,1.739,0,0,0-.938,2.95l5.6,5.565L6.23,25.642a1.7,1.7,0,0,0,2.458,1.821l6.924-3.712,6.924,3.712a1.7,1.7,0,0,0,2.458-1.821L23.67,17.781l5.6-5.565a1.739,1.739,0,0,0-.938-2.95l-7.74-1.151L17.133.962a1.682,1.682,0,0,0-3.041,0Z"
-                                                                          transform="translate(-1.441 0.001)"
-                                                                          fill="#f9bf00"/>
-                                                                </svg>
-                                                            </span> <span><svg xmlns="http://www.w3.org/2000/svg"
-                                                                               width="28.342" height="27.667"
-                                                                               viewBox="0 0 28.342 27.667">
-                                                                    <path id="Icon_awesome-star"
-                                                                          data-name="Icon awesome-star"
-                                                                          d="M14.092.962,10.633,8.115,2.893,9.266a1.739,1.739,0,0,0-.938,2.95l5.6,5.565L6.23,25.642a1.7,1.7,0,0,0,2.458,1.821l6.924-3.712,6.924,3.712a1.7,1.7,0,0,0,2.458-1.821L23.67,17.781l5.6-5.565a1.739,1.739,0,0,0-.938-2.95l-7.74-1.151L17.133.962a1.682,1.682,0,0,0-3.041,0Z"
-                                                                          transform="translate(-1.441 0.001)"
-                                                                          fill="#f9bf00"/>
-                                                                </svg>
-                                                            </span> <span><svg xmlns="http://www.w3.org/2000/svg"
-                                                                               width="28.342" height="27.667"
-                                                                               viewBox="0 0 28.342 27.667">
-                                                                    <path id="Icon_awesome-star"
-                                                                          data-name="Icon awesome-star"
-                                                                          d="M14.092.962,10.633,8.115,2.893,9.266a1.739,1.739,0,0,0-.938,2.95l5.6,5.565L6.23,25.642a1.7,1.7,0,0,0,2.458,1.821l6.924-3.712,6.924,3.712a1.7,1.7,0,0,0,2.458-1.821L23.67,17.781l5.6-5.565a1.739,1.739,0,0,0-.938-2.95l-7.74-1.151L17.133.962a1.682,1.682,0,0,0-3.041,0Z"
-                                                                          transform="translate(-1.441 0.001)"
-                                                                          fill="#f9bf00"/>
-                                                                </svg>
-                                                            </span></div>
-                                                        <p class="m-0 pt-2"> Lorem ipsum dolor sit amet, consetetur
-                                                            sadipscing elitr, sed diam nonumy eirmod. Lorem ipsum dolor
-                                                            sit amet, consetetur sadipscing elitr, sed diam nonumy
-                                                            eirmod. </p>
-                                                    </div>
-                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-lg-7 boxThree">
+                                            <div>
+                                                <p> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod. </p>
                                             </div>
                                         </div>
                                     </div>
                                     <!--         row-->
                                     <div class="row py-3">
-                                        <div class="col-md-12">
-                                            <div class="reviewstabSingle clearfix">
-                                                <div class="boxOne">
-                                                    <div class=""><img src="#"
-                                                                       alt="" class="img-fluid border"></div>
+                                        <div class="col-3 col-sm-2 col-lg-2">
+                                            <div class="boxOne">
+                                                <img src="https://via.placeholder.com/100x100.png" alt="" class="img-fluid border">
+                                            </div>
+                                        </div>
+                                        <div class="col-9 col-sm-4 col-lg-3 ">
+                                            <div class="boxTwo">
+                                                <h5 >Monica Fernandez</h5>
+                                                <p class="box2content "> August 15, 2020</p>
+                                                <div class="review-start">
+                                                    <span>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="28.342" height="27.667" viewBox="0 0 28.342 27.667">
+                                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.092.962,10.633,8.115,2.893,9.266a1.739,1.739,0,0,0-.938,2.95l5.6,5.565L6.23,25.642a1.7,1.7,0,0,0,2.458,1.821l6.924-3.712,6.924,3.712a1.7,1.7,0,0,0,2.458-1.821L23.67,17.781l5.6-5.565a1.739,1.739,0,0,0-.938-2.95l-7.74-1.151L17.133.962a1.682,1.682,0,0,0-3.041,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
+                                                        </svg>
+                                                    </span>
+                                                    <span>4.9</span>
                                                 </div>
-                                                <div class="boxTwo">
-                                                    <div class="">
-                                                        <h5 class="mb-0">Tom Ako</h5>
-                                                        <p class="box2content mb-0"> August 15,2020</p>
-                                                    </div>
-                                                </div>
-                                                <div class="boxThree">
-                                                    <div class="">
-                                                        <div class=""> <span><svg xmlns="http://www.w3.org/2000/svg"
-                                                                                  width="28.342" height="27.667"
-                                                                                  viewBox="0 0 28.342 27.667">
-                                                                    <path id="Icon_awesome-star"
-                                                                          data-name="Icon awesome-star"
-                                                                          d="M14.092.962,10.633,8.115,2.893,9.266a1.739,1.739,0,0,0-.938,2.95l5.6,5.565L6.23,25.642a1.7,1.7,0,0,0,2.458,1.821l6.924-3.712,6.924,3.712a1.7,1.7,0,0,0,2.458-1.821L23.67,17.781l5.6-5.565a1.739,1.739,0,0,0-.938-2.95l-7.74-1.151L17.133.962a1.682,1.682,0,0,0-3.041,0Z"
-                                                                          transform="translate(-1.441 0.001)"
-                                                                          fill="#f9bf00"/>
-                                                                </svg>
-                                                            </span> <span><svg xmlns="http://www.w3.org/2000/svg"
-                                                                               width="28.342" height="27.667"
-                                                                               viewBox="0 0 28.342 27.667">
-                                                                    <path id="Icon_awesome-star"
-                                                                          data-name="Icon awesome-star"
-                                                                          d="M14.092.962,10.633,8.115,2.893,9.266a1.739,1.739,0,0,0-.938,2.95l5.6,5.565L6.23,25.642a1.7,1.7,0,0,0,2.458,1.821l6.924-3.712,6.924,3.712a1.7,1.7,0,0,0,2.458-1.821L23.67,17.781l5.6-5.565a1.739,1.739,0,0,0-.938-2.95l-7.74-1.151L17.133.962a1.682,1.682,0,0,0-3.041,0Z"
-                                                                          transform="translate(-1.441 0.001)"
-                                                                          fill="#f9bf00"/>
-                                                                </svg>
-                                                            </span> <span><svg xmlns="http://www.w3.org/2000/svg"
-                                                                               width="28.342" height="27.667"
-                                                                               viewBox="0 0 28.342 27.667">
-                                                                    <path id="Icon_awesome-star"
-                                                                          data-name="Icon awesome-star"
-                                                                          d="M14.092.962,10.633,8.115,2.893,9.266a1.739,1.739,0,0,0-.938,2.95l5.6,5.565L6.23,25.642a1.7,1.7,0,0,0,2.458,1.821l6.924-3.712,6.924,3.712a1.7,1.7,0,0,0,2.458-1.821L23.67,17.781l5.6-5.565a1.739,1.739,0,0,0-.938-2.95l-7.74-1.151L17.133.962a1.682,1.682,0,0,0-3.041,0Z"
-                                                                          transform="translate(-1.441 0.001)"
-                                                                          fill="#f9bf00"/>
-                                                                </svg>
-                                                            </span> <span><svg xmlns="http://www.w3.org/2000/svg"
-                                                                               width="28.342" height="27.667"
-                                                                               viewBox="0 0 28.342 27.667">
-                                                                    <path id="Icon_awesome-star"
-                                                                          data-name="Icon awesome-star"
-                                                                          d="M14.092.962,10.633,8.115,2.893,9.266a1.739,1.739,0,0,0-.938,2.95l5.6,5.565L6.23,25.642a1.7,1.7,0,0,0,2.458,1.821l6.924-3.712,6.924,3.712a1.7,1.7,0,0,0,2.458-1.821L23.67,17.781l5.6-5.565a1.739,1.739,0,0,0-.938-2.95l-7.74-1.151L17.133.962a1.682,1.682,0,0,0-3.041,0Z"
-                                                                          transform="translate(-1.441 0.001)"
-                                                                          fill="#f9bf00"/>
-                                                                </svg>
-                                                            </span> <span><svg xmlns="http://www.w3.org/2000/svg"
-                                                                               width="28.342" height="27.667"
-                                                                               viewBox="0 0 28.342 27.667">
-                                                                    <path id="Icon_awesome-star"
-                                                                          data-name="Icon awesome-star"
-                                                                          d="M14.092.962,10.633,8.115,2.893,9.266a1.739,1.739,0,0,0-.938,2.95l5.6,5.565L6.23,25.642a1.7,1.7,0,0,0,2.458,1.821l6.924-3.712,6.924,3.712a1.7,1.7,0,0,0,2.458-1.821L23.67,17.781l5.6-5.565a1.739,1.739,0,0,0-.938-2.95l-7.74-1.151L17.133.962a1.682,1.682,0,0,0-3.041,0Z"
-                                                                          transform="translate(-1.441 0.001)"
-                                                                          fill="#f9bf00"/>
-                                                                </svg>
-                                                            </span></div>
-                                                        <p class="m-0 pt-2"> Lorem ipsum dolor sit amet, consetetur
-                                                            sadipscing elitr, sed diam nonumy eirmod. Lorem ipsum dolor
-                                                            sit amet, consetetur sadipscing elitr, sed diam nonumy
-                                                            eirmod. </p>
-                                                    </div>
-                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-lg-7 boxThree">
+                                            <div>
+                                                <p> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod. </p>
                                             </div>
                                         </div>
                                     </div>
                                     <!--         row-->
                                     <div class="row py-3">
-                                        <div class="col-md-12">
-                                            <div class="reviewstabSingle clearfix">
-                                                <div class="boxOne">
-                                                    <div class=""><img src="#"
-                                                                       alt="" class="img-fluid border"></div>
-                                                </div>
-                                                <div class="boxTwo">
-                                                    <div class="">
-                                                        <h5 class="mb-0">Tom Ako</h5>
-                                                        <p class="box2content mb-0"> August 15,2020</p>
-                                                    </div>
-                                                </div>
-                                                <div class="boxThree">
-                                                    <div class="">
-                                                        <div class=""> <span><svg xmlns="http://www.w3.org/2000/svg"
-                                                                                  width="28.342" height="27.667"
-                                                                                  viewBox="0 0 28.342 27.667">
-                                                                    <path id="Icon_awesome-star"
-                                                                          data-name="Icon awesome-star"
-                                                                          d="M14.092.962,10.633,8.115,2.893,9.266a1.739,1.739,0,0,0-.938,2.95l5.6,5.565L6.23,25.642a1.7,1.7,0,0,0,2.458,1.821l6.924-3.712,6.924,3.712a1.7,1.7,0,0,0,2.458-1.821L23.67,17.781l5.6-5.565a1.739,1.739,0,0,0-.938-2.95l-7.74-1.151L17.133.962a1.682,1.682,0,0,0-3.041,0Z"
-                                                                          transform="translate(-1.441 0.001)"
-                                                                          fill="#f9bf00"/>
-                                                                </svg>
-                                                            </span> <span><svg xmlns="http://www.w3.org/2000/svg"
-                                                                               width="28.342" height="27.667"
-                                                                               viewBox="0 0 28.342 27.667">
-                                                                    <path id="Icon_awesome-star"
-                                                                          data-name="Icon awesome-star"
-                                                                          d="M14.092.962,10.633,8.115,2.893,9.266a1.739,1.739,0,0,0-.938,2.95l5.6,5.565L6.23,25.642a1.7,1.7,0,0,0,2.458,1.821l6.924-3.712,6.924,3.712a1.7,1.7,0,0,0,2.458-1.821L23.67,17.781l5.6-5.565a1.739,1.739,0,0,0-.938-2.95l-7.74-1.151L17.133.962a1.682,1.682,0,0,0-3.041,0Z"
-                                                                          transform="translate(-1.441 0.001)"
-                                                                          fill="#f9bf00"/>
-                                                                </svg>
-                                                            </span> <span><svg xmlns="http://www.w3.org/2000/svg"
-                                                                               width="28.342" height="27.667"
-                                                                               viewBox="0 0 28.342 27.667">
-                                                                    <path id="Icon_awesome-star"
-                                                                          data-name="Icon awesome-star"
-                                                                          d="M14.092.962,10.633,8.115,2.893,9.266a1.739,1.739,0,0,0-.938,2.95l5.6,5.565L6.23,25.642a1.7,1.7,0,0,0,2.458,1.821l6.924-3.712,6.924,3.712a1.7,1.7,0,0,0,2.458-1.821L23.67,17.781l5.6-5.565a1.739,1.739,0,0,0-.938-2.95l-7.74-1.151L17.133.962a1.682,1.682,0,0,0-3.041,0Z"
-                                                                          transform="translate(-1.441 0.001)"
-                                                                          fill="#f9bf00"/>
-                                                                </svg>
-                                                            </span> <span><svg xmlns="http://www.w3.org/2000/svg"
-                                                                               width="28.342" height="27.667"
-                                                                               viewBox="0 0 28.342 27.667">
-                                                                    <path id="Icon_awesome-star"
-                                                                          data-name="Icon awesome-star"
-                                                                          d="M14.092.962,10.633,8.115,2.893,9.266a1.739,1.739,0,0,0-.938,2.95l5.6,5.565L6.23,25.642a1.7,1.7,0,0,0,2.458,1.821l6.924-3.712,6.924,3.712a1.7,1.7,0,0,0,2.458-1.821L23.67,17.781l5.6-5.565a1.739,1.739,0,0,0-.938-2.95l-7.74-1.151L17.133.962a1.682,1.682,0,0,0-3.041,0Z"
-                                                                          transform="translate(-1.441 0.001)"
-                                                                          fill="#f9bf00"/>
-                                                                </svg>
-                                                            </span> <span><svg xmlns="http://www.w3.org/2000/svg"
-                                                                               width="28.342" height="27.667"
-                                                                               viewBox="0 0 28.342 27.667">
-                                                                    <path id="Icon_awesome-star"
-                                                                          data-name="Icon awesome-star"
-                                                                          d="M14.092.962,10.633,8.115,2.893,9.266a1.739,1.739,0,0,0-.938,2.95l5.6,5.565L6.23,25.642a1.7,1.7,0,0,0,2.458,1.821l6.924-3.712,6.924,3.712a1.7,1.7,0,0,0,2.458-1.821L23.67,17.781l5.6-5.565a1.739,1.739,0,0,0-.938-2.95l-7.74-1.151L17.133.962a1.682,1.682,0,0,0-3.041,0Z"
-                                                                          transform="translate(-1.441 0.001)"
-                                                                          fill="#f9bf00"/>
-                                                                </svg>
-                                                            </span></div>
-                                                        <p class="m-0 pt-2"> Lorem ipsum dolor sit amet, consetetur
-                                                            sadipscing elitr, sed diam nonumy eirmod. Lorem ipsum dolor
-                                                            sit amet, consetetur sadipscing elitr, sed diam nonumy
-                                                            eirmod. </p>
-                                                    </div>
+                                        <div class="col-3 col-sm-2 col-lg-2">
+                                            <div class="boxOne">
+                                                <img src="https://via.placeholder.com/100x100.png" alt="" class="img-fluid border">
+                                            </div>
+                                        </div>
+                                        <div class="col-9 col-sm-4 col-lg-3 ">
+                                            <div class="boxTwo">
+                                                <h5 >Monica Fernandez</h5>
+                                                <p class="box2content "> August 15, 2020</p>
+                                                <div class="review-start">
+                                                    <span>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="28.342" height="27.667" viewBox="0 0 28.342 27.667">
+                                                            <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.092.962,10.633,8.115,2.893,9.266a1.739,1.739,0,0,0-.938,2.95l5.6,5.565L6.23,25.642a1.7,1.7,0,0,0,2.458,1.821l6.924-3.712,6.924,3.712a1.7,1.7,0,0,0,2.458-1.821L23.67,17.781l5.6-5.565a1.739,1.739,0,0,0-.938-2.95l-7.74-1.151L17.133.962a1.682,1.682,0,0,0-3.041,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
+                                                        </svg>
+                                                    </span>
+                                                    <span>4.9</span>
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col-sm-6 col-lg-7 boxThree">
+                                            <div>
+                                                <p> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod. </p>
+                                            </div>
+                                        </div>
                                     </div>
+
+
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-xl-4">
+                    <div class="delivery-section after py-3">
+                        <h4>Delivery Files</h4>
+                        <p>Marketing File</p>
+                        <p>Source File</p>
+                        <p>Source File</p>
+                        <p>Source File</p>
+                        <div class="tag">
+                            <h4>Tages</h4>
+                            <p>booking, business, buy home, iOS app, modern, plot
+                                property finder, real estate, rent property, Sell Home
+                                sell property, ui kit</p>
                         </div>
                     </div>
                 </div>
@@ -603,94 +461,76 @@
     </div>
     {{-- Description, Service FAQ & Review End --}}
 
+    @if(count($related_services) > 0)
     {{-- Related Services Start --}}
-    <div class="singleCategoryrelatedService  py-5" id="singleCategoryrelatedService">
+    <div class="singleCategoryrelatedService" id="singleCategoryrelatedService">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="text-center">
+                    <div class="related-h1">
                         <h1>Related Services</h1>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                @forelse($related_services as $related_service)
-                <div class="col-lg-4 col-md-6 padding25">
-                    <div class="searchPageResultSingle position-relative">
-                        <div class="card "><img src="#" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title ">
-                                    <span class="w-75 float-left font-medium"><a href="{{ route('guest.service.index', $related_service->slug) }}"
-                                                                                 class="text-dark">{{ $related_service->title }}</a></span>
-                                    <span class="w-25 float-right text-right font-medium">$ {{ $related_service->price }}</span>
-                                </h5>
-                                <div class="starIcons "> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906"
-                                                                    height="27.667" viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star"
-                                                  d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z"
-                                                  transform="translate(-1.441 0.001)" fill="#f9bf00"/>
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667"
-                                                       viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star"
-                                                  d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z"
-                                                  transform="translate(-1.441 0.001)" fill="#f9bf00"/>
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667"
-                                                       viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star"
-                                                  d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z"
-                                                  transform="translate(-1.441 0.001)" fill="#f9bf00"/>
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667"
-                                                       viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star"
-                                                  d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z"
-                                                  transform="translate(-1.441 0.001)" fill="#f9bf00"/>
-                                        </svg>
-                                    </span> <span><svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667"
-                                                       viewBox="0 0 28.906 27.667">
-                                            <path id="Icon_awesome-star" data-name="Icon awesome-star"
-                                                  d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z"
-                                                  transform="translate(-1.441 0.001)" fill="#f9bf00"/>
-                                        </svg>
-                                    </span> <span> &#40;200&#41; </span></div>
+        </div>
+    </div>
+    <section class="related-services">
+        <div class="container">
+            <div class="slider">
+                {{-- Related Services Image Slider --}}
+                @foreach($related_services as $related_service)
+                    <div>
+                        <div class="searchPageResultSingle position-relative">
+                            <div class="card">
+                                <img src="{{ showImage($related_service, 'service_thumb') }}" class="card-img-top" alt="designwala">
+
+                                <div class="card-body">
+                                    <div class="card-title ">
+                                        <h5>
+                                            <a href="{{ route('guest.service.index', $related_service->slug) }}" class="text-dark">{{ $related_service->title }}</a>
+                                        </h5>
+                                        <h5 class="price">${{ $related_service->price }}</h5>
+                                    </div>
+                                    <div class="starIcons ">
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
+                                                <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
+                                            </svg>
+                                        </span>
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
+                                                <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
+                                            </svg>
+                                        </span>
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
+                                                <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
+                                            </svg>
+                                        </span>
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
+                                                <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
+                                            </svg>
+                                        </span>
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="28.906" height="27.667" viewBox="0 0 28.906 27.667">
+                                                <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00" />
+                                            </svg>
+                                        </span>
+                                        <span>
+                                            &#40;200&#41;
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="">
-                            <div class="card-text  mb-0 cardSalesTitle"><small
-                                    class=" bgOne text-white px-3 py-2 position-absolute">1k sales</small></div>
-                        </div>
                     </div>
-                </div>
-                @empty
-                    No Services
-                @endforelse
+                @endforeach
             </div>
         </div>
-    </div>
+    </section>
     {{-- Related Services End --}}
-
-    {{-- FAQ Start --}}
-    <div class="singleCategoryItemDetailContent py-5 bgcustomLightgray" id="singleCategoryItemDetailContent">
-        <div class="container">
-            <div class="row">
-                @forelse($service->serviceCategories->serviceCategoryFaqs as $faq)
-                <div class="col-md-6">
-                    <div class="py-3">
-                        <div class="detailsContent">
-                            <h4>{{ $faq->question }}</h4>
-                            <p class="mb-0">{{ $faq->answer }}</p>
-                        </div>
-                    </div>
-                </div>
-                @empty
-                    No FAQ
-                @endforelse
-            </div>
-        </div>
-    </div>
-    {{-- FAQ End --}}
+    @endif
 @endsection
 
 @push('scripts')
@@ -704,14 +544,25 @@
     <script>
         var myCarousel = document.querySelector('#serviceImageCarousel')
         var carousel = new bootstrap.Carousel(myCarousel, {
-            interval: 5000,
+            interval: 50000,
             wrap: true,
         })
         $(document).ready(function(){
-            $("[data-fancybox]").fancybox({
-
+            $("[data-fancybox]").fancybox();
+            $('html').on('click', function(e) {
+                if (typeof $(e.target).data('bs-content') == 'undefined' && !$(e.target).parents().is('.popover.in')) {
+                    $('[data-bs-content]').popover('hide');
+                }
             });
         });
+
+        var copy_lg = new bootstrap.Popover(document.querySelector('#copy-url-lg'), {
+            container: 'body'
+        })
+
+        var copy_sm = new bootstrap.Popover(document.querySelector('#copy-url-sm'), {
+            container: 'body'
+        })
     </script>
 
     {{-- Social Sharing Parameters --}}
@@ -721,7 +572,7 @@
 
     {{-- Copy to Clipboard --}}
     <script>
-        var copyBtn   = $("#copy-clipboard"),
+        var copyBtn   = $("#copy-url-lg"),
             copyBtnMobile   = $("#copy-clipboard-mobile"),
             input     = $("#copy-url");
 
@@ -761,6 +612,13 @@
                     copyToClipboardFF(input.val());
                 }
                 if (success) {
+                    $('.bs-popover-bottom').show
+
+                    // bs-popover-bottom
+                    // setTimeout(function() {
+                    //     $(".bs-popover-bottom").hide('blind', {}, 500)
+                    // }, 5000);
+
                     alert('Copied')
                 }
             }
@@ -781,9 +639,6 @@
                         fadeDuration: 250
                     });
                 }
-                $("#close-modalCtm").modalCtm(function (e){
-                    alert('hello');
-                });
             })
         </script>
     @endguest

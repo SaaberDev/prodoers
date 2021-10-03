@@ -4,8 +4,8 @@
             <input type="text"
                    wire:model.defer="form.email"
                    class="form-control login_email {{ $errors->has('form.email') ? ' is-invalid' : '' }}"
-                   id="exampleInputEmail1"
-                   aria-describedby="emailHelp"
+                   id="login_email"
+                   aria-label="Login Email"
                    placeholder="{{ __('Email Address') }}"
             >
             @if($errors->has('form.email'))
@@ -18,7 +18,8 @@
             <input type="password"
                    wire:model.defer="form.password"
                    class="form-control login_pass {{ $errors->has('form.password') ? ' is-invalid' : '' }}"
-                   id="exampleInputPassword1"
+                   id="login_pass"
+                   aria-label="Login Password"
                    placeholder="{{ __('Password') }}">
             @if($errors->has('form.password'))
                 <span class="invalid-feedback" style="padding: 0 26px;">
@@ -38,7 +39,8 @@
                         <input type="checkbox"
                                wire:model="remember"
                                class="form-check-input"
-                               id="remember_me">
+                               id="remember_me"
+                        >
                         <label class="form-check-label"
                                for="remember_me">{{ __('Remember Me') }}</label>
                     </div>

@@ -59,8 +59,8 @@ mix.js('resources/js/app.js', 'public/js/app.js')
     ], 'public/_assets/_guest/css/main.css')
     .scripts([
         'resources/_assets/_guest/js/jquery/jquery.min.js',
-        'resources/_assets/_guest/js/bootstrap5/bootstrap.min.js',
         'resources/_assets/_guest/js/bootstrap5/popper.min.js',
+        'resources/_assets/_guest/js/bootstrap5/bootstrap.min.js',
         'resources/_assets/_guest/js/off-canvas/off-canvas.js',
         'resources/_assets/_guest/js/script.js'
     ], 'public/_assets/_guest/js/main.js')
@@ -99,6 +99,7 @@ mix.js('resources/js/app.js', 'public/js/app.js')
         'resources/_assets/plugins/slick/css/slick.css',
         'resources/_assets/plugins/slick/css/slick-theme.css'
     ], 'public/_assets/plugins/slick/css/slick.css')
+    .copyDirectory('resources/_assets/plugins/slick/img', 'public/_assets/plugins/slick/img')
     .scripts([
         'resources/_assets/plugins/slick/js/slick.min.js',
         'resources/_assets/plugins/slick/js/slick-init.js'

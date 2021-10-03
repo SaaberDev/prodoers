@@ -18,7 +18,7 @@ class NewsletterComponent extends Component
     }
 
     protected $rules = [
-        'subscriber_mail' => 'required|unique:subscribers,email'
+        'subscriber_mail' => 'required|email:rfc|string|unique:subscribers,email'
     ];
 
     protected $messages = [

@@ -3,7 +3,7 @@
         <input wire:model.defer="subscriber_mail"
                class="form-control"
                type="text"
-               aria-label="search"
+               aria-label="Subscribe to newsletter"
                placeholder="Type your email address"
         >
         <button wire:click.prevent="store"
