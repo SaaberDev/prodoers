@@ -2,6 +2,8 @@
 
     use App\Models\SiteCMS;
     use Carbon\Carbon;
+    use Illuminate\Config\Repository;
+    use Illuminate\Contracts\Foundation\Application;
     use Illuminate\Support\Facades\Storage;
 
     /**
@@ -72,7 +74,19 @@
         }
     }
 
+
+    /**
+     * @function for displaying image
+     */
     if (!function_exists('showImage')) {
+        /**
+         * @spatie_media_library
+         * This function will check if image exist on database or filesystem. If any one of them missing it will show a default image.
+         * @param $model                | Pass model instance
+         * @param $collectionName       | collection name
+         * @param string $type          | single or multiple
+         * @return string image url
+         */
         function showImage($model, $collectionName, $type = 'single')
         {
             if ($type === 'multiple') {
@@ -101,6 +115,11 @@
 
 
     if (!function_exists('checkIfDirectoryExists')) {
+        /**
+         * @param $filePath
+         * @param $fileName
+         * @return bool
+         */
         function checkIfDirectoryExists($filePath, $fileName)
         {
             $explode = explode('/', $filePath);
@@ -111,7 +130,13 @@
 
 
     if (!function_exists('showAltText')) {
-        function showAltText($model, $collectionName, $altText, $type = 'single')
+        /**
+         * @param $model
+         * @param $collectionName
+         * @param $altText
+         * @return Repository|Application|mixed
+         */
+        function showAltText($model, $collectionName, $altText)
         {
             return optional($model)->getFirstMedia($collectionName) ? $altText : config('static_content._default.image.alt');
         }
