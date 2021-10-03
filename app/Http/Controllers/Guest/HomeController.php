@@ -41,6 +41,12 @@ class HomeController extends Controller
             ->orderBy('title')
             ->get(['id', 'title', 'slug', 'short_desc']);
 
+//        foreach ($popular_categories as $popular_category) {
+////            dump($popular_category->getFirstMedia('category_thumb'));
+//            dump(showImage($popular_category, 'category_thumb'));
+//        }
+//        dd();
+
         return view('guest.index', compact('popular_categories'));
     }
 }

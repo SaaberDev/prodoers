@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Guest\Category;
 
 use App\Models\Service;
 use App\Models\ServiceCategory;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithPagination;
 

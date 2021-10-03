@@ -99,13 +99,13 @@
                                 @forelse($service->getMedia('service') as $media)
                                     <div class="carousel-item {{ $loop->index == 0 ? 'active' : '' }}">
                                         <a data-fancybox="gallery" href="{{ showImage($media, 'service', 'multiple') }}">
-                                            <img src="{{ showImage($media, 'service', 'multiple') }}" alt="designwala" class="img-fluid">
+                                            <img src="{{ showImage($media, 'service', 'multiple') }}" alt="" class="img-fluid">
                                         </a>
                                     </div>
                                 @empty
                                     <div class="carousel-item active">
-                                        <a data-fancybox="gallery" href="{{ config('static_content._default.image.no_preview') }}">
-                                            <img src="{{ config('static_content._default.image.no_preview') }}" alt="designwala" class="img-fluid">
+                                        <a data-fancybox="gallery" href="{{ asset(config('static_content._default.image.no_preview')) }}">
+                                            <img src="{{ asset(config('static_content._default.image.no_preview')) }}" alt="{{ config('static_content._default.image.alt') }}" class="img-fluid">
                                         </a>
                                     </div>
                                 @endforelse

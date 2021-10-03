@@ -2,6 +2,7 @@
 
     use App\Models\SiteCMS;
     use Carbon\Carbon;
+    use Illuminate\Support\Facades\Storage;
 
     /**
      * @param $argument
@@ -75,11 +76,39 @@
         function showImage($model, $collectionName, $type = 'single')
         {
             if ($type === 'multiple') {
-                return asset(optional($model)->collection_name == $collectionName ? $model->getFullUrl() : config('static_content._default.image.no_preview'));
+                $filePath = pathinfo($model->getPath(), PATHINFO_DIRNAME);
+                $fileName = $model->file_name;
+                $exists = checkIfDirectoryExists($filePath, $fileName);
+
+                if (!$exists) {
+                    return asset(config('static_content._default.image.no_preview'));
+                } else {
+                    return asset(optional($model)->collection_name == $collectionName ? $model->getFullUrl() : config('static_content._default.image.no_preview'));
+                }
+            } else {
+                $fileName = optional($model)->getFirstMedia($collectionName) ? $model->getFirstMedia($collectionName)->file_name : null;
+                $filePath = pathinfo($model->getFirstMediaPath($collectionName), PATHINFO_DIRNAME);
+                $exists = checkIfDirectoryExists($filePath, $fileName);
+
+                if (!$exists) {
+                    return asset(config('static_content._default.image.no_preview'));
+                } else {
+                    return asset(optional($model)->getFirstMedia($collectionName) ? $model->getFirstMediaUrl($collectionName) : config('static_content._default.image.no_preview'));
+                }
             }
-            return asset(optional($model)->getFirstMedia($collectionName) ? $model->getFirstMediaUrl($collectionName) : config('static_content._default.image.no_preview'));
         }
     }
+
+
+    if (!function_exists('checkIfDirectoryExists')) {
+        function checkIfDirectoryExists($filePath, $fileName)
+        {
+            $explode = explode('/', $filePath);
+            $getLast = last($explode);
+            return Storage::exists($getLast . '/' . $fileName);
+        }
+    }
+
 
     if (!function_exists('showAltText')) {
         function showAltText($model, $collectionName, $altText, $type = 'single')
