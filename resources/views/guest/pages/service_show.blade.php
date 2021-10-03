@@ -17,7 +17,7 @@
         <div class="container">
 
             <!-- Breadcrumb -->
-            <nav class="back-section">
+            {{--<nav class="back-section">
                 <ul class=" list-unstyled d-flex">
                     <li class="social-banner-a home"><a href="index.php"> <span class="pd-10 home"><svg xmlns="http://www.w3.org/2000/svg" width="15.316" height="17.209" viewBox="0 0 18.316 17.209">
                     <path id="Icon_ionic-md-home" data-name="Icon ionic-md-home" d="M10.094,20.625V15.25h4.031v5.375h4.1V12.562h2.62L12.109,4.5,3.375,12.562H6v8.062Z" transform="translate(-2.951 -4.041)" fill="none" stroke="#212529" stroke-linejoin="bevel" stroke-width="1.25"/></svg></span> <span>Home</span></a></li>
@@ -32,12 +32,12 @@
 
                 </span> Single Service</a></li>
                 </ul>
-            </nav>
+            </nav>--}}
 
 
             <div class="row banner-wraper">
                 <div class="col-lg-7 col-xl-8 banner-text">
-                    <h2>Social media Banner</h2>
+                    <h2>{{ $service->title }}</h2>
                 </div>
                 <div class="col-lg-5 col-xl-4 sale-share">
                     <div class="sale-box">
@@ -55,7 +55,7 @@
                     </div>
 
                     <div>
-                        <a href="#">
+                        <a style="cursor: pointer" onclick="window.open('{{ $service->getShareUrl('facebook') }}', 'services', params)">
                             <span class="social">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="9.645" height="18.008" viewBox="0 0 9.645 18.008">
                                     <path id="Icon_awesome-facebook-f" data-name="Icon awesome-facebook-f" d="M10.622,10.129l.5-3.259H8V4.756A1.63,1.63,0,0,1,9.833,2.995h1.422V.22A17.337,17.337,0,0,0,8.731,0C6.155,0,4.472,1.561,4.472,4.387V6.87H1.609v3.259H4.472v7.878H8V10.129Z" transform="translate(-1.609)" fill="#212529"/>
@@ -63,7 +63,7 @@
                             </span>
                         </a>
 
-                        <a href="#">
+                        <a style="cursor: pointer" onclick="window.open('{{ $service->getShareUrl('linkedin') }}', 'services', params)">
                             <span class="social">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="15.16" height="15.16" viewBox="0 0 15.16 15.16">
                                     <path id="Icon_awesome-linkedin-in" data-name="Icon awesome-linkedin-in" d="M3.393,15.161H.25V5.039H3.393ZM1.82,3.658a1.829,1.829,0,1,1,1.82-1.838A1.836,1.836,0,0,1,1.82,3.658Zm13.337,11.5H12.021V10.234c0-1.174-.024-2.68-1.634-2.68-1.634,0-1.885,1.276-1.885,2.6v5.012H5.362V5.039H8.377V6.42h.044a3.3,3.3,0,0,1,2.974-1.634c3.181,0,3.766,2.095,3.766,4.815v5.56Z" transform="translate(0 -0.001)" fill="#212529"/>
@@ -71,7 +71,7 @@
                             </span>
                         </a>
 
-                        <a href="#">
+                        <a style="cursor: pointer" onclick="window.open('{{ $service->getShareUrl('twitter') }}', 'services', params)">
                             <span class="social">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16.134" height="13.104"  viewBox="0 0 16.134 13.104">
                                     <path id="Icon_awesome-twitter" data-name="Icon awesome-twitter" d="M14.476,6.646c.01.143.01.287.01.43a9.344,9.344,0,0,1-9.408,9.408A9.344,9.344,0,0,1,0,15a6.84,6.84,0,0,0,.8.041A6.622,6.622,0,0,0,4.9,13.628a3.313,3.313,0,0,1-3.092-2.293,4.17,4.17,0,0,0,.625.051,3.5,3.5,0,0,0,.87-.113A3.307,3.307,0,0,1,.655,8.029V7.988a3.33,3.33,0,0,0,1.495.42A3.312,3.312,0,0,1,1.126,3.985a9.4,9.4,0,0,0,6.818,3.46,3.733,3.733,0,0,1-.082-.758,3.31,3.31,0,0,1,5.723-2.262,6.51,6.51,0,0,0,2.1-.8A3.3,3.3,0,0,1,14.23,5.449a6.629,6.629,0,0,0,1.9-.512A7.108,7.108,0,0,1,14.476,6.646Z" transform="translate(0 -3.381)" fill="#212529"/>
@@ -79,14 +79,14 @@
                             </span>
                         </a>
 
-                        <a href="#">
+                        <input id="copy-url" value="{{ url()->current() }}" style="display: none">
+                        <a style="cursor: pointer" id="copy-clipboard-mobile">
                             <span class="copy-link-sm">
                                 <img src="{{ asset('_assets/_guest/img/singlecategoryitem/copy.svg') }}" class="img-fluid d-sm-none" alt="designwala">
                             </span>
                         </a>
 
-                        <a href="#" class="copy-link">Copy Link</a>
-
+                        <a style="cursor: pointer" id="copy-clipboard" class="copy-link" data-toggle="tooltip" data-placement="top" title="Tooltip on top">Copy Link</a>
                     </div>
                 </div>
             </div>
@@ -722,6 +722,7 @@
     {{-- Copy to Clipboard --}}
     <script>
         var copyBtn   = $("#copy-clipboard"),
+            copyBtnMobile   = $("#copy-clipboard-mobile"),
             input     = $("#copy-url");
 
         function copyToClipboardFF(text) {
@@ -760,27 +761,13 @@
                     copyToClipboardFF(input.val());
                 }
                 if (success) {
-                    Snackbar.show({
-                        text: 'Copied to Clipboard',
-                        pos: 'bottom-center',
-                        actionTextColor: '#038c08',
-                        duration: 1500
-                    });
-                    // remove temp element.
-                    tmpElem.remove();
+                    alert('Copied')
                 }
             }
         }
         copyBtn.on('click', copyToClipboard);
+        copyBtnMobile.on('click', copyToClipboard);
     </script>
-
-    {{-- Faq Accordian --}}
-{{--    <script>--}}
-{{--        $(document).ready(function() {--}}
-{{--            $(".faqAccordion").hide();--}}
-{{--            $(".faqAccordion:first").show();--}}
-{{--        });--}}
-{{--    </script>--}}
 
     @guest
         <script>
