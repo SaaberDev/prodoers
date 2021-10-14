@@ -31,7 +31,9 @@ class GuestServiceController extends Controller
             ->select(['title', 'slug', 'price'])
             ->get();
 
+        $tags = $service->tags;
+
         request()->session()->put('url.intended', route('guest.order.index', $service->slug));
-        return view('guest.pages.service_show', compact('service', 'related_services'));
+        return view('guest.pages.service_show', compact('service', 'related_services', 'tags'));
     }
 }

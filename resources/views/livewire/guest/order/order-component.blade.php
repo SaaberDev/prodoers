@@ -1,213 +1,601 @@
 <div>
-    {{-- Service Preview Start --}}
-    <div class="paymentDetailsPreview py-5" id="paymentDetailsPreview">
+    <section class="order-section d-md-block d-none  py-5">
         <div class="container">
-            <div class="row justify-content-center">
-                @if(session()->has('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
+            <div class="h-wraper">
+                <h2> Order Summery</h2>
+            </div>
+            <div class="order-wraper">
+                <div class="row">
+                    <div class="col-lg-2 col-md-2">
+                        <div class="img-thumb">
+                            <img src="{{ showImage($service, 'service') }}" class="img-fluid" alt="Designwala">
+                        </div>
                     </div>
-                @elseif(session()->has('failed'))
-                    <div class="alert alert-danger">
-                        {{ session('failed') }}
+                    <div class="col-lg-7 col-md-7 border-right">
+                        <div class="logo-design-area">
+                            <h2>Logo Design Professional ($50)</h2>
+                            <div class="review-area">
+                                <div class="row review-area-row">
+                                    <div class=" col-md-7 col-lg-6 col-xl-5 col-xxl-4">
+                                        <div class="starIcons">
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="25.906" height="25.667" viewBox="0 0 28.906 27.667">
+                                                <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00"/>
+                                            </svg>
+                                        </span>
+                                            <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="25.906" height="25.667" viewBox="0 0 28.906 27.667">
+                                                <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00"/>
+                                            </svg>
+                                        </span>
+                                            <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="25.906" height="25.667" viewBox="0 0 28.906 27.667">
+                                                <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00"/>
+                                            </svg>
+                                        </span> <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="25.906" height="25.667" viewBox="0 0 28.906 27.667">
+                                                <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00"/>
+                                            </svg>
+                                        </span>
+                                            <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="25.906" height="25.667" viewBox="0 0 28.906 27.667">
+                                                <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00"/>
+                                            </svg>
+                                        </span>
+                                            <span>
+                                            <p class="p-wraper">(15 Review)</p>
+                                        </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-5 col-xl-4 col-md-5">
+                                        <div class="d-flex">
+                                            <p class="p-wraper">Delivery Time</p>
+                                            <p class="p-wraper3">2 Days</p>
+                                        </div>
+                                    </div>
+                                    <div class="p-wraper4">
+                                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using</p>
+                                    </div>
+
+                                    <div class="accordien_wrapper-2">
+                                        <div class="accordion accordion-flush" id="accordionFlushExample">
+                                            <div class="accordion-item">
+                                                <h2 class="accordion-header" id="flush-headingOne">
+                                                    <a class="nav-link collapsed custom custom-2  " data-bs-toggle="collapse" href="#services" role="button" aria-expanded="true">What Includeds
+
+                                                        <span class="nav-arrow custom-arrow">
+                                                            <img src="{{ asset('_assets/_guest/img/paymentdetails/dropdown.svg') }}" class="img-fluid" alt="Designwala">
+                                                        </span>
+                                                    </a>
+
+                                                    <div class="collapse show cl-custom" id="services">
+                                                        <div class="row">
+                                                            <div class="col-lg-5 col-md-5">
+                                                                <ul class="list-unstyled">
+                                                                    <li class=""><a href="#">Print Ready Files</a></li>
+                                                                    <li><a href="#">High Resolution</a></li>
+                                                                    <li><a href="#">Two Unique Concepts</a></li>
+
+                                                                </ul>
+                                                            </div>
+                                                            <div class="col-lg-7 col-md-7">
+                                                                <ul class="list-unstyled">
+                                                                    <li class=""><a href="#">Four Revisions </a></li>
+                                                                    <li><a href="#">100% Ownership Rights</a></li>
+                                                                    <li><a href="#">Print and Web Files : RGB, CMYK, JPEG, PNG, PDF</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </h2>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                @elseif(session()->has('orderSuccess'))
-                    <div class="alert alert-success">
-                        {{ session('orderSuccess') }}
+                    <div class="col-lg-3 col-md-3">
+                        <div class="order-price-total">
+                            <div class="order-section">
+                                <h2>Order Details</h2>
+                                <div class="row justify-content-between">
+                                    <div class="col-lg-9 col-md-9"><p>Price</p></div>
+                                    <div class="col-lg-3 col-md-3"><p class="p-left">${{ $service->price }}</p></div>
+                                    @if(session()->has('coupon'))
+                                        <div class="col-lg-9 col-md-3">
+                                            <div class="discont-wraper d-flex">
+                                                <p>Discount <span>({{ session('coupon.code', 'XXXX') }}) {{ session('coupon.percent') ? '(-' . session('coupon.percent') . '%)' : '0%' }}</span></p>
+                                                <a wire:click.prevent="removeCoupon"><img src="{{ asset('_assets/_guest/img/paymentdetails/x.svg') }}" alt="close"></a>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-3 col-md-3">
+                                            <p class="color">{{ '-$' . session('coupon.discount', 0) }}</p>
+                                        </div>
+                                    @endif
+{{--                                    <div class="col-lg-9 col-md-9"><p>Service Charge</p></div>--}}
+{{--                                    <div class="col-lg-3 col-md-3"><p class="p-left">$10</p></div>--}}
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="total-section">
+                                <div class="row justify-content-between">
+                                    <div class="col-lg-8 col-md-7">
+                                        <h3 class="total-text2">Total</h3>
+                                    </div>
+                                    <div class="col-lg-4 col-md-5">
+                                        <h3 class="total-text">$54</h3>
+                                    </div>
+                                </div>
+                                <p>Service charge are counted for Vat exclusive</p>
+
+                            </div>
+                            @if(!session()->has('coupon'))
+                            <div class="cupon-wraper">
+                                <form action="" class="for-flex">
+                                    <input type="text"
+                                           wire:model.defer="form.coupon"
+                                           class="cp {{ ($errors->has('form.coupon') ? ' warning-border-color' : '') }}"
+                                           placeholder="Promo Code"
+                                    >
+                                    @if($errors->has('form.coupon'))
+                                        <span class="error-message" style="padding: 6px 0 0 0;">
+                                            <p>{{ $errors->first('form.coupon') }}</p>
+                                        </span>
+                                    @endif
+                                    <div>
+                                        <button wire:click.prevent="checkCoupon" class="c2">Apply</button>
+                                    </div>
+                                </form>
+                            </div>
+                            @endif
+                        </div>
+                    </div>
+                </div> <!--row-->
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Requirement start -->
+    <section class="Order-Requirement d-md-block d-none">
+        <div class="container">
+            <span class="hr-border"></span>
+            <h2> Order Requirement</h2>
+            <div class="row">
+
+                <div class="col-lg-7 col-md-7">
+                    <div class="text-area-wraper d-md-block d-none ">
+                        <textarea wire:model.defer="form.requirements"
+                                  class="form-control c-custom rounded-0 {{ ($errors->has('form.requirements') ? ' warning-border-color' : '') }}"
+                                  id="exampleFormControlTextarea1"
+                                  rows="10"
+                                  placeholder="Write here if you want to tell anything"
+                        ></textarea>
+                        @if($errors->has('form.requirements'))
+                            <div class="error-message" style="padding: 6px 0 0 0;">
+                                <p>{{ $errors->first('form.requirements') }}</p>
+                            </div>
+                        @endif
+                        <div class="problem" style="{{ $errors->has('form.requirements') ? 'margin-top: 8px;' : '' }}">
+                            <div class="form-group">
+                                <div class="needsclick dropzone" id="multiple-dropzone">
+                                    <div class="dz-message" data-dz-message>
+                                        <span>Drop files here or click to upload.</span>
+                                        <span>Maximum allowed file size 2MB. Allowed file types are jpeg, png.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 col-md-5 d-md-block d-none ">
+                    <div class="Instruction">
+                        <h3>Instruction</h3>
+                        <ul>
+                            @forelse($service->serviceCategories->serviceCategoryInstructions as $instructions)
+                                <li>{{ $instructions->order_instructions }}</li>
+                            @empty
+                                No Instruction Available
+                            @endforelse
+                        </ul>
+                        <p>{{ $service->serviceCategories->order_instruction_desc }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pyment-getway d-md-block d-none">
+        <div class="container">
+            <span class="hr-border"></span>
+            <div class="row align-items-center">
+                @if($errors->has('form.paymentMethod'))
+                    <div class="row">
+                        <div class="col-md-12" style="display: flex; justify-content: center;">
+                            <div class="error-message" style="padding: 6px 0 0 0;margin-left: 109px;">
+                                <p>{{ $errors->first('form.paymentMethod') }}</p>
+                            </div>
+                        </div>
                     </div>
                 @endif
-
-                <div class="col-xl-6  col-lg-8 col-md-10 col-sm-11 border py-4 border">
-                    <div class="w-100 paymentdetailsOrdersummrytext">
-                        <h4 class="">Order Summery </h4>
+                <div class="offset-lg-3 col-lg-2 offset-xl-5 offset-md-1 col-xl-2 col-md-3">
+                    <div class="pyment-wraper">
+                        <h2>Select Payment</h2>
                     </div>
-                    <div class="w-100 ">
-                        <div class="w25imgdiv ">
-                            <div class="text-center">
-                                <img src="{{ asset(config('designwala_paths.default.no_preview')) }}" alt="img-fluid w-10" style="height: 100px;width: 100px;">
+                </div>
+                <div class="col-lg-7 col-xl-5 col-md-8">
+                    <div class="selectablescustom">
+                        <input type="text" value="" class="{{ $errors->has('form.paymentMethod') ? ' is-invalid' : '' }}" hidden>
+                        <div class="row">
+                            <div class="col-lg-3 col-md-3">
+                                <div class=" form-check form-check-inline">
+                                    <input wire:model.defer="form.paymentMethod"
+                                           class="form-check-input css-checkbox"
+                                           type="radio"
+                                           name="payment_method"
+                                           id="inlineRadio1"
+                                           value="paypal"
+                                    >
+                                    <label class="form-check-label css-label" for="inlineRadio1"> <img src="{{ asset('_assets/_guest/img/paymentdetails/paypal.png') }}" alt="" class=" ui-state-default  img-fluid  "></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <div class="form-check form-check-inline">
+                                    <input wire:model.defer="form.paymentMethod"
+                                           class="form-check-input css-checkbox"
+                                           type="radio"
+                                           name="payment_method"
+                                           id="inlineRadio2"
+                                           value="visa"
+                                    >
+                                    <label class="form-check-label css-label" for="inlineRadio2"><img src="{{ asset('_assets/_guest/img/paymentdetails/visa.png') }}" alt="" class=" ui-state-default  img-fluid  "></label>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <div class="form-check form-check-inline">
+                                    <input wire:model.defer="form.paymentMethod"
+                                           class="form-check-input css-checkbox"
+                                           type="radio"
+                                           name="payment_method"
+                                           id="inlineRadio3"
+                                           value="bkash"
+                                    >
+                                    <label class="form-check-label css-label" for="inlineRadio3"><img src="{{ asset('_assets/_guest/img/paymentdetails/bkash.png') }}" alt="" class=" ui-state-default  img-fluid  "> </label>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <div class="form-check form-check-inline">
+                                    <input wire:model.defer="form.paymentMethod"
+                                           class="form-check-input css-checkbox"
+                                           type="radio"
+                                           name="payment_method"
+                                           id="inlineRadio4"
+                                           value="mastercard"
+                                    >
+                                    <label class="form-check-label css-label" for="inlineRadio4"><img src="{{ asset('_assets/_guest/img/paymentdetails/master.png') }}" alt="" class=" ui-state-default  img-fluid  "></label>
+                                </div>
                             </div>
                         </div>
-                        <div class="w75cartdiv ">
-                            <div class="">
-                                <h5>{{ $service->title }}</h5>
-                                <p class="m-0">{{ $service->short_desc }}</p>
-                                <p class=" m-0 font-weight-bold text-dark">
-                                    <span class="small"> Price :</span>
-                                    <span>${{ $service->price }}</span>
-                                    @if(session()->has('coupon'))
-                                        <br>
-                                        <span class="small"> Discount ({{ session('coupon.code') }}) {{ session('coupon.percent') ? '(-' . session('coupon.percent') . '%)' : '' }} :</span>
-                                        {{--                                    <span class="text-danger"> &#40; - 30% &#41; </span>--}}
-                                        <span class="text-danger"> {{ '-$' . session('coupon.discount') }} <a wire:click.prevent="removeCoupon" class="btn">Remove</a></span>
-                                    @endif
-                                    <br>
-                                    <span>Grand Total: {{ '$' . presentPrice($service->price) }}</span>
-                                </p>
-                            </div>
-                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group my-label">
+                    <input class="form-check-input" type="checkbox" id="gridCheck" style="margin-right:9px;">
+                    <label class=" paymentdetailsCheck my-label" for="gridCheck" style="display: inline;">By clicking continue, I agreed to <span class="">Designwala</span> <span><button class="btn btn-link m-0 p-0" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal-1"> Terms &amp; Condition</button></span> and <span><button class="btn btn-link m-0 p-0" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal-2">Privacy Policy</button></span> of designwala
+                    </label>
+                </div>
+            </div>
+            <div class="row justify-content-end g-3">
+                <div class="col-lg-4 col-md-4">
+                    <div class="checkout_btn_wraper" wire:ignore>
+                        <button wire:click.prevent="store"
+                                type="submit"
+                                class="custom-checkout-btn"
+                                id="checkout-btn"
+                        >
+                            Continue to checkout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<div class="Payment-getway d-md-block d-none  py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-xl-7 col-md-10">
+                <div class="payment_gatway_wraper">
+                    <h4 class="text-center">Payment getway</h4>
+                    <img src="{{ asset('_assets/_guest/img/paymentdetails/payment-icon.svg') }}" class="img-fluid" alt="sslcommerz">
+                    <h4 class="text-center m-t">Verified by</h4>
+                    <div class="sslcommerz_wraper text-center">
+                        <img src="{{ asset('_assets/_guest/img/paymentdetails/sslcomers.svg') }}" class="img-fluid" alt="sslcommerz">
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    {{-- Service Preview End --}}
+</div>
+<!-- Order Requirement end -->
 
+<!-- ****************************** Mobile start*****************************************-->
 
-    {{-- Order Requirements Form Start --}}
-    <div class="sectionPaymentdetailsOrderRequirement  bgcustomLightgray " id="sectionPaymentdetailsOrderRequirement">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12">
-                    <div class="">
-                        <h4 class="orderRequirementsTxt pb-3">Order Requirements</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12">
-                    <form class="row g-3 needs-validation" novalidate autocomplete="off">
-{{--                        <div class="col-md-12">--}}
-{{--                            <div class="form-file">--}}
-{{--                                <div class="">--}}
-{{--                                    <input id="filePondinput1" type="file" class="filepond border" name="filepond"--}}
-{{--                                           multiple data-max-file-size="10MB" data-max-files="100">--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="col-md-12">--}}
-{{--                            <div class="form-file">--}}
-{{--                                <div class="">--}}
-{{--                                    <input id="filePondinput2" type="file" class="filepond border" name="filepond"--}}
-{{--                                           multiple data-max-file-size="10MB" data-max-files="100">--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
+    <div id="orderRequirement">
+        <section class="order-wraper2 d-block d-md-none">
+            <div class="container">
+                <div class="row">
+                    <div class="col-8">
+                        <div class="logo-area">
+                            <h2>Logo Design Professional ($50)</h2>
+                            <div class="row rating-row align-items-center">
+                                <div class="col-4">
+                                    <div class="starIcons ">
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 28.906 27.667">
+                                                    <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00"/>
+                                                </svg>
 
-                        <div class="col-md-12 pt-3">
-                            <textarea class="form-control rounded-0 {{ ($errors->has('form.requirements') ? ' is-invalid' : '') }}"
-                                      wire:model.defer="form.requirements"
-                                      id="exampleFormControlTextarea1"
-                                      rows="8"
-                                      placeholder="Addditional Requirements"
-                            ></textarea>
-                            @if($errors->has('form.requirements'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('form.requirements') }}
+                                            </span>
+
+                                        <span class="review2">4.9</span>
+                                    </div>
                                 </div>
-                            @endif
-                        </div>
-                        @if(!session()->has('coupon'))
-                            <div class="col-md-12 pt-3">
-                                <div class="row">
-                                    <div class="col-md-5">
-                                        <div class="position-relative" style="">
-                                            <input type="text"
-                                                   wire:model.defer="form.coupon"
-                                                   class="form-control rounded-0 {{ ($errors->has('form.coupon') ? ' is-invalid' : '') }}"
-                                                   placeholder="Promo Code"
-                                            >
-                                            @if($errors->has('form.coupon'))
-                                                <div class="invalid-feedback">
-                                                    {{ $errors->first('form.coupon') }}
-                                                </div>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <div class="text-center p-3">
-                                            <a wire:click.prevent="checkCoupon" class="btn  bgOne text-white rounded-0 px-5 py-2">Apply</a>
-                                        </div>
-                                    </div>
+
+                                <div class="col-8">
+                                    <p class="p-wraper2">(15 Review)</p>
                                 </div>
                             </div>
-                            @endif
-                        <div class="col-md-12 pt-3">
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 textsmCenter">
-                                    <label for="validationDefault01" class="form-label rounded-0">Payment
-                                        Method*</label>
+                            <div class="row align-items-center">
+                                <div class="col-7">
+                                    <p class="p-wraper6">Delivery Time</p>
                                 </div>
-                                <!--                                selectable payment method -->
-                                <div class="col-lg-12 col-md-12">
-                                    <div class="selectablescustom">
-                                        <input type="text" value="" class="{{ $errors->has('form.paymentMethod') ? ' is-invalid' : '' }}" hidden>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input css-checkbox"
-                                                   wire:model.defer="form.paymentMethod"
-                                                   type="radio"
-                                                   name="payment_method"
-                                                   id="inlineRadio1"
-                                                   value="paypal"
-                                            >
-                                            <label class="form-check-label css-label" for="inlineRadio1"> <img src="{{ asset('_assets/_guest/img/paymentdetails/paypal.png') }}" alt="" class=" ui-state-default  img-fluid  "></label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input css-checkbox"
-                                                   wire:model.defer="form.paymentMethod"
-                                                   type="radio"
-                                                   name="payment_method"
-                                                   id="inlineRadio2"
-                                                   value="visa">
-                                            <label class="form-check-label css-label" for="inlineRadio2"><img src="{{ asset('_assets/_guest/img/paymentdetails/visa.png') }}" alt="" class=" ui-state-default  img-fluid  "></label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input css-checkbox"
-                                                   wire:model.defer="form.paymentMethod"
-                                                   type="radio"
-                                                   name="payment_method"
-                                                   id="inlineRadio3"
-                                                   value="bkash">
-                                            <label class="form-check-label css-label" for="inlineRadio3"><img src="{{ asset('_assets/_guest/img/paymentdetails/bkash.png') }}" alt="" class=" ui-state-default  img-fluid  "> </label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input css-checkbox"
-                                                   wire:model.defer="form.paymentMethod"
-                                                   type="radio"
-                                                   name="payment_method"
-                                                   id="inlineRadio4"
-                                                   value="mastercard">
-                                            <label class="form-check-label css-label" for="inlineRadio4"><img src="{{ asset('_assets/_guest/img/paymentdetails/master.png') }}" alt="" class=" ui-state-default  img-fluid  "></label>
-                                        </div>
-                                        @if($errors->has('form.paymentMethod'))
-                                            <div class="invalid-feedback">
-                                                {{ $errors->first('form.paymentMethod') }}
+                                <div class="col-5">
+                                    <p class="p-wraper5">2 Days</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="img-thumb2">
+                            <img src="{{ asset('_assets/_guest/img/paymentdetails/rectangle.svg') }}" alt="Designwala">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="accordien_wrapper-3">
+                        <div class="accordion accordion-flush" id="accordionFlushExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingOne">
+                                    <a class="nav-link collapsed custom custom-2  " data-bs-toggle="collapse" href="#services" role="button" aria-expanded="false">What Includeds
+
+                                        <span class="nav-arrow custom-arrow">
+                                        <img src="{{ asset('_assets/_guest/img/paymentdetails/dropdown.svg') }}" class="img-fluid" alt="Designwala">
+                                    </span>
+                                    </a>
+                                    <div class="collapse cl-custom" id="services">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <ul class="list-unstyled">
+                                                    <li class=""><a href="#">Print Ready Files</a></li>
+                                                    <li><a href="#">High Resolution</a></li>
+                                                    <li><a href="#">Two Unique Concepts</a></li>
+                                                </ul>
                                             </div>
-                                        @endif
+                                            <div class="col-6">
+                                                <ul class="list-unstyled">
+                                                    <li class=""><a href="#">Four Revisions </a></li>
+                                                    <li><a href="#">100% Ownership Rights</a></li>
+                                                    <li><a href="#">Print and Web Files : RGB, CMYK, JPEG, PNG, PDF</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <section class="order-require d-block d-md-none">
+            <div class="container">
+                <div class="row">
+                    <div class="col-7">
+                        <p class="p-order">Order Requirement</p>
+                    </div>
+                    <div class="col-5">
+                        <div class="tol-tip">
+                            <a href="#" class="a">Instruction (?)</a>
+                            <p class="p">
+                                <span>
+                                    @forelse($service->serviceCategories->serviceCategoryInstructions as $instructions)
+                                    ▪  {{ $instructions->order_instructions }} <br>
+                                    @empty
+                                        No Instruction Available
+                                    @endforelse
+                                </span>
+                                {{ $service->serviceCategories->order_instruction_desc }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-area">
+                    <textarea wire:model.defer="form.requirements"
+                              class="form-control c-custom rounded-0 {{ ($errors->has('form.requirements') ? ' warning-border-color' : '') }}"
+                              id="exampleFormControlTextarea1"
+                              rows="10"
+                              placeholder="Write here if you want to tell anything"
+                    ></textarea>
+                    @if($errors->has('form.requirements'))
+                        <div class="error-message" style="padding: 6px 0 0 0;">
+                            <p>{{ $errors->first('form.requirements') }}</p>
+                        </div>
+                    @endif
+
+                    <div class="form-group">
+                        <div class="needsclick dropzone" id="multiple-dropzone">
+                            <div class="dz-message" data-dz-message>
+                                <span>Drop files here or click to upload.</span>
+                                <span>Maximum allowed file size 2MB. Allowed file types are jpeg, png.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container d-block d-md-none">
+            <div class="btn-ct">
+                <button id="requirementBtn" type="sumbit" class="c-btn-order">Order Summery<img src="{{ asset('_assets/_guest/img/paymentdetails/arrow-down.svg') }}" alt="designwala"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- order-summery start -->
+    <div id="orderSummery" class="orderSummery">
+        <section class="order-summ d-block d-md-none">
+            <div class="container">
+                <div class="ct2">
+                    <button type="sumbit" id="orderSummeryBtn" class="c-btn-order2"><img src="{{ asset('_assets/_guest/img/paymentdetails/right.svg') }}" class="right" alt="designwala">Order Requirements</button>
+                </div>
+                <div class="order">
+                    <h4>Order Summery</h4>
+                    <div class="row">
+                        <div class="col-10">
+                            <div class="wraper-or">
+                                <p>Price</p>
+                                @if(session()->has('coupon'))
+                                    <p>Discount ({{ session('coupon.code', 'XXXX') }}) {{ session('coupon.percent') ? '(-' . session('coupon.percent') . '%)' : '0%' }}<a wire:click.prevent="removeCoupon"><img src="{{ asset('_assets/_guest/img/paymentdetails/x.svg') }}" alt="close"></a></p>
+                                @endif
+    {{--                            <p>Service Charge</p>--}}
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="price-wraper">
+                                <p>${{ $service->price }}</p>
+                                @if(session()->has('coupon'))
+                                    <p class="cp">{{ '-$' . session('coupon.discount', 0) }}</p>
+                                @endif
+    {{--                            <p>$10</p>--}}
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="row">
+                        <div class="col-10">
+                            <p class="total">Total</p>
+                        </div>
+                        <div class="col-2">
+                            <p class="total"> {{ '$' . presentPrice($service->price) }}</p>
+                        </div>
+                    </div>
+                    <div class="servic">
+                        <p>Service charge are counted for Vat exclusive</p>
+                    </div>
+
+                    @if(!session()->has('coupon'))
+                        <div class="cupon-wraper" style="padding-bottom: 0px;">
+                            <form action="">
+                                <input type="text"
+                                       wire:model.defer="form.coupon"
+                                       class="cp {{ ($errors->has('form.coupon') ? ' warning-border-color' : '') }}"
+                                       placeholder="Promo Code"
+                                >
+                                @if($errors->has('form.coupon'))
+                                    <span class="error-message" style="padding: 6px 0 0 0;">
+                                        <p>{{ $errors->first('form.coupon') }}</p>
+                                    </span>
+                                @endif
+
+                                <div>
+                                    <button wire:click.prevent="checkCoupon" class="custom-checkout-btn c2">Apply</button>
+                                </div>
+                            </form>
+                        </div>
+                    @endif
+                </div>
+                <div class="select-part">
+                    <div class="h5">
+                        <h5>Select payment</h5>
+                    </div>
+                    <div class="col-12" style="text-align: center;">
+                        <div class="selectablescustom">
+
+                            <!--Payemnt Method-->
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class=" form-check form-check-inline">
+                                        <input class="form-check-input css-checkbox" type="radio" name="inlineRadioOptions" id="inlineRadio5" value="option1">
+                                        <label class="form-check-label css-label" for="inlineRadio5"> <img src="{{ asset('_assets/_guest/img/paymentdetails/paypal.png') }}" alt="" class=" ui-state-default  img-fluid  "></label>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input css-checkbox" type="radio" name="inlineRadioOptions" id="inlineRadio6" value="option2">
+                                        <label class="form-check-label css-label" for="inlineRadio6"><img src="{{ asset('_assets/_guest/img/paymentdetails/visa.png') }}" alt="" class=" ui-state-default  img-fluid  "></label>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input css-checkbox" type="radio" name="inlineRadioOptions" id="inlineRadio7" value="option3">
+                                        <label class="form-check-label css-label" for="inlineRadio7"><img src="{{ asset('_assets/_guest/img/paymentdetails/bkash.png') }}" alt="" class=" ui-state-default  img-fluid  "> </label>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input css-checkbox" type="radio" name="inlineRadioOptions" id="inlineRadio8" value="option4">
+                                        <label class="form-check-label css-label" for="inlineRadio8"><img src="{{ asset('_assets/_guest/img/paymentdetails/master.png') }}" alt="" class=" ui-state-default  img-fluid  "></label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--Payemnt Method-->
+
+                            <div class="row">
+                                <div class=" offset-7 col-lg-5 col-md-5 d-md-block d-none">
+                                    <div class="form-group my-label">
+                                        <input class="form-check-input" type="checkbox" id="gridCheck" style="margin-right:9px;">
+                                        <label class=" paymentdetailsCheck my-label" for="gridCheck" style="display: inline;">By clicking continue, I agreed to <span class="">Designwala</span> <span><button class="btn btn-link ra" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal-1"> Terms &amp; Condition</button></span> and <span><button class="btn btn-link ra" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal-2">Privacy Policy</button></span> of designwala
+                                        </label>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12 pt-3">
-                            <div class="form-group d-none d-lg-block">
-                                <div class="form-check text-center">
-                                    <label class="form-check-label paymentdetailsCheck" for="gridCheck" style="display: inline;">
-                                        By clicking continue, I agreed to <span class="">Designwala's</span> <br> <span><button class="btn btn-link m-0 p-0" type="button" data-toggle="modal" data-target="#exampleModal-1"> Terms &amp; Condition</button></span> and <span><button class="btn btn-link m-0 p-0" type="button" data-toggle="modal" data-target="#exampleModal-2">Privacy Policy</button></span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="form-group d-lg-none d-md-block">
-                                <div class="form-check text-center">
-                                    <label class="form-check-label paymentdetailsCheck" for="gridCheck" style="display: inline;">
-                                        By clicking continue, I agreed to <span class="">Designwala  <br> </span> <span><button
-                                                class="btn btn-link m-0 p-0" type="button" data-toggle="modal"
-                                                data-target="#exampleModal-1"> Terms &amp; Condition</button></span> and
-                                        <span><button class="btn btn-link m-0 p-0" type="button" data-toggle="modal"
-                                                      data-target="#exampleModal-2">Privacy Policy</button></span>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="text-center p-3">
-                                <button id="pay-now" wire:click.prevent="store" class="btn bgOne text-white rounded-0 px-5 py-2">Continue</button>
-                            </div>
-                        </div>
-                        <div class="col-md-12"></div>
-                    </form>
+                    </div>
                 </div>
             </div>
-        </div>
+            <div class="container d-block d-md-none ">
+                <div class="btn-ct">
+                    <button type="sumbit" class="c-btn-order">Contine to pay<img src="{{ asset('_assets/_guest/img/paymentdetails/arrow-down.svg') }}" alt="designwala"></button>
+                </div>
+            </div>
+            <div class="Payment-getway d-block  d-md-none">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-12">
+                            <div class="payment_gatway_wraper">
+                                <h4 class="text-center m-t">Verified by</h4>
+                                <div class="sslcommerz_wraper text-center">
+                                    <img src="{{ asset('_assets/_guest/img/paymentdetails/sslcomers.svg') }}" class="img-fluid" alt="sslcommerz">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
     </div>
-    {{-- Order Requirements Form End --}}
-    <div id="paypal-button-container"></div>
+
 </div>
 
 @push('scripts')

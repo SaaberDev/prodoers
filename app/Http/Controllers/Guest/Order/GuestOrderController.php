@@ -30,15 +30,14 @@
         public function index($service_slug)
         {
             $service = Service::getSlug($service_slug)
-                ->select(['id', 'title', 'short_desc', 'price', 'slug'])
+                ->with('media', 'serviceCategories')
+                ->select(['id', 'title', 'short_desc', 'price', 'slug', 'service_category_id'])
                 ->first();
             \session()->put('order', [
                 'grand_total' => $service->price
             ]);
 
-            $service_thumbnail = [];
-
-            return view('guest.pages.order_requirements', compact('service', 'service_thumbnail'));
+            return view('guest.pages.order_requirements', compact('service'));
         }
 
         /**
