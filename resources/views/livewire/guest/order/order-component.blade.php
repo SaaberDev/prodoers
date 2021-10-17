@@ -306,7 +306,7 @@
     </section>
 
 
-<div class="Payment-getway d-md-block d-none  py-5">
+    <div class="Payment-getway d-md-block d-none  py-5">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8 col-xl-7 col-md-10">
@@ -326,7 +326,8 @@
 
 <!-- ****************************** Mobile start*****************************************-->
 
-    <div id="orderRequirement">
+    {{-- Step One --}}
+    <div id="orderRequirement" class="{{ $currentStep != 1 ? 'd-none' : '' }}">
         <section class="order-wraper2 d-block d-md-none">
             <div class="container">
                 <div class="row">
@@ -455,17 +456,17 @@
 
         <div class="container d-block d-md-none">
             <div class="btn-ct">
-                <button id="requirementBtn" type="sumbit" class="c-btn-order">Order Summery<img src="{{ asset('_assets/_guest/img/paymentdetails/arrow-down.svg') }}" alt="designwala"></button>
+                <button id="requirementBtn" wire:click.prevent="stepOne" class="c-btn-order">Order Summery<img src="{{ asset('_assets/_guest/img/paymentdetails/arrow-down.svg') }}" alt="designwala"></button>
             </div>
         </div>
     </div>
 
-    <!-- order-summery start -->
-    <div id="orderSummery" class="orderSummery">
+    {{-- Step Two --}}
+    <div id="orderSummery" class="orderSummery {{ $currentStep != 2 ? 'd-none' : '' }}">
         <section class="order-summ d-block d-md-none">
             <div class="container">
                 <div class="ct2">
-                    <button type="sumbit" id="orderSummeryBtn" class="c-btn-order2"><img src="{{ asset('_assets/_guest/img/paymentdetails/right.svg') }}" class="right" alt="designwala">Order Requirements</button>
+                    <button wire:click.prevent="back(1)" id="orderSummeryBtn" class="c-btn-order2"><img src="{{ asset('_assets/_guest/img/paymentdetails/right.svg') }}" class="right" alt="designwala">Order Requirements</button>
                 </div>
                 <div class="order">
                     <h4>Order Summery</h4>
@@ -533,26 +534,51 @@
                             <!--Payemnt Method-->
                             <div class="row">
                                 <div class="col-6">
+                                    <input type="text" value="" class="{{ $errors->has('form.paymentMethod') ? ' is-invalid' : '' }}" hidden>
                                     <div class=" form-check form-check-inline">
-                                        <input class="form-check-input css-checkbox" type="radio" name="inlineRadioOptions" id="inlineRadio5" value="option1">
+                                        <input wire:model.defer="form.paymentMethod"
+                                               class="form-check-input css-checkbox"
+                                               type="radio"
+                                               name="payment_method"
+                                               id="inlineRadio5"
+                                               value="paypal"
+                                        >
                                         <label class="form-check-label css-label" for="inlineRadio5"> <img src="{{ asset('_assets/_guest/img/paymentdetails/paypal.png') }}" alt="" class=" ui-state-default  img-fluid  "></label>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input css-checkbox" type="radio" name="inlineRadioOptions" id="inlineRadio6" value="option2">
+                                        <input wire:model.defer="form.paymentMethod"
+                                               class="form-check-input css-checkbox"
+                                               type="radio"
+                                               name="payment_method"
+                                               id="inlineRadio6"
+                                               value="visa"
+                                        >
                                         <label class="form-check-label css-label" for="inlineRadio6"><img src="{{ asset('_assets/_guest/img/paymentdetails/visa.png') }}" alt="" class=" ui-state-default  img-fluid  "></label>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input css-checkbox" type="radio" name="inlineRadioOptions" id="inlineRadio7" value="option3">
+                                        <input wire:model.defer="form.paymentMethod"
+                                               class="form-check-input css-checkbox"
+                                               type="radio"
+                                               name="payment_method"
+                                               id="inlineRadio7"
+                                               value="bkash"
+                                        >
                                         <label class="form-check-label css-label" for="inlineRadio7"><img src="{{ asset('_assets/_guest/img/paymentdetails/bkash.png') }}" alt="" class=" ui-state-default  img-fluid  "> </label>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input css-checkbox" type="radio" name="inlineRadioOptions" id="inlineRadio8" value="option4">
+                                        <input wire:model.defer="form.paymentMethod"
+                                               class="form-check-input css-checkbox"
+                                               type="radio"
+                                               name="payment_method"
+                                               id="inlineRadio8"
+                                               value="mastercard"
+                                        >
                                         <label class="form-check-label css-label" for="inlineRadio8"><img src="{{ asset('_assets/_guest/img/paymentdetails/master.png') }}" alt="" class=" ui-state-default  img-fluid  "></label>
                                     </div>
                                 </div>
@@ -573,9 +599,20 @@
                     </div>
                 </div>
             </div>
+
+            @if($errors->has('form.paymentMethod'))
+                <div class="row">
+                    <div class="col-md-12" style="display: flex; justify-content: center;">
+                        <div class="error-message" style="padding: 6px 0 0 0;margin-left: 109px;">
+                            <p>{{ $errors->first('form.paymentMethod') }}</p>
+                        </div>
+                    </div>
+                </div>
+            @endif
+
             <div class="container d-block d-md-none ">
                 <div class="btn-ct">
-                    <button type="sumbit" class="c-btn-order">Contine to pay<img src="{{ asset('_assets/_guest/img/paymentdetails/arrow-down.svg') }}" alt="designwala"></button>
+                    <button  wire:click.prevent="store" class="c-btn-order">Continue to pay<img src="{{ asset('_assets/_guest/img/paymentdetails/arrow-down.svg') }}" alt="designwala"></button>
                 </div>
             </div>
             <div class="Payment-getway d-block  d-md-none">

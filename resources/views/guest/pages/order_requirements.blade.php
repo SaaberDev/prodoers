@@ -18,6 +18,9 @@
             justify-content: center;
             flex-wrap: wrap;
         }
+        .orderSummery {
+            display: block;
+        }
     </style>
 @endpush
 
@@ -27,22 +30,4 @@
 
 @push('scripts')
     {{-- Internal Scripts --}}
-    <script>
-        // orderRequirement js code
-
-        const orderRequirementBtn = document.getElementById("requirementBtn")
-        const orderSummeryBtn = document.getElementById("orderSummeryBtn")
-
-        orderRequirementBtn.addEventListener("click", () => {
-            const orderInnerBtn = document.getElementById("orderRequirement")
-            orderInnerBtn.style.display = "none";
-            document.getElementById("orderSummery").style.display = "block";
-        })
-        orderSummeryBtn.addEventListener("click", () => {
-            const orderSummeryInnerBtn = document.getElementById("orderSummery")
-            orderSummeryInnerBtn.style.display = "none";
-            document.getElementById("orderRequirement").style.display = "block";
-        })
-
-    </script>
 @endpush

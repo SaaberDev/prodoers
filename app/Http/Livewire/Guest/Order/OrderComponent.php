@@ -9,6 +9,7 @@ use Livewire\Component;
 class OrderComponent extends Component
 {
     public $service;
+    public $currentStep = 1;
     public $form = [
         'requirements' => '',
         'coupon' => '',
@@ -64,7 +65,7 @@ class OrderComponent extends Component
             $this->adjustTotalPrice($coupon);
         }
 
-        return redirect()->back();
+//        return redirect()->back();
     }
 
     function adjustTotalPrice($coupon)
@@ -103,6 +104,19 @@ class OrderComponent extends Component
         $this->dispatchBrowserEvent('success_toast', [
             'title' => 'Coupon has been removed.',
         ]);
+    }
+
+    public function stepOne()
+    {
+        $this->validate([
+            'form.requirements' => 'required|min:250',
+        ]);
+        $this->currentStep = 2;
+    }
+
+    public function back($step)
+    {
+        $this->currentStep = $step;
     }
 
     public function render()
