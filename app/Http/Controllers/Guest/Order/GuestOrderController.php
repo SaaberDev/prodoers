@@ -48,7 +48,8 @@
          */
         public function store(Request $request)
         {
-            $this->processOrder->setData($request);
+            $data = [];
+            $this->processOrder->setData($request, $data);
 
             $payment_method = $request->only('payment_method');
             return redirect()->route('test.payment', $payment_method);

@@ -7,10 +7,15 @@
     use App\Models\Order;
     use DB;
     use Exception;
+    use Throwable;
 
     class ProcessOrder extends GenerateOrder
     {
-        public function setData($form, $service)
+        /**
+         * @param $request
+         * @param $data
+         */
+        public function setData($request, $data)
         {
             if (session()->has(['item', 'other'])){
                 session()->forget(['item', 'other']);
@@ -19,16 +24,16 @@
             $order_number = Order::count() + 1;
             // Send payment param to make payment
             $order = [
-                'product_name' => $service['title'],
+                'product_name' => $data['title'],
                 'product_desc' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi deleniti deserunt neque unde?',
                 'product_category' => 'Digital Service',
                 'product_profile' => 'non-physical-goods',
 
-                'requirements' => $form['requirements'],
+                'requirements' => $request['requirements'],
                 'pay_amount' => 50,
                 'applied_coupon' => '1234',
                 'discount' => 10,
-                'payment_method' => $form['paymentMethod'],
+                'payment_method' => $request['paymentMethod'],
 
                 'currency' => 'BDT',
                 'tran_id' => uniqid(),
@@ -59,6 +64,10 @@
             session()->put('item', $order);
         }
 
+        /**
+         * @param $response
+         * @throws Throwable
+         */
         public function getData($response)
         {
             $sessionData = session('item');
