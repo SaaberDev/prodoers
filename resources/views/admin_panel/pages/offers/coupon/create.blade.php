@@ -3,6 +3,14 @@
 
 @push('styles')
     {{-- Internal Styles --}}
+    <link rel="stylesheet" href="{{ mix('_assets/plugins/select2/css/select2.css') }}">
+    <link rel="stylesheet" href="{{ mix('_assets/plugins/flatpickr/css/flatpickr.css') }}">
+
+    <style>
+        .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice {
+            background-color: #038d08!important;
+        }
+    </style>
 @endpush
 
 @section('content')
@@ -15,6 +23,7 @@
                 </div>
             </div>
         </div>
+
         <div class="boxshadow rounded">
             <div class="row justify-content-center m-0 py-1 boxshadow rounded">
                 <div class="col-xl-12 col-lg-12 col-md-12 v-center">
@@ -23,11 +32,14 @@
                 </div>
             </div>
         </div>
+
         <div class="mt-4">
             <form action="{{ route('super_admin.offer.coupon.store') }}" method="POST">
                 @csrf @method('POST')
                 <div class="row m-0  py-3 bg-white rounded">
-                    @livewire('admin.offers.coupon.form.apply-coupon-to-dropdown')
+                    <div class="col-md-6 mt-4">
+                        @livewire('admin.offers.coupon.form.apply-coupon-to-dropdown')
+                    </div>
 
                     <div class="col-md-2 mt-4">
                         <div class=" text-right">
@@ -53,54 +65,59 @@
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="col-md-3 mt-4">
-                        <div class="form-group mb-0">
-                            <label for="">
-                                <h5>Code</h5></label>
-                            <div class="input-group">
-                                <input name="coupon_code" value="{{ old('coupon_code') }}" class="form-control {{ $errors->has('coupon_code') ? ' is-invalid' : '' }}" type="text">
-                                @if($errors->has('coupon_code'))
-                                    <span class="invalid-feedback">
+                    <div class="row m-0  py-3 bg-white rounded">
+                        <div class="col-md-3 mt-4">
+                            <div class="form-group mb-0">
+                                <label for="">
+                                    <h5>Code</h5></label>
+                                <div class="input-group">
+                                    <input name="coupon_code" value="{{ old('coupon_code') }}" class="form-control {{ $errors->has('coupon_code') ? ' is-invalid' : '' }}" type="text">
+                                    @if($errors->has('coupon_code'))
+                                        <span class="invalid-feedback">
                                         <strong>{{ $errors->first('coupon_code') }}</strong>
                                     </span>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mt-4">
+                            <div class="form-group mb-0">
+                                <label for="">
+                                    <h5>Start Date</h5></label>
+                                <input type="datetime-local" value="{{ old('start_date') }}" name="start_date" class="form-control {{ $errors->has('start_date') ? ' is-invalid' : '' }}" id="start_date" aria-describedby="start_date" placeholder="{{ old('start_date') }}">
+                                @if($errors->has('start_date'))
+                                    <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('start_date') }}</strong>
+                                </span>
                                 @endif
                             </div>
                         </div>
-                    </div>
-
-                    <div class="col-md-3 mt-4">
-                        <div class="form-group mb-0">
-                            <label for="">
-                                <h5>Start Date</h5></label>
-                            <input type="datetime-local" value="{{ old('start_date') }}" name="start_date" class="form-control {{ $errors->has('start_date') ? ' is-invalid' : '' }}" id="start_date" aria-describedby="start_date" placeholder="{{ old('start_date') }}">
-                            @if($errors->has('start_date'))
-                                <span class="invalid-feedback">
-                                    <strong>{{ $errors->first('start_date') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="col-md-3 mt-4">
-                        <div class="form-group mb-0">
-                            <label for="">
-                                <h5>End Date</h5></label>
-                            <input type="datetime-local" value="{{ old('end_date') }}" name="end_date" class="form-control {{ $errors->has('end_date') ? ' is-invalid' : '' }}" id="end_date" aria-describedby="end_date" placeholder="{{ old('end_date') }}">
-                            @if($errors->has('end_date'))
-                                <span class="invalid-feedback">
+                        <div class="col-md-3 mt-4">
+                            <div class="form-group mb-0">
+                                <label for="">
+                                    <h5>End Date</h5></label>
+                                <input type="datetime-local" value="{{ old('end_date') }}" name="end_date" class="form-control {{ $errors->has('end_date') ? ' is-invalid' : '' }}" id="end_date" aria-describedby="end_date" placeholder="{{ old('end_date') }}">
+                                @if($errors->has('end_date'))
+                                    <span class="invalid-feedback">
                                     <strong>{{ $errors->first('end_date') }}</strong>
                                 </span>
-                            @endif
+                                @endif
+                            </div>
                         </div>
+
+                        @livewire('admin.offers.coupon.form.coupon-type-dropdown')
                     </div>
 
-                    @livewire('admin.offers.coupon.form.coupon-type-dropdown')
-                    <div class="col-md-12 py-4 ">
-                        <div class="text-right">
-                            <button type="submit" class="btn shadow bgOne rounded text-white px-4">Submit</button>
+                    <div class="row m-0  py-3 bg-white rounded">
+                        <div class="col-md-12 py-4 ">
+                            <div class="text-right">
+                                <button type="submit" class="btn shadow bgOne rounded text-white px-4">Submit</button>
+                            </div>
                         </div>
                     </div>
-                </div>
             </form>
         </div>
     </div>
@@ -108,6 +125,8 @@
 
 @push('scripts')
     {{-- Internal Scripts --}}
+    <script src="{{ mix('_assets/plugins/select2/js/select2.js') }}"></script>
+    <script src="{{ mix('_assets/plugins/flatpickr/js/flatpickr.js') }}"></script>
     <script>
         $('#published_status').change(function () {
             let isChecked = $(this).prop('checked') === true ? 1 : 0;
@@ -130,24 +149,5 @@
             },
             // time_24hr: true
         });
-
-
-        // flatpickr("#start_date", {
-        //     enableTime: true,
-        //     enableSeconds: true,
-        //     dateFormat: "d-m-Y G:i:SS K",
-        //     weekNumbers: true,
-        //     parseDate: true,
-        //     time_24hr: true
-        // });
-        //
-        // flatpickr("#end_date", {
-        //     enableTime: true,
-        //     enableSeconds: true,
-        //     dateFormat: "d-m-Y G:i:SS K",
-        //     weekNumbers: true,
-        //     parseDate: true,
-        //     time_24hr: true
-        // });
     </script>
 @endpush

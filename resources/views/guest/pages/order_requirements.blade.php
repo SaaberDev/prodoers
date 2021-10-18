@@ -3,20 +3,11 @@
 
 @push('styles')
     {{-- Internal Styles --}}
+    <link rel="stylesheet" href="{{ mix('_assets/plugins/dropzone/css/dropzone.css') }}">
     <style>
         .text-area-wraper .problem {
             background-color: #f6f6f6;
             margin-top: 36px;
-        }
-        .dropzone {
-            min-height: 100px;
-            background-color: #f6f6f6;
-            padding: 10px 12px;
-            border: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
         }
         .orderSummery {
             display: block;
@@ -30,4 +21,26 @@
 
 @push('scripts')
     {{-- Internal Scripts --}}
+    <script src="{{ mix('_assets/plugins/dropzone/js/dropzone.js') }}"></script>
+    {{-- Dropzone Service Image --}}
+    @include('plugins.dropzone.create.multiple', [
+        'dropzone' => Str::camel('multiple-media-dropzone'),
+        'fileInputName' => 'multiple_media',
+        'store' => route('super_admin.service.self.storeMedia'),
+        'delete' => route('super_admin.service.self.deleteMedia'),
+        'maxFilesize' => 2,
+        'maxFiles' => 5,
+        'acceptedFiles' => 'image/jpeg, image/png',
+    ])
+
+    {{-- Dropzone Service Image -- Mobile -- --}}
+    @include('plugins.dropzone.create.multiple', [
+        'dropzone' => Str::camel('multiple-media-dropzone-mobile'),
+        'fileInputName' => 'multiple_media',
+        'store' => route('super_admin.service.self.storeMedia'),
+        'delete' => route('super_admin.service.self.deleteMedia'),
+        'maxFilesize' => 2,
+        'maxFiles' => 5,
+        'acceptedFiles' => 'image/jpeg, image/png',
+    ])
 @endpush

@@ -13,10 +13,10 @@
                     </div>
                     <div class="col-lg-7 col-md-7 border-right">
                         <div class="logo-design-area">
-                            <h2>Logo Design Professional ($50)</h2>
+                            <h2>{{ $service->title }} (${{ $service->price }})</h2>
                             <div class="review-area">
                                 <div class="row review-area-row">
-                                    <div class=" col-md-7 col-lg-6 col-xl-5 col-xxl-4">
+                                    {{--<div class=" col-md-7 col-lg-6 col-xl-5 col-xxl-4">
                                         <div class="starIcons">
                                         <span>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="25.906" height="25.667" viewBox="0 0 28.906 27.667">
@@ -46,26 +46,26 @@
                                             <p class="p-wraper">(15 Review)</p>
                                         </span>
                                         </div>
-                                    </div>
+                                    </div>--}}
 
                                     <div class="col-lg-5 col-xl-4 col-md-5">
                                         <div class="d-flex">
                                             <p class="p-wraper">Delivery Time</p>
-                                            <p class="p-wraper3">2 Days</p>
+                                            <p class="p-wraper3">{{ $service->delivery_time }} Days</p>
                                         </div>
                                     </div>
                                     <div class="p-wraper4">
-                                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using</p>
+                                        <p>{{ $service->short_desc }}</p>
                                     </div>
 
                                     <div class="accordien_wrapper-2">
                                         <div class="accordion accordion-flush" id="accordionFlushExample">
                                             <div class="accordion-item">
                                                 <h2 class="accordion-header" id="flush-headingOne">
-                                                    <a class="nav-link collapsed custom custom-2  " data-bs-toggle="collapse" href="#services" role="button" aria-expanded="true">What Includeds
+                                                    <a class="nav-link collapsed custom custom-2  " data-bs-toggle="collapse" href="#services" role="button" aria-expanded="true">What Includes
 
                                                         <span class="nav-arrow custom-arrow">
-                                                            <img src="{{ asset('_assets/_guest/img/paymentdetails/dropdown.svg') }}" class="img-fluid" alt="Designwala">
+                                                            <img src="{{ asset('_assets/_guest/img/paymentdetails/dropdown.svg') }}" class="img-fluid" alt="dropdown">
                                                         </span>
                                                     </a>
 
@@ -127,7 +127,7 @@
                                         <h3 class="total-text2">Total</h3>
                                     </div>
                                     <div class="col-lg-4 col-md-5">
-                                        <h3 class="total-text">$54</h3>
+                                        <h3 class="total-text">${{ session('order.grand_total', 0) }}</h3>
                                     </div>
                                 </div>
                                 <p>Service charge are counted for Vat exclusive</p>
@@ -181,7 +181,7 @@
                         @endif
                         <div class="problem" style="{{ $errors->has('form.requirements') ? 'margin-top: 8px;' : '' }}">
                             <div class="form-group">
-                                <div class="needsclick dropzone" id="multiple-dropzone">
+                                <div class="needsclick dropzone" id="multiple-media-dropzone">
                                     <div class="dz-message" data-dz-message>
                                         <span>Drop files here or click to upload.</span>
                                         <span>Maximum allowed file size 2MB. Allowed file types are jpeg, png.</span>
@@ -334,24 +334,24 @@
                     <div class="col-8">
                         <div class="logo-area">
                             <h2>Logo Design Professional ($50)</h2>
-                            <div class="row rating-row align-items-center">
-                                <div class="col-4">
-                                    <div class="starIcons ">
-                                            <span>
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 28.906 27.667">
-                                                    <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00"/>
-                                                </svg>
+{{--                            <div class="row rating-row align-items-center">--}}
+{{--                                <div class="col-4">--}}
+{{--                                    <div class="starIcons ">--}}
+{{--                                            <span>--}}
+{{--                                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 28.906 27.667">--}}
+{{--                                                    <path id="Icon_awesome-star" data-name="Icon awesome-star" d="M14.344.962,10.816,8.115,2.922,9.266a1.73,1.73,0,0,0-.956,2.95l5.711,5.565L6.326,25.642a1.728,1.728,0,0,0,2.507,1.821l7.062-3.712,7.062,3.712a1.729,1.729,0,0,0,2.507-1.821l-1.351-7.861,5.711-5.565a1.73,1.73,0,0,0-.956-2.95L20.973,8.115,17.445.962a1.73,1.73,0,0,0-3.1,0Z" transform="translate(-1.441 0.001)" fill="#f9bf00"/>--}}
+{{--                                                </svg>--}}
 
-                                            </span>
+{{--                                            </span>--}}
 
-                                        <span class="review2">4.9</span>
-                                    </div>
-                                </div>
+{{--                                        <span class="review2">4.9</span>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
 
-                                <div class="col-8">
-                                    <p class="p-wraper2">(15 Review)</p>
-                                </div>
-                            </div>
+{{--                                <div class="col-8">--}}
+{{--                                    <p class="p-wraper2">(15 Review)</p>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                             <div class="row align-items-center">
                                 <div class="col-7">
                                     <p class="p-wraper6">Delivery Time</p>
@@ -443,7 +443,7 @@
                     @endif
 
                     <div class="form-group">
-                        <div class="needsclick dropzone" id="multiple-dropzone">
+                        <div class="needsclick dropzone" id="multiple-media-dropzone-mobile">
                             <div class="dz-message" data-dz-message>
                                 <span>Drop files here or click to upload.</span>
                                 <span>Maximum allowed file size 2MB. Allowed file types are jpeg, png.</span>

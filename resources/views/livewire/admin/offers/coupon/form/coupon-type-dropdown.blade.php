@@ -5,7 +5,7 @@
                 <h5>Type</h5></label>
             <select class="js-states select2 form-control {{ $errors->has('coupon_type') ? ' is-invalid' : '' }}"
                     wire:model="couponType"
-                    data-placeholder="coupon_type"
+                    data-placeholder="Choose a type"
                     id="coupon_type"
                     name="coupon_type" style="width: 100%;"
             >
@@ -55,7 +55,7 @@
 
             function iniSelect(){
                 el.select2({
-                    placeholder: "Choose where to apply"
+                    theme: 'bootstrap4'
                 });
             }
         });

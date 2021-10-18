@@ -35,5 +35,7 @@
     "/_assets/plugins/select2/css/select2.css": "/_assets/plugins/select2/css/select2.css",
     "/_assets/plugins/select2/js/select2.js": "/_assets/plugins/select2/js/select2.js",
     "/_assets/plugins/jquery-modal/css/jquery-modal.css": "/_assets/plugins/jquery-modal/css/jquery-modal.css",
-    "/_assets/plugins/jquery-modal/js/jquery-modal.js": "/_assets/plugins/jquery-modal/js/jquery-modal.js"
+    "/_assets/plugins/jquery-modal/js/jquery-modal.js": "/_assets/plugins/jquery-modal/js/jquery-modal.js",
+    "/_assets/plugins/flatpickr/css/flatpickr.css": "/_assets/plugins/flatpickr/css/flatpickr.css",
+    "/_assets/plugins/flatpickr/js/flatpickr.js": "/_assets/plugins/flatpickr/js/flatpickr.js"
 }

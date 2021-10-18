@@ -1,8 +1,12 @@
 .dropzone {
-    min-height: 140px!important;
-    background-color: #e8efe87a!important;
-    padding: 0!important;
-    border: 1px dashed #038D08!important;
+    min-height: 100px;
+    background-color: #f6f6f6;
+    padding: 10px 12px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .dropzone .dz-message {
@@ -48,9 +52,9 @@
 .dropzone.dz-clickable .dz-message, .dropzone.dz-clickable .dz-message * {
     cursor: pointer;
     font-weight: 300;
-    line-height: 40px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    line-height: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 .dz-thumb {
     width: 100%;

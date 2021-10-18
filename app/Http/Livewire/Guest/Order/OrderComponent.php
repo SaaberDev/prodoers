@@ -78,7 +78,7 @@ class OrderComponent extends Component
             $this->dispatchBrowserEvent('success_toast', [
                 'title' => 'Coupon Applied.',
             ]);
-        } elseif ($coupon->coupon_type == 'percentage'){
+        } elseif ($coupon->coupon_type == 'percent_off'){
             session()->put('coupon', [
                 'code' => $coupon->coupon_code,
                 'percent' => $coupon->percent_off,
@@ -89,7 +89,7 @@ class OrderComponent extends Component
             ]);
         } else {
             $this->resetErrorBag();
-            $this->addError('form.coupon', 'Opps, something went wrong.');
+            $this->addError('form.coupon', 'Oops, something went wrong.');
         }
     }
 

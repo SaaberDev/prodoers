@@ -99,7 +99,7 @@
         {
             if ($this->coupon_type == 'fixed') {
                 return $this->amount;
-            } elseif ($this->coupon_type == 'percentage') {
+            } elseif ($this->coupon_type == 'percent_off') {
                 return number_format(($this->percent_off / 100) * $service->price, 2);
             } else {
                 return 0;

@@ -141,6 +141,14 @@ mix.js('resources/js/app.js', 'public/js/app.js')
         'resources/_assets/plugins/jquery-modal/js/jquery.modal.js',
         'resources/_assets/plugins/jquery-modal/js/custom.js'
     ], 'public/_assets/plugins/jquery-modal/js/jquery-modal.js')
+
+    // Flatpickr
+    .styles([
+        'node_modules/flatpickr/dist/flatpickr.css'
+    ], 'public/_assets/plugins/flatpickr/css/flatpickr.css')
+    .scripts([
+        'node_modules/flatpickr/dist/flatpickr.js'
+    ], 'public/_assets/plugins/flatpickr/js/flatpickr.js')
 ;
 
 

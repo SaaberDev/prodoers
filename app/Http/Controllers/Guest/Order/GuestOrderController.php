@@ -31,7 +31,7 @@
         {
             $service = Service::getSlug($service_slug)
                 ->with('media', 'serviceCategories')
-                ->select(['id', 'title', 'short_desc', 'price', 'slug', 'service_category_id'])
+                ->select(['id', 'title', 'short_desc', 'delivery_time', 'price', 'slug', 'service_category_id'])
                 ->first();
             \session()->put('order', [
                 'grand_total' => $service->price
