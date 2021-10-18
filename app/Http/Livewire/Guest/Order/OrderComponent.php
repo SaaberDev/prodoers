@@ -88,16 +88,19 @@ class OrderComponent extends Component
         } else {
             $this->adjustTotalPrice($coupon);
         }
-
-//        return redirect()->back();
     }
 
     function adjustTotalPrice($coupon)
     {
         $sessionData = \Session::get('order');
         if ($coupon->coupon_type == 'fixed') {
-            $sessionData['code'] = $coupon->coupon_code;
-            $sessionData['discount'] = $coupon->discount($this->service);
+            $sessionData['coupon'] = [
+                'code' => $coupon->coupon_code,
+                'amount' => $coupon->amount,
+                'discount' => $coupon->discount($this->service)
+            ];
+            $sessionData['grand_total'] = (($this->service->price) - ($coupon->discount($this->service)));
+
             session()->put('order', $sessionData);
             $this->dispatchBrowserEvent('success_toast', [
                 'title' => 'Coupon Applied.',
@@ -119,7 +122,7 @@ class OrderComponent extends Component
 
     public function removeCoupon()
     {
-        session()->forget('coupon');
+        session()->forget('order.coupon');
         session()->put('order', [
             'grand_total' => (($this->service->price) + (session('coupon.discount')))
         ]);
@@ -130,6 +133,9 @@ class OrderComponent extends Component
         ]);
     }
 
+    /**
+     * For Mobile Version
+     */
     public function stepOne()
     {
         $this->validate([
@@ -138,6 +144,10 @@ class OrderComponent extends Component
         $this->currentStep = 2;
     }
 
+    /**
+     * For Mobile Version
+     * @param $step
+     */
     public function back($step)
     {
         $this->currentStep = $step;
