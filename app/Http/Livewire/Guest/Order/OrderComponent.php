@@ -43,6 +43,7 @@ class OrderComponent extends Component
         $this->validate();
         $sessionData = \Session::get('order');
         $data = [
+            'service_id' => $this->service->id,
             'title' => $this->service->title,
             'short_desc' => $this->service->short_desc,
             'pay_amount' => $sessionData['grand_total'],
@@ -51,6 +52,7 @@ class OrderComponent extends Component
             'currency' => $sessionData['currency'],
 
             // Billing Information
+            'user_id' => \Auth::user()->id ?? '',
             'cus_name' => \Auth::user()->name ?? '',
             'cus_email' => \Auth::user()->email ?? '',
             'cus_add1' => \Auth::user()->userDetails->address ?? '',

@@ -29,13 +29,15 @@
                 'product_category' => 'Digital Service',
                 'product_profile' => 'non-physical-goods',
 
+                'user_id' => $data['user_id'],
+                'service_id' => $data['service_id'],
                 'requirements' => $request['requirements'],
                 'pay_amount' => $data['pay_amount'],
                 'applied_coupon' => $data['applied_coupon'],
                 'discount' => $data['discount'],
                 'payment_method' => $request['paymentMethod'],
-
                 'currency' => $data['currency'],
+
                 'tran_id' => uniqid(),
                 'reference_id' => config('payment_gateway.prefix.reference_id') . $order_number,
                 'invoice_id' => config('payment_gateway.prefix.invoice_id') . $order_number,
@@ -72,17 +74,11 @@
         {
             $sessionData = \Session::get('item');
             if (request()->input('payment_method') === 'paypal') {
-                $data = [
-                    'requirements' => $sessionData['requirements'],
-                    'applied_coupon' => $sessionData['applied_coupon'],
-                    'order_number' => $sessionData['order_number'],
-                    'payment_method' => $sessionData['payment_method'],
-                    'discount' => $sessionData['discount'],
-                    // TODO - List out session data
-                    'paid_amount' => $response->result->purchase_units[0]->payments->captures[0]->amount->value,
-                    'transaction_id' => $response->result->purchase_units[0]->payments->captures[0]->id,
-                    'invoice_id' => $response->result->purchase_units[0]->invoice_id,
-                ];
+                $data = $this->orderData($sessionData);
+                $data['paid_amount'] = $response->result->purchase_units[0]->payments->captures[0]->amount->value;
+                $data['transaction_id'] = $response->result->purchase_units[0]->payments->captures[0]->id;
+                $data['invoice_id'] = $response->result->purchase_units[0]->invoice_id;
+
                 DB::beginTransaction();
                 try {
                     $order = $this->storeOrder($data);
@@ -102,17 +98,11 @@
                 }
             } elseif (request()->input('payment_method') === 'visa') {
                 $info = request()->all();
-                $data = [
-                    'requirements' => $sessionData['requirements'],
-                    'applied_coupon' => $sessionData['applied_coupon'],
-                    'order_number' => $sessionData['order_number'],
-                    'payment_method' => $sessionData['payment_method'],
-                    'discount' => $sessionData['discount'],
-                    // TODO - List out session data
-                    'paid_amount' => $info['amount'],
-                    'transaction_id' => $info['tran_id'],
-                    'invoice_id' => $info['value_a'],
-                ];
+                $data = $this->orderData($sessionData);
+                $data['paid_amount'] = $info['amount'];
+                $data['transaction_id'] = $info['tran_id'];
+                $data['invoice_id'] = $info['value_a'];
+
                 DB::beginTransaction();
                 try {
                     $order = $this->storeOrder($data);
@@ -131,6 +121,19 @@
                     DB::rollBack();
                 }
             }
+        }
+
+        private function orderData($sessionData)
+        {
+            return [
+                'user_id' => $sessionData['user_id'],
+                'service_id' => $sessionData['service_id'],
+                'requirements' => $sessionData['requirements'],
+                'applied_coupon' => $sessionData['applied_coupon'],
+                'order_number' => $sessionData['order_number'],
+                'payment_method' => $sessionData['payment_method'],
+                'discount' => $sessionData['discount'],
+            ];
         }
 
         /**
