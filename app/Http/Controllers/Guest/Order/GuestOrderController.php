@@ -33,9 +33,6 @@
                 ->with('media', 'serviceCategories')
                 ->select(['id', 'title', 'short_desc', 'delivery_time', 'price', 'slug', 'service_category_id'])
                 ->first();
-            \session()->put('order', [
-                'grand_total' => $service->price
-            ]);
 
             return view('guest.pages.order_requirements', compact('service'));
         }
@@ -46,14 +43,13 @@
          * @param Request $request
          * @return \Illuminate\Http\RedirectResponse
          */
-        public function store(Request $request)
-        {
-            $data = [];
-            $this->processOrder->setData($request, $data);
-
-            $payment_method = $request->only('payment_method');
-            return redirect()->route('test.payment', $payment_method);
-        }
+//        public function store(Request $request)
+//        {
+//            $this->processOrder->setData($request, $data);
+//
+//            $payment_method = $request->only('payment_method');
+//            return redirect()->route('test.payment', $payment_method);
+//        }
 
         /**
          * Display the specified resource.

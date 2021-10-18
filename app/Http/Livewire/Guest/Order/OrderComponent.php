@@ -33,10 +33,32 @@ class OrderComponent extends Component
         'form.paymentMethod.in' => 'Please choose a payment method.',
     ];
 
+    public function render()
+    {
+        return view('livewire.guest.order.order-component');
+    }
+
     public function store(ProcessOrder $processOrder)
     {
         $this->validate();
-        $processOrder->setData($this->form, $this->service);
+        $sessionData = \Session::get('order');
+        $data = [
+            'title' => $this->service->title,
+            'short_desc' => $this->service->short_desc,
+            'pay_amount' => $sessionData['grand_total'],
+            'applied_coupon' => $sessionData['applied_coupon'],
+            'discount' => $sessionData['discount'],
+            'currency' => $sessionData['currency'],
+
+            // Billing Information
+            'cus_name' => \Auth::user()->name ?? '',
+            'cus_email' => \Auth::user()->email ?? '',
+            'cus_add1' => \Auth::user()->userDetails->address ?? '',
+            'cus_postcode' => \Auth::user()->userDetails->postal_code ?? '',
+            'cus_country' => \Auth::user()->userDetails->country ?? '',
+            'cus_phone' => \Auth::user()->userDetails->phone ?? '',
+        ];
+        $processOrder->setData($this->form, $data);
 
         $payment_method = 'payment_method=' .$this->form['paymentMethod'];
         return redirect()->route('test.payment', $payment_method);
@@ -70,23 +92,23 @@ class OrderComponent extends Component
 
     function adjustTotalPrice($coupon)
     {
+        $sessionData = \Session::get('order');
         if ($coupon->coupon_type == 'fixed') {
-            session()->put('coupon', [
-                'code' => $coupon->coupon_code,
-                'discount' => $coupon->discount($this->service)
-            ]);
+            $sessionData['code'] = $coupon->coupon_code;
+            $sessionData['discount'] = $coupon->discount($this->service);
+            session()->put('order', $sessionData);
             $this->dispatchBrowserEvent('success_toast', [
                 'title' => 'Coupon Applied.',
             ]);
         } elseif ($coupon->coupon_type == 'percent_off'){
-            session()->put('coupon', [
+            $sessionData['coupon'] = [
                 'code' => $coupon->coupon_code,
                 'percent' => $coupon->percent_off,
                 'discount' => $coupon->discount($this->service)
-            ]);
-            session()->put('order', [
-                'grand_total' => (($this->service->price) - (session('coupon.discount')))
-            ]);
+            ];
+            $sessionData['grand_total'] = (($this->service->price) - ($coupon->discount($this->service)));
+
+            session()->put('order', $sessionData);
         } else {
             $this->resetErrorBag();
             $this->addError('form.coupon', 'Oops, something went wrong.');
@@ -117,10 +139,5 @@ class OrderComponent extends Component
     public function back($step)
     {
         $this->currentStep = $step;
-    }
-
-    public function render()
-    {
-        return view('livewire.guest.order.order-component');
     }
 }

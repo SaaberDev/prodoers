@@ -36,7 +36,7 @@
             } catch (Exception $exception) {
                 report($exception);
                 $this->clearSession();
-                return redirect()->back()->with('failed', 'Something went wrong. Contact Designwala.');
+                return redirect()->back()->with('failed', 'Something went wrong. Contact ProDoers.');
             }
         }
 
@@ -67,7 +67,7 @@
             } catch (Exception $exception) {
                 report($exception);
                 $this->clearSession();
-                return redirect()->route('test.index')->with('failed', 'Something went wrong. Contact Designwala.');
+                return redirect()->route('test.index')->with('failed', 'Something went wrong. Contact ProDoers.');
             }
         }
 

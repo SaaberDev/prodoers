@@ -104,16 +104,16 @@
                                 <div class="row justify-content-between">
                                     <div class="col-lg-9 col-md-9"><p>Price</p></div>
                                     <div class="col-lg-3 col-md-3"><p class="p-left">${{ $service->price }}</p></div>
-                                    @if(session()->has('coupon'))
+                                    @if(session()->has('order.coupon'))
                                         <div class="col-lg-9 col-md-3">
                                             <div class="discont-wraper d-flex">
-                                                <p>Discount <span>({{ session('coupon.code', 'XXXX') }}) {{ session('coupon.percent') ? '(-' . session('coupon.percent') . '%)' : '0%' }}</span></p>
+                                                <p>Discount <span>({{ session('order.coupon.code', 'XXXX') }}) {{ session('order.coupon.percent') ? '(-' . session('order.coupon.percent') . '%)' : '0%' }}</span></p>
                                                 <a wire:click.prevent="removeCoupon"><img src="{{ asset('_assets/_guest/img/paymentdetails/x.svg') }}" alt="close"></a>
                                             </div>
                                         </div>
 
                                         <div class="col-lg-3 col-md-3">
-                                            <p class="color">{{ '-$' . session('coupon.discount', 0) }}</p>
+                                            <p class="color">{{ '-$' . session('order.coupon.discount', 0) }}</p>
                                         </div>
                                     @endif
 {{--                                    <div class="col-lg-9 col-md-9"><p>Service Charge</p></div>--}}
@@ -133,7 +133,7 @@
                                 <p>Service charge are counted for Vat exclusive</p>
 
                             </div>
-                            @if(!session()->has('coupon'))
+                            @if(!session()->has('order.coupon'))
                             <div class="cupon-wraper">
                                 <form action="" class="for-flex">
                                     <input type="text"
@@ -474,8 +474,8 @@
                         <div class="col-10">
                             <div class="wraper-or">
                                 <p>Price</p>
-                                @if(session()->has('coupon'))
-                                    <p>Discount ({{ session('coupon.code', 'XXXX') }}) {{ session('coupon.percent') ? '(-' . session('coupon.percent') . '%)' : '0%' }}<a wire:click.prevent="removeCoupon"><img src="{{ asset('_assets/_guest/img/paymentdetails/x.svg') }}" alt="close"></a></p>
+                                @if(session()->has('order.coupon'))
+                                    <p>Discount ({{ session('order.coupon.code', 'XXXX') }}) {{ session('order.coupon.percent') ? '(-' . session('order.coupon.percent') . '%)' : '0%' }}<a wire:click.prevent="removeCoupon"><img src="{{ asset('_assets/_guest/img/paymentdetails/x.svg') }}" alt="close"></a></p>
                                 @endif
     {{--                            <p>Service Charge</p>--}}
                             </div>
@@ -483,8 +483,8 @@
                         <div class="col-2">
                             <div class="price-wraper">
                                 <p>${{ $service->price }}</p>
-                                @if(session()->has('coupon'))
-                                    <p class="cp">{{ '-$' . session('coupon.discount', 0) }}</p>
+                                @if(session()->has('order.coupon'))
+                                    <p class="cp">{{ '-$' . session('order.coupon.discount', 0) }}</p>
                                 @endif
     {{--                            <p>$10</p>--}}
                             </div>

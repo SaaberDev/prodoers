@@ -826,6 +826,7 @@ namespace App\Models{
  * @property-read int|null $roles_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\SocialiteAuth[] $socialProviders
  * @property-read int|null $social_providers_count
+ * @property-read \App\Models\UserDetail|null $userDetails
  * @method static \Database\Factories\UserFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
@@ -844,5 +845,50 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUsername($value)
  */
 	class IdeHelperUser extends \Eloquent implements \Illuminate\Contracts\Auth\MustVerifyEmail {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\UserDetail
+ *
+ * @mixin IdeHelperUserDetail
+ * @property int $id
+ * @property int|null $user_id
+ * @property string|null $address
+ * @property string|null $country
+ * @property float|null $phone
+ * @property float|null $postal_code
+ * @property string|null $billing_name
+ * @property string|null $billing_email
+ * @property string|null $billing_address
+ * @property string|null $billing_company_name
+ * @property string|null $billing_tax_id
+ * @property string|null $billing_country
+ * @property string|null $billing_city
+ * @property float|null $billing_postal_code
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\User|null $users
+ * @method static \Illuminate\Database\Eloquent\Builder|UserDetail newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserDetail newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserDetail query()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserDetail whereAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserDetail whereBillingAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserDetail whereBillingCity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserDetail whereBillingCompanyName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserDetail whereBillingCountry($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserDetail whereBillingEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserDetail whereBillingName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserDetail whereBillingPostalCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserDetail whereBillingTaxId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserDetail whereCountry($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserDetail whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserDetail whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserDetail wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserDetail wherePostalCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserDetail whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserDetail whereUserId($value)
+ */
+	class IdeHelperUserDetail extends \Eloquent {}
 }
 

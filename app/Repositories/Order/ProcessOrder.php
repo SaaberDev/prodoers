@@ -25,30 +25,30 @@
             // Send payment param to make payment
             $order = [
                 'product_name' => $data['title'],
-                'product_desc' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi deleniti deserunt neque unde?',
+                'product_desc' => $data['short_desc'],
                 'product_category' => 'Digital Service',
                 'product_profile' => 'non-physical-goods',
 
                 'requirements' => $request['requirements'],
-                'pay_amount' => 50,
-                'applied_coupon' => '1234',
-                'discount' => 10,
+                'pay_amount' => $data['pay_amount'],
+                'applied_coupon' => $data['applied_coupon'],
+                'discount' => $data['discount'],
                 'payment_method' => $request['paymentMethod'],
 
-                'currency' => 'BDT',
+                'currency' => $data['currency'],
                 'tran_id' => uniqid(),
                 'reference_id' => config('payment_gateway.prefix.reference_id') . $order_number,
                 'invoice_id' => config('payment_gateway.prefix.invoice_id') . $order_number,
                 'order_number' => config('payment_gateway.prefix.order_number') . $order_number,
 
-                'cus_name' => 'Customer Name',
-                'cus_email' => 'customer@mail.com',
-                'cus_add1' => ' ',
+                'cus_name' => $data['cus_name'] ?? '',
+                'cus_email' => $data['cus_email'] ?? '',
+                'cus_add1' => $data['cus_add1'] ?? ' ',
                 'cus_add2' => '',
                 'cus_city' => '',
-                'cus_postcode' => '',
-                'cus_country' => 'Bangladesh',
-                'cus_phone' => ' ',
+                'cus_postcode' => $data['cus_postcode'] ?? '',
+                'cus_country' => $data['cus_country'] ?? '',
+                'cus_phone' => $data['cus_phone'] ?? ' ',
                 'cus_fax' => '',
 
                 'shipping_method' => 'NO',
@@ -70,7 +70,7 @@
          */
         public function getData($response)
         {
-            $sessionData = session('item');
+            $sessionData = \Session::get('item');
             if (request()->input('payment_method') === 'paypal') {
                 $data = [
                     'requirements' => $sessionData['requirements'],
