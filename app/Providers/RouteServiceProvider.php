@@ -44,6 +44,36 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->namespace)
                 ->group(base_path('routes/api.php'));
 
+            // super admin route
+            Route::prefix('super-admin')
+                ->middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/super_admin.php'));
+
+            // admin route
+            Route::prefix('admin')
+                ->middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/admin.php'));
+
+            // user route
+            Route::prefix('client')
+                ->middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/user.php'));
+
+            // doer route
+            Route::prefix('doer')
+                ->middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/doer.php'));
+
+            // project manager route
+            Route::prefix('project-manager')
+                ->middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/project_manager.php'));
+
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));

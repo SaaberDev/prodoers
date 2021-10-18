@@ -1,14 +1,15 @@
 <?php
 
-    namespace App\Http\Controllers;
+    namespace App\Http\Controllers\Guest\Order;
 
+    use App\Http\Controllers\Controller;
     use App\Repositories\Billing\BillingInterface;
     use App\Repositories\Order\ProcessOrder;
     use Exception;
     use Illuminate\Http\RedirectResponse;
     use Throwable;
 
-    class TestPaypalController extends Controller
+    class CheckoutController extends Controller
     {
         /**
          * @var BillingInterface
