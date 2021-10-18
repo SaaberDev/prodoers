@@ -10,28 +10,16 @@
     {
         public function storeOrder($data)
         {
-            return Order::create([
-                'requirements' => $data['requirements'],
-                'applied_coupon' => $data['applied_coupon'],
-                'order_number' => $data['order_number'],
-            ]);
+            return Order::create($data);
         }
 
-        public function storePayment($data, $order, $paymentStatus)
+        public function storePayment($data, $order)
         {
-            return $order->payments()->create([
-                'paid_amount' => $data['paid_amount'],
-                'discount' => $data['discount'],
-                'transaction_id' => $data['transaction_id'],
-                'payment_status' => $paymentStatus,
-                'payment_method' => $data['payment_method']
-            ]);
+            return $order->payments()->create($data);
         }
 
         public function storeInvoice($data, $order)
         {
-            return $order->invoices()->create([
-                'invoice_number' => $data['invoice_id'],
-            ]);
+            return $order->invoices()->create($data);
         }
     }

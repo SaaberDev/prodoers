@@ -14,6 +14,9 @@ class Payment extends Model
 
     protected $guarded = [];
 
+    const PAID = 'paid';
+    const FAILED = 'failed';
+
     public function orders()
     {
         return $this->belongsTo(Order::class);

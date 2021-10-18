@@ -5,6 +5,7 @@
 
 
     use App\Models\Order;
+    use App\Models\Payment;
     use DB;
     use Exception;
     use Throwable;
@@ -78,18 +79,20 @@
                 $data['paid_amount'] = $response->result->purchase_units[0]->payments->captures[0]->amount->value;
                 $data['transaction_id'] = $response->result->purchase_units[0]->payments->captures[0]->id;
                 $data['invoice_id'] = $response->result->purchase_units[0]->invoice_id;
+                $data['payment_status'] = Payment::PAID;
 
                 DB::beginTransaction();
                 try {
                     $order = $this->storeOrder($data);
                     if ($response->result->status == 'COMPLETED') {
-                        $this->storePayment($data, $order, 'paid');
+                        $this->storePayment($data, $order);
                         // Generate Invoice
                         $this->storeInvoice($data, $order);
                         // Send Invoice to user
                         // TODO - Send Invoice through mail
                     } else {
-                        $this->storePayment($data, $order, 'failed');
+                        $data['payment_status'] = Payment::FAILED;
+                        $this->storePayment($data, $order);
                     }
                     DB::commit();
                 } catch (Exception $exception) {
@@ -102,18 +105,20 @@
                 $data['paid_amount'] = $info['amount'];
                 $data['transaction_id'] = $info['tran_id'];
                 $data['invoice_id'] = $info['value_a'];
+                $data['payment_status'] = Payment::PAID;
 
                 DB::beginTransaction();
                 try {
                     $order = $this->storeOrder($data);
                     if ($response == true) {
-                        $this->storePayment($data, $order, 'paid');
+                        $this->storePayment($data, $order);
                         // Generate Invoice
                         $this->storeInvoice($data, $order);
                         // Send Invoice to user
                         // TODO - Send Invoice through mail
                     } else {
-                        $this->storePayment($data, $order, 'failed');
+                        $data['payment_status'] = Payment::FAILED;
+                        $this->storePayment($data, $order);
                     }
                     DB::commit();
                 } catch (Exception $exception) {
