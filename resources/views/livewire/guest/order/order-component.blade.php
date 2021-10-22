@@ -601,18 +601,38 @@
             </div>
 
             @if($errors->has('form.paymentMethod'))
-                <div class="row">
-                    <div class="col-md-12" style="display: flex; justify-content: center;">
-                        <div class="error-message" style="padding: 6px 0 0 0;margin-left: 109px;">
-                            <p>{{ $errors->first('form.paymentMethod') }}</p>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12" style="display: flex; justify-content: center;">
+                            <div class="error-message" style="padding: 6px 0 0 0;">
+                                <p>{{ $errors->first('form.paymentMethod') }}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             @endif
 
+
+            <div class="form-group agree-tos">
+                <input class="form-check-input" type="checkbox" id="gridCheck2" style="margin-right:9px;">
+                <label class=" paymentdetailsCheck" for="gridCheck2" style="display: inline;">
+
+                    By clicking continue, I agreed to 
+                    <a href="#">Designwala</a> 
+                    <a href="#">Terms &amp; Condition </a> 
+                    and 
+                    <a href="#">
+                        Privacy Policy
+                    </a> 
+                    of designwala
+
+                    </label>
+            </div>
+                
+                
             <div class="container d-block d-md-none ">
                 <div class="btn-ct">
-                    <button  wire:click.prevent="store" class="c-btn-order">Continue to pay<img src="{{ asset('_assets/_guest/img/paymentdetails/arrow-down.svg') }}" alt="designwala"></button>
+                    <button  wire:click.prevent="store" class="c-btn-order" id="checkout-btn2" >Continue to pay <img src="{{ asset('_assets/_guest/img/paymentdetails/arrow-down.svg') }}" alt="designwala"></button>
                 </div>
             </div>
             <div class="Payment-getway d-block  d-md-none">
