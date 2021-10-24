@@ -618,20 +618,19 @@
                 <label class=" paymentdetailsCheck" for="gridCheck2" style="display: inline;">
 
                     By clicking continue, I agreed to 
-                    <a href="#">Designwala</a> 
+                    <a href="#">ProDoers</a> 
                     <a href="#">Terms &amp; Condition </a> 
                     and 
                     <a href="#">
                         Privacy Policy
                     </a> 
-                    of designwala
-
+                    
                     </label>
             </div>
                 
                 
             <div class="container d-block d-md-none ">
-                <div class="btn-ct">
+                <div class="btn-ct" wire:ignore>
                     <button  wire:click.prevent="store" class="c-btn-order" id="checkout-btn2" >Continue to pay <img src="{{ asset('_assets/_guest/img/paymentdetails/arrow-down.svg') }}" alt="designwala"></button>
                 </div>
             </div>

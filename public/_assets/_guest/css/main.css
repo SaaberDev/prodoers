@@ -3284,10 +3284,11 @@ p.text-color {
 
 .agree-tos{
     margin: 10px auto !important;
-    width:95%;
+    width:85%;
+    text-align: center;
 }
 .agree-tos label{
-    font-size:12px;
+    font-size:13px;
 }
 .agree-tos label a{
     color: #212529;
