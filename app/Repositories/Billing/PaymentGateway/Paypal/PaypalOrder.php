@@ -95,7 +95,7 @@
                         'items' => $orderItems,
                         "reference_id" => $data['reference_id'],
                         "description" => $data['product_desc'],
-                        "invoice_id" => $data['invoice_id'],
+                        "invoice_id" => $data['invoice_number'],
                         "amount" => [
                             "value" => $data['pay_amount'],
                             "currency_code" => "USD",
@@ -113,7 +113,7 @@
                 "application_context" => [
                     "cancel_url" => config('payment_gateway.return_url.cancel_url') . $pay_type,
                     "return_url" => config('payment_gateway.return_url.success_url') . $pay_type,
-                    'brand_name' => 'designwala',
+                    'brand_name' => 'ProDoers',
                     'locale' => 'en-US',
                     'landing_page' => 'LOGIN',
                     'shipping_preference' => 'NO_SHIPPING',

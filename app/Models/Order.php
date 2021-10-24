@@ -21,6 +21,13 @@
 
         protected $guarded = [];
 
+        const PENDING = 'pending';
+        const ONGOING = 'ongoing';
+        const DELIVERED = 'delivered';
+        const IN_REVISION = 'in_revision';
+        const CANCELLED = 'cancelled';
+        const COMPLETED = 'completed';
+
         protected $searchable = [
             'order_number'
         ];

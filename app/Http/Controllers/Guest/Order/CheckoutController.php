@@ -61,7 +61,7 @@
                 $response = $this->billing->successPayment($paypal_order_id);
 
                 $response
-                    ? $this->processOrder->getData($response) && $this->clearSession()
+                    ? $this->processOrder->store($response) && $this->clearSession()
                     : $this->clearSession()
                 ;
                 return redirect()->route('test.index')->with('success', 'Nice it worked!');

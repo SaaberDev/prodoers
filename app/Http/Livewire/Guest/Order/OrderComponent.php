@@ -43,16 +43,19 @@ class OrderComponent extends Component
         $this->validate();
         $sessionData = \Session::get('order');
         $data = [
+            'user_id' => 1,
             'service_id' => $this->service->id,
             'title' => $this->service->title,
             'short_desc' => $this->service->short_desc,
             'pay_amount' => $sessionData['grand_total'],
-            'applied_coupon' => $sessionData['applied_coupon'],
-            'discount' => $sessionData['discount'],
-            'currency' => $sessionData['currency'],
+            'applied_coupon' => $sessionData['coupon']['code'],
+            'discount' => $sessionData['coupon']['discount'],
+//            'currency' => $sessionData['currency'],
+            'requirements' => $this->form['requirements'],
+            'payment_method' => $this->form['paymentMethod'],
+
 
             // Billing Information
-            'user_id' => \Auth::user()->id ?? '',
             'cus_name' => \Auth::user()->name ?? '',
             'cus_email' => \Auth::user()->email ?? '',
             'cus_add1' => \Auth::user()->userDetails->address ?? '',
@@ -60,7 +63,7 @@ class OrderComponent extends Component
             'cus_country' => \Auth::user()->userDetails->country ?? '',
             'cus_phone' => \Auth::user()->userDetails->phone ?? '',
         ];
-        $processOrder->setData($this->form, $data);
+        $processOrder->setData($data);
 
         $payment_method = 'payment_method=' .$this->form['paymentMethod'];
         return redirect()->route('test.payment', $payment_method);
@@ -90,7 +93,7 @@ class OrderComponent extends Component
         }
     }
 
-    function adjustTotalPrice($coupon)
+    private function adjustTotalPrice($coupon)
     {
         $sessionData = \Session::get('order');
         if ($coupon->coupon_type == 'fixed') {

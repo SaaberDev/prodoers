@@ -4,25 +4,32 @@
     namespace App\Repositories\Order;
 
 
+    use App\Models\Invoice;
     use App\Models\Order;
     use App\Models\Payment;
+    use App\Services\Generator\CodeGenerator;
     use DB;
     use Exception;
     use Throwable;
 
     class ProcessOrder extends GenerateOrder
     {
+        private $codeGenerator;
+
+        public function __construct()
+        {
+            $this->codeGenerator = new CodeGenerator();
+        }
+
         /**
-         * @param $request
          * @param $data
          */
-        public function setData($request, $data)
+        public function setData($data)
         {
             if (session()->has(['item', 'other'])){
                 session()->forget(['item', 'other']);
             }
 
-            $order_number = Order::count() + 1;
             // Send payment param to make payment
             $order = [
                 'product_name' => $data['title'],
@@ -32,17 +39,17 @@
 
                 'user_id' => $data['user_id'],
                 'service_id' => $data['service_id'],
-                'requirements' => $request['requirements'],
+                'requirements' => $data['requirements'],
                 'pay_amount' => $data['pay_amount'],
                 'applied_coupon' => $data['applied_coupon'],
                 'discount' => $data['discount'],
-                'payment_method' => $request['paymentMethod'],
-                'currency' => $data['currency'],
+                'payment_method' => $data['payment_method'],
+//                'currency' => $data['currency'],
 
                 'tran_id' => uniqid(),
-                'reference_id' => config('payment_gateway.prefix.reference_id') . $order_number,
-                'invoice_id' => config('payment_gateway.prefix.invoice_id') . $order_number,
-                'order_number' => config('payment_gateway.prefix.order_number') . $order_number,
+                'reference_id' => $this->codeGenerator->reference(Order::class, 'REF-', 'reference_id'),
+                'invoice_number' => $this->codeGenerator->reference(Invoice::class, 'INV-', 'invoice_number'),
+                'order_number' => $this->codeGenerator->reference(Order::class, 'PUR-', 'order_number'),
 
                 'cus_name' => $data['cus_name'] ?? '',
                 'cus_email' => $data['cus_email'] ?? '',
@@ -63,6 +70,8 @@
                 'ship_postcode' => '',
                 'ship_phone' => '',
                 'ship_country' => '',
+
+                'value_a' => $this->codeGenerator->reference(Invoice::class, 'INV-', 'invoice_number')
             ];
             session()->put('item', $order);
         }
@@ -71,14 +80,14 @@
          * @param $response
          * @throws Throwable
          */
-        public function getData($response)
+        public function store($response)
         {
             $sessionData = \Session::get('item');
             if (request()->input('payment_method') === 'paypal') {
                 $data = $this->orderData($sessionData);
                 $data['paid_amount'] = $response->result->purchase_units[0]->payments->captures[0]->amount->value;
                 $data['transaction_id'] = $response->result->purchase_units[0]->payments->captures[0]->id;
-                $data['invoice_id'] = $response->result->purchase_units[0]->invoice_id;
+                $data['invoice_number'] = $response->result->purchase_units[0]->invoice_id;
                 $data['payment_status'] = Payment::PAID;
 
                 DB::beginTransaction();
@@ -100,11 +109,10 @@
                     DB::rollBack();
                 }
             } elseif (request()->input('payment_method') === 'visa') {
-                $info = request()->all();
                 $data = $this->orderData($sessionData);
-                $data['paid_amount'] = $info['amount'];
-                $data['transaction_id'] = $info['tran_id'];
-                $data['invoice_id'] = $info['value_a'];
+                $data['paid_amount'] = $response['amount'];
+                $data['transaction_id'] = $response['tran_id'];
+                $data['invoice_number'] = $response['value_a'];
                 $data['payment_status'] = Payment::PAID;
 
                 DB::beginTransaction();
@@ -138,6 +146,7 @@
                 'order_number' => $sessionData['order_number'],
                 'payment_method' => $sessionData['payment_method'],
                 'discount' => $sessionData['discount'],
+                'order_status' => Order::PENDING,
             ];
         }
 
