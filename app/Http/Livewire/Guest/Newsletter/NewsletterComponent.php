@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Guest\Newsletter;
 
 use App\Events\Newsletter\NewsletterEvent;
 use App\Models\Subscriber;
+use App\Rules\Email\ValidateEmail;
 use Livewire\Component;
 use Throwable;
 
@@ -17,9 +18,12 @@ class NewsletterComponent extends Component
         $this->subscriber_mail = '';
     }
 
-    protected $rules = [
-        'subscriber_mail' => 'required|email:rfc|string|unique:subscribers,email'
-    ];
+    public function rules()
+    {
+        return [
+            'subscriber_mail' => ['required', 'email:rfc,dns', 'string', 'unique:subscribers,email']
+        ];
+    }
 
     protected $messages = [
         'subscriber_mail.required' => 'Email field is required',
