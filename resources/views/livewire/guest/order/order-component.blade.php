@@ -142,7 +142,7 @@
                                            placeholder="Promo Code"
                                     >
                                     @if($errors->has('form.coupon'))
-                                        <span class="error-message" style="padding: 6px 0 0 0;">
+                                        <span class="error-message" style="padding: 10px 0 0 0;">
                                             <p>{{ $errors->first('form.coupon') }}</p>
                                         </span>
                                     @endif
@@ -194,6 +194,7 @@
 
                 <div class="col-lg-5 col-md-5 d-md-block d-none ">
                     <div class="Instruction">
+
                         <h3>Instruction</h3>
                         <ul>
                             @forelse($service->serviceCategories->serviceCategoryInstructions as $instructions)
@@ -413,7 +414,37 @@
                         <p class="p-order">Order Requirement</p>
                     </div>
                     <div class="col-5">
+                        
                         <div class="tol-tip">
+                            <a href="#" class="a" data-bs-toggle="modal" data-bs-target="#instructionModal">Instruction (?)</a>
+                        </div>
+
+                        <div class="modal fade" id="instructionModal" tabindex="-1" aria-labelledby="instructionModal" aria-hidden="true">
+                            <div class="instructionModal modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="instruction-content">
+                                            <ul>
+                                                <li>Business Name </li>
+                                                <li>Existing Logo </li>
+                                                <li>Brand Style guide</li>
+                                                <li>Reference Image</li>
+                                                <li>Reference website</li>
+                                                <li>Business Idea</li>
+                                            </ul>
+                                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using
+                                            </p>
+                                        </div>
+                                    </div>
+        
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- <div class="tol-tip">
                             <a href="#" class="a">Instruction (?)</a>
                             <p class="p">
                                 <span>
@@ -425,7 +456,9 @@
                                 </span>
                                 {{ $service->serviceCategories->order_instruction_desc }}
                             </p>
-                        </div>
+                        </div> -->
+
+
                     </div>
                 </div>
 
