@@ -16,15 +16,15 @@ namespace App\Models{
  *
  * @mixin IdeHelperAssignOrder
  * @property int $id
- * @property int $order_id
- * @property int $user_id
+ * @property int|null $order_id
+ * @property int|null $user_id
  * @property string $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Order[] $assignOrderLogs
  * @property-read int|null $assign_order_logs_count
- * @property-read \App\Models\Order $orders
- * @property-read \App\Models\User $users
+ * @property-read \App\Models\Order|null $orders
+ * @property-read \App\Models\User|null $users
  * @method static \Illuminate\Database\Eloquent\Builder|AssignOrder newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|AssignOrder newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|AssignOrder query()
@@ -44,13 +44,13 @@ namespace App\Models{
  *
  * @mixin IdeHelperAssignOrderLog
  * @property int $id
- * @property int $order_id
- * @property int $user_id
+ * @property int|null $order_id
+ * @property int|null $user_id
  * @property string $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\Order $orders
- * @property-read \App\Models\User $users
+ * @property-read \App\Models\Order|null $orders
+ * @property-read \App\Models\User|null $users
  * @method static \Illuminate\Database\Eloquent\Builder|AssignOrderLog newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|AssignOrderLog newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|AssignOrderLog query()
@@ -289,12 +289,11 @@ namespace App\Models{
  *
  * @mixin IdeHelperOrder
  * @property int $id
- * @property int $user_id
- * @property int $service_id
+ * @property int|null $user_id
+ * @property int|null $service_id
  * @property string|null $order_number
- * @property string $reference_id
+ * @property string|null $reference_id
  * @property string $requirements
- * @property string $payment_method
  * @property string|null $applied_coupon
  * @property float|null $discount
  * @property string $order_status
@@ -307,8 +306,8 @@ namespace App\Models{
  * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection|\Spatie\MediaLibrary\MediaCollections\Models\Media[] $media
  * @property-read int|null $media_count
  * @property-read \App\Models\Payment $payments
- * @property-read \App\Models\Service $services
- * @property-read \App\Models\User $users
+ * @property-read \App\Models\Service|null $services
+ * @property-read \App\Models\User|null $users
  * @method static \Database\Factories\OrderFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Order filterBy($column, $arg)
  * @method static \Illuminate\Database\Eloquent\Builder|Order newModelQuery()
@@ -320,7 +319,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereOrderNumber($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereOrderStatus($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Order wherePaymentMethod($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereReferenceId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereRequirements($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereServiceId($value)

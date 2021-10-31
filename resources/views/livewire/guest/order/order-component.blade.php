@@ -499,6 +499,7 @@
                             <p class="total"> {{ '$' . presentPrice($service->price) }}</p>
                         </div>
                     </div>
+
                     <div class="servic">
                         <p>Service charge are counted for Vat exclusive</p>
                     </div>

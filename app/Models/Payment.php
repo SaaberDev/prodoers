@@ -17,6 +17,9 @@ class Payment extends Model
     const PAID = 'paid';
     const FAILED = 'failed';
 
+    const PAYPAL = 'paypal';
+    const VISA = 'visa';
+
     public function orders()
     {
         return $this->belongsTo(Order::class);

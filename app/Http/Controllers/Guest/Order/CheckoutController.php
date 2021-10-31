@@ -60,16 +60,41 @@
                 $paypal_order_id = session('other.paypal_order_id');
                 $response = $this->billing->successPayment($paypal_order_id);
 
-                $response
-                    ? $this->processOrder->store($response) && $this->clearSession()
-                    : $this->clearSession()
-                ;
-                return redirect()->route('test.index')->with('success', 'Nice it worked!');
+                if ($response) {
+                    $this->processOrder->store($response);
+                    $this->clearSession();
+                    return redirect()
+                        ->route('guest.order.confirmation')
+                        ->with([
+                            'status' => 'success',
+                            'title' => 'Order Successful',
+                            'message' => 'Your order has been successfully placed.',
+                            'data' => 'Your order has been successfully placed.'
+                        ]);
+                } else {
+                    $this->clearSession();
+                }
+//                $response
+//                    ? $this->processOrder->store($response) && $this->clearSession()
+//                    : $this->clearSession()
+//                ;
+
             } catch (Exception $exception) {
                 report($exception);
                 $this->clearSession();
-                return redirect()->route('test.index')->with('failed', 'Something went wrong. Contact ProDoers.');
+                return redirect()
+                    ->route('guest.order.confirmation')
+                    ->with([
+                        'status' => 'failed',
+                        'title' => 'Order Failed',
+                        'message' => 'Something went wrong. Contact ProDoers.'
+                    ]);
             }
+        }
+
+        public function confirmation()
+        {
+            return view('guest.pages.order-confirmation');
         }
 
         /**
@@ -78,6 +103,12 @@
         public function cancelCheckout()
         {
             $this->billing->cancelPayment();
-            return redirect()->route('test.index')->with(['failed' => 'Payment has been cancelled.']);
+            return redirect()
+                ->route('guest.order.confirmation')
+                ->with([
+                    'status' => 'cancelled',
+                    'title' => 'Order Cancelled',
+                    'message' => 'Order has been cancelled.'
+                ]);
         }
     }

@@ -3,6 +3,8 @@
 
     namespace App\Repositories\Order;
 
+    use App\Models\Invoice;
+    use App\Models\Order;
     use App\Models\Payment;
     use DB;
     use Exception;
@@ -37,8 +39,8 @@
 
                 'tran_id' => uniqid(),
                 'reference_id' => uniqid(),
-                'invoice_number' => uniqid(),
-                'order_number' => uniqid(),
+                'invoice_number' => $this->codeGenerator->reference(Invoice::class, '-INV', 'invoice_number'),
+                'order_number' => $this->codeGenerator->reference(Order::class, '-PUR', 'order_number'),
 
                 'cus_name' => $data['cus_name'] ?? '',
                 'cus_email' => $data['cus_email'] ?? '',
@@ -71,19 +73,25 @@
          */
         public function store($response)
         {
+            // TODO -- issue Try ... catch
             $data = \Session::get('item');
-            if (request()->input('payment_method') === 'paypal') {
+            if (request()->input('payment_method') === Payment::PAYPAL) {
                 DB::beginTransaction();
                 try {
                     $order = $this->storeOrder($data);
                     if ($response->result->status == 'COMPLETED') {
-                        $this->storePayment($data, $order, $response);
+                        $data['paid_amount'] = $response->result->purchase_units[0]->payments->captures[0]->amount->value;
+                        $data['transaction_id'] = $response->result->purchase_units[0]->payments->captures[0]->id;
+                        $data['payment_status'] = Payment::PAID;
+                        $data['payment_method'] = Payment::PAYPAL;
+                        $this->storePayment($data, $order);
                         // Generate Invoice
-                        $this->storeInvoice($data, $order, $response);
+                        $this->storeInvoice($data, $order);
                         // Send Invoice to user
                         // TODO - Send Invoice through mail
                     } else {
                         $data['payment_status'] = Payment::FAILED;
+                        $data['payment_method'] = Payment::PAYPAL;
                         $this->storePayment($data, $order);
                     }
                     DB::commit();
@@ -91,18 +99,23 @@
                     report($exception);
                     DB::rollBack();
                 }
-            } elseif (request()->input('payment_method') === 'visa') {
+            } elseif (request()->input('payment_method') === Payment::VISA) {
                 DB::beginTransaction();
                 try {
                     $order = $this->storeOrder($data);
                     if ($response == true) {
-                        $this->storePayment($data, $order, $response);
+                        $data['paid_amount'] = $response['amount'];
+                        $data['transaction_id'] = $response['tran_id'];
+                        $data['payment_status'] = Payment::PAID;
+                        $data['payment_method'] = Payment::VISA;
+                        $this->storePayment($data, $order);
                         // Generate Invoice
-                        $this->storeInvoice($data, $order, $response);
+                        $this->storeInvoice($data, $order);
                         // Send Invoice to user
                         // TODO - Send Invoice through mail
                     } else {
                         $data['payment_status'] = Payment::FAILED;
+                        $data['payment_method'] = Payment::VISA;
                         $this->storePayment($data, $order);
                     }
                     DB::commit();

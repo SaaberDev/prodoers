@@ -29,10 +29,10 @@
             if (count($oldRecord) > 0) {
                 $max = $oldRecord->max($attribute);
                 $serialNumber = str_replace($this->prefix, '', $max);
-                $this->code = $this->prefix . str_pad(($serialNumber + 1), 5, '0', STR_PAD_LEFT);
+                $this->code = strtoupper(uniqid()) . $this->prefix . str_pad(($serialNumber + 1), 3, '0', STR_PAD_LEFT);
             } else {
                 $newRecord = $model::where($attribute, 'LIKE', '%'.$this->prefix.'%')->get();
-                $this->code = $this->prefix . str_pad(($newRecord->count() + 1), 5, '0', STR_PAD_LEFT);
+                $this->code = strtoupper(uniqid()) . $this->prefix . str_pad(($newRecord->count() + 1), 3, '0', STR_PAD_LEFT);
             }
 
             return $this->code;

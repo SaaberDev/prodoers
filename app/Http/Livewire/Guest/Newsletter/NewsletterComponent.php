@@ -4,7 +4,6 @@ namespace App\Http\Livewire\Guest\Newsletter;
 
 use App\Events\Newsletter\NewsletterEvent;
 use App\Models\Subscriber;
-use App\Rules\Email\ValidateEmail;
 use Livewire\Component;
 use Throwable;
 

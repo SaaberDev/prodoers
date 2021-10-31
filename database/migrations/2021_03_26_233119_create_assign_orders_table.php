@@ -15,16 +15,16 @@ class CreateAssignOrdersTable extends Migration
     {
         Schema::create('assign_orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('order_id')->constrained();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('order_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
             $table->enum('status', ['pending', 'assigned', 'cancelled', 'done']);
             $table->timestamps();
         });
 
         Schema::create('assign_order_logs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('order_id')->constrained();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('order_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
             $table->string('status');
             $table->timestamps();
         });

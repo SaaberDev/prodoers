@@ -19,7 +19,6 @@ class CreatePaymentsTable extends Migration
 
             $table->double('paid_amount')->nullable();
             $table->string('transaction_id')->unique()->nullable();
-            $table->double('discount')->nullable();
             $table->string('payment_method')->nullable();
             $table->enum('payment_status', ['paid', 'failed']);
             $table->timestamps();
