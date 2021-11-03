@@ -34,6 +34,8 @@
             if (\Session::has('confirmation')) {
                 $orderData = \Session::get('confirmation');
             }
+
+//            dd($orderData['data']->services->first());
             return view('guest.pages.order-confirmation', compact('orderData'));
         }
     }
