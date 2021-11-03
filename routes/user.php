@@ -1,6 +1,6 @@
 <?php
 
-    Route::name('user.')
+    Route::name('client.')
         ->middleware([
             'auth', 'verified'
         ])

@@ -8,10 +8,10 @@
             'invoice_id' => '2021' . uniqid(mt_rand(100000000, 500000000)),
         ],
         'return_url' => [
-            'success_url' => env('APP_URL') . '/test/checkout/success?payment_method=',
-            'cancel_url' => env('APP_URL') . '/test/checkout/cancel?payment_method=',
-            'failed_url' => env('APP_URL') .  '/test/checkout/fail?payment_method=',
-            'ipn_url' => env('APP_URL') .  '/test/checkout/notify?payment_method=',
+            'success_url' => env('APP_URL') . '/services/checkout/success?payment_method=',
+            'cancel_url' => env('APP_URL') . '/services/checkout/cancel?payment_method=',
+            'failed_url' => env('APP_URL') .  '/services/checkout/fail?payment_method=',
+            'ipn_url' => env('APP_URL') .  '/services/checkout/notify?payment_method=',
         ],
 
         // Paypal Configuration

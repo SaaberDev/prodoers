@@ -51,10 +51,13 @@
                 Route::get('/{service_slug}/order', [GuestOrderController::class, 'index'])->name('index');
                 Route::get('/{service_slug}/order/pay', [GuestOrderController::class, 'store'])->name('store');
 
-                Route::get('/pay', [CheckoutController::class, 'checkout'])->name('checkout');
-                Route::any('/success', [CheckoutController::class, 'successCheckout'])->name('success');
-                Route::any('/cancel', [CheckoutController::class, 'cancelCheckout'])->name('cancel');
-                Route::any('/confirmation', [CheckoutController::class, 'confirmation'])->name('confirmation');
+                Route::prefix('/checkout')->group(function () {
+                    Route::get('/pay', [CheckoutController::class, 'checkout'])->name('checkout');
+                    Route::any('/success', [CheckoutController::class, 'successCheckout'])->name('success');
+                    Route::any('/cancel', [CheckoutController::class, 'cancelCheckout'])->name('cancel');
+
+                    Route::get('/confirmation', [GuestOrderController::class, 'confirmation'])->name('confirmation');
+                });
             });
 
         // Policies
@@ -87,8 +90,4 @@
         // Blog
 //        Route::get('/blog', [GuestBlogController::class, 'index'])->name('blog.index');
 //        Route::get('/single-blog', [GuestBlogController::class, 'index'])->name('blog.show');
-    });
-
-    Route::prefix('/checkout')->name('checkout.')->group(function () {
-
     });

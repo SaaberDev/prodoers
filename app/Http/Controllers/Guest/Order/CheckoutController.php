@@ -4,8 +4,13 @@
 
     use App\Http\Controllers\Controller;
     use App\Repositories\Billing\BillingInterface;
+    use App\Repositories\Billing\PaymentGateway\Paypal\PaypalOrder;
+    use App\Repositories\Billing\PaymentGateway\SslCommerz\SslCommerz;
     use App\Repositories\Order\ProcessOrder;
     use Exception;
+    use Illuminate\Contracts\Foundation\Application;
+    use Illuminate\Contracts\View\Factory;
+    use Illuminate\Contracts\View\View;
     use Illuminate\Http\RedirectResponse;
     use Throwable;
 
@@ -14,11 +19,11 @@
         /**
          * @var BillingInterface
          */
-        public BillingInterface $billing;
+        public $billing;
         /**
          * @var ProcessOrder
          */
-        public ProcessOrder $processOrder;
+        public $processOrder;
 
         public function __construct(BillingInterface $billing, ProcessOrder $processOrder)
         {
@@ -61,16 +66,16 @@
                 $response = $this->billing->successPayment($paypal_order_id);
 
                 if ($response) {
-                    $this->processOrder->store($response);
+                    $order = $this->processOrder->store($response);
                     $this->clearSession();
-                    return redirect()
-                        ->route('guest.order.confirmation')
-                        ->with([
-                            'status' => 'success',
-                            'title' => 'Order Successful',
-                            'message' => 'Your order has been successfully placed.',
-                            'data' => 'Your order has been successfully placed.'
-                        ]);
+                    \Session::put('confirmation', [
+                        'status' => 'success',
+                        'title' => 'Order Successful',
+                        'message' => 'Your order has been successfully placed.',
+                        'data' => $order
+                    ]);
+
+                    return redirect()->route('guest.order.confirmation');
                 } else {
                     $this->clearSession();
                 }
@@ -92,11 +97,6 @@
             }
         }
 
-        public function confirmation()
-        {
-            return view('guest.pages.order-confirmation');
-        }
-
         /**
          * @return RedirectResponse
          */
@@ -104,7 +104,7 @@
         {
             $this->billing->cancelPayment();
             return redirect()
-                ->route('guest.order.confirmation')
+                ->intended(\URL::previous())
                 ->with([
                     'status' => 'cancelled',
                     'title' => 'Order Cancelled',

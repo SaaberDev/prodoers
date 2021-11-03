@@ -69,6 +69,7 @@
 
         /**
          * @param $response
+         * @return Order|\Illuminate\Database\Eloquent\Model|void
          * @throws Throwable
          */
         public function store($response)
@@ -95,6 +96,7 @@
                         $this->storePayment($data, $order);
                     }
                     DB::commit();
+                    return $order;
                 } catch (Exception $exception) {
                     report($exception);
                     DB::rollBack();
@@ -119,6 +121,7 @@
                         $this->storePayment($data, $order);
                     }
                     DB::commit();
+                    return $order;
                 } catch (Exception $exception) {
                     report($exception);
                     DB::rollBack();

@@ -25,7 +25,7 @@
         ];
 
         protected $rules = [
-            'form.requirements' => 'required|min:250',
+            'form.requirements' => 'required',
             'form.coupon' => 'nullable',
             'form.paymentMethod' => 'in:paypal,visa,bkash,mastercard',
         ];
@@ -69,7 +69,7 @@
             $processOrder->setData($data);
 
             $payment_method = 'payment_method=' . $this->form['paymentMethod'];
-            return redirect()->route('test.payment', $payment_method);
+            return redirect()->route('guest.order.checkout', $payment_method);
         }
 
         public function checkCoupon()

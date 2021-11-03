@@ -2,8 +2,6 @@
 
 namespace App\Providers;
 
-use App\Repositories\Order\GenerateOrder;
-use App\Repositories\Order\GenerateOrderContract;
 use Illuminate\Routing\UrlGenerator;
 use Illuminate\Support\ServiceProvider;
 
