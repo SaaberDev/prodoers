@@ -175,6 +175,6 @@
 
 @push('scripts')
 {{-- Internal Scripts --}}
-<script src="{{asset('_assets/_client/js/table.js')}}"></script>
+    <script src="{{asset('_assets/_client/js/table.js')}}"></script>
 @endpush
 

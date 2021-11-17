@@ -829,37 +829,91 @@ input[type=number]::-webkit-inner-spin-button {
     margin-bottom: 12px;
     margin-right: 5px;
 }
-.client-files .requirement-files{
+.client-files .requirement-files,
+.my-files .requirement-files{
     margin-right: 5px;
 }
 /*Orders Requirement Section End*/
 
 
 /*Chat Section Start*/
+
+.chat-text-area{
+    max-height:600px;
+    overflow-y: scroll;
+}
+
+/* width */
+.chat-text-area::-webkit-scrollbar {
+    width: 5px;   
+}
+/* Track */
+.chat-text-area::-webkit-scrollbar-track {
+    background: transparent; 
+}
+
+/* Handle */
+.chat-text-area::-webkit-scrollbar-thumb {
+ background: #dddbdb; 
+ border-radius: 20px;
+}
+
+
+
+
 .chat{
     margin-top: 30px;
     margin-bottom: 30px;
     background:var(--white);
     border-radius: 4px;
     box-shadow: 0 3px 10px #00000029;
-    padding:50px 20px;
+    padding:40px 10px;
 }
 .chat .col-lg-12{
     padding: 0!important;
 }
 .client-chat,
 .my-chat{
-    display:flex;
-    margin-bottom: 40px;
+    /* display:flex; */
+    margin-bottom: 20px;
+}
+.client-text-area:not(:last-child){
+    margin-bottom: 15px;;
+}
+.my-text-area:not(:last-child){
+    margin-bottom: 15px;
+}
+.row.client-chat .col-1{
+    padding-right: 0;
+}
+.row.client-chat .col-11{
+    padding-left: 0;
+}
+
+.row.my-chat .col-11{
+    padding-right:0;
+}
+.row.my-chat .col-1{
+    padding-right: 5px;
+}
+.my-chat-wrapper{
+    width: fit-content;
+    margin-left: auto !important;
+}
+
+/* .client-img{
+    padding-right: 40px;
+} */
+
+
+.my-img{
+    text-align:right;
+}
+.my-text-area{
+    margin-left:auto;
 }
 .my-chat{
     justify-content:flex-end;
-}
-.client-img{
-    padding-right: 40px;
-}
-.my-img{
-    padding-left:40px;
 }
 .client-img img{
     max-width:50px;
@@ -870,10 +924,11 @@ input[type=number]::-webkit-inner-spin-button {
 .client-text-area,
 .my-text-area{
     background-color: var(--grey);
-    padding:15px 22px;
+    padding:15px 20px;
     border-radius:5px;
     font-size: 14px;
     color:var(--paragraph-color);
+    width:fit-content;
 }
 .name-time{
     display:flex;
@@ -903,13 +958,15 @@ input[type=number]::-webkit-inner-spin-button {
 .my-text-area .my-text{
     line-height:30px;
 }
-.client-files{
+.client-files,
+.my-files{
     margin-top: 15px;
 }
 .chat-text-upload-area{
     background:var(--grey);
     padding:12px 25px 12px 15px;
     border-radius: 4px;
+    margin-top: 15px;
 }
 .chat-upload-files{
     display:flex;

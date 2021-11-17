@@ -19,10 +19,10 @@
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item" aria-current="page">
-                      <a href="dashboard.html">Dashboard</a>
+                      <a href="{{ route('client.dashboard.index') }}">Dashboard</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
-                        <a href="orders.html">Orders</a>
+                        <a href="{{ route('client.order.index') }}">Orders</a>
                     </li>
                   </ol>
                 </nav>
@@ -53,7 +53,7 @@
               <div class="all-orders-pagination d-flex justify-content-end justify-content-md-end align-items-center">
                 <div class="d-none d-lg-block order-pagination ">
 
-                    @include('client.includes.pagination')
+                    @include('vendor.pagination.frontend-pagination')
 
                 </div>
               </div>
@@ -76,7 +76,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr data-href="./ongoingorders.html">
+                <tr data-href="{{ route('client.order.show' , ['page' => 'ongoing']) }}">
                   <td>DWWXYZ123</td>
                   <td>Minimal Logo Design</td>
                   <td>3 Days</td>
@@ -85,7 +85,7 @@
                     <p class="ongoing">Ongoing</p>
                   </td>
                 </tr>
-                <tr data-href="./revisionorder.html">
+                <tr data-href="{{ route('client.order.show' , ['page' => 'revision']) }}">
                   <td>DWWXYZ123</td>
                   <td>Web Design and Development</td>
                   <td>24 hours</td>
@@ -94,7 +94,7 @@
                     <p class="in-revision">In Revision</p>
                   </td>
                 </tr>
-                <tr data-href="./ongoingorders.html">
+                <tr data-href="{{ route('client.order.show' , ['page' => 'ongoing']) }}">
                   <td>WXYZ123</td>
                   <td>Logo Design</td>
                   <td>
@@ -105,7 +105,7 @@
                     <p class="ongoing">Ongoing</p>
                   </td>
                 </tr>
-                <tr data-href="./deliveredorder.html">
+                <tr data-href="{{ route('client.order.show' , ['page' => 'delivered']) }}">
                   <td>WXYZ123</td>
                   <td>Digital Marketing and social media</td>
                   <td>
@@ -116,7 +116,7 @@
                     <p class="delivered">Delivered</p>
                   </td>
                 </tr>
-                <tr data-href="./deliveredorder.html">
+                <tr data-href="{{ route('client.order.show' , ['page' => 'delivered']) }}">
                   <td>DWWXYZ123</td>
                   <td>Logo Design, Brand design, Print Materials</td>
                   <td>
@@ -127,7 +127,7 @@
                     <p class="delivered">Delivered</p>
                   </td>
                 </tr>
-                <tr data-href="./ongoingorders.html">
+                <tr data-href="{{ route('client.order.show' , ['page' => 'ongoing']) }}">
                   <td>DWWXYZ123</td>
                   <td>Minimal Logo Design</td>
                   <td>3 Days</td>
@@ -136,7 +136,7 @@
                     <p class="ongoing">Ongoing</p>
                   </td>
                 </tr>
-                <tr data-href="./revisionorder.html">
+                <tr data-href="{{ route('client.order.show' , ['page' => 'revision']) }}">
                   <td>DWWXYZ123</td>
                   <td>Web Design and Development</td>
                   <td>24 hours</td>
@@ -145,7 +145,7 @@
                     <p class="in-revision">In Revision</p>
                   </td>
                 </tr>
-                <tr data-href="./ongoingorders.html">
+                <tr data-href="{{ route('client.order.show' , ['page' => 'ongoing']) }}">
                   <td>WXYZ123</td>
                   <td>Logo Design</td>
                   <td>
@@ -169,7 +169,7 @@
               <div class="sm-pagination d-flex justify-content-center align-items-center">
                 <div class="d-lg-none order-pagination ">
 
-                    @include('client.includes.pagination')
+                    @include('vendor.pagination.frontend-pagination')
 
                 </div>
               </div>

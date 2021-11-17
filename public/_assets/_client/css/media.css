@@ -203,6 +203,9 @@
     .pending-order-img{
         text-align: center;
     }
+    .pending-order-img img{
+        width: 100%;
+    }
     /*All notifications*/
 
     /*Pending Orders Section*/
@@ -251,7 +254,7 @@
 
     /*Complete Order Section*/
     .chat {
-        padding: 20px 8px;
+        padding: 25px 5px;
     }
     .client-text-area, .my-text-area {
         padding: 10px 10px;
@@ -259,18 +262,33 @@
     .client-img {
         padding-right: 15px;
     }
-    .my-img {
+    /* .my-img {
         padding-left: 15px;
-    }
+    } */
     .rating-review {
         margin-bottom: 35px;
         max-width: 100%;
     } 
     .client-img img,
     .my-img img {
-        max-width: 40px;
+        max-width: 30px;
     }
-    .client-files ul li{
+
+    .row.client-chat .col-1{
+        padding-left: 0;
+    }
+    .row.client-chat .col-11{
+        padding-left: 16px;
+    }
+    .row.my-chat .col-11{
+        padding-right: 1rem;
+    }
+    .row.my-chat .col-1{
+        padding-left: 0;
+    }
+
+    .client-files ul li,
+    .my-files ul li{
         margin-right: 5px!important;
         margin-bottom: 6px!important;
     }  
@@ -546,12 +564,22 @@
     .client-img {
         padding-right: 20px;
     }
-    .my-img {
-        padding-left: 20px;
-    }
+    
     .rating-review {
         margin-bottom: 35px;
         max-width: 100%;
+    }
+    .my-img img{
+        max-width: 35px;
+    }
+    .client-img img{
+        max-width: 35px;
+    }
+    .row.client-chat .col-11{
+        padding-left: 0.75rem;
+    }
+    .row.client-chat .col-1{
+        padding-left: 0;
     }
     /*Complete Order Section*/
 
@@ -678,6 +706,7 @@
     /*General Setting Section End*/
 
     /*Pending Order- Order Status*/
+
     /*Need to change this style*/
     .order-status{
         margin-top: 25px;
@@ -691,9 +720,20 @@
     .client-img{
         padding-right: 25px;
     }
-    .my-img{
+    /* .my-img{
         padding-left:25px;
+    } */
+
+    .my-img img {
+        max-width: 40px;
     }
+    .client-img img {
+        max-width: 40px;
+    }
+    .row.client-chat .col-11{
+        padding-left: 0.75rem;
+    }
+    
     /*Chat Section End*/
 
     /*Delivered Order Section Start*/
@@ -784,7 +824,18 @@
         padding-right: 30px;
     }
     .my-img{
-        padding-left:30px;
+        padding-left:10px;
+    }
+    /* .row.client-chat .col-11{
+        padding-left: 0.75rem;
+    } */
+    .row.client-chat .col-1{
+        padding-right: 0.75rem;
+        padding-left: 0;
+    }
+    .my-img img,
+    .client-img img{
+        max-width: 40px;
     }
     /*Chat Section End*/
 
@@ -834,6 +885,10 @@
     }
     .requirement-details .row > .col-sm-6{
         padding-left: 0;
+    }
+    .my-img img,
+    .client-img img{
+        max-width: 40px;
     }
     /*Earn Info Part Start*/
     

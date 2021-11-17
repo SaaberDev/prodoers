@@ -18,7 +18,9 @@
                 </div>
                 <div class="upload-submit">
                 <div>
-                    <label for="revision-file"><img src="./images/upload-file-icon.svg" alt="dashboard"></label>
+                    <label for="revision-file">
+                        <img src="{{ asset('_assets/_client/images/upload-file-icon.svg') }}" alt="dashboard">
+                    </label>
                     <input type="file" onchange="javascript:updateList()" id="revision-file" name="revision-file" multiple>
                 </div>
                 <button type="submit"> Submit </button>

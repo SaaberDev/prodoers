@@ -26,10 +26,10 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                           <li class="breadcrumb-item" aria-current="page">
-                              <a href="dashboard.html">Dashboard</a>
+                              <a href="{{ route('client.dashboard.index') }}">Dashboard</a>
                           </li>
                           <li class="breadcrumb-item" aria-current="page">
-                              <a href="orders.html">Orders</a>
+                              <a href="{{ route('client.order.index') }}">Orders</a>
                           </li>
                           <li class="breadcrumb-item active" aria-current="page">
                               <a href="pendingorder.html">DWXYZ12345</a>
@@ -115,10 +115,10 @@
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item" aria-current="page">
-                      <a href="dashboard.html">Dashboard</a>
+                      <a href="{{ route('client.dashboard.index') }}">Dashboard</a>
                     </li>
                     <li class="breadcrumb-item" aria-current="page">
-                        <a href="orders.html">Orders</a>
+                        <a href="{{ route('client.order.index') }}">Orders</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
                         <a href="ongoingorders.html">DWXYZ12345</a>
@@ -134,7 +134,7 @@
           <div class="row pending-order ">
             <div class="col-sm-4 col-md-3 col-lg-2">
               <div class="pending-order-img">
-                <img src="./images/pending-order-img.svg" alt="dashboard" class="img-fluid">
+                <img src="{{ asset('_assets/_client/images/pending-order-img.svg') }}" alt="dashboard" class="img-fluid">
               </div>
             </div>
             <div class="d-none d-sm-block d-md-none col-sm-8 col-md-12 col-lg-3">
@@ -203,10 +203,10 @@
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item" aria-current="page">
-                      <a href="dashboard.html">Dashboard</a>
+                      <a href="{{ route('client.dashboard.index') }}">Dashboard</a>
                     </li>
                     <li class="breadcrumb-item" aria-current="page">
-                        <a href="orders.html">Orders</a>
+                        <a href="{{ route('client.order.index') }}">Orders</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
                         <a href="delivered.html">DWXYZ12345</a>
@@ -222,7 +222,7 @@
           <div class="row pending-order ">
             <div class="col-sm-4 col-md-3 col-lg-2">
               <div class="pending-order-img">
-                <img src="./images/pending-order-img.svg" alt="dashboard" class="img-fluid">
+                <img src="{{ asset('_assets/_client//images/pending-order-img.svg') }}" alt="dashboard" class="img-fluid">
               </div>
             </div>
             <div class="d-none d-sm-block d-md-none  col-sm-8 col-md-12 col-lg-3">
@@ -289,54 +289,66 @@
           <div class="row delivered-files-area">
               <div class="col-sm-6 col-md-4 col-lg-2">
                 <div class="delivered-files">
-                    <img src="./images/delivered-img-one.svg" alt="dashboard" class="img-fluid">
+                    <img src="{{ asset('_assets/_client//images/delivered-img-one.svg') }}" alt="dashboard" class="img-fluid">
                     <a href="#" class="d-flex justify-content-center align-items-center">
-                      <button type="button"><img src="./images/delivered-download-icon.svg" alt="dashboard" class="img-fluid"></button>
+                      <button type="button">
+                        <img src="{{ asset('_assets/_client/images/delivered-download-icon.svg') }}" alt="dashboard" class="img-fluid">
+                      </button>
                       <p>Image.jpg</p>
                     </a>
                   </div>
               </div>
               <div class="col-sm-6 col-md-4 col-lg-2">
                 <div class="delivered-files">
-                    <img src="./images/delivered-img-two.svg" alt="dashboard" class="img-fluid">
+                    <img src="{{ asset('_assets/_client/images/delivered-img-two.svg') }}" alt="dashboard" class="img-fluid">
                     <a href="#" class="d-flex justify-content-center align-items-center">
-                      <button type="button"><img src="./images/delivered-download-icon.svg" alt="dashboard" class="img-fluid"></button>
+                      <button type="button">
+                        <img src="{{ asset('_assets/_client/images/delivered-download-icon.svg') }}" alt="dashboard" class="img-fluid">
+                      </button>
                       <p>Image.jpg</p>
                     </a>
                   </div>
               </div>
               <div class="col-sm-6 col-md-4 col-lg-2">
                 <div class="delivered-files">
-                    <img src="./images/delivered-img-three.svg" alt="dashboard" class="img-fluid">
+                    <img src="{{ asset('_assets/_client/images/delivered-img-three.svg') }}" alt="dashboard" class="img-fluid">
                     <a href="#" class="d-flex justify-content-center align-items-center">
-                      <button type="button"><img src="./images/delivered-download-icon.svg" alt="dashboard" class="img-fluid"></button>
+                      <button type="button">
+                        <img src="{{ asset('_assets/_client/images/delivered-download-icon.svg') }}" alt="dashboard" class="img-fluid">
+                      </button>
                       <p>Image.jpg</p>
                     </a>
                   </div>
               </div>
               <div class="col-sm-6 col-md-4 col-lg-2">
                 <div class="delivered-files">
-                    <img src="./images/delivered-img-four.svg" alt="dashboard" class="img-fluid">
+                    <img src="{{ asset('_assets/_client//images/delivered-img-four.svg') }}" alt="dashboard" class="img-fluid">
                     <a href="#" class="d-flex justify-content-center align-items-center">
-                      <button type="button"><img src="./images/delivered-download-icon.svg" alt="dashboard" class="img-fluid"></button>
+                      <button type="button">
+                        <img src="{{ asset('_assets/_client/images/delivered-download-icon.svg') }}" alt="dashboard" class="img-fluid">
+                      </button>
                       <p>Image.jpg</p>
                     </a>
                   </div>
               </div>
               <div class="col-sm-6 col-md-4 col-lg-2">
                 <div class="delivered-files">
-                    <img src="./images/delivered-img-two.svg" alt="dashboard" class="img-fluid">
+                    <img src="{{ asset('_assets/_client/images/delivered-img-two.svg') }}" alt="dashboard" class="img-fluid">
                     <a href="#" class="d-flex justify-content-center align-items-center">
-                      <button type="button"><img src="./images/delivered-download-icon.svg" alt="dashboard" class="img-fluid"></button>
+                      <button type="button">
+                        <img src="{{ asset('_assets/_client/images/delivered-download-icon.svg') }}" alt="dashboard" class="img-fluid">
+                      </button>
                       <p>Image.jpg</p>
                     </a>
                   </div>
               </div>
               <div class="col-sm-6 col-md-4 col-lg-2">
                 <div class="delivered-files">
-                    <img src="./images/delivered-img-four.svg" alt="dashboard" class="img-fluid">
+                    <img src="{{ asset('_assets/_client/images/delivered-img-four.svg') }}" alt="dashboard" class="img-fluid">
                     <a href="#" class="d-flex justify-content-center align-items-center">
-                      <button type="button"><img src="./images/delivered-download-icon.svg" alt="dashboard" class="img-fluid"></button>
+                      <button type="button">
+                        <img src="{{ asset('_assets/_client/images/delivered-download-icon.svg') }}" alt="dashboard" class="img-fluid">
+                      </button>
                       <p>Image.jpg</p>
                     </a>
                   </div>
@@ -390,10 +402,10 @@
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item" aria-current="page">
-                      <a href="dashboard.html">Dashboard</a>
+                      <a href="{{ route('client.dashboard.index') }}">Dashboard</a>
                     </li>
                     <li class="breadcrumb-item" aria-current="page">
-                        <a href="orders.html">Orders</a>
+                        <a href="{{ route('client.order.index') }}">Orders</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
                         <a href="revisionorder.html">DWXYZ12345</a>
@@ -409,7 +421,7 @@
           <div class="row pending-order">
             <div class="col-sm-4 col-md-3 col-lg-2">
               <div class="pending-order-img">
-                <img src="./images/pending-order-img.svg" alt="dashboard" class="img-fluid">
+                <img src="{{ asset('_assets/_client/images/pending-order-img.svg') }}" alt="dashboard" class="img-fluid">
               </div>
             </div>
             <div class="d-none d-sm-block d-md-none col-sm-8 col-md-12 col-lg-3">
@@ -485,10 +497,10 @@
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item" aria-current="page">
-                      <a href="dashboard.html">Dashboard</a>
+                      <a href="{{ route('client.dashboard.index') }}">Dashboard</a>
                     </li>
                     <li class="breadcrumb-item" aria-current="page">
-                        <a href="orders.html">Orders</a>
+                        <a href="{{ route('client.order.index') }}">Orders</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
                         <a href="completeorder.html">DWXYZ12345</a>
@@ -504,7 +516,7 @@
           <div class="row pending-order">
             <div class="col-sm-4 col-md-3 col-lg-2">
               <div class="pending-order-img">
-                <img src="./images/pending-order-img.svg" alt="dashboard" class="img-fluid">
+                <img src="{{ asset('_assets/_client/images/pending-order-img.svg') }}" alt="dashboard" class="img-fluid">
               </div>
             </div>
             <div class="d-none d-sm-block d-md-none col-sm-8 col-md-12 col-lg-3">
@@ -563,23 +575,23 @@
                       <p class="complete">Order is Complete!</p>
                       <ul class="list-inline">
                           <li class="list-inline-item">
-                              <img src="./images/rating-star.svg" alt="dashboard" class="img-fluid">
+                            <img src="{{ asset('_assets/_client/images/rating-star.svg') }}" alt="dashboard" class="img-fluid">
                           </li>
                           <li class="list-inline-item">
-                            <img src="./images/rating-star.svg" alt="dashboard" class="img-fluid">
-                        </li>
-                        <li class="list-inline-item">
-                            <img src="./images/rating-star.svg" alt="dashboard" class="img-fluid">
-                        </li>
-                        <li class="list-inline-item">
-                            <img src="./images/rating-star.svg" alt="dashboard" class="img-fluid">
-                        </li>
-                        <li class="list-inline-item">
-                            <img src="./images/star-stroke.svg" alt="dashboard" class="img-fluid">
-                        </li>
-                        <li class="list-inline-item">
+                            <img src="{{ asset('_assets/_client/images/rating-star.svg') }}" alt="dashboard" class="img-fluid">
+                          </li>
+                          <li class="list-inline-item">
+                            <img src="{{ asset('_assets/_client/images/rating-star.svg') }}" alt="dashboard" class="img-fluid">
+                          </li>
+                          <li class="list-inline-item">
+                            <img src="{{ asset('_assets/_client/images/rating-star.svg') }}" alt="dashboard" class="img-fluid">
+                          </li>
+                          <li class="list-inline-item">
+                            <img src="{{ asset('_assets/_client/images/star-stroke.svg') }}" alt="dashboard" class="img-fluid">
+                          </li>
+                          <li class="list-inline-item">
                             <p>(4/5)</p>
-                        </li>
+                          </li>
                       </ul>
                       <p class="review">
                         Great communication with the Designwala. He followed my initial instructions, and came up with great concept designs. They were so good, additional revisions were not needed. Will order again soon!
@@ -588,54 +600,66 @@
               </div>
               <div class="col-sm-6 col-md-4 col-lg-2">
                 <div class="delivered-files">
-                    <img src="./images/delivered-img-one.svg" alt="dashboard" class="img-fluid">
+                    <img src="{{ asset('_assets/_client/images/delivered-img-one.svg') }}" alt="dashboard" class="img-fluid">
                     <a href="#" class="d-flex justify-content-center align-items-center">
-                      <button type="button"><img src="./images/delivered-download-icon.svg" alt="dashboard" class="img-fluid"></button>
+                      <button type="button">
+                        <img src="{{ asset('_assets/_client/images/delivered-download-icon.svg') }}" alt="dashboard" class="img-fluid">
+                      </button>
                       <p>Image.jpg</p>
                     </a>
                 </div>
               </div>
               <div class="col-sm-6 col-md-4 col-lg-2">
                 <div class="delivered-files">
-                    <img src="./images/delivered-img-two.svg" alt="dashboard" class="img-fluid">
+                    <img src="{{ asset('_assets/_client/images/delivered-img-two.svg') }}" alt="dashboard" class="img-fluid">
                     <a href="#" class="d-flex justify-content-center align-items-center">
-                      <button type="button"><img src="./images/delivered-download-icon.svg" alt="dashboard" class="img-fluid"></button>
+                      <button type="button">
+                        <img src="{{ asset('_assets/_client/images/delivered-download-icon.svg') }}" alt="dashboard" class="img-fluid">
+                      </button>
                       <p>Source File.zip</p>
                     </a>
                 </div>
               </div>
               <div class="col-sm-6 col-md-4 col-lg-2">
                 <div class="delivered-files">
-                    <img src="./images/delivered-img-three.svg" alt="dashboard" class="img-fluid">
+                    <img src="{{ asset('_assets/_client/images/delivered-img-three.svg') }}" alt="dashboard" class="img-fluid">
                     <a href="#" class="d-flex justify-content-center align-items-center">
-                      <button type="button"><img src="./images/delivered-download-icon.svg" alt="dashboard" class="img-fluid"></button>
+                      <button type="button">
+                        <img src="{{ asset('_assets/_client/images/delivered-download-icon.svg') }}" alt="dashboard" class="img-fluid">
+                      </button>
                       <p>Image.jpg</p>
                     </a>
                 </div>
               </div>
               <div class="col-sm-6 col-md-4 col-lg-2">
                 <div class="delivered-files">
-                    <img src="./images/delivered-img-four.svg" alt="dashboard" class="img-fluid">
+                    <img src="{{ asset('_assets/_client//images/delivered-img-four.svg') }}" alt="dashboard" class="img-fluid">
                     <a href="#" class="d-flex justify-content-center align-items-center">
-                      <button type="button"><img src="./images/delivered-download-icon.svg" alt="dashboard" class="img-fluid"></button>
+                      <button type="button">
+                        <img src="{{ asset('_assets/_client/images/delivered-download-icon.svg') }}" alt="dashboard" class="img-fluid">
+                      </button>
                       <p>Source File.zip</p>
                     </a>
                 </div>
               </div>
               <div class="col-sm-6 col-md-4 col-lg-2">
                 <div class="delivered-files">
-                    <img src="./images/delivered-img-two.svg" alt="dashboard" class="img-fluid">
+                    <img src="{{ asset('_assets/_client/images/delivered-img-two.svg') }}" alt="dashboard" class="img-fluid">
                     <a href="#" class="d-flex justify-content-center align-items-center">
-                      <button type="button"><img src="./images/delivered-download-icon.svg" alt="dashboard" class="img-fluid"></button>
+                      <button type="button">
+                        <img src="{{ asset('_assets/_client/images/delivered-download-icon.svg') }}" alt="dashboard" class="img-fluid">
+                      </button>
                       <p>Source File.zip</p>
                     </a>
                 </div>
               </div>
               <div class="col-sm-6 col-md-4 col-lg-2">
                 <div class="delivered-files">
-                    <img src="./images/delivered-img-three.svg" alt="dashboard" class="img-fluid">
+                    <img src="{{ asset('_assets/_client/images/delivered-img-three.svg') }}" alt="dashboard" class="img-fluid">
                     <a href="#" class="d-flex justify-content-center align-items-center">
-                      <button type="button"><img src="./images/delivered-download-icon.svg" alt="dashboard" class="img-fluid"></button>
+                      <button type="button">
+                        <img src="{{ asset('_assets/_client/images/delivered-download-icon.svg') }}" alt="dashboard" class="img-fluid">
+                      </button>
                       <p>Image.jpg</p>
                     </a>
                 </div>
