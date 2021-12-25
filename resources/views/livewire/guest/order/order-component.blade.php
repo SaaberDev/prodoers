@@ -142,7 +142,7 @@
                                            placeholder="Promo Code"
                                     >
                                     @if($errors->has('form.coupon'))
-                                        <span class="error-message" style="padding: 6px 0 0 0;">
+                                        <span class="error-message" style="padding: 10px 0 0 0;">
                                             <p>{{ $errors->first('form.coupon') }}</p>
                                         </span>
                                     @endif
@@ -194,6 +194,7 @@
 
                 <div class="col-lg-5 col-md-5 d-md-block d-none ">
                     <div class="Instruction">
+
                         <h3>Instruction</h3>
                         <ul>
                             @forelse($service->serviceCategories->serviceCategoryInstructions as $instructions)
@@ -413,7 +414,14 @@
                         <p class="p-order">Order Requirement</p>
                     </div>
                     <div class="col-5">
+                        
                         <div class="tol-tip">
+                            <a href="#" class="a" data-bs-toggle="modal" data-bs-target="#instructionModal">Instruction (?)</a>
+                        </div>
+
+                        @include('guest.includes.modal.instruction')
+
+                        <!-- <div class="tol-tip">
                             <a href="#" class="a">Instruction (?)</a>
                             <p class="p">
                                 <span>
@@ -425,7 +433,9 @@
                                 </span>
                                 {{ $service->serviceCategories->order_instruction_desc }}
                             </p>
-                        </div>
+                        </div> -->
+
+
                     </div>
                 </div>
 

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="92" height="92" viewBox="0 0 92 92">
+  <g id="Group_809" data-name="Group 809" transform="translate(-776.281 -812)">
+    <g id="Group_711" data-name="Group 711">
+      <g id="Group_710" data-name="Group 710" transform="translate(112.82 20)">
+        <rect id="Rectangle_1127" data-name="Rectangle 1127" width="92" height="92" transform="translate(663.461 792)" fill="#ededed"/>
+      </g>
+      <g id="Icon_feather-image" data-name="Icon feather-image" transform="translate(798.857 834.576)">
+        <path id="Path_66" data-name="Path 66" d="M8.705,4.5H38.142a4.205,4.205,0,0,1,4.205,4.205V38.142a4.205,4.205,0,0,1-4.205,4.205H8.705A4.205,4.205,0,0,1,4.5,38.142V8.705A4.205,4.205,0,0,1,8.705,4.5Z" transform="translate(0 0)" fill="none" stroke="#cbcbcb" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+        <path id="Path_67" data-name="Path 67" d="M16.808,13.654A3.154,3.154,0,1,1,13.654,10.5,3.154,3.154,0,0,1,16.808,13.654Z" transform="translate(2.411 2.411)" fill="none" stroke="#cbcbcb" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+        <path id="Path_68" data-name="Path 68" d="M41.142,25.513,30.629,15,7.5,38.129" transform="translate(1.205 4.219)" fill="none" stroke="#cbcbcb" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+      </g>
+    </g>
+  </g>
+</svg>

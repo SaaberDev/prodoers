@@ -1,0 +1,916 @@
+/*Responsive Style for Extra Small Devices*/
+@media (min-width: 320px) and (max-width:575.98px){
+
+    /*Mobile Header CSS*/
+    img.img-fluid.img-2 {
+        width: 140px;
+    }
+    /*Mobile Header CSS*/
+
+    /*Navbar Style Area*/
+    .menu .dropdown-profile {
+        margin-left: 0px;
+    }
+    .menu li:nth-child(2) a::after {
+        background: none;
+    }
+    .menu > li:nth-child(5) > a::after {
+        right: 100%!important;
+        left: 10px;
+        top:22px;
+    }
+    .menu > li:not(:last-child) {
+         margin-right: 0px; 
+    }
+    .menu > li > a {
+        font-size: 16px;
+    }
+    .dropdown-notification .dropdown-menu li {
+        padding: 8px 10px;
+    }
+    .dropdown-notification .dropdown-menu li .notification-menu p {
+        font-size: 16px;
+    }
+    .dropdown-notification .dropdown-menu li .notification-menu .mark-btn {
+        font-size:14px;
+    }
+    .dropdown-notification .dropdown-menu.show {
+        width: 100%;
+    }
+    /*Navbar Style Area*/
+
+    /*profile Section Start*/
+    .dashboard-main {
+        padding: 50px 0px;
+    }
+    .profile {
+        margin-top: 20px;
+        padding: 15px 0px;
+        margin-bottom: 25px;
+    }
+    .profile-name h3 {
+        font-size: 16px;
+    }
+    .profile-img >img {
+        width: 90px;
+        height: 90px;
+    }
+    .profile-info{
+        margin-bottom: 30px;
+        justify-content: center;
+    }
+    .profile-name h3, 
+    .profile-name p:nth-child(2), 
+    .profile-name p:nth-child(3) {
+        margin-bottom: 8px!important;
+    }
+    /*profile Section End*/
+
+    /*Earn Info Section Start*/
+    .earn-info h3 {
+        font-size: 20px;
+    }
+    .earn-info {
+        padding-right: 0; 
+        padding-left: 0;
+        text-align: center; 
+    }
+
+    .project-spent div span {
+        font-size: 18px;
+        margin-right: 15px;
+    }
+    .project-spent div:not(:last-child) {
+        padding-right: 0px;
+        margin-right: 27px;
+    }
+    .project-spent{
+        flex-wrap: wrap;
+    }
+    .project-spent div:not(:last-child) {
+        padding-right: 0;
+        margin-right: 0;
+        border-right: 0;
+        margin-bottom: 6px; 
+    }
+    .earn-info h3 {
+        font-size: 15px;
+    }
+    .project-spent-sm-area .col-lg-12{
+        padding: 0;
+    }
+    .project-spent-sm{
+        background: var(--white);
+        padding: 12px 24px;
+        border-radius: 5px;
+        margin-bottom: 25px;
+        box-shadow: 0px 3px 10px #2125291a;
+        text-align: center;
+    }
+    .project-spent-sm h5{
+        font-size:16px;
+    }
+    .project-spent-sm p{
+        font-size:18px;
+        font-weight: 500;
+    }
+    .recent-orders-row{
+        margin-top: 20px;
+    }
+    .project-spent div{
+        display:none;
+    }
+    /*Earn Info Section End*/
+
+    /*Order Table Row and Col*/
+    .recent-orders p, .recent-orders a {
+        font-size: 17px;
+    }
+    table{
+        width: 300% !important;
+        border-spacing: 0px 18px;
+    }
+    td{
+        padding:10px 22px!important;
+    }
+    td p.ongoing,
+    td p.delivered,
+    td p.in-revision {
+        width: 105px;
+        padding: 2px 12px;
+
+    }
+    .show-item label{
+        margin-right: 8px;
+    }
+    /*Order Table Row and Col*/
+
+    /*All Orders Area*/
+   .show-item-box{
+       margin:25px 0px;
+   }
+    .all-orders-pagination{
+        margin: 0!important;
+    }
+    .order-pagination{
+        margin: 0 auto;
+    }
+    .order-pagination nav ul li:first-child .page-link {
+        margin-left: 0!important;
+    }
+    .show-item-box label{
+        margin-right: 18px;
+    }
+    /*All Orders Area*/
+
+    /*Setting Section Start*/
+    .general-setting input.email,
+    .general-setting input.website,
+    .billing-setting input.company-name,
+    .billing-setting input.taxid{
+        margin-bottom: 15px;
+    }
+    .general-setting textarea.street-address, 
+    .billing-setting textarea.billing-address {
+        height: 60px;
+    }
+    .general-setting input.zip-code,
+    .billing-setting input.billing-zip-code {
+        margin-left: 0px;
+    }
+    .profile-setting {
+        margin-top: 40px;
+    }
+    /*Setting Section End*/
+
+    /*All notifications*/
+    .dashboard nav ol li a {
+        font-size: 15px;
+    }
+    .all-notifications {
+        padding: 15px 5px;
+    }
+    .mark-btn .btn, .load-btn .btn {
+        font-size: 15px;
+    }
+    .single-notifications {
+        padding-top: 20px;
+        font-size: 14px;
+    }
+    .single-notifications a {
+        font-size: 14px;
+    }
+    .pending-order-img{
+        text-align: center;
+    }
+    .pending-order-img img{
+        width: 100%;
+    }
+    /*All notifications*/
+
+    /*Pending Orders Section*/
+    .dashboard nav ol li a {
+        font-size: 14px;
+    }
+    .requirement-details{
+        margin-top: 25px;
+    }
+    .requirement-details h3{
+        font-size:18px;
+        margin-bottom: 0!important;
+    }
+    .requirement-details .row{
+        margin-right: calc(var(--bs-gutter-x)/ -2)!important;
+        margin-left: calc(var(--bs-gutter-x)/ -2)!important;
+    }
+    .orders-info{
+        margin-bottom: 15px;
+    }
+    .orders-info p {
+        font-size: 15px;
+    }
+    .order-status{
+        margin-top: 10px;
+    }
+    .order-status p:first-child {
+        font-size: 20px;
+    }
+    .order-status p:not(:first-child) {
+        font-size: 17px;
+    }
+    .accordion-body-text > p {
+        font-size: 14px;
+    }
+    .accordion-header-text .accordion-button {
+        font-size: 18px;
+    }
+    .contact-soon-notice p {
+        font-size: 18px;
+    }
+    .accordion-header-text .accordion-button {
+        height: 60px;
+    }
+    /*Pending Orders Section*/
+
+    /*Complete Order Section*/
+    .chat {
+        padding: 25px 5px;
+    }
+    .client-text-area, .my-text-area {
+        padding: 10px 10px;
+    }
+    .client-img {
+        padding-right: 15px;
+    }
+    /* .my-img {
+        padding-left: 15px;
+    } */
+    .rating-review {
+        margin-bottom: 35px;
+        max-width: 100%;
+    } 
+    .client-img img,
+    .my-img img {
+        max-width: 30px;
+    }
+
+    .row.client-chat .col-1{
+        padding-left: 0;
+    }
+    .row.client-chat .col-11{
+        padding-left: 16px;
+    }
+    .row.my-chat .col-11{
+        padding-right: 1rem;
+    }
+    .row.my-chat .col-1{
+        padding-left: 0;
+    }
+
+    .client-files ul li,
+    .my-files ul li{
+        margin-right: 5px!important;
+        margin-bottom: 6px!important;
+    }  
+    .chat-text-upload-area {
+        padding: 8px 5px 8px 10px;
+        font-size: 14px;
+    }
+    .chat-upload-files label {
+        margin-right: 5px;
+    }
+    .chat-upload-files input[type="text"] {
+        padding: 6px 5px;
+
+    }
+    .delivered-files{
+        text-align:center;
+    }
+    .delivered-files-area.rating-review-area {
+        margin-top: 90px;
+    }
+    .delivered-notice p {
+        font-size: 16px;
+    }
+    .confirm-decline-btn .decline-btn {
+        margin-top: 20px;
+        margin-left: 0px;
+    }
+    .chat-submit-btn button img {
+        width:35px;
+    }
+    /*Complete Order Section*/
+
+    /*Modal Area*/
+    .modal-dialog.accept-modal {
+        min-width: 95%; 
+    }
+   .modal-content {
+       padding: 15px 5px;
+        margin-right: -15px;
+    }
+   .modal-dialog.decline-modal {
+       min-width: 95%; 
+    }
+    .modal-header .btn-close{
+        padding-right: 20px;
+    }
+    .accept-order h3 {
+        font-size: 24px;
+    }
+    .accept-order p {
+        font-size: 16px;
+    }
+    .modal-body{
+        padding:8px;
+    }
+    .accept-order ul li:not(:last-child) {
+        margin-right: 10px;
+    }
+    .accepted-text p {
+        font-size: 22px;
+    }
+   /*Modal Area*/
+
+   /*Footer Row*/
+   .footer .row{
+       align-items: center;
+   }
+   /*Footer Row*/
+
+
+}
+/*Responsive Style for Small Devices*/
+@media (min-width: 576px) and (max-width:767.98px){
+    /*Navbar Style Area*/
+    .menu .dropdown-profile {
+        margin-left: 0px;
+    }
+    .menu li:nth-child(2) a::after {
+        background: none;
+    }
+    .menu > li:nth-child(5) > a::after {
+        right: 100%!important;
+        left: 10px;
+        top:22px;
+    }
+    .menu > li:not(:last-child) {
+         margin-right: 0px; 
+    }
+    .menu > li > a {
+        font-size: 16px;
+    }
+    .dropdown-notification .dropdown-menu li {
+        padding: 8px 10px;
+    }
+    .dropdown-notification .dropdown-menu li .notification-menu p {
+        font-size: 16px;
+    }
+    .dropdown-notification .dropdown-menu li .notification-menu .mark-btn {
+        font-size:14px;
+    }
+    .dropdown-notification .dropdown-menu.show {
+        width: 100%;
+    }
+    /*Navbar Style Area*/
+
+    /*profile Section Start*/
+    .profile {
+        margin-top: 20px;
+        padding: 25px 15px;
+        padding-bottom: 25px;
+    }
+    .profile-img >img {
+        width: 100px;
+        height: 100px;
+    }
+    .profile-info{
+        margin-bottom: 30px;
+        justify-content: center;
+    }
+    .profile-name h3, 
+    .profile-name p:nth-child(2), 
+    .profile-name p:nth-child(3) {
+        margin-bottom: 8px!important;
+    }
+    /*profile Section End*/
+
+    /*Earn Info Section Start*/
+    .earn-info h3 {
+        font-size: 20px;
+    }
+    .earn-info {
+        padding-right: 0; 
+        padding-left: 0;
+        text-align: center; 
+    }
+    .project-spent div span {
+        font-size: 20px;
+    }
+    .project-spent div:not(:last-child) {
+        padding-right: 10px;
+        margin-right: 25px;
+    }
+    .project-spent-sm-area .col-lg-12{
+        padding: 0;
+    }
+    .project-spent-sm{
+        background: var(--white);
+        padding: 12px 24px;
+        border-radius: 5px;
+        margin-bottom: 25px;
+        box-shadow: 0px 3px 10px #2125291a;
+        text-align: center;
+    }
+    .project-spent-sm h5{
+        font-size:18px;
+    }
+    .project-spent-sm p{
+        font-size:20px;
+        font-weight: 500;
+    }
+    .recent-orders-row{
+        margin-top: 20px;
+    }
+    .project-spent div{
+        display:none;
+    }
+    /*Earn Info Section End*/
+
+    /*Order Table Row and Col*/
+    .all-orders-pagination{
+        margin: 0!important;
+    }
+    .order-pagination{
+        width:55%;
+    }
+    .order-text {
+        width:100%;
+    }
+    .show-item label{
+        margin-right: 8px;
+    }
+    table{
+        width: 200% !important;;
+    }
+    .all-orders-row {
+        margin-bottom: 30px;
+    }
+    .show-item-box input {
+        width: 115px;
+    }
+    /*Order Table Row and Col*/
+
+    /*Setting Section Start*/
+    .general-setting input.email,
+    .general-setting input.website,
+    .billing-setting input.company-name,
+    .billing-setting input.taxid{
+        margin-bottom: 15px;
+    }
+    .general-setting input.zip-code,
+    .billing-setting input.billing-zip-code {
+        margin-left: 0px;
+    }
+    .profile-setting {
+        margin-top: 40px;
+    }
+    /*Setting Section End*/
+
+    /*All notifications*/
+    .dashboard nav ol li a {
+        font-size: 15px;
+    }
+    .all-notifications {
+        padding: 15px 5px;
+    }
+    .mark-btn .btn, .load-btn .btn {
+        font-size: 15px;
+    }
+    .single-notifications {
+        padding-top: 20px;
+        font-size: 15px;
+    }
+    .single-notifications a {
+        font-size: 15px;
+    }
+    /*All notifications*/
+
+    /*Pending Orders Section*/
+    .requirement-details{
+        margin-top: 25px;
+    }
+    .requirement-details h3{
+        font-size:22px;
+        margin-bottom: 0!important;
+    }
+    .requirement-details .row{
+        margin-right: calc(var(--bs-gutter-x)/ -2)!important;
+        margin-left: calc(var(--bs-gutter-x)/ -2)!important;
+    }
+    .orders-info p {
+        font-size: 15px;
+    }
+    .order-status p:first-child {
+        font-size: 22px;
+    }
+    .order-status p:not(:first-child) {
+        font-size: 17px;
+    }
+    .accordion-body-text > p {
+        font-size: 15px;
+    }
+    .accordion-header-text .accordion-button {
+        font-size: 18px;
+    }
+    .contact-soon-notice p {
+        font-size: 18px;
+    }
+    /*Pending Orders Section*/
+
+    /*Complete Order Section*/
+    .chat {
+        padding: 30px 12px;
+    }
+    .chat-submit-btn button img {
+        width:40px;
+    }
+    .chat-text-upload-area {
+        padding: 12px;
+    }
+    .delivered-files-area.rating-review-area {
+        margin-top: 100px;
+    }
+    .client-img {
+        padding-right: 20px;
+    }
+    
+    .rating-review {
+        margin-bottom: 35px;
+        max-width: 100%;
+    }
+    .my-img img{
+        max-width: 35px;
+    }
+    .client-img img{
+        max-width: 35px;
+    }
+    .row.client-chat .col-11{
+        padding-left: 0.75rem;
+    }
+    .row.client-chat .col-1{
+        padding-left: 0;
+    }
+    /*Complete Order Section*/
+
+    /*Modal Area*/
+    .modal-dialog.accept-modal {
+         min-width: 95%; 
+    }
+    .modal-content {
+        padding: 15px 10px;
+    }
+    .modal-dialog.decline-modal {
+        min-width: 95%; 
+   }
+    /*Modal Area*/
+
+}
+/*Responsive style for tablet device*/
+@media (min-width: 768px) and (max-width:991.98px) {
+    /*Header Section Start*/
+    .menu > li:not(:last-child) {
+        margin-right: 10px;
+    }
+    .menu > li:nth-child(2) {
+        padding-right: 10px;
+    }
+    .menu .dropdown-profile {
+        margin-left: 15px;
+    }
+    .menu > li > a {
+        font-size: 17px;
+    }
+    .dropdown-notification .dropdown-menu.show {
+        left: -330px;
+    }
+   
+    /*Header Section End*/
+
+    /*Dashboard Main Section Start*/
+    .dashboard-main {
+        padding: 60px 0px;
+    }
+    /*Dashboard Main Section End*/
+
+    /*Profile Section Start*/
+    .profile {
+        padding: 15px 10px;
+    }    
+    .profile-name h3, 
+    .profile-name p:nth-child(2) {
+        margin-bottom: 6px!important;
+    }
+    .profile-img {
+        margin-right: 15px;
+    }
+    .profile-img img{
+        width:90px;
+        height: 90px;
+    }
+    .profile-name h3 {
+        font-size: 15px;
+    }
+    .profile-info{
+        border-right: 1px solid #D6D6D6;
+    }
+    .earn-info {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    .project-spent div{
+        display: block;
+        text-align: center;
+    }
+    .project-spent div span {
+        font-size: 16px;
+    }
+    .project-spent div:not(:last-child) {
+        padding-right: 12px;
+        margin-right: 12px;
+    }
+    .project-spent div p {
+        line-height: 22px;
+        font-size: 15px;
+    }
+    /*Profile Section End*/
+
+    /*Order Table Section Start*/
+    .recent-orders p, .recent-orders a {
+        font-size: 18px;
+    }
+    .order-text {
+        width: 300px;
+    }
+    /*Order Table Section End*/
+
+    /*Profile Setting Section Start*/
+    .profile-setting {
+        margin-top: 35px;
+    }
+    .profile-img label img {
+        bottom: -20px;
+        width:28px;
+    }
+    .setting-update button[type="submit"] {
+        width: 150px;
+        height: 45px;
+        margin-top: 55px;
+    }
+    /*Profile Setting Section End*/
+
+    /*General Setting Section Start*/
+    .number-code select {
+        width: 110px;
+        right: 5px;
+        height:50px !important
+    }
+    .general-setting input, .password-setting input, .billing-setting input {
+        padding-left: 15px;
+        height: 50px !important;;
+    }
+    .general-setting input.street-address,
+    .billing-setting input.billing-address {
+        height: 100%!important;
+    }
+    /*General Setting Section End*/
+
+    /*Pending Order- Order Status*/
+
+    /*Need to change this style*/
+    .order-status{
+        margin-top: 25px;
+    }
+    .contact-soon-notice p {
+        font-size: 20px;
+    }
+    /*Pending Order- Order Status*/
+
+    /*Chat Section Start*/
+    .client-img{
+        padding-right: 25px;
+    }
+    /* .my-img{
+        padding-left:25px;
+    } */
+
+    .my-img img {
+        max-width: 40px;
+    }
+    .client-img img {
+        max-width: 40px;
+    }
+    .row.client-chat .col-11{
+        padding-left: 0.75rem;
+    }
+    
+    /*Chat Section End*/
+
+    /*Delivered Order Section Start*/
+    .rating-review {
+        max-width: 85%;
+    }
+    /*Delivered Order Section End*/
+
+    /*Pending Orders Section*/
+    .orders-info p {
+        font-size: 15px;
+        line-height:30px
+    }
+    .order-status p:first-child {
+        font-size: 20px;
+    }
+    .pending-order-img{
+        margin-top: 10px;
+    }
+    .accordion-body-text > p {
+        font-size: 15px;
+    }
+    .earn-info h3 {
+        font-size: 16px;
+    }
+    .recent-orders p{
+        margin-right: 30px;
+    }
+    .requirement-details .row > .col-sm-6{
+        padding-left: 0;
+    }
+    
+    /*Pending Orders Section*/
+
+    /*Complete Order Section*/
+    .rating-review {
+        margin-bottom: 35px;
+    }
+    /*Complete Order Section*/
+
+    
+    
+}
+/*Responsive style for Laptop device*/
+@media (min-width: 992px) and (max-width:1199.98px) {
+
+    /*Header Section Start*/
+    .menu > li:not(:last-child) {
+        margin-right: 30px;
+    }
+    .menu > li:nth-child(2) {
+        padding-right: 30px;
+    }
+    /*Header Section End*/
+
+    /*Profile Section Start*/
+    .profile {
+        padding: 18px 20px;
+    }
+    .profile-name h3, 
+    .profile-name p:nth-child(2) {
+        margin-bottom: 8px!important;
+    }
+    .profile-name h3 {
+        font-size: 18px;
+    }
+    .profile-img >img {
+        width: 85px;
+        height: 85px;
+    }
+    .earn-info {
+        padding-left: 25px;
+    }
+    .project-spent div span {
+        font-size: 23px;
+    }
+    .project-spent div:not(:last-child) {
+        padding-right: 25px;
+        margin-right: 25px;
+    }
+    .recent-orders p, .recent-orders a {
+        font-size: 18px;
+    }
+    /*Profile Section End*/
+
+    /*Chat Section Start*/
+    .client-img{
+        padding-right: 30px;
+    }
+    .my-img{
+        padding-left:10px;
+    }
+    /* .row.client-chat .col-11{
+        padding-left: 0.75rem;
+    } */
+    .row.client-chat .col-1{
+        padding-right: 0.75rem;
+        padding-left: 0;
+    }
+    .my-img img,
+    .client-img img{
+        max-width: 40px;
+    }
+    /*Chat Section End*/
+
+    /*Delivered Order Section Start*/
+    .delivered-files button > img {
+        margin-right: 10px;
+    }
+    .delivered-files p {
+        font-size: 14px;
+    }
+    /*Delivered Order Section End*/
+
+    /*Pending Orders Requirement*/
+    .dashboard-main {
+        padding: 55px 0px;
+    }
+    .requirement-details .row{
+        margin-right: calc(var(--bs-gutter-x)/ -2)!important;
+        margin-left: calc(var(--bs-gutter-x)/ -2)!important;
+    }
+    .requirement-details h3{
+        margin-bottom: 0;
+    }
+    .orders-info p {
+        line-height: 29px;
+    }
+    .order-status p:first-child {
+        font-size: 20px;
+    }
+    .order-status p:not(:first-child) {
+        margin-top: 5px;
+    }
+    .pending-order-img{
+        margin-top: 10px;
+    }
+    /*Pending Orders Requirement*/
+
+}
+
+/*Responsive style for Extra large device*/
+@media (min-width: 1200px) and (max-width:1399.98px) {
+
+    /*Earn Info Part Start*/
+    .earn-info{
+        padding-right: 0;
+        padding-left: 25px;
+    }
+    .requirement-details .row > .col-sm-6{
+        padding-left: 0;
+    }
+    .my-img img,
+    .client-img img{
+        max-width: 40px;
+    }
+    /*Earn Info Part Start*/
+    
+}
+
+/*Responsive style for Extra Extra large device*/
+@media (min-width: 1400px) and (max-width:1599.98px) {
+    .requirement-details .row > .col-sm-6{
+        padding-left: 0;
+    }
+}
+
+/*Responsive style for Extra Extra Extra large device*/
+@media (min-width: 1600px) and (max-width:1799.98px) {
+    .requirement-details .row > .col-sm-6{
+        padding-left: 0;
+    }
+}
+
+/*Responsive style for Extra Extra Extra large device*/
+@media (min-width: 1800px){
+    .requirement-details .row > .col-sm-6{
+        padding-left: 0;
+    }
+}
