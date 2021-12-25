@@ -23,11 +23,6 @@ class InvoiceFactory extends Factory
     {
         return [
             'invoice_number' => $this->faker->uuid,
-            'billing_name' => $this->faker->name,
-            'billing_company_name' => $this->faker->company,
-            'billing_address' => $this->faker->address,
-            'billing_phone' => $this->faker->phoneNumber,
-            'billing_email' => $this->faker->companyEmail,
         ];
     }
 }

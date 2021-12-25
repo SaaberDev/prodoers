@@ -17,11 +17,17 @@ class AuthenticatedSessionController extends Controller
     /**
      * Display the login view.
      *
-     * @return Application|Factory|View|\Illuminate\View\View
+     * @return bool
      */
     public function create()
     {
-        return view('auth.login');
+        session()->put('auth_modal', session('url.current') ?? 'login');
+        return back();
+//        if (\Route::is('login')) {
+//            return ba;
+//        } else {
+//            return false;
+//        }
     }
 
     /**

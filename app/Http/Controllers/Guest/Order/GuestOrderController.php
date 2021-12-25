@@ -24,4 +24,18 @@
 
             return view('guest.pages.order_requirements', compact('service'));
         }
+
+        /**
+         * @return Application|Factory|View
+         */
+        public function confirmation()
+        {
+            $orderData = [];
+            if (\Session::has('confirmation')) {
+                $orderData = \Session::get('confirmation');
+            }
+
+//            dd($orderData['data']->services->first());
+            return view('guest.pages.order-confirmation', compact('orderData'));
+        }
     }

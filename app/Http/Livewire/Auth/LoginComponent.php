@@ -22,12 +22,17 @@ class LoginComponent extends Component
     ];
     public $remember;
 
-    protected $listeners = ['refreshErrors'];
+    protected $listeners = ['refreshErrors', 'resetSession'];
 
     public function refreshErrors()
     {
         $this->resetValidation();
         $this->reset('form', 'remember');
+    }
+
+    public function resetSession()
+    {
+        \Session::forget('auth_modal');
     }
 
     protected $rules = [
@@ -56,21 +61,6 @@ class LoginComponent extends Component
 
         $this->authenticate();
         request()->session()->regenerate();
-
-        if (Auth::check() && Auth::user()->hasAnyRole(['super_admin', 'admin'])) {
-            session()->flash('url.intended');
-            return redirect()->to(RouteServiceProvider::DASHBOARD);
-        }
-        if (Auth::check() && Auth::user()->hasRole('user')) {
-            // Get intended url
-            $intended = request()->session()->get('url.intended');
-            // Check & flash intended url
-            if ($intended){
-                session()->flash('url.intended');
-                return redirect()->to($intended);
-            }
-            return redirect()->to(url()->previous());
-        }
 
         return redirect()->route('login');
     }

@@ -10,6 +10,7 @@
     use PayPalCheckoutSdk\Orders\OrdersCaptureRequest;
     use PayPalCheckoutSdk\Orders\OrdersCreateRequest;
     use PayPalHttp\HttpResponse;
+    use Throwable;
 
     class PaypalOrder implements BillingInterface
     {
@@ -47,29 +48,6 @@
         }
 
         /**
-         * When user cancel the payment this will simply forget order session data and regenerate new session token
-         */
-        public function cancelPayment()
-        {
-            session()->forget(['item', 'other']);
-            session()->regenerate();
-        }
-
-
-        /**
-         * @param $order_id
-         * @return HttpResponse
-         * @throws \Throwable
-         */
-        public function successPayment($order_id): HttpResponse
-        {
-            $request = new OrdersCaptureRequest($order_id);
-            $request->headers["prefer"] = "return=representation";
-
-            return $this->client->client()->execute($request);
-        }
-
-        /**
          * @param $pay_type
          * @param $data
          * @return array
@@ -95,7 +73,7 @@
                         'items' => $orderItems,
                         "reference_id" => $data['reference_id'],
                         "description" => $data['product_desc'],
-                        "invoice_id" => $data['invoice_id'],
+                        "invoice_id" => $data['invoice_number'],
                         "amount" => [
                             "value" => $data['pay_amount'],
                             "currency_code" => "USD",
@@ -113,12 +91,34 @@
                 "application_context" => [
                     "cancel_url" => config('payment_gateway.return_url.cancel_url') . $pay_type,
                     "return_url" => config('payment_gateway.return_url.success_url') . $pay_type,
-                    'brand_name' => 'designwala',
+                    'brand_name' => 'ProDoers',
                     'locale' => 'en-US',
                     'landing_page' => 'LOGIN',
                     'shipping_preference' => 'NO_SHIPPING',
                     'user_action' => 'PAY_NOW',
                 ]
             ];
+        }
+
+        /**
+         * When user cancel the payment this will simply forget order session data and regenerate new session token
+         */
+        public function cancelPayment()
+        {
+            session()->forget(['item', 'other']);
+            session()->regenerate();
+        }
+
+        /**
+         * @param $order_id
+         * @return HttpResponse
+         * @throws Throwable
+         */
+        public function successPayment($order_id): HttpResponse
+        {
+            $request = new OrdersCaptureRequest($order_id);
+            $request->headers["prefer"] = "return=representation";
+
+            return $this->client->client()->execute($request);
         }
     }

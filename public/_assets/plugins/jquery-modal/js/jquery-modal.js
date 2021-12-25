@@ -111,6 +111,10 @@
             modalCtms.pop();
             this.unblock();
             this.hide();
+            // Removes error message when modal hides
+            Livewire.emit('refreshErrors')
+            // Removes auth_modal session when modal closes
+            Livewire.emit('resetSession')
             if (!$.modalCtm.isActive())
                 $(document).off('keydown.modalCtm');
         },
@@ -166,6 +170,8 @@
 
             // Removes error message when modal hides
             Livewire.emit('refreshErrors')
+            // Removes auth_modal session when modal hides
+            Livewire.emit('resetSession')
 
 
             var _this = this;

@@ -27,14 +27,22 @@
             foreach ($guards as $guard) {
                 // Admin dashboard redirect
                 if (Auth::guard($guard)->check() && Auth::user()->hasAnyRole(['super_admin', 'admin'])) {
-                    return redirect()->intended(RouteServiceProvider::DASHBOARD);
+                    if (\Session::has('auth_modal')) {
+                        return redirect(session('url.intended'));
+                    } else {
+                        return redirect()->intended(RouteServiceProvider::DASHBOARD);
+                    }
                 }
                 // Designwala dashboard redirect
                 // ....
 
                 // User redirect
                 if (Auth::guard($guard)->check() && Auth::user()->hasRole('user')) {
-                    return redirect()->intended(RouteServiceProvider::HOME);
+                    if (\Session::has('auth_modal')) {
+                        return redirect(session('url.intended'));
+                    } else {
+                        return redirect()->intended(RouteServiceProvider::HOME);
+                    }
                 }
             }
 

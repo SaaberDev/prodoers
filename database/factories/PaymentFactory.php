@@ -22,9 +22,9 @@ class PaymentFactory extends Factory
     public function definition()
     {
         return [
+            'order_id' => rand(1, 10),
             'paid_amount' => 100,
             'transaction_id' => $this->faker->uuid,
-            'discount' => 10,
             'payment_method' => $this->faker->randomElement(['paypal', 'visa', 'bkash', 'mastercard']),
             'payment_status' => $this->faker->randomElement(['paid', 'failed'])
         ];

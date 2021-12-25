@@ -16,15 +16,15 @@ namespace App\Models{
  *
  * @mixin IdeHelperAssignOrder
  * @property int $id
- * @property int $order_id
- * @property int $user_id
+ * @property int|null $order_id
+ * @property int|null $user_id
  * @property string $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Order[] $assignOrderLogs
  * @property-read int|null $assign_order_logs_count
- * @property-read \App\Models\Order $orders
- * @property-read \App\Models\User $users
+ * @property-read \App\Models\Order|null $orders
+ * @property-read \App\Models\User|null $users
  * @method static \Illuminate\Database\Eloquent\Builder|AssignOrder newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|AssignOrder newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|AssignOrder query()
@@ -44,13 +44,13 @@ namespace App\Models{
  *
  * @mixin IdeHelperAssignOrderLog
  * @property int $id
- * @property int $order_id
- * @property int $user_id
+ * @property int|null $order_id
+ * @property int|null $user_id
  * @property string $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\Order $orders
- * @property-read \App\Models\User $users
+ * @property-read \App\Models\Order|null $orders
+ * @property-read \App\Models\User|null $users
  * @method static \Illuminate\Database\Eloquent\Builder|AssignOrderLog newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|AssignOrderLog newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|AssignOrderLog query()
@@ -267,11 +267,6 @@ namespace App\Models{
  * @property int $id
  * @property int|null $order_id
  * @property string|null $invoice_number
- * @property string|null $billing_name
- * @property string|null $billing_company_name
- * @property string|null $billing_address
- * @property string|null $billing_phone
- * @property string|null $billing_email
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Order $orders
@@ -279,11 +274,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Invoice newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Invoice newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Invoice query()
- * @method static \Illuminate\Database\Eloquent\Builder|Invoice whereBillingAddress($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Invoice whereBillingCompanyName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Invoice whereBillingEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Invoice whereBillingName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Invoice whereBillingPhone($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Invoice whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Invoice whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Invoice whereInvoiceNumber($value)
@@ -299,11 +289,13 @@ namespace App\Models{
  *
  * @mixin IdeHelperOrder
  * @property int $id
- * @property int $user_id
- * @property int $service_id
+ * @property int|null $user_id
+ * @property int|null $service_id
  * @property string|null $order_number
+ * @property string|null $reference_id
  * @property string $requirements
  * @property string|null $applied_coupon
+ * @property float|null $discount
  * @property string $order_status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -314,8 +306,8 @@ namespace App\Models{
  * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection|\Spatie\MediaLibrary\MediaCollections\Models\Media[] $media
  * @property-read int|null $media_count
  * @property-read \App\Models\Payment $payments
- * @property-read \App\Models\Service $services
- * @property-read \App\Models\User $users
+ * @property-read \App\Models\Service|null $services
+ * @property-read \App\Models\User|null $users
  * @method static \Database\Factories\OrderFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|Order filterBy($column, $arg)
  * @method static \Illuminate\Database\Eloquent\Builder|Order newModelQuery()
@@ -323,9 +315,11 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Order query()
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereAppliedCoupon($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereDiscount($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereOrderNumber($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereOrderStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Order whereReferenceId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereRequirements($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereServiceId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereUpdatedAt($value)
@@ -368,7 +362,6 @@ namespace App\Models{
  * @property int|null $order_id
  * @property float|null $paid_amount
  * @property string|null $transaction_id
- * @property float|null $discount
  * @property string|null $payment_method
  * @property string $payment_status
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -379,7 +372,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Payment newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Payment query()
  * @method static \Illuminate\Database\Eloquent\Builder|Payment whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Payment whereDiscount($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Payment whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Payment whereOrderId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Payment wherePaidAmount($value)

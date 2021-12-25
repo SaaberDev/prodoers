@@ -180,7 +180,6 @@ return [
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
-        Torann\GeoIP\GeoIPServiceProvider::class,
 
         /**
          * Custom Service Providers
@@ -239,12 +238,5 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        /*
-         * 3rd Party Aliases
-         * */
-        'Image' => Intervention\Image\Facades\Image::class,
-        'GeoIP' => Torann\GeoIP\Facades\GeoIP::class,
-
     ],
-
 ];

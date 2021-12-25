@@ -22,7 +22,7 @@
                                     <span><img src="https://via.placeholder.com/30x30.png" alt=""></span>
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{ route('user.dashboard') }}">Dashboard</a>
+                                <a class="dropdown-item" href="{{ route('client.dashboard') }}">Dashboard</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}">Logout</a></div>
                         </li>
                     @endauth

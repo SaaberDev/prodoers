@@ -39,7 +39,6 @@
             $currency = \request()->input('currency');
 
             $sslc = new SslCommerzNotification();
-//            dd(\request()->all());
             return $sslc->orderValidate(\request()->all(), $tran_id, $amount, $currency);
         }
     }

@@ -4,8 +4,13 @@
 
     use App\Http\Controllers\Controller;
     use App\Repositories\Billing\BillingInterface;
+    use App\Repositories\Billing\PaymentGateway\Paypal\PaypalOrder;
+    use App\Repositories\Billing\PaymentGateway\SslCommerz\SslCommerz;
     use App\Repositories\Order\ProcessOrder;
     use Exception;
+    use Illuminate\Contracts\Foundation\Application;
+    use Illuminate\Contracts\View\Factory;
+    use Illuminate\Contracts\View\View;
     use Illuminate\Http\RedirectResponse;
     use Throwable;
 
@@ -14,11 +19,11 @@
         /**
          * @var BillingInterface
          */
-        public BillingInterface $billing;
+        public $billing;
         /**
          * @var ProcessOrder
          */
-        public ProcessOrder $processOrder;
+        public $processOrder;
 
         public function __construct(BillingInterface $billing, ProcessOrder $processOrder)
         {
@@ -60,15 +65,28 @@
                 $paypal_order_id = session('other.paypal_order_id');
                 $response = $this->billing->successPayment($paypal_order_id);
 
-                $response
-                    ? $this->processOrder->getData($response) && $this->clearSession()
-                    : $this->clearSession()
-                ;
-                return redirect()->route('test.index')->with('success', 'Nice it worked!');
+                if ($response) {
+                    $order = $this->processOrder->store($response);
+                    $this->clearSession();
+                    \Session::put('confirmation', [
+                        'status' => 'success',
+                        'title' => 'Order Successful',
+                        'message' => 'Your order has been successfully placed.',
+                        'data' => $order
+                    ]);
+
+                    return redirect()->route('guest.order.confirmation');
+                }
             } catch (Exception $exception) {
                 report($exception);
                 $this->clearSession();
-                return redirect()->route('test.index')->with('failed', 'Something went wrong. Contact ProDoers.');
+                return redirect()
+                    ->route('guest.order.confirmation')
+                    ->with([
+                        'status' => 'failed',
+                        'title' => 'Order Failed',
+                        'message' => 'Something went wrong. Contact ProDoers.'
+                    ]);
             }
         }
 
@@ -78,6 +96,12 @@
         public function cancelCheckout()
         {
             $this->billing->cancelPayment();
-            return redirect()->route('test.index')->with(['failed' => 'Payment has been cancelled.']);
+            return redirect()
+                ->intended(\URL::previous())
+                ->with([
+                    'status' => 'cancelled',
+                    'title' => 'Order Cancelled',
+                    'message' => 'Order has been cancelled.'
+                ]);
         }
     }

@@ -3,7 +3,7 @@
 
     namespace App\Repositories\Order;
 
-
+    use App\Models\Invoice;
     use App\Models\Order;
     use App\Models\Payment;
     use DB;
@@ -13,16 +13,14 @@
     class ProcessOrder extends GenerateOrder
     {
         /**
-         * @param $request
          * @param $data
          */
-        public function setData($request, $data)
+        public function setData($data)
         {
             if (session()->has(['item', 'other'])){
                 session()->forget(['item', 'other']);
             }
 
-            $order_number = Order::count() + 1;
             // Send payment param to make payment
             $order = [
                 'product_name' => $data['title'],
@@ -32,26 +30,26 @@
 
                 'user_id' => $data['user_id'],
                 'service_id' => $data['service_id'],
-                'requirements' => $request['requirements'],
+                'requirements' => $data['requirements'],
                 'pay_amount' => $data['pay_amount'],
                 'applied_coupon' => $data['applied_coupon'],
                 'discount' => $data['discount'],
-                'payment_method' => $request['paymentMethod'],
-                'currency' => $data['currency'],
+                'payment_method' => $data['payment_method'],
+//                'currency' => $data['currency'],
 
                 'tran_id' => uniqid(),
-                'reference_id' => config('payment_gateway.prefix.reference_id') . $order_number,
-                'invoice_id' => config('payment_gateway.prefix.invoice_id') . $order_number,
-                'order_number' => config('payment_gateway.prefix.order_number') . $order_number,
+                'reference_id' => uniqid(),
+                'invoice_number' => $this->codeGenerator->reference(Invoice::class, '-INV', 'invoice_number'),
+                'order_number' => $this->codeGenerator->reference(Order::class, '-PUR', 'order_number'),
 
-                'cus_name' => $data['cus_name'] ?? '',
-                'cus_email' => $data['cus_email'] ?? '',
-                'cus_add1' => $data['cus_add1'] ?? ' ',
+                'cus_name' => $data['cus_name'],
+                'cus_email' => $data['cus_email'],
+                'cus_add1' => $data['cus_add1'],
                 'cus_add2' => '',
                 'cus_city' => '',
-                'cus_postcode' => $data['cus_postcode'] ?? '',
-                'cus_country' => $data['cus_country'] ?? '',
-                'cus_phone' => $data['cus_phone'] ?? ' ',
+                'cus_postcode' => $data['cus_postcode'],
+                'cus_country' => $data['cus_country'],
+                'cus_phone' => $data['cus_phone'],
                 'cus_fax' => '',
 
                 'shipping_method' => 'NO',
@@ -63,28 +61,30 @@
                 'ship_postcode' => '',
                 'ship_phone' => '',
                 'ship_country' => '',
+
+                'value_a' => ''
             ];
             session()->put('item', $order);
         }
 
         /**
          * @param $response
+         * @return Order|\Illuminate\Database\Eloquent\Model|void
          * @throws Throwable
          */
-        public function getData($response)
+        public function store($response)
         {
-            $sessionData = \Session::get('item');
-            if (request()->input('payment_method') === 'paypal') {
-                $data = $this->orderData($sessionData);
-                $data['paid_amount'] = $response->result->purchase_units[0]->payments->captures[0]->amount->value;
-                $data['transaction_id'] = $response->result->purchase_units[0]->payments->captures[0]->id;
-                $data['invoice_id'] = $response->result->purchase_units[0]->invoice_id;
-                $data['payment_status'] = Payment::PAID;
-
+            // TODO -- issue Try ... catch
+            $data = \Session::get('item');
+            if (request()->input('payment_method') === Payment::PAYPAL) {
                 DB::beginTransaction();
                 try {
                     $order = $this->storeOrder($data);
                     if ($response->result->status == 'COMPLETED') {
+                        $data['paid_amount'] = $response->result->purchase_units[0]->payments->captures[0]->amount->value;
+                        $data['transaction_id'] = $response->result->purchase_units[0]->payments->captures[0]->id;
+                        $data['payment_status'] = Payment::PAID;
+                        $data['payment_method'] = Payment::PAYPAL;
                         $this->storePayment($data, $order);
                         // Generate Invoice
                         $this->storeInvoice($data, $order);
@@ -92,25 +92,25 @@
                         // TODO - Send Invoice through mail
                     } else {
                         $data['payment_status'] = Payment::FAILED;
+                        $data['payment_method'] = Payment::PAYPAL;
                         $this->storePayment($data, $order);
                     }
                     DB::commit();
+                    return $order;
                 } catch (Exception $exception) {
                     report($exception);
                     DB::rollBack();
                 }
-            } elseif (request()->input('payment_method') === 'visa') {
-                $info = request()->all();
-                $data = $this->orderData($sessionData);
-                $data['paid_amount'] = $info['amount'];
-                $data['transaction_id'] = $info['tran_id'];
-                $data['invoice_id'] = $info['value_a'];
-                $data['payment_status'] = Payment::PAID;
-
+            } elseif (request()->input('payment_method') === Payment::VISA) {
                 DB::beginTransaction();
                 try {
                     $order = $this->storeOrder($data);
+                    $order->payments()->create();
                     if ($response == true) {
+                        $data['paid_amount'] = $data['pay_amount'];
+                        $data['transaction_id'] = $data['tran_id'];
+                        $data['payment_status'] = Payment::PAID;
+                        $data['payment_method'] = Payment::VISA;
                         $this->storePayment($data, $order);
                         // Generate Invoice
                         $this->storeInvoice($data, $order);
@@ -118,27 +118,16 @@
                         // TODO - Send Invoice through mail
                     } else {
                         $data['payment_status'] = Payment::FAILED;
+                        $data['payment_method'] = Payment::VISA;
                         $this->storePayment($data, $order);
                     }
                     DB::commit();
+                    return $order;
                 } catch (Exception $exception) {
                     report($exception);
                     DB::rollBack();
                 }
             }
-        }
-
-        private function orderData($sessionData)
-        {
-            return [
-                'user_id' => $sessionData['user_id'],
-                'service_id' => $sessionData['service_id'],
-                'requirements' => $sessionData['requirements'],
-                'applied_coupon' => $sessionData['applied_coupon'],
-                'order_number' => $sessionData['order_number'],
-                'payment_method' => $sessionData['payment_method'],
-                'discount' => $sessionData['discount'],
-            ];
         }
 
         /**
