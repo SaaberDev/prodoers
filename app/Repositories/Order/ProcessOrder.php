@@ -105,9 +105,10 @@
                 DB::beginTransaction();
                 try {
                     $order = $this->storeOrder($data);
+                    $order->payments()->create();
                     if ($response == true) {
-                        $data['paid_amount'] = $response['amount'];
-                        $data['transaction_id'] = $response['tran_id'];
+                        $data['paid_amount'] = $data['pay_amount'];
+                        $data['transaction_id'] = $data['tran_id'];
                         $data['payment_status'] = Payment::PAID;
                         $data['payment_method'] = Payment::VISA;
                         $this->storePayment($data, $order);
