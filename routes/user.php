@@ -9,7 +9,7 @@
         // Dashboard
         Route::get('/dashboard', function () {
             return view('client.index');
-        })->name('dashboard.index');
+        })->name('dashboard');
 
 
         // Orders
