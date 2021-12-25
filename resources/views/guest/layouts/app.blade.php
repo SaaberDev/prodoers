@@ -52,6 +52,20 @@
 {{--</script>--}}
 {{-- End of Tawk.to Script --}}
 
+{{--@if(Auth::check())--}}
+    @if(Session::has('auth_modal') || Session::has('auth_modal') == 'login')
+        <script>
+            $('#logged_in').modalCtm({
+                closeExisting: true,
+                fadeDuration: 250
+            });
+
+            window.onpopstate = function() {
+                alert("pop!");
+            }
+        </script>
+    @endif
+{{--@endif--}}
 {{-- Internal Scripts --}}
 @stack('scripts')
 </body>

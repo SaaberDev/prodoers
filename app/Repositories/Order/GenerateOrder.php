@@ -42,14 +42,14 @@
          */
         public function storePayment($data, $order)
         {
-            if (request()->input('payment_method') === 'paypal') {
+            if (request()->input('payment_method') === Payment::PAYPAL) {
                 $paymentData['paid_amount'] = $data['paid_amount'];
                 $paymentData['transaction_id'] = $data['transaction_id'];
                 $paymentData['payment_method'] = $data['payment_method'];
                 $paymentData['payment_status'] = $data['payment_status'];
 
                 return $order->payments()->create($paymentData);
-            } elseif (request()->input('payment_method') === 'visa') {
+            } elseif (request()->input('payment_method') === Payment::VISA) {
                 $paymentData['paid_amount'] = $data['paid_amount'];
                 $paymentData['transaction_id'] = $data['transaction_id'];
                 $paymentData['payment_method'] = $data['payment_method'];
@@ -66,10 +66,10 @@
          */
         public function storeInvoice($data, $order)
         {
-            if (request()->input('payment_method') === 'paypal') {
+            if (request()->input('payment_method') === Payment::PAYPAL) {
                 $invoiceData['invoice_number'] = $data['invoice_number'];
                 return $order->invoices()->create($invoiceData);
-            } elseif (request()->input('payment_method') === 'visa') {
+            } elseif (request()->input('payment_method') === Payment::VISA) {
                 $invoiceData['invoice_number'] = $data['invoice_number'];
                 return $order->invoices()->create($invoiceData);
             }

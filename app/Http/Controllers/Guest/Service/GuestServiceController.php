@@ -41,6 +41,7 @@ class GuestServiceController extends Controller
         ]);
 
         request()->session()->put('url.intended', route('guest.order.index', $service->slug));
+        request()->session()->put('url.current', url()->current());
         return view('guest.pages.service_show', compact('service', 'related_services', 'tags'));
     }
 }

@@ -23,6 +23,11 @@ class PaymentServiceProvider extends ServiceProvider
         } elseif ($type === 'visa') {
             App::singleton(BillingInterface::class, SslCommerz::class);
         }
+
+        // $this->app->bind(BillingInterface::class, function ($app) {
+        //     return $app->make((request()->payment_method === 'paypal' ? PaypalOrder::class : '') ?? (request()->payment_method === 'visa' ? SslCommerz::class : ''));
+        // });
+
     }
 
     /**

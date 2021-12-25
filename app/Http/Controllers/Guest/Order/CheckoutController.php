@@ -76,14 +76,7 @@
                     ]);
 
                     return redirect()->route('guest.order.confirmation');
-                } else {
-                    $this->clearSession();
                 }
-//                $response
-//                    ? $this->processOrder->store($response) && $this->clearSession()
-//                    : $this->clearSession()
-//                ;
-
             } catch (Exception $exception) {
                 report($exception);
                 $this->clearSession();

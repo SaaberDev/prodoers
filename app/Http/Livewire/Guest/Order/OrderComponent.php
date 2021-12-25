@@ -61,10 +61,10 @@
                 // Billing Information
                 'cus_name' => Auth::user()->name ?? '',
                 'cus_email' => Auth::user()->email ?? '',
-                'cus_add1' => Auth::user()->userDetails->address ?? '',
+                'cus_add1' => Auth::user()->userDetails->address ?? ' ',
                 'cus_postcode' => Auth::user()->userDetails->postal_code ?? '',
                 'cus_country' => Auth::user()->userDetails->country ?? '',
-                'cus_phone' => Auth::user()->userDetails->phone ?? '',
+                'cus_phone' => Auth::user()->userDetails->phone ?? ' ',
             ];
             $processOrder->setData($data);
 

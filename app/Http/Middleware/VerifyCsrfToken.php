@@ -12,7 +12,7 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        '/test/checkout/success', '/test/checkout/cancel', '/test/checkout/fail'
+        '/services/checkout/success', '/services/checkout/cancel', '/services/checkout/fail'
         // '/test/checkout/ipn'
     ];
 }
