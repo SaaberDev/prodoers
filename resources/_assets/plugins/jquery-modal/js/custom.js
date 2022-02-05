@@ -1,6 +1,7 @@
-// Authentication Modal
 $('a[href="#sign_in"]').click(function (event) {
     event.preventDefault();
+    var action = 'sign_in';
+    callAuthAjax(action);
     $(this).modalCtm({
         closeExisting: true,
         fadeDuration: 250
@@ -22,6 +23,17 @@ $('a[href="#sign_up"]').click(function (event) {
         fadeDuration: 250
     });
 });
+
+function callAuthAjax(action) {
+    $.ajax({
+        url: '/login/detect-current-auth-url',
+        data: {action: action},
+        type: 'POST',
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+}
 
 //[Socialite] - Facebook redirect slug issue fix [This script replaces "#_=_" to null]
 if (window.location.hash && window.location.hash === '#_=_') {

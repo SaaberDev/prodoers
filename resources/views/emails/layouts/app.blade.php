@@ -8,7 +8,7 @@
     <link rel="icon" href="{{ asset('_assets/_guest/img/D.png') }}" type="image/png" sizes="16x16">
 
     {{-- Styles --}}
-    <link href="{{ mix('_assets/_guest/css/guest.css') }}" rel="stylesheet">
+    <link href="{{ mix('_assets/_guest/css/main.css') }}" rel="stylesheet">
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <style>
         footer {
@@ -27,7 +27,7 @@
 {{-- footer_section --}}
 @include('emails.includes.footer')
 {{-- footer_section --}}
-<script src="{{ mix('_assets/_guest/js/guest.js') }}"></script>
+<script src="{{ mix('_assets/_guest/js/main.js') }}"></script>
 <script src="{{ mix('js/app.js') }}"></script>
 
 @stack('scripts')

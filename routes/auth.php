@@ -18,6 +18,7 @@
     Route::prefix('/login')->middleware('guest')->group(function () {
         Route::get('/', [AuthenticatedSessionController::class, 'create'])->name('login');
         Route::post('/', [AuthenticatedSessionController::class, 'store']);
+        Route::post('/detect-current-auth-url', [AuthenticatedSessionController::class, 'detectCurrentAuthUrl'])->name('detectCurrentAuthUrl')->excludedMiddleware();
 
         Route::get('/livewire', [\App\Http\Livewire\Auth\LoginComponent::class, 'store']);
     });

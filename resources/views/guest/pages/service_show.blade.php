@@ -240,9 +240,9 @@
                                     </span> <span class="requirement-text4">Dedicated Project manager</span></p>
                             </div>
                             <div class="place-order-btn">
-                                <form action="{{ route('guest.order.index', $service->slug) }}" method="GET">
-                                    <button type="submit" id="place_order" class="btn bgOne text-white btn-lg">Place Oder</button>
-                                </form>
+{{--                                <form action="{{ route('guest.order.index', $service->slug) }}" method="GET">--}}
+                                    <button type="button" id="place_order" class="btn bgOne text-white btn-lg">Place Order</button>
+{{--                                </form>--}}
                             </div>
                             <a href="#"  class="order-btn">Contact the Designwala Help Team</a>
                         </div>
@@ -626,19 +626,18 @@
         copyBtnMobile.on('click', copyToClipboard);
     </script>
 
-{{--    @guest--}}
-{{--        <script>--}}
-{{--            var logged_in = false;--}}
-{{--            $('#place_order').click(function (event){--}}
-{{--                event.preventDefault();--}}
-{{--                if (!logged_in){--}}
-{{--                    // alert(sessionStorage.intended);--}}
-{{--                    $('#logged_in').modalCtm({--}}
-{{--                        closeExisting: true,--}}
-{{--                        fadeDuration: 250--}}
-{{--                    });--}}
-{{--                }--}}
-{{--            })--}}
-{{--        </script>--}}
-{{--    @endguest--}}
+    @guest
+        <script>
+            var logged_in = false;
+            $('#place_order').click(function (event){
+                event.preventDefault();
+                if (!logged_in){
+                    $('#logged_in').modalCtm({
+                        closeExisting: true,
+                        fadeDuration: 250
+                    });
+                }
+            })
+        </script>
+    @endguest
 @endpush

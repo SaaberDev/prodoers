@@ -27,6 +27,8 @@ class Kernel extends ConsoleKernel
     {
         // This task will delete telescope_entries table that is older than 48 hours
         $schedule->command('telescope:prune --hours=48')->daily();
+        // email verification queue work
+        $schedule->command('queue:work --tries=3 --timeout=60')->everyMinute();
 //        $schedule->call(function () {
 //            Order::where('payment_status', '=', 'cancelled')->delete();
 //        })->hourly();

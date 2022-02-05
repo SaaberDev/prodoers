@@ -40,8 +40,8 @@ class GuestServiceController extends Controller
             'grand_total' => $service->price
         ]);
 
-        request()->session()->put('url.intended', route('guest.order.index', $service->slug));
-        request()->session()->put('url.current', url()->current());
+        request()->session()->put('site_custom_url.intended_order_page', route('guest.order.index', $service->slug));
+        request()->session()->put('site_custom_url.current_service', url()->current());
         return view('guest.pages.service_show', compact('service', 'related_services', 'tags'));
     }
 }

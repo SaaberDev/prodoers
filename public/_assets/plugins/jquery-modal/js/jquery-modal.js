@@ -111,10 +111,6 @@
             modalCtms.pop();
             this.unblock();
             this.hide();
-            // Removes error message when modal hides
-            Livewire.emit('refreshErrors')
-            // Removes auth_modal session when modal closes
-            Livewire.emit('resetSession')
             if (!$.modalCtm.isActive())
                 $(document).off('keydown.modalCtm');
         },
@@ -170,8 +166,6 @@
 
             // Removes error message when modal hides
             Livewire.emit('refreshErrors')
-            // Removes auth_modal session when modal hides
-            Livewire.emit('resetSession')
 
 
             var _this = this;
@@ -269,9 +263,10 @@
     });
 }));
 
-// Authentication Modal
 $('a[href="#sign_in"]').click(function (event) {
     event.preventDefault();
+    var action = 'sign_in';
+    callAuthAjax(action);
     $(this).modalCtm({
         closeExisting: true,
         fadeDuration: 250
@@ -293,6 +288,17 @@ $('a[href="#sign_up"]').click(function (event) {
         fadeDuration: 250
     });
 });
+
+function callAuthAjax(action) {
+    $.ajax({
+        url: '/login/detect-current-auth-url',
+        data: {action: action},
+        type: 'POST',
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+}
 
 //[Socialite] - Facebook redirect slug issue fix [This script replaces "#_=_" to null]
 if (window.location.hash && window.location.hash === '#_=_') {

@@ -14,7 +14,6 @@ namespace App\Models{
 /**
  * App\Models\AssignOrder
  *
- * @mixin IdeHelperAssignOrder
  * @property int $id
  * @property int|null $order_id
  * @property int|null $user_id
@@ -35,14 +34,13 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|AssignOrder whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|AssignOrder whereUserId($value)
  */
-	class IdeHelperAssignOrder extends \Eloquent {}
+	class IdeHelperAssignOrder {}
 }
 
 namespace App\Models{
 /**
  * App\Models\AssignOrderLog
  *
- * @mixin IdeHelperAssignOrderLog
  * @property int $id
  * @property int|null $order_id
  * @property int|null $user_id
@@ -61,14 +59,13 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|AssignOrderLog whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|AssignOrderLog whereUserId($value)
  */
-	class IdeHelperAssignOrderLog extends \Eloquent {}
+	class IdeHelperAssignOrderLog {}
 }
 
 namespace App\Models{
 /**
  * App\Models\BannerSection
  *
- * @mixin IdeHelperBannerSection
  * @property int $id
  * @property string $key
  * @property string|null $headline
@@ -88,14 +85,13 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|BannerSection whereTagline($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BannerSection whereUpdatedAt($value)
  */
-	class IdeHelperBannerSection extends \Eloquent {}
+	class IdeHelperBannerSection {}
 }
 
 namespace App\Models{
 /**
  * App\Models\BlogSection
  *
- * @mixin IdeHelperBlogSection
  * @property int $id
  * @property string|null $headline
  * @property string|null $tagline
@@ -110,14 +106,13 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|BlogSection whereTagline($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BlogSection whereUpdatedAt($value)
  */
-	class IdeHelperBlogSection extends \Eloquent {}
+	class IdeHelperBlogSection {}
 }
 
 namespace App\Models{
 /**
  * App\Models\BrandIdentity
  *
- * @mixin IdeHelperBrandIdentity
  * @property int $id
  * @property string|null $company_name
  * @property string|null $slogan
@@ -136,14 +131,13 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|BrandIdentity whereSlogan($value)
  * @method static \Illuminate\Database\Eloquent\Builder|BrandIdentity whereUpdatedAt($value)
  */
-	class IdeHelperBrandIdentity extends \Eloquent {}
+	class IdeHelperBrandIdentity {}
 }
 
 namespace App\Models{
 /**
  * App\Models\CompanyPolicy
  *
- * @mixin IdeHelperCompanyPolicy
  * @property int $id
  * @property string|null $privacy
  * @property string|null $cookie
@@ -162,14 +156,13 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|CompanyPolicy whereTermsAndConditions($value)
  * @method static \Illuminate\Database\Eloquent\Builder|CompanyPolicy whereUpdatedAt($value)
  */
-	class IdeHelperCompanyPolicy extends \Eloquent {}
+	class IdeHelperCompanyPolicy {}
 }
 
 namespace App\Models{
 /**
  * App\Models\Coupon
  *
- * @mixin IdeHelperCoupon
  * @property int $id
  * @property string|null $title
  * @property string $coupon_code
@@ -185,30 +178,29 @@ namespace App\Models{
  * @property-read int|null $categories_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Service[] $services
  * @property-read int|null $services_count
- * @method static Builder|Coupon applyCouponTo($category, $service)
- * @method static Builder|Coupon newModelQuery()
- * @method static Builder|Coupon newQuery()
- * @method static Builder|Coupon query()
- * @method static Builder|Coupon whereAmount($value)
- * @method static Builder|Coupon whereCouponCode($value)
- * @method static Builder|Coupon whereCouponType($value)
- * @method static Builder|Coupon whereCreatedAt($value)
- * @method static Builder|Coupon whereEndDate($value)
- * @method static Builder|Coupon whereId($value)
- * @method static Builder|Coupon wherePercentOff($value)
- * @method static Builder|Coupon wherePublishedStatus($value)
- * @method static Builder|Coupon whereStartDate($value)
- * @method static Builder|Coupon whereTitle($value)
- * @method static Builder|Coupon whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon applyCouponTo($category, $service)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereAmount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereCouponCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereCouponType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereEndDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon wherePercentOff($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon wherePublishedStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereStartDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon whereUpdatedAt($value)
  */
-	class IdeHelperCoupon extends \Eloquent {}
+	class IdeHelperCoupon {}
 }
 
 namespace App\Models{
 /**
  * App\Models\FooterContent
  *
- * @mixin IdeHelperFooterContent
  * @property int $id
  * @property string|null $logo
  * @property string|null $payment_method
@@ -225,14 +217,13 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|FooterContent wherePaymentMethod($value)
  * @method static \Illuminate\Database\Eloquent\Builder|FooterContent whereUpdatedAt($value)
  */
-	class IdeHelperFooterContent extends \Eloquent {}
+	class IdeHelperFooterContent {}
 }
 
 namespace App\Models{
 /**
  * App\Models\HowDesignwalaWork
  *
- * @mixin IdeHelperHowDesignwalaWork
  * @property int $id
  * @property string $key
  * @property string|null $title
@@ -256,14 +247,13 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|HowDesignwalaWork whereVideo($value)
  * @method static \Illuminate\Database\Eloquent\Builder|HowDesignwalaWork whereVideoThumbnail($value)
  */
-	class IdeHelperHowDesignwalaWork extends \Eloquent {}
+	class IdeHelperHowDesignwalaWork {}
 }
 
 namespace App\Models{
 /**
  * App\Models\Invoice
  *
- * @mixin IdeHelperInvoice
  * @property int $id
  * @property int|null $order_id
  * @property string|null $invoice_number
@@ -280,14 +270,13 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Invoice whereOrderId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Invoice whereUpdatedAt($value)
  */
-	class IdeHelperInvoice extends \Eloquent {}
+	class IdeHelperInvoice {}
 }
 
 namespace App\Models{
 /**
  * App\Models\Order
  *
- * @mixin IdeHelperOrder
  * @property int $id
  * @property int|null $user_id
  * @property int|null $service_id
@@ -325,14 +314,13 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereUserId($value)
  */
-	class IdeHelperOrder extends \Eloquent implements \Spatie\MediaLibrary\HasMedia {}
+	class IdeHelperOrder {}
 }
 
 namespace App\Models{
 /**
  * App\Models\OtherContent
  *
- * @mixin IdeHelperOtherContent
  * @property int $id
  * @property string $key
  * @property string|null $headline
@@ -350,14 +338,13 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|OtherContent whereTagline($value)
  * @method static \Illuminate\Database\Eloquent\Builder|OtherContent whereUpdatedAt($value)
  */
-	class IdeHelperOtherContent extends \Eloquent {}
+	class IdeHelperOtherContent {}
 }
 
 namespace App\Models{
 /**
  * App\Models\Payment
  *
- * @mixin IdeHelperPayment
  * @property int $id
  * @property int|null $order_id
  * @property float|null $paid_amount
@@ -380,14 +367,13 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Payment whereTransactionId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Payment whereUpdatedAt($value)
  */
-	class IdeHelperPayment extends \Eloquent {}
+	class IdeHelperPayment {}
 }
 
 namespace App\Models{
 /**
  * App\Models\Service
  *
- * @mixin IdeHelperService
  * @property int $id
  * @property int $service_category_id
  * @property string $title
@@ -443,14 +429,13 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Service whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Service withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
  */
-	class IdeHelperService extends \Eloquent implements \Spatie\MediaLibrary\HasMedia {}
+	class IdeHelperService {}
 }
 
 namespace App\Models{
 /**
  * App\Models\ServiceCategory
  *
- * @mixin IdeHelperServiceCategory
  * @property int $id
  * @property string $title
  * @property string $meta_desc
@@ -498,21 +483,20 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory withAndWhereHas($relation, $constraint)
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategory withUniqueSlugConstraints(\Illuminate\Database\Eloquent\Model $model, string $attribute, array $config, string $slug)
  */
-	class IdeHelperServiceCategory extends \Eloquent implements \Spatie\MediaLibrary\HasMedia {}
+	class IdeHelperServiceCategory {}
 }
 
 namespace App\Models{
 /**
  * App\Models\ServiceCategoryFaq
  *
- * @mixin IdeHelperServiceCategoryFaq
  * @property int $id
  * @property int $service_category_id
  * @property string $question
  * @property string $answer
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\ServiceCategory $service_categories
+ * @property-read \App\Models\ServiceCategory|null $service_categories
  * @method static \Database\Factories\ServiceCategoryFaqFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategoryFaq newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategoryFaq newQuery()
@@ -524,14 +508,13 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategoryFaq whereServiceCategoryId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategoryFaq whereUpdatedAt($value)
  */
-	class IdeHelperServiceCategoryFaq extends \Eloquent {}
+	class IdeHelperServiceCategoryFaq {}
 }
 
 namespace App\Models{
 /**
  * App\Models\ServiceCategoryInstruction
  *
- * @mixin IdeHelperServiceCategoryInstruction
  * @property int $id
  * @property int $service_category_id
  * @property string $order_instructions
@@ -547,21 +530,20 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategoryInstruction whereServiceCategoryId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceCategoryInstruction whereUpdatedAt($value)
  */
-	class IdeHelperServiceCategoryInstruction extends \Eloquent {}
+	class IdeHelperServiceCategoryInstruction {}
 }
 
 namespace App\Models{
 /**
  * App\Models\ServiceFaq
  *
- * @mixin IdeHelperServiceFaq
  * @property int $id
  * @property int $service_id
  * @property string $question
  * @property string $answer
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\Service $services
+ * @property-read \App\Models\Service|null $services
  * @method static \Database\Factories\ServiceFaqFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceFaq newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceFaq newQuery()
@@ -573,20 +555,19 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceFaq whereServiceId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceFaq whereUpdatedAt($value)
  */
-	class IdeHelperServiceFaq extends \Eloquent {}
+	class IdeHelperServiceFaq {}
 }
 
 namespace App\Models{
 /**
  * App\Models\ServiceFeature
  *
- * @mixin IdeHelperServiceFeature
  * @property int $id
  * @property int $service_id
  * @property string $feature_desc
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\Service $services
+ * @property-read \App\Models\Service|null $services
  * @method static \Database\Factories\ServiceFeatureFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceFeature newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceFeature newQuery()
@@ -597,27 +578,25 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceFeature whereServiceId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceFeature whereUpdatedAt($value)
  */
-	class IdeHelperServiceFeature extends \Eloquent {}
+	class IdeHelperServiceFeature {}
 }
 
 namespace App\Models{
 /**
  * App\Models\ServiceImage
  *
- * @mixin IdeHelperServiceImage
- * @property-read \App\Models\Service $services
+ * @property-read \App\Models\Service|null $services
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceImage newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceImage newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceImage query()
  */
-	class IdeHelperServiceImage extends \Eloquent {}
+	class IdeHelperServiceImage {}
 }
 
 namespace App\Models{
 /**
  * App\Models\ServiceProcess
  *
- * @mixin IdeHelperServiceProcess
  * @property int $id
  * @property string $key
  * @property string|null $title
@@ -635,14 +614,13 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceProcess whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|ServiceProcess whereUpdatedAt($value)
  */
-	class IdeHelperServiceProcess extends \Eloquent {}
+	class IdeHelperServiceProcess {}
 }
 
 namespace App\Models{
 /**
  * App\Models\SiteCms
  *
- * @mixin IdeHelperSiteCms
  * @property int $id
  * @property string $key
  * @property string|null $value
@@ -659,14 +637,13 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|SiteCms whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SiteCms whereValue($value)
  */
-	class IdeHelperSiteCms extends \Eloquent {}
+	class IdeHelperSiteCms {}
 }
 
 namespace App\Models{
 /**
  * App\Models\SocialLinks
  *
- * @mixin IdeHelperSocialLinks
  * @property int $id
  * @property string $social_icon
  * @property string $social_title
@@ -684,21 +661,20 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks whereSocialUrl($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialLinks whereUpdatedAt($value)
  */
-	class IdeHelperSocialLinks extends \Eloquent {}
+	class IdeHelperSocialLinks {}
 }
 
 namespace App\Models{
 /**
  * App\Models\SocialiteAuth
  *
- * @mixin IdeHelperSocialiteAuth
  * @property int $id
  * @property int $user_id
  * @property string $provider_id
  * @property string $provider
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\User $users
+ * @property-read \App\Models\User|null $users
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteAuth newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteAuth newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteAuth query()
@@ -709,14 +685,13 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteAuth whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SocialiteAuth whereUserId($value)
  */
-	class IdeHelperSocialiteAuth extends \Eloquent {}
+	class IdeHelperSocialiteAuth {}
 }
 
 namespace App\Models{
 /**
  * App\Models\StatisticsSection
  *
- * @mixin IdeHelperStatisticsSection
  * @property int $id
  * @property string $key
  * @property string|null $title
@@ -736,14 +711,13 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|StatisticsSection whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|StatisticsSection whereUpdatedAt($value)
  */
-	class IdeHelperStatisticsSection extends \Eloquent {}
+	class IdeHelperStatisticsSection {}
 }
 
 namespace App\Models{
 /**
  * App\Models\Subscriber
  *
- * @mixin IdeHelperSubscriber
  * @property int $id
  * @property string $email
  * @property string $name
@@ -764,14 +738,13 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Subscriber whereSubscriberStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Subscriber whereUpdatedAt($value)
  */
-	class IdeHelperSubscriber extends \Eloquent {}
+	class IdeHelperSubscriber {}
 }
 
 namespace App\Models{
 /**
  * App\Models\Tag
  *
- * @mixin IdeHelperTag
  * @property int $id
  * @property string $title
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -789,14 +762,13 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Tag whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Tag whereUpdatedAt($value)
  */
-	class IdeHelperTag extends \Eloquent {}
+	class IdeHelperTag {}
 }
 
 namespace App\Models{
 /**
  * App\Models\User
  *
- * @mixin IdeHelperUser
  * @property int $id
  * @property string $name
  * @property string $designation
@@ -836,14 +808,13 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUsername($value)
  */
-	class IdeHelperUser extends \Eloquent implements \Illuminate\Contracts\Auth\MustVerifyEmail {}
+	class IdeHelperUser {}
 }
 
 namespace App\Models{
 /**
  * App\Models\UserDetail
  *
- * @mixin IdeHelperUserDetail
  * @property int $id
  * @property int|null $user_id
  * @property string|null $address
@@ -881,6 +852,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|UserDetail whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|UserDetail whereUserId($value)
  */
-	class IdeHelperUserDetail extends \Eloquent {}
+	class IdeHelperUserDetail {}
 }
 

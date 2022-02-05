@@ -22,7 +22,7 @@ class Service extends Model implements HasMedia
     /**
      * @return string[][]
      */
-    public function sluggable()
+    public function sluggable(): array
     {
         return [
             'slug' => [
