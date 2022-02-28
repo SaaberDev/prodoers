@@ -67,6 +67,7 @@
     @endif
 {{--@endif--}}
 {{-- Internal Scripts --}}
+@include('alerts.admin_panel._alert')
 @stack('scripts')
 </body>
 </html>

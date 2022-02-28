@@ -1,4 +1,14 @@
 <div>
+    @if (session()->has('message'))
+        <div id="successMessage" class="alert alert-success">
+            {{ session('message') }}
+        </div>
+    @elseif (session()->has('error'))
+        <div id="errorMessage" class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+
     <form class="row" wire:submit.prevent="store">
         <div class="mb-3 col-md-12">
             <input type="text"

@@ -23,7 +23,10 @@
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ route('client.dashboard') }}">Dashboard</a>
-                                <a class="dropdown-item" href="{{ route('logout') }}">Logout</a></div>
+
+                                <form method="POST" action="{{ route('logout') }}" id="logout">@csrf</form>
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout').submit();">Logout</a>
+                            </div>
                         </li>
                     @endauth
                 </ul>

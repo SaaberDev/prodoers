@@ -240,9 +240,9 @@
                                     </span> <span class="requirement-text4">Dedicated Project manager</span></p>
                             </div>
                             <div class="place-order-btn">
-{{--                                <form action="{{ route('guest.order.index', $service->slug) }}" method="GET">--}}
-                                    <button type="button" id="place_order" class="btn bgOne text-white btn-lg">Place Order</button>
-{{--                                </form>--}}
+                                <form action="{{ route('guest.order.index', $service->slug) }}" method="GET">
+                                    <button type="submit" id="place_order" class="btn bgOne text-white btn-lg">Place Order</button>
+                                </form>
                             </div>
                             <a href="#"  class="order-btn">Contact the Designwala Help Team</a>
                         </div>

@@ -43,7 +43,7 @@
         ->name('verification.notice');
 
     Route::get('/verify-email/{id}/{hash}', [VerifyEmailController::class, '__invoke'])
-        ->middleware(['auth', 'signed', 'throttle:6,1'])
+        ->middleware(['signed', 'throttle:6,1'])
         ->name('verification.verify');
 
     Route::post('/email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
@@ -53,6 +53,6 @@
     Route::middleware('auth')->group(function () {
         Route::get('/confirm-password', [ConfirmablePasswordController::class, 'show'])->name('password.confirm');
         Route::post('/confirm-password', [ConfirmablePasswordController::class, 'store']);
-        Route::get('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+        Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
     });
 
