@@ -2,7 +2,7 @@
 
     Route::name('client.')
         ->middleware([
-            // 'auth', 'verified'
+//             'auth', 'verified'
         ])
         ->group(function () {
 
