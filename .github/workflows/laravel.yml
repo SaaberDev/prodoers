@@ -6,7 +6,7 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ main ]
+    branches: [ dev ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -18,17 +18,21 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     steps:
-    - name: executing remote ssh commands using ssh keys
-      uses: appleboy/ssh-action@master
-      with:
-        host: ""
-        username: ""
-        key: ${{ secrets.CPANEL }}
-        #password: 
-        port: 7822
-        script: |
-          cd /home/desiumiz/public_html/prodoers
-          pwd
-          git stash --include-untracked 
-          git pull origin main
-          git status
+      - name: executing remote ssh commands using ssh keys
+        uses: appleboy/ssh-action@master
+        with:
+          host: prodoers.net
+          username: ${{ secrets.PRODOERS_USERNAME }}
+          key: ${{ secrets.PRODOERS_SSH_KEY }}
+          #        password: ${{ secrets.PRODOERS_PASSWORD }}
+          port: ${{ secrets.PRODOERS_PORT }}
+          #        passphrase: ${{ secrets.PASSPHRASE }}
+          script: |
+            cd /home/desiumiz/dev.prodoers.net/
+            pwd
+            git stash --include-untracked
+            git pull origin dev
+            git status
+            composer install --optimize-autoloader --no-dev
+            php artisan route:cache
+            php artisan view:cache
