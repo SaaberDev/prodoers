@@ -228,7 +228,6 @@
                                 </p>
 
 
-
                                 <p><span ><svg xmlns="http://www.w3.org/2000/svg" width="31.194" height="32.456" viewBox="0 0 31.194 32.456">
                                             <g id="Group_607" data-name="Group 607" transform="translate(-1207 -659)">
                                                 <path id="Path_2234" data-name="Path 2234" d="M2020.577,616.848a7.552,7.552,0,1,1,7.552-7.552,7.561,7.561,0,0,1-7.552,7.552Zm0-13.594a6.042,6.042,0,1,0,6.042,6.042,6.047,6.047,0,0,0-6.042-6.042Zm0,0" transform="translate(-799.983 57.256)" fill="#212529"/>

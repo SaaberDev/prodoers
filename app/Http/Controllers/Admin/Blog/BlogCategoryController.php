@@ -87,8 +87,3 @@ class BlogCategoryController extends Controller
         //
     }
 }
-
-
-
-
-

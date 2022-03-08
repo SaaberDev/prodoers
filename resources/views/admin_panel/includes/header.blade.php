@@ -78,9 +78,7 @@
                                 <a class="dropdown-item" href="#">{{ Auth::user()->name ?? '' }}</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Profile</a>
-{{--                                <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>--}}
-                                <form method="POST" action="{{ route('logout') }}" id="logout">@csrf</form>
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout').submit();">Logout</a>
+                                <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown v-center">

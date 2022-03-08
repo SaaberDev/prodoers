@@ -135,7 +135,8 @@
     }
     td p.ongoing,
     td p.delivered,
-    td p.in-revision {
+    td p.in-revision,
+    td p.cancelled {
         width: 105px;
         padding: 2px 12px;
 

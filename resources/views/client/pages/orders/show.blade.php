@@ -26,7 +26,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                           <li class="breadcrumb-item" aria-current="page">
-                              <a href="{{ route('client.dashboard.index') }}">Dashboard</a>
+                              <a href="{{ route('client.dashboard') }}">Dashboard</a>
                           </li>
                           <li class="breadcrumb-item" aria-current="page">
                               <a href="{{ route('client.order.index') }}">Orders</a>
@@ -115,7 +115,7 @@
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item" aria-current="page">
-                      <a href="{{ route('client.dashboard.index') }}">Dashboard</a>
+                      <a href="{{ route('client.dashboard') }}">Dashboard</a>
                     </li>
                     <li class="breadcrumb-item" aria-current="page">
                         <a href="{{ route('client.order.index') }}">Orders</a>
@@ -203,7 +203,7 @@
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item" aria-current="page">
-                      <a href="{{ route('client.dashboard.index') }}">Dashboard</a>
+                      <a href="{{ route('client.dashboard') }}">Dashboard</a>
                     </li>
                     <li class="breadcrumb-item" aria-current="page">
                         <a href="{{ route('client.order.index') }}">Orders</a>
@@ -402,7 +402,7 @@
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item" aria-current="page">
-                      <a href="{{ route('client.dashboard.index') }}">Dashboard</a>
+                      <a href="{{ route('client.dashboard') }}">Dashboard</a>
                     </li>
                     <li class="breadcrumb-item" aria-current="page">
                         <a href="{{ route('client.order.index') }}">Orders</a>
@@ -485,7 +485,93 @@
         </div>
     </section>
 
-    
+@elseif(request()->get('page') == 'cancelled')
+    <section class="dashboard-main">
+        <div class="container">
+          <!--Breadcrumb-->
+          <div class="row breadcrumb-row">
+            <div class="col-lg-12">
+              <div class="dashboard">
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item" aria-current="page">
+                      <a href="{{ route('client.dashboard') }}">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item" aria-current="page">
+                        <a href="{{ route('client.order.index') }}">Orders</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        <a href="revisionorder.html">DWXYZ12345</a>
+                    </li>
+                  </ol>
+                </nav>
+              </div>
+            </div>
+          </div>
+          <!--Breadcrumb-->
+
+          <!--Pending Orders Section Start-->
+          <div class="row pending-order">
+            <div class="col-sm-4 col-md-3 col-lg-2">
+              <div class="pending-order-img">
+                <img src="{{ asset('_assets/_client/images/pending-order-img.svg') }}" alt="dashboard" class="img-fluid">
+              </div>
+            </div>
+            <div class="d-none d-sm-block d-md-none col-sm-8 col-md-12 col-lg-3">
+              <div class="order-status">
+                <p>Order Id : #DW002</p>
+                <p>Order Date : 05.05.2021</p>
+                <p>Status: <span class="cancelled">cancelled</span></p>
+              </div>
+            </div>
+            <div class="col-md-9 col-lg-7">
+              <div class="requirement-details">
+                <h3>Social Media Post Design</h3>
+                <div class="row">
+                  <div class="col-sm-6 col-md-6 col-lg-5 col-xxl-4">
+                    <div class="orders-info">
+                      <p>Order Id: #DW002</p>
+                      <p>Price: $60</p>
+                      <p>Promo Code: XYZ123</p>
+                      <p>Payment Method: Bkash</p>
+                    </div>
+                  </div>
+                  <div class="col-sm-6 col-md-6 col-lg-6 col-xxl-5">
+                    <div class="orders-info">
+                      <p>Delivery Time: 4 days</p>
+                      <p>Revisions: 2</p>
+                      <p>Transaction ID : ABC456</p>
+                      <p>Payment Status : Completed</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="d-sm-none d-md-block col-md-12 col-lg-3">
+              <div class="order-status">
+                <p>Order Id : #DW002</p>
+                <p>Order Date : 05.05.2021</p>
+                <p>Status: <span class="cancelled">cancelled</span></p>
+              </div>
+            </div>
+          </div>
+          <!--Pending Orders Section End-->
+
+          <!--Orders Requirement Section Start-->
+          <div class="row ongoing-order-requirement">
+              @include('client.includes.accordion.order-requirement')
+          </div>
+          <!--Orders Requirement Section End-->
+
+
+          <!--Chat Section Start-->
+
+          @include('client.includes.chat')
+
+        </div>
+    </section>
+
+        
 @elseif(request()->get('page') == 'completed')
 
     <section class="dashboard-main">
@@ -497,7 +583,7 @@
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item" aria-current="page">
-                      <a href="{{ route('client.dashboard.index') }}">Dashboard</a>
+                      <a href="{{ route('client.dashboard') }}">Dashboard</a>
                     </li>
                     <li class="breadcrumb-item" aria-current="page">
                         <a href="{{ route('client.order.index') }}">Orders</a>

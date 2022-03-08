@@ -1,26 +1,24 @@
 <?php
 
+
+    use App\Http\Controllers\Client\ClientDashboardController;
+
+
+
     Route::name('client.')
         ->middleware([
-//             'auth', 'verified'
+            // 'auth', 'verified'
         ])
         ->group(function () {
 
         // Dashboard
-        Route::get('/dashboard', function () {
-            return view('client.index');
-        })->name('dashboard');
-
+        Route::get('/dashboard',[ClientDashboardController::class,'dashboard'] )->name('dashboard');
 
         // Orders
         Route::prefix('/orders')->name('order.')->group(function () {
-            Route::get('/', function () {
-                return view('client.pages.orders.index');
-            })->name('index');
+            Route::get('/',[ClientDashboardController::class,'orders'] )->name('index');
 
-            Route::get('/show', function () {
-                return view('client.pages.orders.show');
-            })->name('show');
+            Route::get('/show/{order_id}',[ClientDashboardController::class,'show'] )->name('show');
         });
 
         //Settings

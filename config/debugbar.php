@@ -3,15 +3,15 @@
 return [
 
     /*
-     |--------------------------------------------------------------------------
-     | Debugbar Settings
-     |--------------------------------------------------------------------------
-     |
-     | Debugbar is enabled by default, when debug is set to true in app.php.
-     | You can override the value by setting enable to true or false instead of null.
-     |
-     | You can provide an array of URI's that must be ignored (eg. 'api/*')
-     |
+    |--------------------------------------------------------------------------
+    | Debugbar Settings
+    |--------------------------------------------------------------------------
+    |
+    | Debugbar is enabled by default, when debug is set to true in app.php.
+    | You can override the value by setting enable to true or false instead of null.
+    |
+    | You can provide an array of URI's that must be ignored (eg. 'api/*')
+    |
      */
 
     'enabled' => env('DEBUGBAR_ENABLED', null),
@@ -21,17 +21,17 @@ return [
     ],
 
     /*
-     |--------------------------------------------------------------------------
-     | Storage settings
-     |--------------------------------------------------------------------------
-     |
-     | DebugBar stores data for session/ajax requests.
-     | You can disable this, so the debugbar stores data in headers/session,
-     | but this can cause problems with large data collectors.
-     | By default, file storage (in the storage folder) is used. Redis and PDO
-     | can also be used. For PDO, run the package migrations first.
-     |
-     */
+    |--------------------------------------------------------------------------
+    | Storage settings
+    |--------------------------------------------------------------------------
+    |
+    | DebugBar stores data for session/ajax requests.
+    | You can disable this, so the debugbar stores data in headers/session,
+    | but this can cause problems with large data collectors.
+    | By default, file storage (in the storage folder) is used. Redis and PDO
+    | can also be used. For PDO, run the package migrations first.
+    |
+    */
     'storage' => [
         'enabled'    => true,
         'driver'     => 'file', // redis, file, pdo, socket, custom
@@ -43,17 +43,17 @@ return [
     ],
 
     /*
-     |--------------------------------------------------------------------------
-     | Vendors
-     |--------------------------------------------------------------------------
-     |
-     | Vendor files are included by default, but can be set to false.
-     | This can also be set to 'js' or 'css', to only include javascript or css vendor files.
-     | Vendor files are for css: font-awesome (including fonts) and highlight.js (css files)
-     | and for js: jquery and and highlight.js
-     | So if you want syntax highlighting, set it to true.
-     | jQuery is set to not conflict with existing jQuery scripts.
-     |
+    |--------------------------------------------------------------------------
+    | Vendors
+    |--------------------------------------------------------------------------
+    |
+    | Vendor files are included by default, but can be set to false.
+    | This can also be set to 'js' or 'css', to only include javascript or css vendor files.
+    | Vendor files are for css: font-awesome (including fonts) and highlight.js (css files)
+    | and for js: jquery and and highlight.js
+    | So if you want syntax highlighting, set it to true.
+    | jQuery is set to not conflict with existing jQuery scripts.
+    |
      */
 
     'include_vendors' => true,
@@ -113,7 +113,7 @@ return [
         'db'              => true,  // Show database (PDO) queries and bindings
         'views'           => true,  // Views with their data
         'route'           => true,  // Current route information
-        'auth'            => false, // Display Laravel authentication status
+        'auth'            => true, // Display Laravel authentication status
         'gate'            => false,  // Display Laravel Gate checks
         'session'         => true,  // Display session data
         'symfony_request' => true,  // Only one can be enabled..
