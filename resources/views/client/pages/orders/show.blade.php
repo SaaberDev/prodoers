@@ -365,8 +365,8 @@
           <div class="row delivered-confirm-btn">
             <div class="col-lg-12">
                 <div class="confirm-decline-btn" id="confirm-decline-btn">
-                    <button type="button" data-bs-toggle="modal" data-bs-target="#acceptedModal" id="accept-btn" class="btn accept-btn">Accept Delivery</button>                    
-                    <button type="button" data-bs-toggle="modal" data-bs-target="#declineModal" class="btn decline-btn">Ask For Revision</button>                    
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#acceptedModal" id="accept-btn" class="btn accept-btn">Accept Delivery</button>
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#declineModal" class="btn decline-btn">Ask For Revision</button>
                 </div>
                 <div class="accepted-text text-center" id="accepted-text">
                   <p>Order {{ $orders['payments']['payment_status'] }}!</p>
@@ -380,7 +380,7 @@
           <!--=======Modal Start==========-->
 
             <!-- Accept Modal Start-->
-            
+
 
             @include('client.includes.modal.accept-order')
 
@@ -581,7 +581,7 @@
         </div>
     </section>
 
-        
+
 @elseif(request()->get('page') == 'completed')}')
 
     <section class="dashboard-main">
