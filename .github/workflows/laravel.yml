@@ -30,5 +30,5 @@ jobs:
           cd /home/prodoers/public_html/dev
           pwd
           git stash --include-untracked
-          git pull origin main
+          git pull origin dev
           git status
