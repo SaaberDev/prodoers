@@ -21,13 +21,13 @@ jobs:
     - name: executing remote ssh commands using ssh keys
       uses: appleboy/ssh-action@master
       with:
-        host: ""
-        username: ""
+        host: ${{ secrets.PRODOERS_HOST }}
+        username: ${{ secrets.PRODOERS_USERNAME }}
         key: ${{ secrets.CPANEL }}
         #password:
-        port: 7822
+        port: 22
         script: |
-          cd /home/desiumiz/public_html/prodoers
+          cd /home/prodoers/public_html/dev
           pwd
           git stash --include-untracked
           git pull origin main
