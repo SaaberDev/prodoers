@@ -167,6 +167,9 @@
             // Removes error message when modal hides
             Livewire.emit('refreshErrors')
 
+            
+            Livewire.emit('resetSession')
+
 
             var _this = this;
             if (this.options.doFade) {

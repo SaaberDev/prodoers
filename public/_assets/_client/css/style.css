@@ -479,7 +479,8 @@ td p.ongoing,
 td p.delivered,
 td p.in-revision,
 td p.pending,
-td p.completed{
+td p.completed,
+td p.cancelled{
     width: 115px;
     margin: 0 auto;
     padding: 4px 20px;
@@ -498,10 +499,17 @@ td p.in-revision{
     background:var(--orange);
     color: var(--white);
 }
+
+td p.cancelled{
+    background:var(--red);
+    color: var(--white);
+}
+
 td p.pending{
     background:var(--light-cyan);
     color: var(--white);
 }
+
 td:first-child {
   border-radius: 6px 0 0 6px;
 }
@@ -718,10 +726,10 @@ input[type=number]::-webkit-inner-spin-button {
     line-height: 32px;
 }
 .order-status p:first-child{
-    font-size:24px;
+    font-size:16px;
     color: var(--black);
     font-weight:500;
-    line-height: 35px;
+    line-height: 32px;
 }
 .order-status p:not(:first-child){
     font-size:18px;
@@ -731,6 +739,9 @@ input[type=number]::-webkit-inner-spin-button {
 }
 .order-status p span.pending{
     color:var(--light-cyan);
+}
+.order-status p span.cancelled{
+    color:var(--red);
 }
 .order-status p span.ongoing{
     color:var(--blue);

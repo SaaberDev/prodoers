@@ -19,7 +19,7 @@
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item" aria-current="page">
-                      <a href="{{ route('client.dashboard.index') }}">Dashboard</a>
+                      <a href="{{ route('client.dashboard') }}">Dashboard</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
                         <a href="{{ route('client.order.index') }}">Orders</a>
@@ -76,86 +76,31 @@
                 </tr>
               </thead>
               <tbody>
-                <tr data-href="{{ route('client.order.show' , ['page' => 'ongoing']) }}">
-                  <td>DWWXYZ123</td>
-                  <td>Minimal Logo Design</td>
-                  <td>3 Days</td>
-                  <td>$50</td>
-                  <td>
-                    <p class="ongoing">Ongoing</p>
-                  </td>
-                </tr>
-                <tr data-href="{{ route('client.order.show' , ['page' => 'revision']) }}">
-                  <td>DWWXYZ123</td>
-                  <td>Web Design and Development</td>
-                  <td>24 hours</td>
-                  <td>$25</td>
-                  <td>
-                    <p class="in-revision">In Revision</p>
-                  </td>
-                </tr>
-                <tr data-href="{{ route('client.order.show' , ['page' => 'ongoing']) }}">
-                  <td>WXYZ123</td>
-                  <td>Logo Design</td>
-                  <td>
-                    <p class="late">-18 hours</p>
-                  </td>
-                  <td>$70</td>
-                  <td>
-                    <p class="ongoing">Ongoing</p>
-                  </td>
-                </tr>
-                <tr data-href="{{ route('client.order.show' , ['page' => 'delivered']) }}">
-                  <td>WXYZ123</td>
-                  <td>Digital Marketing and social media</td>
-                  <td>
-                    <p class="late">-22 hours</p>
-                  </td>
-                  <td>$100</td>
-                  <td>
-                    <p class="delivered">Delivered</p>
-                  </td>
-                </tr>
-                <tr data-href="{{ route('client.order.show' , ['page' => 'delivered']) }}">
-                  <td>DWWXYZ123</td>
-                  <td>Logo Design, Brand design, Print Materials</td>
-                  <td>
-                    <p class="late">-22 hours</p>
-                  </td>
-                  <td>$100</td>
-                  <td>
-                    <p class="delivered">Delivered</p>
-                  </td>
-                </tr>
-                <tr data-href="{{ route('client.order.show' , ['page' => 'ongoing']) }}">
-                  <td>DWWXYZ123</td>
-                  <td>Minimal Logo Design</td>
-                  <td>3 Days</td>
-                  <td>$50</td>
-                  <td>
-                    <p class="ongoing">Ongoing</p>
-                  </td>
-                </tr>
-                <tr data-href="{{ route('client.order.show' , ['page' => 'revision']) }}">
-                  <td>DWWXYZ123</td>
-                  <td>Web Design and Development</td>
-                  <td>24 hours</td>
-                  <td>$25</td>
-                  <td>
-                    <p class="in-revision">In Revision</p>
-                  </td>
-                </tr>
-                <tr data-href="{{ route('client.order.show' , ['page' => 'ongoing']) }}">
-                  <td>WXYZ123</td>
-                  <td>Logo Design</td>
-                  <td>
-                    <p class="late">-18 hours</p>
-                  </td>
-                  <td>$70</td>
-                  <td>
-                    <p class="ongoing">Ongoing</p>
-                  </td>
-                </tr>
+              @forelse($orders as $order)
+                  <tr data-href="{{ route('client.order.show', ['order_id'=>$order['order_number'],'page'=>$order['order_status']])}}">
+                    <td>{{$order['order_number']}}</td>
+                    <td>{{$order['services']['title']}}</td>
+                    <td>
+                      <p>{{$order['services']['delivery_time']}} days</p>
+                    </td>
+                    <td>${{$order['payments']['paid_amount']}}</td>
+                    <td>
+                      <p class="@if($order['order_status']=='in_revision'){{'in-revision'}}@else{{$order['order_status']}}@endif">
+
+                        @if($order['order_status']=='in_revision')
+                            {{ucfirst('revision')}}
+                        @else
+                          {{ucfirst($order['order_status'])}}
+                        @endif
+
+                      </p>
+                    </td>
+                  </tr>
+                  @empty
+                    <tr>
+                      <td colspan="5">You don't have any order right now.</td>
+                    </tr>
+                @endforelse
               </tbody>
             </table>
           </div>
