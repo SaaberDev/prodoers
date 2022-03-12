@@ -29,6 +29,7 @@ jobs:
         script: |
           cd /home/prodoers/public_html/dev
           pwd
+          git add .
           git stash --include-untracked
           git pull origin dev
           git status
