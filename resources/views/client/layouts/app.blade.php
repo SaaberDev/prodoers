@@ -35,9 +35,6 @@
 
     @include('client.includes.footer')
 
-    
-
-
 
     <!--Javascript files-->
     <script src="{{ asset('_assets/_client/js/jquery.min.js') }}"></script>
