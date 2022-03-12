@@ -24,6 +24,7 @@ jobs:
         host: ${{ secrets.PRODOERS_HOST }}
         username: ${{ secrets.PRODOERS_USERNAME }}
         key: ${{ secrets.PRODOERS_CPANEL }}
+        passphrase: ${{ secrets.PRODOERS_PASSPHRASE }}
         #password:
         port: 22
         script: |
