@@ -56,6 +56,8 @@ return [
 
     'asset_url' => env('APP_URL'),
 
+    'asset_base_url' => env('APP_URL'),
+
     'mix_url' => env('APP_URL'),
 
     /*
