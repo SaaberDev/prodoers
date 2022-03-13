@@ -22,9 +22,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RolesAndPermissionsSeeder::class,
             UserSeeder::class,
-            TagSeeder::class,
-            ServiceCategorySeeder::class,
-            OrderSeeder::class,
+//            TagSeeder::class,
+//            ServiceCategorySeeder::class,
+//            OrderSeeder::class,
             SiteCmsSeeder::class,
         ]);
     }
