@@ -18,6 +18,9 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.PUSH_TOKEN }}
     - name: executing remote ssh commands using ssh keys
       uses: appleboy/ssh-action@master
       with:
@@ -25,7 +28,7 @@ jobs:
         username: ${{ secrets.PRODOERS_USERNAME }}
         key: ${{ secrets.PRODOERS_CPANEL }}
         passphrase: ${{ secrets.PRODOERS_PASSPHRASE }}
-        fingerprint: ${{ secrets.SAABERDEV_TOKEN }}
+#        fingerprint: ${{ secrets.SAABERDEV_TOKEN }}
 #        password:
         port: 22
         script: |
