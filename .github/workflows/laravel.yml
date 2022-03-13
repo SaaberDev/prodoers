@@ -6,7 +6,7 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ dev ]
+    branches: [ stage ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -28,9 +28,9 @@ jobs:
 #        password:
         port: 22
         script: |
-          cd /home/prodoers/public_html/dev
+          cd /home/prodoers/public_html/stage
           pwd
           git add .
           git stash --include-untracked
-          git pull ${{ secrets.PRODOERS_GITPULL }} dev
+          git pull ${{ secrets.PRODOERS_GITPULL }} stage
           git status
