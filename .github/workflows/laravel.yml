@@ -32,5 +32,5 @@ jobs:
           pwd
           git add .
           git stash --include-untracked
-          ${{ secrets.PRODOERS_GITPULL }}
+          git pull ${{ secrets.PRODOERS_GITPULL }} dev
           git status
