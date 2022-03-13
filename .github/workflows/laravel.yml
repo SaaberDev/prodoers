@@ -25,7 +25,6 @@ jobs:
         username: ${{ secrets.PRODOERS_USERNAME }}
         key: ${{ secrets.PRODOERS_CPANEL }}
         passphrase: ${{ secrets.PRODOERS_PASSPHRASE }}
-        fingerprint: ${{ secrets.SAABERDEV_TOKEN }}
 #        password:
         port: 22
         script: |
@@ -33,5 +32,5 @@ jobs:
           pwd
           git add .
           git stash --include-untracked
-          git pull origin git@github.com:SaaberDev/prodoers.git dev
+          ${{ secrets.PRODOERS_GITPULL }}
           git status
