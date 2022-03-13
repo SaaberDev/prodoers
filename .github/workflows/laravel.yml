@@ -25,8 +25,8 @@ jobs:
         username: ${{ secrets.PRODOERS_USERNAME }}
         key: ${{ secrets.PRODOERS_CPANEL }}
         passphrase: ${{ secrets.PRODOERS_PASSPHRASE }}
-        token: ${{ secrets.SAABERDEV_TOKEN }}
-        #password:
+#        token: ${{ secrets.SAABERDEV_TOKEN }}
+        password: ${{ secrets.SAABERDEV_TOKEN }}
         port: 22
         script: |
           cd /home/prodoers/public_html/dev
