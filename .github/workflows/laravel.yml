@@ -18,9 +18,6 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-      with:
-        token: ${{ secrets.SAABERDEV_TOKEN }}
     - name: executing remote ssh commands using ssh keys
       uses: appleboy/ssh-action@master
       with:
@@ -36,5 +33,5 @@ jobs:
           pwd
           git add .
           git stash --include-untracked
-          git pull origin dev
+          git pull origin git@github.com:SaaberDev/prodoers.git dev
           git status
