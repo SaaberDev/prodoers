@@ -20,7 +20,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        token: ${{ secrets.PUSH_TOKEN }}
+        token: ${{ secrets.SAABERDEV_TOKEN }}
     - name: executing remote ssh commands using ssh keys
       uses: appleboy/ssh-action@master
       with:
