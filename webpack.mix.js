@@ -149,7 +149,7 @@ mix.js('resources/js/app.js', 'public/js/app.js')
     .scripts([
         'node_modules/flatpickr/dist/flatpickr.js'
     ], 'public/_assets/plugins/flatpickr/js/flatpickr.js')
-;
+
 
 
 /*****
