@@ -69,6 +69,26 @@ mix.js('resources/js/app.js', 'public/js/app.js')
 
     /*
     |--------------------------------------------------------------------------
+    | Client Assets
+    |--------------------------------------------------------------------------
+    */
+    .styles([
+        'resources/_assets/_client/css/bootstrap.min.css',
+        'resources/_assets/_client/css/menukit.css',
+        'resources/_assets/_client/css/style.css',
+        'resources/_assets/_client/css/media.css'
+    ], 'public/_assets/_client/css/main.css')
+    .scripts([
+        'resources/_assets/_client/js/jquery.min.js',
+        'resources/_assets/_client/js/popper.min.js',
+        'resources/_assets/_client/js/bootstrap.min.js',
+        'resources/_assets/_client/js/offcanvas.js',
+        'resources/_assets/_client/js/script.js'
+    ], 'public/_assets/_client/js/main.js')
+    .copyDirectory('resources/_assets/_client/images', 'public/_assets/_client/images')
+
+    /*
+    |--------------------------------------------------------------------------
     | Plugins
     |--------------------------------------------------------------------------
     */
@@ -150,6 +170,36 @@ mix.js('resources/js/app.js', 'public/js/app.js')
         'node_modules/flatpickr/dist/flatpickr.js'
     ], 'public/_assets/plugins/flatpickr/js/flatpickr.js')
 
+    //Select2 JS
+    .scripts([
+        'resources/_assets/_client/js/select2.min.js'
+    ], 'public/_assets/_client/js/select2.min.js')
+
+    //Setting JS
+    .scripts([
+        'resources/_assets/_client/js/setting.js'
+    ], 'public/_assets/_client/js/setting.js')
+    
+    //Show Item JS
+    .styles([
+        'resources/_assets/_client/css/show.item.css'
+    ], 'public/_assets/_client/css/show.item.css')
+    .scripts([
+        'resources/_assets/_client/js/show.item.js'
+    ], 'public/_assets/_client/js/show.item.js')
+
+    //Star rating JS
+    .styles([
+        'resources/_assets/_client/css/star-rating.css'
+    ], 'public/_assets/_client/css/star-rating.css')
+    .scripts([
+        'resources/_assets/_client/js/star-rating.js'
+    ], 'public/_assets/_client/js/star-rating.js')
+
+    //Table JS
+    .scripts([
+        'resources/_assets/_client/js/table.js'
+    ], 'public/_assets/_client/js/table.js')
 
 
 /*****

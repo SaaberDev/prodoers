@@ -7,14 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Designwala</title>
     
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{ asset('_assets/_client/css/bootstrap.min.css') }}">
-    <!--Small Menu CSS-->
-    <link rel="stylesheet" href="{{ asset('_assets/_client/css/menukit.css') }}"> 
-    <!--Theme CSS files-->
-    <link rel="stylesheet" href="{{ asset('_assets/_client/css/style.css') }}">
     <!--Media CSS files-->
-    <link rel="stylesheet" href="{{ asset('_assets/_client/css/media.css') }}">
+    <link rel="stylesheet" href="{{ asset('_assets/_client/css/main.css') }}">
 
     @stack('styles')
 </head>
@@ -37,13 +31,6 @@
 
 
     <!--Javascript files-->
-    <script src="{{ asset('_assets/_client/js/jquery.min.js') }}"></script>
-
-    <script src="{{ asset('_assets/_client/js/popper.min.js') }}"></script>
-
-    <script src="{{ asset('_assets/_client/js/bootstrap.min.js')}}"></script>
-
-    <script src="{{ asset('_assets/_client/js/offcanvas.js') }}"></script>
     
     <script src="{{ asset('_assets/_client/js/main.js') }}"></script>
 
