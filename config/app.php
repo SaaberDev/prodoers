@@ -69,8 +69,8 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
-//    'timezone' => 'Asia/Dhaka',
+//    'timezone' => 'UTC',
+    'timezone' => 'Asia/Dhaka',
 
     /*
     |--------------------------------------------------------------------------
@@ -189,6 +189,7 @@ return [
         App\Providers\BreadcrumbsServiceProvider::class,
         App\Providers\ViewServiceProvider::class,
         App\Providers\PaymentServiceProvider::class,
+        App\Providers\CustomServiceProvider::class,
     ],
 
     /*

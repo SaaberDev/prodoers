@@ -33,15 +33,26 @@ class GuestServiceController extends Controller
 
         $tags = $service->tags;
 
-        \session()->put('order', [
-            'title' => $service->title,
-            'product_desc' => $service->short_desc,
-            'currency' => 'usd',
-            'grand_total' => $service->price
-        ]);
-
-        request()->session()->put('site_custom_url.intended_order_page', route('guest.order.index', $service->slug));
-        request()->session()->put('site_custom_url.current_service', url()->current());
+        \Session::put('site_custom_url.intended_order_page', route('guest.order.index', $service->slug));
+        \Session::put('site_custom_url.current_service', url()->current());
         return view('guest.pages.service_show', compact('service', 'related_services', 'tags'));
+    }
+
+    /**
+     * Initialize session based on place button click
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function initAuthSession()
+    {
+        if (\Session::has('site_custom_url.current_auth_url')) {
+            \Session::forget('site_custom_url.current_auth_url');
+        }
+        \Session::put('site_custom_url.current_auth_url', \Session::get('site_custom_url.intended_order_page'));
+
+        return \response()->json([
+            'status' => 'success',
+            'message' => 'Session Removed'
+        ]);
     }
 }

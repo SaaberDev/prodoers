@@ -240,9 +240,7 @@
                                     </span> <span class="requirement-text4">Dedicated Project manager</span></p>
                             </div>
                             <div class="place-order-btn">
-                                <form action="{{ route('guest.order.index', $service->slug) }}" method="GET">
-                                    <button type="submit" id="place_order" class="btn bgOne text-white btn-lg">Place Order</button>
-                                </form>
+                                <a href="{{ route('guest.order.index', $service->slug) }}" id="place_order" class="btn bgOne text-white btn-lg">Place Order</a>
                             </div>
                             <a href="#"  class="order-btn">Contact the Designwala Help Team</a>
                         </div>
@@ -631,6 +629,7 @@
             var logged_in = false;
             $('#place_order').click(function (event){
                 event.preventDefault();
+                initAuthSession();
                 if (!logged_in){
                     $('#logged_in').modalCtm({
                         closeExisting: true,
@@ -638,6 +637,22 @@
                     });
                 }
             })
+
+            function initAuthSession() {
+                $.ajax({
+                    url: '{{ route('guest.service.initAuthSession', $service->slug) }}',
+                    type: 'POST',
+                    data: {
+                        slug: '{{ $service->slug }}'
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function (response) {
+                        // console.log(response)
+                    }
+                });
+            }
         </script>
     @endguest
 @endpush
