@@ -3,6 +3,7 @@
     namespace App\Services\MediaLibrary;
 
     use Illuminate\Http\Request;
+    use JetBrains\PhpStorm\Pure;
     use Str;
     use Throwable;
 
@@ -10,9 +11,9 @@
     {
         private Request $request;
 
-        public function __construct(Request $request)
+        #[Pure] public function __construct()
         {
-            $this->request = $request;
+            $this->request = new Request();
         }
 
         /**
@@ -25,6 +26,21 @@
         {
             \DB::afterCommit(function () use ($model, $inputKey, $mediaCollection, $disk){
                 foreach ($this->request->input($inputKey, []) as $file) {
+                    $model->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection($mediaCollection, $disk);
+                }
+            });
+        }
+
+        /**
+         * @param $model
+         * @param $inputKey
+         * @param $mediaCollection
+         * @param string $disk
+         */
+        public function uploadMultipleMediaAjax($model, $inputKey, $mediaCollection, string $disk = 'public')
+        {
+            \DB::afterCommit(function () use ($model, $inputKey, $mediaCollection, $disk){
+                foreach ($inputKey as $file) {
                     $model->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection($mediaCollection, $disk);
                 }
             });

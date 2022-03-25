@@ -16,6 +16,9 @@
             color: #dc3545;
             font-size: 12px;
         }
+        /*#coupon_applied {*/
+        /*    display: flex;*/
+        /*}*/
     </style>
 @endpush
 
@@ -127,18 +130,29 @@
                                 <div class="row justify-content-between">
                                     <div class="col-lg-9 col-md-9"><p>Price</p></div>
                                     <div class="col-lg-3 col-md-3"><p class="p-left">${{ $service->price }}</p></div>
-                                    @if(session()->has('order.coupon'))
-                                        <div class="col-lg-9 col-md-3">
-                                            <div class="discont-wraper d-flex">
-                                                <p>Discount <span>({{ session('order.coupon.code', 'XXXX') }}) {{ session('order.coupon.percent') ? '(-' . session('order.coupon.percent') . '%)' : '0%' }}</span></p>
-                                                <a id="removeCouponBtn"><img src="{{ asset('_assets/_guest/img/paymentdetails/x.svg') }}" alt="close"></a>
+
+                                    <div id="coupon_applied" style="display: none">
+                                        <div class="row">
+                                            <div class="col-lg-9 col-md-3">
+                                                <div class="discont-wraper d-flex">
+                                                    <p>
+                                                        Discount
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-3 col-md-3">
+                                                <p class="color"><span>-$</span><span id="discount_amount"></span></p>
                                             </div>
                                         </div>
 
-                                        <div class="col-lg-3 col-md-3">
-                                            <p class="color">{{ '-$' . session('order.coupon.discount', 0) }}</p>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <span>(<span id="discount_code"></span>)</span><span>(-<span id="discount_percent"></span>%)</span>
+                                                <a id="removeCouponBtn"><img src="{{ asset('_assets/_guest/img/paymentdetails/x.svg') }}" alt="close"></a>
+                                            </div>
                                         </div>
-                                    @endif
+                                    </div>
                                     {{--                                    <div class="col-lg-9 col-md-9"><p>Service Charge</p></div>--}}
                                     {{--                                    <div class="col-lg-3 col-md-3"><p class="p-left">$10</p></div>--}}
                                 </div>
@@ -150,33 +164,43 @@
                                         <h3 class="total-text2">Total</h3>
                                     </div>
                                     <div class="col-lg-4 col-md-5">
-                                        <h3 class="total-text">${{ session('order.grand_total', 0) }}</h3>
+                                        <h3 class="total-text">$<span id="grand_total"></span></h3>
                                     </div>
                                 </div>
                                 <p>Service charge are counted for Vat exclusive</p>
 
                             </div>
-                            @if(!session()->has('order.coupon'))
-                                <div class="cupon-wraper" id="coupon_group">
-{{--                                    <form action="{{ route('guest.order.checkCoupon', $service->slug) }}" method="POST" id="coupon_form" class="for-flex">--}}
-{{--                                        @csrf @method('POST')--}}
-                                        <input type="text"
-                                               name="coupon"
-                                               id="coupon"
-                                               class="cp {{ ($errors->has('coupon') ? ' warning-border-color' : '') }}"
-                                               placeholder="Promo Code"
-                                        >
-                                        @if($errors->has('coupon'))
-                                            <span class="error-message" style="padding: 10px 0 0 0;">
-                                                <p>{{ $errors->first('coupon') }}</p>
-                                            </span>
-                                        @endif
-                                        <div>
-                                            <button id="apply_coupon_btn" class="c2">Apply</button>
-                                        </div>
-{{--                                    </form>--}}
+{{--                            @if(!session()->has('order.coupon'))--}}
+{{--                                <div class="cupon-wraper" id="coupon_group">--}}
+{{--                                    <input type="text"--}}
+{{--                                           name="coupon"--}}
+{{--                                           id="coupon"--}}
+{{--                                           class="cp {{ ($errors->has('coupon') ? ' warning-border-color' : '') }}"--}}
+{{--                                           placeholder="Promo Code"--}}
+{{--                                    >--}}
+{{--                                    @if($errors->has('coupon'))--}}
+{{--                                        <span class="error-message" style="padding: 10px 0 0 0;">--}}
+{{--                                            <p>{{ $errors->first('coupon') }}</p>--}}
+{{--                                        </span>--}}
+{{--                                    @endif--}}
+{{--                                    <div>--}}
+{{--                                        <button id="apply_coupon_btn" class="c2">Apply</button>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            @endif--}}
+
+                            <div class="cupon-wraper" id="coupon_group">
+                                <input type="text"
+                                       name="coupon"
+                                       id="coupon"
+                                       class="cp"
+                                       placeholder="Promo Code"
+                                >
+                                <div>
+                                    <button id="apply_coupon_btn" class="c2">Apply</button>
                                 </div>
-                            @endif
+                            </div>
+                            <div class="cupon-wraper" id="coupon_group"></div>
                         </div>
                     </div>
                 </div> <!--row-->
@@ -185,7 +209,7 @@
     </section>
 
     <form id="order_form" enctype="multipart/form-data">
-{{--        @csrf @method('POST')--}}
+        {{--        @csrf @method('POST')--}}
             <div class="Order-Requirement d-md-block d-none">
                 <div class="container">
                     <span class="hr-border"></span>
@@ -212,7 +236,7 @@
                                         <div class="needsclick dropzone" id="multiple-media-dropzone">
                                             <div class="dz-message" data-dz-message>
                                                 <span>Drop files here or click to upload.</span>
-                                                <span>Maximum allowed file size 2MB. Allowed file types are jpeg, png.</span>
+                                                <span>Maximum allowed file size 2MB. Allowed file types are jpeg, jpg, png, svg.</span>
                                             </div>
                                         </div>
                                     </div>
@@ -479,7 +503,7 @@
                         <div class="needsclick dropzone" id="multiple-media-dropzone-mobile">
                             <div class="dz-message" data-dz-message>
                                 <span>Drop files here or click to upload.</span>
-                                <span>Maximum allowed file size 2MB. Allowed file types are jpeg, png.</span>
+                                <span>Maximum allowed file size 2MB. Allowed file types are jpeg, jpg, png, svg.</span>
                             </div>
                         </div>
                     </div>
@@ -694,7 +718,7 @@
         'delete' => route('guest.order.deleteMedia'),
         'maxFilesize' => 2,
         'maxFiles' => 5,
-        'acceptedFiles' => 'image/jpeg, image/png',
+        'acceptedFiles' => 'image/jpeg, image/png, image/jpg, image/svg',
     ])
 
     {{-- Dropzone Service Image -- Mobile -- --}}
@@ -705,14 +729,36 @@
         'delete' => route('guest.order.deleteMedia'),
         'maxFilesize' => 2,
         'maxFiles' => 5,
-        'acceptedFiles' => 'image/jpeg, image/png',
+        'acceptedFiles' => 'image/jpeg, image/png, image/jpg, image/svg',
     ])
 
     <script>
         $(document).ready(function () {
+            var session = @json(session('order'));
             var checkoutBtn = $('#checkout-btn');
             var applyCouponBtn = $('#apply_coupon_btn');
-            var removeCouponBtn = $('#removeCouponBtn');
+            var couponApplied = $('#coupon_applied');
+            var couponGroup = $('#coupon_group');
+            var discountAmount = $('#discount_amount');
+            var discountPercent = $('#discount_percent');
+            var discountCode = $('#discount_code');
+            var grandTotal = $('#grand_total');
+
+            console.log(session);
+            if (session.coupon) {
+                couponApplied.show();
+                couponGroup.hide();
+                discountAmount.html(session.coupon.discount);
+                discountCode.html(session.coupon.code);
+                discountPercent.html(session.coupon.percent);
+                grandTotal.html(session.grand_total);
+            } else {
+                grandTotal.html(session.grand_total);
+                couponApplied.hide();
+                couponGroup.show();
+            }
+
+            // couponApplied.hide();
 
             checkoutBtn.on('click', function (e) {
                 e.preventDefault();
@@ -758,7 +804,6 @@
                     coupon_code: $('#coupon').val(),
                 };
                 var url = "{{ route('guest.order.checkCoupon', $service->slug) }}";
-
                 $.ajax({
                     url: url,
                     type: 'POST',
@@ -767,17 +812,26 @@
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     success: function (response) {
-                        console.log('response: ', response);
+                        var couponData = response.data;
+                        if (response.status === 'success') {
+                            couponApplied.show();
+                            couponGroup.hide();
+                            discountAmount.html(couponData.coupon.discount);
+                            discountCode.html(couponData.coupon.code);
+                            discountPercent.html(couponData.coupon.percent);
+                            grandTotal.html(couponData.grand_total);
+                            $('input[name="coupon"]').val('');
+                        }
                     },
                     error: function (error, status, xhr) {
-                        console.log('error: ', error);
-                        console.log('status: ', status);
-                        console.log('xhr: ', xhr);
+                        // console.log('error: ', error);
+                        // console.log('status: ', status);
+                        // console.log('xhr: ', xhr);
                     },
                 });
             });
 
-            removeCouponBtn.on('click', function () {
+            $(document).on('click', '#removeCouponBtn', function () {
                 var formData = {
                     coupon_code: $('#coupon').val(),
                 };
@@ -791,12 +845,18 @@
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     success: function (response) {
-                        console.log('response: ', response);
+                        var couponData = response.data;
+                        couponApplied.hide();
+                        couponGroup.show();
+                        discountAmount.empty();
+                        discountCode.empty();
+                        discountPercent.empty();
+                        grandTotal.html(couponData.grand_total);
                     },
                     error: function (error, status, xhr) {
-                        console.log('error: ', error);
-                        console.log('status: ', status);
-                        console.log('xhr: ', xhr);
+                        // console.log('error: ', error);
+                        // console.log('status: ', status);
+                        // console.log('xhr: ', xhr);
                     },
                 });
             });

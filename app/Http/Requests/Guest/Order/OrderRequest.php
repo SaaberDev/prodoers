@@ -25,7 +25,7 @@ class OrderRequest extends FormRequest
     {
         return [
             'requirements' => 'required',
-            'order_requirement_files' => 'nullable|image',
+            'order_requirement_files' => 'nullable',
             'payment_method' => 'required|in:paypal,visa,bkash,mastercard',
         ];
     }

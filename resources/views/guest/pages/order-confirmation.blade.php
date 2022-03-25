@@ -13,9 +13,15 @@
                     <div class="confirmed">
                         <div class="card mb-3" style="">
                             <div class="row">
-                                <div class="col-md-12">
-                                    <div class="confirmedCheckIMg"> <img src="{{ asset('_assets/_guest/img/confirmationpage/confirmationimg.svg') }}" class="card-img " alt="designwala"> </div>
-                                </div>
+                                @if(request('status') === 'success')
+                                    <div class="col-md-12">
+                                        <div class="confirmedCheckIMg"> <img src="{{ asset('_assets/_guest/img/confirmationpage/confirmationimg.svg') }}" class="card-img " alt="designwala"> </div>
+                                    </div>
+                                @else
+                                    <div class="col-md-12">
+                                        <div class="confirmedCheckIMg"> <img src="{{ asset('_assets/_guest/img/confirmationpage/confirmationimg.svg') }}" class="card-img " alt="designwala"> </div>
+                                    </div>
+                                @endif
                                 <div class="col-md-12">
                                     <div class="card-body">
                                         @if(request('status') === 'success')

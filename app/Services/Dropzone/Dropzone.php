@@ -35,6 +35,10 @@
          */
         public function storeMedia(): JsonResponse
         {
+            $this->request->validate([
+                'file' => 'image|mimes:png,jpg,jpeg,svg'
+            ]);
+
             $path = storage_path('tmp/uploads');
 
             if (!file_exists($path)) {
@@ -43,7 +47,7 @@
 
             $file = $this->request->file('file');
 
-            $name = trim($file->getClientOriginalName());
+            $name = trim(md5(now()) . '-' . $file->getClientOriginalName());
 
             $file->move($path, $name);
 
@@ -77,6 +81,10 @@
                 }
             }
 
-            return response()->json();
+            return response()->json([
+                'status' => 'success',
+                'file' => $file,
+                'message' => 'File has been removed.'
+            ]);
         }
     }

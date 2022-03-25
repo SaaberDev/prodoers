@@ -68,7 +68,7 @@
                     Route::any('/success', [CheckoutController::class, 'successCheckout'])->name('success');
                     Route::any('/cancel', [CheckoutController::class, 'cancelCheckout'])->name('cancel');
 
-                    Route::get('/confirmation/{order_number}', [GuestOrderController::class, 'confirmation'])->name('confirmation')->middleware('signed');
+                    Route::get('/confirmation/{order_number?}', [GuestOrderController::class, 'confirmation'])->name('confirmation')->middleware('signed');
                 });
             });
 

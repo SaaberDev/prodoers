@@ -5,55 +5,78 @@
     use App\Models\Coupon;
     use Session;
 
-    class CouponService implements CouponServiceInterface
+    class CouponService implements CouponServiceContract
     {
-        protected $coupon;
+        protected Coupon $coupon;
 
         /**
-         * This function will get the coupon and adjust the price
+         * Get coupon from session
+         *
+         * @return mixed
+         */
+        public function getCoupon(): mixed
+        {
+            return Session::get('order.coupon');
+        }
+
+        /**
+         * Get order with coupon from session
+         *
+         * @return mixed
+         */
+        public function getCouponWithOrder(): mixed
+        {
+            return Session::get('order');
+        }
+
+        /**
+         * Apply coupon and adjust the price
          *
          * @param $coupon
-         * @return false|void
+         * @return false|mixed|void
          */
-        public function getCoupon($coupon)
+        public function applyCoupon($coupon)
         {
             $this->coupon = Coupon::findByCodeIfPublished($coupon)->first();
             if (is_null($coupon)) {
                 return false;
             }
-            $this->adjustTotalPrice();
+
+            return $this->adjustTotalPrice();
         }
 
         /**
-         * This function will adjust total price after applying coupon.
+         * Adjust total price after applying coupon.
+         *
+         * @return mixed
          */
-        private function adjustTotalPrice()
+        private function adjustTotalPrice(): mixed
         {
-            $sessionData = Session::get('order');
+            $sessionData = $this->getCouponWithOrder();
             if (!empty($this->coupon)) {
                 if ($this->coupon->coupon_type == 'fixed') {
                     $sessionData['coupon'] = [
                         'code' => $this->coupon->coupon_code,
                         'amount' => $this->coupon->amount,
-                        'discount' => $this->discount(Session::get('order.price'))
+                        'discount' => $this->discount($sessionData['price'])
                     ];
                 } elseif ($this->coupon->coupon_type == 'percent_off') {
                     $sessionData['coupon'] = [
                         'code' => $this->coupon->coupon_code,
                         'percent' => $this->coupon->percent_off,
-                        'discount' => $this->discount(Session::get('order.price'))
+                        'discount' => $this->discount($sessionData['price'])
                     ];
                 }
             }
 
-            $sessionData['grand_total'] = $this->addDiscountToGrandTotal();
+            $sessionData['grand_total'] = $this->addDiscount();
             Session::put('order', $sessionData);
 
             return $sessionData;
         }
 
         /**
-         * This function will calculate the total discount
+         * Calculate the total discount price
          *
          * @param $price
          * @return int|string
@@ -70,33 +93,37 @@
         }
 
         /**
-         * This function will add discount to grand total
+         * Add discount to grand total price
          *
          * @return int|string|null
          */
-        private function addDiscountToGrandTotal(): int|string|null
+        private function addDiscount(): int|string|null
         {
-            return Session::get('order.price') - $this->discount(Session::get('order.price'));
+            return $this->getCouponWithOrder()['price'] - $this->discount($this->getCouponWithOrder()['price']);
         }
 
         /**
-         * This will remove the coupon
-         */
-        public function removeCoupon()
-        {
-            $order = Session::get('order');
-            $order['grand_total'] = $this->removeDiscountFromGrandTotal();
-            Session::put('order', $order);
-            Session::forget('order.coupon');
-        }
-
-        /**
-         * This function will remove discount from grand total
+         * Remove coupon from session and adjust grand total price
          *
          * @return mixed
          */
-        private function removeDiscountFromGrandTotal(): mixed
+        public function removeCoupon(): mixed
         {
-            return Session::get('order.grand_total') + Session::get('order.coupon.discount');
+            $order = $this->getCouponWithOrder();
+            $order['grand_total'] = $this->removeDiscount();
+            Session::put('order', $order);
+            Session::forget('order.coupon');
+
+            return $order;
+        }
+
+        /**
+         * Adjust grand total after removing coupon from the session
+         *
+         * @return mixed
+         */
+        private function removeDiscount(): mixed
+        {
+            return $this->getCouponWithOrder()['grand_total'] + $this->getCoupon()['discount'];
         }
     }

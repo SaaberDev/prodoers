@@ -8,13 +8,12 @@
     use App\Models\Order;
     use App\Models\Service;
     use App\Repositories\Order\ProcessOrder;
-    use App\Services\Coupon\CouponServiceInterface;
+    use App\Services\Coupon\CouponServiceContract;
     use App\Services\Dropzone\Dropzone;
     use Auth;
     use Illuminate\Contracts\Foundation\Application;
     use Illuminate\Contracts\View\Factory;
     use Illuminate\Contracts\View\View;
-    use Illuminate\Http\Exceptions\HttpResponseException;
     use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Response;
@@ -24,10 +23,10 @@
 
     class GuestOrderController extends Controller
     {
-        private CouponServiceInterface $couponService;
+        private CouponServiceContract $couponService;
         private ProcessOrder $processOrder;
 
-        public function __construct(CouponServiceInterface $couponService, ProcessOrder $processOrder)
+        public function __construct(CouponServiceContract $couponService, ProcessOrder $processOrder)
         {
             $this->couponService = $couponService;
             $this->processOrder = $processOrder;
@@ -92,9 +91,7 @@
                 'cus_phone' => Auth::user()->userDetails->phone ?? ' ',
             ];
 
-
             $data = array_merge($validated, $serviceInfo, $sessionData, $billing);
-            dd($data);
             $this->processOrder->setData($data);
 
             $payment_method = http_build_query(['payment_method' => $request->input('payment_method')]);
@@ -112,9 +109,10 @@
         {
             try {
                 $request->validated();
-                $this->couponService->getCoupon($request->validated());
+                $coupon = $this->couponService->applyCoupon($request->validated());
                 return response()->json([
                     'status' => 'success',
+                    'data' => $coupon,
                     'message' => 'Coupon Applied'
                 ]);
             } catch (\Exception $exception) {
@@ -128,13 +126,17 @@
 
         public function removeCoupon()
         {
-            $this->couponService->removeCoupon();
+            $coupon = $this->couponService->removeCoupon();
+            return Response::json([
+                'status' => 'success',
+                'data' => $coupon
+            ]);
         }
 
         /**
          * @return Application|Factory|View
          */
-        public function confirmation(Request $request, $order_number)
+        public function confirmation(Request $request, $order_number = null)
         {
             if (!$request->hasValidSignature()) {
                 abort(401);
@@ -171,6 +173,6 @@
          */
         public function destroyMedia(Dropzone $dropzone): JsonResponse
         {
-            return $dropzone->deleteMedia(Media::class, 'multiple_media', 'uuid', 'spatie');
+            return $dropzone->deleteMedia(Media::class, 'order_requirement_files', 'uuid', 'spatie');
         }
     }

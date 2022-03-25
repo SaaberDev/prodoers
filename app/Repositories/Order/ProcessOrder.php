@@ -17,6 +17,7 @@
          */
         public function setData($data)
         {
+//            dd($data);
             if (session()->has(['item', 'other'])){
                 session()->forget(['item', 'other']);
             }
@@ -35,7 +36,8 @@
                 'applied_coupon' => $data['applied_coupon'],
                 'discount' => $data['discount'],
                 'payment_method' => $data['payment_method'],
-//                'currency' => $data['currency'],
+                'currency' => $data['currency'],
+                'order_requirement_files' => $data['order_requirement_files'],
 
                 'tran_id' => uniqid(),
                 'reference_id' => uniqid(),
@@ -74,11 +76,10 @@
          */
         public function store($response)
         {
-            // TODO -- issue Try ... catch
             $data = \Session::get('item');
             if (request()->input('payment_method') === Payment::PAYPAL) {
-                DB::beginTransaction();
-                try {
+//                DB::beginTransaction();
+//                try {
                     $order = $this->storeOrder($data);
                     if ($response->result->status == 'COMPLETED') {
                         $data['paid_amount'] = $response->result->purchase_units[0]->payments->captures[0]->amount->value;
@@ -95,15 +96,15 @@
                         $data['payment_method'] = Payment::PAYPAL;
                         $this->storePayment($data, $order);
                     }
-                    DB::commit();
+//                    DB::commit();
                     return $order;
-                } catch (Exception $exception) {
-                    report($exception);
-                    DB::rollBack();
-                }
+//                } catch (Exception $exception) {
+//                    report($exception);
+//                    DB::rollBack();
+//                }
             } elseif (request()->input('payment_method') === Payment::VISA) {
-                DB::beginTransaction();
-                try {
+//                DB::beginTransaction();
+//                try {
                     $order = $this->storeOrder($data);
                     $order->payments()->create();
                     if ($response == true) {
@@ -121,12 +122,12 @@
                         $data['payment_method'] = Payment::VISA;
                         $this->storePayment($data, $order);
                     }
-                    DB::commit();
+//                    DB::commit();
                     return $order;
-                } catch (Exception $exception) {
-                    report($exception);
-                    DB::rollBack();
-                }
+//                } catch (Exception $exception) {
+//                    report($exception);
+//                    DB::rollBack();
+//                }
             }
         }
 

@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Services\Coupon\CouponService;
-use App\Services\Coupon\CouponServiceInterface;
+use App\Services\Coupon\CouponServiceContract;
 use Illuminate\Support\ServiceProvider;
 
 class CustomServiceProvider extends ServiceProvider
@@ -15,7 +15,7 @@ class CustomServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(CouponServiceInterface::class, CouponService::class);
+        $this->app->bind(CouponServiceContract::class, CouponService::class);
     }
 
     /**
