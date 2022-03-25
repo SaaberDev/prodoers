@@ -13,9 +13,7 @@ const mix = require('laravel-mix');
 
 // Laravel Default
 mix.js('resources/js/app.js', 'public/js/app.js')
-    .postCss('resources/css/app.css', 'public/css/app.css', [
-        //
-    ])
+    .postCss('resources/css/app.css', 'public/css/app.css')
 
     /*
     |--------------------------------------------------------------------------
@@ -179,7 +177,7 @@ mix.js('resources/js/app.js', 'public/js/app.js')
     .scripts([
         'resources/_assets/_client/js/setting.js'
     ], 'public/_assets/_client/js/setting.js')
-    
+
     //Show Item JS
     .styles([
         'resources/_assets/_client/css/show.item.css'
@@ -200,7 +198,7 @@ mix.js('resources/js/app.js', 'public/js/app.js')
     .scripts([
         'resources/_assets/_client/js/table.js'
     ], 'public/_assets/_client/js/table.js')
-
+;
 
 /*****
  * Will be versified if production mode detected
