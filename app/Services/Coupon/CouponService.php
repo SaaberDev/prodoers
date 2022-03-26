@@ -54,13 +54,13 @@
         {
             $sessionData = $this->getCouponWithOrder();
             if (!empty($this->coupon)) {
-                if ($this->coupon->coupon_type == 'fixed') {
+                if ($this->coupon->coupon_type === 'fixed') {
                     $sessionData['coupon'] = [
                         'code' => $this->coupon->coupon_code,
                         'amount' => $this->coupon->amount,
                         'discount' => $this->discount($sessionData['price'])
                     ];
-                } elseif ($this->coupon->coupon_type == 'percent_off') {
+                } elseif ($this->coupon->coupon_type === 'percent_off') {
                     $sessionData['coupon'] = [
                         'code' => $this->coupon->coupon_code,
                         'percent' => $this->coupon->percent_off,
@@ -79,14 +79,14 @@
          * Calculate the total discount price
          *
          * @param $price
-         * @return int|string
+         * @return int
          */
-        public function discount($price): int|string
+        public function discount($price): int
         {
             if ($this->coupon->coupon_type == 'fixed') {
                 return $this->coupon->amount;
             } elseif ($this->coupon->coupon_type == 'percent_off') {
-                return number_format(($this->coupon->percent_off / 100) * $price);
+                return ($this->coupon->percent_off / 100) * $price;
             } else {
                 return 0;
             }

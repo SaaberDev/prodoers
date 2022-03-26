@@ -196,6 +196,7 @@
                                        class="cp"
                                        placeholder="Promo Code"
                                 >
+                                <div id="custom-errors-coupon_code"></div>
                                 <div>
                                     <button id="apply_coupon_btn" class="c2">Apply</button>
                                 </div>
@@ -782,7 +783,6 @@
                     error: function (response) {
                         var xhr = response.responseJSON;
                         $('.custom-error').remove();
-                        console.log('1')
                         $("input").removeClass('is-invalid');
                         $.each(xhr.errors, function(key, value) {
                             // console.log('2', key)
@@ -823,10 +823,16 @@
                             $('input[name="coupon"]').val('');
                         }
                     },
-                    error: function (error, status, xhr) {
-                        // console.log('error: ', error);
-                        // console.log('status: ', status);
-                        // console.log('xhr: ', xhr);
+                    error: function (response) {
+                        var xhr = response.responseJSON;
+                        $('.custom-error').remove();
+                        $("input").removeClass('is-invalid');
+                        $.each(xhr.errors, function(key, value) {
+                            console.log('2', key)
+                            var input = $("#"+key);
+                            input.addClass('is-invalid');
+                            $('#custom-errors-'+key).append('<span class="custom-error"><strong>'+ value +'</strong></span>');
+                        });
                     },
                 });
             });
