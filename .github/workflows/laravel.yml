@@ -36,5 +36,6 @@ jobs:
           git status
 
           php artisan cache:delete
+          php artisan migrate:fresh --seed
           composer install --optimize-autoloader --no-dev
 
