@@ -11,7 +11,7 @@
                 <ul class="navbar-nav ms-auto">
                     {{-- Mega Menu --}}
                     @include('guest.includes.mega-menu.mega-menu')
-                    <li class="nav-item"><a class="nav-link text-white" href="#">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="https://blog.prodoers.net">Blog</a></li>
                     @auth
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
