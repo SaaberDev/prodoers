@@ -7,15 +7,18 @@
     use App\Models\Order;
     use App\Models\Payment;
     use App\Services\Generator\CodeGenerator;
+    use App\Services\MediaLibrary\MediaHandler;
     use Illuminate\Database\Eloquent\Model;
 
     abstract class GenerateOrder
     {
         protected $codeGenerator;
+        protected $mediaHandler;
 
         public function __construct()
         {
             $this->codeGenerator = new CodeGenerator();
+            $this->mediaHandler = new MediaHandler();
         }
 
         /**
@@ -32,7 +35,14 @@
             $orderData['reference_id'] = $data['reference_id'];
             $orderData['discount'] = $data['discount'];
             $orderData['order_status'] = Order::PENDING;
-            return Order::create($orderData);
+
+            $order = Order::create($orderData);
+            // Order Requirement Files
+            if (!is_null($data['order_requirement_files'])) {
+                $this->mediaHandler->uploadMultipleMediaAjax($order, $data['order_requirement_files'], 'order');
+            }
+
+            return $order;
         }
 
         /**

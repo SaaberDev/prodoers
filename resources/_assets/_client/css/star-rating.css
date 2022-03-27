@@ -1,0 +1,25 @@
+  
+  /* Rating Star Widgets Style */
+  .rating-stars ul {
+    list-style-type:none;
+    padding:0;
+  }
+  .rating-stars ul > li.star svg {
+    display:inline-block;
+    width:32px;
+  }
+  
+  
+  /* Hover state of the stars */
+  .rating-stars ul > li.star.hover > svg path {
+    fill:#FFA200;
+  }
+  
+  /* Selected state of the stars */
+  .rating-stars ul > li.star.selected > svg path {
+    fill:#FFA200;
+  }
+  /*Rating Message */
+  .rating-stars ul div p{
+    font-weight: 500;
+  }

@@ -7,11 +7,14 @@
     use App\Repositories\Billing\PaymentGateway\Paypal\PaypalOrder;
     use App\Repositories\Billing\PaymentGateway\SslCommerz\SslCommerz;
     use App\Repositories\Order\ProcessOrder;
+    use App\Services\MediaLibrary\MediaHandler;
+    use Carbon\Carbon;
     use Exception;
     use Illuminate\Contracts\Foundation\Application;
     use Illuminate\Contracts\View\Factory;
     use Illuminate\Contracts\View\View;
     use Illuminate\Http\RedirectResponse;
+    use Illuminate\Support\Facades\Crypt;
     use Throwable;
 
     class CheckoutController extends Controller
@@ -64,29 +67,34 @@
             try {
                 $paypal_order_id = session('other.paypal_order_id');
                 $response = $this->billing->successPayment($paypal_order_id);
-
-                if ($response) {
-                    $order = $this->processOrder->store($response);
-                    $this->clearSession();
-                    \Session::put('confirmation', [
-                        'status' => 'success',
-                        'title' => 'Order Successful',
-                        'message' => 'Your order has been successfully placed.',
-                        'data' => $order
-                    ]);
-
-                    return redirect()->route('guest.order.confirmation');
-                }
-            } catch (Exception $exception) {
-                report($exception);
+                $order = $this->processOrder->store($response);
                 $this->clearSession();
                 return redirect()
-                    ->route('guest.order.confirmation')
-                    ->with([
-                        'status' => 'failed',
-                        'title' => 'Order Failed',
-                        'message' => 'Something went wrong. Contact ProDoers.'
-                    ]);
+                    ->temporarySignedRoute(
+                        'guest.order.confirmation',
+                        Carbon::now()->addMinutes(30),
+                        [
+                            'status' => 'success',
+                            'title' => 'Order Successful',
+                            'order_number' => $order->order_number,
+                            'message' => 'Your order has been successfully placed.'
+                        ]
+                    );
+            } catch (Exception $exception) {
+                $getExceptionClass = get_class($exception);
+                $ex = resolve($getExceptionClass);
+                report($ex);
+                $this->clearSession();
+                return redirect()
+                    ->temporarySignedRoute(
+                        'guest.order.confirmation',
+                        Carbon::now()->addMinutes(30),
+                        [
+                            'status' => 'failed',
+                            'title' => 'Order Failed',
+                            'message' => 'Something went wrong. Contact ProDoers.'
+                        ]
+                    );
             }
         }
 

@@ -1112,7 +1112,7 @@
         font-size: 14px;
         margin-bottom: 15px;
     }
-    button.btn.bgOne.text-white.btn-lg.rounded-0 {
+    a.btn.bgOne.text-white.btn-lg.rounded-0 {
         width: 200px;
         padding: 8px 10px;
         font-size: 16px;

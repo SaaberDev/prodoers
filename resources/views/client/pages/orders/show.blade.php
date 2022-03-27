@@ -6,7 +6,7 @@
 
 @if(request()->get('page')== 'delivered')
 
-    <link rel="stylesheet" href="{{ asset('_assets/_client/css/start-rating.css') }}">
+    <link rel="stylesheet" href="{{ asset('_assets/_client/css/star-rating.css') }}">
 
 @endif
 
@@ -777,7 +777,7 @@
 
 @if(request()->get('page')== 'delivered')
 
-    <script src="{{ asset('_assets/_client/js/start-rating.js') }}"></script>
+    <script src="{{ asset('_assets/_client/js/star-rating.js') }}"></script>
 
 @endif
 

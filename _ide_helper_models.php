@@ -170,15 +170,15 @@ namespace App\Models{
  * @property string|null $published_status
  * @property \Illuminate\Support\Carbon|null $start_date
  * @property \Illuminate\Support\Carbon|null $end_date
- * @property string|null $amount
- * @property string|null $percent_off
+ * @property int|null $amount
+ * @property int|null $percent_off
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\ServiceCategory[] $categories
  * @property-read int|null $categories_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Service[] $services
  * @property-read int|null $services_count
- * @method static \Illuminate\Database\Eloquent\Builder|Coupon applyCouponTo($category, $service)
+ * @method static \Illuminate\Database\Eloquent\Builder|Coupon hasCouponApplied($category, $service)
  * @method static \Illuminate\Database\Eloquent\Builder|Coupon newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Coupon newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Coupon query()
@@ -284,7 +284,7 @@ namespace App\Models{
  * @property string|null $reference_id
  * @property string $requirements
  * @property string|null $applied_coupon
- * @property float|null $discount
+ * @property int|null $discount
  * @property string $order_status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -347,7 +347,7 @@ namespace App\Models{
  *
  * @property int $id
  * @property int|null $order_id
- * @property float|null $paid_amount
+ * @property int|null $paid_amount
  * @property string|null $transaction_id
  * @property string|null $payment_method
  * @property string $payment_status
@@ -384,7 +384,7 @@ namespace App\Models{
  * @property int|null $popular_status
  * @property int|null $published_status
  * @property string $slug
- * @property string $price
+ * @property int $price
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Coupon[] $coupons

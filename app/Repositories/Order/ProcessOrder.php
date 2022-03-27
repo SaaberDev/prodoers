@@ -17,6 +17,7 @@
          */
         public function setData($data)
         {
+//            dd($data);
             if (session()->has(['item', 'other'])){
                 session()->forget(['item', 'other']);
             }
@@ -35,7 +36,8 @@
                 'applied_coupon' => $data['applied_coupon'],
                 'discount' => $data['discount'],
                 'payment_method' => $data['payment_method'],
-//                'currency' => $data['currency'],
+                'currency' => $data['currency'],
+                'order_requirement_files' => $data['order_requirement_files'] ?? [],
 
                 'tran_id' => uniqid(),
                 'reference_id' => uniqid(),
@@ -74,7 +76,6 @@
          */
         public function store($response)
         {
-            // TODO -- issue Try ... catch
             $data = \Session::get('item');
             if (request()->input('payment_method') === Payment::PAYPAL) {
                 DB::beginTransaction();
@@ -105,7 +106,6 @@
                 DB::beginTransaction();
                 try {
                     $order = $this->storeOrder($data);
-                    $order->payments()->create();
                     if ($response == true) {
                         $data['paid_amount'] = $data['pay_amount'];
                         $data['transaction_id'] = $data['tran_id'];

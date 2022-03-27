@@ -17,7 +17,7 @@ class CreatePaymentsTable extends Migration
             $table->id();
             $table->foreignId('order_id')->nullable()->constrained();
 
-            $table->double('paid_amount')->nullable();
+            $table->integer('paid_amount')->nullable();
             $table->string('transaction_id')->unique()->nullable();
             $table->string('payment_method')->nullable();
             $table->enum('payment_status', ['paid', 'failed']);

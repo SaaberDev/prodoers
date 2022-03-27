@@ -33,6 +33,11 @@
                     this.emit("thumbnail", file, "/_assets/_default/file_icon.png");
                 }
             });
+            this.on("error", function (file, response) {
+                $.each(response.errors.file, function (index, value) {
+                    $('.dz-error-message').text(value);
+                });
+            });
         },
         headers: {
             'X-CSRF-TOKEN': "{{ csrf_token() }}"
@@ -41,7 +46,9 @@
             $('form').append('<input type="hidden" name="{{ $fileInputName }}[]" value="' + response.name + '">')
             multipleUploadMap[file.name] = response.name
         },
+
         removedfile: function (file) {
+            var xhr = JSON.parse(file.xhr.response);
             file.previewElement.remove()
             var name = ''
             if (typeof file.file_name !== 'undefined') {
@@ -60,7 +67,7 @@
                 type: 'DELETE',
                 url: "{{ $delete }}",
                 data: {
-                    {{ $fileInputName }}: name,
+                    {{ $fileInputName }}: xhr.name,
                 },
             });
         }

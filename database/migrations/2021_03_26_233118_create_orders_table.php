@@ -22,7 +22,7 @@ class CreateOrdersTable extends Migration
             $table->string('reference_id')->unique()->nullable();
             $table->longText('requirements');
             $table->string('applied_coupon')->nullable();
-            $table->double('discount')->nullable();
+            $table->integer('discount')->nullable();
             $table->enum('order_status', ['pending', 'ongoing', 'delivered', 'in_revision', 'cancelled', 'completed']);
             $table->timestamps();
         });

@@ -87,7 +87,7 @@
          * @param string $type          | single or multiple
          * @return string image url
          */
-        function showImage($model, $collectionName, $type = 'single')
+        function showImage($model, $collectionName, string $type = 'single')
         {
             if ($type === 'multiple') {
                 $filePath = pathinfo($model->getPath(), PATHINFO_DIRNAME);

@@ -42,6 +42,7 @@
         // Single Service Page
         Route::prefix('/services')->name('service.')->group(function () {
             Route::get('/{service_slug}', [GuestServiceController::class, 'index'])->name('index');
+            Route::post('/{service_slug}/init-auth-session', [GuestServiceController::class, 'initAuthSession'])->name('initAuthSession');
         });
 
         // Order
@@ -49,14 +50,25 @@
             ->middleware('auth')
             ->group(function () {
                 Route::get('/{service_slug}/order', [GuestOrderController::class, 'index'])->name('index');
-                Route::get('/{service_slug}/order/pay', [GuestOrderController::class, 'store'])->name('store');
+
+                // Ajax Request
+                Route::post('/{service_slug}/order/check-coupon', [GuestOrderController::class, 'checkCoupon'])->name('checkCoupon');
+                Route::post('/{service_slug}/order/remove-coupon', [GuestOrderController::class, 'removeCoupon'])->name('removeCoupon');
+
+
+                // Dropzone Media Ajax
+                Route::get('/get-media', [GuestOrderController::class, 'getMedia'])->name('getMedia');
+                Route::post('/store-media', [GuestOrderController::class, 'storeMedia'])->name('storeMedia');
+                Route::delete('/delete-media', [GuestOrderController::class, 'destroyMedia'])->name('deleteMedia');
+
+                Route::post('/{service_slug}/order/pay', [GuestOrderController::class, 'store'])->name('store');
 
                 Route::prefix('/checkout')->group(function () {
                     Route::get('/pay', [CheckoutController::class, 'checkout'])->name('checkout');
                     Route::any('/success', [CheckoutController::class, 'successCheckout'])->name('success');
                     Route::any('/cancel', [CheckoutController::class, 'cancelCheckout'])->name('cancel');
 
-                    Route::get('/confirmation', [GuestOrderController::class, 'confirmation'])->name('confirmation');
+                    Route::get('/confirmation/{order_number?}', [GuestOrderController::class, 'confirmation'])->name('confirmation')->middleware('signed');
                 });
             });
 

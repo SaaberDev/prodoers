@@ -12,10 +12,19 @@
         .orderSummery {
             display: block;
         }
+        .custom-error {
+            color: #dc3545;
+            font-size: 12px;
+        }
+        /*#coupon_applied {*/
+        /*    display: flex;*/
+        /*}*/
     </style>
 @endpush
 
 @section('content')
+    {{-- Web view Start --}}
+
     <section class="order-section d-md-block d-none  py-5">
         <div class="container">
             <div class="h-wraper">
@@ -82,8 +91,8 @@
                                                     <a class="nav-link collapsed custom custom-2  " data-bs-toggle="collapse" href="#services" role="button" aria-expanded="true">What Includes
 
                                                         <span class="nav-arrow custom-arrow">
-                                                            <img src="{{ asset('_assets/_guest/img/paymentdetails/dropdown.svg') }}" class="img-fluid" alt="dropdown">
-                                                        </span>
+                                                    <img src="{{ asset('_assets/_guest/img/paymentdetails/dropdown.svg') }}" class="img-fluid" alt="dropdown">
+                                                </span>
                                                     </a>
 
                                                     <div class="collapse show cl-custom" id="services">
@@ -121,18 +130,29 @@
                                 <div class="row justify-content-between">
                                     <div class="col-lg-9 col-md-9"><p>Price</p></div>
                                     <div class="col-lg-3 col-md-3"><p class="p-left">${{ $service->price }}</p></div>
-                                    @if(session()->has('order.coupon'))
-                                        <div class="col-lg-9 col-md-3">
-                                            <div class="discont-wraper d-flex">
-                                                <p>Discount <span>({{ session('order.coupon.code', 'XXXX') }}) {{ session('order.coupon.percent') ? '(-' . session('order.coupon.percent') . '%)' : '0%' }}</span></p>
-                                                <a wire:click.prevent="removeCoupon"><img src="{{ asset('_assets/_guest/img/paymentdetails/x.svg') }}" alt="close"></a>
+
+                                    <div id="coupon_applied" style="display: none">
+                                        <div class="row">
+                                            <div class="col-lg-9 col-md-3">
+                                                <div class="discont-wraper d-flex">
+                                                    <p>
+                                                        Discount
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-3 col-md-3">
+                                                <p class="color"><span>-$</span><span id="discount_amount"></span></p>
                                             </div>
                                         </div>
 
-                                        <div class="col-lg-3 col-md-3">
-                                            <p class="color">{{ '-$' . session('order.coupon.discount', 0) }}</p>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <span>(<span id="discount_code"></span>)</span><span>(<span id="discount_percent"></span>)</span>
+                                                <a id="removeCouponBtn"><img src="{{ asset('_assets/_guest/img/paymentdetails/x.svg') }}" alt="close"></a>
+                                            </div>
                                         </div>
-                                    @endif
+                                    </div>
                                     {{--                                    <div class="col-lg-9 col-md-9"><p>Service Charge</p></div>--}}
                                     {{--                                    <div class="col-lg-3 col-md-3"><p class="p-left">$10</p></div>--}}
                                 </div>
@@ -144,30 +164,44 @@
                                         <h3 class="total-text2">Total</h3>
                                     </div>
                                     <div class="col-lg-4 col-md-5">
-                                        <h3 class="total-text">${{ session('order.grand_total', 0) }}</h3>
+                                        <h3 class="total-text">$<span id="grand_total"></span></h3>
                                     </div>
                                 </div>
                                 <p>Service charge are counted for Vat exclusive</p>
 
                             </div>
-                            @if(!session()->has('order.coupon'))
-                                <div class="cupon-wraper">
-                                    <form action="" class="for-flex">
-                                        <input type="text"
-                                               class="cp {{ ($errors->has('form.coupon') ? ' warning-border-color' : '') }}"
-                                               placeholder="Promo Code"
-                                        >
-                                        @if($errors->has('form.coupon'))
-                                            <span class="error-message" style="padding: 10px 0 0 0;">
-                                            <p>{{ $errors->first('form.coupon') }}</p>
-                                        </span>
-                                        @endif
-                                        <div>
-                                            <button class="c2">Apply</button>
-                                        </div>
-                                    </form>
+{{--                            @if(!session()->has('order.coupon'))--}}
+{{--                                <div class="cupon-wraper" id="coupon_group">--}}
+{{--                                    <input type="text"--}}
+{{--                                           name="coupon"--}}
+{{--                                           id="coupon"--}}
+{{--                                           class="cp {{ ($errors->has('coupon') ? ' warning-border-color' : '') }}"--}}
+{{--                                           placeholder="Promo Code"--}}
+{{--                                    >--}}
+{{--                                    @if($errors->has('coupon'))--}}
+{{--                                        <span class="error-message" style="padding: 10px 0 0 0;">--}}
+{{--                                            <p>{{ $errors->first('coupon') }}</p>--}}
+{{--                                        </span>--}}
+{{--                                    @endif--}}
+{{--                                    <div>--}}
+{{--                                        <button id="apply_coupon_btn" class="c2">Apply</button>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            @endif--}}
+
+                            <div class="cupon-wraper" id="coupon_group">
+                                <input type="text"
+                                       name="coupon"
+                                       id="coupon"
+                                       class="cp"
+                                       placeholder="Promo Code"
+                                >
+                                <div id="custom-errors-coupon_code"></div>
+                                <div>
+                                    <button id="apply_coupon_btn" class="c2">Apply</button>
                                 </div>
-                            @endif
+                            </div>
+                            <div class="cupon-wraper" id="coupon_group"></div>
                         </div>
                     </div>
                 </div> <!--row-->
@@ -175,148 +209,146 @@
         </div>
     </section>
 
-    <!-- Order Requirement start -->
-    <section class="Order-Requirement d-md-block d-none">
-        <div class="container">
-            <span class="hr-border"></span>
-            <h2> Order Requirement</h2>
-            <div class="row">
+    <form id="order_form" enctype="multipart/form-data">
+            <div class="Order-Requirement d-md-block d-none">
+                <div class="container">
+                    <span class="hr-border"></span>
+                    <h2> Order Requirement</h2>
+                    <div class="row">
 
-                <div class="col-lg-7 col-md-7">
-                    <div class="text-area-wraper d-md-block d-none ">
-                        <textarea class="form-control c-custom rounded-0 {{ ($errors->has('form.requirements') ? ' warning-border-color' : '') }}"
-                                  id="exampleFormControlTextarea1"
-                                  rows="10"
-                                  placeholder="Write here if you want to tell anything"
-                        ></textarea>
-                        @if($errors->has('form.requirements'))
-                            <div class="error-message" style="padding: 6px 0 0 0;">
-                                <p>{{ $errors->first('form.requirements') }}</p>
-                            </div>
-                        @endif
-                        <div class="problem" style="{{ $errors->has('form.requirements') ? 'margin-top: 8px;' : '' }}">
-                            <div class="form-group">
-                                <div class="needsclick dropzone" id="multiple-media-dropzone">
-                                    <div class="dz-message" data-dz-message>
-                                        <span>Drop files here or click to upload.</span>
-                                        <span>Maximum allowed file size 2MB. Allowed file types are jpeg, png.</span>
+                        <div class="col-lg-7 col-md-7">
+                            <div class="text-area-wraper d-md-block d-none ">
+                                <textarea class="form-control c-custom rounded-0 {{ ($errors->has('requirements') ? ' warning-border-color' : '') }}"
+                                          name="requirements"
+                                          id="requirements"
+                                          rows="10"
+                                          placeholder="Write here if you want to tell anything"
+                                ></textarea>
+                                <div id="custom-errors-requirements"></div>
+
+                                <div class="problem" style="{{ $errors->has('form.requirements') ? 'margin-top: 8px;' : '' }}">
+                                    <div class="form-group">
+                                        <div class="needsclick dropzone" id="multiple-media-dropzone">
+                                            <div class="dz-message" data-dz-message>
+                                                <span>Drop files here or click to upload.</span>
+                                                <span>Maximum allowed file size 2MB. Allowed file types are jpeg, jpg, png, svg.</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="col-lg-5 col-md-5 d-md-block d-none ">
-                    <div class="Instruction">
+                        <div class="col-lg-5 col-md-5 d-md-block d-none ">
+                            <div class="Instruction">
 
-                        <h3>Instruction</h3>
-                        <ul>
-                            @forelse($service->serviceCategories->serviceCategoryInstructions as $instructions)
-                                <li>{{ $instructions->order_instructions }}</li>
-                            @empty
-                                No Instruction Available
-                            @endforelse
-                        </ul>
-                        <p>{{ $service->serviceCategories->order_instruction_desc }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    {{-- Web view --}}
-    <section class="pyment-getway d-md-block d-none">
-        <div class="container">
-            <span class="hr-border"></span>
-            <div class="row align-items-center">
-                @if($errors->has('form.paymentMethod'))
-                    <div class="row">
-                        <div class="col-md-12" style="display: flex; justify-content: center;">
-                            <div class="error-message" style="padding: 6px 0 0 0;margin-left: 109px;">
-                                <p>{{ $errors->first('form.paymentMethod') }}</p>
-                            </div>
-                        </div>
-                    </div>
-                @endif
-                <div class="offset-lg-3 col-lg-2 offset-xl-5 offset-md-1 col-xl-2 col-md-3">
-                    <div class="pyment-wraper">
-                        <h2>Select Payment</h2>
-                    </div>
-                </div>
-
-                <div class="col-lg-7 col-xl-5 col-md-8">
-                    <div class="selectablescustom">
-                        <input type="text" value="" class="{{ $errors->has('form.paymentMethod') ? ' is-invalid' : '' }}" hidden>
-                        <div class="row">
-                            <div class="col-lg-3 col-md-3">
-                                <div class=" form-check form-check-inline">
-                                    <input class="form-check-input css-checkbox"
-                                           type="radio"
-                                           name="payment_method"
-                                           id="inlineRadio1"
-                                           value="paypal"
-                                    >
-                                    <label class="form-check-label css-label" for="inlineRadio1"> <img src="{{ asset('_assets/_guest/img/paymentdetails/paypal.png') }}" alt="" class=" ui-state-default  img-fluid  "></label>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input css-checkbox"
-                                           type="radio"
-                                           name="payment_method"
-                                           id="inlineRadio2"
-                                           value="visa"
-                                    >
-                                    <label class="form-check-label css-label" for="inlineRadio2"><img src="{{ asset('_assets/_guest/img/paymentdetails/visa.png') }}" alt="" class=" ui-state-default  img-fluid  "></label>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input css-checkbox"
-                                           type="radio"
-                                           name="payment_method"
-                                           id="inlineRadio3"
-                                           value="bkash"
-                                    >
-                                    <label class="form-check-label css-label" for="inlineRadio3"><img src="{{ asset('_assets/_guest/img/paymentdetails/bkash.png') }}" alt="" class=" ui-state-default  img-fluid  "> </label>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input css-checkbox"
-                                           type="radio"
-                                           name="payment_method"
-                                           id="inlineRadio4"
-                                           value="mastercard"
-                                    >
-                                    <label class="form-check-label css-label" for="inlineRadio4"><img src="{{ asset('_assets/_guest/img/paymentdetails/master.png') }}" alt="" class=" ui-state-default  img-fluid  "></label>
-                                </div>
+                                <h3>Instruction</h3>
+                                <ul>
+                                    @forelse($service->serviceCategories->serviceCategoryInstructions as $instructions)
+                                        <li>{{ $instructions->order_instructions }}</li>
+                                    @empty
+                                        No Instruction Available
+                                    @endforelse
+                                </ul>
+                                <p>{{ $service->serviceCategories->order_instruction_desc }}</p>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="form-group my-label">
-                    <input class="form-check-input" type="checkbox" id="gridCheck" style="margin-right:9px;">
-                    <label class=" paymentdetailsCheck my-label" for="gridCheck" style="display: inline;">By clicking continue, I agreed to <span class="">Designwala</span> <span><button class="btn btn-link m-0 p-0" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal-1"> Terms &amp; Condition</button></span> and <span><button class="btn btn-link m-0 p-0" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal-2">Privacy Policy</button></span> of designwala
-                    </label>
-                </div>
             </div>
-            <div class="row justify-content-end g-3">
-                <div class="col-lg-4 col-md-4">
-                    <div class="checkout_btn_wraper">
-                        <button type="submit"
-                                class="custom-checkout-btn"
-                                id="checkout-btn"
-                        >
-                            Continue to checkout
-                        </button>
+
+            <div class="pyment-getway d-md-block d-none">
+                <div class="container">
+                    <span class="hr-border"></span>
+                    <div class="row align-items-center">
+                        @if($errors->has('payment_method'))
+                            <div class="row">
+                                <div class="col-md-12" style="display: flex; justify-content: center;">
+                                    <div class="error-message" style="padding: 6px 0 0 0;margin-left: 109px;">
+                                        <p>{{ $errors->first('payment_method') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+
+                        <div id="custom-errors-payment_method"></div>
+                        <div class="offset-lg-3 col-lg-2 offset-xl-5 offset-md-1 col-xl-2 col-md-3">
+                            <div class="pyment-wraper">
+                                <h2>Select Payment</h2>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-7 col-xl-5 col-md-8">
+                            <div class="selectablescustom">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-3">
+                                        <div class=" form-check form-check-inline">
+                                            <input class="form-check-input css-checkbox"
+                                                   type="radio"
+                                                   name="payment_method"
+                                                   id="inlineRadio1"
+                                                   value="paypal"
+                                            >
+                                            <label class="form-check-label css-label" for="inlineRadio1"> <img src="{{ asset('_assets/_guest/img/paymentdetails/paypal.png') }}" alt="" class=" ui-state-default  img-fluid  "></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input css-checkbox"
+                                                   type="radio"
+                                                   name="payment_method"
+                                                   id="inlineRadio2"
+                                                   value="visa"
+                                            >
+                                            <label class="form-check-label css-label" for="inlineRadio2"><img src="{{ asset('_assets/_guest/img/paymentdetails/visa.png') }}" alt="" class=" ui-state-default  img-fluid  "></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input css-checkbox"
+                                                   type="radio"
+                                                   name="payment_method"
+                                                   id="inlineRadio3"
+                                                   value="bkash"
+                                            >
+                                            <label class="form-check-label css-label" for="inlineRadio3"><img src="{{ asset('_assets/_guest/img/paymentdetails/bkash.png') }}" alt="" class=" ui-state-default  img-fluid  "> </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input css-checkbox"
+                                                   type="radio"
+                                                   name="payment_method"
+                                                   id="inlineRadio4"
+                                                   value="mastercard"
+                                            >
+                                            <label class="form-check-label css-label" for="inlineRadio4"><img src="{{ asset('_assets/_guest/img/paymentdetails/master.png') }}" alt="" class=" ui-state-default  img-fluid  "></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group my-label">
+                            <input class="form-check-input" type="checkbox" id="gridCheck" style="margin-right:9px;">
+                            <label class=" paymentdetailsCheck my-label" for="gridCheck" style="display: inline;">By clicking continue, I agreed to <span class="">Designwala</span> <span><button class="btn btn-link m-0 p-0" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal-1"> Terms &amp; Condition</button></span> and <span><button class="btn btn-link m-0 p-0" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal-2">Privacy Policy</button></span> of designwala
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row justify-content-end g-3">
+                        <div class="col-lg-4 col-md-4">
+                            <div class="checkout_btn_wraper">
+                                <button class="custom-checkout-btn"
+                                        id="checkout-btn"
+                                >
+                                    Continue to checkout
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+    </form>
 
 
     <div class="Payment-getway d-md-block d-none  py-5">
@@ -335,7 +367,7 @@
             </div>
         </div>
     </div>
-    <!-- Order Requirement end -->
+    {{-- Web view End --}}
 
     <!-- ****************************** Mobile start*****************************************-->
 
@@ -466,7 +498,7 @@
                         <div class="needsclick dropzone" id="multiple-media-dropzone-mobile">
                             <div class="dz-message" data-dz-message>
                                 <span>Drop files here or click to upload.</span>
-                                <span>Maximum allowed file size 2MB. Allowed file types are jpeg, png.</span>
+                                <span>Maximum allowed file size 2MB. Allowed file types are jpeg, jpg, png, svg.</span>
                             </div>
                         </div>
                     </div>
@@ -676,22 +708,171 @@
     {{-- Dropzone Service Image --}}
     @include('plugins.dropzone.create.multiple', [
         'dropzone' => Str::camel('multiple-media-dropzone'),
-        'fileInputName' => 'multiple_media',
-        'store' => route('super_admin.service.self.storeMedia'),
-        'delete' => route('super_admin.service.self.deleteMedia'),
+        'fileInputName' => 'order_requirement_files',
+        'store' => route('guest.order.storeMedia'),
+        'delete' => route('guest.order.deleteMedia'),
         'maxFilesize' => 2,
         'maxFiles' => 5,
-        'acceptedFiles' => 'image/jpeg, image/png',
+        'acceptedFiles' => 'image/jpeg, image/png, image/jpg, image/svg',
     ])
 
     {{-- Dropzone Service Image -- Mobile -- --}}
     @include('plugins.dropzone.create.multiple', [
         'dropzone' => Str::camel('multiple-media-dropzone-mobile'),
-        'fileInputName' => 'multiple_media',
-        'store' => route('super_admin.service.self.storeMedia'),
-        'delete' => route('super_admin.service.self.deleteMedia'),
+        'fileInputName' => 'order_requirement_files',
+        'store' => route('guest.order.storeMedia'),
+        'delete' => route('guest.order.deleteMedia'),
         'maxFilesize' => 2,
         'maxFiles' => 5,
-        'acceptedFiles' => 'image/jpeg, image/png',
+        'acceptedFiles' => 'image/jpeg, image/png, image/jpg, image/svg',
     ])
+
+    <script>
+        $(document).ready(function () {
+            var session = @json(session('order'));
+            var checkoutBtn = $('#checkout-btn');
+            var applyCouponBtn = $('#apply_coupon_btn');
+            var couponApplied = $('#coupon_applied');
+            var couponGroup = $('#coupon_group');
+            var discountAmount = $('#discount_amount');
+            var discountPercent = $('#discount_percent');
+            var discountCode = $('#discount_code');
+            var grandTotal = $('#grand_total');
+
+            console.log(session);
+            if (session.coupon) {
+                couponApplied.show();
+                couponGroup.hide();
+                if (session.coupon.coupon_type === 'fixed') {
+                    discountAmount.html(session.coupon.discount);
+                    discountCode.html(session.coupon.code);
+                    discountPercent.html(session.coupon.amount + '$');
+                } else if (session.coupon.coupon_type === 'percent_off') {
+                    discountAmount.html(session.coupon.discount);
+                    discountCode.html(session.coupon.code);
+                    discountPercent.html(session.coupon.percent + '%');
+                }
+
+                grandTotal.html(session.grand_total);
+            } else {
+                grandTotal.html(session.grand_total);
+                couponApplied.hide();
+                couponGroup.show();
+            }
+
+            // couponApplied.hide();
+
+            checkoutBtn.on('click', function (e) {
+                e.preventDefault();
+                checkoutBtn.attr('disabled', true);
+                checkoutBtn.html('<i class="fa fa-spinner fa-spin"></i> Processing...');
+                // var formData = {
+                //
+                // };
+                $.ajax({
+                    url: '{{ route('guest.order.store', $service->slug) }}',
+                    type: 'POST',
+                    data: $(this).closest("form").serialize(),
+                    dataType: 'json',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function (response) {
+                        window.location = response.redirect_to;
+                        // console.log(response.redirect_to);
+                    },
+                    error: function (response) {
+                        var xhr = response.responseJSON;
+                        $('.custom-error').remove();
+                        $("input").removeClass('is-invalid');
+                        $.each(xhr.errors, function(key, value) {
+                            // console.log('2', key)
+                            var input = $("#"+key);
+                            input.addClass('is-invalid');
+                            $('#custom-errors-'+key).append('<span class="custom-error"><strong>'+ value +'</strong></span>');
+                        });
+                        console.log(xhr);
+                    },
+                    complete: function () {
+                        checkoutBtn.attr('disabled', false);
+                        checkoutBtn.html('Continue to checkout');
+                    }
+                });
+            });
+
+            applyCouponBtn.on('click', function () {
+                var formData = {
+                    coupon_code: $('#coupon').val(),
+                };
+                var url = "{{ route('guest.order.checkCoupon', $service->slug) }}";
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: formData,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function (response) {
+                        var session = response.data;
+                        if (response.status === 'success') {
+                            couponApplied.show();
+                            couponGroup.hide();
+                            if (session.coupon.coupon_type === 'fixed') {
+                                discountAmount.html(session.coupon.discount);
+                                discountCode.html(session.coupon.code);
+                                discountPercent.html('-$' + session.coupon.amount);
+                            } else if (session.coupon.coupon_type === 'percent_off') {
+                                discountAmount.html(session.coupon.discount);
+                                discountCode.html(session.coupon.code);
+                                discountPercent.html('-' + session.coupon.percent + '%');
+                            }
+                            grandTotal.html(session.grand_total);
+                            $('input[name="coupon"]').val('');
+                        }
+                    },
+                    error: function (response) {
+                        var xhr = response.responseJSON;
+                        $('.custom-error').remove();
+                        $("input").removeClass('is-invalid');
+                        $.each(xhr.errors, function(key, value) {
+                            console.log('2', key)
+                            var input = $("#"+key);
+                            input.addClass('is-invalid');
+                            $('#custom-errors-'+key).append('<span class="custom-error"><strong>'+ value +'</strong></span>');
+                        });
+                    },
+                });
+            });
+
+            $(document).on('click', '#removeCouponBtn', function () {
+                var formData = {
+                    coupon_code: $('#coupon').val(),
+                };
+                var url = "{{ route('guest.order.removeCoupon', $service->slug) }}";
+
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: formData,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function (response) {
+                        var couponData = response.data;
+                        couponApplied.hide();
+                        couponGroup.show();
+                        discountAmount.empty();
+                        discountCode.empty();
+                        discountPercent.empty();
+                        grandTotal.html(couponData.grand_total);
+                    },
+                    error: function (error, status, xhr) {
+                        // console.log('error: ', error);
+                        // console.log('status: ', status);
+                        // console.log('xhr: ', xhr);
+                    },
+                });
+            });
+        });
+    </script>
 @endpush

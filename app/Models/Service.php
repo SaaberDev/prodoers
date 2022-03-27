@@ -42,6 +42,20 @@ class Service extends Model implements HasMedia
         'title', 'serviceCategories.title', 'serviceCategories.navbar_status'
     ];
 
+    protected $casts = [
+        'price' => 'integer'
+    ];
+
+    public function setPriceAttribute($value)
+    {
+        return $this->attributes['price'] = $value * 100;
+    }
+
+    public function getPriceAttribute($value)
+    {
+        return $value / 100;
+    }
+
     public function coupons()
     {
         return $this->morphToMany(Coupon::class, 'couponable');

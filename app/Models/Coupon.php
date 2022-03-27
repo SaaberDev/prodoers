@@ -18,6 +18,11 @@
         protected $guarded = [];
         protected $dates = ['start_date', 'end_date'];
 
+        protected $casts = [
+            'start_date' => 'datetime',
+            'end_date' => 'datetime'
+        ];
+
         /**
          * @param $code
          * @return Coupon|Builder
@@ -66,43 +71,49 @@
         /**
          * @return string
          */
-        public function checkCouponValidity()
-        {
-            if (Carbon::now()->greaterThanOrEqualTo($this->end_date)) {
-                return 'This Coupon has expired at ' . Carbon::parse($this->end_date)->toDayDateTimeString();
-            } elseif (!Carbon::now()->gte($this->start_date)) {
-                return 'This Coupon is not started yet. Will start at ' . Carbon::parse($this->start_date)->toDayDateTimeString();
-            }
-        }
+//        public function checkCouponValidity()
+//        {
+//            if (Carbon::now()->greaterThanOrEqualTo($this->end_date)) {
+//                return 'This Coupon has expired at ' . Carbon::parse($this->end_date)->toDayDateTimeString();
+//            } elseif (!Carbon::now()->gte($this->start_date)) {
+//                return 'This Coupon is not started yet. Will start at ' . Carbon::parse($this->start_date)->toDayDateTimeString();
+//            }
+//        }
 
         /**
-         * @param $query
+         * @param Builder $query
          * @param $category
          * @param $service
-         * @return mixed
+         * @return Builder
          * This will query check if given coupon has applied to categories or services
          */
-        public function scopeApplyCouponTo(Builder $query, $category, $service)
+        public function scopeHasCouponApplied(Builder $query, $category, $service)
         {
-            return $query->whereHas('categories', function ($query) use ($category) {
-                $query->where('couponable_id', '=', $category);
-            })->orWhereHas('services', function ($query) use ($service) {
-                $query->where('couponable_id', '=', $service);
-            });
+            if ($category) {
+                $query->whereHas('categories', function ($query) use ($category) {
+                    $query->where('couponable_id', '=', $category);
+                });
+            } elseif ($service) {
+                $query->whereHas('services', function ($query) use ($service) {
+                    $query->where('couponable_id', '=', $service);
+                });
+            }
+
+            return $query;
         }
 
         /**
          * @param Service $service
          * @return int|string|null
          */
-        public function discount(Service $service)
-        {
-            if ($this->coupon_type == 'fixed') {
-                return $this->amount;
-            } elseif ($this->coupon_type == 'percent_off') {
-                return number_format(($this->percent_off / 100) * $service->price, 2);
-            } else {
-                return 0;
-            }
-        }
+//        public function discount(Service $service)
+//        {
+//            if ($this->coupon_type == 'fixed') {
+//                return $this->amount;
+//            } elseif ($this->coupon_type == 'percent_off') {
+//                return number_format(($this->percent_off / 100) * $service->price);
+//            } else {
+//                return 0;
+//            }
+//        }
     }

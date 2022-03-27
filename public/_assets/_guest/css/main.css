@@ -2848,7 +2848,7 @@ h2.m-top {
 .requirement p span.requirement-text4{
     padding-left: 13px;
 }
-button.btn.bgOne.text-white.btn-lg {
+a.btn.bgOne.text-white.btn-lg {
     width: 280px;
     border-radius:40px;
 }
@@ -4432,7 +4432,7 @@ button.c-btn-order{
         font-size: 14px;
         margin-bottom: 15px;
     }
-    button.btn.bgOne.text-white.btn-lg.rounded-0 {
+    a.btn.bgOne.text-white.btn-lg.rounded-0 {
         width: 200px;
         padding: 8px 10px;
         font-size: 16px;

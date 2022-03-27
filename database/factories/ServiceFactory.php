@@ -31,7 +31,7 @@ class ServiceFactory extends Factory
             'short_desc' => $this->faker->text,
             'delivery_time' => rand(2, 5),
             'revision_limit' => rand(2, 5),
-            'price' => $this->faker->numberBetween(45.00, 100.00)
+            'price' => $this->faker->numberBetween(95, 5000)
         ];
     }
 }
