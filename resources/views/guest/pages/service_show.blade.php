@@ -179,7 +179,7 @@
 
                             <div class="row pricepadding">
                                 <div class="col-md-12">
-                                    <h2 class="m-top">$50</h2>
+                                    <h2 class="m-top">${{ $service->price }}</h2>
                                 </div>
                             </div>
                             <div class="requirement">
