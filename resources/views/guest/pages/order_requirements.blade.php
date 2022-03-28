@@ -215,10 +215,10 @@
                         <div class="col-lg-7 col-md-7">
                             <div class="text-area-wraper d-md-block d-none ">
                                 <textarea class="form-control c-custom rounded-0 {{ ($errors->has('requirements') ? ' warning-border-color' : '') }}"
-                                          name="requirements"
-                                          id="requirements"
-                                          rows="10"
-                                          placeholder="Write here if you want to tell anything"
+                                            name="requirements"
+                                            id="requirements"
+                                            rows="10"
+                                            placeholder="Write here if you want to tell anything"
                                 ></textarea>
                                 <div id="custom-errors-requirements"></div>
 
