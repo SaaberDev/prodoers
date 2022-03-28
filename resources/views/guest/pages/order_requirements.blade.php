@@ -214,21 +214,12 @@
 
                         <div class="col-lg-7 col-md-7">
                             <div class="text-area-wraper d-md-block d-none ">
-<<<<<<< HEAD
-                            <textarea class="form-control c-custom rounded-0 {{ ($errors->has('requirements') ? ' warning-border-color' : '') }}"
-                                        name="requirements"
-                                        id="requirements"
-                                        rows="10"
-                                        placeholder="Write here if you want to tell anything"
-                            ></textarea>
-=======
                                 <textarea class="form-control c-custom rounded-0 {{ ($errors->has('requirements') ? ' warning-border-color' : '') }}"
                                           name="requirements"
                                           id="requirements"
                                           rows="10"
                                           placeholder="Write here if you want to tell anything"
                                 ></textarea>
->>>>>>> f0f42a7c2511f173fe09166537fc1223e599536c
                                 <div id="custom-errors-requirements"></div>
 
                                 <div class="problem" style="{{ $errors->has('form.requirements') ? 'margin-top: 8px;' : '' }}">
