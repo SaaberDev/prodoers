@@ -144,7 +144,7 @@
 
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <span>(<span id="discount_code"></span>)</span><span>(-<span id="discount_percent"></span>%)</span>
+                                                <span>(<span id="discount_code"></span>)</span><span>(<span id="discount_percent"></span>)</span>
                                                 <a id="removeCouponBtn"><img src="{{ asset('_assets/_guest/img/paymentdetails/x.svg') }}" alt="close"></a>
                                             </div>
                                         </div>
@@ -206,7 +206,6 @@
     </section>
 
     <form id="order_form" enctype="multipart/form-data">
-        {{--        @csrf @method('POST')--}}
             <div class="Order-Requirement d-md-block d-none">
                 <div class="container">
                     <span class="hr-border"></span>
@@ -215,18 +214,22 @@
 
                         <div class="col-lg-7 col-md-7">
                             <div class="text-area-wraper d-md-block d-none ">
+<<<<<<< HEAD
                             <textarea class="form-control c-custom rounded-0 {{ ($errors->has('requirements') ? ' warning-border-color' : '') }}"
                                         name="requirements"
                                         id="requirements"
                                         rows="10"
                                         placeholder="Write here if you want to tell anything"
                             ></textarea>
+=======
+                                <textarea class="form-control c-custom rounded-0 {{ ($errors->has('requirements') ? ' warning-border-color' : '') }}"
+                                          name="requirements"
+                                          id="requirements"
+                                          rows="10"
+                                          placeholder="Write here if you want to tell anything"
+                                ></textarea>
+>>>>>>> f0f42a7c2511f173fe09166537fc1223e599536c
                                 <div id="custom-errors-requirements"></div>
-{{--                                @if($errors->has('requirements'))--}}
-{{--                                    <div class="error-message" style="padding: 6px 0 0 0;">--}}
-{{--                                        <p>{{ $errors->first('requirements') }}</p>--}}
-{{--                                    </div>--}}
-{{--                                @endif--}}
 
                                 <div class="problem" style="{{ $errors->has('form.requirements') ? 'margin-top: 8px;' : '' }}">
                                     <div class="form-group">
@@ -709,9 +712,16 @@
             if (session.coupon) {
                 couponApplied.show();
                 couponGroup.hide();
-                discountAmount.html(session.coupon.discount);
-                discountCode.html(session.coupon.code);
-                discountPercent.html(session.coupon.percent);
+                if (session.coupon.coupon_type === 'fixed') {
+                    discountAmount.html(session.coupon.discount);
+                    discountCode.html(session.coupon.code);
+                    discountPercent.html(session.coupon.amount + '$');
+                } else if (session.coupon.coupon_type === 'percent_off') {
+                    discountAmount.html(session.coupon.discount);
+                    discountCode.html(session.coupon.code);
+                    discountPercent.html(session.coupon.percent + '%');
+                }
+
                 grandTotal.html(session.grand_total);
             } else {
                 grandTotal.html(session.grand_total);
@@ -772,14 +782,20 @@
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     success: function (response) {
-                        var couponData = response.data;
+                        var session = response.data;
                         if (response.status === 'success') {
                             couponApplied.show();
                             couponGroup.hide();
-                            discountAmount.html(couponData.coupon.discount);
-                            discountCode.html(couponData.coupon.code);
-                            discountPercent.html(couponData.coupon.percent);
-                            grandTotal.html(couponData.grand_total);
+                            if (session.coupon.coupon_type === 'fixed') {
+                                discountAmount.html(session.coupon.discount);
+                                discountCode.html(session.coupon.code);
+                                discountPercent.html('-$' + session.coupon.amount);
+                            } else if (session.coupon.coupon_type === 'percent_off') {
+                                discountAmount.html(session.coupon.discount);
+                                discountCode.html(session.coupon.code);
+                                discountPercent.html('-' + session.coupon.percent + '%');
+                            }
+                            grandTotal.html(session.grand_total);
                             $('input[name="coupon"]').val('');
                         }
                     },

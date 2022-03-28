@@ -9,7 +9,7 @@
 {{-- Body Content --}}
     <section class="dashboard-main">
         <div class="container">
-  
+
           <!--profile Section Start-->
           <div class="row profile align-items-center">
             <div class="col-md-5 col-lg-4">
@@ -33,7 +33,7 @@
                 <h3 >Welcome back, Monica Farnandez</h3>
                 <div class="project-spent d-flex">
                   <div>
-                    <span>25</span> 
+                    <span>25</span>
                     <p>Total Projects</p>
                   </div>
                   <div>
@@ -41,7 +41,7 @@
                     <p>Ongoing Projects</p>
                   </div>
                   <div>
-                    <span>$2170.00</span> 
+                    <span>$2170.00</span>
                     <p>Total Spent</p>
                   </div>
                 </div>
@@ -49,25 +49,25 @@
             </div>
           </div>
           <!--profile Section End-->
-          
+
           <!--Project Spent for mobile view-->
           <div class="row d-md-none project-spent-sm-area">
             <div class="col-lg-12">
               <div class="project-spent-sm">
                 <h5>Total Projects</h5>
-                <p>25</p> 
+                <p>25</p>
               </div>
             </div>
             <div class="col-lg-12">
               <div class="project-spent-sm">
                 <h5>Ongoing Projects</h5>
-                <p>08</p> 
+                <p>08</p>
               </div>
             </div>
             <div class="col-lg-12">
               <div class="project-spent-sm">
                 <h5>Total Spent</h5>
-                <p>$2170.00</p> 
+                <p>$2170.00</p>
               </div>
             </div>
           </div>
@@ -77,7 +77,7 @@
           <div class="row recent-orders-row">
             <div class="col-6 col-md-3 col-lg-2">
               <div class="recent-orders d-flex justify-content-start justify-content-md-center align-items-center">
-                <p>Recent Order</p>    
+                <p>Recent Order</p>
               </div>
             </div>
             <div class="col-6 col-md-2 offset-md-7 col-lg-2 offset-lg-8">
@@ -101,7 +101,7 @@
                 </tr>
               </thead>
               <tbody>
-              
+
                 @forelse($orders as $order)
                   <tr data-href="{{ route('client.order.show', ['order_id'=>$order['order_number'],'page'=>$order['order_status']]) }}">
                     <td>{{ $order['order_number'] }}</td>
@@ -109,7 +109,7 @@
                     <td>
                       <p>{{ $order['services']['delivery_time'] }} days</p>
                     </td>
-                    <td>${{ $order['payments']['paid_amount'] }}</td>
+                    <td>${{ $order['payments']['paid_amount'] ?? '' }}</td>
                     <td>
                       <p class="@if($order['order_status']=='in_revision'){{'in-revision'}}@else{{$order['order_status']}}@endif">
 

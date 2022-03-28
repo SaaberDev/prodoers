@@ -38,7 +38,9 @@
 
             $order = Order::create($orderData);
             // Order Requirement Files
-            $this->mediaHandler->uploadMultipleMediaAjax($order, $data['order_requirement_files'], 'order');
+            if (!is_null($data['order_requirement_files'])) {
+                $this->mediaHandler->uploadMultipleMediaAjax($order, $data['order_requirement_files'], 'order');
+            }
 
             return $order;
         }

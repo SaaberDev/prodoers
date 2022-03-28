@@ -55,13 +55,16 @@
             $sessionData = $this->getCouponWithOrder();
             if (!empty($this->coupon)) {
                 if ($this->coupon->coupon_type === 'fixed') {
+//                    dd($this->coupon->amount);
                     $sessionData['coupon'] = [
+                        'coupon_type' => $this->coupon->coupon_type,
                         'code' => $this->coupon->coupon_code,
                         'amount' => $this->coupon->amount,
                         'discount' => $this->discount($sessionData['price'])
                     ];
                 } elseif ($this->coupon->coupon_type === 'percent_off') {
                     $sessionData['coupon'] = [
+                        'coupon_type' => $this->coupon->coupon_type,
                         'code' => $this->coupon->coupon_code,
                         'percent' => $this->coupon->percent_off,
                         'discount' => $this->discount($sessionData['price'])

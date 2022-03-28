@@ -69,7 +69,7 @@
                                         @if(!empty($order->applied_coupon))
                                             <p>Promo Code: {{ $order->applied_coupon }}</p>
                                         @endif
-                                        <p>Payment Method: {{ ucwords($order->payments->payment_method) }}</p>
+                                        <p>Payment Method: {{ ucwords($order->payments->payment_status) }}</p>
                                     </div>
                                 </div>
                                 <div class="col-sm-6 col-xl-6 col-xxl-5">
