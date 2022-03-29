@@ -313,11 +313,11 @@
         public function getMedia(Dropzone $dropzone, Request $request)
         {
             if ($request->get('request') === 'banner') {
-                return $dropzone->getMedia(ServiceCategory::class, 'banner', 'id');
+                return $dropzone->getMedia(ServiceCategory::class, 'category_banner', 'id');
             }
 
             if ($request->get('request') === 'category') {
-                return $dropzone->getMedia(ServiceCategory::class, 'category', 'id');
+                return $dropzone->getMedia(ServiceCategory::class, 'category_thumb', 'id');
             }
         }
 

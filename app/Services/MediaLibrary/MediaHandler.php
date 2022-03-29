@@ -11,9 +11,9 @@
     {
         private Request $request;
 
-        #[Pure] public function __construct()
+        #[Pure] public function __construct(Request $request)
         {
-            $this->request = new Request();
+            $this->request = $request;
         }
 
         /**

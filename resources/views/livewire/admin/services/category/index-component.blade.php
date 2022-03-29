@@ -54,10 +54,10 @@
                             <tr>
                                 <td>{{ $service_category->title }}</td>
                                 <td>
-                                    <img src="{{ optional($service_category)->getFirstMedia('category_banner') ? $service_category->getFirstMediaUrl('category_banner') : asset('_default/no-preview-available.png') }}" alt="" class="img-fluid" style="height: 25px;">
+                                    <img src="{{ showImage($service_category, 'category_banner') }}" alt="" class="img-fluid" style="height: 25px;">
                                 </td>
                                 <td>
-                                    <img src="{{ optional($service_category)->getFirstMedia('category_thumb') ? $service_category->getFirstMediaUrl('category_thumb') : asset('_default/no-preview-available.png') }}" alt="" class="img-fluid" style="height: 25px;">
+                                    <img src="{{ showImage($service_category, 'category_thumb') }}" alt="" class="img-fluid" style="height: 25px;">
                                 </td>
                                 <td>
                                     <div class="tableDataLastButtonLiketab {{ $service_category->navbar_status == 1 ? 'tabletabGREEN' : 'tabletabRED' }}">
