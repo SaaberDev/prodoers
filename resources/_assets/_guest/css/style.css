@@ -521,7 +521,6 @@ a {
     padding: 12px 12px;
 }
 .searchPageResultSingle .card-body .card-title h5{
-    padding-left: 8px;
     font-size: 18px;
 }
 
@@ -2113,6 +2112,7 @@ svg.bi.bi-ui-radios-grid {
     font-size: 16px;
     font-weight: 400;
     color: #212529;
+    display: inline-block;
 }
 .custom-2:focus{
     color:#212529;
@@ -2189,7 +2189,7 @@ svg.bi.bi-ui-radios-grid {
 .h-wraper h2 {
     font-size: 25px;
     font-weight: 500;
-    margin-bottom:30px;
+    margin-bottom:20px;
 }
 .review-area .starIcons  span svg{
     margin-right: 5px;
@@ -2204,14 +2204,14 @@ svg.bi.bi-ui-radios-grid {
 .accordien_wrapper-2 a:hover {
     color: #212529!important;
 }
-.cl-custom ul li a {
+.cl-custom ul li {
     font-size: 14px;
     font-weight: 400;
     color: #212529;
     line-height: 28px;
 }
 span.nav-arrow.custom-arrow img{
-    width: 18px;
+    width: 16px;
 }
 .order-price-total h2 {
     margin-bottom:25px;
@@ -2300,7 +2300,10 @@ span.nav-arrow.custom-arrow img{
 .total-text{
     font-size: 16px;
     font-weight: 500;
-    margin-left: 30px;
+    text-align: right;
+}
+.order__price{
+    text-align: right;
 }
 .total-text2{
     font-size: 16px;
@@ -3016,7 +3019,12 @@ button.c-btn-order{
     font-size: 14px;
     line-height: 30px;
 }
+
 .instruction-content p{
     font-size: 14px;
     line-height: 30px;
+}
+
+.tab {
+    display: none;
 }

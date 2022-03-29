@@ -3,7 +3,7 @@
  <header class="header d-none d-lg-block">
     <div class="container">
         <nav class="navbar navbar-expand-md navbar-light">
-                <a class="navbar-brand logo" href="{{ route('client.dashboard') }}">
+                <a class="navbar-brand logo" href="{{ route('guest.home.index') }}">
                 <img src="{{ asset('_assets/_client/images/logo.svg') }}" alt="dashboard" class="img-fluid">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,10 +59,19 @@
                         <img src="{{ asset('_assets/_client/images/profile.svg') }}" alt="dashboard">
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item active" href="{{ route('client.dashboard') }}">Dashboard</a></li>
-                        <li><a class="dropdown-item" href="{{ route('client.order.index') }}">Orders</a></li>
-                        <li><a class="dropdown-item" href="{{ route('client.settings.index') }}">Setting</a></li>
-                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                        <li>
+                            <a class="dropdown-item active" href="{{ route('client.dashboard') }}">Dashboard</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ route('client.order.index') }}">Orders</a
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ route('client.settings.index') }}">Setting</a>
+                        </li>
+                        <li>
+                            <form method="POST" action="{{ route('logout') }}" id="logout">@csrf</form>
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout').submit();">Logout</a>
+                        </li>
                     </ul>
                     </li>
                 </ul>

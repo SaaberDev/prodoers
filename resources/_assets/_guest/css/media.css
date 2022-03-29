@@ -19,14 +19,17 @@
     .a:hover+.p {
         display: block;
     }
-    section.order-wraper2 {
-        margin: 50px 10px 20px 10px;
+    #orderRequirement{
+        padding: 32px 0;
+    }
+    .order-wraper2 {
+        margin:0 10px;
         border: 1px solid #D1D1D1;
     }
 
     .logo-area > h2 {
-        padding-top: 20px;
-        font-size: 16px;
+        padding-top: 12px;
+        font-size: 14px;
         line-height: 30px;
         font-weight: 400;
         margin-bottom: 0;
@@ -193,13 +196,16 @@
         font-size: 12px;
         background-color: #f6f6f6;
     }
-    .cl-custom ul li a {
-        font-size: 13px;
-        line-height: 8px;
+    .cl-custom ul li {
+        font-size: 12px;
+        line-height: 28px;
     }
     button.c-btn-order {
         display: block;
         margin: 0 auto;
+    }
+    button.c-btn-order img{
+        padding-left: 8px;
     }
     element.style {
         display: block;
@@ -297,12 +303,17 @@
         display:none;
     }
 
-    button#orderSummeryBtn {
+    .tabs__btn-wrapper{
+        text-align: center;
+    }
+
+    #prevBtn {
         border: none;
         background-color: transparent;
         font-weight: 400;
         font-size: 14px;
         color: #A29F9D;
+        padding:20px 0;
     }
     .order{
         border: 1px solid;
@@ -323,17 +334,18 @@
         font-weight: 600;
         padding-bottom: 15px;
     }
-    .wraper-or p {
+    .price__wrapper p {
         font-size: 14px;
         font-weight: 400;
         margin: 0 0 15px;
     }
-    .wraper-or p a {
+    .price__wrapper p a {
         padding-left: 10px;
     }
     .price-wraper p {
         font-size: 14px;
         font-weight: 400;
+        text-align:right;
     }
     .price-wraper .cp {
         color: red;
@@ -342,6 +354,9 @@
     p.total {
         font-size: 14px;
         font-weight: 600;
+    }
+    .total-price{
+        text-align:right;
     }
     .servic p {
         font-size: 13px;
@@ -1499,8 +1514,16 @@
     .sale-share .sale-box {
         padding-left: 0px;
     }
-    section.order-wraper2 {
-        margin: 35px 10px 25px 10px;
+    .tabs__btn-wrapper{
+        text-align: center;
+    }
+
+    #orderRequirement{
+        padding: 32px 0;
+    }
+
+    .order-wraper2 {
+        margin: 0 20px;
         border: 1px solid #D1D1D1;
     }
 
@@ -1659,11 +1682,13 @@
 
 
     .order-require {
-        margin: 30px 10px 20px 10px;
+        margin: 30px 20px 20px 20px;
         border: 1px solid #D1D1D1;
         position: relative;
     }
-
+    .order-require .container .row .col-5 .tol-tip a{
+        text-align: right;
+    }
     .p-order {
         font-size: 14px;
         font-weight: 600;
@@ -1697,10 +1722,10 @@
         background-color: #f6f6f6;
     }
 
-    .cl-custom ul li a {
+    .cl-custom ul li {
         font-size: 14px;
         color: #212529;
-        line-height: 7px;
+        line-height: 28px;
     }
     .custom-arrow svg {
         margin-bottom: 2px;
@@ -1753,12 +1778,13 @@
         padding: 10px 10px;
     }
 
-    button#orderSummeryBtn {
+    #prevBtn {
         border: none;
         background-color: transparent;
         font-weight: 400;
         font-size: 14px;
         color: #A29F9D;
+        padding: 20px 0;
     }
 
     .order {
@@ -1786,19 +1812,20 @@
         padding-bottom: 15px;
     }
 
-    .wraper-or p {
+    .price__wrapper p {
         font-size: 14px;
         font-weight: 400;
         margin: 0 0 15px;
     }
 
-    .wraper-or p a {
+    .price__wrapper p a {
         padding-left: 10px;
     }
 
     .price-wraper p {
         font-size: 16px;
         font-weight: 400;
+        text-align:right;
     }
 
     .price-wraper .cp {
@@ -1810,11 +1837,15 @@
         font-size: 16px;
         font-weight: 600;
     }
+    .total.total-price{
+        text-align:right;
+    }
 
     .servic p {
         font-size: 14px;
         font-weight: 400;
         color: #A29F9D;
+        text-align: center;
     }
 
     .filepond--drop-label.filepond--drop-label label {
@@ -2635,7 +2666,7 @@
         margin: 22px auto;
     }
     .order-wraper {
-        padding: 0px 25px;
+        padding: 0px 16px;
     }
     .order-wraper .logo-design-area {
         padding-top: 20px;
@@ -2664,9 +2695,8 @@
         font-size: 12px;
         padding-left: 4px;
     }
-    .cl-custom ul li a {
-        font-size: 12px;
-
+    .cl-custom ul li {
+        font-size: 14px;
     }
     .order-price-total::after {
         height: 139.5%;
@@ -3463,9 +3493,8 @@
         padding-left: 0;
     }
 
-    .cl-custom ul li a {
+    .cl-custom ul li {
         font-size: 15px;
-
     }
 
     .order-price-total::after {
@@ -3496,10 +3525,9 @@
         margin-top: 20px;
     }
     .total-text {
-        margin: 20px;
+        margin-top: 20px;
         font-size: 15px;
         font-weight: 600;
-        margin-left: 21px;
     }
 
     .f_text h1 {

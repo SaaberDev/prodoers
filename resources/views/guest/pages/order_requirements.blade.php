@@ -4,22 +4,6 @@
 @push('styles')
     {{-- Internal Styles --}}
     <link rel="stylesheet" href="{{ mix('_assets/plugins/dropzone/css/dropzone.css') }}">
-    <style>
-        .text-area-wraper .problem {
-            background-color: #f6f6f6;
-            margin-top: 36px;
-        }
-        .orderSummery {
-            display: block;
-        }
-        .custom-error {
-            color: #dc3545;
-            font-size: 12px;
-        }
-        /*#coupon_applied {*/
-        /*    display: flex;*/
-        /*}*/
-    </style>
 @endpush
 
 @section('content')
@@ -74,8 +58,8 @@
                                         </div>
                                     </div>--}}
 
-                                    <div class="col-lg-5 col-xl-4 col-md-5">
-                                        <div class="d-flex">
+                                    <div class="col-lg-5 col-xl-4 col-md-6">
+                                        <div class="d-flex justify-content-between">
                                             <p class="p-wraper">Delivery Time</p>
                                             <p class="p-wraper3">{{ $service->delivery_time }} Days</p>
                                         </div>
@@ -88,8 +72,8 @@
                                         <div class="accordion accordion-flush" id="accordionFlushExample">
                                             <div class="accordion-item">
                                                 <h2 class="accordion-header" id="flush-headingOne">
-                                                    <a class="nav-link collapsed custom custom-2  " data-bs-toggle="collapse" href="#services" role="button" aria-expanded="true">What Includes
-
+                                                    <a class="nav-link collapsed custom custom-2  " data-bs-toggle="collapse" href="#services" role="button" aria-expanded="true">
+                                                        What Includes
                                                         <span class="nav-arrow custom-arrow">
                                                     <img src="{{ asset('_assets/_guest/img/paymentdetails/dropdown.svg') }}" class="img-fluid" alt="dropdown">
                                                 </span>
@@ -99,17 +83,29 @@
                                                         <div class="row">
                                                             <div class="col-lg-5 col-md-5">
                                                                 <ul class="list-unstyled">
-                                                                    <li class=""><a href="#">Print Ready Files</a></li>
-                                                                    <li><a href="#">High Resolution</a></li>
-                                                                    <li><a href="#">Two Unique Concepts</a></li>
+                                                                    <li>
+                                                                        Print Ready Files
+                                                                    </li>
+                                                                    <li>
+                                                                        High Resolution
+                                                                    </li>
+                                                                    <li>
+                                                                        Two Unique Concepts
+                                                                    </li>
 
                                                                 </ul>
                                                             </div>
                                                             <div class="col-lg-7 col-md-7">
                                                                 <ul class="list-unstyled">
-                                                                    <li class=""><a href="#">Four Revisions </a></li>
-                                                                    <li><a href="#">100% Ownership Rights</a></li>
-                                                                    <li><a href="#">Print and Web Files : RGB, CMYK, JPEG, PNG, PDF</a></li>
+                                                                    <li class="">
+                                                                        Four Revisions
+                                                                    </li>
+                                                                    <li>
+                                                                        100% Ownership Rights
+                                                                    </li>
+                                                                    <li>
+                                                                        Print and Web Files : RGB, CMYK, JPEG, PNG, PDF
+                                                                    </li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -128,8 +124,8 @@
                             <div class="order-section">
                                 <h2>Order Details</h2>
                                 <div class="row justify-content-between">
-                                    <div class="col-lg-9 col-md-9"><p>Price</p></div>
-                                    <div class="col-lg-3 col-md-3"><p class="p-left">${{ $service->price }}</p></div>
+                                    <div class="col-lg-8 col-md-7"><p>Price</p></div>
+                                    <div class="col-lg-4 col-md-5"><p class="order__price">${{ $service->price }}</p></div>
 
                                     <div id="coupon_applied" style="display: none">
                                         <div class="row">
@@ -191,10 +187,10 @@
 
                             <div class="cupon-wraper" id="coupon_group">
                                 <input type="text"
-                                       name="coupon"
-                                       id="coupon"
-                                       class="cp"
-                                       placeholder="Promo Code"
+                                        name="coupon"
+                                        id="coupon"
+                                        class="cp"
+                                        placeholder="Promo Code"
                                 >
                                 <div id="custom-errors-coupon_code"></div>
                                 <div>
@@ -219,10 +215,10 @@
                         <div class="col-lg-7 col-md-7">
                             <div class="text-area-wraper d-md-block d-none ">
                                 <textarea class="form-control c-custom rounded-0 {{ ($errors->has('requirements') ? ' warning-border-color' : '') }}"
-                                          name="requirements"
-                                          id="requirements"
-                                          rows="10"
-                                          placeholder="Write here if you want to tell anything"
+                                            name="requirements"
+                                            id="requirements"
+                                            rows="10"
+                                            placeholder="Write here if you want to tell anything"
                                 ></textarea>
                                 <div id="custom-errors-requirements"></div>
 
@@ -271,7 +267,7 @@
                             </div>
                         @endif
 
-                        <div id="custom-errors-payment_method"></div>
+                        <div class="col-md-11 offset-md-1 col-lg-9 offset-lg-3 col-xl-7 offset-xl-5 " id="custom-errors-payment_method"></div>
                         <div class="offset-lg-3 col-lg-2 offset-xl-5 offset-md-1 col-xl-2 col-md-3">
                             <div class="pyment-wraper">
                                 <h2>Select Payment</h2>
@@ -284,10 +280,10 @@
                                     <div class="col-lg-3 col-md-3">
                                         <div class=" form-check form-check-inline">
                                             <input class="form-check-input css-checkbox"
-                                                   type="radio"
-                                                   name="payment_method"
-                                                   id="inlineRadio1"
-                                                   value="paypal"
+                                                type="radio"
+                                                name="payment_method"
+                                                id="inlineRadio1"
+                                                value="paypal"
                                             >
                                             <label class="form-check-label css-label" for="inlineRadio1"> <img src="{{ asset('_assets/_guest/img/paymentdetails/paypal.png') }}" alt="" class=" ui-state-default  img-fluid  "></label>
                                         </div>
@@ -295,10 +291,10 @@
                                     <div class="col-lg-3 col-md-3">
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input css-checkbox"
-                                                   type="radio"
-                                                   name="payment_method"
-                                                   id="inlineRadio2"
-                                                   value="visa"
+                                                type="radio"
+                                                name="payment_method"
+                                                id="inlineRadio2"
+                                                value="visa"
                                             >
                                             <label class="form-check-label css-label" for="inlineRadio2"><img src="{{ asset('_assets/_guest/img/paymentdetails/visa.png') }}" alt="" class=" ui-state-default  img-fluid  "></label>
                                         </div>
@@ -306,10 +302,10 @@
                                     <div class="col-lg-3 col-md-3">
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input css-checkbox"
-                                                   type="radio"
-                                                   name="payment_method"
-                                                   id="inlineRadio3"
-                                                   value="bkash"
+                                                type="radio"
+                                                name="payment_method"
+                                                id="inlineRadio3"
+                                                value="bkash"
                                             >
                                             <label class="form-check-label css-label" for="inlineRadio3"><img src="{{ asset('_assets/_guest/img/paymentdetails/bkash.png') }}" alt="" class=" ui-state-default  img-fluid  "> </label>
                                         </div>
@@ -317,10 +313,10 @@
                                     <div class="col-lg-3 col-md-3">
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input css-checkbox"
-                                                   type="radio"
-                                                   name="payment_method"
-                                                   id="inlineRadio4"
-                                                   value="mastercard"
+                                                type="radio"
+                                                name="payment_method"
+                                                id="inlineRadio4"
+                                                value="mastercard"
                                             >
                                             <label class="form-check-label css-label" for="inlineRadio4"><img src="{{ asset('_assets/_guest/img/paymentdetails/master.png') }}" alt="" class=" ui-state-default  img-fluid  "></label>
                                         </div>
@@ -371,9 +367,10 @@
 
     <!-- ****************************** Mobile start*****************************************-->
 
-    {{-- Step One --}}
-    <div id="orderRequirement" class="">
-        <section class="order-wraper2 d-block d-md-none">
+ 
+    <div id="orderRequirement" class="d-block d-md-none">
+
+        <div class="order-wraper2">
             <div class="container">
                 <div class="row">
                     <div class="col-8">
@@ -429,16 +426,28 @@
                                         <div class="row">
                                             <div class="col-6">
                                                 <ul class="list-unstyled">
-                                                    <li class=""><a href="#">Print Ready Files</a></li>
-                                                    <li><a href="#">High Resolution</a></li>
-                                                    <li><a href="#">Two Unique Concepts</a></li>
+                                                    <li>
+                                                        Print Ready Files
+                                                    </li>
+                                                    <li>
+                                                        High Resolution
+                                                    </li>
+                                                    <li>
+                                                        Two Unique Concepts
+                                                    </li>
                                                 </ul>
                                             </div>
                                             <div class="col-6">
                                                 <ul class="list-unstyled">
-                                                    <li class=""><a href="#">Four Revisions </a></li>
-                                                    <li><a href="#">100% Ownership Rights</a></li>
-                                                    <li><a href="#">Print and Web Files : RGB, CMYK, JPEG, PNG, PDF</a></li>
+                                                    <li>
+                                                        Four Revisions
+                                                    </li>
+                                                    <li>
+                                                        100% Ownership Rights
+                                                    </li>
+                                                    <li>
+                                                        Print and Web Files : RGB, CMYK, JPEG, PNG, PDF
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -449,257 +458,208 @@
                     </div>
                 </div>
             </div>
-
-        </section>
-        <section class="order-require d-block d-md-none">
-            <div class="container">
-                <div class="row">
-                    <div class="col-7">
-                        <p class="p-order">Order Requirement</p>
-                    </div>
-                    <div class="col-5">
-
-                        <div class="tol-tip">
-                            <a href="#" class="a" data-bs-toggle="modal" data-bs-target="#instructionModal">Instruction (?)</a>
-                        </div>
-
-                    @include('guest.includes.modal.instruction')
-
-                        {{-- <div class="tol-tip">
-                            <a href="#" class="a">Instruction (?)</a>
-                            <p class="p">
-                                <span>
-                                    @forelse($service->serviceCategories->serviceCategoryInstructions as $instructions)
-                        ▪  {{ $instructions->order_instructions }} <br>
-                                    @empty
-                        No Instruction Available
-                        @endforelse
-                        </span>{{ $service->serviceCategories->order_instruction_desc }}
-                        </p>
-                    </div> --}}
-
-
-                    </div>
-                </div>
-
-                <div class="text-area">
-                    <textarea class="form-control c-custom rounded-0 {{ ($errors->has('form.requirements') ? ' warning-border-color' : '') }}"
-                              id="exampleFormControlTextarea1"
-                              rows="10"
-                              placeholder="Write here if you want to tell anything"
-                    ></textarea>
-                    @if($errors->has('form.requirements'))
-                        <div class="error-message" style="padding: 6px 0 0 0;">
-                            <p>{{ $errors->first('form.requirements') }}</p>
-                        </div>
-                    @endif
-
-                    <div class="form-group">
-                        <div class="needsclick dropzone" id="multiple-media-dropzone-mobile">
-                            <div class="dz-message" data-dz-message>
-                                <span>Drop files here or click to upload.</span>
-                                <span>Maximum allowed file size 2MB. Allowed file types are jpeg, jpg, png, svg.</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="container d-block d-md-none">
-            <div class="btn-ct">
-                <button id="requirementBtn" wire:click.prevent="stepOne" class="c-btn-order">Order Summery<img src="{{ asset('_assets/_guest/img/paymentdetails/arrow-down.svg') }}" alt="designwala"></button>
-            </div>
         </div>
+        
+        <form action="" method="">
+
+            {{-- Step One --}}
+            
+            <div class="tab">
+                <div class="order-require d-block d-md-none">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-7">
+                                <p class="p-order">Order Requirement</p>
+                            </div>
+                            <div class="col-5">
+                                <div class="tol-tip">
+                                    <a href="#" class="a" data-bs-toggle="modal" data-bs-target="#instructionModal">Instruction (?)</a>
+                                </div>
+                                @include('guest.includes.modal.instruction')
+                            </div>
+                        </div>
+
+                        <div class="text-area">
+                            <textarea class="form-control c-custom rounded-0 {{ ($errors->has('form.requirements') ? ' warning-border-color' : '') }}"
+                                        id="exampleFormControlTextarea1"
+                                        rows="10"
+                                        placeholder="Write here if you want to tell anything"
+                            ></textarea>
+                            <div class="form-group">
+                                <div class="needsclick dropzone" id="multiple-media-dropzone-mobile">
+                                    <div class="dz-message" data-dz-message>
+                                        <span>Drop files here or click to upload.</span>
+                                        <span>Maximum allowed file size 2MB. Allowed file types are jpeg, jpg, png, svg.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- Next and Previous Button --}}
+
+            <div class="tabs__btn-wrapper">
+                <button id="prevBtn"><img src="{{ asset('_assets/_guest/img/paymentdetails/right.svg') }}" class="right" alt="designwala">Order Requirements</button>
+                <button id="nextBtn" class="c-btn-order">Order Summery<img src="{{ asset('_assets/_guest/img/paymentdetails/arrow-down.svg') }}" alt="designwala"></button>
+            </div>
+
+            {{-- Step Two --}}
+            <div class="tab">
+                <div id="orderSummery">
+                    <div class="order-summ d-block d-md-none">
+                        <div class="container">
+                            
+                            <div class="order">
+                                <h4>Order Summery</h4>
+                                <div class="row">
+                                    <div class="col-8">
+                                        <div class="price__wrapper">
+                                            <p>Price</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="price-wraper">
+                                            <p>${{ $service->price }}</p>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8">
+                                        <p class="total">Total</p>
+                                    </div>
+                                    <div class="col-4">
+                                        <p class="total total-price"> {{ '$' . presentPrice($service->price) }}</p>
+                                    </div>
+                                </div>
+
+                                <div class="servic">
+                                    <p>Service charge are counted for Vat exclusive</p>
+                                </div>
+
+                                <div class="cupon-wraper" style="padding-bottom: 0px;">
+                                    <input type="text"
+                                            class="cp {{ ($errors->has('form.coupon') ? ' warning-border-color' : '') }}"
+                                            placeholder="Promo Code"
+                                    >
+                                    <div>
+                                        <button class="custom-checkout-btn c2">Apply</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="select-part">
+                                <div class="h5">
+                                    <h5>Select payment</h5>
+                                </div>
+                                <div class="col-12" style="text-align: center;">
+                                    <div class="selectablescustom">
+
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <input type="text" value="" class="{{ $errors->has('form.paymentMethod') ? ' is-invalid' : '' }}" hidden>
+                                                <div class=" form-check form-check-inline">
+                                                    <input class="form-check-input css-checkbox"
+                                                            type="radio"
+                                                            name="payment_method"
+                                                            id="inlineRadio5"
+                                                            value="paypal"
+                                                    >
+                                                    <label class="form-check-label css-label" for="inlineRadio5"> <img src="{{ asset('_assets/_guest/img/paymentdetails/paypal.png') }}" alt="" class=" ui-state-default  img-fluid  "></label>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input css-checkbox"
+                                                            type="radio"
+                                                            name="payment_method"
+                                                            id="inlineRadio6"
+                                                            value="visa"
+                                                    >
+                                                    <label class="form-check-label css-label" for="inlineRadio6"><img src="{{ asset('_assets/_guest/img/paymentdetails/visa.png') }}" alt="" class=" ui-state-default  img-fluid  "></label>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input css-checkbox"
+                                                            type="radio"
+                                                            name="payment_method"
+                                                            id="inlineRadio7"
+                                                            value="bkash"
+                                                    >
+                                                    <label class="form-check-label css-label" for="inlineRadio7"><img src="{{ asset('_assets/_guest/img/paymentdetails/bkash.png') }}" alt="" class=" ui-state-default  img-fluid  "> </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input css-checkbox"
+                                                            type="radio"
+                                                            name="payment_method"
+                                                            id="inlineRadio8"
+                                                            value="mastercard"
+                                                    >
+                                                    <label class="form-check-label css-label" for="inlineRadio8"><img src="{{ asset('_assets/_guest/img/paymentdetails/master.png') }}" alt="" class=" ui-state-default  img-fluid  "></label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group agree-tos">
+                            <input class="form-check-input" type="checkbox" id="gridCheck2" style="margin-right:9px;">
+                            <label class=" paymentdetailsCheck" for="gridCheck2" style="display: inline;">
+
+                                By clicking continue, I agreed to
+                                <a href="#">Designwala</a>
+                                <a href="#">Terms &amp; Condition </a>
+                                and
+                                <a href="#">
+                                    Privacy Policy
+                                </a>
+                                of designwala
+
+                            </label>
+                        </div>
+
+                        <div class="container d-block d-md-none ">
+                            <div class="btn-ct">
+                                <button  class="c-btn-order" id="checkout-btn2" >Continue to pay <img src="{{ asset('_assets/_guest/img/paymentdetails/arrow-down.svg') }}" alt="designwala"></button>
+                            </div>
+                        </div>
+                        <div class="Payment-getway d-block  d-md-none">
+                            <div class="container">
+                                <div class="row justify-content-center">
+                                    <div class="col-12">
+                                        <div class="payment_gatway_wraper">
+                                            <h4 class="text-center m-t">Verified by</h4>
+                                            <div class="sslcommerz_wraper text-center">
+                                                <img src="{{ asset('_assets/_guest/img/paymentdetails/sslcomers.svg') }}" class="img-fluid" alt="sslcommerz">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
     </div>
 
-    {{-- Step Two --}}
-    <div id="orderSummery" class="orderSummery">
-        <section class="order-summ d-block d-md-none">
-            <div class="container">
-                <div class="ct2">
-                    <button wire:click.prevent="back(1)" id="orderSummeryBtn" class="c-btn-order2"><img src="{{ asset('_assets/_guest/img/paymentdetails/right.svg') }}" class="right" alt="designwala">Order Requirements</button>
-                </div>
-                <div class="order">
-                    <h4>Order Summery</h4>
-                    <div class="row">
-                        <div class="col-10">
-                            <div class="wraper-or">
-                                <p>Price</p>
-                                @if(session()->has('order.coupon'))
-                                    <p>Discount ({{ session('order.coupon.code', 'XXXX') }}) {{ session('order.coupon.percent') ? '(-' . session('order.coupon.percent') . '%)' : '0%' }}<a wire:click.prevent="removeCoupon"><img src="{{ asset('_assets/_guest/img/paymentdetails/x.svg') }}" alt="close"></a></p>
-                                @endif
-                                {{--                            <p>Service Charge</p>--}}
-                            </div>
-                        </div>
-                        <div class="col-2">
-                            <div class="price-wraper">
-                                <p>${{ $service->price }}</p>
-                                @if(session()->has('order.coupon'))
-                                    <p class="cp">{{ '-$' . session('order.coupon.discount', 0) }}</p>
-                                @endif
-                                {{--                            <p>$10</p>--}}
-                            </div>
-                        </div>
-                        <hr>
-                    </div>
-                    <div class="row">
-                        <div class="col-10">
-                            <p class="total">Total</p>
-                        </div>
-                        <div class="col-2">
-                            <p class="total"> {{ '$' . presentPrice($service->price) }}</p>
-                        </div>
-                    </div>
-
-                    <div class="servic">
-                        <p>Service charge are counted for Vat exclusive</p>
-                    </div>
-
-                    @if(!session()->has('order.coupon'))
-                        <div class="cupon-wraper" style="padding-bottom: 0px;">
-                            <form action="">
-                                <input type="text"
-                                       class="cp {{ ($errors->has('form.coupon') ? ' warning-border-color' : '') }}"
-                                       placeholder="Promo Code"
-                                >
-                                @if($errors->has('form.coupon'))
-                                    <span class="error-message" style="padding: 6px 0 0 0;">
-                                        <p>{{ $errors->first('form.coupon') }}</p>
-                                    </span>
-                                @endif
-
-                                <div>
-                                    <button wire:click.prevent="checkCoupon" class="custom-checkout-btn c2">Apply</button>
-                                </div>
-                            </form>
-                        </div>
-                    @endif
-                </div>
-                <div class="select-part">
-                    <div class="h5">
-                        <h5>Select payment</h5>
-                    </div>
-                    <div class="col-12" style="text-align: center;">
-                        <div class="selectablescustom">
-
-                            <!--Payemnt Method-->
-                            <div class="row">
-                                <div class="col-6">
-                                    <input type="text" value="" class="{{ $errors->has('form.paymentMethod') ? ' is-invalid' : '' }}" hidden>
-                                    <div class=" form-check form-check-inline">
-                                        <input class="form-check-input css-checkbox"
-                                               type="radio"
-                                               name="payment_method"
-                                               id="inlineRadio5"
-                                               value="paypal"
-                                        >
-                                        <label class="form-check-label css-label" for="inlineRadio5"> <img src="{{ asset('_assets/_guest/img/paymentdetails/paypal.png') }}" alt="" class=" ui-state-default  img-fluid  "></label>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input css-checkbox"
-                                               type="radio"
-                                               name="payment_method"
-                                               id="inlineRadio6"
-                                               value="visa"
-                                        >
-                                        <label class="form-check-label css-label" for="inlineRadio6"><img src="{{ asset('_assets/_guest/img/paymentdetails/visa.png') }}" alt="" class=" ui-state-default  img-fluid  "></label>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input css-checkbox"
-                                               type="radio"
-                                               name="payment_method"
-                                               id="inlineRadio7"
-                                               value="bkash"
-                                        >
-                                        <label class="form-check-label css-label" for="inlineRadio7"><img src="{{ asset('_assets/_guest/img/paymentdetails/bkash.png') }}" alt="" class=" ui-state-default  img-fluid  "> </label>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input css-checkbox"
-                                               type="radio"
-                                               name="payment_method"
-                                               id="inlineRadio8"
-                                               value="mastercard"
-                                        >
-                                        <label class="form-check-label css-label" for="inlineRadio8"><img src="{{ asset('_assets/_guest/img/paymentdetails/master.png') }}" alt="" class=" ui-state-default  img-fluid  "></label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!--Payemnt Method-->
-
-                            <div class="row">
-                                <div class=" offset-7 col-lg-5 col-md-5 d-md-block d-none">
-                                    <div class="form-group my-label">
-                                        <input class="form-check-input" type="checkbox" id="gridCheck" style="margin-right:9px;">
-                                        <label class=" paymentdetailsCheck my-label" for="gridCheck" style="display: inline;">By clicking continue, I agreed to <span class="">Designwala</span> <span><button class="btn btn-link ra" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal-1"> Terms &amp; Condition</button></span> and <span><button class="btn btn-link ra" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal-2">Privacy Policy</button></span> of designwala
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            @if($errors->has('form.paymentMethod'))
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12" style="display: flex; justify-content: center;">
-                            <div class="error-message" style="padding: 6px 0 0 0;">
-                                <p>{{ $errors->first('form.paymentMethod') }}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            @endif
 
 
-            <div class="form-group agree-tos">
-                <input class="form-check-input" type="checkbox" id="gridCheck2" style="margin-right:9px;">
-                <label class=" paymentdetailsCheck" for="gridCheck2" style="display: inline;">
-
-                    By clicking continue, I agreed to
-                    <a href="#">Designwala</a>
-                    <a href="#">Terms &amp; Condition </a>
-                    and
-                    <a href="#">
-                        Privacy Policy
-                    </a>
-                    of designwala
-
-                </label>
-            </div>
+    
+    
 
 
-            <div class="container d-block d-md-none ">
-                <div class="btn-ct">
-                    <button  class="c-btn-order" id="checkout-btn2" >Continue to pay <img src="{{ asset('_assets/_guest/img/paymentdetails/arrow-down.svg') }}" alt="designwala"></button>
-                </div>
-            </div>
-            <div class="Payment-getway d-block  d-md-none">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-12">
-                            <div class="payment_gatway_wraper">
-                                <h4 class="text-center m-t">Verified by</h4>
-                                <div class="sslcommerz_wraper text-center">
-                                    <img src="{{ asset('_assets/_guest/img/paymentdetails/sslcomers.svg') }}" class="img-fluid" alt="sslcommerz">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-        </section>
-    </div>
 @endsection
 
 @push('scripts')
@@ -874,5 +834,47 @@
                 });
             });
         });
+    </script>
+
+    <script>
+        const prevBtn=document.getElementById('prevBtn')
+        const nextBtn=document.getElementById('nextBtn')
+        let currentTab = 0;
+        let tabs=document.querySelectorAll(".tab");
+        showTab(currentTab);
+
+        prevBtn.addEventListener("click", function(e){
+            e.preventDefault();
+            tabs[currentTab].style.display = "none";
+            currentTab--;
+            showTab(currentTab);
+        })
+        nextBtn.addEventListener("click", function(e){
+            e.preventDefault();
+            tabs[currentTab].style.display = "none";
+            currentTab++;
+            showTab(currentTab);
+        })
+
+        function showTab(n) {
+
+            console.log(n)
+            tabs[n].style.display = "block";
+
+            if (n == 0) {
+                document.getElementById("prevBtn").style.display = "none";
+            } else {
+                document.getElementById("prevBtn").style.display = "inline";
+            }
+
+            if (n == (tabs.length-1)) {
+                document.getElementById("nextBtn").style.display = "none";
+            } else {
+                document.getElementById("nextBtn").style.display = "inline";
+            }
+        
+        }
+
+
     </script>
 @endpush

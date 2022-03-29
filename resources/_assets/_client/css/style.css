@@ -231,6 +231,7 @@ height: 32px;
     background:var(--grey);
     padding: 65px 0px;
     position: relative;
+    min-height: 100vh;
 }
 .dashboard nav ol li a{
     color: #919191!important;
