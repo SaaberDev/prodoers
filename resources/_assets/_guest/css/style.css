@@ -497,9 +497,6 @@ a {
     border-color: transparent;
 }
 
-.searchPageResultSingle {
-    box-shadow: 0px 3px 10px #2125291a;
-}
 
 .searchPageResultSingle .card-body .card-title {
     margin-bottom: 4px;
@@ -518,7 +515,7 @@ a {
 }
 
 .searchPageResultSingle .card-body {
-    padding: 12px 12px;
+    padding: 12px;
 }
 .searchPageResultSingle .card-body .card-title h5{
     font-size: 18px;
@@ -927,9 +924,10 @@ button.close {
 }
 
 .searchPageResultSingle {
-    width: 90%;
-    margin: 25px auto;
+    width: 95%;
+    margin: 20px auto;
     border-radius: 5px;
+    box-shadow: 0px 3px 10px #2125291a;
 }
 .singlecaregoryBannerCustom p{
     line-height:30px;
@@ -3027,4 +3025,56 @@ button.c-btn-order{
 
 .tab {
     display: none;
+}
+
+/* Categoris Pages */
+
+.all__categories-area{
+    padding: 100px 0;
+}
+.single__category-card{
+    width: 95%;
+    margin: 20px auto;
+    border-radius: 5px;
+    box-shadow: 0px 3px 10px #2125291a;
+}
+.category__image img{
+    width: 100% !important;
+    height: 265px;
+    object-fit: cover;
+}
+.category__content{
+    padding:12px;
+    text-align: center;
+}
+.category__title{
+    font-size:1.5rem;
+    line-height:32px;
+    color: #212529;
+}
+.category__title a{
+    color: #212529;
+}
+.category__description{
+    font-size:1rem;
+    line-height:30px;
+    color: #212529;
+    margin-bottom: 8px;
+}
+.category__price{
+    font-size:1.25rem;
+    color: #212529;
+}
+.load__more-btn-wrapper{
+    margin-top: 40px;
+    text-align: center;
+}
+.load__more-btn{
+    width: 150px;
+    margin-left: auto;
+    background-color: #038D08;
+    border-radius: 40px;
+    color: white !important;
+    height: 52px;
+    border:0;
 }

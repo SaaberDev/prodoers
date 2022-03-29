@@ -36,6 +36,9 @@
 
         // Single Category Page
         Route::prefix('/categories')->name('service_category.')->group(function () {
+            Route::get('/', function(){
+                return view('guest.pages.categories');
+            });
             Route::get('/{category_slug}', [GuestServiceCategoryController::class, 'index'])->name('index');
         });
 

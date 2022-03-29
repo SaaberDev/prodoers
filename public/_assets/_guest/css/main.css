@@ -794,9 +794,6 @@ a {
     border-color: transparent;
 }
 
-.searchPageResultSingle {
-    box-shadow: 0px 3px 10px #2125291a;
-}
 
 .searchPageResultSingle .card-body .card-title {
     margin-bottom: 4px;
@@ -815,7 +812,7 @@ a {
 }
 
 .searchPageResultSingle .card-body {
-    padding: 12px 12px;
+    padding: 12px;
 }
 .searchPageResultSingle .card-body .card-title h5{
     font-size: 18px;
@@ -1224,9 +1221,10 @@ button.close {
 }
 
 .searchPageResultSingle {
-    width: 90%;
-    margin: 25px auto;
+    width: 95%;
+    margin: 20px auto;
     border-radius: 5px;
+    box-shadow: 0px 3px 10px #2125291a;
 }
 .singlecaregoryBannerCustom p{
     line-height:30px;
@@ -3325,6 +3323,58 @@ button.c-btn-order{
 .tab {
     display: none;
 }
+
+/* Categoris Pages */
+
+.all__categories-area{
+    padding: 100px 0;
+}
+.single__category-card{
+    width: 95%;
+    margin: 20px auto;
+    border-radius: 5px;
+    box-shadow: 0px 3px 10px #2125291a;
+}
+.category__image img{
+    width: 100% !important;
+    height: 265px;
+    object-fit: cover;
+}
+.category__content{
+    padding:12px;
+    text-align: center;
+}
+.category__title{
+    font-size:1.5rem;
+    line-height:32px;
+    color: #212529;
+}
+.category__title a{
+    color: #212529;
+}
+.category__description{
+    font-size:1rem;
+    line-height:30px;
+    color: #212529;
+    margin-bottom: 8px;
+}
+.category__price{
+    font-size:1.25rem;
+    color: #212529;
+}
+.load__more-btn-wrapper{
+    margin-top: 40px;
+    text-align: center;
+}
+.load__more-btn{
+    width: 150px;
+    margin-left: auto;
+    background-color: #038D08;
+    border-radius: 40px;
+    color: white !important;
+    height: 52px;
+    border:0;
+}
 /* Extra small devices (portrait phones, less than 375 px)*/
 @media (min-width: 320px) and (max-width: 575.98px) {
     /* order-section for mobile */
@@ -3414,9 +3464,14 @@ button.c-btn-order{
     }
 
     .searchPageResultSingle {
-        width: 95%;
-        margin: 15px auto !important;
+        width: 100%;
+        margin-bottom: 16px;
+        margin-top: 0;
     }
+    .singlecaregoryBannerImg div.text-center{
+        margin-top: 16px;
+    }
+
     .searchPageSearchBar {
         padding-bottom: 15px;
     }
@@ -4472,10 +4527,6 @@ button.c-btn-order{
     .slick-next:before, .slick-prev:before {
         display:none;
     }
-    .searchPageResultSingle {
-        overflow: hidden;
-        margin-bottom: 25px;
-    }
     .slick-prev{
         left: 0!important;
         display: none!important;
@@ -4777,6 +4828,27 @@ button.c-btn-order{
     .cb_card {
         padding: 0px;
     }
+
+    .all__categories-area{
+        padding:80px 0;
+    }
+    .category__image img{
+        height: 200px;
+    }
+    .category__title{
+        font-size:18px;
+    }
+    .category__description{
+        display: none;
+    }
+    .category__price{
+        font-size:1rem;
+    }
+    .load__more-btn-wrapper {
+        margin-top: 25px;
+    }
+
+
 }
 /* Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) and (max-width: 767.98px) {
@@ -4785,8 +4857,8 @@ button.c-btn-order{
         color: black !important;
     }
     .searchPageResultSingle {
-        width: 90%;
-        margin: 12px;
+        width: 100%;
+        margin-top: 0;
     }
     .searchPageSearchBar {
         padding-bottom: 15px;
@@ -5974,6 +6046,28 @@ button.c-btn-order{
     .dw_footer {
         padding-bottom: 10px;
     }
+
+    .all__categories-area{
+        padding:80px 0;
+    }
+    .category__image img{
+        height: 275px;
+    }
+    .category__title{
+        font-size:1.25rem;
+    }
+    .category__description{
+        display: none;
+    }
+    .category__price{
+        font-size:1.1rem;
+    }
+
+    .load__more-btn-wrapper {
+        margin-top: 30px;
+    }
+
+
 }
 /* Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) and (max-width: 991.98px) {
@@ -6751,6 +6845,27 @@ button.c-btn-order{
         width: 65px;
         border-radius: 100px;
     }
+
+    .all__categories-area{
+        padding:80px 0;
+    }
+    .category__image img{
+        height: 275px;
+    }
+    .category__title{
+        font-size:1.25rem;
+    }
+    .category__description{
+        display: none;
+    }
+    .category__price{
+        font-size:1.1rem;
+    }
+
+    .load__more-btn-wrapper {
+        margin-top: 30px;
+    }
+
 }
 /* Large devices (desktops, 992px and up)*/
 @media (min-width: 992px) and (max-width: 1199.98px) {
@@ -7287,6 +7402,19 @@ button.c-btn-order{
         margin-bottom: 12px;
     }
 
+    .category__image img{
+        height: 200px;
+    }
+    .category__title{
+        font-size:1.1rem;
+    }
+    .category__description{
+        display: none;
+    }
+    .category__price{
+        font-size:1rem;
+    }
+
 }
 /* Extra large devices (large desktops, 1366px and up)*/
 @media (min-width: 1200px) and (max-width: 1365.98px) {
@@ -7496,8 +7624,6 @@ button.c-btn-order{
         display: none;
     }
 
-
-
     /*footer*/
     .second_footer_two, .second_footer_three {
         margin-top: 95px;
@@ -7506,6 +7632,18 @@ button.c-btn-order{
         margin-top: 95px;
     }
     /*footer*/
+
+
+    .category__image img{
+        height: 200px;
+    }
+    .category__title{
+        font-size:1.25rem;
+    }
+    .category__price{
+        font-size:1.1rem;
+    }
+
 }
 /* Extra large devices (large desktops, 1600px and up)*/
 @media (min-width: 1366px) and (max-width: 1439.98px) {
@@ -7684,6 +7822,17 @@ button.c-btn-order{
     .dropwown-wraper {
         display: none;
     }
+
+    .category__image img{
+        height: 200px;
+    }
+    .category__title{
+        font-size:1.25rem;
+    }
+    .category__price{
+        font-size:1.1rem;
+    }
+
 }
 @media (min-width: 1440px) and (max-width: 1599.98px) {
     /* orde-section start */
@@ -7836,6 +7985,18 @@ button.c-btn-order{
     .dropwown-wraper {
         display: none;
     }
+
+    .category__image img{
+        height: 200px;
+    }
+    .category__title{
+        font-size:1.25rem;
+    }
+    .category__price{
+        font-size:1.1rem;
+    }
+
+
 }
 /* Extra large devices (large desktops, 1600px and up)*/
 @media (min-width: 1600px) {
