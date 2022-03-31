@@ -95,7 +95,37 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row categories__pagination justify-content-center d-none d-md-block">
+                <div class="col-md-12">
+                    <nav class="pagination__nav">
+                        <ul class="pagination__item-wrapper">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <img src="{{ asset('_assets/_client/images/lt.svg') }}" alt="dashboard" class="img-fluid">
+                                </a>
+                            </li>
+                            <li class="page-item active">
+                                <a class="page-link" href="#">1</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">2</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">3</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">4</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <img src="{{ asset('_assets/_client/images/gt.svg') }}" alt="dashboard" class="img-fluid">
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="row d-md-none">
                 <div class="col-lg-12">
                     <div class="load__more-btn-wrapper">
                         <button class="load__more-btn">Load More</button>

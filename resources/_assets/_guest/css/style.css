@@ -3078,3 +3078,28 @@ button.c-btn-order{
     height: 52px;
     border:0;
 }
+.pagination__item-wrapper{
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    justify-content: center;
+    margin-bottom: 0;
+}
+.pagination__nav{
+    margin-top: 24px;
+}
+.pagination__item-wrapper .page-item .page-link{
+    color: #212529;
+    background-color: transparent;
+    border: 0;
+    font-size: 18px;
+    padding: 0;
+    margin: 0 20px;
+}
+.pagination__item-wrapper .page-item.active .page-link{
+    background: #038d08;
+    text-align: center;
+    padding: 0px 10px;
+    color: #fff;
+    border-radius: 4px;
+}
