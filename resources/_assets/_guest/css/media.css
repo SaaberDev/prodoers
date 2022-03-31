@@ -1234,10 +1234,10 @@
         font-size: 20px;
     }
     h3 {
-        font-size: 12px;
+        font-size: 16px;
     }
     h4 {
-        font-size: 13px;
+        font-size: 14px;
     }
     .sectionServiceBannerContent {
         width: 100% !important;
@@ -1469,6 +1469,17 @@
     }
     .load__more-btn-wrapper {
         margin-top: 25px;
+    }
+
+    .login__area{
+        width: 320px;
+        padding: 12px;
+    }
+    .remember-me.form-check{
+        text-align: center;
+    }
+    .remember-me.form-check input{
+        float: unset;
     }
 
 
@@ -2690,6 +2701,9 @@
         margin-top: 30px;
     }
 
+    .login__area .forgotPass{
+        text-align: right;
+    }
 
 }
 /* Medium devices (tablets, 768px and up)*/
@@ -2853,7 +2867,7 @@
     }
     section p {
         padding: 6px 0;
-        font-size: 9px;
+        font-size: 14px;
 
     }
     .p-wraper4 {
@@ -3631,7 +3645,7 @@
     }
     section p {
         padding: 6px 0;
-        font-size: 9px;
+        font-size: 16px;
 
     }
 

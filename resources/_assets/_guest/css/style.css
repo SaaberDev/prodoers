@@ -3086,10 +3086,10 @@ button.c-btn-order{
     margin-bottom: 0;
 }
 .pagination__nav{
-    margin-top: 24px;
+    margin-top: 32px;
 }
 .pagination__item-wrapper .page-item .page-link{
-    color: #212529;
+    color: #058d07;
     background-color: transparent;
     border: 0;
     font-size: 18px;
@@ -3102,4 +3102,20 @@ button.c-btn-order{
     padding: 0px 10px;
     color: #fff;
     border-radius: 4px;
+}
+
+.login__wrapper{
+    min-height: 100vh;
+    position: relative;
+}
+.login__area{
+    max-width: 500px;
+    width: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    box-shadow: 0px 3px 10px #2125291a;
+    padding: 24px;
+    margin: 0 auto;
 }
