@@ -7,8 +7,13 @@
 @endpush
 
 @section('content')
-    {{-- Web view Start --}}
+    @if (session('status') === 'cancelled')
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+    @endif
 
+    {{-- Web view Start --}}
     <section class="order-section d-md-block d-none  py-5">
         <div class="container">
             <div class="h-wraper">
@@ -367,7 +372,7 @@
 
     <!-- ****************************** Mobile start*****************************************-->
 
- 
+
     <div id="orderRequirement" class="d-block d-md-none">
 
         <div class="order-wraper2">
@@ -459,11 +464,11 @@
                 </div>
             </div>
         </div>
-        
-        <form action="" method="">
+
+        <form id="order_requirement_mobile_form" action="{{ route('guest.order.store', $service->slug) }}" method="POST">
 
             {{-- Step One --}}
-            
+
             <div class="tab">
                 <div class="order-require d-block d-md-none">
                     <div class="container">
@@ -481,10 +486,15 @@
 
                         <div class="text-area">
                             <textarea class="form-control c-custom rounded-0 {{ ($errors->has('form.requirements') ? ' warning-border-color' : '') }}"
-                                        id="exampleFormControlTextarea1"
-                                        rows="10"
-                                        placeholder="Write here if you want to tell anything"
+                                      id="requirements"
+                                      rows="10"
+                                      name="requirements"
+                                      placeholder="Write here if you want to tell anything"
                             ></textarea>
+
+                            <div id="custom-errors-mobile-requirements"></div>
+                        </div>
+                        <div class="text-area">
                             <div class="form-group">
                                 <div class="needsclick dropzone" id="multiple-media-dropzone-mobile">
                                     <div class="dz-message" data-dz-message>
@@ -493,6 +503,8 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div id="custom-errors-mobile-order_requirement_files"></div>
                         </div>
                     </div>
                 </div>
@@ -510,7 +522,7 @@
                 <div id="orderSummery">
                     <div class="order-summ d-block d-md-none">
                         <div class="container">
-                            
+
                             <div class="order">
                                 <h4>Order Summery</h4>
                                 <div class="row">
@@ -526,12 +538,36 @@
                                     </div>
                                     <hr>
                                 </div>
+
+                                <div id="coupon_applied-mobile" style="display: none">
+                                    <div class="row">
+                                        <div class="col-lg-9 col-md-3">
+                                            <div class="discont-wraper d-flex">
+                                                <p>
+                                                    Discount
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-3 col-md-3">
+                                            <p class="color"><span>-$</span><span id="discount_amount-mobile"></span></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <span>(<span id="discount_code-mobile"></span>)</span><span>(<span id="discount_percent-mobile"></span>)</span>
+                                            <a id="removeCouponBtn-mobile"><img src="{{ asset('_assets/_guest/img/paymentdetails/x.svg') }}" alt="close"></a>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="row">
                                     <div class="col-8">
                                         <p class="total">Total</p>
                                     </div>
                                     <div class="col-4">
-                                        <p class="total total-price"> {{ '$' . presentPrice($service->price) }}</p>
+                                        <p class="total total-price">$<span id="grand_total-mobile"></span></p>
                                     </div>
                                 </div>
 
@@ -539,20 +575,27 @@
                                     <p>Service charge are counted for Vat exclusive</p>
                                 </div>
 
-                                <div class="cupon-wraper" style="padding-bottom: 0px;">
+                                <div class="cupon-wraper" id="coupon_group-mobile" style="padding-bottom: 0px;">
                                     <input type="text"
-                                            class="cp {{ ($errors->has('form.coupon') ? ' warning-border-color' : '') }}"
-                                            placeholder="Promo Code"
+                                           name="coupon"
+                                           id="coupon-mobile"
+                                           class="cp"
+                                           placeholder="Promo Code"
                                     >
+                                    <div id="custom-errors-mobile-coupon_code"></div>
                                     <div>
-                                        <button class="custom-checkout-btn c2">Apply</button>
+                                        <button id="apply_coupon_btn-mobile" class="c2">Apply</button>
                                     </div>
                                 </div>
+                                <div class="cupon-wraper" id="coupon_group-mobile"></div>
                             </div>
                             <div class="select-part">
                                 <div class="h5">
                                     <h5>Select payment</h5>
                                 </div>
+
+                                <div id="ccustom-errors-mobile-payment_method"></div>
+
                                 <div class="col-12" style="text-align: center;">
                                     <div class="selectablescustom">
 
@@ -627,7 +670,7 @@
 
                         <div class="container d-block d-md-none ">
                             <div class="btn-ct">
-                                <button  class="c-btn-order" id="checkout-btn2" >Continue to pay <img src="{{ asset('_assets/_guest/img/paymentdetails/arrow-down.svg') }}" alt="designwala"></button>
+                                <button class="c-btn-order" id="checkout-btn-mobile">Continue to pay <img src="{{ asset('_assets/_guest/img/paymentdetails/arrow-down.svg') }}" alt="designwala"></button>
                             </div>
                         </div>
                         <div class="Payment-getway d-block  d-md-none">
@@ -652,13 +695,6 @@
         </form>
 
     </div>
-
-
-
-    
-    
-
-
 
 @endsection
 
@@ -699,7 +735,7 @@
             var discountCode = $('#discount_code');
             var grandTotal = $('#grand_total');
 
-            console.log(session);
+            // console.log(session);
             if (session.coupon) {
                 couponApplied.show();
                 couponGroup.hide();
@@ -837,28 +873,45 @@
     </script>
 
     <script>
-        const prevBtn=document.getElementById('prevBtn')
-        const nextBtn=document.getElementById('nextBtn')
+        var $form = $('#order_requirement_mobile_form');
+        var $action = $form.attr('action');
+        const prevBtn = $('#prevBtn');
+        const nextBtn = $('#nextBtn');
         let currentTab = 0;
-        let tabs=document.querySelectorAll(".tab");
+        let tabs = document.querySelectorAll(".tab");
         showTab(currentTab);
 
-        prevBtn.addEventListener("click", function(e){
+        function validateForm() {
+            var requirements = document.forms["order_requirement_mobile_form"]["requirements"].value;
+            if (requirements == "") {
+                $('#custom-errors-mobile-requirements .custom-error').remove();
+                $('#custom-errors-mobile-requirements').append('<span class="custom-error"><strong>Requirement field is required.</strong></span>');
+                return false;
+            }
+
+            return true;
+        }
+
+        prevBtn.on("click", function(e){
             e.preventDefault();
             tabs[currentTab].style.display = "none";
             currentTab--;
             showTab(currentTab);
         })
-        nextBtn.addEventListener("click", function(e){
+        nextBtn.on("click", function(e){
             e.preventDefault();
-            tabs[currentTab].style.display = "none";
-            currentTab++;
-            showTab(currentTab);
-        })
+            var formData = {
+                requirements: $('#requirements').val(),
+                order_requirement_files: $('#order_requirement_files').val(),
+            };
+            if(validateForm()){
+                tabs[currentTab].style.display = "none";
+                currentTab++;
+                showTab(currentTab);
+            }
+        });
 
         function showTab(n) {
-
-            console.log(n)
             tabs[n].style.display = "block";
 
             if (n == 0) {
@@ -872,9 +925,158 @@
             } else {
                 document.getElementById("nextBtn").style.display = "inline";
             }
-        
+
         }
+    </script>
 
+    <script>
+        $(document).ready(function () {
+            var session = @json(session('order'));
+            var checkoutBtn = $('#checkout-btn-mobile');
+            var applyCouponBtn = $('#apply_coupon_btn-mobile');
+            var couponApplied = $('#coupon_applied-mobile');
+            var couponGroup = $('#coupon_group-mobile');
+            var discountAmount = $('#discount_amount-mobile');
+            var discountPercent = $('#discount_percent-mobile');
+            var discountCode = $('#discount_code-mobile');
+            var grandTotal = $('#grand_total-mobile');
 
+            // console.log(session);
+            if (session.coupon) {
+                couponApplied.show();
+                couponGroup.hide();
+                if (session.coupon.coupon_type === 'fixed') {
+                    discountAmount.html(session.coupon.discount);
+                    discountCode.html(session.coupon.code);
+                    discountPercent.html(session.coupon.amount + '$');
+                } else if (session.coupon.coupon_type === 'percent_off') {
+                    discountAmount.html(session.coupon.discount);
+                    discountCode.html(session.coupon.code);
+                    discountPercent.html(session.coupon.percent + '%');
+                }
+
+                grandTotal.html(session.grand_total);
+            } else {
+                grandTotal.html(session.grand_total);
+                couponApplied.hide();
+                couponGroup.show();
+            }
+
+            // couponApplied.hide();
+
+            checkoutBtn.on('click', function (e) {
+                e.preventDefault();
+                checkoutBtn.attr('disabled', true);
+                checkoutBtn.html('<i class="fa fa-spinner fa-spin"></i> Processing...');
+                // var formData = {
+                //
+                // };
+                $.ajax({
+                    url: '{{ route('guest.order.store', $service->slug) }}',
+                    type: 'POST',
+                    data: $(this).closest("form").serialize(),
+                    dataType: 'json',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function (response) {
+                        window.location = response.redirect_to;
+                        // console.log(response.redirect_to);
+                    },
+                    error: function (response) {
+                        var xhr = response.responseJSON;
+                        $('.custom-error').remove();
+                        $("input").removeClass('is-invalid');
+                        $.each(xhr.errors, function(key, value) {
+                            // console.log('2', key)
+                            var input = $("#"+key);
+                            input.addClass('is-invalid');
+                            $('#custom-errors-mobile-'+key).append('<span class="custom-error"><strong>'+ value +'</strong></span>');
+                        });
+                        console.log(xhr);
+                    },
+                    complete: function () {
+                        checkoutBtn.attr('disabled', false);
+                        checkoutBtn.html('Continue to checkout');
+                    }
+                });
+            });
+
+            applyCouponBtn.on('click', function (e) {
+                e.preventDefault();
+                $(this).submit(false);
+                var formData = {
+                    coupon_code: $('#coupon-mobile').val(),
+                };
+                var url = "{{ route('guest.order.checkCoupon', $service->slug) }}";
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: formData,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function (response) {
+                        var session = response.data;
+                        if (response.status === 'success') {
+                            couponApplied.show();
+                            couponGroup.hide();
+                            if (session.coupon.coupon_type === 'fixed') {
+                                discountAmount.html(session.coupon.discount);
+                                discountCode.html(session.coupon.code);
+                                discountPercent.html('-$' + session.coupon.amount);
+                            } else if (session.coupon.coupon_type === 'percent_off') {
+                                discountAmount.html(session.coupon.discount);
+                                discountCode.html(session.coupon.code);
+                                discountPercent.html('-' + session.coupon.percent + '%');
+                            }
+                            grandTotal.html(session.grand_total);
+                            $('input[name="coupon"]').val('');
+                        }
+                    },
+                    error: function (response) {
+                        var xhr = response.responseJSON;
+                        $('.custom-error').remove();
+                        $("input").removeClass('is-invalid');
+                        $.each(xhr.errors, function(key, value) {
+                            // console.log('2', key)
+                            var input = $("#"+key);
+                            input.addClass('is-invalid');
+                            $('#custom-errors-mobile-'+key).append('<span class="custom-error"><strong>'+ value +'</strong></span>');
+                        });
+                    },
+                });
+            });
+
+            $(document).on('click', '#removeCouponBtn-mobile', function () {
+                var formData = {
+                    coupon_code: $('#coupon-mobile').val(),
+                };
+                var url = "{{ route('guest.order.removeCoupon', $service->slug) }}";
+
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: formData,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function (response) {
+                        var couponData = response.data;
+                        couponApplied.hide();
+                        couponGroup.show();
+                        discountAmount.empty();
+                        discountCode.empty();
+                        discountPercent.empty();
+                        grandTotal.html(couponData.grand_total);
+                    },
+                    error: function (error, status, xhr) {
+                        // console.log('error: ', error);
+                        // console.log('status: ', status);
+                        // console.log('xhr: ', xhr);
+                    },
+                });
+            });
+        });
     </script>
 @endpush

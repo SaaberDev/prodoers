@@ -15,6 +15,7 @@
     use Illuminate\Contracts\View\View;
     use Illuminate\Http\RedirectResponse;
     use Illuminate\Support\Facades\Crypt;
+    use Illuminate\Support\Facades\Session;
     use Throwable;
 
     class CheckoutController extends Controller
@@ -104,8 +105,7 @@
         public function cancelCheckout()
         {
             $this->billing->cancelPayment();
-            return redirect()
-                ->intended(\URL::previous())
+            return redirect(Session::get('site_custom_url.intended_order_page'))
                 ->with([
                     'status' => 'cancelled',
                     'title' => 'Order Cancelled',

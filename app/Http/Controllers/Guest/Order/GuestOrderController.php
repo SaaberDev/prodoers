@@ -11,6 +11,7 @@
     use App\Services\Coupon\CouponServiceContract;
     use App\Services\Dropzone\Dropzone;
     use Auth;
+    use Exception;
     use Illuminate\Contracts\Foundation\Application;
     use Illuminate\Contracts\View\Factory;
     use Illuminate\Contracts\View\View;
@@ -43,16 +44,6 @@
                 ->with('media', 'serviceCategories')
                 ->select(['id', 'title', 'short_desc', 'delivery_time', 'price', 'slug', 'service_category_id'])
                 ->first();
-
-            if (!Session::has('order')) {
-                \Session::put('order', [
-                    'title' => $service->title,
-                    'price' => $service->price,
-                    'product_desc' => $service->short_desc,
-                    'currency' => 'usd',
-                    'grand_total' => $service->price
-                ]);
-            }
 
             return view('guest.pages.order_requirements', compact('service'));
         }
@@ -115,7 +106,7 @@
                     'data' => $coupon,
                     'message' => 'Coupon Applied'
                 ]);
-            } catch (\Exception $exception) {
+            } catch (Exception $exception) {
                 report($exception);
                 return response()->json([
                     'status' => 'failed',

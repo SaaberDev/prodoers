@@ -33,6 +33,14 @@ class GuestServiceController extends Controller
 
         $tags = $service->tags;
 
+        \Session::put('order', [
+            'title' => $service->title,
+            'price' => $service->price,
+            'product_desc' => $service->short_desc,
+            'currency' => 'usd',
+            'grand_total' => $service->price
+        ]);
+
         \Session::put('site_custom_url.intended_order_page', route('guest.order.index', $service->slug));
         \Session::put('site_custom_url.current_service', url()->current());
         return view('guest.pages.service_show', compact('service', 'related_services', 'tags'));
