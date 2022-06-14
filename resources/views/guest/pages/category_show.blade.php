@@ -10,16 +10,16 @@
     {{-- Category Banner Start --}}
     <div class="section singleCategoryHero bgcustomLightgray " id="SingleCategoryHero">
         <div class="container">
-            <div class="row   justify-content-center singlecaregoryBannerCustom">
-                <div class=" col-lg-6 col-md-6 v-center">
-                    <div class="text-md-left">
+            <div class="row justify-content-center singlecaregoryBannerCustom">
+                <div class="col-lg-6 col-md-6">
+                    <div>
                         <h2>{{ $category->title }}</h2>
                         <p >{{ $category->desc }}</p>
                     </div>
                 </div>
                 <div class=" col-lg-6 col-md-6 singlecaregoryBannerImg">
-                    <div class="text-center">
-                        <img src="{{ showImage($category, 'category_thumb') }}" alt="{{ showAltText($category, 'category_thumb', $category->title) }}" class="img-fluid float-end">
+                    <div class="text-center text-md-end">
+                        <img src="{{ showImage($category, 'category_thumb') }}" alt="{{ showAltText($category, 'category_thumb', $category->title) }}" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -87,7 +87,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="">
+                        <div>
                             <div class="card-text  mb-0 cardSalesTitle"><small class=" bgOne text-white  position-absolute">1k sales</small> </div>
                         </div>
                     </div>

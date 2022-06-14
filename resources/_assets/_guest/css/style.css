@@ -497,9 +497,6 @@ a {
     border-color: transparent;
 }
 
-.searchPageResultSingle {
-    box-shadow: 0px 3px 10px #2125291a;
-}
 
 .searchPageResultSingle .card-body .card-title {
     margin-bottom: 4px;
@@ -518,7 +515,7 @@ a {
 }
 
 .searchPageResultSingle .card-body {
-    padding: 12px 12px;
+    padding: 12px;
 }
 .searchPageResultSingle .card-body .card-title h5{
     font-size: 18px;
@@ -927,9 +924,10 @@ button.close {
 }
 
 .searchPageResultSingle {
-    width: 90%;
-    margin: 25px auto;
+    width: 95%;
+    margin: 20px auto;
     border-radius: 5px;
+    box-shadow: 0px 3px 10px #2125291a;
 }
 .singlecaregoryBannerCustom p{
     line-height:30px;
@@ -3027,4 +3025,97 @@ button.c-btn-order{
 
 .tab {
     display: none;
+}
+
+/* Categoris Pages */
+
+.all__categories-area{
+    padding: 100px 0;
+}
+.single__category-card{
+    width: 95%;
+    margin: 20px auto;
+    border-radius: 5px;
+    box-shadow: 0px 3px 10px #2125291a;
+}
+.category__image img{
+    width: 100% !important;
+    height: 265px;
+    object-fit: cover;
+}
+.category__content{
+    padding:12px;
+    text-align: center;
+}
+.category__title{
+    font-size:1.5rem;
+    line-height:32px;
+    color: #212529;
+}
+.category__title a{
+    color: #212529;
+}
+.category__description{
+    font-size:1rem;
+    line-height:30px;
+    color: #212529;
+    margin-bottom: 8px;
+}
+.category__price{
+    font-size:1.25rem;
+    color: #212529;
+}
+.load__more-btn-wrapper{
+    margin-top: 40px;
+    text-align: center;
+}
+.load__more-btn{
+    width: 150px;
+    margin-left: auto;
+    background-color: #038D08;
+    border-radius: 40px;
+    color: white !important;
+    height: 52px;
+    border:0;
+}
+.pagination__item-wrapper{
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    justify-content: center;
+    margin-bottom: 0;
+}
+.pagination__nav{
+    margin-top: 32px;
+}
+.pagination__item-wrapper .page-item .page-link{
+    color: #058d07;
+    background-color: transparent;
+    border: 0;
+    font-size: 18px;
+    padding: 0;
+    margin: 0 20px;
+}
+.pagination__item-wrapper .page-item.active .page-link{
+    background: #038d08;
+    text-align: center;
+    padding: 0px 10px;
+    color: #fff;
+    border-radius: 4px;
+}
+
+.login__wrapper{
+    min-height: 100vh;
+    position: relative;
+}
+.login__area{
+    max-width: 500px;
+    width: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    box-shadow: 0px 3px 10px #2125291a;
+    padding: 24px;
+    margin: 0 auto;
 }

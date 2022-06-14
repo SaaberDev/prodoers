@@ -36,6 +36,9 @@
 
         // Single Category Page
         Route::prefix('/categories')->name('service_category.')->group(function () {
+            Route::get('/', function(){
+                return view('guest.pages.categories');
+            });
             Route::get('/{category_slug}', [GuestServiceCategoryController::class, 'index'])->name('index');
         });
 
@@ -102,4 +105,17 @@
         // Blog
 //        Route::get('/blog', [GuestBlogController::class, 'index'])->name('blog.index');
 //        Route::get('/single-blog', [GuestBlogController::class, 'index'])->name('blog.show');
+    });
+
+
+    //  Temporary Routing for login
+
+    Route::get('/signin-page',function (){
+        return view('guest.pages.sign-in');
+    });
+    Route::get('/signup-page',function (){
+        return view('guest.pages.sign-up');
+    });
+    Route::get('/forget-pass-page',function (){
+        return view('guest.pages.forget-password');
     });
