@@ -41,11 +41,11 @@
         }
 
         /**
-         * @return HasOne
+         * @return \Illuminate\Database\Eloquent\Relations\HasMany
          */
         public function assignOrders()
         {
-            return $this->hasOne(AssignOrder::class, 'order_id');
+            return $this->hasMany(AssignOrder::class, 'order_id');
         }
 
         /**

@@ -55,10 +55,14 @@
                         @forelse($orders as $order)
                             <tr>
                                 <td>{{ $order->order_number }}</td>
-                                <td>Abdul Kader</td>
-                                <td>Saber</td>
-                                <td> Logo Design </td>
-                                <td> &#36;{{ $order->payments->paid_amount }} </td>
+                                <td>{{ $order->users->name }}</td>
+                                <td>
+                                    @foreach($order->assignOrders as $assignOrders)
+                                        {{ $assignOrders->users->name }}
+                                    @endforeach
+                                </td>
+                                <td> {{ $order->services->title }} </td>
+                                <td> &#36;{{ $order->payments->paid_amount ?? 0 }} </td>
                                 <td>5 / 3 days left || In Time || Late</td>
                                 <td>
                                     @if($order->order_status === 'pending')

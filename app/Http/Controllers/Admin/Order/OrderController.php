@@ -62,9 +62,24 @@
             // Previously assigned doers
             $assign_logs = [];
             // Sort by latest data except duplicate
-            $assign_order_logs = optional($order->assignOrders)->assignOrderLogs ? $order->assignOrders->assignOrderLogs->sortByDesc('created_at')->unique('user_id') : [];
+            $assign_order_logs = [];
+            $assignedOrderData = [];
+            foreach ($order->assignOrders as $assignOrder) {
+                $assign_order_logs = $order->assignOrders && count($order->assignOrders) > 0
+                    ? $assignOrder->assignOrderLogs->sortByDesc('created_at')->unique('user_id')
+                    : [];
+
+                // Assigned doers
+                $assignedOrderData = $assignOrder->users ?
+                    [
+                        'id' => $assignOrder->users->id ?? null,
+                        'username' => $assignOrder->users->username ?? null,
+                        'status' => $assignOrder->status ?? null,
+                    ] : [];
+            }
+
             foreach ($assign_order_logs as $assignOrderLog) {
-                if ($assignOrderLog->pivot->users->id != $order->assignOrders->users->id) {
+                if ($assignOrderLog->pivot->users->id != $assignOrderLog->users->id) {
                     $assign_logs[] = [
                         'id' => $assignOrderLog->pivot->users->id,
                         'username' => $assignOrderLog->pivot->users->username,
@@ -82,14 +97,6 @@
                     'url' => $media->getFullUrl()
                 ];
             }
-
-            // Assigned doers
-            $assignedOrderData = optional($order->assignOrders)->users ?
-                [
-                    'id' => optional($order->assignOrders)->users->id ?? null,
-                    'username' => optional($order->assignOrders)->users->username ?? null,
-                    'status' => optional($order->assignOrders)->status ?? null,
-                ] : [];
 
             // Data array
             $data = [
@@ -126,8 +133,6 @@
             $order_details = collect(json_decode(json_encode($data)));
 
             $doers = User::role('doers')->get()->pluck('name', 'id');
-
-//            dd($order_details);
 
             return \view('admin_panel.pages.orders.order.show', compact('order_details', 'doers'));
         }
