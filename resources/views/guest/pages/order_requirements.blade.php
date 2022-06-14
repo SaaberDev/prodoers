@@ -8,7 +8,7 @@
 
 @section('content')
     @if (session('status') === 'cancelled')
-        <div class="alert alert-success">
+        <div class="alert {{ session('status') === 'cancelled' ? 'alert-danger' : '' }}" id="alert-ctm">
             {{ session('message') }}
         </div>
     @endif
@@ -725,6 +725,10 @@
 
     <script>
         $(document).ready(function () {
+            setTimeout(function () {
+                $('#alert-ctm').fadeOut();
+            }, 1000);
+
             var session = @json(session('order'));
             var checkoutBtn = $('#checkout-btn');
             var applyCouponBtn = $('#apply_coupon_btn');

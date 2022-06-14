@@ -48,6 +48,11 @@
         },
 
         removedfile: function (file) {
+            if (file.status == 'error') {
+                file.previewElement.remove();
+                return false;
+            }
+
             var xhr = JSON.parse(file.xhr.response);
             file.previewElement.remove()
             var name = ''
