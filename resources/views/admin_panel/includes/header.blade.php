@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xl-2 col-lg-3 col-md-3 v-center text-center">
-                <div class="text-center"><img src="{{ asset('_assets/_admin_panel/img/designwalalogo.svg') }}"
+                <div class="text-center"><img src="{{ $brand_identity['logo'] }}"
                                               class="img-fluid w-75" alt=""></div>
             </div>
             <div class="col-xl-5 col-lg-3 col d-none d-lg-block"> &nbsp;</div>

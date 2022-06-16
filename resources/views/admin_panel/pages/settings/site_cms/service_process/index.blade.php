@@ -80,7 +80,7 @@
                                         <ul class="row list-unstyled previewimg">
                                             <li class="col-md-7 text-center position-relative m-auto">
                                                 <div class="previewimg">
-                                                    <img id="previewImg" class="img-fluid" src="{{ asset($service_process->image ? config('designwala_paths.show.site_cms.service_process') . $service_process->image : config('designwala_paths.default.no_preview')) }}" alt="{{ $service_process->title }}">
+                                                    <img id="previewImg" class="img-fluid" src="{{ asset(!is_null($service_process->image) ? Storage::disk('public')->url(config('image-location.images.site_cms.service_process') . $service_process->image) : config('image-location.default.no_preview')) }}" alt="{{ $service_process->title }}">
                                                 </div>
                                             </li>
                                         </ul>

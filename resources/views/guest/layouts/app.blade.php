@@ -7,7 +7,7 @@
 
     {{-- SEO Generator --}}
     {!! SEO::generate() !!}
-    <link rel="icon" href="{{ asset('_assets/_guest/img/favicon.svg') }}" type="image/png" sizes="18x18">
+    <link rel="icon" href="{{ $brand_identity['favicon'] }}" type="image/png" sizes="18x18">
 
     {{-- Styles --}}
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">

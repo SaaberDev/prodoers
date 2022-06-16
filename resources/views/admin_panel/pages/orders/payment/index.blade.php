@@ -83,204 +83,30 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>#GD-0001</td>
-                                <td>XYZ</td>
-                                <td>Logo Design </td>
-                                <td> $100 </td>
-                                <td> Bkash </td>
-                                <td>00.00.0000</td>
-                                <td>
-                                    <a href="{{ route('super_admin.order.payment.show') }}" class="btn m-0 p-0">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16.661" height="12.39" viewBox="0 0 16.661 12.39">
-                                            <g transform="translate(-1 -5.5)">
-                                                <path d="M1.5,11.695S4.347,6,9.33,6s7.83,5.695,7.83,5.695S14.313,17.39,9.33,17.39,1.5,11.695,1.5,11.695Z" transform="translate(0)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
-                                                <path d="M17.771,15.636A2.136,2.136,0,1,1,15.636,13.5,2.136,2.136,0,0,1,17.771,15.636Z" transform="translate(-6.305 -3.941)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
-                                            </g>
-                                        </svg>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#GD-0001</td>
-                                <td>XYZ</td>
-                                <td>Logo Design </td>
-                                <td> $100 </td>
-                                <td> Bkash </td>
-                                <td>00.00.0000</td>
-                                <td>
-                                    <a href="{{ route('super_admin.order.payment.show') }}" class="btn m-0 p-0">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16.661" height="12.39" viewBox="0 0 16.661 12.39">
-                                            <g transform="translate(-1 -5.5)">
-                                                <path d="M1.5,11.695S4.347,6,9.33,6s7.83,5.695,7.83,5.695S14.313,17.39,9.33,17.39,1.5,11.695,1.5,11.695Z" transform="translate(0)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
-                                                <path d="M17.771,15.636A2.136,2.136,0,1,1,15.636,13.5,2.136,2.136,0,0,1,17.771,15.636Z" transform="translate(-6.305 -3.941)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
-                                            </g>
-                                        </svg>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#GD-0001</td>
-                                <td>XYZ</td>
-                                <td>Logo Design </td>
-                                <td> $100 </td>
-                                <td> Bkash </td>
-                                <td>00.00.0000</td>
-                                <td>
-                                    <a href="{{ route('super_admin.order.payment.show') }}" class="btn m-0 p-0">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16.661" height="12.39" viewBox="0 0 16.661 12.39">
-                                            <g transform="translate(-1 -5.5)">
-                                                <path d="M1.5,11.695S4.347,6,9.33,6s7.83,5.695,7.83,5.695S14.313,17.39,9.33,17.39,1.5,11.695,1.5,11.695Z" transform="translate(0)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
-                                                <path d="M17.771,15.636A2.136,2.136,0,1,1,15.636,13.5,2.136,2.136,0,0,1,17.771,15.636Z" transform="translate(-6.305 -3.941)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
-                                            </g>
-                                        </svg>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#GD-0001</td>
-                                <td>XYZ</td>
-                                <td>Logo Design </td>
-                                <td> $100 </td>
-                                <td> Bkash </td>
-                                <td>00.00.0000</td>
-                                <td>
-                                    <a href="{{ route('super_admin.order.payment.show') }}" class="btn m-0 p-0">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16.661" height="12.39" viewBox="0 0 16.661 12.39">
-                                            <g transform="translate(-1 -5.5)">
-                                                <path d="M1.5,11.695S4.347,6,9.33,6s7.83,5.695,7.83,5.695S14.313,17.39,9.33,17.39,1.5,11.695,1.5,11.695Z" transform="translate(0)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
-                                                <path d="M17.771,15.636A2.136,2.136,0,1,1,15.636,13.5,2.136,2.136,0,0,1,17.771,15.636Z" transform="translate(-6.305 -3.941)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
-                                            </g>
-                                        </svg>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#GD-0001</td>
-                                <td>XYZ</td>
-                                <td>Logo Design </td>
-                                <td> $100 </td>
-                                <td> Bkash </td>
-                                <td>00.00.0000</td>
-                                <td>
-                                    <a href="{{ route('super_admin.order.payment.show') }}" class="btn m-0 p-0">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16.661" height="12.39" viewBox="0 0 16.661 12.39">
-                                            <g transform="translate(-1 -5.5)">
-                                                <path d="M1.5,11.695S4.347,6,9.33,6s7.83,5.695,7.83,5.695S14.313,17.39,9.33,17.39,1.5,11.695,1.5,11.695Z" transform="translate(0)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
-                                                <path d="M17.771,15.636A2.136,2.136,0,1,1,15.636,13.5,2.136,2.136,0,0,1,17.771,15.636Z" transform="translate(-6.305 -3.941)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
-                                            </g>
-                                        </svg>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#GD-0001</td>
-                                <td>XYZ</td>
-                                <td>Logo Design </td>
-                                <td> $100 </td>
-                                <td> Bkash </td>
-                                <td>00.00.0000</td>
-                                <td>
-                                    <a href="{{ route('super_admin.order.payment.show') }}" class="btn m-0 p-0">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16.661" height="12.39" viewBox="0 0 16.661 12.39">
-                                            <g transform="translate(-1 -5.5)">
-                                                <path d="M1.5,11.695S4.347,6,9.33,6s7.83,5.695,7.83,5.695S14.313,17.39,9.33,17.39,1.5,11.695,1.5,11.695Z" transform="translate(0)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
-                                                <path d="M17.771,15.636A2.136,2.136,0,1,1,15.636,13.5,2.136,2.136,0,0,1,17.771,15.636Z" transform="translate(-6.305 -3.941)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
-                                            </g>
-                                        </svg>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#GD-0001</td>
-                                <td>XYZ</td>
-                                <td>Logo Design </td>
-                                <td> $100 </td>
-                                <td> Bkash </td>
-                                <td>00.00.0000</td>
-                                <td>
-                                    <a href="{{ route('super_admin.order.payment.show') }}" class="btn m-0 p-0">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16.661" height="12.39" viewBox="0 0 16.661 12.39">
-                                            <g transform="translate(-1 -5.5)">
-                                                <path d="M1.5,11.695S4.347,6,9.33,6s7.83,5.695,7.83,5.695S14.313,17.39,9.33,17.39,1.5,11.695,1.5,11.695Z" transform="translate(0)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
-                                                <path d="M17.771,15.636A2.136,2.136,0,1,1,15.636,13.5,2.136,2.136,0,0,1,17.771,15.636Z" transform="translate(-6.305 -3.941)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
-                                            </g>
-                                        </svg>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#GD-0001</td>
-                                <td>XYZ</td>
-                                <td>Logo Design </td>
-                                <td> $100 </td>
-                                <td> Bkash </td>
-                                <td>00.00.0000</td>
-                                <td>
-                                    <a href="{{ route('super_admin.order.payment.show') }}" class="btn m-0 p-0">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16.661" height="12.39" viewBox="0 0 16.661 12.39">
-                                            <g transform="translate(-1 -5.5)">
-                                                <path d="M1.5,11.695S4.347,6,9.33,6s7.83,5.695,7.83,5.695S14.313,17.39,9.33,17.39,1.5,11.695,1.5,11.695Z" transform="translate(0)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
-                                                <path d="M17.771,15.636A2.136,2.136,0,1,1,15.636,13.5,2.136,2.136,0,0,1,17.771,15.636Z" transform="translate(-6.305 -3.941)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
-                                            </g>
-                                        </svg>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#GD-0001</td>
-                                <td>XYZ</td>
-                                <td>Logo Design </td>
-                                <td> $100 </td>
-                                <td> Bkash </td>
-                                <td>00.00.0000</td>
-                                <td>
-                                    <a href="{{ route('super_admin.order.payment.show') }}" class="btn m-0 p-0">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16.661" height="12.39" viewBox="0 0 16.661 12.39">
-                                            <g transform="translate(-1 -5.5)">
-                                                <path d="M1.5,11.695S4.347,6,9.33,6s7.83,5.695,7.83,5.695S14.313,17.39,9.33,17.39,1.5,11.695,1.5,11.695Z" transform="translate(0)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
-                                                <path d="M17.771,15.636A2.136,2.136,0,1,1,15.636,13.5,2.136,2.136,0,0,1,17.771,15.636Z" transform="translate(-6.305 -3.941)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
-                                            </g>
-                                        </svg>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#GD-0001</td>
-                                <td>XYZ</td>
-                                <td>Logo Design </td>
-                                <td> $100 </td>
-                                <td> Bkash </td>
-                                <td>00.00.0000</td>
-                                <td>
-                                    <a href="{{ route('super_admin.order.payment.show') }}" class="btn m-0 p-0">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16.661" height="12.39" viewBox="0 0 16.661 12.39">
-                                            <g transform="translate(-1 -5.5)">
-                                                <path d="M1.5,11.695S4.347,6,9.33,6s7.83,5.695,7.83,5.695S14.313,17.39,9.33,17.39,1.5,11.695,1.5,11.695Z" transform="translate(0)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
-                                                <path d="M17.771,15.636A2.136,2.136,0,1,1,15.636,13.5,2.136,2.136,0,0,1,17.771,15.636Z" transform="translate(-6.305 -3.941)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
-                                            </g>
-                                        </svg>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#GD-0001</td>
-                                <td>XYZ</td>
-                                <td>Logo Design </td>
-                                <td> $100 </td>
-                                <td> Bkash </td>
-                                <td>00.00.0000</td>
-                                <td>
-                                    <a href="{{ route('super_admin.order.payment.show') }}" class="btn m-0 p-0">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16.661" height="12.39" viewBox="0 0 16.661 12.39">
-                                            <g transform="translate(-1 -5.5)">
-                                                <path d="M1.5,11.695S4.347,6,9.33,6s7.83,5.695,7.83,5.695S14.313,17.39,9.33,17.39,1.5,11.695,1.5,11.695Z" transform="translate(0)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
-                                                <path d="M17.771,15.636A2.136,2.136,0,1,1,15.636,13.5,2.136,2.136,0,0,1,17.771,15.636Z" transform="translate(-6.305 -3.941)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
-                                            </g>
-                                        </svg>
-                                    </a>
-                                </td>
-                            </tr>
+                            @forelse($payments as $payment)
+                                <tr>
+                                    <td>{{ $payment->orders->order_number }}</td>
+                                    <td>{{ $payment->transaction_id }}</td>
+                                    <td>{{ $payment->orders->users->email }}</td>
+                                    <td> $ {{ $payment->paid_amount }} </td>
+                                    <td> {{ $payment->payment_method }} </td>
+                                    <td>{{ \Carbon\Carbon::parse($payment->created_at)->format('d.m.Y') }}</td>
+                                    <td>
+                                        <a href="{{ route('super_admin.order.payment.show') }}" class="btn m-0 p-0">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16.661" height="12.39" viewBox="0 0 16.661 12.39">
+                                                <g transform="translate(-1 -5.5)">
+                                                    <path d="M1.5,11.695S4.347,6,9.33,6s7.83,5.695,7.83,5.695S14.313,17.39,9.33,17.39,1.5,11.695,1.5,11.695Z" transform="translate(0)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
+                                                    <path d="M17.771,15.636A2.136,2.136,0,1,1,15.636,13.5,2.136,2.136,0,0,1,17.771,15.636Z" transform="translate(-6.305 -3.941)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"></path>
+                                                </g>
+                                            </svg>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="7">No Payments Available</td>
+                                </tr>
+                            @endforelse
                             </tbody>
                         </table>
                     </div>

@@ -31,8 +31,8 @@ class SiteCmsController extends Controller
     {
         $brand_identities = BrandIdentity::first(['company_name', 'slogan', 'logo', 'favicon']);
 
-        $brand_logo = \Storage::disk('local')->url(config('designwala_paths.images.site_cms.brand_logo'));
-        $brand_icon = \Storage::disk('local')->url(config('designwala_paths.images.site_cms.brand_icon'));
+        $brand_logo = \Storage::disk('public')->url(config('image-location.images.site_cms.brand_logo'));
+        $brand_icon = \Storage::disk('public')->url(config('image-location.images.site_cms.brand_icon'));
 
         return view('admin_panel.pages.settings.site_cms.brand_identity.index', compact('brand_identities', 'brand_logo', 'brand_icon'));
     }
@@ -44,8 +44,8 @@ class SiteCmsController extends Controller
             $brand_identities->update([
                 'company_name' => $request->input('company_name'),
                 'slogan' => $request->input('slogan'),
-                'logo' => updateSVG($request, 'brand-logo', $brand_identities->logo, 'logo', 'header', config('designwala_paths.images.site_cms.brand_logo')),
-                'favicon' => updateSVG($request, 'browser-favicon', $brand_identities->favicon, 'favicon', 'brand-identity', config('designwala_paths.images.site_cms.brand_icon')),
+                'logo' => updateSVG($request, 'brand-logo', $brand_identities->logo, 'logo', 'header', config('image-location.images.site_cms.brand_logo')),
+                'favicon' => updateSVG($request, 'browser-favicon', $brand_identities->favicon, 'favicon', 'brand-identity', config('image-location.images.site_cms.brand_icon')),
             ]);
         });
         \Cache::clear();
@@ -93,7 +93,7 @@ class SiteCmsController extends Controller
                     $svg = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' . $svg;
 
                     // Store in Storage Filesystem
-                    \Storage::disk('public')->put(config('designwala_paths.images.site_cms.banner') . $fileNameToStore, $svg);
+                    \Storage::disk('public')->put(config('image-location.images.site_cms.banner') . $fileNameToStore, $svg);
 
                     BannerSection::findOrFail($key+1)->update([
                         'banner' => $fileNameToStore,
@@ -137,7 +137,7 @@ class SiteCmsController extends Controller
                     $svg = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' . $svg;
 
                     // Store in Storage Filesystem
-                    \Storage::disk('public')->put(config('designwala_paths.images.site_cms.service_process') . $fileNameToStore, $svg);
+                    \Storage::disk('public')->put(config('image-location.images.site_cms.service_process') . $fileNameToStore, $svg);
 
                     ServiceProcess::whereSiteKey('service_process_' . ($key + 1))
                         ->firstOrFail()->update([
@@ -193,7 +193,7 @@ class SiteCmsController extends Controller
                     $svg = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' . $svg;
 
                     // Store in Storage Filesystem
-                    \Storage::disk('public')->put(config('designwala_paths.images.site_cms.how_designwala_works') . $fileNameToStore, $svg);
+                    \Storage::disk('public')->put(config('image-location.images.site_cms.how_designwala_works') . $fileNameToStore, $svg);
 
                     HowDesignwalaWork::whereSiteKey('step_' . ($key + 1))
                         ->firstOrFail()->update([
@@ -205,13 +205,13 @@ class SiteCmsController extends Controller
             // Designwala Video
             $video = HowDesignwalaWork::whereSiteKey('dw_video')->firstOrFail();
             $video->update([
-                'video' => updateVideo($request, 'how-designwala-work', $video->video,'designwala_video','video', config('designwala_paths.images.site_cms.how_designwala_works_video')),
+                'video' => updateVideo($request, 'how-designwala-work', $video->video,'designwala_video','video', config('image-location.images.site_cms.how_designwala_works_video')),
             ]);
 
             // Video Thumbnail
             $video_thumbnail = HowDesignwalaWork::whereSiteKey('dw_video')->firstOrFail();
             $video_thumbnail->update([
-                'video_thumbnail' => updateSVG($request, 'designwala-video', $video_thumbnail->video_thumbnail,'designwala_video_thumbnail','thumbnail', config('designwala_paths.images.site_cms.how_designwala_works_video')),
+                'video_thumbnail' => updateSVG($request, 'designwala-video', $video_thumbnail->video_thumbnail,'designwala_video_thumbnail','thumbnail', config('image-location.images.site_cms.how_designwala_works_video')),
             ]);
         });
         \Cache::clear();
@@ -259,7 +259,7 @@ class SiteCmsController extends Controller
                     $svg = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' . $svg;
 
                     // Store in Storage Filesystem
-                    \Storage::disk('public')->put(config('designwala_paths.images.site_cms.statistic_icon') . $fileNameToStore, $svg);
+                    \Storage::disk('public')->put(config('image-location.images.site_cms.statistic_icon') . $fileNameToStore, $svg);
 
                     StatisticsSection::findOrFail($key+1)->update([
                         'icon' => $fileNameToStore,
@@ -286,8 +286,8 @@ class SiteCmsController extends Controller
         \DB::transaction(function () use ($request){
             $footer_content = FooterContent::firstOrFail();
             $footer_content->update([
-                'logo' => updateSVG($request, 'logo', $footer_content->logo, 'logo', 'footer', config('designwala_paths.images.site_cms.brand_logo')),
-                'payment_method' => updateSVG($request, 'payment-method', $footer_content->payment_method, 'payment_method', 'footer', config('designwala_paths.images.site_cms.payment_method')),
+                'logo' => updateSVG($request, 'logo', $footer_content->logo, 'logo', 'footer', config('image-location.images.site_cms.brand_logo')),
+                'payment_method' => updateSVG($request, 'payment-method', $footer_content->payment_method, 'payment_method', 'footer', config('image-location.images.site_cms.payment_method')),
                 'desc' => $request->input('desc'),
             ]);
         });
@@ -314,7 +314,7 @@ class SiteCmsController extends Controller
         \DB::transaction(function () use ($request){
             $title = $request->input('social_title');
             SocialLinks::create([
-                'social_icon' => uploadSVG($request, $title, 'social_icon', 'footer-social-icon', config('designwala_paths.images.site_cms.social_icon')),
+                'social_icon' => uploadSVG($request, $title, 'social_icon', 'footer-social-icon', config('image-location.images.site_cms.social_icon')),
                 'social_title' => $title,
                 'social_url' => $request->input('social_url'),
             ]);
@@ -334,7 +334,7 @@ class SiteCmsController extends Controller
         \DB::transaction(function () use ($request, $social_links){
             $title = $request->input('social_title');
             $social_links->update([
-                'social_icon' => updateSVG($request, $title, $social_links->social_icon, 'social_icon', 'footer-social-icon', config('designwala_paths.images.site_cms.social_icon')),
+                'social_icon' => updateSVG($request, $title, $social_links->social_icon, 'social_icon', 'footer-social-icon', config('image-location.images.site_cms.social_icon')),
                 'social_title' => $title,
                 'social_url' => $request->input('social_url'),
             ]);
@@ -346,7 +346,7 @@ class SiteCmsController extends Controller
     {
         $social_links = SocialLinks::findOrFail($id);
         \DB::transaction(function () use ($social_links){
-            deleteFileBefore(config('designwala_paths.images.site_cms.social_icon'), $social_links->social_icon);
+            deleteFileBefore(config('image-location.images.site_cms.social_icon'), $social_links->social_icon);
             $social_links->delete();
         });
         return redirect()->back();

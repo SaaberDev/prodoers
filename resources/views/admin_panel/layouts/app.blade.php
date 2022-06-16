@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
-    <link rel="icon" href="{{ asset('_assets/_admin_panel/img/D.png')}}" type="image/png" sizes="16x16">
+    <link rel="icon" href="{{ $brand_identity['favicon']  }}" type="image/png" sizes="16x16">
 
     {{-- SEO Meta Tags --}}
     @include('admin_panel.includes.seo_meta')

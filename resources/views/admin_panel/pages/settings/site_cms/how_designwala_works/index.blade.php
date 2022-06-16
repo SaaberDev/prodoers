@@ -90,7 +90,7 @@
                                             <div class="row">
                                                 <div class="col-md-7 v-center text-center position-relative m-auto">
                                                     <div class="previewimg">
-                                                        <img id="previewImg" class="img-fluid" src="{{ asset($how_designwala_work->image ? config('designwala_paths.show.site_cms.how_designwala_works') . $how_designwala_work->image : config('designwala_paths.default.no_preview')) }}" alt="service process image {{ $loop->iteration }}">
+                                                        <img id="previewImg" class="img-fluid" src="{{ asset($how_designwala_work->image ? config('image-location.show.site_cms.how_designwala_works') . $how_designwala_work->image : config('image-location.default.no_preview')) }}" alt="service process image {{ $loop->iteration }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -138,10 +138,10 @@
                                                 <div class="previewimg">
                                                     @if($how_designwala_works_video->video)
                                                     <video width="300" controls>
-                                                        <source src="{{ asset($how_designwala_works_video->video ? config('designwala_paths.show.site_cms.how_designwala_works_video') . $how_designwala_works_video->video : config('designwala_paths.default.no_preview')) }}" type="video/mp4">
+                                                        <source src="{{ asset($how_designwala_works_video->video ? config('image-location.show.site_cms.how_designwala_works_video') . $how_designwala_works_video->video : config('image-location.default.no_preview')) }}" type="video/mp4">
                                                     </video>
                                                     @else
-                                                    <img id="previewImg" class="img-fluid" src="{{ asset(config('designwala_paths.default.no_preview')) }}" alt="service process image">
+                                                    <img id="previewImg" class="img-fluid" src="{{ asset(config('image-location.default.no_preview')) }}" alt="service process image">
                                                     @endif
                                                 </div>
                                             </div>
@@ -185,7 +185,7 @@
                                         <div class="row">
                                             <div class="col-md-7 v-center text-center position-relative m-auto">
                                                 <div class="previewimg">
-                                                    <img id="previewImg" class="img-fluid" src="{{ asset($how_designwala_works_video->video_thumbnail ? config('designwala_paths.show.site_cms.how_designwala_works_video') . $how_designwala_works_video->video_thumbnail : config('designwala_paths.default.no_preview')) }}" alt="Designwala Video Thumbnail">
+                                                    <img id="previewImg" class="img-fluid" src="{{ asset($how_designwala_works_video->video_thumbnail ? config('image-location.show.site_cms.how_designwala_works_video') . $how_designwala_works_video->video_thumbnail : config('image-location.default.no_preview')) }}" alt="Designwala Video Thumbnail">
                                                 </div>
                                             </div>
                                         </div>

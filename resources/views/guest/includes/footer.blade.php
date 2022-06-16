@@ -63,7 +63,7 @@
                             <ul class="list-inline">
                                 @forelse($social_links as $social_link)
                                 <li class="list-inline-item">
-                                    <a href="{{ $social_link->social_url }}" target="_blank"><img class="img-fluid black" src="{{ asset(config('designwala_paths.admin.images.show.footer.social_links') . $social_link->social_icon) }}" alt="{{ $social_link->social_title }}"></a>
+                                    <a href="{{ $social_link->social_url }}" target="_blank"><img class="img-fluid black" src="{{ asset(config('image-location.admin.images.show.footer.social_links') . $social_link->social_icon) }}" alt="{{ $social_link->social_title }}"></a>
                                 </li>
                                 @empty
                                     <p class="mt-3">No Social Icons</p>
@@ -79,7 +79,7 @@
                         <ul class="list-inline">
                             @forelse($social_links as $social_link)
                             <li class="list-inline-item">
-                                <a href="{{ $social_link->social_url }}" target="_blank"><img class="img-fluid black d-width" src="{{ asset(config('designwala_paths.admin.images.show.footer.social_links') . $social_link->social_icon) }}" alt="{{ $social_link->social_title }}"></a>
+                                <a href="{{ $social_link->social_url }}" target="_blank"><img class="img-fluid black d-width" src="{{ asset(config('image-location.admin.images.show.footer.social_links') . $social_link->social_icon) }}" alt="{{ $social_link->social_title }}"></a>
                             </li>
                             @empty
                                 No Social Icons

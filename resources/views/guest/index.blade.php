@@ -12,10 +12,9 @@
             <div class="row">
                 <div class="col-lg-7 col-md-12 v-center">
                     <div class="sectionServiceBannerContent textsm-center">
-                        <h1 class="font-medium d-none d-lg-block">Stop wasting time on hassling, let professionals do your job.</h1>
+                        <h1 class="font-medium d-none d-lg-block">{{ $siteCms['banner_section']->headline }}</h1>
                         <h1 class="font-medium d-lg-none d-md-block text-center">Stop wasting time on hassling,<br> let professionals do your job.</h1>
-                        <p class="d-none d-lg-block">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat </p>
-                        <p class="d-lg-none d-md-block text-center">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat </p>
+                        <p class="d-none d-lg-block">{{ $siteCms['banner_section']->tagline }}</p>
 
                         {{-- search component --}}
                         @livewire('guest.search.guest-search-component')
@@ -24,7 +23,7 @@
                 </div>
                 <div class="col-lg-5 col-md-12 v-center">
                     <div class="sectionServiceBannerImage">
-                        <img src="{{ asset('_assets/_guest/img/servicepage/main_image.svg') }}" alt="banner image" class="img-fluid">
+                        <img src="{{ !is_null($siteCms['banner_section']->banner) ? Storage::disk('public')->url(config('image-location.images.site_cms.banner') . $siteCms['banner_section']->banner) : config('image-location.default.no_preview') }}" alt="banner image" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -38,71 +37,18 @@
             <h2 class="d-block d-md-none text-center">Why designwala?</h2>
             <div class="row bg-white whyDesignwalaPosition">
                 <!----------- box one ------------->
-                <div class="col-lg-2 col-md-4 col-6 p-0 ">
-                    <div class="whydesignwalaSingleService p_3">
-                        <div class="text-center ptpb_32">
-                            <img src="{{ asset('_assets/_guest/img/servicepage/whydesignwalasection/reliable_and_quick.svg') }}" alt="service image" class="img-fluid ">
-                        </div>
-                        <div class="text-center py_3">
-                            <p class="mb-0">Reliable and Quick Communication</p>
-                        </div>
-                    </div>
-                </div>
-                <!--                box two -->
-                <div class="col-lg-2 col-md-4 col-6 p-0 ">
-                    <div class="whydesignwalaSingleService p_3">
-                        <div class="text-center ptpb_32">
-                            <img src="{{ asset('_assets/_guest/img/servicepage/whydesignwalasection/human.svg') }}" alt="service image" class="img-fluid ">
-                        </div>
-                        <div class="text-center py_3">
-                            <p class="mb-0">Reliable and Quick Communication</p>
+                @foreach($siteCms['service_processes'] as $service_process)
+                    <div class="col-lg-2 col-md-4 col-6 p-0 ">
+                        <div class="whydesignwalaSingleService p_3">
+                            <div class="text-center ptpb_32">
+                                <img src="{{ asset(!is_null($service_process->image) ? Storage::disk('public')->url(config('image-location.images.site_cms.service_process') . $service_process->image) : config('image-location.default.no_preview')) }}" alt="service image" class="img-fluid ">
+                            </div>
+                            <div class="text-center py_3">
+                                <p class="mb-0">{{ $service_process->title }}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!--                box three -->
-                <div class="col-lg-2 col-md-4 col-6 p-0 ">
-                    <div class="whydesignwalaSingleService p_3">
-                        <div class="text-center ptpb_32">
-                            <img src="{{ asset('_assets/_guest/img/servicepage/whydesignwalasection/satisfactory_services.svg') }}" alt="service image" class="img-fluid ">
-                        </div>
-                        <div class="text-center py_3">
-                            <p class="mb-0">Satisfactory and Quick Communication</p>
-                        </div>
-                    </div>
-                </div>
-                <!--                box four -->
-                <div class="col-lg-2 col-md-4 col-6 p-0 ">
-                    <div class="whydesignwalaSingleService p_3">
-                        <div class="text-center ptpb_32">
-                            <img src="{{ asset('_assets/_guest/img/servicepage/whydesignwalasection/modern_designs.svg') }}" alt="service image" class="img-fluid ">
-                        </div>
-                        <div class="text-center py_3">
-                            <p class="mb-0">Reliable and Quick Communication</p>
-                        </div>
-                    </div>
-                </div>
-                <!--                box five -->
-                <div class="col-lg-2 col-md-4 col-6 p-0 ">
-                    <div class="whydesignwalaSingleService p_3">
-                        <div class="text-center ptpb_32">
-                            <img src="{{ asset('_assets/_guest/img/servicepage/whydesignwalasection/on_time_delivery.svg') }}" alt="service image" class="img-fluid ">
-                        </div>
-                        <div class="text-center py_3">
-                            <p class="mb-0">Reliable and Quick Communication</p>
-                        </div>
-                    </div>
-                </div>
-                <!--                box six -->
-                <div class="col-lg-2 col-md-4 col-6 p-0 ">
-                    <div class="whydesignwalaSingleService p_3">
-                        <div class="text-center ptpb_32">
-                            <img src="{{ asset('_assets/_guest/img/servicepage/whydesignwalasection/unlimited_revisions.svg') }}" alt="service image" class="img-fluid ">
-                        </div>
-                        <div class="text-center py_3">
-                            <p class="mb-0">Reliable and Quick Communication</p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

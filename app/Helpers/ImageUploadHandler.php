@@ -216,7 +216,7 @@
                 $svg = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' . $svg;
 
                 // Store in Storage Filesystem
-                Storage::disk('public')->put(config('designwala_paths.store.site_cms.how_designwala_works') . $fileNameToStore, $svg);
+                Storage::disk('public')->put(config('image-location.store.site_cms.how_designwala_works') . $fileNameToStore, $svg);
             }
             return $fileNameToStore;
         }

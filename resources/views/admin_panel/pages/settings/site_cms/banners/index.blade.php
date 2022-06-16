@@ -103,7 +103,7 @@
                                 <ul class="row list-unstyled previewimg">
                                     <li class="col-md-7 text-center position-relative m-auto">
                                         <div class="previewimg">
-                                            <img id="previewImg" class="img-fluid" src="{{ asset($banner->banner ? config('designwala_paths.show.site_cms.banner') . $banner->banner : config('designwala_paths.default.no_preview')) }}" alt="{{ ucwords(str_replace('_', ' ', $banner->key)) }}">
+                                            <img id="previewImg" class="img-fluid" src="{{ asset(!is_null($banner->banner) ? Storage::disk('public')->url(config('image-location.images.site_cms.banner') . $banner->banner) : config('image-location.default.no_preview')) }}" alt="{{ ucwords(str_replace('_', ' ', $banner->key)) }}">
                                         </div>
                                     </li>
                                 </ul>

@@ -99,7 +99,7 @@
                                     <ul class="row list-unstyled previewimg">
                                         <li class="col-md-7 text-center position-relative m-auto">
                                             <div class="previewimg">
-                                                <img id="previewImg" class="img-fluid" src="{{ asset($brand_identities->logo ? $brand_logo . $brand_identities->logo : config('designwala_paths.default.no_preview')) }}" alt="Brand Logo">
+                                                <img id="previewImg" class="img-fluid" src="{{ asset($brand_identities->logo ? $brand_logo . $brand_identities->logo : config('image-location.default.no_preview')) }}" alt="Brand Logo">
                                             </div>
                                         </li>
                                     </ul>
@@ -141,7 +141,7 @@
                                     <ul class="row list-unstyled previewimg">
                                         <li class="col-md-7 text-center position-relative m-auto">
                                             <div class="previewimg">
-                                                <img id="previewImg" class="img-fluid" src="{{ asset($brand_identities->favicon ? $brand_icon . $brand_identities->favicon : config('designwala_paths.default.no_preview')) }}" alt="Browser Favicon">
+                                                <img id="previewImg" class="img-fluid" src="{{ asset($brand_identities->favicon ? $brand_icon . $brand_identities->favicon : config('image-location.default.no_preview')) }}" alt="Browser Favicon">
                                             </div>
                                         </li>
                                     </ul>

@@ -39,31 +39,31 @@
         public function handle()
         {
             if (!(
-                Storage::exists(config('designwala_paths.store.services.service_image')) &&
-                Storage::exists(config('designwala_paths.store.services.thumbnail')) &&
-                Storage::exists(config('designwala_paths.store.service_categories.banner')) &&
-                Storage::exists(config('designwala_paths.store.service_categories.thumbnail')) &&
-                Storage::exists(config('designwala_paths.store.site_cms.banner')) &&
-                Storage::exists(config('designwala_paths.store.site_cms.brand_icon')) &&
-                Storage::exists(config('designwala_paths.store.site_cms.brand_logo')) &&
-                Storage::exists(config('designwala_paths.store.site_cms.service_process')) &&
-                Storage::exists(config('designwala_paths.store.site_cms.how_designwala_works')) &&
-                Storage::exists(config('designwala_paths.store.site_cms.payment_method')) &&
-                Storage::exists(config('designwala_paths.store.site_cms.social_icon')) &&
-                Storage::exists(config('designwala_paths.store.site_cms.statistic_icon'))
+                Storage::disk('public')->exists(config('image-location.images.services.service_image')) &&
+                Storage::disk('public')->exists(config('image-location.images.services.thumbnail')) &&
+                Storage::disk('public')->exists(config('image-location.images.service_categories.banner')) &&
+                Storage::disk('public')->exists(config('image-location.images.service_categories.thumbnail')) &&
+                Storage::disk('public')->exists(config('image-location.images.site_cms.banner')) &&
+                Storage::disk('public')->exists(config('image-location.images.site_cms.brand_icon')) &&
+                Storage::disk('public')->exists(config('image-location.images.site_cms.brand_logo')) &&
+                Storage::disk('public')->exists(config('image-location.images.site_cms.service_process')) &&
+                Storage::disk('public')->exists(config('image-location.images.site_cms.how_designwala_works')) &&
+                Storage::disk('public')->exists(config('image-location.images.site_cms.payment_method')) &&
+                Storage::disk('public')->exists(config('image-location.images.site_cms.social_icon')) &&
+                Storage::disk('public')->exists(config('image-location.images.site_cms.statistic_icon'))
             )) {
-                Storage::makeDirectory(config('designwala_paths.store.services.service_image'));
-                Storage::makeDirectory(config('designwala_paths.store.services.thumbnail'));
-                Storage::makeDirectory(config('designwala_paths.store.service_categories.banner'));
-                Storage::makeDirectory(config('designwala_paths.store.service_categories.thumbnail'));
-                Storage::makeDirectory(config('designwala_paths.store.site_cms.banner'));
-                Storage::makeDirectory(config('designwala_paths.store.site_cms.brand_icon'));
-                Storage::makeDirectory(config('designwala_paths.store.site_cms.brand_logo'));
-                Storage::makeDirectory(config('designwala_paths.store.site_cms.service_process'));
-                Storage::makeDirectory(config('designwala_paths.store.site_cms.how_designwala_works'));
-                Storage::makeDirectory(config('designwala_paths.store.site_cms.payment_method'));
-                Storage::makeDirectory(config('designwala_paths.store.site_cms.social_icon'));
-                Storage::makeDirectory(config('designwala_paths.store.site_cms.statistic_icon'));
+                Storage::disk('public')->makeDirectory(config('image-location.images.services.service_image'));
+                Storage::disk('public')->makeDirectory(config('image-location.images.services.thumbnail'));
+                Storage::disk('public')->makeDirectory(config('image-location.images.service_categories.banner'));
+                Storage::disk('public')->makeDirectory(config('image-location.images.service_categories.thumbnail'));
+                Storage::disk('public')->makeDirectory(config('image-location.images.site_cms.banner'));
+                Storage::disk('public')->makeDirectory(config('image-location.images.site_cms.brand_icon'));
+                Storage::disk('public')->makeDirectory(config('image-location.images.site_cms.brand_logo'));
+                Storage::disk('public')->makeDirectory(config('image-location.images.site_cms.service_process'));
+                Storage::disk('public')->makeDirectory(config('image-location.images.site_cms.how_designwala_works'));
+                Storage::disk('public')->makeDirectory(config('image-location.images.site_cms.payment_method'));
+                Storage::disk('public')->makeDirectory(config('image-location.images.site_cms.social_icon'));
+                Storage::disk('public')->makeDirectory(config('image-location.images.site_cms.statistic_icon'));
                 $this->info('Directories Created Successfully');
             } else {
                 $this->error('Directories Already Exists');

@@ -167,7 +167,7 @@
                                 </td>
                                 <td>
                                     <div class="">
-                                        <a href="{{ route('promotions.advertisement_banner.edit') }}" class="btn p-0 m-0" data-toggle="tooltip" title=""
+                                        <a href="{{ route('super_admin.promotion.advertisement_banner.edit') }}" class="btn p-0 m-0" data-toggle="tooltip" title=""
                                            data-original-title="view or edit">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="14.322" height="14.322"
                                                  viewBox="0 0 14.322 14.322">
@@ -209,7 +209,7 @@
                                 </td>
                                 <td>
                                     <div class="">
-                                        <a href="{{ route('promotions.advertisement_banner.edit') }}" class="btn p-0 m-0" data-toggle="tooltip" title=""
+                                        <a href="{{ route('super_admin.promotion.advertisement_banner.edit') }}" class="btn p-0 m-0" data-toggle="tooltip" title=""
                                            data-original-title="view or edit">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="14.322" height="14.322"
                                                  viewBox="0 0 14.322 14.322">
@@ -251,7 +251,7 @@
                                 </td>
                                 <td>
                                     <div class="">
-                                        <a href="{{ route('promotions.advertisement_banner.edit') }}" class="btn p-0 m-0" data-toggle="tooltip" title=""
+                                        <a href="{{ route('super_admin.promotion.advertisement_banner.edit') }}" class="btn p-0 m-0" data-toggle="tooltip" title=""
                                            data-original-title="view or edit">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="14.322" height="14.322"
                                                  viewBox="0 0 14.322 14.322">

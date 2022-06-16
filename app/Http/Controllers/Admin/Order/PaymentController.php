@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Order;
 
 use App\Http\Controllers\Controller;
+use App\Models\Payment;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -18,7 +19,8 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        return view('admin_panel.pages.orders.payment.index');
+        $payments = Payment::with('orders', 'orders.users')->get();
+        return view('admin_panel.pages.orders.payment.index', compact('payments'));
     }
 
     /**

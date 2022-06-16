@@ -104,7 +104,7 @@
                                     <ul class="row list-unstyled previewimg">
                                         <li class="col-md-7 text-center position-relative m-auto">
                                             <div class="previewimg">
-                                                <img id="previewImg" class="img-fluid" src="{{ asset($statistic->icon ? config('designwala_paths.show.site_cms.statistic_icon') . $statistic->icon : config('designwala_paths.default.no_preview')) }}" alt="{{ $statistic->title }}">
+                                                <img id="previewImg" class="img-fluid" src="{{ asset($statistic->icon ? config('image-location.show.site_cms.statistic_icon') . $statistic->icon : config('image-location.default.no_preview')) }}" alt="{{ $statistic->title }}">
                                             </div>
                                         </li>
                                     </ul>

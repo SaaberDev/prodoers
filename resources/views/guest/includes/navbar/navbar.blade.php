@@ -3,7 +3,7 @@
         <div class="container">
             <a class="navbar-brand " href="{{ route('guest.home.index') }}">
                 <div class="logo">
-                    <img class="img-fluid img-2" src="{{ asset('_assets/_guest/img/final-logo.svg') }}" alt="ProDoers Logo">
+                    <img class="img-fluid img-2" src="{{ $brand_identity['logo'] }}" alt="ProDoers Logo">
                 </div>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav99" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>

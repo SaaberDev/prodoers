@@ -86,7 +86,7 @@
                                 <td>username@gmail.com</td>
                                 <td> 09.09.20</td>
                                 <td>
-                                    <a href="{{ route('promotions.email_marketing.draft.edit') }}" class="btn tabletabGREEN border-0 p-0 m-0 text-white px-3"> Edit Draft
+                                    <a href="{{ route('super_admin.promotion.email_marketing.draft.edit') }}" class="btn tabletabGREEN border-0 p-0 m-0 text-white px-3"> Edit Draft
                                     </a>
                                 </td>
                             </tr>
@@ -96,7 +96,7 @@
                                 <td>username@gmail.com</td>
                                 <td> 09.09.20</td>
                                 <td>
-                                    <a href="{{ route('promotions.email_marketing.draft.edit') }}" class="btn tabletabGREEN border-0 p-0 m-0 text-white px-3"> Edit Draft
+                                    <a href="{{ route('super_admin.promotion.email_marketing.draft.edit') }}" class="btn tabletabGREEN border-0 p-0 m-0 text-white px-3"> Edit Draft
                                     </a>
                                 </td>
                             </tr>
@@ -106,7 +106,7 @@
                                 <td>username@gmail.com</td>
                                 <td> 09.09.20</td>
                                 <td>
-                                    <a href="{{ route('promotions.email_marketing.draft.edit') }}" class="btn tabletabGREEN border-0 p-0 m-0 text-white px-3"> Edit Draft
+                                    <a href="{{ route('super_admin.promotion.email_marketing.draft.edit') }}" class="btn tabletabGREEN border-0 p-0 m-0 text-white px-3"> Edit Draft
                                     </a>
                                 </td>
                             </tr>

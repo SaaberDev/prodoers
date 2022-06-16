@@ -15,7 +15,7 @@
                 </div>
                 <div class="col-md-7 col-sm-7  v-center">
                     <div class="text-right">
-                        <a href="{{ route('promotions.email_marketing.all_mail.create') }}" class="btn shadow bgOne text-white rounded mr-2"> <span>
+                        <a href="{{ route('super_admin.promotion.email_marketing.all_mail.create') }}" class="btn shadow bgOne text-white rounded mr-2"> <span>
                                 </span> Compose Mail </a>
 
                         <a href="#" class="btn shadow bg-white rounded" data-toggle="modal"
@@ -111,7 +111,7 @@
                                     </div>
                                 </td>
                                 <td> 09.09.20</td>
-                                <td><a href="{{ route('promotions.email_marketing.all_mail.create') }}"
+                                <td><a href="{{ route('super_admin.promotion.email_marketing.all_mail.create') }}"
                                        class="btn   tabletabGREEN border-0 p-0 m-0 text-white px-3"> Compose</a></td>
                             </tr>
                             <tr>
@@ -123,7 +123,7 @@
                                     </div>
                                 </td>
                                 <td> 09.09.20</td>
-                                <td><a href="{{ route('promotions.email_marketing.all_mail.create') }}"
+                                <td><a href="{{ route('super_admin.promotion.email_marketing.all_mail.create') }}"
                                        class="btn   tabletabGREEN border-0 p-0 m-0 text-white px-3"> Compose</a></td>
                             </tr>
                             <tr>
@@ -135,7 +135,7 @@
                                     </div>
                                 </td>
                                 <td> 09.09.20</td>
-                                <td><a href="{{ route('promotions.email_marketing.all_mail.create') }}"
+                                <td><a href="{{ route('super_admin.promotion.email_marketing.all_mail.create') }}"
                                        class="btn   tabletabGREEN border-0 p-0 m-0 text-white px-3"> Compose</a></td>
                             </tr>
                             <tr>
@@ -147,7 +147,7 @@
                                     </div>
                                 </td>
                                 <td> 09.09.20</td>
-                                <td><a href="{{ route('promotions.email_marketing.all_mail.create') }}"
+                                <td><a href="{{ route('super_admin.promotion.email_marketing.all_mail.create') }}"
                                        class="btn   tabletabGREEN border-0 p-0 m-0 text-white px-3"> Compose</a></td>
                             </tr>
                             <tr>
@@ -159,7 +159,7 @@
                                     </div>
                                 </td>
                                 <td> 09.09.20</td>
-                                <td><a href="{{ route('promotions.email_marketing.all_mail.create') }}"
+                                <td><a href="{{ route('super_admin.promotion.email_marketing.all_mail.create') }}"
                                        class="btn   tabletabGREEN border-0 p-0 m-0 text-white px-3"> Compose</a></td>
                             </tr>
                             </tbody>
