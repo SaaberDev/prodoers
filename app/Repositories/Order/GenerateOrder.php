@@ -9,22 +9,25 @@
     use App\Services\Generator\CodeGenerator;
     use App\Services\MediaLibrary\MediaHandler;
     use Illuminate\Database\Eloquent\Model;
+    use Illuminate\Http\Request;
 
     abstract class GenerateOrder
     {
         protected $codeGenerator;
+        protected MediaHandler $mediaHandler;
 
-        public function __construct()
+        public function __construct(MediaHandler $mediaHandler)
         {
             $this->codeGenerator = new CodeGenerator();
+            $this->mediaHandler = $mediaHandler;
+
         }
 
         /**
          * @param $data
-         * @param MediaHandler $mediaHandler
          * @return Order|Model
          */
-        public function storeOrder($data, MediaHandler $mediaHandler)
+        public function storeOrder($data)
         {
             $orderData['user_id'] = $data['user_id'];
             $orderData['service_id'] = $data['service_id'];
@@ -38,7 +41,7 @@
             $order = Order::create($orderData);
             // Order Requirement Files
             if (!is_null($data['order_requirement_files'])) {
-                $mediaHandler->uploadMultipleMediaAjax($order, $data['order_requirement_files'], 'order');
+                $this->mediaHandler->uploadMultipleMediaAjax($order, $data['order_requirement_files'], 'requirements');
             }
 
             return $order;

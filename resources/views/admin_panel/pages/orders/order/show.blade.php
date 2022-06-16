@@ -51,8 +51,10 @@
                                     <div class="card-body">
                                         <h4 class="card-title m-0">{{ $order_details['service_info']->service_name }}</h4>
                                         <p class="card-text m-0">Order ID : #{{ $order_details['order_info']->order_number }}</p>
-                                        <p class="card-text m-0">Amount&#40; USD &#41; : ${{ $order_details['payment_info']->paid_amount }} <span> &#40; -${{ $order_details['payment_info']->discount }} &#41;</span></p>
-                                        <p class="card-text m-0">Promo Code : {{ $order_details['order_info']->applied_coupon }} </p>
+                                        <p class="card-text m-0">Amount&#40; USD &#41; : ${{ $order_details['payment_info']->paid_amount }} <span>  {{ $order_details['payment_info']->discount ? '&#40; -$' . $order_details['payment_info']->discount . '&#41;' : false }}</span></p>
+                                        @if(!is_null($order_details['payment_info']->discount))
+                                            <p class="card-text m-0">Promo Code : {{ $order_details['order_info']->applied_coupon }} </p>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

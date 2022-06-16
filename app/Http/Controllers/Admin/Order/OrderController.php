@@ -123,7 +123,7 @@
                     'transaction_id' => $order->payments->transaction_id,
                     'payment_method' => $order->payments->payment_method,
                     'paid_amount' => $order->payments->paid_amount,
-                    'discount' => $order->payments->discount,
+                    'discount' => $order->discount,
                 ],
                 'assigned_users' => $assignedOrderData,
                 'previously_assigned' => $assign_logs,
