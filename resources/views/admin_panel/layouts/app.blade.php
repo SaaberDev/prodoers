@@ -13,7 +13,7 @@
     {{-- Styles --}}
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <link href="{{ mix('_assets/_admin_panel/css/dashboard.css') }}" rel="stylesheet">
-{{--    <link href="{{ mix('_assets/_custom/css/custom_styles.css') }}" rel="stylesheet">--}}
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     @livewireStyles
     @stack('styles')
 </head>
@@ -41,7 +41,7 @@
 @livewireScripts
 <script src="{{ mix('js/app.js') }}"></script>
 <script src="{{ mix('_assets/_admin_panel/js/dashboard.js') }}"></script>
-{{--<script src="{{ mix('_assets/_custom/js/custom_scripts.js') }}"></script>--}}
+<script src="https://cdn.tiny.cloud/1/xt1pwpch5u0bje69vl4g932w8am0muj618ekyfc0obk05tis/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 @stack('scripts')
 @include('alerts.admin_panel._alert')
 </body>

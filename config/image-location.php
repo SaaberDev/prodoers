@@ -36,7 +36,7 @@
                 'how_designwala_works_video' => 'images/site-cms/how-designwala-works/video/',
                 'payment_method' => 'images/site-cms/payment-method/',
                 'social_icon' => 'images/site-cms/social-icon/',
-                'statistic_icon' => 'images/site-cms/social-icon/',
+                'statistic_icon' => 'images/site-cms/statistic-icon/',
             ],
         ],
     ];

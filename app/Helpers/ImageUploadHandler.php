@@ -132,7 +132,12 @@
             $fileNameToStore = str_replace(' ', '-', $fileFormat);
 
             $svg = file_get_contents($file);
-            $svg = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' . $svg;
+            $xmlContains = str_contains($svg, '<?xml version="1.0" encoding="utf-8"?>');
+            if ($xmlContains) {
+                $svg = str_replace('<?xml version="1.0" encoding="utf-8"?>', '<?xml version="1.0" encoding="utf-8" standalone="no"?>', $svg);
+            } else {
+                $svg = '<?xml version="1.0" encoding="utf-8" standalone="no"?>' . $svg;
+            }
 
             // Store in Storage Filesystem
             Storage::disk('public')->put($location . $fileNameToStore, $svg);
@@ -165,7 +170,12 @@
             $fileNameToStore = str_replace(' ', '-', $fileFormat);
 
             $svg = file_get_contents($file);
-            $svg = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>' . $svg;
+            $xmlContains = str_contains($svg, '<?xml version="1.0" encoding="utf-8"?>');
+            if ($xmlContains) {
+                $svg = str_replace('<?xml version="1.0" encoding="utf-8"?>', '<?xml version="1.0" encoding="utf-8" standalone="no"?>', $svg);
+            } else {
+                $svg = '<?xml version="1.0" encoding="utf-8" standalone="no"?>' . $svg;
+            }
 
             // Store in Storage Filesystem
             Storage::disk('public')->put($location . $fileNameToStore, $svg);

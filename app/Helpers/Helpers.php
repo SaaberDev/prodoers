@@ -1,6 +1,5 @@
 <?php
 
-    use App\Models\SiteCMS;
     use Carbon\Carbon;
     use Illuminate\Config\Repository;
     use Illuminate\Contracts\Foundation\Application;
@@ -40,15 +39,6 @@
     function humanFormat($argument): string
     {
         return Carbon::parse($argument)->diffForHumans();
-    }
-
-    function getKey($key)
-    {
-        $site_cms = SiteCMS::where('key', '=', $key)->firstOrFail('value');
-        if (!$site_cms){
-            return null;
-        }
-        return $site_cms->value;
     }
 
     /**

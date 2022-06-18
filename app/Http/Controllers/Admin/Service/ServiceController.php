@@ -54,7 +54,7 @@
          * @return RedirectResponse
          * @throws Throwable
          */
-        public function store(Request $request, MediaHandler $mediaHandler)
+        public function store(ServiceRequest $request, MediaHandler $mediaHandler)
         {
             DB::beginTransaction();
             try {

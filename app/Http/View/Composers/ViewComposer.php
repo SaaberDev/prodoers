@@ -4,17 +4,18 @@
     namespace App\Http\View\Composers;
 
     use App\Models\BrandIdentity;
+    use App\Models\CompanyPolicy;
+    use App\Models\FooterContent;
     use App\Models\ServiceCategory;
-    use App\Models\ServiceProcess;
-    use App\Models\SiteCms;
     use App\Models\SocialLinks;
     use Illuminate\View\View;
 
     class ViewComposer
     {
-        public $service_categories;
+        public array|\Illuminate\Database\Eloquent\Collection $service_categories;
         public $social_links;
-        public $brand_identity;
+        public array $brand_identity;
+        public array $footer_content;
 
         public function __construct()
         {
@@ -32,8 +33,15 @@
 
             // brand identity
             $this->brand_identity = [
-                'logo' => \Storage::disk('public')->url(config('image-location.images.site_cms.brand_logo') . BrandIdentity::query()->findOrFail(1)->logo),
-                'favicon' => \Storage::disk('public')->url(config('image-location.images.site_cms.brand_icon') . BrandIdentity::query()->findOrFail(1)->favicon),
+                'logo' => \Storage::disk('public')->url(config('image-location.images.site_cms.brand_logo') . BrandIdentity::query()->select('logo')->findOrFail(1)->logo),
+                'favicon' => \Storage::disk('public')->url(config('image-location.images.site_cms.brand_icon') . BrandIdentity::query()->select('favicon')->findOrFail(1)->favicon),
+            ];
+
+            // footer
+            $this->footer_content = [
+                'footer_logo' => \Storage::disk('public')->url(config('image-location.images.site_cms.brand_logo') . FooterContent::query()->select('logo')->findOrFail(1)->logo),
+                'desc' => FooterContent::query()->select('desc')->findOrFail(1)->desc,
+                'payment_method' => \Storage::disk('public')->url(config('image-location.images.site_cms.payment_method') . FooterContent::query()->select('payment_method')->findOrFail(1)->payment_method),
             ];
         }
 
@@ -42,5 +50,6 @@
             $view->with('service_categories', $this->service_categories);
             $view->with('social_links', $this->social_links);
             $view->with('brand_identity', $this->brand_identity);
+            $view->with('footer_content', $this->footer_content);
         }
     }

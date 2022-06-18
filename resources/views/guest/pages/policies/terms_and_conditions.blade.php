@@ -9,7 +9,7 @@
     {{-- Body Content --}}
     <div class="container">
         <h3 style="margin: 30px 0 30px 0;">@yield('title')</h3>
-        <p style="text-align: justify">{{ getKey('policy_terms_and_conditions') }}</p>
+        {!! $company_policy['terms_and_conditions'] !!}
     </div>
 @endsection
 

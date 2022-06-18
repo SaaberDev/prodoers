@@ -68,7 +68,7 @@
                                             <ul class="row list-unstyled previewimg">
                                                 <li class="col-md-4 py-4 text-center position-relative m-auto">
                                                     <div class="previewimg">
-                                                        <img id="previewImg" class="img-fluid" src="{{ asset($footer_content->logo ? config('image-location.show.site_cms.brand_logo') . $footer_content->logo : config('image-location.default.no_preview')) }}" alt="Designwala Logo">
+                                                        <img id="previewImg" class="img-fluid" src="{{ asset($footer_content->logo ? Storage::disk('public')->url(config('image-location.images.site_cms.brand_logo') . $footer_content->logo) : config('image-location.default.no_preview')) }}" alt="Designwala Logo">
                                                     </div>
                                                 </li>
                                             </ul>
@@ -110,7 +110,7 @@
                                             <ul class="row list-unstyled previewimg">
                                                 <li class="col-md-4 py-4 text-center position-relative m-auto">
                                                     <div class="previewimg">
-                                                        <img id="previewImg" class="img-fluid" src="{{ asset($footer_content->payment_method ? config('image-location.show.site_cms.payment_method') . $footer_content->payment_method : config('image-location.default.no_preview')) }}" alt="Payment Method">
+                                                        <img id="previewImg" class="img-fluid" src="{{ asset($footer_content->payment_method ? Storage::disk('public')->url(config('image-location.images.site_cms.payment_method') . $footer_content->payment_method) : config('image-location.default.no_preview')) }}" alt="Payment Method">
                                                     </div>
                                                 </li>
                                             </ul>

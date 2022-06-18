@@ -28,6 +28,7 @@ class HowDesignwalaWorksRequest extends FormRequest
             'designwala_desc_.*' => 'required',
             'designwala_image_.*' => 'nullable|image|mimes:svg',
             'designwala_video' => 'nullable|mimes:mp4',
+            'designwala_video_thumbnail' => 'nullable|mimes:svg'
         ];
     }
 
@@ -39,6 +40,7 @@ class HowDesignwalaWorksRequest extends FormRequest
             'designwala_image_.*.image' => 'File must be an image',
             'designwala_image_.*.mimes' => 'Only SVG format is supported',
             'designwala_video.mimes' => 'Only MP4 format is supported',
+            'designwala_video_thumbnail.mimes' => 'Only SVG format is supported',
         ];
     }
 }

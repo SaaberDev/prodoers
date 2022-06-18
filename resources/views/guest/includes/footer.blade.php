@@ -18,13 +18,10 @@
             <div class="row g-xl-0 justify-content-center">
                 <div class="col-lg-4 col-md-6 col-xl-4 col-sm-6">
                     <div class="second_footer_one">
-                        <img class="img-fluid img-1" src="{{ asset('_assets/_guest/img/footer/footer-logo.svg') }}" alt="ProDoers Logo">
-                        <p>Lorem ipsum dolor sit amet,
-                            consetetur sadipscing elitr, sed
-                            diam nonumy eirmod tempor
-                            invidunt ut labore et dolore magna </p>
+                        <img class="img-fluid img-1" src="{{ asset($footer_content['footer_logo']) }}" alt="ProDoers Logo">
+                        <p>{{ $footer_content['desc'] }}</p>
                         <div class="img-pay">
-                            <img class="img-fluid black" src="{{ asset('_assets/_guest/img/footer/payment_methods.svg') }}" alt="Payment Method (bKash, Paypal, Nogod, Visa)">
+                            <img class="img-fluid black" src="{{ asset($footer_content['payment_method']) }}" alt="Payment Method (bKash, Paypal, Nogod, Visa)">
                         </div>
                     </div>
                 </div>
@@ -63,7 +60,7 @@
                             <ul class="list-inline">
                                 @forelse($social_links as $social_link)
                                 <li class="list-inline-item">
-                                    <a href="{{ $social_link->social_url }}" target="_blank"><img class="img-fluid black" src="{{ asset(config('image-location.admin.images.show.footer.social_links') . $social_link->social_icon) }}" alt="{{ $social_link->social_title }}"></a>
+                                    <a href="{{ $social_link->social_url }}" target="_blank"><img class="img-fluid black" src="{{ asset(Storage::disk('public')->url(config('image-location.images.site_cms.social_icon') . $social_link->social_icon)) }}" alt="{{ $social_link->social_title }}"></a>
                                 </li>
                                 @empty
                                     <p class="mt-3">No Social Icons</p>

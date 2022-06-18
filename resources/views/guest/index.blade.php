@@ -34,14 +34,14 @@
     {{-- why prodoers section start --}}
     <div class="section whydesignWala" id="whydesignWala">
         <div class="container">
-            <h2 class="d-block d-md-none text-center">Why designwala?</h2>
+            <h2 class="d-block d-md-none text-center">Why ProDoers ?</h2>
             <div class="row bg-white whyDesignwalaPosition">
                 <!----------- box one ------------->
                 @foreach($siteCms['service_processes'] as $service_process)
                     <div class="col-lg-2 col-md-4 col-6 p-0 ">
                         <div class="whydesignwalaSingleService p_3">
                             <div class="text-center ptpb_32">
-                                <img src="{{ asset(!is_null($service_process->image) ? Storage::disk('public')->url(config('image-location.images.site_cms.service_process') . $service_process->image) : config('image-location.default.no_preview')) }}" alt="service image" class="img-fluid ">
+                                <img src="{{ asset(!is_null($service_process->image) ? Storage::disk('public')->url(config('image-location.images.site_cms.service_process') . $service_process->image) : config('image-location.default.no_preview')) }}" alt="{{ $service_process->title }}" class="img-fluid ">
                             </div>
                             <div class="text-center py_3">
                                 <p class="mb-0">{{ $service_process->title }}</p>
@@ -60,94 +60,22 @@
                     <div id="whydesignWalaCarousel" class="carousel slide" data-bs-ride="carousel">
 
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
+                            @foreach($siteCms['service_processes'] as $service_process)
+                            <div class="carousel-item {{ $loop->iteration === 1 ? 'active' : '' }}">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="whydesignwalaSingleService p_3">
                                             <div class="text-center ptpb_32">
-                                                <img src="{{ asset('_assets/_guest/img/servicepage/whydesignwalasection/reliable_and_quick.svg') }}" alt="service image" class="img-fluid ">
+                                                <img src="{{ asset(!is_null($service_process->image) ? Storage::disk('public')->url(config('image-location.images.site_cms.service_process') . $service_process->image) : config('image-location.default.no_preview')) }}" alt="{{ $service_process->title }}" class="img-fluid ">
                                             </div>
                                             <div class="text-center py_3">
-                                                <p class="mb-0">Reliable and Quick Communication</p>
+                                                <p class="mb-0">{{ $service_process->title }}</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="carousel-item">
-                                <div class="row">
-
-
-                                    <div class="col-12">
-                                        <div class="whydesignwalaSingleService p_3">
-                                            <div class="text-center ptpb_32">
-                                                <img src="{{ asset('_assets/_guest/img/servicepage/whydesignwalasection/human.svg') }}" alt="service image" class="img-fluid ">
-                                            </div>
-                                            <div class="text-center py_3">
-                                                <p class="mb-0">Reliable and Quick Communication</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="row ">
-                                    <div class="col-12">
-                                        <div class="whydesignwalaSingleService p_3">
-                                            <div class="text-center ptpb_32">
-                                                <img src="{{ asset('_assets/_guest/img/servicepage/whydesignwalasection/satisfactory_services.svg') }}" alt="service image" class="img-fluid ">
-                                            </div>
-                                            <div class="text-center py_3">
-                                                <p class="mb-0">Satisfactory and Quick Communication</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="row ">
-                                    <div class="col-12">
-                                        <div class="whydesignwalaSingleService p_3">
-                                            <div class="text-center ptpb_32">
-                                                <img src="{{ asset('_assets/_guest/img/servicepage/whydesignwalasection/modern_designs.svg') }}" alt="service image" class="img-fluid ">
-                                            </div>
-                                            <div class="text-center py_3">
-                                                <p class="mb-0">Reliable and Quick Communication</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="whydesignwalaSingleService p_3">
-                                            <div class="text-center ptpb_32">
-                                                <img src="{{ asset('_assets/_guest/img/servicepage/whydesignwalasection/on_time_delivery.svg') }}" alt="service image" class="img-fluid ">
-                                            </div>
-                                            <div class="text-center py_3">
-                                                <p class="mb-0">Reliable and Quick Communication</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="whydesignwalaSingleService p_3">
-                                            <div class="text-center ptpb_32">
-                                                <img src="{{ asset('_assets/_guest/img/servicepage/whydesignwalasection/unlimited_revisions.svg') }}" alt="service image" class="img-fluid ">
-                                            </div>
-                                            <div class="text-center py_3">
-                                                <p class="mb-0">Reliable and Quick Communication</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
 
                     </div>
@@ -180,7 +108,7 @@
                             </div>
                         </div>
                     </div>
-            @endforeach
+                @endforeach
             </div>
         </div>
     </div>
@@ -194,12 +122,11 @@
             </div>
             <div class="row justify-content-between align-items-center">
                 <div class="col-lg-7">
-
                     <div class="inst_img position-relative mb-4 mb-lg-0">
-                        <img src="{{ asset('_assets/_guest/img/servicepage/play-button-bg.jpg') }}" alt="designwala" class="img-fluid">
+                        <img src="{{ asset($siteCms['how_prodoer_works_video']->video_thumbnail ? Storage::disk('public')->url(config('image-location.images.site_cms.how_designwala_works') . $siteCms['how_prodoer_works_video']->video_thumbnail) : config('image-location.default.no_preview')) }}" alt="designwala" class="img-fluid">
                         <div class="play_btn position-absolute trans-center">
                             <button type="button" data-bs-toggle="modal" data-bs-target="#videoModal">
-                                <img src="{{ asset('_assets/_guest/img/servicepage/play-button.svg') }}" class="img-fluid border-rounded play_button" alt="designwala"></a>
+                                <img src="{{ asset('_assets/_guest/img/servicepage/play-button.svg') }}" class="img-fluid border-rounded play_button" alt="designwala">
                             </button>
                         </div>
                         <div class="load_css">
@@ -209,59 +136,28 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
 
                 <div class="col-lg-5 col-xxl-4">
                     <div class="hwpt">
-                        <!-- 1st -->
-                        <div class="hw_wrapper">
-                            <!-- <div class="row"> -->
-                            <div class="col-lg-3 col-3 col_3">
-                                <div class="hw_no hw_no_line">
-                                    1
+                        @foreach($siteCms['how_prodoer_works'] as $how_prodoer_work)
+                            <div class="hw_wrapper">
+                                <div class="col-lg-3 col-3 col_3">
+                                    <div class="hw_no {{ $loop->iteration === 3 ? '' : 'hw_no_line' }}">
+                                        {{ $loop->iteration }}
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-9 col-9">
-                                <div class="hw_text">
-                                    <h2>Place Order</h2>
-                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed is diam nonumy</p>
+                                <div class="col-lg-9 col-9">
+                                    <div class="hw_text">
+                                        <h2>{{ $how_prodoer_work->title }}</h2>
+                                        <p>{{ $how_prodoer_work->desc }}</p>
+                                    </div>
                                 </div>
+                                @if($loop->iteration == 3)
+                                    @break
+                                @endif
                             </div>
-                            <!-- </div> -->
-                        </div>
-                        <!-- 2nd -->
-                        <div class="hw_wrapper">
-                            <!-- <div class="row"> -->
-                            <div class="col-lg-3 col-3 col_3">
-                                <div class="hw_no hw_no_line">
-                                    2
-                                </div>
-                            </div>
-                            <div class="col-lg-9 col-9">
-                                <div class="hw_text">
-                                    <h2>Send your content</h2>
-                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed is diam nonumy</p>
-                                </div>
-                            </div>
-                            <!-- </div> -->
-                        </div>
-                        <!-- 3rd -->
-                        <div class="hw_wrapper">
-                            <!-- <div class="row"> -->
-                            <div class="col-lg-3 col-3 col_3">
-                                <div class="hw_no">
-                                    3
-                                </div>
-                            </div>
-                            <div class="col-lg-9 col-9">
-                                <div class="hw_text">
-                                    <h2>Get your final delivery</h2>
-                                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed is diam nonumy</p>
-                                </div>
-                            </div>
-                            <!-- </div> -->
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -275,7 +171,7 @@
             <div class="modal-content">
                 <div class="modal-body">
                     <video width="100%" controls>
-                        <source src="{{ asset('_assets/_guest/video/nature.mp4') }}" type="video/mp4">
+                        <source src="{{ asset($siteCms['how_prodoer_works_video']->video ? Storage::disk('public')->url(config('image-location.images.site_cms.how_designwala_works_video') . $siteCms['how_prodoer_works_video']->video) : config('image-location.default.no_preview')) }}" type="video/mp4">
                     </video>
                 </div>
             </div>
@@ -370,58 +266,27 @@
     </section>
     {{-- testimonial section end --}}
 
-    {{-- counter section start --}}
+    {{-- statistic section start --}}
     <div class="section serviceCountSection bgcustomLightgray " id="serviceCountSection">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-6">
-                    <div class="text-center counter_wrapper">
-                        <div class="counter_icon">
-                            <img src="{{ asset('_assets/_guest/img/servicepage/homeservices/customer.svg') }}" alt="" class="img-fluid">
-                        </div>
-                        <div class="counter_title">
-                            <h1 class="font-weight-bold colorFive timer  count-number" data-to="1000" data-speed="1500"></h1>
-                            <p class="mb-0">Total Clients</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-6">
-                    <div class="text-center counter_wrapper">
-                        <div class="counter_icon">
-                            <img src="{{ asset('_assets/_guest/img/servicepage/homeservices/employee.svg') }}" alt="" class="img-fluid">
-                        </div>
-                        <div class="counter_title">
-                            <h1 class="font-weight-bold colorFive timer  count-number" data-to="1000" data-speed="1500"></h1>
-                            <p class="mb-0">Total Designwalas </p>
+                @foreach($siteCms['statistics'] as $statistic)
+                    <div class="col-lg-3 col-6">
+                        <div class="text-center counter_wrapper">
+                            <div class="counter_icon">
+                                <img src="{{ asset($statistic->icon ? Storage::disk('public')->url(config('image-location.images.site_cms.statistic_icon') . $statistic->icon) : config('image-location.default.no_preview')) }}" alt="" class="img-fluid">
+                            </div>
+                            <div class="counter_title">
+                                <h1 class="font-weight-bold colorFive timer  count-number" data-to="{{ $statistic->amount }}" data-speed="1500"></h1>
+                                <p class="mb-0">{{ $statistic->title }}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-6">
-                    <div class="text-center counter_wrapper">
-                        <div class="counter_icon">
-                            <img src="{{ asset('_assets/_guest/img/servicepage/homeservices/order.svg') }}" alt="" class="img-fluid">
-                        </div>
-                        <div class="counter_title">
-                            <h1 class="font-weight-bold colorFive timer  count-number" data-to="1000" data-speed="1500"></h1>
-                            <p class="mb-0"> Total Orders</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-6">
-                    <div class="text-center counter_wrapper">
-                        <div class="counter_icon">
-                            <img src="{{ asset('_assets/_guest/img/servicepage/homeservices/sales.svg') }}" alt="" class="img-fluid">
-                        </div>
-                        <div class="counter_title">
-                            <h1 class="font-weight-bold colorFive timer  count-number" data-to="1000" data-speed="1500">1000</h1>
-                            <p class="mb-0">Total Transactions </p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
-    {{-- counter section end --}}
+    {{-- statistic section end --}}
 @endsection
 
 @push('scripts')

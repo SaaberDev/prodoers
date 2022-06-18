@@ -266,7 +266,7 @@
                             {{-- Description --}}
                             <div class="tab-pane fade show active " id="description" role="tabpanel" aria-labelledby="home-tab">
                                 <p>
-                                    {{ $service->short_desc }}
+                                    {!! $service->short_desc !!}
                                 </p>
 
 

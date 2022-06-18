@@ -211,7 +211,7 @@ class SiteCmsController extends Controller
             // Video Thumbnail
             $video_thumbnail = HowDesignwalaWork::whereSiteKey('dw_video')->firstOrFail();
             $video_thumbnail->update([
-                'video_thumbnail' => updateSVG($request, 'designwala-video', $video_thumbnail->video_thumbnail,'designwala_video_thumbnail','thumbnail', config('image-location.images.site_cms.how_designwala_works_video')),
+                'video_thumbnail' => updateSVG($request, 'designwala-video', $video_thumbnail->video_thumbnail,'designwala_video_thumbnail','thumbnail', config('image-location.images.site_cms.how_designwala_works')),
             ]);
         });
         \Cache::clear();

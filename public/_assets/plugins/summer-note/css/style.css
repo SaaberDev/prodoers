@@ -1,0 +1,62 @@
+*,
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.note-editor.note-frame .note-editing-area .note-editable{
+    height:80vh;
+    padding: 20px;
+}
+
+.about-me{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    z-index: 2; 
+}
+.about-me a .contact-icon{
+    background: #262f38;
+    cursor: pointer;
+    font-size: 18pt;
+    height: 55px;
+    margin: 0 15px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.3s;
+    width: 55px;
+    
+    padding-top: 10px;
+
+}
+.about-me a .contact-icon i{
+    color: #fff;
+    text-align: center;
+}
+.about-me a .contact-icon:not(:last-child){
+    margin-right: 20px;
+}
+.about-me a .contact-icon:hover{
+    background: #04c2c9;
+    transform: scale(0.9);
+    
+}
+.about-me a .contact-icon:hover i{
+    -moz-animation: toBottomFromTop 0.3s forwards;
+    animation: toBottomFromTop 0.3s forwards;
+}
+@keyframes toBottomFromTop {
+    49% {
+      transform: translateY(100%);
+    }
+    50% {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+    51% {
+      opacity: 1;
+    }
+  }
