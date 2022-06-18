@@ -10,7 +10,7 @@
                 </div>
                 <div class="col-lg-4 col-xl-2 text_center pr-lg-0">
                     <div class="talk justify-content-end first_footer">
-                        <button type="button" class="btn ff_btn">Let's Talk</button>
+                        <button type="button" id="lets_talk_btn" onclick="Tawk_API.toggle()" class="btn ff_btn">Let's Talk</button>
                     </div>
                 </div>
             </div>
