@@ -34,7 +34,7 @@
 
                     <div class="ml-4 text-lg text-gray-500 uppercase tracking-wider">
 {{--                            <a href="{{ app('router')->has('home') ? route('home') : url('/') }}" class="btn btn-info">Home</a>--}}
-                            <a href="{{ url()->previous() }}" class="btn btn-info">Go Back</a>
+                            <a href="{{ route('guest.home.index') }}" class="btn btn-info">{{__('Go Home')}}</a>
                     </div>
                 </div>
             </div>
