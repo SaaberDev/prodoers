@@ -28,8 +28,8 @@
     */
 
     Route::middleware([
-//        'auth',
-//        'role:super_admin|admin',
+        'auth',
+        'role:super_admin|admin',
     ])->group(function () {
         Route::prefix('/dashboard')->name('super_admin.')->group(function () {
             // Dashboard
